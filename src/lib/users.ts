@@ -1,8 +1,13 @@
-import client from "@/lib/db";
+import getClient from "@/lib/db";
+import { hasMongoUri } from "@/lib/env";
 import { verifyPassword } from "@/lib/password";
 
 export async function getUserFromDb(email: string, password: string) {
-  const db = client.db();
+  if (!hasMongoUri()) {
+    return null;
+  }
+
+  const db = getClient().db();
   const user = await db.collection("users").findOne({ email });
 
   if (!user || typeof user.passwordHash !== "string") {

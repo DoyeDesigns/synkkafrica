@@ -4,57 +4,69 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 
-import client from "@/lib/db";
+import getClient from "@/lib/db";
+import { getAuthSecret, hasGoogleAuth, hasMongoUri } from "@/lib/env";
 import { sendVerificationRequest } from "@/lib/send-verification-request";
 import { getUserFromDb } from "@/lib/users";
 import { signInSchema } from "@/lib/zod";
 
+const providers = [
+  ...(hasGoogleAuth() ? [Google] : []),
+  ...(hasMongoUri()
+    ? [
+        {
+          id: "email",
+          name: "Email",
+          type: "email" as const,
+          from: process.env.AUTH_EMAIL_FROM,
+          maxAge: 24 * 60 * 60,
+          sendVerificationRequest,
+        },
+      ]
+    : []),
+  ...(hasMongoUri()
+    ? [
+        Credentials({
+          credentials: {
+            email: {
+              label: "Email",
+              type: "email",
+              placeholder: "you@example.com",
+            },
+            password: {
+              label: "Password",
+              type: "password",
+              placeholder: "********",
+            },
+          },
+          authorize: async (credentials) => {
+            try {
+              const { email, password } =
+                await signInSchema.parseAsync(credentials);
+              const user = await getUserFromDb(email, password);
+
+              if (!user) {
+                return null;
+              }
+
+              return user;
+            } catch (error) {
+              if (error instanceof ZodError) {
+                return null;
+              }
+
+              throw error;
+            }
+          },
+        }),
+      ]
+    : []),
+];
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: MongoDBAdapter(client),
-  providers: [
-    Google,
-    {
-      id: "email",
-      name: "Email",
-      type: "email",
-      from: process.env.AUTH_EMAIL_FROM,
-      maxAge: 24 * 60 * 60,
-      sendVerificationRequest,
-    },
-    Credentials({
-      credentials: {
-        email: {
-          label: "Email",
-          type: "email",
-          placeholder: "you@example.com",
-        },
-        password: {
-          label: "Password",
-          type: "password",
-          placeholder: "********",
-        },
-      },
-      authorize: async (credentials) => {
-        try {
-          const { email, password } =
-            await signInSchema.parseAsync(credentials);
-          const user = await getUserFromDb(email, password);
-
-          if (!user) {
-            return null;
-          }
-
-          return user;
-        } catch (error) {
-          if (error instanceof ZodError) {
-            return null;
-          }
-
-          throw error;
-        }
-      },
-    }),
-  ],
+  secret: getAuthSecret(),
+  ...(hasMongoUri() ? { adapter: MongoDBAdapter(getClient()) } : {}),
+  providers,
   session: {
     strategy: "jwt",
   },
