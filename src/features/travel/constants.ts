@@ -6,11 +6,15 @@ import type { TravelSection, TravelSectionConfig } from "./types";
  */
 export const FORM_REFERENCE_SECTION: TravelSection = "accommodations";
 
+/** Hidden scrollbar by default; shows on hover. Use on horizontal carousel tracks. */
+export const TRAVEL_CAROUSEL_SCROLL_CLASS =
+  "[-ms-overflow-style:none] [scrollbar-none] [&::-webkit-scrollbar]:hidden travel-carousel-hover-scroll";
+
 export const TRAVEL_SECTIONS: TravelSectionConfig[] = [
   {
     id: "accommodations",
     label: "Accommodations",
-    headline: "All You need in one place",
+    headline: "All you need in one place",
     heroImage: "/hero/accommodations.png",
     landingBlurb:
       "Accommodations landing — browse curated stays across Africa.",
@@ -20,7 +24,7 @@ export const TRAVEL_SECTIONS: TravelSectionConfig[] = [
   {
     id: "flights",
     label: "Flights",
-    headline: "All You need in one place",
+    headline: "All you need in one place",
     heroImage: "/hero/flights.png",
     landingBlurb: "Flights landing — compare routes and fares in one search.",
     resultsBlurb: "Flights results — showing matching itineraries for your trip.",
@@ -28,7 +32,7 @@ export const TRAVEL_SECTIONS: TravelSectionConfig[] = [
   {
     id: "car-rentals",
     label: "Car Rentals",
-    headline: "All You need in one place",
+    headline: "All you need in one place",
     heroImage: "/hero/car-rentals.png",
     landingBlurb:
       "Car rentals landing — self-drive and chauffeur options near you.",
@@ -38,7 +42,7 @@ export const TRAVEL_SECTIONS: TravelSectionConfig[] = [
   {
     id: "tours",
     label: "Tours & Experiences",
-    headline: "All You need in one place",
+    headline: "All you need in one place",
     heroImage: "/hero/tours.png",
     landingBlurb:
       "Tours landing — discover cultural experiences and attractions.",

@@ -106,7 +106,7 @@ export function HeroFormRow({ children }: { children: ReactNode }) {
 
 export function HeroInputShell({ children }: { children: ReactNode }) {
   return (
-    <div className="flex flex-col gap-3 rounded-[25px] border border-white/70 p-2 lg:flex-row lg:items-center bg-[#B4B4B459]/34">
+    <div className="flex flex-col gap-3 rounded-[25px] border-[1.5px] border-white/70 p-2 lg:flex-row lg:items-center bg-[#B4B4B4]/34">
       {children}
     </div>
   );

@@ -3,6 +3,9 @@
 import { TRAVEL_SECTION_MAP } from "@/features/travel/constants";
 import { HeroTabs } from "@/features/travel/components/hero/hero-tabs";
 import { SectionSearchForm } from "@/features/travel/components/hero/forms";
+import { ClearFilterButton } from "@/features/travel/components/results/shared/clear-filter-button";
+import { useTravelNavigation } from "@/features/travel/hooks/use-travel-navigation";
+import { useAccommodationFiltersContext } from "@/features/travel/providers/accommodation-filters-provider";
 import type { TravelSection } from "@/features/travel/types";
 
 type HeroSectionProps = {
@@ -19,6 +22,11 @@ export function HeroSection({
   isPending = false,
 }: HeroSectionProps) {
   const config = TRAVEL_SECTION_MAP[section];
+  const { view } = useTravelNavigation();
+  const { hasAppliedFilters, resetFilters } = useAccommodationFiltersContext();
+
+  const showClearFilter =
+    section === "accommodations" && view === "results" && hasAppliedFilters;
 
   return (
     <section className="relative min-h-[550px] w-full overflow-hidden">
@@ -43,6 +51,11 @@ export function HeroSection({
 
           <div className="pt-5 px-10 lg:px-20 pb-10">
             <SectionSearchForm section={section} onSubmit={onSearch} />
+            {showClearFilter ? (
+              <div className="mt-4">
+                <ClearFilterButton onClick={resetFilters} />
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

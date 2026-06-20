@@ -12,6 +12,26 @@
   --font-sans: var(--font-inter);
 }
 
+@layer utilities {
+  .travel-carousel-hover-scroll:hover {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(42, 42, 42, 0.35) transparent;
+  }
+
+  .travel-carousel-hover-scroll:hover::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .travel-carousel-hover-scroll:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(42, 42, 42, 0.35);
+    border-radius: 9999px;
+  }
+
+  .travel-carousel-hover-scroll:hover::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
 body {
   color: #2a2a2a;
 }
