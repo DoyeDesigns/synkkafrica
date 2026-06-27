@@ -4,6 +4,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 
+import { isAccountDesignPreviewEnabled } from "@/features/account/preview";
 import getClient from "@/lib/db";
 import { getAuthSecret, hasGoogleAuth, hasMongoUri } from "@/lib/env";
 import { sendVerificationRequest } from "@/lib/send-verification-request";
@@ -78,6 +79,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       );
 
       if (isProtected) {
+        if (
+          isAccountDesignPreviewEnabled() &&
+          nextUrl.pathname.startsWith("/account")
+        ) {
+          return true;
+        }
+
         return !!auth?.user;
       }
 

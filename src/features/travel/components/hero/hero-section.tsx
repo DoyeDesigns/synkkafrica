@@ -4,6 +4,7 @@ import { TRAVEL_SECTION_MAP } from "@/features/travel/constants";
 import { HeroTabs } from "@/features/travel/components/hero/hero-tabs";
 import { SectionSearchForm } from "@/features/travel/components/hero/forms";
 import { ClearFilterButton } from "@/features/travel/components/results/shared/clear-filter-button";
+import { useTranslation } from "@/hooks/use-translation";
 import { useTravelNavigation } from "@/features/travel/hooks/use-travel-navigation";
 import { useAccommodationFiltersContext } from "@/features/travel/providers/accommodation-filters-provider";
 import type { TravelSection } from "@/features/travel/types";
@@ -21,6 +22,7 @@ export function HeroSection({
   onSearch,
   isPending = false,
 }: HeroSectionProps) {
+  const t = useTranslation();
   const config = TRAVEL_SECTION_MAP[section];
   const { view } = useTravelNavigation();
   const { hasAppliedFilters, resetFilters } = useAccommodationFiltersContext();
@@ -39,7 +41,7 @@ export function HeroSection({
 
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-4 pb-10 pt-28 sm:px-6 lg:px-8">
         <h1 className="mb-8 text-center text-4xl font-montserrat font-bold text-white sm:text-4xl">
-          {config.headline}
+          {t("hero.headline")}
         </h1>
 
         <div

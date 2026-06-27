@@ -32,10 +32,12 @@ export function HeroPillSelect({
   return (
     <button
       type="button"
-      className={`inline-flex items-center gap-2 rounded-[25px] border border-[#EDE2E2] px-4 py-2 text-sm text-white ${className}`}
+      className={`inline-flex items-center justify-between gap-2 rounded-[25px] border border-[#EDE2E2] px-4 py-2 text-sm text-white ${className}`}
     >
+      <div className="flex items-center gap-2">
       {icon}
       <span>{label}</span>
+      </div>
       <ChevronDown className="h-4 w-4" />
     </button>
   );

@@ -9,21 +9,17 @@ import { ACCOMMODATION_DEALS } from "@/features/travel/data/accommodations-landi
 export function AccommodationsLanding() {
   return (
     <div>
-      <OngoingDealsSection
-        title="Ongoing Deals"
-        description="Promotions, deals, and special offers for you"
-        items={ACCOMMODATION_DEALS}
-      />
+      <OngoingDealsSection items={ACCOMMODATION_DEALS} />
       <BrowsePropertyTypeSection />
       <PropertyListingSection
-        title="Ongoing Deals"
-        description="Promotions, deals, and special offers for you"
+        titleKey="landing.ongoingDeals.title"
+        descriptionKey="landing.ongoingDeals.description"
         items={FEATURED_PROPERTIES}
       />
       <ExperiencePromoSection />
       <PropertyListingSection
-        title="Best deals on apartments"
-        description="Promotions, deals, and special offers for you"
+        titleKey="landing.bestDealsApartments.title"
+        descriptionKey="landing.ongoingDeals.description"
         items={FEATURED_PROPERTIES}
       />
       <FavouriteDestinationsSection />

@@ -1,5 +1,9 @@
+"use client";
+
 import { Star } from "lucide-react";
 import Image from "next/image";
+
+import { useTranslation } from "@/hooks/use-translation";
 
 type PropertyTypeImageProps = {
   src: string;
@@ -29,6 +33,7 @@ type StarRatingProps = {
 };
 
 export function StarRating({ rating, reviewCount }: StarRatingProps) {
+  const t = useTranslation();
   const fullStars = Math.floor(rating);
 
   return (
@@ -46,7 +51,7 @@ export function StarRating({ rating, reviewCount }: StarRatingProps) {
         ))}
       </div>
       <span className="text-foreground">
-        {rating}/5 ({reviewCount} Reviews)
+        {rating}/5 ({reviewCount} {t("common.reviews")})
       </span>
     </div>
   );

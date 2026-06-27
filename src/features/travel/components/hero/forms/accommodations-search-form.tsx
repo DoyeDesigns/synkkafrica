@@ -16,6 +16,7 @@ import {
   HeroPillSelect,
   HeroSearchButton,
 } from "@/features/travel/components/hero/hero-form-primitives";
+import { useTranslation } from "@/hooks/use-translation";
 
 type AccommodationsSearchFormProps = {
   onSubmit: (fields: Record<string, string>) => void;
@@ -30,6 +31,8 @@ type AccommodationsSearchFormProps = {
 export function AccommodationsSearchForm({
   onSubmit,
 }: AccommodationsSearchFormProps) {
+  const t = useTranslation();
+
   return (
     <form
       className="space-y-4"
@@ -47,29 +50,29 @@ export function AccommodationsSearchForm({
     >
       <HeroFormRow>
       <HeroPillSelect
-          label="Property type"
+          label={t("hero.accommodations.propertyType")}
           icon={<Building2 className="h-4 w-4" />}
         />
         <div className="flex items-center gap-2">
-        <HeroPillSelect label="1 Room" />
-        <HeroPillSelect label="1 Guest" />
+        <HeroPillSelect label={t("hero.accommodations.oneRoom")} />
+        <HeroPillSelect label={t("hero.accommodations.oneGuest")} />
         </div>
       </HeroFormRow>
 
       <HeroInputShell>
         <HeroField
           icon={<MapPin className="h-4 w-4 shrink-0" />}
-          placeholder="Your Destination"
+          placeholder={t("hero.accommodations.destination")}
         />
         <HeroField
           icon={<Calendar className="h-4 w-4 shrink-0" />}
-          placeholder="Check In Date"
+          placeholder={t("hero.accommodations.checkIn")}
         />
         <HeroField
           icon={<Calendar className="h-4 w-4 shrink-0" />}
-          placeholder="Check In Date"
+          placeholder={t("hero.accommodations.checkIn")}
         />
-        <HeroSearchButton label="Check Availability" variant="coral" />
+        <HeroSearchButton label={t("hero.accommodations.checkAvailability")} variant="coral" />
       </HeroInputShell>
     </form>
   );

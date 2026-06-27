@@ -30,6 +30,32 @@
   .travel-carousel-hover-scroll:hover::-webkit-scrollbar-track {
     background: transparent;
   }
+
+  .hero-price-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 14px;
+    width: 14px;
+    border: none;
+    border-radius: 9999px;
+    background: #e45d25;
+    cursor: pointer;
+  }
+
+  .hero-price-range::-moz-range-thumb {
+    height: 14px;
+    width: 14px;
+    border: none;
+    border-radius: 9999px;
+    background: #e45d25;
+    cursor: pointer;
+  }
+
+  .hero-price-range::-moz-range-track {
+    height: 6px;
+    border-radius: 9999px;
+    background: transparent;
+  }
 }
 
 body {

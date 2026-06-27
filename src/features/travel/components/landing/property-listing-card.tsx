@@ -1,11 +1,15 @@
 import { Coffee, Dumbbell, Flame, Heart, Star } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+
+import { T } from "@/components/translation";
 
 import type {
   PropertyListingAmenity,
   PropertyListingItem,
 } from "@/features/travel/data/property-listings";
-import { formatPrice } from "@/features/travel/data/accommodations-landing";
+import { DisplayPrice } from "@/components/display-price";
+import { getPropertyBookingPath } from "@/features/travel/booking/paths";
 
 function AmenityItem({ icon, label }: PropertyListingAmenity) {
   const Icon = icon === "coffee" ? Coffee : Dumbbell;
@@ -20,13 +24,14 @@ function AmenityItem({ icon, label }: PropertyListingAmenity) {
 
 type PropertyListingCardProps = {
   item: PropertyListingItem;
+  saved?: boolean;
 };
 
-export function PropertyListingCard({ item }: PropertyListingCardProps) {
+export function PropertyListingCard({ item, saved = false }: PropertyListingCardProps) {
   const fullStars = Math.floor(item.rating);
 
   return (
-    <article className="flex min-w-[295px] shrink-0 flex-col overflow-hidden rounded-2xl border border-black/10 bg-white">
+    <article className="flex w-[295px] min-w-[295px] shrink-0 flex-col overflow-hidden rounded-2xl border border-black/10 bg-white">
       <div className="relative h-40 w-full bg-zinc-100">
         <Image
           src={item.image}
@@ -38,10 +43,19 @@ export function PropertyListingCard({ item }: PropertyListingCardProps) {
 
         <button
           type="button"
-          aria-label="Save property"
-          className="absolute top-3 left-3 flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm"
+          aria-label={saved ? "Remove from saved" : "Save property"}
+          className={`absolute top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm ${
+            saved ? "right-3" : "left-3"
+          }`}
         >
-          <Heart className="h-5.5 w-5.5 text-foreground" strokeWidth={1} />
+          <Heart
+            className={
+              saved
+                ? "h-4 w-4 fill-[#E53935] text-[#E53935]"
+                : "h-5.5 w-5.5 text-foreground"
+            }
+            strokeWidth={saved ? 1.5 : 1}
+          />
         </button>
 
         <span className="absolute right-3 -bottom-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#D85A30] shadow-sm">
@@ -76,18 +90,20 @@ export function PropertyListingCard({ item }: PropertyListingCardProps) {
 
         <div className="mt-auto flex items-end justify-between gap-3 pt-2">
           <div>
-            <p className="text-xs text-foreground font-satoshi font-medium">Starting from</p>
+            <p className="text-xs text-foreground font-satoshi font-medium">
+              <T k="common.startingFrom" />
+            </p>
             <p className="text-lg font-montserrat font-bold text-[#D85A30]">
-              {formatPrice(item.currency, item.price)}
+              <DisplayPrice currency={item.currency} amount={item.price} />
             </p>
           </div>
 
-          <button
-            type="button"
+          <Link
+            href={getPropertyBookingPath(item.id)}
             className="rounded-[5px] font-montserrat font-bold bg-[#2F2F2F] px-4 py-2.5 text-xs text-white"
           >
-            Book Now
-          </button>
+            <T k="common.bookNow" />
+          </Link>
         </div>
       </div>
     </article>

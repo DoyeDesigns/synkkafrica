@@ -1,4 +1,8 @@
+"use client";
+
 import { X } from "lucide-react";
+
+import { useTranslation } from "@/hooks/use-translation";
 
 type ClearFilterButtonProps = {
   onClick: () => void;
@@ -11,6 +15,7 @@ export function ClearFilterButton({
   className = "",
   variant = "hero",
 }: ClearFilterButtonProps) {
+  const t = useTranslation();
   const isSidebar = variant === "sidebar";
 
   return (
@@ -31,7 +36,7 @@ export function ClearFilterButton({
           strokeWidth={2.5}
         />
       </span>
-      Clear Filter
+      {t("hero.clearFilter")}
     </button>
   );
 }

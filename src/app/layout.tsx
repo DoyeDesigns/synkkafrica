@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 
-import { Navbar } from "@/components/layout/NavBar";
-import { Footer } from "@/components/layout/Footer";
+import { auth } from "@/auth";
+import { ConditionalNavbar } from "@/components/layout/conditional-navbar";
+import { ConditionalFooter } from "@/components/layout/conditional-footer";
+import { PreferencesProvider } from "@/providers/preferences-provider";
 import { QueryProvider } from "@/providers/query-provider";
 import "./globals.css";
 
@@ -10,11 +12,13 @@ export const metadata: Metadata = {
   description: "SynkkAfrica is an african travel platform — connecting travellers to flights, ground transport, luxury rides, and deeply curated African cultural experiences",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+
   return (
     <html
       lang="en"
@@ -22,9 +26,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col font-inter text-foreground">
         <QueryProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <PreferencesProvider>
+            <ConditionalNavbar session={session} />
+            <main className="flex-1">{children}</main>
+            <ConditionalFooter />
+          </PreferencesProvider>
         </QueryProvider>
       </body>
     </html>

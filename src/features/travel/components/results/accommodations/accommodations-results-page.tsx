@@ -5,10 +5,12 @@ import { AccommodationResultCard } from "./accommodation-result-card";
 import { AccommodationsResultsHeader } from "./accommodations-results-header";
 import { ResultsBreadcrumbs } from "../shared/results-breadcrumbs";
 import { useAccommodationFiltersContext } from "@/features/travel/providers/accommodation-filters-provider";
+import { useTranslation } from "@/hooks/use-translation";
 import { OngoingDealsSection } from "../../landing/accommodations/ongoing-deals-section";
 import { ACCOMMODATION_DEALS } from "@/features/travel/data/accommodations-landing";
 
 export function AccommodationsResultsPage() {
+  const t = useTranslation();
   const {
     draftFilters,
     draftFilterCount,
@@ -25,8 +27,8 @@ export function AccommodationsResultsPage() {
     <div className="space-y-6">
       <ResultsBreadcrumbs
         items={[
-          { label: "SynkkAfrica", href: "/" },
-          { label: "Accommodations" },
+          { label: t("breadcrumb.synkkAfrica"), href: "/" },
+          { label: t("breadcrumb.accommodations") },
         ]}
       />
 
@@ -59,10 +61,10 @@ export function AccommodationsResultsPage() {
             ) : (
               <div className="rounded-2xl border border-black/10 bg-white p-8 text-center shadow-sm">
                 <p className="text-base font-medium font-satoshi text-foreground">
-                  No stays match your filters.
+                  {t("results.accommodations.empty")}
                 </p>
                 <p className="mt-2 text-sm font-satoshi text-foreground/70">
-                  Try adjusting your search or filter options.
+                  {t("results.emptyHint")}
                 </p>
               </div>
             )}
@@ -71,11 +73,7 @@ export function AccommodationsResultsPage() {
       </div>
 
       <div className="mt-31 mb-12 w-full">
-        <OngoingDealsSection
-          title="Ongoing Deals"
-          description="Promotions, deals, and special offers for you"
-          items={ACCOMMODATION_DEALS}
-        />
+        <OngoingDealsSection items={ACCOMMODATION_DEALS} />
       </div>
     </div>
   );

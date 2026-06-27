@@ -1,7 +1,8 @@
 import Image from "next/image";
 
+import { DisplayPrice } from "@/components/display-price";
+import { T } from "@/components/translation";
 import type { AccommodationDeal } from "@/features/travel/data/accommodations-landing";
-import { formatPrice } from "@/features/travel/data/accommodations-landing";
 import { StarRating } from "./accommodations/shared";
 
 type OngoingDealCardProps = {
@@ -30,13 +31,15 @@ export function OngoingDealCard({ item }: OngoingDealCardProps) {
         <StarRating rating={item.rating} reviewCount={item.reviewCount} />
 
         <div className="mt-3">
-          <p className="text-xs font-satoshi text-foreground">Starting from</p>
+          <p className="text-xs font-satoshi text-foreground">
+            <T k="common.startingFrom" />
+          </p>
           <div className="flex flex-wrap items-baseline gap-2 font-montserrat">
             <span className="text-sm text-red-500 line-through">
-              {formatPrice(item.currency, item.originalPrice)}
+              <DisplayPrice currency={item.currency} amount={item.originalPrice} />
             </span>
             <span className="text-lg font-bold text-foreground">
-              {formatPrice(item.currency, item.currentPrice)}
+              <DisplayPrice currency={item.currency} amount={item.currentPrice} />
             </span>
           </div>
         </div>

@@ -10,12 +10,15 @@ import {
   HeroRadioOption,
   HeroSearchButton,
 } from "@/features/travel/components/hero/hero-form-primitives";
+import { useTranslation } from "@/hooks/use-translation";
 
 type FlightsSearchFormProps = {
   onSubmit: (fields: Record<string, string>) => void;
 };
 
 export function FlightsSearchForm({ onSubmit }: FlightsSearchFormProps) {
+  const t = useTranslation();
+
   return (
     <form
       className="space-y-4"
@@ -34,34 +37,34 @@ export function FlightsSearchForm({ onSubmit }: FlightsSearchFormProps) {
     >
       <HeroFormRow>
         <div className="flex flex-wrap items-center gap-3">
-          <HeroRadioOption label="Round Trip" selected />
-          <HeroRadioOption label="One-way" />
-          <HeroRadioOption label="Direct Flight" />
+          <HeroRadioOption label={t("hero.flights.roundTrip")} selected />
+          <HeroRadioOption label={t("hero.flights.oneWay")} />
+          <HeroRadioOption label={t("hero.flights.directFlight")} />
         </div>
         <div className="flex flex-wrap items-center gap-3 lg:ml-auto">
-          <HeroPillSelect label="Economy Class" />
-          <HeroPillSelect label="1 Passenger" />
+          <HeroPillSelect label={t("hero.flights.economyClass")} />
+          <HeroPillSelect label={t("hero.flights.onePassenger")} />
         </div>
       </HeroFormRow>
 
       <HeroInputShell>
         <HeroField
           icon={<MapPin className="h-4 w-4 shrink-0" />}
-          placeholder="From | Select City"
+          placeholder={t("hero.flights.fromCity")}
         />
         <HeroField
           icon={<MapPin className="h-4 w-4 shrink-0" />}
-          placeholder="To | Select City"
+          placeholder={t("hero.flights.toCity")}
         />
         <HeroField
           icon={<Calendar className="h-4 w-4 shrink-0" />}
-          placeholder="Departure date"
+          placeholder={t("hero.flights.departureDate")}
         />
         <HeroField
           icon={<Calendar className="h-4 w-4 shrink-0" />}
-          placeholder="Return date"
+          placeholder={t("hero.flights.returnDate")}
         />
-        <HeroSearchButton label="Check Availability" variant="blue" />
+        <HeroSearchButton label={t("hero.accommodations.checkAvailability")} variant="blue" />
       </HeroInputShell>
     </form>
   );

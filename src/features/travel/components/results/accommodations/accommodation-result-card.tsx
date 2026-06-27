@@ -10,8 +10,12 @@ import {
   Wifi,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
-import { formatPrice } from "@/features/travel/data/accommodations-landing";
+import { DisplayPrice } from "@/components/display-price";
+import { ReviewCount } from "@/components/review-count";
+import { T } from "@/components/translation";
+import { getPropertyBookingPath } from "@/features/travel/booking/paths";
 import type { AccommodationResult } from "@/features/travel/data/accommodation-results";
 
 type AccommodationResultCardProps = {
@@ -70,9 +74,11 @@ export function AccommodationResultCard({ item }: AccommodationResultCardProps) 
                   />
                 ))}
               </div>
-              <span className="font-medium text-foreground">
-                <span className="text-[#D85A30]">{item.rating}</span> | {item.reviewCount} Reviews
-              </span>
+              <ReviewCount
+                rating={item.rating}
+                reviewCount={item.reviewCount}
+                className="font-medium text-foreground"
+              />
             </div>
 
             <div>
@@ -98,12 +104,12 @@ export function AccommodationResultCard({ item }: AccommodationResultCardProps) 
             </div>
           </div>
 
-          <button
-            type="button"
-            className="w-fit rounded-md bg-[#D85A30] px-5 py-2.5 text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90 sm:w-full max-w-[271px]"
+          <Link
+            href={getPropertyBookingPath(item.id)}
+            className="inline-flex w-fit rounded-md bg-[#D85A30] px-5 py-2.5 text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90 sm:w-full sm:max-w-[271px] sm:justify-center"
           >
-            Book Now
-          </button>
+            <T k="common.bookNow" />
+          </Link>
         </div>
 
         <div className="flex flex-col justify-between p-4 sm:p-5">
@@ -118,16 +124,16 @@ export function AccommodationResultCard({ item }: AccommodationResultCardProps) 
 
           <div className="mt-4 lg:mt-auto">
             <p className="text-xs font-medium font-satoshi text-foreground">
-              Starting from
+              <T k="common.startingFrom" />
             </p>
             <p className="mt-1 text-lg font-bold font-montserrat text-foreground">
-              {formatPrice(item.currency, item.price)}
+              <DisplayPrice currency={item.currency} amount={item.price} />
             </p>
             <p className="mt-1 text-[19px] font-medium font-satoshi text-red-500 line-through">
-              {formatPrice(item.currency, item.originalPrice)}
+              <DisplayPrice currency={item.currency} amount={item.originalPrice} />
             </p>
             <p className="mt-3 text-xs font-medium font-satoshi text-[#135391]">
-              excluding taxes and fees
+              <T k="common.excludingTaxes" />
             </p>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import { formatPriceWithPreferences } from "@/lib/preferences/format-price";
+
 export type AccommodationDeal = {
   id: string;
   name: string;
@@ -139,5 +141,5 @@ export const FAVOURITE_DESTINATIONS: FavouriteDestination[] = [
 ];
 
 export function formatPrice(currency: string, amount: number) {
-  return `${currency} ${amount.toLocaleString("en-NG")}`;
+  return formatPriceWithPreferences(currency, amount);
 }

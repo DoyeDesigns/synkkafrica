@@ -1,32 +1,33 @@
+"use client";
+
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import { TRAVEL_CAROUSEL_SCROLL_CLASS } from "@/features/travel/constants";
 import type { AccommodationDeal } from "@/features/travel/data/accommodations-landing";
+import { useTranslation } from "@/hooks/use-translation";
 import { OngoingDealCard } from "../ongoing-deal-card";
 
 type OngoingDealsSectionProps = {
-  title: string;
-  description: string;
   items: AccommodationDeal[];
   seeMoreHref?: string;
 };
 
 export function OngoingDealsSection({
-  title,
-  description,
   items,
   seeMoreHref = "/?section=accommodations&view=results",
 }: OngoingDealsSectionProps) {
+  const t = useTranslation();
+
   return (
     <section className="space-y-8">
       <div className="flex items-end justify-between gap-4">
         <div>
           <h2 className="text-[22px] font-bold font-montserrat text-[#1E1E1E]">
-            {title}
+            {t("landing.ongoingDeals.title")}
           </h2>
           <p className="mt-0.5 font-medium font-satoshi text-foreground">
-            {description}
+            {t("landing.ongoingDeals.description")}
           </p>
         </div>
 
@@ -34,7 +35,7 @@ export function OngoingDealsSection({
           href={seeMoreHref}
           className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:opacity-80"
         >
-          See more
+          {t("common.seeMore")}
           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-black text-white">
             <ArrowRight className="h-4 w-4" />
           </span>

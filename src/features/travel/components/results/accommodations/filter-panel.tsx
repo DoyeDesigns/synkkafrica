@@ -8,7 +8,7 @@ type FilterPanelProps = {
 export function FilterPanel({ children, className = "" }: FilterPanelProps) {
   return (
     <div
-      className={`rounded-xl border border-black/10 bg-white p-4 shadow-sm ${className}`}
+      className={`rounded-xl bg-white p-4 ${className}`}
     >
       {children}
     </div>

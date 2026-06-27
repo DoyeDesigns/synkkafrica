@@ -1,19 +1,20 @@
-import { auth } from "@/auth";
-import { redirect } from "next/navigation";
+import { AccountProfileCard } from "@/features/account/components/account-profile-card";
+import { DeleteAccountButton } from "@/features/account/components/delete-account-button";
+import { getAccountSession } from "@/features/account/get-account-session";
 
 export default async function AccountPage() {
-  const session = await auth();
+  const session = await getAccountSession();
 
   if (!session?.user) {
-    redirect("/login");
+    return null;
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-4 px-6 py-16">
-      <h1 className="text-2xl font-semibold tracking-tight">My account</h1>
-      <p className="text-zinc-600">
-        Signed in as {session.user.email ?? session.user.name}
-      </p>
-    </main>
+    <div className="space-y-6">
+      <AccountProfileCard session={session} />
+      <div className="flex justify-end">
+        <DeleteAccountButton />
+      </div>
+    </div>
   );
 }

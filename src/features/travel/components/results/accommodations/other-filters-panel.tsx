@@ -19,6 +19,8 @@ import {
   PERK_OPTIONS,
   RATING_OPTIONS,
 } from "@/features/travel/data/accommodation-results";
+import { useFilterOptionLabel } from "@/hooks/use-filter-option-label";
+import { useTranslation } from "@/hooks/use-translation";
 import { FilterPanel } from "./filter-panel";
 
 type OtherFiltersPanelProps = {
@@ -53,6 +55,7 @@ type FilterDropdownRowProps = {
   value: string;
   options: readonly string[];
   onChange: (value: string) => void;
+  labelOption: (value: string) => string;
 };
 
 function FilterDropdownRow({
@@ -61,6 +64,7 @@ function FilterDropdownRow({
   value,
   options,
   onChange,
+  labelOption,
 }: FilterDropdownRowProps) {
   const isSelected = Boolean(value);
 
@@ -73,7 +77,7 @@ function FilterDropdownRow({
             isSelected ? "text-[#D85A30]" : "text-foreground"
           }`}
         >
-          {isSelected ? value : label}
+          {isSelected ? labelOption(value) : label}
         </span>
         <ChevronDown className="h-4 w-4 shrink-0 text-foreground/60" />
       </div>
@@ -87,7 +91,7 @@ function FilterDropdownRow({
         <option value="">{label}</option>
         {options.map((option) => (
           <option key={option} value={option}>
-            {option}
+            {labelOption(option)}
           </option>
         ))}
       </select>
@@ -124,17 +128,27 @@ export function OtherFiltersPanel({
   onRatingsChange,
   onPerksChange,
 }: OtherFiltersPanelProps) {
+  const t = useTranslation();
+  const { labelOption } = useFilterOptionLabel();
   const PerkIcon = getPerkIcon(perks);
 
   const activeTags = [
     bedrooms
-      ? { id: "bedrooms", label: bedrooms, onRemove: () => onBedroomsChange("") }
+      ? {
+          id: "bedrooms",
+          label: labelOption(bedrooms),
+          onRemove: () => onBedroomsChange(""),
+        }
       : null,
     ratings
       ? { id: "ratings", label: ratings, onRemove: () => onRatingsChange("") }
       : null,
     perks
-      ? { id: "perks", label: perks, onRemove: () => onPerksChange("") }
+      ? {
+          id: "perks",
+          label: labelOption(perks),
+          onRemove: () => onPerksChange(""),
+        }
       : null,
   ].filter((tag): tag is { id: string; label: string; onRemove: () => void } =>
     Boolean(tag),
@@ -143,7 +157,7 @@ export function OtherFiltersPanel({
   return (
     <FilterPanel className="space-y-3">
       <h3 className="text-sm font-bold font-montserrat text-foreground">
-        Other Filters
+        {t("filters.other")}
       </h3>
 
       {activeTags.length > 0 ? (
@@ -157,10 +171,11 @@ export function OtherFiltersPanel({
       <div className="space-y-3">
         <FilterDropdownRow
           icon={<BedDouble className={FILTER_ICON_CLASS} strokeWidth={1.75} />}
-          label="Number of bedrooms"
+          label={t("filters.bedrooms")}
           value={bedrooms}
           options={BEDROOM_OPTIONS}
           onChange={onBedroomsChange}
+          labelOption={labelOption}
         />
 
         <FilterDropdownRow
@@ -170,18 +185,20 @@ export function OtherFiltersPanel({
               strokeWidth={0}
             />
           }
-          label="Ratings"
+          label={t("filters.ratings")}
           value={ratings}
           options={RATING_OPTIONS}
           onChange={onRatingsChange}
+          labelOption={labelOption}
         />
 
         <FilterDropdownRow
           icon={<PerkIcon className={FILTER_ICON_CLASS} strokeWidth={1.75} />}
-          label="Perks and amenities"
+          label={t("filters.perks")}
           value={perks}
           options={PERK_OPTIONS}
           onChange={onPerksChange}
+          labelOption={labelOption}
         />
       </div>
     </FilterPanel>
