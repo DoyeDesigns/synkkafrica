@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { notFound } from "next/navigation";
 
 import type { CarBookingStepId } from "@/features/travel/booking/car-constants";
@@ -26,9 +25,5 @@ export default async function CarBookingStepRoute({
     notFound();
   }
 
-  return (
-    <Suspense fallback={<div className="min-h-screen bg-[#F5F5F5]" />}>
-      <CarBookingPage car={car} currentStep={step as CarBookingStepId} />
-    </Suspense>
-  );
+  return <CarBookingPage car={car} currentStep={step as CarBookingStepId} />;
 }

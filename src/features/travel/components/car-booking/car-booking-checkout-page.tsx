@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import type { CarBookingStepId } from "@/features/travel/booking/car-constants";
@@ -14,7 +14,7 @@ type CarBookingCheckoutPageProps = {
   car: CarDetail;
 };
 
-export function CarBookingCheckoutPage({ car }: CarBookingCheckoutPageProps) {
+function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentStep: CarBookingStepId = "checkout";
@@ -59,5 +59,13 @@ export function CarBookingCheckoutPage({ car }: CarBookingCheckoutPageProps) {
         </div>
       </div>
     </div>
+  );
+}
+
+export function CarBookingCheckoutPage(props: CarBookingCheckoutPageProps) {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#F5F5F5]" />}>
+      <CarBookingCheckoutPageContent {...props} />
+    </Suspense>
   );
 }

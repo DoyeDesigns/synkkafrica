@@ -1,11 +1,10 @@
 "use client";
 
+import { Suspense } from "react";
 import {
   Bell,
   BookMarked,
-  BookOpen,
   Heart,
-  MessageSquare,
   MessageSquareHeart,
   User,
 } from "lucide-react";
@@ -41,7 +40,7 @@ function NavIcon({ icon }: { icon: (typeof ACCOUNT_NAV_ITEMS)[number]["icon"] })
   }
 }
 
-export function AccountSidebarLinks() {
+function AccountSidebarLinksContent() {
   const pathname = usePathname();
   const t = useTranslation();
 
@@ -74,5 +73,37 @@ export function AccountSidebarLinks() {
         );
       })}
     </>
+  );
+}
+
+function AccountSidebarLinksFallback() {
+  const t = useTranslation();
+
+  return (
+    <>
+      {ACCOUNT_NAV_ITEMS.map((item) => (
+        <Link
+          key={item.id}
+          href={item.href}
+          className="flex h-16 items-center gap-3 rounded-[10px] border border-[#E9E9E9] bg-white px-4 py-3.5 text-sm font-medium font-satoshi text-foreground transition-colors hover:bg-zinc-50"
+        >
+          <NavIcon icon={item.icon} />
+          <span className="flex-1">{t(NAV_LABEL_KEYS[item.id])}</span>
+          {item.badge ? (
+            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#E53935] px-1.5 text-[11px] font-bold text-white">
+              {item.badge}
+            </span>
+          ) : null}
+        </Link>
+      ))}
+    </>
+  );
+}
+
+export function AccountSidebarLinks() {
+  return (
+    <Suspense fallback={<AccountSidebarLinksFallback />}>
+      <AccountSidebarLinksContent />
+    </Suspense>
   );
 }

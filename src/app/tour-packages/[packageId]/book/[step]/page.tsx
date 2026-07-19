@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { notFound } from "next/navigation";
 
 import type { TourPackageBookingStepId } from "@/features/tour-packages/booking/tour-package-constants";
@@ -31,11 +30,9 @@ export default async function TourPackageBookingStepRoute({
   }
 
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#F5F5F5]" />}>
-      <TourPackageBookingPage
-        tourPackage={tourPackage}
-        currentStep={step as TourPackageBookingStepId}
-      />
-    </Suspense>
+    <TourPackageBookingPage
+      tourPackage={tourPackage}
+      currentStep={step as TourPackageBookingStepId}
+    />
   );
 }

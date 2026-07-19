@@ -1,13 +1,15 @@
 "use client";
 
+import { Suspense } from "react";
 import { usePathname } from "next/navigation";
 
 import { ACCOUNT_AREA_PREFIX } from "@/features/account/constants";
+import { VENDOR_AREA_PREFIX } from "@/features/vendor/constants";
 import { Footer } from "./Footer";
 
-const HIDDEN_PREFIXES = ["/login", ACCOUNT_AREA_PREFIX];
+const HIDDEN_PREFIXES = ["/login", ACCOUNT_AREA_PREFIX, VENDOR_AREA_PREFIX];
 
-export function ConditionalFooter() {
+function ConditionalFooterContent() {
   const pathname = usePathname();
   const hideFooter = HIDDEN_PREFIXES.some((prefix) => pathname.startsWith(prefix));
 
@@ -16,4 +18,12 @@ export function ConditionalFooter() {
   }
 
   return <Footer />;
+}
+
+export function ConditionalFooter() {
+  return (
+    <Suspense fallback={null}>
+      <ConditionalFooterContent />
+    </Suspense>
+  );
 }

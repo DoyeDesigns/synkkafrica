@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import type { BookingStepId } from "@/features/travel/booking/constants";
@@ -35,7 +35,7 @@ function calculateNights(checkIn: string, checkOut: string) {
   return Number.isFinite(nights) && nights > 0 ? nights : 1;
 }
 
-export function BookingCheckoutPage({ property }: BookingCheckoutPageProps) {
+function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentStep: BookingStepId = "checkout";
@@ -90,5 +90,13 @@ export function BookingCheckoutPage({ property }: BookingCheckoutPageProps) {
         </div>
       </div>
     </div>
+  );
+}
+
+export function BookingCheckoutPage(props: BookingCheckoutPageProps) {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#F5F5F5]" />}>
+      <BookingCheckoutPageContent {...props} />
+    </Suspense>
   );
 }

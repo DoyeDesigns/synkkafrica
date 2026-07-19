@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import type { TourPackageBookingStepId } from "@/features/tour-packages/booking/tour-package-constants";
@@ -14,7 +14,7 @@ type TourPackageBookingCheckoutPageProps = {
   tourPackage: TourPackageDetail;
 };
 
-export function TourPackageBookingCheckoutPage({
+function TourPackageBookingCheckoutPageContent({
   tourPackage,
 }: TourPackageBookingCheckoutPageProps) {
   const router = useRouter();
@@ -66,5 +66,15 @@ export function TourPackageBookingCheckoutPage({
         </div>
       </div>
     </div>
+  );
+}
+
+export function TourPackageBookingCheckoutPage(
+  props: TourPackageBookingCheckoutPageProps,
+) {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#F5F5F5]" />}>
+      <TourPackageBookingCheckoutPageContent {...props} />
+    </Suspense>
   );
 }
