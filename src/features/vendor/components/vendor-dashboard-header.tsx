@@ -12,6 +12,7 @@ const PAGE_TITLE_KEYS: Record<string, TranslationKey> = {
   "/vendor/listings": "vendor.nav.listings",
   "/vendor/bookings": "vendor.nav.bookings",
   "/vendor/earnings": "vendor.nav.earnings",
+  "/vendor/notifications": "vendor.nav.notifications",
   "/vendor/business-profile": "vendor.nav.businessProfile",
   "/vendor/settings": "vendor.nav.settings",
   "/vendor/support": "vendor.nav.support",

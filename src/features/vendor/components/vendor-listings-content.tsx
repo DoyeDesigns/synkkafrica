@@ -1,9 +1,9 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Plus } from "lucide-react";
 import { useMemo, useState } from "react";
 
-import { VendorBookingAvailabilityCalendar } from "@/features/vendor/components/vendor-booking-availability-calendar";
+import { VendorListingAvailabilityPanel } from "@/features/vendor/components/vendor-listing-availability-panel";
 import { VendorListingCard } from "@/features/vendor/components/vendor-listing-card";
 import type { VendorDashboardListing } from "@/features/vendor/data/vendor-dashboard";
 import { VENDOR_LISTINGS_PAGE_ITEMS } from "@/features/vendor/data/vendor-listings";
@@ -82,8 +82,15 @@ function matchesStatusFilter(
   return listing.status === statusFilter;
 }
 
-export function VendorListingsContent() {
+type VendorListingsContentProps = {
+  vendorName?: string | null;
+};
+
+export function VendorListingsContent({
+  vendorName = "Alex Autos",
+}: VendorListingsContentProps) {
   const t = useTranslation();
+  const displayName = vendorName?.trim() || "Alex Autos";
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
 
@@ -98,66 +105,83 @@ export function VendorListingsContent() {
   );
 
   return (
-    <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_340px]">
-      <section className="order-2 xl:order-1">
-        <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h2 className="text-lg font-bold font-satoshi text-[#2F2F2F]">
-            {t("vendor.dashboard.yourListings")}{" "}
-            <span className="text-[#D85A30]">({filteredListings.length})</span>
-          </h2>
-
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
-            <FilterPill
-              value={categoryFilter}
-              options={CATEGORY_FILTERS}
-              onChange={setCategoryFilter}
-              getLabel={(value) =>
-                value === "all"
-                  ? t("vendor.listings.filter.allCategories")
-                  : t(value)
-              }
-              ariaLabel={t("filters.category")}
-            />
-            <FilterPill
-              value={statusFilter}
-              options={STATUS_FILTERS}
-              onChange={setStatusFilter}
-              getLabel={(value) =>
-                value === "all"
-                  ? t("vendor.listings.filter.allStatuses")
-                  : t(STATUS_LABEL_KEYS[value])
-              }
-              ariaLabel={t("vendor.listings.filter.statusLabel")}
-            />
-          </div>
-        </div>
-
-        <div className="space-y-4 rounded-[5px] bg-white p-4">
-          {filteredListings.length > 0 ? (
-            filteredListings.map((listing) => (
-              <VendorListingCard
-                key={listing.id}
-                listing={listing}
-                variant="listings"
-              />
-            ))
-          ) : (
-            <div className="rounded-[5px] border border-[#EEEEEE] bg-[#F5F5F5] p-8 text-center">
-              <p className="text-sm font-medium font-satoshi text-[#676565]">
-                {t("vendor.listings.filter.empty")}
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      <aside className="order-1 xl:order-2 xl:sticky xl:top-0 xl:self-start">
-        <h2 className="mb-4 font-bold font-satoshi text-[#2F2F2F]">
-          {t("vendor.listings.bookingAvailability")}
+    <>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <h2 className="text-lg font-semibold font-satoshi text-[#2F2F2F]">
+          {t("vendor.dashboard.welcomeBack")}{" "}
+          <span className="font-bold text-[#D85A30]">{displayName}</span>
         </h2>
 
-        <VendorBookingAvailabilityCalendar />
-      </aside>
-    </div>
+        <button
+          type="button"
+          className="inline-flex h-11 w-45.5 items-center justify-center gap-2 rounded-[5px] bg-[#D85A30] px-5 py-2.5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90"
+        >
+          <Plus className="h-4 w-4" strokeWidth={3} />
+          {t("vendor.dashboard.addListing")}
+        </button>
+      </div>
+
+      <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_340px]">
+        <section className="order-2 xl:order-1">
+          <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h3 className="text-lg font-bold font-satoshi text-[#2F2F2F]">
+              {t("vendor.dashboard.yourListings")}{" "}
+              <span className="text-[#D85A30]">({filteredListings.length})</span>
+            </h3>
+
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">
+              <FilterPill
+                value={categoryFilter}
+                options={CATEGORY_FILTERS}
+                onChange={setCategoryFilter}
+                getLabel={(value) =>
+                  value === "all"
+                    ? t("vendor.listings.filter.allCategories")
+                    : t(value)
+                }
+                ariaLabel={t("filters.category")}
+              />
+              <FilterPill
+                value={statusFilter}
+                options={STATUS_FILTERS}
+                onChange={setStatusFilter}
+                getLabel={(value) =>
+                  value === "all"
+                    ? t("vendor.listings.filter.allStatuses")
+                    : t(STATUS_LABEL_KEYS[value])
+                }
+                ariaLabel={t("vendor.listings.filter.statusLabel")}
+              />
+            </div>
+          </div>
+
+          <div className="space-y-4 rounded-[5px] bg-white p-4">
+            {filteredListings.length > 0 ? (
+              filteredListings.map((listing) => (
+                <VendorListingCard
+                  key={listing.id}
+                  listing={listing}
+                  variant="listings"
+                />
+              ))
+            ) : (
+              <div className="rounded-[5px] border border-[#EEEEEE] bg-[#F5F5F5] p-8 text-center">
+                <p className="text-sm font-medium font-satoshi text-[#676565]">
+                  {t("vendor.listings.filter.empty")}
+                </p>
+              </div>
+            )}
+          </div>
+        </section>
+
+        <aside className="order-1 xl:order-2 xl:sticky xl:top-0 xl:self-start">
+          <h3 className="mb-4 font-bold font-satoshi text-[#2F2F2F]">
+            {t("vendor.listings.bookingAvailability")}
+          </h3>
+
+          <VendorListingAvailabilityPanel />
+        </aside>
+      </div>
+    </>
   );
 }

@@ -1,8 +1,12 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
+import {
+  toDateKey,
+  type AvailabilityDayStatus,
+} from "@/features/vendor/data/vendor-listing-availability";
 import { useTranslation } from "@/hooks/use-translation";
 
 const WEEKDAY_KEYS = [
@@ -14,10 +18,6 @@ const WEEKDAY_KEYS = [
   "vendor.listings.calendar.fri",
   "vendor.listings.calendar.sat",
 ] as const;
-
-function getMonthKey(date: Date) {
-  return `${date.getFullYear()}-${date.getMonth()}`;
-}
 
 function buildCalendarDays(viewDate: Date) {
   const year = viewDate.getFullYear();
@@ -47,23 +47,26 @@ function buildCalendarDays(viewDate: Date) {
   return days;
 }
 
+export type CalendarEditMode = "available" | "block";
+
 type VendorBookingAvailabilityCalendarProps = {
-  initialMonth?: Date;
-  initialSelectedDays?: number[];
+  viewDate: Date;
+  onViewDateChange: (date: Date) => void;
+  dayStatuses: Record<string, AvailabilityDayStatus>;
+  selectedDateKey: string | null;
+  editMode: CalendarEditMode;
+  onDayClick: (dateKey: string) => void;
 };
 
 export function VendorBookingAvailabilityCalendar({
-  initialMonth = new Date(2026, 8, 1),
-  initialSelectedDays = [9, 19, 20, 21, 30],
+  viewDate,
+  onViewDateChange,
+  dayStatuses,
+  selectedDateKey,
+  editMode,
+  onDayClick,
 }: VendorBookingAvailabilityCalendarProps) {
   const t = useTranslation();
-  const [viewDate, setViewDate] = useState(initialMonth);
-  const [selectedByMonth, setSelectedByMonth] = useState<Record<string, number[]>>({
-    [getMonthKey(initialMonth)]: initialSelectedDays,
-  });
-
-  const monthKey = getMonthKey(viewDate);
-  const selectedDays = selectedByMonth[monthKey] ?? [];
   const days = useMemo(() => buildCalendarDays(viewDate), [viewDate]);
 
   const monthLabel = new Intl.DateTimeFormat("en-US", {
@@ -72,20 +75,9 @@ export function VendorBookingAvailabilityCalendar({
   }).format(viewDate);
 
   const shiftMonth = (offset: number) => {
-    setViewDate(
-      (current) => new Date(current.getFullYear(), current.getMonth() + offset, 1),
+    onViewDateChange(
+      new Date(viewDate.getFullYear(), viewDate.getMonth() + offset, 1),
     );
-  };
-
-  const toggleDay = (day: number) => {
-    setSelectedByMonth((current) => {
-      const existing = current[monthKey] ?? [];
-      const next = existing.includes(day)
-        ? existing.filter((value) => value !== day)
-        : [...existing, day].sort((a, b) => a - b);
-
-      return { ...current, [monthKey]: next };
-    });
   };
 
   return (
@@ -114,6 +106,21 @@ export function VendorBookingAvailabilityCalendar({
         </button>
       </div>
 
+      <div className="mb-3 flex flex-wrap gap-3 text-[11px] font-medium font-satoshi text-[#676565]">
+        <span className="inline-flex items-center gap-1.5">
+          <span className="h-3 w-3 rounded-full bg-[#D85A30]" />
+          {t("vendor.listings.availability.legendAvailable")}
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="h-3 w-3 rounded-full bg-[#C0392B]" />
+          {t("vendor.listings.availability.legendBlocked")}
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="h-3 w-3 rounded-full ring-2 ring-[#004785] ring-offset-1" />
+          {t("vendor.listings.availability.legendSelected")}
+        </span>
+      </div>
+
       <div className="grid grid-cols-7 gap-1">
         {WEEKDAY_KEYS.map((key) => (
           <div
@@ -125,21 +132,37 @@ export function VendorBookingAvailabilityCalendar({
         ))}
 
         {days.map(({ date, inMonth }) => {
+          const dateKey = toDateKey(date);
           const day = date.getDate();
-          const isSelected = inMonth && selectedDays.includes(day);
+          const status = dayStatuses[dateKey];
+          const isSelected = selectedDateKey === dateKey;
+          const isBlocked = status === "blocked";
+          const isAvailable = status === "available";
 
           return (
             <button
-              key={`${date.toISOString()}-${inMonth}`}
+              key={`${dateKey}-${inMonth}`}
               type="button"
               disabled={!inMonth}
-              onClick={() => inMonth && toggleDay(day)}
+              onClick={() => inMonth && onDayClick(dateKey)}
+              aria-pressed={isSelected}
+              aria-label={
+                inMonth
+                  ? `${day}${isBlocked ? `, ${t("vendor.listings.availability.blocked")}` : isAvailable ? `, ${t("vendor.listings.availability.available")}` : ""}`
+                  : undefined
+              }
               className={`mx-auto flex h-9 w-9 items-center justify-center rounded-full text-sm font-medium font-satoshi transition-colors ${
                 !inMonth
-                  ? "cursor-pointer text-transparent"
+                  ? "cursor-default text-transparent"
                   : isSelected
-                    ? "bg-[#D85A30] text-white"
-                    : "text-[#4A5660] hover:bg-[#F5F5F5]"
+                    ? "bg-[#004785] text-white ring-2 ring-[#004785] ring-offset-2"
+                    : isBlocked
+                      ? "bg-[#C0392B] text-white"
+                      : isAvailable
+                        ? "bg-[#D85A30] text-white"
+                        : editMode === "block"
+                          ? "text-[#4A5660] hover:bg-[#FDEBEB]"
+                          : "text-[#4A5660] hover:bg-[#FFF1EB]"
               }`}
             >
               {inMonth ? day : ""}

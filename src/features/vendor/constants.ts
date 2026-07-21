@@ -8,6 +8,7 @@ export type VendorNavItem = {
     | "listings"
     | "bookings"
     | "earnings"
+    | "notifications"
     | "businessProfile"
     | "settings"
     | "support";
@@ -19,6 +20,7 @@ export const VENDOR_WORKSPACE_NAV: VendorNavItem[] = [
   { id: "listings", href: "/vendor/listings", icon: "listings" },
   { id: "bookings", href: "/vendor/bookings", icon: "bookings", badge: 9 },
   { id: "earnings", href: "/vendor/earnings", icon: "earnings" },
+  { id: "notifications", href: "/vendor/notifications", icon: "notifications", badge: 4 },
 ];
 
 export const VENDOR_ACCOUNT_NAV: VendorNavItem[] = [

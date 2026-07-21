@@ -1,12 +1,18 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { ChevronDown, Download } from "lucide-react";
+import { useMemo, useState } from "react";
 
 import {
+  buildEarningsStatementCsv,
+  computeCommissionSplitSummary,
+  EARNINGS_DURATION_OPTIONS,
+  filterTransactionsByDuration,
   VENDOR_BANK_ACCOUNTS,
+  VENDOR_COMMISSION_SPLIT,
   VENDOR_EARNINGS_SUMMARY,
   VENDOR_TRANSACTIONS,
+  type EarningsDuration,
   type VendorTransaction,
 } from "@/features/vendor/data/vendor-earnings";
 import { useFormatPrice } from "@/hooks/use-format-price";
@@ -20,6 +26,13 @@ const STATUS_LABEL_KEYS: Record<
   completed: "vendor.earnings.status.completed",
   pending: "vendor.earnings.status.pending",
   failed: "vendor.earnings.status.failed",
+};
+
+const DURATION_LABEL_KEYS: Record<EarningsDuration, TranslationKey> = {
+  daily: "vendor.earnings.duration.daily",
+  weekly: "vendor.earnings.duration.weekly",
+  monthly: "vendor.earnings.duration.monthly",
+  all: "vendor.earnings.duration.all",
 };
 
 function formatTransactionDate(date: string) {
@@ -41,9 +54,56 @@ export function VendorEarningsContent({
   const formatPrice = useFormatPrice();
   const displayName = vendorName?.trim() || "Alex Autos";
   const [withdrawAmount, setWithdrawAmount] = useState("");
-  const [selectedBankId, setSelectedBankId] = useState(VENDOR_BANK_ACCOUNTS[0]?.id ?? "");
+  const [selectedBankId, setSelectedBankId] = useState(
+    VENDOR_BANK_ACCOUNTS[0]?.id ?? "",
+  );
+  const [duration, setDuration] = useState<EarningsDuration>("all");
 
-  const { currency, availableBalance, lifetimeEarnings } = VENDOR_EARNINGS_SUMMARY;
+  const { currency, availableBalance } = VENDOR_EARNINGS_SUMMARY;
+
+  const filteredTransactions = useMemo(
+    () => filterTransactionsByDuration(VENDOR_TRANSACTIONS, duration),
+    [duration],
+  );
+
+  const commissionSummary = useMemo(
+    () => computeCommissionSplitSummary(filteredTransactions),
+    [filteredTransactions],
+  );
+
+  const handleDownloadStatement = () => {
+    const csv = buildEarningsStatementCsv(filteredTransactions, {
+      date: t("vendor.earnings.statement.date"),
+      title: t("vendor.earnings.statement.title"),
+      description: t("vendor.earnings.statement.description"),
+      type: t("vendor.earnings.statement.type"),
+      amount: t("vendor.earnings.statement.amount"),
+      status: t("vendor.earnings.statement.status"),
+      completed: t("vendor.earnings.status.completed"),
+      pending: t("vendor.earnings.status.pending"),
+      failed: t("vendor.earnings.status.failed"),
+      "vendor.earnings.transaction.bookingPayment": t(
+        "vendor.earnings.transaction.bookingPayment",
+      ),
+      "vendor.earnings.transaction.withdrawal": t(
+        "vendor.earnings.transaction.withdrawal",
+      ),
+      "vendor.earnings.transaction.platformFee": t(
+        "vendor.earnings.transaction.platformFee",
+      ),
+      "vendor.earnings.transaction.refund": t(
+        "vendor.earnings.transaction.refund",
+      ),
+    });
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `synkkafrica-earnings-${duration}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <>
@@ -65,69 +125,185 @@ export function VendorEarningsContent({
             </div>
 
             <div className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm">
-              <p className="text-sm font-bold font-satoshi text-[#3C3C3C]">
-                {t("vendor.earnings.lifetimeEarnings")}
-              </p>
-              <p className="mt-2 text-3xl font-bold font-inter text-[#D85A30]">
-                {formatPrice(currency, lifetimeEarnings)}
-              </p>
+              <div className="flex flex-col gap-3">
+                <p className="text-sm font-bold font-satoshi text-[#3C3C3C]">
+                  {t("vendor.earnings.lifetimeEarnings")}
+                </p>
+
+                <div
+                  className="grid grid-cols-2 gap-2 sm:grid-cols-4"
+                  role="group"
+                  aria-label={t("vendor.earnings.duration.label")}
+                >
+                  {EARNINGS_DURATION_OPTIONS.map((option) => {
+                    const isActive = duration === option;
+
+                    return (
+                      <button
+                        key={option}
+                        type="button"
+                        onClick={() => setDuration(option)}
+                        className={`rounded-lg border px-2 py-2 text-xs font-semibold font-satoshi transition-colors ${
+                          isActive
+                            ? "border-[#D85A30] bg-[#FFF1EB] text-[#D85A30]"
+                            : "border-[#E5E5E5] bg-[#FAFAFA] text-[#676565] hover:border-[#D0D0D0]"
+                        }`}
+                      >
+                        {t(DURATION_LABEL_KEYS[option])}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <p className="text-3xl font-bold font-inter text-[#D85A30]">
+                  {formatPrice(
+                    commissionSummary.currency,
+                    commissionSummary.vendorShare,
+                  )}
+                </p>
+              </div>
             </div>
           </div>
 
+          <section className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h3 className="text-base font-bold font-satoshi text-[#2F2F2F]">
+                  {t("vendor.earnings.commissionSplit")}
+                </h3>
+                <p className="mt-1 text-xs font-medium font-satoshi text-[#676565]">
+                  {t("vendor.earnings.commissionSplitHint", {
+                    vendor: VENDOR_COMMISSION_SPLIT.vendorSharePercent,
+                    platform: VENDOR_COMMISSION_SPLIT.platformSharePercent,
+                  })}
+                </p>
+              </div>
+
+              <div className="flex shrink-0 gap-2">
+                <span className="rounded-full bg-[#E8F5E9] px-3 py-1 text-xs font-semibold font-satoshi text-[#2E7D32]">
+                  {VENDOR_COMMISSION_SPLIT.vendorSharePercent}%{" "}
+                  {t("vendor.earnings.vendorShare")}
+                </span>
+                <span className="rounded-full bg-[#FFF3E0] px-3 py-1 text-xs font-semibold font-satoshi text-[#E65100]">
+                  {VENDOR_COMMISSION_SPLIT.platformSharePercent}%{" "}
+                  {t("vendor.earnings.platformShare")}
+                </span>
+              </div>
+            </div>
+
+            <dl className="mt-4 grid gap-3 sm:grid-cols-3">
+              <div className="rounded-lg border border-[#E8E8E8] bg-[#FAFAFA] px-4 py-3">
+                <dt className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
+                  {t("vendor.earnings.grossRevenue")}
+                </dt>
+                <dd className="mt-1 text-lg font-bold font-satoshi text-[#2F2F2F]">
+                  {formatPrice(
+                    commissionSummary.currency,
+                    commissionSummary.grossRevenue,
+                  )}
+                </dd>
+              </div>
+              <div className="rounded-lg border border-[#E8E8E8] bg-[#FAFAFA] px-4 py-3">
+                <dt className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
+                  {t("vendor.earnings.vendorShare")} (
+                  {VENDOR_COMMISSION_SPLIT.vendorSharePercent}%)
+                </dt>
+                <dd className="mt-1 text-lg font-bold font-satoshi text-[#2E7D32]">
+                  {formatPrice(
+                    commissionSummary.currency,
+                    commissionSummary.vendorShare,
+                  )}
+                </dd>
+              </div>
+              <div className="rounded-lg border border-[#E8E8E8] bg-[#FAFAFA] px-4 py-3">
+                <dt className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
+                  {t("vendor.earnings.platformShare")} (
+                  {VENDOR_COMMISSION_SPLIT.platformSharePercent}%)
+                </dt>
+                <dd className="mt-1 text-lg font-bold font-satoshi text-[#E65100]">
+                  {formatPrice(
+                    commissionSummary.currency,
+                    commissionSummary.platformFee,
+                  )}
+                </dd>
+              </div>
+            </dl>
+          </section>
+
           <section>
-            <h3 className="mb-4 text font-bold font-satoshi text-[#2F2F2F]">
-              {t("vendor.earnings.transactionHistory")}
-            </h3>
+            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <h3 className="text-base font-bold font-satoshi text-[#2F2F2F]">
+                {t("vendor.earnings.transactionHistory")}
+              </h3>
+
+              <button
+                type="button"
+                onClick={handleDownloadStatement}
+                disabled={filteredTransactions.length === 0}
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#D85A30] bg-white px-4 py-2.5 text-sm font-bold font-satoshi text-[#D85A30] transition-colors hover:bg-[#FFF1EB] disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <Download className="h-4 w-4" strokeWidth={2} />
+                {t("vendor.earnings.downloadStatements")}
+              </button>
+            </div>
 
             <div className="overflow-hidden rounded-xl border border-[#EEEEEE] bg-white shadow-sm">
-              <ul className="divide-y divide-[#F0F0F0]">
-                {VENDOR_TRANSACTIONS.map((transaction) => (
-                  <li
-                    key={transaction.id}
-                    className="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between"
-                  >
-                    <div className="min-w-0">
-                      <p className="truncate text-sm font-bold font-satoshi text-[#2F2F2F]">
-                        {transaction.title}
-                      </p>
-                      <p className="mt-0.5 text-xs font-medium font-satoshi text-[#676565]">
-                        {t(transaction.descriptionKey)} ·{" "}
-                        {formatTransactionDate(transaction.date)}
-                      </p>
-                    </div>
+              {filteredTransactions.length > 0 ? (
+                <ul className="divide-y divide-[#F0F0F0]">
+                  {filteredTransactions.map((transaction) => (
+                    <li
+                      key={transaction.id}
+                      className="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between"
+                    >
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-bold font-satoshi text-[#2F2F2F]">
+                          {transaction.title}
+                        </p>
+                        <p className="mt-0.5 text-xs font-medium font-satoshi text-[#676565]">
+                          {t(transaction.descriptionKey)} ·{" "}
+                          {formatTransactionDate(transaction.date)}
+                        </p>
+                      </div>
 
-                    <div className="flex shrink-0 items-center gap-3 sm:flex-col sm:items-end lg:flex-row lg:items-center">
-                      <p
-                        className={`text-sm font-bold font-satoshi ${
-                          transaction.type === "credit"
-                            ? "text-[#2E7D32]"
-                            : "text-[#2F2F2F]"
-                        }`}
-                      >
-                        {transaction.type === "credit" ? "+" : "-"}
-                        {formatPrice(transaction.currency, transaction.amount)}
-                      </p>
-                      <span
-                        className={`rounded-full px-2.5 py-1 text-xs font-semibold font-satoshi ${
-                          transaction.status === "completed"
-                            ? "bg-[#E8F5E9] text-[#2E7D32]"
-                            : transaction.status === "pending"
-                              ? "bg-[#FFF3E0] text-[#E65100]"
-                              : "bg-[#FDEBEB] text-[#C0392B]"
-                        }`}
-                      >
-                        {t(STATUS_LABEL_KEYS[transaction.status])}
-                      </span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+                      <div className="flex shrink-0 items-center gap-3 sm:flex-col sm:items-end lg:flex-row lg:items-center">
+                        <p
+                          className={`text-sm font-bold font-satoshi ${
+                            transaction.type === "credit"
+                              ? "text-[#2E7D32]"
+                              : "text-[#2F2F2F]"
+                          }`}
+                        >
+                          {transaction.type === "credit" ? "+" : "-"}
+                          {formatPrice(transaction.currency, transaction.amount)}
+                        </p>
+                        <span
+                          className={`rounded-full px-2.5 py-1 text-xs font-semibold font-satoshi ${
+                            transaction.status === "completed"
+                              ? "bg-[#E8F5E9] text-[#2E7D32]"
+                              : transaction.status === "pending"
+                                ? "bg-[#FFF3E0] text-[#E65100]"
+                                : "bg-[#FDEBEB] text-[#C0392B]"
+                          }`}
+                        >
+                          {t(STATUS_LABEL_KEYS[transaction.status])}
+                        </span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="px-5 py-10 text-center">
+                  <p className="text-sm font-medium font-satoshi text-[#676565]">
+                    {t("vendor.earnings.emptyTransactions")}
+                  </p>
+                </div>
+              )}
             </div>
           </section>
         </div>
 
         <aside className="space-y-4 xl:sticky xl:top-0 xl:self-start">
-          <h3 className="mb-4 text font-bold font-satoshi text-[#2F2F2F]">
+          <h3 className="mb-4 text-base font-bold font-satoshi text-[#2F2F2F]">
             {t("vendor.earnings.withdrawFunds")}
           </h3>
 

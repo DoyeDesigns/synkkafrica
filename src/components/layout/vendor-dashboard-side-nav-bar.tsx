@@ -2,6 +2,7 @@
 
 import { Suspense } from "react";
 import {
+  Bell,
   Building2,
   Calendar,
   CircleHelp,
@@ -30,6 +31,7 @@ const NAV_LABEL_KEYS: Record<VendorNavItem["id"], TranslationKey> = {
   listings: "vendor.nav.listings",
   bookings: "vendor.nav.bookings",
   earnings: "vendor.nav.earnings",
+  notifications: "vendor.nav.notifications",
   businessProfile: "vendor.nav.businessProfile",
   settings: "vendor.nav.settings",
   support: "vendor.nav.support",
@@ -40,6 +42,7 @@ const NAV_ICONS: Record<VendorNavItem["icon"], LucideIcon> = {
   listings: List,
   bookings: Calendar,
   earnings: Wallet,
+  notifications: Bell,
   businessProfile: Building2,
   settings: Settings,
   support: CircleHelp,

@@ -462,6 +462,7 @@ export const es = {
   "vendor.nav.listings": "Anuncios",
   "vendor.nav.bookings": "Reservas",
   "vendor.nav.earnings": "Ingresos",
+  "vendor.nav.notifications": "Notificaciones",
   "vendor.nav.businessProfile": "Perfil comercial",
   "vendor.nav.settings": "Configuración",
   "vendor.nav.support": "Soporte",
@@ -469,6 +470,48 @@ export const es = {
   "vendor.nav.openMenu": "Abrir menú",
   "vendor.nav.closeMenu": "Cerrar menú",
   "vendor.header.verifiedVendor": "Vendedor verificado",
+
+  "vendor.notifications.filter.label": "Filtrar notificaciones",
+  "vendor.notifications.filter.all": "Todo",
+  "vendor.notifications.filter.newBooking": "Nuevas reservas",
+  "vendor.notifications.filter.bookingReminder": "Recordatorios 24h",
+  "vendor.notifications.filter.payoutConfirmation": "Pagos",
+  "vendor.notifications.filter.adminMessage": "Admin",
+  "vendor.notifications.type.newBooking": "Nueva reserva",
+  "vendor.notifications.type.bookingReminder": "Recordatorio 24h",
+  "vendor.notifications.type.payoutConfirmation": "Pago",
+  "vendor.notifications.type.adminMessage": "Mensaje admin",
+  "vendor.notifications.unreadCount": "{count} notificación(es) sin leer",
+  "vendor.notifications.allCaughtUp": "Estás al día.",
+  "vendor.notifications.markRead": "Marcar como leída",
+  "vendor.notifications.markAllRead": "Marcar todas como leídas",
+  "vendor.notifications.empty": "No hay notificaciones en esta categoría.",
+  "vendor.notifications.time.justNow": "Ahora mismo",
+  "vendor.notifications.time.hoursAgo": "Hace {count} h",
+  "vendor.notifications.sample.newBooking.title": "Nueva reserva recibida",
+  "vendor.notifications.sample.newBooking.message":
+    "Amara reservó Lagos Lagoon Sunset Cruise para el 25 jul · 4 huéspedes. Confirma o rechaza en 24 horas.",
+  "vendor.notifications.sample.newBooking2.title": "Nueva reserva recibida",
+  "vendor.notifications.sample.newBooking2.message":
+    "Chidi reservó Lekki Garden Suites para el 3 ago · 2 huéspedes.",
+  "vendor.notifications.sample.reminder.title": "Reserva en 24 horas",
+  "vendor.notifications.sample.reminder.message":
+    "Recordatorio: Lagos Lagoon Sunset Cruise con Fatima mañana a las 17:30 · 6 huéspedes.",
+  "vendor.notifications.sample.reminder2.title": "Reserva en 24 horas",
+  "vendor.notifications.sample.reminder2.message":
+    "Recordatorio: alquiler Toyota Camry 2021 con Emeka mañana a las 9:00.",
+  "vendor.notifications.sample.payout.title": "Pago confirmado",
+  "vendor.notifications.sample.payout.message":
+    "Se enviaron 200 000 NGN a tu cuenta GTBank terminada en 4521.",
+  "vendor.notifications.sample.payout2.title": "Pago confirmado",
+  "vendor.notifications.sample.payout2.message":
+    "Retiro de 150 000 NGN a Access Bank terminada en 8834 procesado correctamente.",
+  "vendor.notifications.sample.admin.title": "Actualización de políticas Synkkafrica",
+  "vendor.notifications.sample.admin.message":
+    "Las nuevas directrices para anuncios de experiencias están disponibles. Revísalas antes del 1 ago.",
+  "vendor.notifications.sample.admin2.title": "Anuncio aprobado",
+  "vendor.notifications.sample.admin2.message":
+    "Tu anuncio Lagos Lagoon Sunset Cruise ya está activo en Synkkafrica.",
 
   "vendor.dashboard.welcomeBack": "Bienvenido de nuevo,",
   "vendor.dashboard.addListing": "Añadir anuncio",
@@ -489,6 +532,84 @@ export const es = {
   "vendor.dashboard.category.tours": "Tours",
   "vendor.dashboard.category.toursExperiences": "Tours y experiencias",
 
+  "vendor.businessProfile.businessName": "Nombre comercial",
+  "vendor.businessProfile.businessNameHint":
+    "Nombre interno usado en pagos y registros de vendedor. No se muestra en anuncios públicos.",
+  "vendor.businessProfile.internalNameLabel": "Nombre interno del negocio",
+  "vendor.businessProfile.contactDetails": "Datos de contacto",
+  "vendor.businessProfile.contactDetailsHint":
+    "Cómo Synkkafrica y los huéspedes te contactan para soporte de reservas.",
+  "vendor.businessProfile.phone": "Número de teléfono",
+  "vendor.businessProfile.email": "Correo electrónico",
+  "vendor.businessProfile.address": "Dirección comercial",
+  "vendor.businessProfile.payoutAccount": "Cuenta bancaria para pagos",
+  "vendor.businessProfile.payoutAccountHint":
+    "Los retiros de ingresos se envían a esta cuenta.",
+  "vendor.businessProfile.bankName": "Nombre del banco",
+  "vendor.businessProfile.accountNumber": "Número de cuenta",
+  "vendor.businessProfile.accountName": "Nombre de la cuenta",
+  "vendor.businessProfile.bank.zenith": "Zenith Bank",
+  "vendor.businessProfile.bank.firstBank": "First Bank",
+  "vendor.businessProfile.passwordUpdate": "Actualizar contraseña",
+  "vendor.businessProfile.passwordUpdateHint":
+    "Elige una contraseña segura que no uses en otros sitios.",
+  "vendor.businessProfile.currentPassword": "Contraseña actual",
+  "vendor.businessProfile.newPassword": "Nueva contraseña",
+  "vendor.businessProfile.confirmPassword": "Confirmar nueva contraseña",
+  "vendor.businessProfile.passwordMismatch":
+    "Las nuevas contraseñas no coinciden.",
+  "vendor.businessProfile.updatePassword": "Actualizar contraseña",
+  "vendor.businessProfile.passwordUpdated": "Contraseña actualizada.",
+  "vendor.businessProfile.saveChanges": "Guardar cambios",
+  "vendor.businessProfile.saved": "Guardado.",
+
+  "vendor.support.helpBanner":
+    "Presenta una queja o solicita ayuda al equipo de vendedores de Synkkafrica. Respondemos normalmente en 1–2 días hábiles.",
+  "vendor.support.helpBannerEmail":
+    "Las actualizaciones se enviarán a {email}.",
+  "vendor.support.openTickets": "{count} ticket(s) abierto(s)",
+  "vendor.support.createTicket": "Crear ticket de soporte",
+  "vendor.support.createTicketHint":
+    "Describe tu problema con detalle para resolverlo rápidamente.",
+  "vendor.support.subject": "Asunto",
+  "vendor.support.subjectPlaceholder": "Resumen breve de tu problema",
+  "vendor.support.category": "Categoría",
+  "vendor.support.priority": "Prioridad",
+  "vendor.support.priorityHint":
+    "Usa Urgente solo para problemas urgentes de reservas o pagos.",
+  "vendor.support.priority.low": "Baja",
+  "vendor.support.priority.medium": "Media",
+  "vendor.support.priority.high": "Alta",
+  "vendor.support.priority.urgent": "Urgente",
+  "vendor.support.category.booking": "Problema de reserva",
+  "vendor.support.category.payout": "Pagos e ingresos",
+  "vendor.support.category.listing": "Anuncio y disponibilidad",
+  "vendor.support.category.account": "Cuenta y perfil",
+  "vendor.support.category.complaint": "Queja",
+  "vendor.support.category.other": "Otro",
+  "vendor.support.bookingReference": "Referencia de reserva",
+  "vendor.support.bookingReferencePlaceholder":
+    "ej. VB-3 o número de pedido (opcional)",
+  "vendor.support.description": "Descripción",
+  "vendor.support.descriptionPlaceholder":
+    "Explica qué ocurrió, cuándo y qué resultado necesitas.",
+  "vendor.support.submitTicket": "Enviar ticket",
+  "vendor.support.ticketSubmitted":
+    "Ticket {number} enviado. Nuestro equipo te contactará pronto.",
+  "vendor.support.responseTime":
+    "Los campos obligatorios están marcados con *.",
+  "vendor.support.yourTickets": "Tus tickets",
+  "vendor.support.yourTicketsHint":
+    "Sigue las quejas y solicitudes de soporte que has enviado.",
+  "vendor.support.filter.label": "Filtrar tickets por estado",
+  "vendor.support.filter.all": "Todo",
+  "vendor.support.status.open": "Abierto",
+  "vendor.support.status.inProgress": "En progreso",
+  "vendor.support.status.resolved": "Resuelto",
+  "vendor.support.status.closed": "Cerrado",
+  "vendor.support.updated": "Actualizado",
+  "vendor.support.emptyTickets": "Ningún ticket coincide con este filtro.",
+
   "vendor.earnings.availableBalance": "Saldo disponible",
   "vendor.earnings.lifetimeEarnings": "Ingresos totales",
   "vendor.earnings.transactionHistory": "Historial de transacciones",
@@ -507,6 +628,51 @@ export const es = {
   "vendor.earnings.transaction.refund": "Reembolso",
   "vendor.earnings.bank.gtbank": "GTBank",
   "vendor.earnings.bank.access": "Access Bank",
+  "vendor.earnings.duration.label": "Periodo de ganancias",
+  "vendor.earnings.duration.daily": "Diario",
+  "vendor.earnings.duration.weekly": "Semanal",
+  "vendor.earnings.duration.monthly": "Mensual",
+  "vendor.earnings.duration.all": "Todo",
+  "vendor.earnings.commissionSplit": "Reparto de comisión",
+  "vendor.earnings.commissionSplitHint":
+    "Los ingresos por reserva se reparten {vendor}% para ti y {platform}% para Synkkafrica.",
+  "vendor.earnings.vendorShare": "Tu parte",
+  "vendor.earnings.platformShare": "Comisión de plataforma",
+  "vendor.earnings.grossRevenue": "Ingresos brutos",
+  "vendor.earnings.downloadStatements": "Descargar extracto",
+  "vendor.earnings.emptyTransactions": "No hay transacciones para este periodo.",
+  "vendor.earnings.statement.date": "Fecha",
+  "vendor.earnings.statement.title": "Título",
+  "vendor.earnings.statement.description": "Descripción",
+  "vendor.earnings.statement.type": "Tipo",
+  "vendor.earnings.statement.amount": "Importe",
+  "vendor.earnings.statement.status": "Estado",
+
+  "vendor.bookings.tab.upcoming": "Próximas",
+  "vendor.bookings.tab.past": "Pasadas",
+  "vendor.bookings.tab.cancelled": "Canceladas",
+  "vendor.bookings.dateRangeLabel": "Filtrar por periodo",
+  "vendor.bookings.dateRange.all": "Todo el tiempo",
+  "vendor.bookings.dateRange.pastMonth": "Último mes",
+  "vendor.bookings.dateRange.past3Months": "Últimos 3 meses",
+  "vendor.bookings.dateRange.past6Months": "Últimos 6 meses",
+  "vendor.bookings.dateRange.pastYear": "Último año",
+  "vendor.bookings.empty.upcoming":
+    "No hay reservas próximas para este periodo.",
+  "vendor.bookings.empty.past": "No hay reservas pasadas para este periodo.",
+  "vendor.bookings.empty.cancelled":
+    "No hay reservas canceladas para este periodo.",
+  "vendor.bookings.pendingConfirmation":
+    "{count} reserva(s) esperando tu confirmación.",
+  "vendor.bookings.specialRequests": "Solicitudes especiales",
+  "vendor.bookings.confirm": "Confirmar",
+  "vendor.bookings.decline": "Rechazar",
+  "vendor.bookings.markComplete": "Marcar como completada",
+  "vendor.bookings.status.awaitingConfirmation": "Pendiente de confirmación",
+  "vendor.bookings.status.confirmed": "Confirmada",
+  "vendor.bookings.status.declined": "Rechazada",
+  "vendor.bookings.status.completed": "Completada",
+  "vendor.bookings.status.cancelled": "Cancelada",
 
   "vendor.listings.bookingAvailability": "Disponibilidad de reservas",
   "vendor.listings.filter.allCategories": "Todas las categorías",
@@ -516,6 +682,34 @@ export const es = {
   "vendor.listings.filter.status.pending": "Pendiente",
   "vendor.listings.filter.empty": "Ningún anuncio coincide con tus filtros.",
   "vendor.listings.status.pendingApproval": "Pendiente de aprobación",
+  "vendor.listings.availability.selectListing": "Anuncio",
+  "vendor.listings.availability.modeAvailable": "Marcar disponible",
+  "vendor.listings.availability.modeBlock": "Bloquear fechas",
+  "vendor.listings.availability.modeAvailableHint":
+    "Haz clic en las fechas para abrirlas a reservas. Haz clic de nuevo para quitar la disponibilidad.",
+  "vendor.listings.availability.modeBlockHint":
+    "Haz clic en las fechas para bloquear reservas. Haz clic de nuevo para desbloquear.",
+  "vendor.listings.availability.legendAvailable": "Disponible",
+  "vendor.listings.availability.legendBlocked": "Bloqueada",
+  "vendor.listings.availability.legendSelected": "Seleccionada",
+  "vendor.listings.availability.available": "Disponible",
+  "vendor.listings.availability.blocked": "Bloqueada",
+  "vendor.listings.availability.timeSlots": "Franjas horarias",
+  "vendor.listings.availability.capacity": "Capacidad",
+  "vendor.listings.availability.selectDayHint":
+    "Selecciona una fecha en el calendario para configurar las franjas.",
+  "vendor.listings.availability.selectAvailableDay":
+    "Marca esta fecha como disponible para configurar las franjas.",
+  "vendor.listings.availability.blockedDayMessage":
+    "Esta fecha está bloqueada. Desbloquéala para configurar las franjas.",
+  "vendor.listings.availability.defaultCapacity": "Capacidad predeterminada",
+  "vendor.listings.availability.defaultCapacityHint":
+    "Se aplica a nuevas fechas disponibles y franjas activadas.",
+  "vendor.listings.availability.leadTime": "Tiempo de antelación",
+  "vendor.listings.availability.leadTimeHint":
+    "Aviso mínimo requerido antes de que un huésped pueda reservar.",
+  "vendor.listings.availability.leadTimeUnitHours": "Horas",
+  "vendor.listings.availability.leadTimeUnitDays": "Días",
   "vendor.listings.calendar.sun": "Dom",
   "vendor.listings.calendar.mon": "Lun",
   "vendor.listings.calendar.tue": "Mar",
