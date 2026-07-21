@@ -19,7 +19,15 @@ export const ADMIN_DESIGN_PREVIEW_SESSION: Session = {
 };
 
 /**
- * Lets account and admin pages render without a real session while designing locally.
+ * Admin stays open for demo deployments unless explicitly disabled.
+ * Set ADMIN_DESIGN_PREVIEW=false when real admin auth is required.
+ */
+export function isAdminDemoEnabled() {
+  return process.env.ADMIN_DESIGN_PREVIEW !== "false";
+}
+
+/**
+ * Lets account pages render without a real session while designing locally.
  * Set ACCOUNT_DESIGN_PREVIEW=false to require sign-in again in development.
  */
 export function isAccountDesignPreviewEnabled() {
@@ -39,5 +47,5 @@ export function getAccountDesignPreviewSession(): Session | null {
 }
 
 export function getAdminDesignPreviewSession(): Session | null {
-  return isAccountDesignPreviewEnabled() ? ADMIN_DESIGN_PREVIEW_SESSION : null;
+  return isAdminDemoEnabled() ? ADMIN_DESIGN_PREVIEW_SESSION : null;
 }

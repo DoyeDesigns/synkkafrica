@@ -4,7 +4,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 
-import { isAccountDesignPreviewEnabled } from "@/features/account/preview";
+import { isAccountDesignPreviewEnabled, isAdminDemoEnabled } from "@/features/account/preview";
 import getClient from "@/lib/db";
 import { getAuthSecret, hasGoogleAuth, hasMongoUri } from "@/lib/env";
 import { sendVerificationRequest } from "@/lib/send-verification-request";
@@ -73,17 +73,24 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   callbacks: {
     authorized: ({ auth, request: { nextUrl } }) => {
-      const protectedPrefixes = ["/account", "/bookings", "/admin"];
+      const protectedPrefixes = ["/account", "/bookings"];
       const isProtected = protectedPrefixes.some((prefix) =>
         nextUrl.pathname.startsWith(prefix),
       );
 
+      const isAdminRoute = nextUrl.pathname.startsWith("/admin");
+
+      if (isAdminRoute) {
+        if (isAdminDemoEnabled()) {
+          return true;
+        }
+
+        return !!auth?.user;
+      }
+
       if (isProtected) {
         if (isAccountDesignPreviewEnabled()) {
-          if (
-            nextUrl.pathname.startsWith("/account") ||
-            nextUrl.pathname.startsWith("/admin")
-          ) {
+          if (nextUrl.pathname.startsWith("/account")) {
             return true;
           }
         }
