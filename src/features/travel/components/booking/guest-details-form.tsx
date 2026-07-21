@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarDays, ChevronDown, User } from "lucide-react";
+import { CalendarDays, ChevronDown, Minus, Plus, User } from "lucide-react";
 import { useState } from "react";
 
 import { useTranslation } from "@/hooks/use-translation";
@@ -43,7 +43,21 @@ const inputClassName =
 
 const selectClassName = `${inputClassName} appearance-none`;
 
-export function GuestDetailsForm() {
+type GuestDetailsFormProps = {
+  guestCount: number;
+  onGuestCountChange: (count: number) => void;
+  specialRequests: string;
+  onSpecialRequestsChange: (value: string) => void;
+  maxGuests?: number;
+};
+
+export function GuestDetailsForm({
+  guestCount,
+  onGuestCountChange,
+  specialRequests,
+  onSpecialRequestsChange,
+  maxGuests = 12,
+}: GuestDetailsFormProps) {
   const t = useTranslation();
   const [adultEnabled, setAdultEnabled] = useState(true);
 
@@ -52,6 +66,40 @@ export function GuestDetailsForm() {
       <h2 className="text-base font-semibold font-inter text-foreground">
         {t("booking.guest.title")}
       </h2>
+
+      <div className="mt-5 rounded-md border border-[#E5E5E5] bg-[#F8F8F8] p-4">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <p className="text-sm font-semibold font-inter text-foreground">
+              {t("booking.guest.countLabel")}
+            </p>
+            <p className="text-xs font-normal font-inter text-foreground/70">
+              {t("booking.guest.countHint")}
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => onGuestCountChange(Math.max(1, guestCount - 1))}
+              className="rounded-md border border-[#E5E5E5] bg-white p-1.5 text-[#676565]"
+              aria-label={t("booking.guest.decreaseGuests")}
+            >
+              <Minus className="h-4 w-4" />
+            </button>
+            <span className="min-w-8 text-center text-base font-bold font-satoshi text-foreground">
+              {guestCount}
+            </span>
+            <button
+              type="button"
+              onClick={() => onGuestCountChange(Math.min(maxGuests, guestCount + 1))}
+              className="rounded-md border border-[#E5E5E5] bg-white p-1.5 text-[#676565]"
+              aria-label={t("booking.guest.increaseGuests")}
+            >
+              <Plus className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </div>
 
       <div className="mt-5 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
@@ -63,7 +111,7 @@ export function GuestDetailsForm() {
           </p>
         </div>
         <span className="text-sm font-medium font-satoshi text-foreground/70">
-          {t("booking.guest.addedCount", { added: 0, total: 1 })}
+          {t("booking.guest.addedCount", { added: adultEnabled ? 1 : 0, total: guestCount })}
         </span>
       </div>
 
@@ -118,17 +166,12 @@ export function GuestDetailsForm() {
               <FormField label={t("booking.guest.dateOfBirth")} required>
                 <div className="relative">
                   <input
-                    type="text"
-                    placeholder={t("booking.guest.datePlaceholder")}
+                    type="date"
                     className={`${inputClassName} pr-10`}
                   />
-                  <button
-                    type="button"
-                    aria-label={t("booking.guest.openCalendar")}
-                    className="absolute right-0 top-0 flex h-full items-center border-l border-[#E5E5E5] px-3 text-[#676565]"
-                  >
+                  <span className="pointer-events-none absolute right-0 top-0 flex h-full items-center border-l border-[#E5E5E5] px-3 text-[#676565]">
                     <CalendarDays className="h-4 w-4" />
-                  </button>
+                  </span>
                 </div>
               </FormField>
 
@@ -209,6 +252,18 @@ export function GuestDetailsForm() {
             </div>
           </div>
         ) : null}
+      </div>
+
+      <div className="mt-5">
+        <FormField label={t("booking.guest.specialRequests")}>
+          <textarea
+            value={specialRequests}
+            onChange={(event) => onSpecialRequestsChange(event.target.value)}
+            rows={4}
+            placeholder={t("booking.guest.specialRequestsPlaceholder")}
+            className={`${inputClassName} resize-none`}
+          />
+        </FormField>
       </div>
     </section>
   );

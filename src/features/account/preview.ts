@@ -9,8 +9,17 @@ export const ACCOUNT_DESIGN_PREVIEW_SESSION: Session = {
   expires: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
 };
 
+export const ADMIN_DESIGN_PREVIEW_SESSION: Session = {
+  user: {
+    id: "design-preview-admin",
+    name: "Admin",
+    email: "admin@synkkaffric.com",
+  },
+  expires: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+};
+
 /**
- * Lets account pages render without a real session while designing locally.
+ * Lets account and admin pages render without a real session while designing locally.
  * Set ACCOUNT_DESIGN_PREVIEW=false to require sign-in again in development.
  */
 export function isAccountDesignPreviewEnabled() {
@@ -27,4 +36,8 @@ export function isAccountDesignPreviewEnabled() {
 
 export function getAccountDesignPreviewSession(): Session | null {
   return isAccountDesignPreviewEnabled() ? ACCOUNT_DESIGN_PREVIEW_SESSION : null;
+}
+
+export function getAdminDesignPreviewSession(): Session | null {
+  return isAccountDesignPreviewEnabled() ? ADMIN_DESIGN_PREVIEW_SESSION : null;
 }

@@ -4,6 +4,13 @@ import { Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import type { BookingStepId } from "@/features/travel/booking/constants";
+import {
+  calculateNights,
+  getDefaultCheckInDate,
+  getDefaultCheckOutDate,
+  parseBookingParams,
+  serializeBookingParams,
+} from "@/features/travel/booking/booking-params";
 import { BookingBreadcrumbs } from "@/features/travel/components/booking/booking-breadcrumbs";
 import { BookingStepper } from "@/features/travel/components/booking/booking-stepper";
 import { BookingSummaryCard } from "@/features/travel/components/booking/booking-summary-card";
@@ -14,43 +21,29 @@ type BookingCheckoutPageProps = {
   property: PropertyDetail;
 };
 
-function getDefaultCheckInDate() {
-  const date = new Date();
-  date.setDate(date.getDate() + 7);
-  return date.toISOString().split("T")[0] ?? "";
-}
-
-function getDefaultCheckOutDate() {
-  const date = new Date();
-  date.setDate(date.getDate() + 8);
-  return date.toISOString().split("T")[0] ?? "";
-}
-
-function calculateNights(checkIn: string, checkOut: string) {
-  const start = new Date(checkIn);
-  const end = new Date(checkOut);
-  const diff = end.getTime() - start.getTime();
-  const nights = Math.ceil(diff / (1000 * 60 * 60 * 24));
-
-  return Number.isFinite(nights) && nights > 0 ? nights : 1;
-}
-
 function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentStep: BookingStepId = "checkout";
+  const bookingParams = parseBookingParams(searchParams);
 
   const initialRoomId = useMemo(() => {
-    const fromQuery = searchParams.get("room");
+    const fromQuery = bookingParams.room;
     const isValid = property.rooms.some((room) => room.id === fromQuery);
 
     return isValid && fromQuery ? fromQuery : (property.rooms[0]?.id ?? "");
-  }, [property.rooms, searchParams]);
+  }, [bookingParams.room, property.rooms]);
 
   const [selectedRoomId, setSelectedRoomId] = useState(initialRoomId);
-  const [checkIn] = useState(getDefaultCheckInDate);
-  const [checkOut] = useState(getDefaultCheckOutDate);
-  const [roomCount] = useState(1);
+  const [guestCount, setGuestCount] = useState(bookingParams.guests);
+  const [specialRequests, setSpecialRequests] = useState(
+    bookingParams.specialRequests ?? "",
+  );
+
+  const checkIn = bookingParams.checkIn ?? getDefaultCheckInDate();
+  const checkOut = bookingParams.checkOut ?? getDefaultCheckOutDate(checkIn);
+  const roomCount = bookingParams.rooms;
+  const selectedTime = bookingParams.time ?? "09:00";
 
   const nights = useMemo(
     () => calculateNights(checkIn, checkOut),
@@ -58,7 +51,15 @@ function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
   );
 
   const handleProceedToPay = () => {
-    const params = new URLSearchParams({ room: selectedRoomId });
+    const params = serializeBookingParams({
+      room: selectedRoomId,
+      checkIn,
+      checkOut,
+      guests: guestCount,
+      rooms: roomCount,
+      time: selectedTime,
+      specialRequests,
+    });
     router.push(`/accommodations/${property.id}/book/payment?${params.toString()}`);
   };
 
@@ -71,7 +72,12 @@ function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
         </div>
 
         <div className="mt-8 grid gap-2 xl:grid-cols-[minmax(0,1fr)_340px]">
-          <GuestDetailsForm />
+          <GuestDetailsForm
+            guestCount={guestCount}
+            onGuestCountChange={setGuestCount}
+            specialRequests={specialRequests}
+            onSpecialRequestsChange={setSpecialRequests}
+          />
 
           <div>
             <div className="xl:sticky xl:top-10">
@@ -81,6 +87,7 @@ function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
                 selectedRoomId={selectedRoomId}
                 nights={nights}
                 roomCount={roomCount}
+                guestCount={guestCount}
                 onSelectRoom={setSelectedRoomId}
                 onBookNow={handleProceedToPay}
                 ctaKey="booking.cta.proceedToPay"

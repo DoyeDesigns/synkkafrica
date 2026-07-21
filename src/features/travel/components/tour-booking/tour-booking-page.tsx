@@ -4,6 +4,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import type { TourBookingStepId } from "@/features/travel/booking/tour-constants";
+import {
+  getDefaultCheckInDate,
+  serializeBookingParams,
+} from "@/features/travel/booking/booking-params";
 import { NoReviewsCard } from "@/features/travel/components/car-booking/no-reviews-card";
 import { TourBookingBreadcrumbs } from "@/features/travel/components/tour-booking/tour-booking-breadcrumbs";
 import { TourBookingCheckoutPage } from "@/features/travel/components/tour-booking/tour-booking-checkout-page";
@@ -11,8 +15,10 @@ import { TourBookingConfirmationPage } from "@/features/travel/components/tour-b
 import { TourBookingPaymentPage } from "@/features/travel/components/tour-booking/tour-booking-payment-page";
 import { TourBookingStepper } from "@/features/travel/components/tour-booking/tour-booking-stepper";
 import { TourBookingSummaryCard } from "@/features/travel/components/tour-booking/tour-booking-summary-card";
+import { TourDatesSection } from "@/features/travel/components/tour-booking/tour-dates-section";
 import { ExperienceSelectionTable } from "@/features/travel/components/tour-booking/experience-selection-table";
 import { AboutThisTour, TourGallery } from "@/features/travel/components/tour-booking/tour-gallery";
+import { TourExperienceReviews } from "@/features/travel/components/tour-booking/tour-experience-reviews";
 import type { TourDetail } from "@/features/travel/data/tour-booking";
 
 type TourBookingPageProps = {
@@ -27,9 +33,18 @@ export function TourBookingPage({
   const router = useRouter();
   const defaultOptionId = tour.options[0]?.id ?? "";
   const [selectedOptionId, setSelectedOptionId] = useState(defaultOptionId);
+  const [selectedDate, setSelectedDate] = useState(getDefaultCheckInDate());
+  const [selectedTime, setSelectedTime] = useState("09:00");
+  const [guests, setGuests] = useState(2);
 
   const handleBookNow = () => {
-    const params = new URLSearchParams({ option: selectedOptionId });
+    const params = serializeBookingParams({
+      option: selectedOptionId,
+      date: selectedDate,
+      time: selectedTime,
+      guests,
+      rooms: 1,
+    });
     router.push(`/tours/${tour.id}/book/checkout?${params.toString()}`);
   };
 
@@ -57,12 +72,22 @@ export function TourBookingPage({
           <div className="space-y-8">
             <TourGallery tour={tour} />
             <AboutThisTour tour={tour} />
+            <TourDatesSection
+              tourId={tour.id}
+              selectedDate={selectedDate}
+              selectedTime={selectedTime}
+              guests={guests}
+              onDateChange={setSelectedDate}
+              onTimeChange={setSelectedTime}
+              onGuestsChange={setGuests}
+            />
             <ExperienceSelectionTable
               options={tour.options}
               selectedOptionId={selectedOptionId}
               currency={tour.currency}
               onSelectOption={setSelectedOptionId}
             />
+            <TourExperienceReviews tour={tour} />
           </div>
 
           <aside className="space-y-5 xl:sticky xl:top-10 xl:self-start">
@@ -70,6 +95,7 @@ export function TourBookingPage({
               tour={tour}
               options={tour.options}
               selectedOptionId={selectedOptionId}
+              guestCount={guests}
               onSelectOption={setSelectedOptionId}
               onBookNow={handleBookNow}
             />

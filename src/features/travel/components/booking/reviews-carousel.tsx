@@ -1,35 +1,49 @@
 "use client";
 
 import { ChevronRight, Star } from "lucide-react";
-import { useState } from "react";
+import Image from "next/image";
+import { useMemo, useState } from "react";
 
 import { ReviewCount } from "@/components/review-count";
+import { useExperienceReviews } from "@/features/account/hooks/use-experience-reviews";
+import { loadExperienceReviews } from "@/features/account/data/experience-reviews-store";
 import { useBookingContent } from "@/hooks/use-booking-content";
 import { useTranslation } from "@/hooks/use-translation";
 import type { PropertyReview } from "@/features/travel/data/property-booking";
 
 type ReviewsCarouselProps = {
+  productId: string;
   reviews: PropertyReview[];
   rating: number;
   reviewCount: number;
 };
 
 export function ReviewsCarousel({
+  productId,
   reviews,
   rating,
   reviewCount,
 }: ReviewsCarouselProps) {
   const t = useTranslation();
   const { labelReview } = useBookingContent();
+  const { reviews: mergedReviews, rating: mergedRating, reviewCount: mergedCount } =
+    useExperienceReviews(productId, reviews, rating, reviewCount);
   const [activeIndex, setActiveIndex] = useState(0);
-  const fullStars = Math.floor(rating);
-  const activeReview = reviews[activeIndex];
+  const fullStars = Math.floor(mergedRating);
+  const guestReviewPhotos = useMemo(() => {
+    const guestReviews = loadExperienceReviews(productId);
+    return new Map(guestReviews.map((review) => [review.id, review.photos]));
+  }, [productId, mergedReviews.length]);
+
+  const activeReview = mergedReviews[activeIndex % Math.max(mergedReviews.length, 1)];
 
   const showNextReview = () => {
-    setActiveIndex((current) => (current + 1) % reviews.length);
+    setActiveIndex((current) => (current + 1) % mergedReviews.length);
   };
 
   if (!activeReview) return null;
+
+  const activePhotos = guestReviewPhotos.get(activeReview.id) ?? [];
 
   return (
     <section className="rounded-xl bg-white p-5">
@@ -47,10 +61,13 @@ export function ReviewsCarousel({
           ))}
         </div>
         <ReviewCount
-          rating={rating}
-          reviewCount={reviewCount}
+          rating={mergedRating}
+          reviewCount={mergedCount}
           className="font-medium text-foreground"
         />
+        <span className="rounded-full bg-[#FFF1EB] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[#D85A30]">
+          {t("account.reviews.listingBadge")}
+        </span>
       </div>
 
       <div className="flex items-center gap-4">
@@ -66,9 +83,22 @@ export function ReviewsCarousel({
           <p className="text-sm leading-relaxed font-satoshi text-foreground">
             &ldquo;{labelReview(activeReview)}&rdquo;
           </p>
+
+          {activePhotos.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {activePhotos.map((photo, index) => (
+                <div
+                  key={`${activeReview.id}-photo-${index}`}
+                  className="relative h-16 w-16 overflow-hidden rounded-lg border border-[#E5E5E5]"
+                >
+                  <Image src={photo} alt="" fill className="object-cover" sizes="64px" />
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
 
-        {reviews.length > 1 ? (
+        {mergedReviews.length > 1 ? (
           <button
             type="button"
             onClick={showNextReview}

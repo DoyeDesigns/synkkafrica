@@ -11,6 +11,7 @@ type TourBookingSummaryCardProps = {
   tour: TourDetail;
   options: TourExperienceOption[];
   selectedOptionId: string;
+  guestCount?: number;
   onSelectOption: (optionId: string) => void;
   onBookNow: () => void;
   ctaKey?: TranslationKey;
@@ -20,6 +21,7 @@ export function TourBookingSummaryCard({
   tour,
   options,
   selectedOptionId,
+  guestCount = 1,
   onSelectOption,
   onBookNow,
   ctaKey = "common.bookNow",
@@ -34,6 +36,7 @@ export function TourBookingSummaryCard({
 
   const pricing = calculateTourBookingTotal({
     optionPrice: selectedOption.price,
+    guestCount,
     taxesAndFees: tour.taxesAndFees,
     currency: tour.currency,
     optionName: selectedOption.name,
@@ -90,7 +93,8 @@ export function TourBookingSummaryCard({
         <div className="space-y-2 text-sm font-satoshi">
           <div className="flex items-start justify-between gap-3">
             <span className="text-foreground/80">
-              {labelContent(selectedOption.name)} x {labelContent(selectedOption.duration)} x{" "}
+              {labelContent(selectedOption.name)} x {guestCount}{" "}
+              {guestCount > 1 ? t("booking.summary.guests") : t("booking.dates.guests").toLowerCase()} x{" "}
               <span className="font-bold text-foreground">
                 {formatPrice(tour.currency, selectedOption.price)}
               </span>

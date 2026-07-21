@@ -27,9 +27,19 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
   }, [car.packages, searchParams]);
 
   const [selectedPackageId, setSelectedPackageId] = useState(initialPackageId);
+  const [guestCount, setGuestCount] = useState(2);
+  const [specialRequests, setSpecialRequests] = useState("");
 
   const handleProceedToPay = () => {
-    const params = new URLSearchParams({ package: selectedPackageId });
+    const params = new URLSearchParams({
+      package: selectedPackageId,
+      guests: String(guestCount),
+    });
+
+    if (specialRequests) {
+      params.set("specialRequests", specialRequests);
+    }
+
     router.push(`/car-rentals/${car.id}/book/payment?${params.toString()}`);
   };
 
@@ -42,7 +52,12 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
         </div>
 
         <div className="mt-8 grid gap-2 xl:grid-cols-[minmax(0,1fr)_340px]">
-          <GuestDetailsForm />
+          <GuestDetailsForm
+            guestCount={guestCount}
+            onGuestCountChange={setGuestCount}
+            specialRequests={specialRequests}
+            onSpecialRequestsChange={setSpecialRequests}
+          />
 
           <div>
             <div className="xl:sticky xl:top-10">

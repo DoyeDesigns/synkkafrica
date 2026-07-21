@@ -9,11 +9,11 @@ import {
   ShowMoreNotificationsButton,
 } from "@/features/account/components/notifications-panel";
 import {
-  ACCOUNT_NOTIFICATIONS,
   NOTIFICATION_PERIOD_ORDER,
   groupNotificationsByPeriod,
   type NotificationPeriod,
 } from "@/features/account/data/account-notifications";
+import { useAccountNotifications } from "@/features/account/hooks/use-account-notifications";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -28,12 +28,24 @@ const PERIOD_LABEL_KEYS: Record<NotificationPeriod, TranslationKey> = {
   "three-months-ago": "account.notifications.period.threeMonthsAgo",
 };
 
-export function AccountNotificationsContent() {
+type AccountNotificationsContentProps = {
+  userId: string;
+  userEmail: string;
+};
+
+export function AccountNotificationsContent({
+  userId,
+  userEmail,
+}: AccountNotificationsContentProps) {
   const t = useTranslation();
   const [showOlder, setShowOlder] = useState(false);
+  const { ready, notifications, markRead } = useAccountNotifications(
+    userId,
+    userEmail,
+  );
 
   const groups = useMemo(() => {
-    const grouped = groupNotificationsByPeriod(ACCOUNT_NOTIFICATIONS);
+    const grouped = groupNotificationsByPeriod(notifications);
     const visiblePeriods = showOlder
       ? NOTIFICATION_PERIOD_ORDER
       : INITIAL_VISIBLE_PERIODS;
@@ -45,36 +57,48 @@ export function AccountNotificationsContent() {
         items: grouped[period],
       }))
       .filter((group) => group.items.length > 0);
-  }, [showOlder, t]);
+  }, [notifications, showOlder, t]);
 
   const hasOlderNotifications =
-    groupNotificationsByPeriod(ACCOUNT_NOTIFICATIONS)["three-months-ago"].length >
-    0;
+    groupNotificationsByPeriod(notifications)["three-months-ago"].length > 0;
+
+  if (!ready) {
+    return <div className="min-h-[320px] rounded-2xl bg-white" />;
+  }
 
   return (
     <section className="overflow-hidden rounded-2xl border border-[#EEEEEE] bg-white shadow-sm">
       <NotificationsCardHeader />
 
-      {groups.map((group) => (
-        <div key={group.period}>
-          <NotificationPeriodHeader label={group.label} />
+      {groups.length > 0 ? (
+        groups.map((group) => (
+          <div key={group.period}>
+            <NotificationPeriodHeader label={group.label} />
 
-          <div className="px-6 sm:px-8">
-            {group.items.map((notification, index) => (
-              <div
-                key={notification.id}
-                className={
-                  index === group.items.length - 1
-                    ? "mb-2 border-t border-b border-[#E8E8E8]"
-                    : "border-t border-[#E8E8E8]"
-                }
-              >
-                <NotificationItem notification={notification} />
-              </div>
-            ))}
+            <div className="px-6 sm:px-8">
+              {group.items.map((notification, index) => (
+                <div
+                  key={notification.id}
+                  className={
+                    index === group.items.length - 1
+                      ? "mb-2 border-t border-b border-[#E8E8E8]"
+                      : "border-t border-[#E8E8E8]"
+                  }
+                >
+                  <NotificationItem
+                    notification={notification}
+                    onOpen={markRead}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      ) : (
+        <p className="px-6 py-10 text-center text-sm font-medium font-satoshi text-foreground/70 sm:px-8">
+          {t("account.notifications.empty")}
+        </p>
+      )}
 
       {!showOlder && hasOlderNotifications ? (
         <ShowMoreNotificationsButton onClick={() => setShowOlder(true)} />

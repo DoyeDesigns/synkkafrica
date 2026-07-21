@@ -1,12 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 import type { BookingStepId } from "@/features/travel/booking/constants";
+import {
+  createBookingConfirmation,
+  getStoredBookingConfirmation,
+  type StoredBookingConfirmation,
+} from "@/features/travel/booking/booking-confirmation";
 import { BookingBreadcrumbs } from "@/features/travel/components/booking/booking-breadcrumbs";
+import { BookingConfirmationDetails } from "@/features/travel/components/booking/booking-confirmation-details";
 import { BookingStepper } from "@/features/travel/components/booking/booking-stepper";
 import { useTranslation } from "@/hooks/use-translation";
-import Image from "next/image";
 import type { PropertyDetail } from "@/features/travel/data/property-booking";
 
 type BookingConfirmationPageProps = {
@@ -26,6 +32,27 @@ export function BookingConfirmationPage({ property }: BookingConfirmationPagePro
   const t = useTranslation();
   const currentStep: BookingStepId = "confirmation";
   const [secondsLeft, setSecondsLeft] = useState(RELOAD_SECONDS);
+  const [confirmation, setConfirmation] = useState<StoredBookingConfirmation | null>(
+    null,
+  );
+
+  useEffect(() => {
+    const stored = getStoredBookingConfirmation();
+
+    if (stored) {
+      setConfirmation(stored);
+      return;
+    }
+
+    setConfirmation(
+      createBookingConfirmation({
+        productType: "accommodation",
+        productId: property.id,
+        productName: property.name,
+        guests: 2,
+      }),
+    );
+  }, [property.id, property.name]);
 
   useEffect(() => {
     if (secondsLeft <= 0) {
@@ -51,10 +78,6 @@ export function BookingConfirmationPage({ property }: BookingConfirmationPagePro
         <div className="mt-16 flex flex-col items-center pb-16">
           <div className="w-full max-w-xl rounded-xl bg-white px-8 py-14 text-center sm:px-12 sm:py-16">
             <div className="mx-auto flex items-center justify-center">
-              {/* <Send
-                className="h-16 w-16 -rotate-12 fill-[#F2C94C] text-[#E2B93B]"
-                strokeWidth={1.25}
-              /> */}
               <Image
                 src="/successful.png"
                 alt={t("booking.confirmation.imageAlt")}
@@ -71,6 +94,8 @@ export function BookingConfirmationPage({ property }: BookingConfirmationPagePro
               {t("booking.confirmation.subtitle")}
             </p>
           </div>
+
+          {confirmation ? <BookingConfirmationDetails confirmation={confirmation} /> : null}
 
           <p className="mt-8 text-sm font-medium font-inter text-foreground">
             {t("booking.confirmation.reloadIn")}{" "}

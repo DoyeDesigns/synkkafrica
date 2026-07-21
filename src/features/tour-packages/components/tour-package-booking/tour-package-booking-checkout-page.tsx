@@ -29,9 +29,19 @@ function TourPackageBookingCheckoutPageContent({
   }, [tourPackage.tiers, searchParams]);
 
   const [selectedTierId, setSelectedTierId] = useState(initialTierId);
+  const [guestCount, setGuestCount] = useState(2);
+  const [specialRequests, setSpecialRequests] = useState("");
 
   const handleProceedToPay = () => {
-    const params = new URLSearchParams({ tier: selectedTierId });
+    const params = new URLSearchParams({
+      tier: selectedTierId,
+      guests: String(guestCount),
+    });
+
+    if (specialRequests) {
+      params.set("specialRequests", specialRequests);
+    }
+
     router.push(
       `/tour-packages/${tourPackage.id}/book/payment?${params.toString()}`,
     );
@@ -49,7 +59,12 @@ function TourPackageBookingCheckoutPageContent({
         </div>
 
         <div className="mt-8 grid gap-2 xl:grid-cols-[minmax(0,1fr)_340px]">
-          <GuestDetailsForm />
+          <GuestDetailsForm
+            guestCount={guestCount}
+            onGuestCountChange={setGuestCount}
+            specialRequests={specialRequests}
+            onSpecialRequestsChange={setSpecialRequests}
+          />
 
           <div>
             <div className="xl:sticky xl:top-10">

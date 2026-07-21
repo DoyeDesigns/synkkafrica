@@ -4,6 +4,12 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import type { TourBookingStepId } from "@/features/travel/booking/tour-constants";
+import {
+  createBookingConfirmation,
+  getStoredBookingConfirmation,
+  type StoredBookingConfirmation,
+} from "@/features/travel/booking/booking-confirmation";
+import { BookingConfirmationDetails } from "@/features/travel/components/booking/booking-confirmation-details";
 import { TourBookingBreadcrumbs } from "@/features/travel/components/tour-booking/tour-booking-breadcrumbs";
 import { TourBookingStepper } from "@/features/travel/components/tour-booking/tour-booking-stepper";
 import { useTranslation } from "@/hooks/use-translation";
@@ -26,6 +32,27 @@ export function TourBookingConfirmationPage({ tour }: TourBookingConfirmationPag
   const t = useTranslation();
   const currentStep: TourBookingStepId = "confirmation";
   const [secondsLeft, setSecondsLeft] = useState(RELOAD_SECONDS);
+  const [confirmation, setConfirmation] = useState<StoredBookingConfirmation | null>(
+    null,
+  );
+
+  useEffect(() => {
+    const stored = getStoredBookingConfirmation();
+
+    if (stored) {
+      setConfirmation(stored);
+      return;
+    }
+
+    setConfirmation(
+      createBookingConfirmation({
+        productType: "tour",
+        productId: tour.id,
+        productName: tour.title,
+        guests: 2,
+      }),
+    );
+  }, [tour.id, tour.title]);
 
   useEffect(() => {
     if (secondsLeft <= 0) {
@@ -68,6 +95,8 @@ export function TourBookingConfirmationPage({ tour }: TourBookingConfirmationPag
               {t("booking.confirmation.subtitle")}
             </p>
           </div>
+
+          {confirmation ? <BookingConfirmationDetails confirmation={confirmation} /> : null}
 
           <p className="mt-8 text-sm font-medium font-inter text-foreground">
             {t("booking.confirmation.reloadIn")}{" "}

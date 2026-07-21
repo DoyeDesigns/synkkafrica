@@ -10,11 +10,12 @@ import { AccountMenuDropdown } from "@/components/layout/account-menu-dropdown";
 import { CurrencyDropdown } from "@/components/layout/currency-dropdown";
 import { LanguageDropdown } from "@/components/layout/language-dropdown";
 import { useTranslation } from "@/hooks/use-translation";
+import { ADMIN_AREA_PREFIX } from "@/features/admin/constants";
 import { ACCOUNT_AREA_PREFIX } from "@/features/account/constants";
 import { VENDOR_AREA_PREFIX } from "@/features/vendor/constants";
 import { TOUR_PACKAGES_PATH } from "@/features/tour-packages/data/tour-packages";
 
-const HIDDEN_PREFIXES = ["/login", VENDOR_AREA_PREFIX];
+const HIDDEN_PREFIXES = ["/login", VENDOR_AREA_PREFIX, ADMIN_AREA_PREFIX];
 
 type NavbarContentProps = {
   session: Session | null;

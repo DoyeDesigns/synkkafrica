@@ -4,6 +4,7 @@ import { Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import type { TourBookingStepId } from "@/features/travel/booking/tour-constants";
+import { parseBookingParams, serializeBookingParams } from "@/features/travel/booking/booking-params";
 import { GuestDetailsForm } from "@/features/travel/components/booking/guest-details-form";
 import { TourBookingBreadcrumbs } from "@/features/travel/components/tour-booking/tour-booking-breadcrumbs";
 import { TourBookingStepper } from "@/features/travel/components/tour-booking/tour-booking-stepper";
@@ -18,18 +19,30 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentStep: TourBookingStepId = "checkout";
+  const bookingParams = parseBookingParams(searchParams);
 
   const initialOptionId = useMemo(() => {
-    const fromQuery = searchParams.get("option");
+    const fromQuery = bookingParams.option;
     const isValid = tour.options.some((option) => option.id === fromQuery);
 
     return isValid && fromQuery ? fromQuery : (tour.options[0]?.id ?? "");
-  }, [tour.options, searchParams]);
+  }, [bookingParams.option, tour.options]);
 
   const [selectedOptionId, setSelectedOptionId] = useState(initialOptionId);
+  const [guestCount, setGuestCount] = useState(bookingParams.guests);
+  const [specialRequests, setSpecialRequests] = useState(
+    bookingParams.specialRequests ?? "",
+  );
 
   const handleProceedToPay = () => {
-    const params = new URLSearchParams({ option: selectedOptionId });
+    const params = serializeBookingParams({
+      option: selectedOptionId,
+      date: bookingParams.date,
+      time: bookingParams.time,
+      guests: guestCount,
+      rooms: 1,
+      specialRequests,
+    });
     router.push(`/tours/${tour.id}/book/payment?${params.toString()}`);
   };
 
@@ -42,7 +55,12 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
         </div>
 
         <div className="mt-8 grid gap-2 xl:grid-cols-[minmax(0,1fr)_340px]">
-          <GuestDetailsForm />
+          <GuestDetailsForm
+            guestCount={guestCount}
+            onGuestCountChange={setGuestCount}
+            specialRequests={specialRequests}
+            onSpecialRequestsChange={setSpecialRequests}
+          />
 
           <div>
             <div className="xl:sticky xl:top-10">
@@ -50,6 +68,7 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
                 tour={tour}
                 options={tour.options}
                 selectedOptionId={selectedOptionId}
+                guestCount={guestCount}
                 onSelectOption={setSelectedOptionId}
                 onBookNow={handleProceedToPay}
                 ctaKey="booking.cta.proceedToPay"

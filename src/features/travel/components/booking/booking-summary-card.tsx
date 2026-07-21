@@ -15,6 +15,7 @@ type BookingSummaryCardProps = {
   selectedRoomId: string;
   nights: number;
   roomCount: number;
+  guestCount?: number;
   onSelectRoom: (roomId: string) => void;
   onBookNow: () => void;
   ctaKey?: TranslationKey;
@@ -26,6 +27,7 @@ export function BookingSummaryCard({
   selectedRoomId,
   nights,
   roomCount,
+  guestCount = 2,
   onSelectRoom,
   onBookNow,
   ctaKey = "common.bookNow",
@@ -42,6 +44,9 @@ export function BookingSummaryCard({
     pricePerNight: selectedRoom.pricePerNight,
     nights,
     roomCount,
+    guestCount,
+    includedGuests: selectedRoom.guestCount,
+    extraGuestFeePerNight: Math.round(selectedRoom.pricePerNight * 0.15),
     taxesAndFees: property.taxesAndFees,
     currency: property.currency,
   });
@@ -123,7 +128,8 @@ export function BookingSummaryCard({
         <div className="space-y-2 text-sm font-satoshi">
           <div className="flex items-start justify-between gap-3">
             <span className="text-foreground/80">
-              {nights} {nightLabel} x {roomCount} {roomLabel} x{" "}
+              {nights} {nightLabel} x {roomCount} {roomLabel} x {guestCount}{" "}
+              {guestCount > 1 ? t("booking.summary.guests") : t("booking.dates.guests").toLowerCase()} x{" "}
               <span className="font-bold text-foreground">
                 {formatPrice(property.currency, selectedRoom.pricePerNight)}
               </span>

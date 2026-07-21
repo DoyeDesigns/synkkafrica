@@ -1,56 +1,43 @@
-export type AccountReview = {
+import type { BookingProductType } from "@/features/account/data/account-bookings";
+
+export type UserAccountReview = {
   id: string;
+  userId: string;
+  bookingId: string;
+  bookingReference: string;
+  productId: string;
+  productType: BookingProductType;
+  productName: string;
   rating: number;
   text: string;
-  propertyName: string;
-  time: string;
-  date: string;
+  photos: string[];
+  submittedAt: string;
+  authorName: string;
 };
 
-export const ACCOUNT_REVIEWS: AccountReview[] = [
-  {
-    id: "review-1",
-    rating: 4.6,
-    text:
-      "Gosh, I loved this iconic African lodge spot, like the grounds are out of a movie. I really would like to stay here again.",
-    propertyName: "Rufus and Bee",
-    time: "11:00 PM",
-    date: "MAY 12",
-  },
-  {
-    id: "review-2",
-    rating: 4.6,
-    text:
-      "Gosh, I loved this iconic African lodge spot, like the grounds are out of a movie. I really would like to stay here again.",
-    propertyName: "Rufus and Bee",
-    time: "11:00 PM",
-    date: "MAY 12",
-  },
-  {
-    id: "review-3",
-    rating: 4.6,
-    text:
-      "Gosh, I loved this iconic African lodge spot, like the grounds are out of a movie. I really would like to stay here again.",
-    propertyName: "Rufus and Bee",
-    time: "11:00 PM",
-    date: "MAY 12",
-  },
-  {
-    id: "review-4",
-    rating: 4.6,
-    text:
-      "Gosh, I loved this iconic African lodge spot, like the grounds are out of a movie. I really would like to stay here again.",
-    propertyName: "Rufus and Bee",
-    time: "11:00 PM",
-    date: "MAY 12",
-  },
-  {
-    id: "review-5",
-    rating: 4.6,
-    text:
-      "Gosh, I loved this iconic African lodge spot, like the grounds are out of a movie. I really would like to stay here again.",
-    propertyName: "Rufus and Bee",
-    time: "11:00 PM",
-    date: "MAY 12",
-  },
-];
+export type SubmitReviewInput = {
+  rating: number;
+  text: string;
+  photos?: string[];
+};
+
+export function formatReviewLabels(submittedAt: string) {
+  const date = new Date(submittedAt);
+
+  return {
+    time: new Intl.DateTimeFormat("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+    }).format(date),
+    date: new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+    })
+      .format(date)
+      .toUpperCase(),
+  };
+}
+
+export function createUserAccountReviewId(bookingId: string) {
+  return `review-${bookingId}`;
+}

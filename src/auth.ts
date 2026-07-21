@@ -79,11 +79,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       );
 
       if (isProtected) {
-        if (
-          isAccountDesignPreviewEnabled() &&
-          nextUrl.pathname.startsWith("/account")
-        ) {
-          return true;
+        if (isAccountDesignPreviewEnabled()) {
+          if (
+            nextUrl.pathname.startsWith("/account") ||
+            nextUrl.pathname.startsWith("/admin")
+          ) {
+            return true;
+          }
         }
 
         return !!auth?.user;

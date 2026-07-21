@@ -4,12 +4,18 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import type { BookingStepId } from "@/features/travel/booking/constants";
+import {
+  calculateNights,
+  getDefaultCheckInDate,
+  getDefaultCheckOutDate,
+  serializeBookingParams,
+} from "@/features/travel/booking/booking-params";
 import { AmenitiesFacilitiesSection } from "@/features/travel/components/booking/amenities-facilities-section";
 import { BookingCheckoutPage } from "@/features/travel/components/booking/booking-checkout-page";
 import { BookingConfirmationPage } from "@/features/travel/components/booking/booking-confirmation-page";
 import { BookingPaymentPage } from "@/features/travel/components/booking/booking-payment-page";
 import { BookingBreadcrumbs } from "@/features/travel/components/booking/booking-breadcrumbs";
-import { BookingDatesBar } from "@/features/travel/components/booking/booking-dates-bar";
+import { BookingDatesSection } from "@/features/travel/components/booking/booking-dates-section";
 import { BookingStepper } from "@/features/travel/components/booking/booking-stepper";
 import { BookingSummaryCard } from "@/features/travel/components/booking/booking-summary-card";
 import { CurrentOffersSection } from "@/features/travel/components/booking/current-offers-section";
@@ -26,27 +32,6 @@ type PropertyBookingPageProps = {
   currentStep?: BookingStepId;
 };
 
-function getDefaultCheckInDate() {
-  const date = new Date();
-  date.setDate(date.getDate() + 7);
-  return date.toISOString().split("T")[0] ?? "";
-}
-
-function getDefaultCheckOutDate() {
-  const date = new Date();
-  date.setDate(date.getDate() + 8);
-  return date.toISOString().split("T")[0] ?? "";
-}
-
-function calculateNights(checkIn: string, checkOut: string) {
-  const start = new Date(checkIn);
-  const end = new Date(checkOut);
-  const diff = end.getTime() - start.getTime();
-  const nights = Math.ceil(diff / (1000 * 60 * 60 * 24));
-
-  return Number.isFinite(nights) && nights > 0 ? nights : 1;
-}
-
 export function PropertyBookingPage({
   property,
   currentStep = "rooms",
@@ -59,6 +44,7 @@ export function PropertyBookingPage({
   const [checkOut, setCheckOut] = useState(getDefaultCheckOutDate);
   const [guests, setGuests] = useState(2);
   const [roomCount, setRoomCount] = useState(1);
+  const [selectedTime, setSelectedTime] = useState("09:00");
 
   const nights = useMemo(
     () => calculateNights(checkIn, checkOut),
@@ -66,7 +52,14 @@ export function PropertyBookingPage({
   );
 
   const handleBookNow = () => {
-    const params = new URLSearchParams({ room: selectedRoomId });
+    const params = serializeBookingParams({
+      room: selectedRoomId,
+      checkIn,
+      checkOut,
+      guests,
+      rooms: roomCount,
+      time: selectedTime,
+    });
     router.push(`/accommodations/${property.id}/book/checkout?${params.toString()}`);
   };
 
@@ -97,15 +90,18 @@ export function PropertyBookingPage({
           <PropertyGallery property={property} />
           <PropertyDescription property={property} />
 
-          <BookingDatesBar
+          <BookingDatesSection
+            propertyId={property.id}
             checkIn={checkIn}
             checkOut={checkOut}
             guests={guests}
             rooms={roomCount}
+            selectedTime={selectedTime}
             onCheckInChange={setCheckIn}
             onCheckOutChange={setCheckOut}
             onGuestsChange={setGuests}
             onRoomsChange={setRoomCount}
+            onTimeChange={setSelectedTime}
           />
 
           <RoomSelectionTable
@@ -117,6 +113,7 @@ export function PropertyBookingPage({
 
           <div className="xl:hidden space-y-6">
             <ReviewsCarousel
+              productId={property.id}
               reviews={property.reviews}
               rating={property.rating}
               reviewCount={property.reviewCount}
@@ -132,6 +129,7 @@ export function PropertyBookingPage({
         <aside className="space-y-5 xl:sticky xl:top-10 xl:self-start">
           <div className="hidden space-y-5 xl:block">
             <ReviewsCarousel
+              productId={property.id}
               reviews={property.reviews}
               rating={property.rating}
               reviewCount={property.reviewCount}
@@ -147,6 +145,7 @@ export function PropertyBookingPage({
             selectedRoomId={selectedRoomId}
             nights={nights}
             roomCount={roomCount}
+            guestCount={guests}
             onSelectRoom={setSelectedRoomId}
             onBookNow={handleBookNow}
           />
