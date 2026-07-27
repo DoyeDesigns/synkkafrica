@@ -84,19 +84,32 @@ export function TourResultCard({ item }: TourResultCardProps) {
           ) : null}
         </div>
 
-        <div className="mt-auto flex items-end justify-between gap-3 pt-1">
-          <div>
-            <p className="text-xs font-medium font-satoshi text-foreground">
-              <T k="common.budget" />
-            </p>
-            <p className="text-lg font-bold font-montserrat text-foreground">
+        <div className="mt-auto pt-1">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <p className="text-xs font-medium font-satoshi text-foreground">
+                <T k="common.budget" />
+              </p>
+              <p className="text-lg font-bold font-montserrat text-foreground xl:hidden">
+                <DisplayPrice currency={item.currency} amount={item.price} />
+              </p>
+            </div>
+
+            <p className="hidden text-lg font-bold font-montserrat text-foreground xl:block">
               <DisplayPrice currency={item.currency} amount={item.price} />
             </p>
+
+            <Link
+              href={getTourBookingPath(item.id)}
+              className="shrink-0 rounded-[5px] bg-[#3C3C3C] px-5 py-2.5 text-xs font-bold font-montserrat text-white transition-opacity hover:opacity-90 xl:hidden"
+            >
+              <T k="common.bookNow" />
+            </Link>
           </div>
 
           <Link
             href={getTourBookingPath(item.id)}
-            className="rounded-[5px] bg-[#3C3C3C] px-5 py-2.5 text-xs font-bold font-montserrat text-white transition-opacity hover:opacity-90"
+            className="mt-3 hidden w-full rounded-[5px] bg-[#3C3C3C] px-5 py-2.5 text-center text-xs font-bold font-montserrat text-white transition-opacity hover:opacity-90 xl:block"
           >
             <T k="common.bookNow" />
           </Link>

@@ -2,14 +2,17 @@
 
 import { Suspense } from "react";
 import {
-  BarChart3,
   Building2,
   Calendar,
+  Car,
+  Check,
   CircleHelp,
+  Home,
   LayoutGrid,
   LogOut,
   Sparkles,
   Star,
+  Users,
   Wallet,
   type LucideIcon,
 } from "lucide-react";
@@ -25,22 +28,28 @@ import type { TranslationKey } from "@/lib/preferences/translations";
 const NAV_LABEL_KEYS: Record<AdminNavItem["id"], TranslationKey> = {
   dashboard: "admin.nav.dashboard",
   experiences: "admin.nav.experiences",
+  cars: "admin.nav.cars",
+  accommodations: "admin.nav.accommodations",
   vendors: "admin.nav.vendors",
   bookings: "admin.nav.bookings",
   payouts: "admin.nav.payouts",
   reviews: "admin.nav.reviews",
-  reports: "admin.nav.reports",
+  users: "admin.nav.users",
+  verifications: "admin.nav.verifications",
   support: "admin.nav.support",
 };
 
 const NAV_ICONS: Record<AdminNavItem["icon"], LucideIcon> = {
   dashboard: LayoutGrid,
   experiences: Sparkles,
+  cars: Car,
+  accommodations: Home,
   vendors: Building2,
   bookings: Calendar,
   payouts: Wallet,
   reviews: Star,
-  reports: BarChart3,
+  users: Users,
+  verifications: Check,
   support: CircleHelp,
 };
 

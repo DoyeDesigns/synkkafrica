@@ -1,16 +1,28 @@
 "use client";
 
-import { Calendar, CircleEllipsis, List, MoreHorizontal, Plus, Wallet } from "lucide-react";
+import { Calendar, CircleEllipsis, List, Plus, Wallet } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 import { VendorListingCard } from "@/features/vendor/components/vendor-listing-card";
 import { VendorStatCard } from "@/features/vendor/components/vendor-stat-card";
 import {
   VENDOR_DASHBOARD_LISTINGS,
+  VENDOR_DASHBOARD_PERIOD_OPTIONS,
   VENDOR_DASHBOARD_STATS,
+  type VendorDashboardPeriod,
 } from "@/features/vendor/data/vendor-dashboard";
 import { useFormatPrice } from "@/hooks/use-format-price";
 import { useTranslation } from "@/hooks/use-translation";
+import type { TranslationKey } from "@/lib/preferences/translations";
+
+const PERIOD_LABEL_KEYS: Record<VendorDashboardPeriod, TranslationKey> = {
+  day: "vendor.dashboard.period.day",
+  week: "vendor.dashboard.period.week",
+  month: "vendor.dashboard.period.month",
+  sixMonths: "vendor.dashboard.period.sixMonths",
+  year: "vendor.dashboard.period.year",
+};
 
 type VendorDashboardContentProps = {
   vendorName?: string | null;
@@ -22,6 +34,8 @@ export function VendorDashboardContent({
   const t = useTranslation();
   const formatPrice = useFormatPrice();
   const displayName = vendorName?.trim() || "Alex Autos";
+  const [period, setPeriod] = useState<VendorDashboardPeriod>("month");
+  const stats = VENDOR_DASHBOARD_STATS;
 
   return (
     <>
@@ -40,16 +54,37 @@ export function VendorDashboardContent({
         </button>
       </div>
 
+      <div
+        className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5 sm:w-fit"
+        role="group"
+        aria-label={t("vendor.dashboard.period.label")}
+      >
+        {VENDOR_DASHBOARD_PERIOD_OPTIONS.map((option) => (
+          <button
+            key={option}
+            type="button"
+            onClick={() => setPeriod(option)}
+            className={`rounded-lg border px-4 py-2 text-xs font-semibold font-satoshi transition-colors ${
+              period === option
+                ? "border-[#D85A30] bg-[#FFF1EB] text-[#D85A30]"
+                : "border-[#E5E5E5] bg-white text-[#676565]"
+            }`}
+          >
+            {t(PERIOD_LABEL_KEYS[option])}
+          </button>
+        ))}
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <VendorStatCard
           icon={List}
           labelKey="vendor.dashboard.stats.liveListings"
-          value={String(VENDOR_DASHBOARD_STATS.liveListings)}
+          value={String(stats.liveListings)}
         />
         <VendorStatCard
           icon={Calendar}
           labelKey="vendor.dashboard.stats.newBookings"
-          value={String(VENDOR_DASHBOARD_STATS.newBookings)}
+          value={String(stats.newBookings[period])}
           href="/vendor/bookings"
           linkKey="vendor.dashboard.goToBookings"
         />
@@ -57,14 +92,14 @@ export function VendorDashboardContent({
           icon={Wallet}
           labelKey="vendor.dashboard.stats.earnings"
           value={formatPrice(
-            VENDOR_DASHBOARD_STATS.earningsCurrency,
-            VENDOR_DASHBOARD_STATS.earnings,
+            stats.earningsCurrency,
+            stats.earnings[period],
           )}
         />
         <VendorStatCard
           icon={CircleEllipsis}
           labelKey="vendor.dashboard.stats.pendingApproval"
-          value={String(VENDOR_DASHBOARD_STATS.pendingApproval)}
+          value={String(stats.pendingApproval)}
         />
       </div>
 

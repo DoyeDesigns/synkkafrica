@@ -1,12 +1,15 @@
 "use client";
 
 import { TRAVEL_SECTION_MAP } from "@/features/travel/constants";
+import { HeroBackground } from "@/features/travel/components/hero/hero-background";
 import { HeroTabs } from "@/features/travel/components/hero/hero-tabs";
 import { SectionSearchForm } from "@/features/travel/components/hero/forms";
 import { ClearFilterButton } from "@/features/travel/components/results/shared/clear-filter-button";
 import { useTranslation } from "@/hooks/use-translation";
 import { useTravelNavigation } from "@/features/travel/hooks/use-travel-navigation";
 import { useAccommodationFiltersContext } from "@/features/travel/providers/accommodation-filters-provider";
+import { useCarRentalFiltersContext } from "@/features/travel/providers/car-rental-filters-provider";
+import { useTourFiltersContext } from "@/features/travel/providers/tour-filters-provider";
 import type { TravelSection } from "@/features/travel/types";
 
 type HeroSectionProps = {
@@ -25,18 +28,37 @@ export function HeroSection({
   const t = useTranslation();
   const config = TRAVEL_SECTION_MAP[section];
   const { view } = useTravelNavigation();
-  const { hasAppliedFilters, resetFilters } = useAccommodationFiltersContext();
+  const accommodationFilters = useAccommodationFiltersContext();
+  const tourFilters = useTourFiltersContext();
+  const carRentalFilters = useCarRentalFiltersContext();
 
   const showClearFilter =
-    section === "accommodations" && view === "results" && hasAppliedFilters;
+    view === "results" &&
+    ((section === "accommodations" && accommodationFilters.hasAppliedFilters) ||
+      (section === "tours" && tourFilters.hasAppliedFilters) ||
+      (section === "car-rentals" && carRentalFilters.hasAppliedFilters));
+
+  const handleClearFilters = () => {
+    if (section === "accommodations") {
+      accommodationFilters.resetFilters();
+      return;
+    }
+
+    if (section === "tours") {
+      tourFilters.resetFilters();
+      return;
+    }
+
+    if (section === "car-rentals") {
+      carRentalFilters.resetFilters();
+    }
+  };
 
   return (
     <section className="relative min-h-[550px] w-full overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-opacity duration-500"
-        style={{
-          backgroundImage: `url('${config.heroImage}'), linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45))`,
-        }}
+      <HeroBackground
+        heroImage={config.heroImage}
+        isAccommodations={section === "accommodations"}
       />
 
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-4 pb-10 pt-28 sm:px-6 lg:px-8">
@@ -55,7 +77,7 @@ export function HeroSection({
             <SectionSearchForm section={section} onSubmit={onSearch} />
             {showClearFilter ? (
               <div className="mt-4">
-                <ClearFilterButton onClick={resetFilters} />
+                <ClearFilterButton onClick={handleClearFilters} />
               </div>
             ) : null}
           </div>

@@ -105,8 +105,8 @@ export function CarRentalsExplorePage() {
         </div>
       </div>
 
-      <div>
-        <Image src="/car-rental-landing.png" className="w-full" alt="Car Rentals Explore Page" width={1000} height={436} />
+      <div className="py-10">
+      <OngoingDealsSection items={ACCOMMODATION_DEALS} />
       </div>
 
       <div className="-mt-15">

@@ -1,5 +1,28 @@
 export const VENDOR_AREA_PREFIX = "/vendor";
 
+export type VendorVerificationStatus = "verified" | "unverified" | "pending";
+
+export const DEFAULT_VENDOR_VERIFICATION_STATUS: VendorVerificationStatus =
+  "verified";
+
+export const VENDOR_VERIFICATION_NOTICE_EXCLUDED_PATHS = [
+  "/vendor/notifications",
+  "/vendor/support",
+] as const;
+
+export function shouldShowVendorVerificationNotice(
+  pathname: string,
+  status: VendorVerificationStatus,
+) {
+  if (status === "verified") {
+    return false;
+  }
+
+  return !VENDOR_VERIFICATION_NOTICE_EXCLUDED_PATHS.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`),
+  );
+}
+
 export type VendorNavItem = {
   id: string;
   href: string;
@@ -10,7 +33,6 @@ export type VendorNavItem = {
     | "earnings"
     | "notifications"
     | "businessProfile"
-    | "settings"
     | "support";
   badge?: number;
 };
@@ -25,6 +47,5 @@ export const VENDOR_WORKSPACE_NAV: VendorNavItem[] = [
 
 export const VENDOR_ACCOUNT_NAV: VendorNavItem[] = [
   { id: "businessProfile", href: "/vendor/business-profile", icon: "businessProfile" },
-  { id: "settings", href: "/vendor/settings", icon: "settings" },
   { id: "support", href: "/vendor/support", icon: "support" },
 ];

@@ -8,7 +8,10 @@ import { TourPackageBookingBreadcrumbs } from "@/features/tour-packages/componen
 import { TourPackageBookingStepper } from "@/features/tour-packages/components/tour-package-booking/tour-package-booking-stepper";
 import { TourPackageBookingSummaryCard } from "@/features/tour-packages/components/tour-package-booking/tour-package-booking-summary-card";
 import type { TourPackageDetail } from "@/features/tour-packages/data/tour-package-booking";
+import { parseBookingParams, serializeBookingParams } from "@/features/travel/booking/booking-params";
 import { GuestDetailsForm } from "@/features/travel/components/booking/guest-details-form";
+import { useGuestCheckoutGate } from "@/features/travel/hooks/use-guest-checkout-gate";
+import { useTranslation } from "@/hooks/use-translation";
 
 type TourPackageBookingCheckoutPageProps = {
   tourPackage: TourPackageDetail;
@@ -19,32 +22,39 @@ function TourPackageBookingCheckoutPageContent({
 }: TourPackageBookingCheckoutPageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const t = useTranslation();
   const currentStep: TourPackageBookingStepId = "checkout";
+  const bookingParams = parseBookingParams(searchParams);
+  const { identity, setIdentity, identityErrors, guardProceed } =
+    useGuestCheckoutGate();
 
   const initialTierId = useMemo(() => {
-    const fromQuery = searchParams.get("tier");
+    const fromQuery = bookingParams.tier;
     const isValid = tourPackage.tiers.some((tier) => tier.id === fromQuery);
 
     return isValid && fromQuery ? fromQuery : (tourPackage.tiers[0]?.id ?? "");
-  }, [tourPackage.tiers, searchParams]);
+  }, [bookingParams.tier, tourPackage.tiers]);
 
   const [selectedTierId, setSelectedTierId] = useState(initialTierId);
-  const [guestCount, setGuestCount] = useState(2);
-  const [specialRequests, setSpecialRequests] = useState("");
+  const [guestCount, setGuestCount] = useState(bookingParams.guests);
+  const [specialRequests, setSpecialRequests] = useState(
+    bookingParams.specialRequests ?? "",
+  );
+  const days = bookingParams.days ?? tourPackage.days;
 
   const handleProceedToPay = () => {
-    const params = new URLSearchParams({
-      tier: selectedTierId,
-      guests: String(guestCount),
+    guardProceed(() => {
+      const params = serializeBookingParams({
+        tier: selectedTierId,
+        days,
+        guests: guestCount,
+        rooms: 1,
+        specialRequests,
+      });
+      router.push(
+        `/tour-packages/${tourPackage.id}/book/payment?${params.toString()}`,
+      );
     });
-
-    if (specialRequests) {
-      params.set("specialRequests", specialRequests);
-    }
-
-    router.push(
-      `/tour-packages/${tourPackage.id}/book/payment?${params.toString()}`,
-    );
   };
 
   return (
@@ -64,14 +74,23 @@ function TourPackageBookingCheckoutPageContent({
             onGuestCountChange={setGuestCount}
             specialRequests={specialRequests}
             onSpecialRequestsChange={setSpecialRequests}
+            identity={identity}
+            onIdentityChange={setIdentity}
+            identityErrors={identityErrors}
           />
 
           <div>
             <div className="xl:sticky xl:top-10">
+              {Object.keys(identityErrors).length > 0 ? (
+                <p className="mb-3 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-medium font-inter text-[#D85A30]">
+                  {t("booking.guest.idValidationRequired")}
+                </p>
+              ) : null}
               <TourPackageBookingSummaryCard
                 tourPackage={tourPackage}
                 tiers={tourPackage.tiers}
                 selectedTierId={selectedTierId}
+                days={days}
                 onSelectTier={setSelectedTierId}
                 onBookNow={handleProceedToPay}
                 ctaKey="booking.cta.proceedToPay"

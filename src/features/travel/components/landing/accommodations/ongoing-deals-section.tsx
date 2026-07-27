@@ -3,9 +3,9 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-import { TRAVEL_CAROUSEL_SCROLL_CLASS } from "@/features/travel/constants";
 import type { AccommodationDeal } from "@/features/travel/data/accommodations-landing";
 import { useTranslation } from "@/hooks/use-translation";
+import { InfiniteMarquee } from "../infinite-marquee";
 import { OngoingDealCard } from "../ongoing-deal-card";
 
 type OngoingDealsSectionProps = {
@@ -24,7 +24,7 @@ export function OngoingDealsSection({
       <div className="flex items-end justify-between gap-4">
         <div>
           <h2 className="text-[22px] font-bold font-montserrat text-[#1E1E1E]">
-            {t("landing.ongoingDeals.title")}
+            {t("landing.ongoingDeals.title2")}
           </h2>
           <p className="mt-0.5 font-medium font-satoshi text-foreground">
             {t("landing.ongoingDeals.description")}
@@ -42,11 +42,11 @@ export function OngoingDealsSection({
         </Link>
       </div>
 
-      <div className={`flex gap-5 overflow-x-auto pb-2 ${TRAVEL_CAROUSEL_SCROLL_CLASS}`}>
-        {items.map((item) => (
-          <OngoingDealCard key={item.id} item={item} />
+      <InfiniteMarquee itemCount={items.length}>
+        {[...items, ...items].map((item, index) => (
+          <OngoingDealCard key={`${item.id}-${index}`} item={item} />
         ))}
-      </div>
+      </InfiniteMarquee>
     </section>
   );
 }

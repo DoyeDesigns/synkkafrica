@@ -11,6 +11,7 @@ type CarBookingSummaryCardProps = {
   car: CarDetail;
   packages: CarRentalPackage[];
   selectedPackageId: string;
+  days?: number;
   onSelectPackage: (packageId: string) => void;
   onBookNow: () => void;
   ctaKey?: TranslationKey;
@@ -20,6 +21,7 @@ export function CarBookingSummaryCard({
   car,
   packages,
   selectedPackageId,
+  days = 1,
   onSelectPackage,
   onBookNow,
   ctaKey = "common.bookNow",
@@ -34,10 +36,13 @@ export function CarBookingSummaryCard({
 
   const pricing = calculateCarBookingTotal({
     packagePrice: selectedPackage.price,
+    days,
     taxesAndFees: car.taxesAndFees,
     currency: car.currency,
     packageName: selectedPackage.name,
   });
+
+  const dayLabel = days > 1 ? t("booking.summary.days") : t("booking.summary.day");
 
   const isProceedCta = ctaKey === "booking.cta.proceedToPay";
 
@@ -90,7 +95,7 @@ export function CarBookingSummaryCard({
         <div className="space-y-2 text-sm font-satoshi">
           <div className="flex items-start justify-between gap-3">
             <span className="text-foreground/80">
-              {labelContent(selectedPackage.name)} x {labelContent(selectedPackage.hours)} x{" "}
+              {labelContent(selectedPackage.name)} x {days} {dayLabel} x{" "}
               <span className="font-bold text-foreground">
                 {formatPrice(car.currency, selectedPackage.price)}
               </span>

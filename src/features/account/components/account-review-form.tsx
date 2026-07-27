@@ -1,9 +1,9 @@
 "use client";
 
-import { ImagePlus, Star, X } from "lucide-react";
-import Image from "next/image";
+import { ImagePlus, Star } from "lucide-react";
 import { useRef, useState } from "react";
 
+import { ReviewPhotoGallery } from "@/components/review-photo-gallery";
 import type { SubmitReviewInput } from "@/features/account/data/account-reviews";
 import { useTranslation } from "@/hooks/use-translation";
 
@@ -122,25 +122,17 @@ export function AccountReviewForm({
           </span>
         </div>
 
-        <div className="mt-3 flex flex-wrap gap-3">
-          {photos.map((photo, index) => (
-            <div
-              key={`${photo.slice(0, 24)}-${index}`}
-              className="relative h-20 w-20 overflow-hidden rounded-lg border border-[#E5E5E5] bg-white"
-            >
-              <Image src={photo} alt="" fill className="object-cover" sizes="80px" />
-              <button
-                type="button"
-                onClick={() =>
-                  setPhotos((current) => current.filter((_, photoIndex) => photoIndex !== index))
-                }
-                className="absolute right-1 top-1 rounded-full bg-black/60 p-0.5 text-white"
-                aria-label={t("account.reviews.removePhoto")}
-              >
-                <X className="h-3 w-3" />
-              </button>
-            </div>
-          ))}
+        <div className="mt-3 flex flex-wrap items-start gap-3">
+          {photos.length > 0 ? (
+            <ReviewPhotoGallery
+              photos={photos}
+              size="md"
+              onRemove={(index) =>
+                setPhotos((current) => current.filter((_, photoIndex) => photoIndex !== index))
+              }
+              removeLabel={t("account.reviews.removePhoto")}
+            />
+          ) : null}
 
           {photos.length < MAX_PHOTOS ? (
             <button

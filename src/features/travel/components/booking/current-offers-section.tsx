@@ -1,6 +1,6 @@
 "use client";
 
-import { Star } from "lucide-react";
+import { Check } from "lucide-react";
 
 import { useBookingContent } from "@/hooks/use-booking-content";
 import { useTranslation } from "@/hooks/use-translation";
@@ -28,7 +28,7 @@ export function CurrentOffersSection({ offers }: CurrentOffersSectionProps) {
                 key={`${columnIndex}-${offer}`}
                 className="flex items-start gap-2 text-sm font-normal font-inter text-foreground"
               >
-                <Star className="mt-0.5 h-4 w-4 shrink-0 fill-amber-400 text-amber-400" />
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#676565]" strokeWidth={2} />
                 {labelContent(offer)}
               </li>
             ))}

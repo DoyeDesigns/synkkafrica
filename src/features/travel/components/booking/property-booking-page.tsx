@@ -59,6 +59,7 @@ export function PropertyBookingPage({
       guests,
       rooms: roomCount,
       time: selectedTime,
+      days: nights,
     });
     router.push(`/accommodations/${property.id}/book/checkout?${params.toString()}`);
   };

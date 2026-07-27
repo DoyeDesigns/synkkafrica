@@ -285,3 +285,29 @@ export const TOUR_ATTRACTIONS: TourAttraction[] = [
     image: "/destinations/monaco.png",
   },
 ];
+
+const TOUR_ATTRACTION_FILTER_LOCATIONS: Record<string, string> = {
+  lagos: "Lagos Nigeria",
+  dubai: "UAE Dubai",
+  cotonou: "Cotonou",
+  "south-africa": "South Africa",
+  monaco: "Monaco",
+};
+
+export function getTourAttractionFilterLocation(attractionId: string) {
+  return (
+    TOUR_ATTRACTION_FILTER_LOCATIONS[attractionId] ??
+    TOUR_EVENT_LOCATIONS[0] ??
+    "Lagos Nigeria"
+  );
+}
+
+export function getTourAttractionResultsHref(attractionId: string) {
+  const params = new URLSearchParams({
+    section: "tours",
+    view: "results",
+    location: getTourAttractionFilterLocation(attractionId),
+  });
+
+  return `/?${params.toString()}`;
+}

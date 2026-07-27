@@ -34,13 +34,6 @@ export function TourEventCard({ event }: TourEventCardProps) {
           >
             <Heart className="h-4 w-4 text-foreground" strokeWidth={1.5} />
           </button>
-
-          {event.selfDriveAvailable ? (
-            <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-xs font-medium font-satoshi text-foreground shadow-sm">
-              <Image src="/tabler_wheel.png" alt="" width={14} height={14} aria-hidden />
-              <T k="common.selfDriveAvailable" />
-            </span>
-          ) : null}
         </div>
 
         <div className="flex min-w-0 flex-1 flex-col gap-3 p-4 pt-3 sm:py-4 sm:pl-0">

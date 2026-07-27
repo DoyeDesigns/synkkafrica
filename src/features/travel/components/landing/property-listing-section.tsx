@@ -4,9 +4,9 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import type { PropertyListingItem } from "@/features/travel/data/property-listings";
-import { TRAVEL_CAROUSEL_SCROLL_CLASS } from "@/features/travel/constants";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
+import { InfiniteMarquee } from "./infinite-marquee";
 import { PropertyListingCard } from "./property-listing-card";
 
 type PropertyListingSectionProps = {
@@ -47,11 +47,11 @@ export function PropertyListingSection({
         </Link>
       </div>
 
-      <div className={`flex gap-5 overflow-x-auto pb-2 ${TRAVEL_CAROUSEL_SCROLL_CLASS}`}>
-        {items.map((item) => (
-          <PropertyListingCard key={item.id} item={item} />
+      <InfiniteMarquee itemCount={items.length}>
+        {[...items, ...items].map((item, index) => (
+          <PropertyListingCard key={`${item.id}-${index}`} item={item} />
         ))}
-      </div>
+      </InfiniteMarquee>
     </section>
   );
 }

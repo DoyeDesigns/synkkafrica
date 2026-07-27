@@ -14,6 +14,7 @@ type TourPackageBookingSummaryCardProps = {
   tourPackage: TourPackageDetail;
   tiers: TourPackageTier[];
   selectedTierId: string;
+  days?: number;
   onSelectTier: (tierId: string) => void;
   onBookNow: () => void;
   ctaKey?: TranslationKey;
@@ -23,6 +24,7 @@ export function TourPackageBookingSummaryCard({
   tourPackage,
   tiers,
   selectedTierId,
+  days = tourPackage.days,
   onSelectTier,
   onBookNow,
   ctaKey = "common.bookNow",
@@ -37,10 +39,14 @@ export function TourPackageBookingSummaryCard({
 
   const pricing = calculateTourPackageBookingTotal({
     tierPrice: selectedTier.price,
+    days,
+    baseDays: tourPackage.days,
     taxesAndFees: tourPackage.taxesAndFees,
     currency: tourPackage.currency,
     tierName: selectedTier.name,
   });
+
+  const dayLabel = days > 1 ? t("booking.summary.days") : t("booking.summary.day");
 
   const isProceedCta = ctaKey === "booking.cta.proceedToPay";
 
@@ -93,7 +99,7 @@ export function TourPackageBookingSummaryCard({
         <div className="space-y-2 text-sm font-satoshi">
           <div className="flex items-start justify-between gap-3">
             <span className="text-foreground/80">
-              {labelContent(selectedTier.name)} x {labelContent(selectedTier.duration)} x{" "}
+              {labelContent(selectedTier.name)} x {days} {dayLabel} x{" "}
               <span className="font-bold text-foreground">
                 {formatPrice(tourPackage.currency, selectedTier.price)}
               </span>

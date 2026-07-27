@@ -3,7 +3,7 @@
 import { Heart, MapPin, Star } from "lucide-react";
 import Image from "next/image";
 
-import { ReviewCount } from "@/components/review-count";
+import { ReviewSummaryButton } from "@/features/travel/components/booking/review-summary-button";
 import { useBookingContent } from "@/hooks/use-booking-content";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TourDetail } from "@/features/travel/data/tour-booking";
@@ -15,30 +15,15 @@ type TourGalleryProps = {
 export function TourGallery({ tour }: TourGalleryProps) {
   const t = useTranslation();
   const [mainImage, thumbnail] = tour.images;
-  const fullStars = Math.floor(tour.rating);
 
   return (
     <div className="space-y-3">
       <div className="space-y-2">
-        <div className="flex flex-wrap items-center gap-2 text-sm font-satoshi">
-          <div className="flex items-center gap-0.5">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <Star
-                key={index}
-                className={`h-3.5 w-3.5 ${
-                  index < fullStars
-                    ? "fill-amber-400 text-amber-400"
-                    : "fill-zinc-200 text-zinc-200"
-                }`}
-              />
-            ))}
-          </div>
-          <ReviewCount
-            rating={tour.rating}
-            reviewCount={tour.reviewCount}
-            className="font-medium text-foreground"
-          />
-        </div>
+        <ReviewSummaryButton
+          productId={tour.id}
+          rating={tour.rating}
+          reviewCount={tour.reviewCount}
+        />
 
         <h1 className="text-2xl font-bold font-montserrat text-foreground sm:text-[28px]">
           {tour.title}

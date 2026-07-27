@@ -12,7 +12,7 @@ export function AccommodationsLanding() {
       <OngoingDealsSection items={ACCOMMODATION_DEALS} />
       <BrowsePropertyTypeSection />
       <PropertyListingSection
-        titleKey="landing.ongoingDeals.title"
+        titleKey="landing.ongoingDeals.title2"
         descriptionKey="landing.ongoingDeals.description"
         items={FEATURED_PROPERTIES}
       />

@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { auth } from "@/auth";
 import { ConditionalNavbar } from "@/components/layout/conditional-navbar";
 import { ConditionalFooter } from "@/components/layout/conditional-footer";
+import { resolveLocationPreferences } from "@/lib/preferences/resolve-location-preferences";
+import { getLanguageOption } from "@/lib/preferences/languages";
 import { PreferencesProvider } from "@/providers/preferences-provider";
 import { QueryProvider } from "@/providers/query-provider";
 import "./globals.css";
@@ -18,15 +20,19 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth();
+  const detectedPreferences = await resolveLocationPreferences();
+  const htmlLang = getLanguageOption(
+    detectedPreferences?.language ?? "en",
+  ).htmlLang;
 
   return (
     <html
-      lang="en"
+      lang={htmlLang}
       className="h-full antialiased"
     >
       <body className="min-h-full flex flex-col font-inter text-foreground">
         <QueryProvider>
-          <PreferencesProvider>
+          <PreferencesProvider detectedPreferences={detectedPreferences}>
             <ConditionalNavbar session={session} />
             <main className="flex-1">{children}</main>
             <ConditionalFooter />

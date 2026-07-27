@@ -2,9 +2,13 @@
 
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
-import { TOUR_ATTRACTIONS } from "@/features/travel/data/tours-landing";
+import {
+  getTourAttractionResultsHref,
+  TOUR_ATTRACTIONS,
+} from "@/features/travel/data/tours-landing";
 import { useTranslation } from "@/hooks/use-translation";
 
 const MOBILE_INITIAL_VISIBLE = 6;
@@ -12,7 +16,7 @@ const MOBILE_INITIAL_VISIBLE = 6;
 export function ToursAttractionsSection() {
   const t = useTranslation();
   const [showAll, setShowAll] = useState(false);
-  const attractions = [...TOUR_ATTRACTIONS, ...TOUR_ATTRACTIONS];
+  const attractions = TOUR_ATTRACTIONS;
   const hasMoreBelowLg = attractions.length > MOBILE_INITIAL_VISIBLE;
 
   return (
@@ -24,8 +28,9 @@ export function ToursAttractionsSection() {
 
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {attractions.map((attraction, index) => (
-            <article
-              key={`${attraction.id}-${index}`}
+            <Link
+              key={attraction.id}
+              href={getTourAttractionResultsHref(attraction.id)}
               className={`group relative aspect-3/4 overflow-hidden rounded-2xl${
                 !showAll && index >= MOBILE_INITIAL_VISIBLE ? " hidden lg:block" : ""
               }`}
@@ -48,7 +53,7 @@ export function ToursAttractionsSection() {
                   {t("landing.activitiesCount", { count: attraction.activityCount })}
                 </p>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 

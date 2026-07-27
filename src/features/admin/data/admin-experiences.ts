@@ -1,51 +1,100 @@
-export type AdminExperience = {
-  id: string;
-  title: string;
-  vendorName: string;
-  vendorId: string;
-  price: number;
-  currency: string;
-  bookings: number;
-  rating: number;
-  enabled: boolean;
-  image: string;
-};
+import type { AdminListing } from "@/features/admin/data/admin-listings";
 
-export const ADMIN_EXPERIENCES: AdminExperience[] = [
+export const ADMIN_EXPERIENCES: AdminListing[] = [
   {
-    id: "exp-1",
-    title: "Lagos Lagoon Sunset Cruise",
-    vendorName: "Alex Autos",
-    vendorId: "vendor-alex",
-    price: 85000,
-    currency: "NGN",
-    bookings: 142,
-    rating: 4.8,
-    enabled: true,
-    image: "/destinations/lagos.png",
-  },
-  {
-    id: "exp-2",
-    title: "Lekki Garden Suites",
-    vendorName: "Alex Autos",
-    vendorId: "vendor-alex",
-    price: 120000,
-    currency: "NGN",
-    bookings: 89,
-    rating: 4.6,
-    enabled: true,
-    image: "/hero/accommodations.png",
-  },
-  {
-    id: "exp-3",
-    title: "Tarkwa Bay Boat Tour",
+    id: "tour-lagos-sunset",
+    name: "Lagos Lagoon Sunset Cruise",
+    location: "Victoria Island, Lagos",
     vendorName: "Coastal Trails NG",
     vendorId: "vendor-coastal",
-    price: 45500,
-    currency: "NGN",
+    bookings: 142,
+    rating: 4.8,
+    reviewCount: 96,
+    status: "active",
+    publicUrl: "/tours/tour-lagos-sunset/book",
+  },
+  {
+    id: "tour-tarkwa-bay",
+    name: "Tarkwa Bay Boat Tour",
+    location: "Tarkwa Bay, Lagos",
+    vendorName: "Coastal Trails NG",
+    vendorId: "vendor-coastal",
     bookings: 56,
     rating: 4.4,
-    enabled: false,
-    image: "/hero/tours.png",
+    reviewCount: 41,
+    status: "inactive",
+    publicUrl: "/tours/tour-tarkwa-bay/book",
+  },
+  {
+    id: "tour-lekki-nature",
+    name: "Lekki Conservation Walk",
+    location: "Lekki, Lagos",
+    vendorName: "Safari Connect Tours",
+    vendorId: "vendor-safari",
+    bookings: 89,
+    rating: 4.6,
+    reviewCount: 62,
+    status: "active",
+    publicUrl: "/tours/tour-lekki-nature/book",
+  },
+  {
+    id: "tour-badagry-heritage",
+    name: "Badagry Heritage Day Trip",
+    location: "Badagry, Lagos",
+    vendorName: "Safari Connect Tours",
+    vendorId: "vendor-safari",
+    bookings: 73,
+    rating: 4.7,
+    reviewCount: 48,
+    status: "active",
+    publicUrl: "/tours/tour-badagry-heritage/book",
+  },
+  {
+    id: "tour-eko-atlantic",
+    name: "Eko Atlantic City Tour",
+    location: "Eko Atlantic, Lagos",
+    vendorName: "Alex Autos",
+    vendorId: "vendor-alex",
+    bookings: 34,
+    rating: 4.2,
+    reviewCount: 19,
+    status: "active",
+    publicUrl: "/tours/tour-eko-atlantic/book",
+  },
+  {
+    id: "tour-craft-market",
+    name: "Lekki Arts & Craft Market Experience",
+    location: "Lekki Phase 1, Lagos",
+    vendorName: "Safari Connect Tours",
+    vendorId: "vendor-safari",
+    bookings: 51,
+    rating: 4.5,
+    reviewCount: 33,
+    status: "active",
+    publicUrl: "/tours/tour-craft-market/book",
+  },
+  {
+    id: "tour-yankari-safari",
+    name: "Yankari Game Reserve Safari",
+    location: "Bauchi, Nigeria",
+    vendorName: "Safari Connect Tours",
+    vendorId: "vendor-safari",
+    bookings: 28,
+    rating: 4.9,
+    reviewCount: 22,
+    status: "active",
+    publicUrl: "/tours/tour-yankari-safari/book",
+  },
+  {
+    id: "tour-calabar-carnival",
+    name: "Calabar Carnival Preview Tour",
+    location: "Calabar, Nigeria",
+    vendorName: "Coastal Trails NG",
+    vendorId: "vendor-coastal",
+    bookings: 19,
+    rating: 4.3,
+    reviewCount: 11,
+    status: "inactive",
+    publicUrl: "/tours/tour-calabar-carnival/book",
   },
 ];

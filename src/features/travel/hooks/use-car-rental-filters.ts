@@ -1,7 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
+import { getClearedResultsHref } from "@/features/travel/booking/clear-results-url";
 import {
   CAR_RENTAL_RESULTS,
   DEFAULT_CAR_RENTAL_FILTERS,
@@ -11,6 +13,8 @@ import {
 } from "@/features/travel/data/car-rental-results";
 
 export function useCarRentalFilters() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [draftFilters, setDraftFilters] =
     useState<CarRentalFilterState>(DEFAULT_CAR_RENTAL_FILTERS);
   const [appliedFilters, setAppliedFilters] =
@@ -47,6 +51,9 @@ export function useCarRentalFilters() {
     setDraftFilters(DEFAULT_CAR_RENTAL_FILTERS);
     setAppliedFilters(DEFAULT_CAR_RENTAL_FILTERS);
     setSearchQuery("");
+    router.replace(getClearedResultsHref("car-rentals", pathname), {
+      scroll: false,
+    });
   };
 
   const hasAppliedFilters = activeFilterCount > 0;

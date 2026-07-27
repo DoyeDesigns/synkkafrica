@@ -7,6 +7,7 @@ import { useMemo, useState } from "react";
 
 import { AccountBookingReviewModal } from "@/features/account/components/account-booking-review-modal";
 import { BookingCountdownBadge } from "@/features/account/components/booking-countdown-badge";
+import { ReviewPhotoGallery } from "@/components/review-photo-gallery";
 import {
   canCancelBooking,
   getBookingListTab,
@@ -165,16 +166,10 @@ export function AccountBookingDetailContent({
                   {booking.userReview.text}
                 </p>
                 {booking.userReview.photos && booking.userReview.photos.length > 0 ? (
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {booking.userReview.photos.map((photo, index) => (
-                      <div
-                        key={`${booking.id}-review-photo-${index}`}
-                        className="relative h-16 w-16 overflow-hidden rounded-lg border border-[#E5E5E5]"
-                      >
-                        <Image src={photo} alt="" fill className="object-cover" sizes="64px" />
-                      </div>
-                    ))}
-                  </div>
+                  <ReviewPhotoGallery
+                    photos={booking.userReview.photos}
+                    className="mt-3"
+                  />
                 ) : null}
               </div>
             ) : null}

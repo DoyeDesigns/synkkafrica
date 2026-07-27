@@ -16,6 +16,8 @@ import { BookingStepper } from "@/features/travel/components/booking/booking-ste
 import { BookingSummaryCard } from "@/features/travel/components/booking/booking-summary-card";
 import { GuestDetailsForm } from "@/features/travel/components/booking/guest-details-form";
 import type { PropertyDetail } from "@/features/travel/data/property-booking";
+import { useGuestCheckoutGate } from "@/features/travel/hooks/use-guest-checkout-gate";
+import { useTranslation } from "@/hooks/use-translation";
 
 type BookingCheckoutPageProps = {
   property: PropertyDetail;
@@ -24,8 +26,11 @@ type BookingCheckoutPageProps = {
 function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const t = useTranslation();
   const currentStep: BookingStepId = "checkout";
   const bookingParams = parseBookingParams(searchParams);
+  const { identity, setIdentity, identityErrors, guardProceed } =
+    useGuestCheckoutGate();
 
   const initialRoomId = useMemo(() => {
     const fromQuery = bookingParams.room;
@@ -51,16 +56,19 @@ function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
   );
 
   const handleProceedToPay = () => {
-    const params = serializeBookingParams({
-      room: selectedRoomId,
-      checkIn,
-      checkOut,
-      guests: guestCount,
-      rooms: roomCount,
-      time: selectedTime,
-      specialRequests,
+    guardProceed(() => {
+      const params = serializeBookingParams({
+        room: selectedRoomId,
+        checkIn,
+        checkOut,
+        guests: guestCount,
+        rooms: roomCount,
+        time: selectedTime,
+        days: nights,
+        specialRequests,
+      });
+      router.push(`/accommodations/${property.id}/book/payment?${params.toString()}`);
     });
-    router.push(`/accommodations/${property.id}/book/payment?${params.toString()}`);
   };
 
   return (
@@ -77,10 +85,18 @@ function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
             onGuestCountChange={setGuestCount}
             specialRequests={specialRequests}
             onSpecialRequestsChange={setSpecialRequests}
+            identity={identity}
+            onIdentityChange={setIdentity}
+            identityErrors={identityErrors}
           />
 
           <div>
             <div className="xl:sticky xl:top-10">
+              {Object.keys(identityErrors).length > 0 ? (
+                <p className="mb-3 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-medium font-inter text-[#D85A30]">
+                  {t("booking.guest.idValidationRequired")}
+                </p>
+              ) : null}
               <BookingSummaryCard
                 property={property}
                 rooms={property.rooms}

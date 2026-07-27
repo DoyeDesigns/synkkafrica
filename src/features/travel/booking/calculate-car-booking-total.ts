@@ -1,5 +1,6 @@
 export type CarBookingPricingInput = {
   packagePrice: number;
+  days?: number;
   taxesAndFees: number;
   currency: string;
   packageName: string;
@@ -15,11 +16,13 @@ export type CarBookingPricingBreakdown = {
 
 export function calculateCarBookingTotal({
   packagePrice,
+  days = 1,
   taxesAndFees,
   currency,
   packageName,
 }: CarBookingPricingInput): CarBookingPricingBreakdown {
-  const subtotal = packagePrice;
+  const safeDays = Math.max(1, days);
+  const subtotal = packagePrice * safeDays;
   const total = subtotal + taxesAndFees;
 
   return {

@@ -83,6 +83,8 @@ const STATUS_BADGE_STYLES: Record<SupportTicketStatus, string> = {
   closed: "bg-[#F5F5F5] text-[#676565]",
 };
 
+type SupportTab = "create" | "tickets";
+
 type VendorSupportContentProps = {
   vendorName?: string | null;
   vendorEmail?: string | null;
@@ -97,6 +99,7 @@ export function VendorSupportContent({
   const [tickets, setTickets] = useState(VENDOR_SUPPORT_TICKETS);
   const [statusFilter, setStatusFilter] =
     useState<SupportTicketStatusFilter>("all");
+  const [activeTab, setActiveTab] = useState<SupportTab>("create");
   const [form, setForm] = useState<CreateSupportTicketInput>(EMPTY_TICKET_FORM);
   const [submittedTicketNumber, setSubmittedTicketNumber] = useState<
     string | null
@@ -162,7 +165,40 @@ export function VendorSupportContent({
         </p>
       </div>
 
-      <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+      <div>
+        <div
+          className="flex items-center gap-6 overflow-x-auto border-b border-[#E8E8E8]"
+          role="tablist"
+          aria-label={t("vendor.support.tabs.label")}
+        >
+          {(["create", "tickets"] as const).map((tabId) => {
+            const isActive = activeTab === tabId;
+
+            return (
+              <button
+                key={tabId}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActiveTab(tabId)}
+                className={`shrink-0 pb-3 text-sm font-bold font-satoshi transition-colors ${
+                  isActive
+                    ? "border-b-2 border-[#D85A30] text-[#2F2F2F]"
+                    : "text-[#676565] hover:text-[#2F2F2F]"
+                }`}
+              >
+                {t(
+                  tabId === "create"
+                    ? "vendor.support.createTicket"
+                    : "vendor.support.yourTickets",
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="mt-6">
+          {activeTab === "create" ? (
         <section className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm sm:p-6">
           <div className="flex items-center gap-2">
             <Plus className="h-5 w-5 text-[#D85A30]" strokeWidth={2} />
@@ -301,7 +337,7 @@ export function VendorSupportContent({
             </div>
           </form>
         </section>
-
+          ) : (
         <section className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm sm:p-6">
           <div className="flex items-start gap-2">
             <CircleHelp className="mt-0.5 h-5 w-5 shrink-0 text-[#135391]" strokeWidth={2} />
@@ -354,6 +390,8 @@ export function VendorSupportContent({
             )}
           </div>
         </section>
+          )}
+        </div>
       </div>
     </>
   );

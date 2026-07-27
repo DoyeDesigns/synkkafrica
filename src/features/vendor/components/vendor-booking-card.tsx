@@ -1,12 +1,15 @@
 "use client";
 
+import { BadgeCheck, Clock3, MessageSquare } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import {
-  formatExperienceDate,
-  formatExperienceTime,
+  formatBookingDateTime,
+  formatRespondWithin,
   type VendorBooking,
 } from "@/features/vendor/data/vendor-bookings";
+import { useFormatPrice } from "@/hooks/use-format-price";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -32,6 +35,7 @@ type VendorBookingCardProps = {
   onConfirm?: (bookingId: string) => void;
   onDecline?: (bookingId: string) => void;
   onComplete?: (bookingId: string) => void;
+  onCancel?: (bookingId: string) => void;
 };
 
 export function VendorBookingCard({
@@ -40,107 +44,159 @@ export function VendorBookingCard({
   onConfirm,
   onDecline,
   onComplete,
+  onCancel,
 }: VendorBookingCardProps) {
   const t = useTranslation();
+  const formatPrice = useFormatPrice();
 
   const canConfirmOrDecline = booking.status === "awaiting_confirmation";
   const canMarkComplete = booking.status === "confirmed";
+  const canCancel = booking.status === "confirmed";
+  const respondWithin = booking.respondBy
+    ? formatRespondWithin(booking.respondBy)
+    : null;
 
   return (
-    <article className="rounded-[5px] border border-[#EEEEEE] bg-[#F5F5F5] p-4">
-      <div className="flex flex-col gap-4 sm:flex-row">
-        <div className="relative h-20 w-full shrink-0 overflow-hidden rounded-lg sm:h-20 sm:w-20">
-          <Image
-            src={booking.listingImage}
-            alt={booking.listingTitle}
-            fill
-            className="object-cover"
-            sizes="80px"
-          />
-        </div>
-
-        <div className="min-w-0 flex-1">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-            <div className="min-w-0">
-              <h3 className="truncate text-base font-bold font-satoshi text-[#004785]">
-                {booking.listingTitle}
-              </h3>
-              <p className="mt-1 text-sm font-medium font-satoshi text-[#676565]">
-                {formatExperienceDate(booking.experienceDate)} ·{" "}
-                {formatExperienceTime(booking.experienceTime)}
-              </p>
-            </div>
-
-            <span
-              className={`shrink-0 self-start rounded-full px-3 py-1 text-xs font-semibold font-satoshi ${STATUS_BADGE_STYLES[booking.status]}`}
-            >
-              {t(STATUS_LABEL_KEYS[booking.status])}
-            </span>
+    <article className="rounded-xl border border-[#EEEEEE] bg-white p-4 shadow-sm sm:p-5">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div className="flex min-w-0 flex-1 gap-4">
+          <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg sm:h-20 sm:w-20">
+            <Image
+              src={booking.listingImage}
+              alt={booking.listingTitle}
+              fill
+              className="object-cover"
+              sizes="80px"
+            />
           </div>
 
-          <dl className="mt-4 grid gap-2 sm:grid-cols-2">
-            <div>
-              <dt className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
-                {t("booking.guest.firstName")}
-              </dt>
-              <dd className="mt-0.5 text-sm font-medium font-satoshi text-[#2F2F2F]">
-                {booking.guestFirstName}
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
-                {t("booking.table.guestCount")}
-              </dt>
-              <dd className="mt-0.5 text-sm font-medium font-satoshi text-[#2F2F2F]">
-                {booking.guestCount}
-              </dd>
-            </div>
-          </dl>
+          <div className="min-w-0 flex-1">
+            <p className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
+              {booking.bookingReference}
+            </p>
+            <h3 className="mt-1 truncate text-base font-bold font-satoshi text-[#135391] sm:text-lg">
+              {booking.listingTitle}
+            </h3>
+            <p className="mt-1 text-sm font-medium font-satoshi text-[#676565]">
+              {formatBookingDateTime(booking.experienceDate, booking.experienceTime)}
+            </p>
+          </div>
+        </div>
 
-          {booking.specialRequests ? (
-            <div className="mt-3 rounded-lg border border-[#E8E8E8] bg-white px-3 py-2.5">
-              <p className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
-                {t("vendor.bookings.specialRequests")}
-              </p>
-              <p className="mt-1 text-sm font-medium font-satoshi text-[#2F2F2F]">
-                {booking.specialRequests}
-              </p>
-            </div>
+        <div className="flex shrink-0 flex-col items-start gap-2 lg:items-end">
+          {respondWithin && booking.status === "awaiting_confirmation" ? (
+            <p className="flex items-center gap-1.5 text-xs font-semibold font-satoshi text-[#C0392B]">
+              <Clock3 className="h-3.5 w-3.5" strokeWidth={2} />
+              {t("vendor.bookings.respondWithin", { time: respondWithin })}
+            </p>
           ) : null}
 
-          {showActions && (canConfirmOrDecline || canMarkComplete) ? (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {canConfirmOrDecline ? (
-                <>
-                  <button
-                    type="button"
-                    onClick={() => onConfirm?.(booking.id)}
-                    className="rounded-lg bg-[#2E7D32] px-4 py-2 text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90"
-                  >
-                    {t("vendor.bookings.confirm")}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => onDecline?.(booking.id)}
-                    className="rounded-lg border border-[#C0392B] bg-white px-4 py-2 text-sm font-bold font-montserrat text-[#C0392B] transition-colors hover:bg-[#FDEBEB]"
-                  >
-                    {t("vendor.bookings.decline")}
-                  </button>
-                </>
-              ) : null}
-              {canMarkComplete ? (
-                <button
-                  type="button"
-                  onClick={() => onComplete?.(booking.id)}
-                  className="rounded-lg bg-[#004785] px-4 py-2 text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90"
-                >
-                  {t("vendor.bookings.markComplete")}
-                </button>
-              ) : null}
-            </div>
+          <span
+            className={`rounded-full px-3 py-1 text-xs font-semibold font-satoshi ${STATUS_BADGE_STYLES[booking.status]}`}
+          >
+            {t(STATUS_LABEL_KEYS[booking.status])}
+          </span>
+
+          <p className="text-lg font-bold font-satoshi text-[#2F2F2F]">
+            {formatPrice(booking.currency, booking.amount)}
+          </p>
+
+          {booking.paymentSecured ? (
+            <p className="flex items-center gap-1 text-xs font-semibold font-satoshi text-[#2E7D32]">
+              <BadgeCheck className="h-3.5 w-3.5" strokeWidth={2} />
+              {t("vendor.bookings.paymentSecured")}
+            </p>
           ) : null}
         </div>
       </div>
+
+      <dl className="mt-5 grid gap-4 border-t border-[#F0F0F0] pt-4 sm:grid-cols-2">
+        <div>
+          <dt className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
+            {t("booking.guest.firstName")}
+          </dt>
+          <dd className="mt-1 text-sm font-bold font-satoshi text-[#2F2F2F]">
+            {booking.guestFirstName}
+          </dd>
+        </div>
+        <div>
+          <dt className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
+            {t("booking.table.guestCount")}
+          </dt>
+          <dd className="mt-1 text-sm font-bold font-satoshi text-[#2F2F2F]">
+            {booking.guestCount}
+          </dd>
+        </div>
+      </dl>
+
+      {booking.specialRequests ? (
+        <div className="mt-4 rounded-lg bg-[#F0F6FC] px-4 py-3">
+          <p className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
+            {t("vendor.bookings.specialRequests")}
+          </p>
+          <p className="mt-1 text-sm font-medium font-satoshi text-[#2F2F2F]">
+            {booking.specialRequests}
+          </p>
+        </div>
+      ) : null}
+
+      {showActions && (canConfirmOrDecline || canMarkComplete || canCancel) ? (
+        <div className="mt-5 flex flex-wrap gap-2 border-t border-[#F0F0F0] pt-4">
+          {canConfirmOrDecline ? (
+            <>
+              <button
+                type="button"
+                onClick={() => onConfirm?.(booking.id)}
+                className="rounded-lg bg-[#2E7D32] px-4 py-2.5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90"
+              >
+                {t("vendor.bookings.confirm")}
+              </button>
+              <button
+                type="button"
+                onClick={() => onDecline?.(booking.id)}
+                className="rounded-lg border border-[#C0392B] bg-white px-4 py-2.5 text-sm font-bold font-satoshi text-[#C0392B] transition-colors hover:bg-[#FDEBEB]"
+              >
+                {t("vendor.bookings.decline")}
+              </button>
+            </>
+          ) : null}
+
+          {canMarkComplete ? (
+            <button
+              type="button"
+              onClick={() => onComplete?.(booking.id)}
+              className="rounded-lg bg-[#135391] px-4 py-2.5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90"
+            >
+              {t("vendor.bookings.markComplete")}
+            </button>
+          ) : null}
+
+          <button
+            type="button"
+            className="inline-flex items-center gap-2 rounded-lg border border-[#E5E5E5] bg-white px-4 py-2.5 text-sm font-bold font-satoshi text-[#2F2F2F] transition-colors hover:bg-[#FAFAFA]"
+          >
+            <MessageSquare className="h-4 w-4" strokeWidth={2} />
+            {t("vendor.bookings.messageGuest")}
+          </button>
+
+          {canCancel ? (
+            <button
+              type="button"
+              onClick={() => onCancel?.(booking.id)}
+              className="rounded-lg border border-[#C0392B] bg-white px-4 py-2.5 text-sm font-bold font-satoshi text-[#C0392B] transition-colors hover:bg-[#FDEBEB]"
+            >
+              {t("vendor.bookings.cancelBooking")}
+            </button>
+          ) : null}
+
+          <Link
+            href="/vendor/listings"
+            className="rounded-lg border border-[#E5E5E5] bg-white px-4 py-2.5 text-sm font-bold font-satoshi text-[#2F2F2F] transition-colors hover:bg-[#FAFAFA]"
+          >
+            {t("vendor.bookings.viewListing")}
+          </Link>
+        </div>
+      ) : null}
     </article>
   );
 }

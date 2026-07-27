@@ -19,9 +19,9 @@ export function translate(
   key: TranslationKey,
   params?: Record<string, string | number>,
 ): string {
-  let text = translations[language][key] ?? translations.en[key];
+  let text = translations[language][key] ?? translations.en[key] ?? key;
 
-  if (params) {
+  if (params && text) {
     for (const [paramKey, value] of Object.entries(params)) {
       text = text.replace(new RegExp(`\\{${paramKey}\\}`, "g"), String(value));
     }

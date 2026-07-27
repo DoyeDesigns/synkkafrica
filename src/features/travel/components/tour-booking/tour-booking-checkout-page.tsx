@@ -10,6 +10,8 @@ import { TourBookingBreadcrumbs } from "@/features/travel/components/tour-bookin
 import { TourBookingStepper } from "@/features/travel/components/tour-booking/tour-booking-stepper";
 import { TourBookingSummaryCard } from "@/features/travel/components/tour-booking/tour-booking-summary-card";
 import type { TourDetail } from "@/features/travel/data/tour-booking";
+import { useGuestCheckoutGate } from "@/features/travel/hooks/use-guest-checkout-gate";
+import { useTranslation } from "@/hooks/use-translation";
 
 type TourBookingCheckoutPageProps = {
   tour: TourDetail;
@@ -18,8 +20,11 @@ type TourBookingCheckoutPageProps = {
 function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const t = useTranslation();
   const currentStep: TourBookingStepId = "checkout";
   const bookingParams = parseBookingParams(searchParams);
+  const { identity, setIdentity, identityErrors, guardProceed } =
+    useGuestCheckoutGate();
 
   const initialOptionId = useMemo(() => {
     const fromQuery = bookingParams.option;
@@ -33,17 +38,21 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
   const [specialRequests, setSpecialRequests] = useState(
     bookingParams.specialRequests ?? "",
   );
+  const days = bookingParams.days ?? 1;
 
   const handleProceedToPay = () => {
-    const params = serializeBookingParams({
-      option: selectedOptionId,
-      date: bookingParams.date,
-      time: bookingParams.time,
-      guests: guestCount,
-      rooms: 1,
-      specialRequests,
+    guardProceed(() => {
+      const params = serializeBookingParams({
+        option: selectedOptionId,
+        date: bookingParams.date,
+        time: bookingParams.time,
+        guests: guestCount,
+        days,
+        rooms: 1,
+        specialRequests,
+      });
+      router.push(`/tours/${tour.id}/book/payment?${params.toString()}`);
     });
-    router.push(`/tours/${tour.id}/book/payment?${params.toString()}`);
   };
 
   return (
@@ -60,15 +69,24 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
             onGuestCountChange={setGuestCount}
             specialRequests={specialRequests}
             onSpecialRequestsChange={setSpecialRequests}
+            identity={identity}
+            onIdentityChange={setIdentity}
+            identityErrors={identityErrors}
           />
 
           <div>
             <div className="xl:sticky xl:top-10">
+              {Object.keys(identityErrors).length > 0 ? (
+                <p className="mb-3 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-medium font-inter text-[#D85A30]">
+                  {t("booking.guest.idValidationRequired")}
+                </p>
+              ) : null}
               <TourBookingSummaryCard
                 tour={tour}
                 options={tour.options}
                 selectedOptionId={selectedOptionId}
                 guestCount={guestCount}
+                days={days}
                 onSelectOption={setSelectedOptionId}
                 onBookNow={handleProceedToPay}
                 ctaKey="booking.cta.proceedToPay"

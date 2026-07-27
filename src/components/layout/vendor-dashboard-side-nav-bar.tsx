@@ -9,7 +9,6 @@ import {
   LayoutGrid,
   List,
   LogOut,
-  Settings,
   Wallet,
   type LucideIcon,
 } from "lucide-react";
@@ -33,7 +32,6 @@ const NAV_LABEL_KEYS: Record<VendorNavItem["id"], TranslationKey> = {
   earnings: "vendor.nav.earnings",
   notifications: "vendor.nav.notifications",
   businessProfile: "vendor.nav.businessProfile",
-  settings: "vendor.nav.settings",
   support: "vendor.nav.support",
 };
 
@@ -44,7 +42,6 @@ const NAV_ICONS: Record<VendorNavItem["icon"], LucideIcon> = {
   earnings: Wallet,
   notifications: Bell,
   businessProfile: Building2,
-  settings: Settings,
   support: CircleHelp,
 };
 

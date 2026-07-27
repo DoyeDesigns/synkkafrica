@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Car, ChevronDown, MapPin, Search } from "lucide-react";
+import { Calendar, ChevronDown, MapPin, Search } from "lucide-react";
+import Image from "next/image";
 
+import { getDefaultCheckInDate } from "@/features/travel/booking/booking-params";
 import {
   HeroField,
   HeroInputShell,
   HeroSearchButton,
 } from "@/features/travel/components/hero/hero-form-primitives";
 import { useTranslation } from "@/hooks/use-translation";
-import Image from "next/image";
 
 type CarRentalsSearchFormProps = {
   onSubmit: (fields: Record<string, string>) => void;
@@ -29,6 +30,9 @@ export function CarRentalsSearchForm({
 }: CarRentalsSearchFormProps) {
   const t = useTranslation();
   const [maxPrice, setMaxPrice] = useState(50000);
+  const [carType, setCarType] = useState("");
+  const [location, setLocation] = useState("");
+  const [pickupDate, setPickupDate] = useState(getDefaultCheckInDate());
   const sliderPercent = (maxPrice / MAX_PRICE) * 100;
 
   return (
@@ -37,10 +41,11 @@ export function CarRentalsSearchForm({
       onSubmit={(event) => {
         event.preventDefault();
         onSubmit({
-          carType: "",
-          location: "",
+          carType: carType.trim(),
+          location: location.trim(),
           serviceType: "self-drive",
           maxPrice: String(maxPrice),
+          date: pickupDate,
         });
       }}
     >
@@ -48,10 +53,22 @@ export function CarRentalsSearchForm({
         <HeroField
           icon={<Search className="h-4 w-4 shrink-0" />}
           placeholder={t("hero.carRentals.searchCarType")}
+          value={carType}
+          onChange={setCarType}
         />
         <HeroField
           icon={<MapPin className="h-4 w-4 shrink-0" />}
           placeholder={t("hero.location")}
+          value={location}
+          onChange={setLocation}
+        />
+        <HeroField
+          icon={<Calendar className="h-4 w-4 shrink-0" />}
+          placeholder={t("hero.carRentals.pickupDate")}
+          value={pickupDate}
+          onChange={setPickupDate}
+          type="date"
+          min={new Date().toISOString().split("T")[0]}
         />
       </HeroInputShell>
 
@@ -62,7 +79,6 @@ export function CarRentalsSearchForm({
             className="inline-flex min-h-12 min-w-0 flex-3 items-center justify-between gap-2 rounded-xl bg-[#0000003D] px-4 text-sm font-medium text-white"
           >
             <span className="flex items-center gap-2">
-              {/* <Car className="h-4 w-4 shrink-0" strokeWidth={1.75} /> */}
               <Image src="/wheel.png" alt="Car" width={20} height={20} />
               <span>{t("hero.carRentals.selfDrive")}</span>
             </span>

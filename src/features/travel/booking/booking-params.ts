@@ -7,6 +7,7 @@ export type BookingParams = {
   checkOut?: string;
   date?: string;
   time?: string;
+  days?: number;
   guests: number;
   rooms: number;
   specialRequests?: string;
@@ -15,6 +16,7 @@ export type BookingParams = {
 export function parseBookingParams(searchParams: URLSearchParams): BookingParams {
   const guests = Number(searchParams.get("guests"));
   const rooms = Number(searchParams.get("rooms"));
+  const days = Number(searchParams.get("days"));
 
   return {
     room: searchParams.get("room") ?? undefined,
@@ -25,6 +27,7 @@ export function parseBookingParams(searchParams: URLSearchParams): BookingParams
     checkOut: searchParams.get("checkOut") ?? undefined,
     date: searchParams.get("date") ?? undefined,
     time: searchParams.get("time") ?? undefined,
+    days: Number.isFinite(days) && days > 0 ? days : undefined,
     guests: Number.isFinite(guests) && guests > 0 ? guests : 2,
     rooms: Number.isFinite(rooms) && rooms > 0 ? rooms : 1,
     specialRequests: searchParams.get("specialRequests") ?? undefined,
@@ -44,6 +47,7 @@ export function serializeBookingParams(
   if (params.checkOut) searchParams.set("checkOut", params.checkOut);
   if (params.date) searchParams.set("date", params.date);
   if (params.time) searchParams.set("time", params.time);
+  if (params.days) searchParams.set("days", String(params.days));
   if (params.guests) searchParams.set("guests", String(params.guests));
   if (params.rooms) searchParams.set("rooms", String(params.rooms));
   if (params.specialRequests) {
@@ -80,4 +84,18 @@ export function calculateNights(checkIn: string, checkOut: string) {
   const nights = Math.ceil(diff / (1000 * 60 * 60 * 24));
 
   return Number.isFinite(nights) && nights > 0 ? nights : 1;
+}
+
+export function addDaysToDate(dateKey: string, days: number) {
+  const date = new Date(dateKey);
+  date.setDate(date.getDate() + days);
+  return date.toISOString().split("T")[0] ?? "";
+}
+
+export function getCheckOutFromNights(checkIn: string, nights: number) {
+  return addDaysToDate(checkIn, Math.max(1, nights));
+}
+
+export function getEndDateFromDays(startDate: string, days: number) {
+  return addDaysToDate(startDate, Math.max(0, days - 1));
 }

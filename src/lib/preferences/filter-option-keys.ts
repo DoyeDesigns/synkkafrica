@@ -7,6 +7,8 @@ export const FILTER_OPTION_KEY_MAP: Record<string, TranslationKey> = {
   Resorts: "filters.propertyType.resorts",
   "B&Bs": "filters.propertyType.bbs",
   "Guest House": "filters.propertyType.guestHouse",
+  "Beach House": "filters.propertyType.beachHouse",
+  Motels: "filters.propertyType.motels",
   Studio: "filters.bedroom.studio",
   "1 bedroom": "filters.bedroom.one",
   "2 bedrooms": "filters.bedroom.two",

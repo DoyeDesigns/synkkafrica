@@ -16,6 +16,7 @@ export type VendorBookingDateRange =
 
 export type VendorBooking = {
   id: string;
+  bookingReference: string;
   listingId: string;
   listingTitle: string;
   listingImage: string;
@@ -25,6 +26,15 @@ export type VendorBooking = {
   guestFirstName: string;
   specialRequests?: string;
   status: VendorBookingStatus;
+  amount: number;
+  currency: string;
+  paymentSecured: boolean;
+  respondBy?: string;
+};
+
+export type VendorBookingListingOption = {
+  id: string;
+  title: string;
 };
 
 export const VENDOR_BOOKING_DATE_RANGE_OPTIONS: VendorBookingDateRange[] = [
@@ -38,18 +48,24 @@ export const VENDOR_BOOKING_DATE_RANGE_OPTIONS: VendorBookingDateRange[] = [
 export const VENDOR_BOOKINGS: VendorBooking[] = [
   {
     id: "vb-1",
+    bookingReference: "BKG-5521",
     listingId: "lagos-lagoon-sunset-cruise",
     listingTitle: "Lagos Lagoon Sunset Cruise",
     listingImage: "/destinations/lagos.png",
-    experienceDate: "2026-07-25",
+    experienceDate: "2026-07-28",
     experienceTime: "17:30",
     guestCount: 4,
     guestFirstName: "Amara",
     specialRequests: "One guest uses a wheelchair — please confirm boat access.",
     status: "awaiting_confirmation",
+    amount: 65_000,
+    currency: "NGN",
+    paymentSecured: true,
+    respondBy: "2026-07-27T04:20:00.000Z",
   },
   {
     id: "vb-2",
+    bookingReference: "BKG-5514",
     listingId: "lekki-garden-suites",
     listingTitle: "Lekki Garden Suites",
     listingImage: "/hero/accommodations.png",
@@ -58,9 +74,29 @@ export const VENDOR_BOOKINGS: VendorBooking[] = [
     guestCount: 2,
     guestFirstName: "Chidi",
     status: "awaiting_confirmation",
+    amount: 120_000,
+    currency: "NGN",
+    paymentSecured: true,
+    respondBy: "2026-07-27T10:00:00.000Z",
   },
   {
     id: "vb-3",
+    bookingReference: "BKG-5498",
+    listingId: "toyota-camry-2021",
+    listingTitle: "Toyota Camry 2021",
+    listingImage: "/hero/car-rentals.png",
+    experienceDate: "2026-07-28",
+    experienceTime: "09:00",
+    guestCount: 1,
+    guestFirstName: "Emeka",
+    status: "confirmed",
+    amount: 48_000,
+    currency: "NGN",
+    paymentSecured: true,
+  },
+  {
+    id: "vb-4",
+    bookingReference: "BKG-5482",
     listingId: "lagos-lagoon-sunset-cruise",
     listingTitle: "Lagos Lagoon Sunset Cruise",
     listingImage: "/destinations/lagos.png",
@@ -70,20 +106,58 @@ export const VENDOR_BOOKINGS: VendorBooking[] = [
     guestFirstName: "Fatima",
     specialRequests: "Vegetarian refreshments preferred.",
     status: "confirmed",
+    amount: 95_000,
+    currency: "NGN",
+    paymentSecured: true,
   },
   {
-    id: "vb-4",
-    listingId: "toyota-camry-2021",
-    listingTitle: "Toyota Camry 2021",
-    listingImage: "/hero/car-rentals.png",
-    experienceDate: "2026-07-28",
-    experienceTime: "09:00",
-    guestCount: 1,
-    guestFirstName: "Emeka",
+    id: "vb-9",
+    bookingReference: "BKG-5471",
+    listingId: "lagos-food-experience",
+    listingTitle: "Lagos Food Experience",
+    listingImage: "/promo/experience.png",
+    experienceDate: "2026-08-05",
+    experienceTime: "12:00",
+    guestCount: 3,
+    guestFirstName: "Ada",
     status: "confirmed",
+    amount: 54_000,
+    currency: "NGN",
+    paymentSecured: true,
+  },
+  {
+    id: "vb-10",
+    bookingReference: "BKG-5463",
+    listingId: "tarkwa-bay-tour",
+    listingTitle: "Tarkwa Bay Boat Tour",
+    listingImage: "/hero/tours.png",
+    experienceDate: "2026-08-08",
+    experienceTime: "10:00",
+    guestCount: 5,
+    guestFirstName: "James",
+    status: "confirmed",
+    amount: 72_000,
+    currency: "NGN",
+    paymentSecured: true,
+  },
+  {
+    id: "vb-11",
+    bookingReference: "BKG-5455",
+    listingId: "victoria-island-loft",
+    listingTitle: "Victoria Island Loft",
+    listingImage: "/hero/accommodations.png",
+    experienceDate: "2026-08-12",
+    experienceTime: "15:00",
+    guestCount: 2,
+    guestFirstName: "Blessing",
+    status: "confirmed",
+    amount: 135_000,
+    currency: "NGN",
+    paymentSecured: true,
   },
   {
     id: "vb-5",
+    bookingReference: "BKG-5410",
     listingId: "lagos-lagoon-sunset-cruise",
     listingTitle: "Lagos Lagoon Sunset Cruise",
     listingImage: "/destinations/lagos.png",
@@ -92,9 +166,13 @@ export const VENDOR_BOOKINGS: VendorBooking[] = [
     guestCount: 3,
     guestFirstName: "Ngozi",
     status: "completed",
+    amount: 48_000,
+    currency: "NGN",
+    paymentSecured: true,
   },
   {
     id: "vb-6",
+    bookingReference: "BKG-5388",
     listingId: "lekki-garden-suites",
     listingTitle: "Lekki Garden Suites",
     listingImage: "/hero/accommodations.png",
@@ -104,9 +182,13 @@ export const VENDOR_BOOKINGS: VendorBooking[] = [
     guestFirstName: "Tunde",
     specialRequests: "Late check-in around 10 PM.",
     status: "completed",
+    amount: 110_000,
+    currency: "NGN",
+    paymentSecured: true,
   },
   {
     id: "vb-7",
+    bookingReference: "BKG-5362",
     listingId: "lagos-lagoon-sunset-cruise",
     listingTitle: "Lagos Lagoon Sunset Cruise",
     listingImage: "/destinations/lagos.png",
@@ -115,9 +197,13 @@ export const VENDOR_BOOKINGS: VendorBooking[] = [
     guestCount: 2,
     guestFirstName: "Zainab",
     status: "cancelled",
+    amount: 32_000,
+    currency: "NGN",
+    paymentSecured: false,
   },
   {
     id: "vb-8",
+    bookingReference: "BKG-5340",
     listingId: "toyota-camry-2021",
     listingTitle: "Toyota Camry 2021",
     listingImage: "/hero/car-rentals.png",
@@ -126,6 +212,9 @@ export const VENDOR_BOOKINGS: VendorBooking[] = [
     guestCount: 1,
     guestFirstName: "Kofi",
     status: "declined",
+    amount: 48_000,
+    currency: "NGN",
+    paymentSecured: true,
   },
 ];
 
@@ -133,6 +222,20 @@ function startOfDay(date: Date) {
   const normalized = new Date(date);
   normalized.setHours(0, 0, 0, 0);
   return normalized;
+}
+
+export function getVendorBookingListingOptions(
+  bookings: VendorBooking[],
+): VendorBookingListingOption[] {
+  const listings = new Map<string, string>();
+
+  for (const booking of bookings) {
+    listings.set(booking.listingId, booking.listingTitle);
+  }
+
+  return Array.from(listings.entries())
+    .map(([id, title]) => ({ id, title }))
+    .sort((left, right) => left.title.localeCompare(right.title));
 }
 
 export function getVendorBookingTab(
@@ -207,4 +310,78 @@ export function formatExperienceTime(time: string) {
     minute: "2-digit",
     hour12: true,
   }).format(date);
+}
+
+export function formatBookingDateTime(date: string, time: string) {
+  return `${formatExperienceDate(date)} · ${formatExperienceTime(time)}`;
+}
+
+export function formatRespondWithin(
+  respondBy: string,
+  referenceDate = new Date(),
+) {
+  const remainingMs = new Date(respondBy).getTime() - referenceDate.getTime();
+
+  if (remainingMs <= 0) {
+    return null;
+  }
+
+  const totalMinutes = Math.floor(remainingMs / 60_000);
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  if (hours > 0) {
+    return `${hours}h ${minutes}m`;
+  }
+
+  return `${minutes}m`;
+}
+
+export function computeVendorBookingStats(
+  bookings: VendorBooking[],
+  referenceDate = new Date(),
+) {
+  const awaitingConfirmation = bookings.filter(
+    (booking) =>
+      getVendorBookingTab(booking, referenceDate) === "upcoming" &&
+      booking.status === "awaiting_confirmation",
+  ).length;
+
+  const upcomingConfirmed = bookings.filter(
+    (booking) =>
+      getVendorBookingTab(booking, referenceDate) === "upcoming" &&
+      booking.status === "confirmed",
+  ).length;
+
+  const monthStart = startOfDay(referenceDate);
+  monthStart.setDate(1);
+
+  const earningsThisMonth = bookings
+    .filter((booking) => {
+      const experienceDay = startOfDay(new Date(booking.experienceDate));
+      return (
+        experienceDay >= monthStart &&
+        (booking.status === "confirmed" ||
+          booking.status === "completed" ||
+          booking.status === "awaiting_confirmation")
+      );
+    })
+    .reduce((total, booking) => total + booking.amount, 0);
+
+  const respondedBookings = bookings.filter((booking) =>
+    ["confirmed", "declined", "completed", "cancelled"].includes(booking.status),
+  ).length;
+
+  const responseRate =
+    bookings.length === 0
+      ? 0
+      : Math.round((respondedBookings / bookings.length) * 100);
+
+  return {
+    awaitingConfirmation,
+    upcomingConfirmed,
+    earningsThisMonth,
+    earningsCurrency: bookings[0]?.currency ?? "NGN",
+    responseRate,
+  };
 }

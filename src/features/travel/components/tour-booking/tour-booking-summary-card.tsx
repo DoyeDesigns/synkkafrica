@@ -12,6 +12,7 @@ type TourBookingSummaryCardProps = {
   options: TourExperienceOption[];
   selectedOptionId: string;
   guestCount?: number;
+  days?: number;
   onSelectOption: (optionId: string) => void;
   onBookNow: () => void;
   ctaKey?: TranslationKey;
@@ -22,6 +23,7 @@ export function TourBookingSummaryCard({
   options,
   selectedOptionId,
   guestCount = 1,
+  days = 1,
   onSelectOption,
   onBookNow,
   ctaKey = "common.bookNow",
@@ -37,10 +39,13 @@ export function TourBookingSummaryCard({
   const pricing = calculateTourBookingTotal({
     optionPrice: selectedOption.price,
     guestCount,
+    days,
     taxesAndFees: tour.taxesAndFees,
     currency: tour.currency,
     optionName: selectedOption.name,
   });
+
+  const dayLabel = days > 1 ? t("booking.summary.days") : t("booking.summary.day");
 
   const isProceedCta = ctaKey === "booking.cta.proceedToPay";
 
@@ -94,7 +99,7 @@ export function TourBookingSummaryCard({
           <div className="flex items-start justify-between gap-3">
             <span className="text-foreground/80">
               {labelContent(selectedOption.name)} x {guestCount}{" "}
-              {guestCount > 1 ? t("booking.summary.guests") : t("booking.dates.guests").toLowerCase()} x{" "}
+              {guestCount > 1 ? t("booking.summary.guests") : t("booking.dates.guests").toLowerCase()} x {days} {dayLabel} x{" "}
               <span className="font-bold text-foreground">
                 {formatPrice(tour.currency, selectedOption.price)}
               </span>

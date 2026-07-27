@@ -58,6 +58,41 @@
   }
 }
 
+@keyframes infinite-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.infinite-marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.infinite-marquee-track {
+  animation: infinite-marquee-scroll var(--marquee-duration, 24s) linear infinite;
+  will-change: transform;
+}
+
+.infinite-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .infinite-marquee-wrapper {
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .infinite-marquee-track {
+    animation: none;
+  }
+}
+
 body {
   color: #2a2a2a;
 }

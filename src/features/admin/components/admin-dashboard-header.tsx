@@ -10,15 +10,26 @@ import type { TranslationKey } from "@/lib/preferences/translations";
 const PAGE_TITLE_KEYS: Record<string, TranslationKey> = {
   "/admin": "admin.nav.dashboard",
   "/admin/experiences": "admin.nav.experiences",
+  "/admin/cars": "admin.nav.cars",
+  "/admin/accommodations": "admin.nav.accommodations",
   "/admin/vendors": "admin.nav.vendors",
   "/admin/bookings": "admin.nav.bookings",
   "/admin/payouts": "admin.nav.payouts",
   "/admin/reviews": "admin.nav.reviews",
-  "/admin/reports": "admin.nav.reports",
+  "/admin/users": "admin.nav.users",
+  "/admin/verifications": "admin.nav.verifications",
   "/admin/support": "admin.nav.support",
 };
 
 function getPageTitleKey(pathname: string): TranslationKey {
+  if (pathname.startsWith("/admin/vendors/") && pathname !== "/admin/vendors") {
+    return "admin.vendors.details";
+  }
+
+  if (pathname.startsWith("/admin/users/") && pathname !== "/admin/users") {
+    return "admin.users.details";
+  }
+
   return PAGE_TITLE_KEYS[pathname] ?? "admin.nav.dashboard";
 }
 

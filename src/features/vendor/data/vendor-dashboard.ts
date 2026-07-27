@@ -1,3 +1,5 @@
+export type VendorDashboardPeriod = "day" | "week" | "month" | "sixMonths" | "year";
+
 export type VendorListingStatus = "live" | "pending";
 
 export type VendorDashboardListing = {
@@ -16,16 +18,30 @@ export type VendorDashboardListing = {
 
 export type VendorDashboardStats = {
   liveListings: number;
-  newBookings: number;
-  earnings: number;
+  newBookings: Record<VendorDashboardPeriod, number>;
+  earnings: Record<VendorDashboardPeriod, number>;
   earningsCurrency: string;
   pendingApproval: number;
 };
 
+export const VENDOR_DASHBOARD_PERIOD_OPTIONS: VendorDashboardPeriod[] = [
+  "day",
+  "week",
+  "month",
+  "sixMonths",
+  "year",
+];
+
 export const VENDOR_DASHBOARD_STATS: VendorDashboardStats = {
   liveListings: 3,
-  newBookings: 2,
-  earnings: 842_000,
+  newBookings: { day: 0, week: 1, month: 2, sixMonths: 11, year: 18 },
+  earnings: {
+    day: 0,
+    week: 210_000,
+    month: 842_000,
+    sixMonths: 4_200_000,
+    year: 9_450_000,
+  },
   earningsCurrency: "NGN",
   pendingApproval: 1,
 };

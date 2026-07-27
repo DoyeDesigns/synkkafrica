@@ -3,6 +3,11 @@
 import { CalendarDays, ChevronDown, Minus, Plus, User } from "lucide-react";
 import { useState } from "react";
 
+import type {
+  GuestIdentity,
+  GuestIdentityErrors,
+  GuestIdentityField,
+} from "@/features/travel/booking/guest-identity";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -14,6 +19,12 @@ const TITLE_KEYS: { value: string; key: TranslationKey }[] = [
   { value: "Dr", key: "booking.guest.title.dr" },
 ];
 
+const ID_TYPE_KEYS: { value: GuestIdentity["idType"]; key: TranslationKey }[] = [
+  { value: "passport", key: "booking.guest.idType.passport" },
+  { value: "national-id", key: "booking.guest.idType.nationalId" },
+  { value: "drivers-license", key: "booking.guest.idType.driversLicense" },
+];
+
 const NATIONALITIES = ["Nigeria", "Ghana", "Kenya", "South Africa", "Morocco"];
 
 function FormField({
@@ -21,12 +32,16 @@ function FormField({
   children,
   className = "",
   required = false,
+  error,
 }: {
   label: string;
   children: React.ReactNode;
   className?: string;
   required?: boolean;
+  error?: string;
 }) {
+  const t = useTranslation();
+
   return (
     <label className={`flex flex-col gap-1.5 ${className}`}>
       <span className="text-xs font-bold font-satoshi text-foreground">
@@ -34,6 +49,11 @@ function FormField({
         {required ? <span className="text-[#004785]"> *</span> : null}
       </span>
       {children}
+      {error ? (
+        <span className="text-xs font-medium font-inter text-[#D85A30]">
+          {t(error as TranslationKey)}
+        </span>
+      ) : null}
     </label>
   );
 }
@@ -48,6 +68,9 @@ type GuestDetailsFormProps = {
   onGuestCountChange: (count: number) => void;
   specialRequests: string;
   onSpecialRequestsChange: (value: string) => void;
+  identity: GuestIdentity;
+  onIdentityChange: (identity: GuestIdentity) => void;
+  identityErrors?: GuestIdentityErrors;
   maxGuests?: number;
 };
 
@@ -56,10 +79,22 @@ export function GuestDetailsForm({
   onGuestCountChange,
   specialRequests,
   onSpecialRequestsChange,
+  identity,
+  onIdentityChange,
+  identityErrors = {},
   maxGuests = 12,
 }: GuestDetailsFormProps) {
   const t = useTranslation();
   const [adultEnabled, setAdultEnabled] = useState(true);
+
+  const updateIdentity = (patch: Partial<GuestIdentity>) => {
+    onIdentityChange({ ...identity, ...patch });
+  };
+
+  const fieldError = (field: GuestIdentityField) =>
+    identityErrors[field]
+      ? t(identityErrors[field] as TranslationKey)
+      : undefined;
 
   return (
     <section className="rounded-[10px] bg-white p-5 sm:p-6">
@@ -116,7 +151,7 @@ export function GuestDetailsForm({
       </div>
 
       <div className="mt-4 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-normal font-inter text-foreground">
-        {t("booking.guest.passportHint")}
+        {t("booking.guest.idVerificationHint")}
       </div>
 
       <div className="mt-5 overflow-hidden rounded-md border border-[#E5E5E5]">
@@ -165,10 +200,7 @@ export function GuestDetailsForm({
             <div className="grid gap-4 lg:grid-cols-3">
               <FormField label={t("booking.guest.dateOfBirth")} required>
                 <div className="relative">
-                  <input
-                    type="date"
-                    className={`${inputClassName} pr-10`}
-                  />
+                  <input type="date" className={`${inputClassName} pr-10`} />
                   <span className="pointer-events-none absolute right-0 top-0 flex h-full items-center border-l border-[#E5E5E5] px-3 text-[#676565]">
                     <CalendarDays className="h-4 w-4" />
                   </span>
@@ -219,6 +251,96 @@ export function GuestDetailsForm({
                   </label>
                 </div>
               </div>
+            </div>
+
+            <div className="rounded-md border border-[#E5E5E5] bg-[#F8F8F8] p-4">
+              <h3 className="text-sm font-semibold font-inter text-foreground">
+                {t("booking.guest.idVerificationTitle")}
+              </h3>
+              <p className="mt-1 text-xs font-normal font-inter text-foreground/70">
+                {t("booking.guest.idVerificationSubtitle")}
+              </p>
+
+              <div className="mt-4 grid gap-4 lg:grid-cols-3">
+                <FormField
+                  label={t("booking.guest.idType")}
+                  required
+                  error={fieldError("idType")}
+                >
+                  <div className="relative">
+                    <select
+                      className={selectClassName}
+                      value={identity.idType}
+                      onChange={(event) =>
+                        updateIdentity({
+                          idType: event.target.value as GuestIdentity["idType"],
+                        })
+                      }
+                    >
+                      <option value="" disabled>
+                        {t("common.select")}
+                      </option>
+                      {ID_TYPE_KEYS.map((idType) => (
+                        <option key={idType.value} value={idType.value}>
+                          {t(idType.key)}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
+                  </div>
+                </FormField>
+
+                <FormField
+                  label={t("booking.guest.idNumber")}
+                  required
+                  error={fieldError("idNumber")}
+                >
+                  <input
+                    type="text"
+                    className={inputClassName}
+                    value={identity.idNumber}
+                    onChange={(event) =>
+                      updateIdentity({ idNumber: event.target.value })
+                    }
+                    placeholder={t("booking.guest.idNumberPlaceholder")}
+                  />
+                </FormField>
+
+                <FormField
+                  label={t("booking.guest.idExpiry")}
+                  required
+                  error={fieldError("expiryDate")}
+                >
+                  <input
+                    type="date"
+                    className={inputClassName}
+                    value={identity.expiryDate}
+                    min={new Date().toISOString().split("T")[0]}
+                    onChange={(event) =>
+                      updateIdentity({ expiryDate: event.target.value })
+                    }
+                  />
+                </FormField>
+              </div>
+
+              <label className="mt-4 flex cursor-pointer items-start gap-2 rounded-md border border-[#E5E5E5] bg-white px-3 py-3">
+                <input
+                  type="checkbox"
+                  checked={identity.confirmed}
+                  onChange={(event) =>
+                    updateIdentity({ confirmed: event.target.checked })
+                  }
+                  className="mt-0.5 h-4 w-4 accent-[#004785]"
+                />
+                <span className="text-sm font-medium font-inter text-foreground">
+                  {t("booking.guest.confirmId")}
+                </span>
+              </label>
+              {identityErrors.confirmed ? (
+                <p className="mt-2 text-xs font-medium font-inter text-[#D85A30]">
+                  {t(identityErrors.confirmed as TranslationKey)}
+                </p>
+              ) : null}
             </div>
 
             <div className="grid gap-4 lg:grid-cols-2">

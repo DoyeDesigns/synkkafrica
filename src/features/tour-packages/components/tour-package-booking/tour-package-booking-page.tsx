@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import type { TourPackageBookingStepId } from "@/features/tour-packages/booking/tour-package-constants";
+import { serializeBookingParams } from "@/features/travel/booking/booking-params";
 import { TourPackageBookingBreadcrumbs } from "@/features/tour-packages/components/tour-package-booking/tour-package-booking-breadcrumbs";
 import { TourPackageBookingCheckoutPage } from "@/features/tour-packages/components/tour-package-booking/tour-package-booking-checkout-page";
 import { TourPackageBookingConfirmationPage } from "@/features/tour-packages/components/tour-package-booking/tour-package-booking-confirmation-page";
@@ -15,6 +16,7 @@ import {
   TourPackageGallery,
 } from "@/features/tour-packages/components/tour-package-booking/tour-package-gallery";
 import { TierSelectionTable } from "@/features/tour-packages/components/tour-package-booking/tier-selection-table";
+import { TourPackageDatesSection } from "@/features/tour-packages/components/tour-package-booking/tour-package-dates-section";
 import type { TourPackageDetail } from "@/features/tour-packages/data/tour-package-booking";
 import { NoReviewsCard } from "@/features/travel/components/car-booking/no-reviews-card";
 
@@ -30,9 +32,15 @@ export function TourPackageBookingPage({
   const router = useRouter();
   const defaultTierId = tourPackage.tiers[0]?.id ?? "";
   const [selectedTierId, setSelectedTierId] = useState(defaultTierId);
+  const [days, setDays] = useState(tourPackage.days);
 
   const handleBookNow = () => {
-    const params = new URLSearchParams({ tier: selectedTierId });
+    const params = serializeBookingParams({
+      tier: selectedTierId,
+      days,
+      guests: 1,
+      rooms: 1,
+    });
     router.push(
       `/tour-packages/${tourPackage.id}/book/checkout?${params.toString()}`,
     );
@@ -65,6 +73,12 @@ export function TourPackageBookingPage({
           <div className="space-y-8">
             <TourPackageGallery tourPackage={tourPackage} />
             <AboutThisTourPackage tourPackage={tourPackage} />
+            <TourPackageDatesSection
+              days={days}
+              onDaysChange={setDays}
+              minDays={tourPackage.days}
+              maxDays={tourPackage.days + 14}
+            />
             <TierSelectionTable
               tiers={tourPackage.tiers}
               selectedTierId={selectedTierId}
@@ -78,6 +92,7 @@ export function TourPackageBookingPage({
               tourPackage={tourPackage}
               tiers={tourPackage.tiers}
               selectedTierId={selectedTierId}
+              days={days}
               onSelectTier={setSelectedTierId}
               onBookNow={handleBookNow}
             />

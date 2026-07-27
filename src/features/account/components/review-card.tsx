@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Star, Trash2 } from "lucide-react";
 
+import { ReviewPhotoGallery } from "@/components/review-photo-gallery";
 import { formatReviewLabels, type UserAccountReview } from "@/features/account/data/account-reviews";
 import { useTranslation } from "@/hooks/use-translation";
 
@@ -61,16 +61,7 @@ export function ReviewCard({ review, onDelete }: ReviewCardProps) {
       </blockquote>
 
       {review.photos.length > 0 ? (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {review.photos.map((photo, index) => (
-            <div
-              key={`${review.id}-photo-${index}`}
-              className="relative h-16 w-16 overflow-hidden rounded-lg border border-[#E5E5E5]"
-            >
-              <Image src={photo} alt="" fill className="object-cover" sizes="64px" />
-            </div>
-          ))}
-        </div>
+        <ReviewPhotoGallery photos={review.photos} className="mt-4" />
       ) : null}
 
       <div className="mt-5 flex items-center justify-between gap-3 border-t border-[#F0F0F0] pt-4">

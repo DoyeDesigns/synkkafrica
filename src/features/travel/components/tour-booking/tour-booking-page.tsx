@@ -36,6 +36,7 @@ export function TourBookingPage({
   const [selectedDate, setSelectedDate] = useState(getDefaultCheckInDate());
   const [selectedTime, setSelectedTime] = useState("09:00");
   const [guests, setGuests] = useState(2);
+  const [days, setDays] = useState(1);
 
   const handleBookNow = () => {
     const params = serializeBookingParams({
@@ -43,6 +44,7 @@ export function TourBookingPage({
       date: selectedDate,
       time: selectedTime,
       guests,
+      days,
       rooms: 1,
     });
     router.push(`/tours/${tour.id}/book/checkout?${params.toString()}`);
@@ -77,9 +79,11 @@ export function TourBookingPage({
               selectedDate={selectedDate}
               selectedTime={selectedTime}
               guests={guests}
+              days={days}
               onDateChange={setSelectedDate}
               onTimeChange={setSelectedTime}
               onGuestsChange={setGuests}
+              onDaysChange={setDays}
             />
             <ExperienceSelectionTable
               options={tour.options}
@@ -96,6 +100,7 @@ export function TourBookingPage({
               options={tour.options}
               selectedOptionId={selectedOptionId}
               guestCount={guests}
+              days={days}
               onSelectOption={setSelectedOptionId}
               onBookNow={handleBookNow}
             />

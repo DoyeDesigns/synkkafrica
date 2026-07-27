@@ -4,6 +4,8 @@ import { Suspense } from "react";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
+import type { VendorVerificationStatus } from "@/features/vendor/constants";
+import { VendorVerificationBadge } from "@/features/vendor/components/vendor-verification-badge";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -14,7 +16,6 @@ const PAGE_TITLE_KEYS: Record<string, TranslationKey> = {
   "/vendor/earnings": "vendor.nav.earnings",
   "/vendor/notifications": "vendor.nav.notifications",
   "/vendor/business-profile": "vendor.nav.businessProfile",
-  "/vendor/settings": "vendor.nav.settings",
   "/vendor/support": "vendor.nav.support",
 };
 
@@ -38,12 +39,14 @@ function getInitials(name: string) {
 
 type VendorDashboardHeaderProps = {
   vendorName?: string | null;
+  verificationStatus?: VendorVerificationStatus;
   isMobileOpen?: boolean;
   onMenuToggle?: () => void;
 };
 
 function VendorDashboardHeaderContent({
   vendorName = "Alex Autos",
+  verificationStatus = "verified",
   isMobileOpen = false,
   onMenuToggle,
 }: VendorDashboardHeaderProps) {
@@ -89,9 +92,7 @@ function VendorDashboardHeaderContent({
           <p className="font-black font-satoshi text-[#135391]">
             {displayName}
           </p>
-          <p className="text-sm font-medium font-satoshi text-[#676565]">
-            {t("vendor.header.verifiedVendor")}
-          </p>
+          <VendorVerificationBadge status={verificationStatus} />
         </div>
         <div
           className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#135391] text-sm font-semibold font-satoshi text-white"
@@ -106,6 +107,7 @@ function VendorDashboardHeaderContent({
 
 function VendorDashboardHeaderFallback({
   vendorName = "Alex Autos",
+  verificationStatus = "verified",
 }: VendorDashboardHeaderProps) {
   const t = useTranslation();
   const displayName = vendorName?.trim() || "Alex Autos";
@@ -133,9 +135,7 @@ function VendorDashboardHeaderFallback({
           <p className="font-black font-satoshi text-[#135391]">
             {displayName}
           </p>
-          <p className="text-sm font-medium font-satoshi text-[#606060]">
-            {t("vendor.header.verifiedVendor")}
-          </p>
+          <VendorVerificationBadge status={verificationStatus} />
         </div>
         <div
           className="flex size-9.5 shrink-0 items-center justify-center rounded-full bg-[#004785] font-bold font-satoshi text-white"

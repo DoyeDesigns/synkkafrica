@@ -4,11 +4,14 @@ import { Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import type { CarBookingStepId } from "@/features/travel/booking/car-constants";
+import { parseBookingParams, serializeBookingParams } from "@/features/travel/booking/booking-params";
 import { CarBookingBreadcrumbs } from "@/features/travel/components/car-booking/car-booking-breadcrumbs";
 import { CarBookingStepper } from "@/features/travel/components/car-booking/car-booking-stepper";
 import { CarBookingSummaryCard } from "@/features/travel/components/car-booking/car-booking-summary-card";
 import { GuestDetailsForm } from "@/features/travel/components/booking/guest-details-form";
 import type { CarDetail } from "@/features/travel/data/car-booking";
+import { useGuestCheckoutGate } from "@/features/travel/hooks/use-guest-checkout-gate";
+import { useTranslation } from "@/hooks/use-translation";
 
 type CarBookingCheckoutPageProps = {
   car: CarDetail;
@@ -17,30 +20,39 @@ type CarBookingCheckoutPageProps = {
 function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const t = useTranslation();
   const currentStep: CarBookingStepId = "checkout";
+  const bookingParams = parseBookingParams(searchParams);
+  const { identity, setIdentity, identityErrors, guardProceed } =
+    useGuestCheckoutGate();
 
   const initialPackageId = useMemo(() => {
-    const fromQuery = searchParams.get("package");
+    const fromQuery = bookingParams.package;
     const isValid = car.packages.some((pkg) => pkg.id === fromQuery);
 
     return isValid && fromQuery ? fromQuery : (car.packages[0]?.id ?? "");
-  }, [car.packages, searchParams]);
+  }, [bookingParams.package, car.packages]);
 
   const [selectedPackageId, setSelectedPackageId] = useState(initialPackageId);
-  const [guestCount, setGuestCount] = useState(2);
-  const [specialRequests, setSpecialRequests] = useState("");
+  const [guestCount, setGuestCount] = useState(bookingParams.guests);
+  const [specialRequests, setSpecialRequests] = useState(
+    bookingParams.specialRequests ?? "",
+  );
+  const days = bookingParams.days ?? 1;
 
   const handleProceedToPay = () => {
-    const params = new URLSearchParams({
-      package: selectedPackageId,
-      guests: String(guestCount),
+    guardProceed(() => {
+      const params = serializeBookingParams({
+        package: selectedPackageId,
+        date: bookingParams.date,
+        time: bookingParams.time,
+        days,
+        guests: guestCount,
+        rooms: 1,
+        specialRequests,
+      });
+      router.push(`/car-rentals/${car.id}/book/payment?${params.toString()}`);
     });
-
-    if (specialRequests) {
-      params.set("specialRequests", specialRequests);
-    }
-
-    router.push(`/car-rentals/${car.id}/book/payment?${params.toString()}`);
   };
 
   return (
@@ -57,14 +69,23 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
             onGuestCountChange={setGuestCount}
             specialRequests={specialRequests}
             onSpecialRequestsChange={setSpecialRequests}
+            identity={identity}
+            onIdentityChange={setIdentity}
+            identityErrors={identityErrors}
           />
 
           <div>
             <div className="xl:sticky xl:top-10">
+              {Object.keys(identityErrors).length > 0 ? (
+                <p className="mb-3 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-medium font-inter text-[#D85A30]">
+                  {t("booking.guest.idValidationRequired")}
+                </p>
+              ) : null}
               <CarBookingSummaryCard
                 car={car}
                 packages={car.packages}
                 selectedPackageId={selectedPackageId}
+                days={days}
                 onSelectPackage={setSelectedPackageId}
                 onBookNow={handleProceedToPay}
                 ctaKey="booking.cta.proceedToPay"

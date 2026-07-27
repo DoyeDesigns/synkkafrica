@@ -27,7 +27,7 @@ export const ACCOMMODATION_DEALS: AccommodationDeal[] = [
     rating: 4.2,
     reviewCount: 304,
     originalPrice: 156500,
-    currentPrice: 156500,
+    currentPrice: 125200,
     currency: "NGN",
     image: "/hero/accommodations.png",
   },
@@ -38,7 +38,7 @@ export const ACCOMMODATION_DEALS: AccommodationDeal[] = [
     rating: 4.2,
     reviewCount: 304,
     originalPrice: 156500,
-    currentPrice: 156500,
+    currentPrice: 125200,
     currency: "NGN",
     image: "/hero/accommodations.png",
   },
@@ -49,7 +49,7 @@ export const ACCOMMODATION_DEALS: AccommodationDeal[] = [
     rating: 4.5,
     reviewCount: 128,
     originalPrice: 98000,
-    currentPrice: 84500,
+    currentPrice: 78400,
     currency: "NGN",
     image: "/hero/accommodations.png",
   },
@@ -99,6 +99,26 @@ export const PROPERTY_TYPES: PropertyType[] = [
     image: "/property-types/la_hotel.svg",
   },
 ];
+
+export function getPropertyTypeLabelById(id: string) {
+  return PROPERTY_TYPES.find((type) => type.id === id)?.label ?? PROPERTY_TYPES[0]!.label;
+}
+
+export function getPropertyTypeIdByLabel(label: string) {
+  return PROPERTY_TYPES.find(
+    (type) => type.label.toLowerCase() === label.toLowerCase(),
+  )?.id;
+}
+
+export function getAccommodationsPropertyTypeResultsHref(propertyTypeId: string) {
+  const params = new URLSearchParams({
+    section: "accommodations",
+    view: "results",
+    propertyType: getPropertyTypeLabelById(propertyTypeId),
+  });
+
+  return `/?${params.toString()}`;
+}
 
 export type FavouriteDestination = {
   id: string;

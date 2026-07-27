@@ -1,8 +1,8 @@
 "use client";
 
-import { AlertTriangle, Building2, Calendar, Sparkles, Wallet } from "lucide-react";
+import { AlertTriangle, Building2, ChevronDown, Sparkles, Users, Wallet } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import {
   ADMIN_DASHBOARD_ALERTS,
@@ -12,6 +12,7 @@ import {
 } from "@/features/admin/data/admin-dashboard";
 import { VendorStatCard } from "@/features/vendor/components/vendor-stat-card";
 import { useFormatPrice } from "@/hooks/use-format-price";
+import { useClickOutside } from "@/hooks/use-click-outside";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -19,6 +20,9 @@ const PERIOD_LABEL_KEYS: Record<AdminPeriod, TranslationKey> = {
   today: "admin.dashboard.period.today",
   week: "admin.dashboard.period.week",
   month: "admin.dashboard.period.month",
+  sixMonths: "admin.dashboard.period.sixMonths",
+  year: "admin.dashboard.period.year",
+  all: "admin.dashboard.period.all",
 };
 
 const ALERT_STYLES = {
@@ -38,7 +42,11 @@ export function AdminDashboardContent({
   const formatPrice = useFormatPrice();
   const displayName = adminName?.trim() || "SynKKafrica Admin";
   const [period, setPeriod] = useState<AdminPeriod>("today");
+  const [periodOpen, setPeriodOpen] = useState(false);
+  const periodDropdownRef = useRef<HTMLDivElement>(null);
   const metrics = ADMIN_DASHBOARD_METRICS;
+
+  useClickOutside(periodDropdownRef, () => setPeriodOpen(false), periodOpen);
 
   return (
     <>
@@ -47,33 +55,61 @@ export function AdminDashboardContent({
         <span className="font-bold text-[#D85A30]">{displayName}</span>
       </h2>
 
-      <div
-        className="grid grid-cols-3 gap-2 sm:w-fit"
-        role="group"
-        aria-label={t("admin.dashboard.period.label")}
-      >
-        {ADMIN_PERIOD_OPTIONS.map((option) => (
-          <button
-            key={option}
-            type="button"
-            onClick={() => setPeriod(option)}
-            className={`rounded-lg border px-4 py-2 text-xs font-semibold font-satoshi transition-colors ${
-              period === option
-                ? "border-[#D85A30] bg-[#FFF1EB] text-[#D85A30]"
-                : "border-[#E5E5E5] bg-white text-[#676565]"
-            }`}
+      <div ref={periodDropdownRef} className="relative w-full">
+        <button
+          type="button"
+          aria-label={t("admin.dashboard.period.label")}
+          aria-expanded={periodOpen}
+          aria-haspopup="listbox"
+          onClick={() => setPeriodOpen((open) => !open)}
+          className="flex h-11 w-full items-center justify-between rounded-full border border-[#E5E5E5] bg-white px-4 text-sm font-semibold font-satoshi text-[#2F2F2F] outline-none transition-colors hover:border-[#D85A30] focus:border-[#D85A30]"
+        >
+          <span>{t(PERIOD_LABEL_KEYS[period])}</span>
+          <ChevronDown
+            className={`h-4 w-4 shrink-0 text-[#676565] transition-transform ${periodOpen ? "rotate-180" : ""}`}
+          />
+        </button>
+
+        {periodOpen ? (
+          <ul
+            role="listbox"
+            aria-label={t("admin.dashboard.period.label")}
+            className="absolute left-0 top-[calc(100%+0.5rem)] z-50 w-full overflow-hidden rounded-xl border border-[#E5E5E5] bg-white py-1 shadow-lg"
           >
-            {t(PERIOD_LABEL_KEYS[option])}
-          </button>
-        ))}
+            {ADMIN_PERIOD_OPTIONS.map((option) => {
+              const isSelected = option === period;
+
+              return (
+                <li key={option} role="presentation" className="w-full">
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={isSelected}
+                    onClick={() => {
+                      setPeriod(option);
+                      setPeriodOpen(false);
+                    }}
+                    className={`block w-full px-4 py-2.5 text-left text-sm font-semibold font-satoshi transition-colors ${
+                      isSelected
+                        ? "bg-[#FFF1EB] text-[#D85A30]"
+                        : "text-[#2F2F2F] hover:bg-[#FAFAFA]"
+                    }`}
+                  >
+                    {t(PERIOD_LABEL_KEYS[option])}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        ) : null}
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <VendorStatCard
-          icon={Calendar}
-          labelKey="admin.dashboard.bookings"
-          value={String(metrics.bookings[period])}
-          href="/admin/bookings"
+          icon={Users}
+          labelKey="admin.dashboard.users"
+          value={String(metrics.users[period])}
+          href="/admin/users"
           linkKey="admin.dashboard.viewAll"
         />
         <VendorStatCard
@@ -109,7 +145,7 @@ export function AdminDashboardContent({
             <li key={alert.id}>
               <Link
                 href={alert.href}
-                className={`block rounded-lg border px-4 py-3 text-sm font-medium font-satoshi transition-opacity hover:opacity-90 ${ALERT_STYLES[alert.severity]}`}
+                className={`block rounded-lg border px-4 py-3 text-sm font-medium font-satoshi underline underline-offset-2 transition-opacity hover:opacity-90 ${ALERT_STYLES[alert.severity]}`}
               >
                 {t(alert.messageKey)}
               </Link>

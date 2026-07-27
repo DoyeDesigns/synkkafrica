@@ -52,6 +52,8 @@ export const PROPERTY_TYPE_OPTIONS = [
   "Resorts",
   "B&Bs",
   "Guest House",
+  "Beach House",
+  "Motels",
 ] as const;
 
 export const PRICE_RANGE_OPTIONS: {
