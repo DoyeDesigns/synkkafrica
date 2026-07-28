@@ -1,6 +1,17 @@
 import type { AdminListing } from "@/features/admin/data/admin-listings";
 
-export const ADMIN_CARS: AdminListing[] = [
+const CAR_IMAGES = ["/hero/car-rentals.png", "/car-rental-landing.png"] as const;
+
+function withCarImages(
+  listings: Omit<AdminListing, "image">[],
+): AdminListing[] {
+  return listings.map((listing, index) => ({
+    ...listing,
+    image: CAR_IMAGES[index % CAR_IMAGES.length] ?? CAR_IMAGES[0],
+  }));
+}
+
+export const ADMIN_CARS: AdminListing[] = withCarImages([
   {
     id: "car-toyota-camry",
     name: "Toyota Camry 2023",
@@ -97,4 +108,4 @@ export const ADMIN_CARS: AdminListing[] = [
     status: "inactive",
     publicUrl: "/car-rentals/car-kia-rio/book",
   },
-];
+]);

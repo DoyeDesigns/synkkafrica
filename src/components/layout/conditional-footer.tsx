@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { ADMIN_AREA_PREFIX } from "@/features/admin/constants";
 import { ACCOUNT_AREA_PREFIX } from "@/features/account/constants";
 import { VENDOR_AREA_PREFIX } from "@/features/vendor/constants";
-import { Footer } from "./Footer";
+import { Footer } from "./footer";
 
 const HIDDEN_PREFIXES = [
   "/login",

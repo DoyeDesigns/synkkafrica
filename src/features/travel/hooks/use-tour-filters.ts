@@ -81,7 +81,8 @@ export function useTourFilters() {
     router.replace(getClearedResultsHref("tours", pathname), { scroll: false });
   };
 
-  const hasAppliedFilters = activeFilterCount > 0;
+  const hasAppliedFilters =
+    activeFilterCount > 0 || searchQuery.trim().length > 0;
 
   return {
     draftFilters,

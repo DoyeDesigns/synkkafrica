@@ -1,3 +1,5 @@
+export type CarRentalMode = "self_drive" | "with_driver";
+
 export type BookingParams = {
   room?: string;
   option?: string;
@@ -11,6 +13,10 @@ export type BookingParams = {
   guests: number;
   rooms: number;
   specialRequests?: string;
+  carRentalMode?: CarRentalMode;
+  deliveryAddress?: string;
+  customerPickupAddress?: string;
+  requestDelivery?: boolean;
 };
 
 export function parseBookingParams(searchParams: URLSearchParams): BookingParams {
@@ -31,6 +37,15 @@ export function parseBookingParams(searchParams: URLSearchParams): BookingParams
     guests: Number.isFinite(guests) && guests > 0 ? guests : 2,
     rooms: Number.isFinite(rooms) && rooms > 0 ? rooms : 1,
     specialRequests: searchParams.get("specialRequests") ?? undefined,
+    carRentalMode:
+      searchParams.get("carRentalMode") === "with_driver"
+        ? "with_driver"
+        : searchParams.get("carRentalMode") === "self_drive"
+          ? "self_drive"
+          : undefined,
+    deliveryAddress: searchParams.get("deliveryAddress") ?? undefined,
+    customerPickupAddress: searchParams.get("customerPickupAddress") ?? undefined,
+    requestDelivery: searchParams.get("requestDelivery") === "true",
   };
 }
 
@@ -52,6 +67,18 @@ export function serializeBookingParams(
   if (params.rooms) searchParams.set("rooms", String(params.rooms));
   if (params.specialRequests) {
     searchParams.set("specialRequests", params.specialRequests);
+  }
+  if (params.carRentalMode) {
+    searchParams.set("carRentalMode", params.carRentalMode);
+  }
+  if (params.deliveryAddress) {
+    searchParams.set("deliveryAddress", params.deliveryAddress);
+  }
+  if (params.customerPickupAddress) {
+    searchParams.set("customerPickupAddress", params.customerPickupAddress);
+  }
+  if (params.requestDelivery) {
+    searchParams.set("requestDelivery", "true");
   }
 
   return searchParams;

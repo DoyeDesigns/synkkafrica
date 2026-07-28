@@ -12,6 +12,7 @@ import type { TranslationKey } from "@/lib/preferences/translations";
 const PAGE_TITLE_KEYS: Record<string, TranslationKey> = {
   "/vendor": "vendor.nav.dashboard",
   "/vendor/listings": "vendor.nav.listings",
+  "/vendor/listings/new": "vendor.addListing.title",
   "/vendor/bookings": "vendor.nav.bookings",
   "/vendor/earnings": "vendor.nav.earnings",
   "/vendor/notifications": "vendor.nav.notifications",

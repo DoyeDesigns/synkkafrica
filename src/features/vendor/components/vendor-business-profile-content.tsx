@@ -3,6 +3,7 @@
 import { Building2, ChevronDown, Lock, Mail, Phone, Save } from "lucide-react";
 import { useState } from "react";
 
+import { VendorBusinessDocumentsSection } from "@/features/vendor/components/vendor-business-documents-section";
 import {
   createDefaultVendorBusinessProfile,
   VENDOR_PAYOUT_BANK_OPTIONS,
@@ -387,6 +388,8 @@ export function VendorBusinessProfileContent({
             </button>
           </div>
         </section>
+
+        <VendorBusinessDocumentsSection />
       </div>
     </>
   );

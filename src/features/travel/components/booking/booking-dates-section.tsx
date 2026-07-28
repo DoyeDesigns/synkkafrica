@@ -13,7 +13,7 @@ import { BookingDateTimePicker } from "@/features/travel/components/booking/book
 import {
   getPropertyDayStatuses,
   getPropertyTimeSlots,
-  isRangeBlocked,
+  clampCheckoutDate,
 } from "@/features/travel/data/property-availability";
 import { useTranslation } from "@/hooks/use-translation";
 
@@ -52,15 +52,15 @@ export function BookingDatesSection({
 
   const handleSelectCheckIn = (dateKey: string) => {
     onCheckInChange(dateKey);
-    onCheckOutChange(getCheckOutFromNights(dateKey, nights));
+    onCheckOutChange("");
   };
 
   const handleSelectCheckOut = (dateKey: string) => {
-    if (isRangeBlocked(dayStatuses, checkIn, dateKey)) {
+    if (!checkIn) {
       return;
     }
 
-    onCheckOutChange(dateKey);
+    onCheckOutChange(clampCheckoutDate(dayStatuses, checkIn, dateKey));
   };
 
   const handleNightsChange = (value: number) => {
@@ -68,7 +68,9 @@ export function BookingDatesSection({
       return;
     }
 
-    onCheckOutChange(getCheckOutFromNights(checkIn, value));
+    onCheckOutChange(
+      clampCheckoutDate(dayStatuses, checkIn, getCheckOutFromNights(checkIn, value)),
+    );
   };
 
   return (

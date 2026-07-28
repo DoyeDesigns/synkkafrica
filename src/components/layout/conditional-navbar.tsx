@@ -3,7 +3,7 @@
 import { Suspense } from "react";
 import type { Session } from "next-auth";
 
-import { NavbarContent, NavbarContentFallback } from "./NavbarContent";
+import { NavbarContent, NavbarContentFallback } from "./navbar-content";
 
 type ConditionalNavbarProps = {
   session: Session | null;

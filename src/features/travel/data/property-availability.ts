@@ -3,6 +3,7 @@ import {
   toDateKey,
   type AvailabilityDayStatus,
 } from "@/features/vendor/data/vendor-listing-availability";
+import { addDaysToDate } from "@/features/travel/booking/booking-params";
 
 export type BookingTimeSlot = {
   id: string;
@@ -92,4 +93,35 @@ export function isRangeBlocked(
   }
 
   return false;
+}
+
+export function clampCheckoutDate(
+  dayStatuses: Record<string, AvailabilityDayStatus>,
+  checkIn: string,
+  requestedCheckOut: string,
+): string {
+  const minimumCheckout = addDaysToDate(checkIn, 1);
+
+  if (requestedCheckOut <= checkIn) {
+    return minimumCheckout;
+  }
+
+  const start = new Date(checkIn);
+  const end = new Date(requestedCheckOut);
+
+  for (
+    let current = new Date(start);
+    current < end;
+    current.setDate(current.getDate() + 1)
+  ) {
+    if (isDateBlocked(dayStatuses, toDateKey(current))) {
+      const dayBeforeBlocked = new Date(current);
+      dayBeforeBlocked.setDate(dayBeforeBlocked.getDate() - 1);
+      const clampedCheckout = toDateKey(dayBeforeBlocked);
+
+      return clampedCheckout <= checkIn ? minimumCheckout : clampedCheckout;
+    }
+  }
+
+  return requestedCheckOut;
 }

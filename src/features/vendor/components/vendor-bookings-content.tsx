@@ -4,6 +4,8 @@ import { CalendarDays, ChevronDown, LayoutList, Search } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import { VendorBookingCard } from "@/features/vendor/components/vendor-booking-card";
+import { VendorBookingsCalendar } from "@/features/vendor/components/vendor-bookings-calendar";
+import { VendorDeclineBookingModal } from "@/features/vendor/components/vendor-decline-booking-modal";
 import {
   computeVendorBookingStats,
   getVendorBookingListingOptions,
@@ -22,6 +24,7 @@ import type { TranslationKey } from "@/lib/preferences/translations";
 const TAB_KEYS: Record<VendorBookingTab, TranslationKey> = {
   upcoming: "vendor.bookings.tab.upcoming",
   past: "vendor.bookings.tab.past",
+  declined: "vendor.bookings.tab.declined",
   cancelled: "vendor.bookings.tab.cancelled",
 };
 
@@ -36,6 +39,7 @@ const DATE_RANGE_LABEL_KEYS: Record<VendorBookingDateRange, TranslationKey> = {
 const EMPTY_STATE_KEYS: Record<VendorBookingTab, TranslationKey> = {
   upcoming: "vendor.bookings.empty.upcoming",
   past: "vendor.bookings.empty.past",
+  declined: "vendor.bookings.empty.declined",
   cancelled: "vendor.bookings.empty.cancelled",
 };
 
@@ -78,6 +82,7 @@ export function VendorBookingsContent({
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"list" | "calendar">("list");
   const [bookings, setBookings] = useState<VendorBooking[]>(VENDOR_BOOKINGS);
+  const [decliningBookingId, setDecliningBookingId] = useState<string | null>(null);
 
   const listingOptions = useMemo(
     () => getVendorBookingListingOptions(bookings),
@@ -85,6 +90,10 @@ export function VendorBookingsContent({
   );
 
   const stats = useMemo(() => computeVendorBookingStats(bookings), [bookings]);
+
+  const decliningBooking = decliningBookingId
+    ? bookings.find((booking) => booking.id === decliningBookingId) ?? null
+    : null;
 
   const filteredBookings = useMemo(() => {
     const normalizedQuery = searchQuery.trim().toLowerCase();
@@ -113,6 +122,27 @@ export function VendorBookingsContent({
       );
   }, [activeTab, bookings, dateRange, listingFilter, searchQuery]);
 
+  const calendarBookings = useMemo(() => {
+    const normalizedQuery = searchQuery.trim().toLowerCase();
+
+    return bookings
+      .filter((booking) => isWithinDateRange(booking.experienceDate, dateRange))
+      .filter(
+        (booking) =>
+          listingFilter === "all" || booking.listingId === listingFilter,
+      )
+      .filter((booking) => {
+        if (!normalizedQuery) {
+          return true;
+        }
+
+        return (
+          booking.guestFirstName.toLowerCase().includes(normalizedQuery) ||
+          booking.bookingReference.toLowerCase().includes(normalizedQuery)
+        );
+      });
+  }, [bookings, dateRange, listingFilter, searchQuery]);
+
   const handleConfirm = (id: string) => {
     setBookings((current) =>
       current.map((booking) =>
@@ -121,20 +151,20 @@ export function VendorBookingsContent({
     );
   };
 
-  const handleDecline = (id: string) => {
-    setBookings((current) =>
-      current.map((booking) =>
-        booking.id === id ? { ...booking, status: "declined" } : booking,
-      ),
-    );
-  };
+  const handleDeclineSubmit = (reason: string) => {
+    if (!decliningBookingId) {
+      return;
+    }
 
-  const handleComplete = (id: string) => {
     setBookings((current) =>
       current.map((booking) =>
-        booking.id === id ? { ...booking, status: "completed" } : booking,
+        booking.id === decliningBookingId
+          ? { ...booking, status: "declined", declineReason: reason }
+          : booking,
       ),
     );
+    setDecliningBookingId(null);
+    setActiveTab("declined");
   };
 
   const handleCancel = (id: string) => {
@@ -248,7 +278,7 @@ export function VendorBookingsContent({
 
         <div className="mt-6 flex flex-col gap-4 border-b border-[#E8E8E8] pb-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-6 overflow-x-auto">
-            {(["upcoming", "past", "cancelled"] as const).map((tabId) => {
+            {(["upcoming", "past", "declined", "cancelled"] as const).map((tabId) => {
               const isActive = activeTab === tabId;
 
               return (
@@ -289,15 +319,7 @@ export function VendorBookingsContent({
 
         <div className="mt-6 space-y-4">
           {viewMode === "calendar" ? (
-            <div className="rounded-xl border border-dashed border-[#E5E5E5] bg-[#FAFAFA] p-10 text-center">
-              <CalendarDays
-                className="mx-auto h-8 w-8 text-[#676565]"
-                strokeWidth={1.75}
-              />
-              <p className="mt-3 text-sm font-medium font-satoshi text-[#676565]">
-                {t("vendor.bookings.calendarComingSoon")}
-              </p>
-            </div>
+            <VendorBookingsCalendar bookings={calendarBookings} />
           ) : filteredBookings.length > 0 ? (
             filteredBookings.map((booking) => (
               <VendorBookingCard
@@ -305,8 +327,7 @@ export function VendorBookingsContent({
                 booking={booking}
                 showActions={activeTab === "upcoming"}
                 onConfirm={handleConfirm}
-                onDecline={handleDecline}
-                onComplete={handleComplete}
+                onDecline={setDecliningBookingId}
                 onCancel={handleCancel}
               />
             ))
@@ -319,6 +340,14 @@ export function VendorBookingsContent({
           )}
         </div>
       </section>
+
+      <VendorDeclineBookingModal
+        isOpen={decliningBookingId !== null}
+        bookingReference={decliningBooking?.bookingReference ?? ""}
+        guestName={decliningBooking?.guestFirstName ?? ""}
+        onClose={() => setDecliningBookingId(null)}
+        onSubmit={handleDeclineSubmit}
+      />
     </>
   );
 }

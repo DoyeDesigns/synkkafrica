@@ -50,6 +50,36 @@ function isBetween(dateKey: string, start: string | null, end: string | null) {
   return dateKey > start && dateKey < end;
 }
 
+type RangePosition = "start" | "middle" | "end" | "none";
+
+function getRangePosition(
+  dateKey: string,
+  checkIn: string | null,
+  checkOut: string | null,
+): RangePosition {
+  if (!checkIn || !checkOut) {
+    return "none";
+  }
+
+  if (dateKey === checkIn && dateKey === checkOut) {
+    return "start";
+  }
+
+  if (dateKey === checkIn) {
+    return "start";
+  }
+
+  if (dateKey === checkOut) {
+    return "end";
+  }
+
+  if (isBetween(dateKey, checkIn, checkOut)) {
+    return "middle";
+  }
+
+  return "none";
+}
+
 type BookingDateTimePickerProps = {
   mode: "range" | "single";
   viewDate: Date;
@@ -106,7 +136,7 @@ export function BookingDateTimePicker({
       return;
     }
 
-    if (!checkIn || (checkIn && checkOut)) {
+    if (!checkIn || checkOut) {
       onSelectCheckIn(dateKey);
       return;
     }
@@ -168,7 +198,7 @@ export function BookingDateTimePicker({
           </span>
         </div>
 
-        <div className="grid grid-cols-7 gap-1">
+        <div className="grid grid-cols-7">
           {WEEKDAY_KEYS.map((key) => (
             <div
               key={key}
@@ -185,34 +215,59 @@ export function BookingDateTimePicker({
               !inMonth ||
               blockedDates[dateKey] === "blocked" ||
               dateKey < todayKey;
-            const isSelected =
-              mode === "single"
-                ? selectedDate === dateKey
-                : checkIn === dateKey || checkOut === dateKey;
-            const inRange =
-              mode === "range" && isBetween(dateKey, checkIn, checkOut);
+            const hasCompleteRange = Boolean(checkIn && checkOut);
+            const isCheckInOnly =
+              mode === "range" && checkIn && !checkOut && dateKey === checkIn;
+            const rangePosition =
+              mode === "range" && hasCompleteRange
+                ? getRangePosition(dateKey, checkIn, checkOut)
+                : "none";
+            const isRangeStart = rangePosition === "start";
+            const isRangeEnd = rangePosition === "end";
+            const isRangeMiddle = rangePosition === "middle";
+            const isEndpoint = isCheckInOnly || isRangeStart || isRangeEnd;
+
+            const cellRangeClass =
+              isRangeMiddle
+                ? "bg-[rgb(0_71_133/0.15)]"
+                : isRangeStart && !isRangeEnd
+                  ? "bg-[linear-gradient(to_right,transparent_50%,rgb(0_71_133/0.15)_50%)]"
+                  : isRangeEnd && !isRangeStart
+                    ? "bg-[linear-gradient(to_right,rgb(0_71_133/0.15)_50%,transparent_50%)]"
+                    : "";
 
             return (
-              <button
+              <div
                 key={`${dateKey}-${inMonth}`}
-                type="button"
-                disabled={!inMonth || isBlocked}
-                onClick={() => handleDayClick(dateKey)}
-                aria-pressed={isSelected}
-                className={`mx-auto flex h-9 w-9 items-center justify-center rounded-full text-sm font-medium font-satoshi transition-colors ${
-                  !inMonth
-                    ? "cursor-default text-transparent"
-                    : isBlocked
-                      ? "cursor-not-allowed bg-[#EFEFEF] text-[#B5BEC6] line-through"
-                      : isSelected
-                        ? "bg-[#004785] text-white"
-                        : inRange
-                          ? "bg-[#FFF1EB] text-[#D85A30]"
-                          : "text-[#4A5660] hover:bg-[#FFF1EB]"
-                }`}
+                className="relative flex h-10 items-center justify-center"
               >
-                {inMonth ? day : ""}
-              </button>
+                {cellRangeClass ? (
+                  <div
+                    aria-hidden
+                    className={`absolute top-1/2 h-9 w-full -translate-y-1/2 ${cellRangeClass}`}
+                  />
+                ) : null}
+
+                <button
+                  type="button"
+                  disabled={!inMonth || isBlocked}
+                  onClick={() => handleDayClick(dateKey)}
+                  aria-pressed={isEndpoint}
+                  className={`relative z-10 flex h-9 w-9 items-center justify-center text-sm font-medium font-satoshi transition-colors ${
+                    !inMonth
+                      ? "cursor-default bg-transparent text-transparent"
+                      : isBlocked
+                        ? "cursor-not-allowed rounded-md bg-[#EFEFEF] text-[#B5BEC6] line-through"
+                        : isEndpoint
+                          ? "rounded-md bg-[#004785] text-white"
+                          : isRangeMiddle
+                            ? "bg-transparent text-[#004785] hover:bg-transparent"
+                            : "rounded-md bg-transparent text-[#4A5660] hover:bg-[#004785]/10"
+                  }`}
+                >
+                  {inMonth ? day : ""}
+                </button>
+              </div>
             );
           })}
         </div>

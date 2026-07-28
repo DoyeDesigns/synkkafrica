@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import type { TourPackageBookingStepId } from "@/features/tour-packages/booking/tour-package-constants";
@@ -10,15 +9,16 @@ import { TourPackageBookingCheckoutPage } from "@/features/tour-packages/compone
 import { TourPackageBookingConfirmationPage } from "@/features/tour-packages/components/tour-package-booking/tour-package-booking-confirmation-page";
 import { TourPackageBookingPaymentPage } from "@/features/tour-packages/components/tour-package-booking/tour-package-booking-payment-page";
 import { TourPackageBookingStepper } from "@/features/tour-packages/components/tour-package-booking/tour-package-booking-stepper";
-import { TourPackageBookingSummaryCard } from "@/features/tour-packages/components/tour-package-booking/tour-package-booking-summary-card";
+import { TourPackageCancellationBanner } from "@/features/tour-packages/components/tour-package-booking/tour-package-cancellation-banner";
 import {
-  AboutThisTourPackage,
   TourPackageGallery,
+  TourPackageHeader,
 } from "@/features/tour-packages/components/tour-package-booking/tour-package-gallery";
-import { TierSelectionTable } from "@/features/tour-packages/components/tour-package-booking/tier-selection-table";
-import { TourPackageDatesSection } from "@/features/tour-packages/components/tour-package-booking/tour-package-dates-section";
+import { TourPackageHighlightsBar } from "@/features/tour-packages/components/tour-package-booking/tour-package-highlights-bar";
+import { TourPackageIncludedSection } from "@/features/tour-packages/components/tour-package-booking/tour-package-included-section";
+import { TourPackagePriceBreakdownSection } from "@/features/tour-packages/components/tour-package-booking/tour-package-price-breakdown-section";
+import { TourPackageWhyBookSection } from "@/features/tour-packages/components/tour-package-booking/tour-package-why-book-section";
 import type { TourPackageDetail } from "@/features/tour-packages/data/tour-package-booking";
-import { NoReviewsCard } from "@/features/travel/components/car-booking/no-reviews-card";
 
 type TourPackageBookingPageProps = {
   tourPackage: TourPackageDetail;
@@ -31,14 +31,12 @@ export function TourPackageBookingPage({
 }: TourPackageBookingPageProps) {
   const router = useRouter();
   const defaultTierId = tourPackage.tiers[0]?.id ?? "";
-  const [selectedTierId, setSelectedTierId] = useState(defaultTierId);
-  const [days, setDays] = useState(tourPackage.days);
 
   const handleBookNow = () => {
     const params = serializeBookingParams({
-      tier: selectedTierId,
-      days,
-      guests: 1,
+      tier: defaultTierId,
+      days: tourPackage.days,
+      guests: tourPackage.minGuests,
       rooms: 1,
     });
     router.push(
@@ -69,35 +67,17 @@ export function TourPackageBookingPage({
           />
         </div>
 
-        <div className="mt-8 grid gap-8 xl:grid-cols-[minmax(0,1fr)_340px]">
-          <div className="space-y-8">
-            <TourPackageGallery tourPackage={tourPackage} />
-            <AboutThisTourPackage tourPackage={tourPackage} />
-            <TourPackageDatesSection
-              days={days}
-              onDaysChange={setDays}
-              minDays={tourPackage.days}
-              maxDays={tourPackage.days + 14}
-            />
-            <TierSelectionTable
-              tiers={tourPackage.tiers}
-              selectedTierId={selectedTierId}
-              currency={tourPackage.currency}
-              onSelectTier={setSelectedTierId}
-            />
-          </div>
-
-          <aside className="space-y-5 xl:sticky xl:top-10 xl:self-start">
-            <TourPackageBookingSummaryCard
-              tourPackage={tourPackage}
-              tiers={tourPackage.tiers}
-              selectedTierId={selectedTierId}
-              days={days}
-              onSelectTier={setSelectedTierId}
-              onBookNow={handleBookNow}
-            />
-            <NoReviewsCard />
-          </aside>
+        <div className="mt-8 space-y-8">
+          <TourPackageHeader tourPackage={tourPackage} />
+          <TourPackageGallery tourPackage={tourPackage} />
+          <TourPackageHighlightsBar tourPackage={tourPackage} />
+          <TourPackageIncludedSection tourPackage={tourPackage} />
+          <TourPackagePriceBreakdownSection
+            tourPackage={tourPackage}
+            onBookNow={handleBookNow}
+          />
+          <TourPackageWhyBookSection tourPackage={tourPackage} />
+          <TourPackageCancellationBanner tourPackage={tourPackage} />
         </div>
       </div>
     </div>

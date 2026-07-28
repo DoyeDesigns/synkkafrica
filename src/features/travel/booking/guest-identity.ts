@@ -58,3 +58,14 @@ export function validateGuestIdentity(
     errors,
   };
 }
+
+export function validateGuestIdentities(
+  identities: GuestIdentity[],
+): { isValid: boolean; errors: GuestIdentityErrors[] } {
+  const results = identities.map((identity) => validateGuestIdentity(identity));
+
+  return {
+    isValid: results.every((result) => result.isValid),
+    errors: results.map((result) => result.errors),
+  };
+}

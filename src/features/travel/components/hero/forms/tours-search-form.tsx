@@ -2,6 +2,7 @@
 
 import { Calendar, MapPin, Search } from "lucide-react";
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { getDefaultCheckInDate } from "@/features/travel/booking/booking-params";
 import {
@@ -17,9 +18,16 @@ type ToursSearchFormProps = {
 
 export function ToursSearchForm({ onSubmit }: ToursSearchFormProps) {
   const t = useTranslation();
-  const [query, setQuery] = useState("");
-  const [location, setLocation] = useState("");
-  const [date, setDate] = useState(getDefaultCheckInDate());
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(
+    () => searchParams.get("query") ?? "",
+  );
+  const [location, setLocation] = useState(
+    () => searchParams.get("location") ?? "",
+  );
+  const [date, setDate] = useState(
+    () => searchParams.get("date") ?? getDefaultCheckInDate(),
+  );
 
   return (
     <form

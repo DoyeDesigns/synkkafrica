@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { ChevronDown, Plus } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 
 import { VendorListingAvailabilityPanel } from "@/features/vendor/components/vendor-listing-availability-panel";
 import { VendorListingCard } from "@/features/vendor/components/vendor-listing-card";
@@ -90,9 +92,11 @@ export function VendorListingsContent({
   vendorName = "Alex Autos",
 }: VendorListingsContentProps) {
   const t = useTranslation();
+  const searchParams = useSearchParams();
   const displayName = vendorName?.trim() || "Alex Autos";
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
+  const highlightedListingId = searchParams.get("listing");
 
   const filteredListings = useMemo(
     () =>
@@ -104,6 +108,18 @@ export function VendorListingsContent({
     [categoryFilter, statusFilter],
   );
 
+  useEffect(() => {
+    if (!highlightedListingId) {
+      return;
+    }
+
+    const target = document.getElementById(`listing-${highlightedListingId}`);
+
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [highlightedListingId, filteredListings.length]);
+
   return (
     <>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -112,13 +128,13 @@ export function VendorListingsContent({
           <span className="font-bold text-[#D85A30]">{displayName}</span>
         </h2>
 
-        <button
-          type="button"
+        <Link
+          href="/vendor/listings/new"
           className="inline-flex h-11 w-45.5 items-center justify-center gap-2 rounded-[5px] bg-[#D85A30] px-5 py-2.5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90"
         >
           <Plus className="h-4 w-4" strokeWidth={3} />
           {t("vendor.dashboard.addListing")}
-        </button>
+        </Link>
       </div>
 
       <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_340px]">
@@ -162,6 +178,7 @@ export function VendorListingsContent({
                   key={listing.id}
                   listing={listing}
                   variant="listings"
+                  highlighted={listing.id === highlightedListingId}
                 />
               ))
             ) : (

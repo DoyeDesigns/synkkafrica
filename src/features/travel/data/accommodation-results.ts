@@ -1,3 +1,8 @@
+import {
+  DEFAULT_DISCOUNT_FILTER,
+  matchesDiscountFilter,
+} from "@/features/travel/data/discount-filter";
+
 export type AccommodationResultFeature = {
   icon: "bed" | "wifi" | "coffee" | "car";
   label: string;
@@ -35,7 +40,7 @@ export type AccommodationFilterState = {
 
 export const DEFAULT_ACCOMMODATION_FILTERS: AccommodationFilterState = {
   location: "Worldwide",
-  discounts: "10% off Discounts",
+  discounts: DEFAULT_DISCOUNT_FILTER,
   priceBudget: "",
   priceMin: 50000,
   priceMax: 200000,
@@ -116,10 +121,9 @@ export const ACCOMMODATION_RESULTS: AccommodationResult[] = [
     rating: 4.6,
     reviewCount: 12,
     price: 143500,
-    originalPrice: 156500,
+    originalPrice: 143500,
     currency: "NGN",
     image: "/hero/accommodations.png",
-    dealLabel: "10% off deal",
     propertyType: "Apartments",
     features: [
       { icon: "bed", label: "1 bedroom" },
@@ -312,6 +316,11 @@ export function filterAccommodationResults(
     }
 
     if (filters.propertyType && result.propertyType !== filters.propertyType) {
+      return false;
+    }
+
+    const hasDiscount = result.originalPrice > result.price || Boolean(result.dealLabel);
+    if (!matchesDiscountFilter(hasDiscount, filters.discounts)) {
       return false;
     }
 

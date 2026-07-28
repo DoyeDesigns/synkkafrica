@@ -1,6 +1,7 @@
 "use client";
 
 import { MoreVertical, Search } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -203,7 +204,17 @@ function ListingRow({
   return (
     <tr>
       <td className="px-4 py-4">
-        <p className="font-bold text-[#2F2F2F]">{listing.name}</p>
+        <div className="flex items-center gap-3">
+          <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-[#F5F5F5]">
+            <Image
+              src={listing.image}
+              alt={listing.name}
+              fill
+              className="object-cover"
+            />
+          </div>
+          <p className="font-bold text-[#2F2F2F]">{listing.name}</p>
+        </div>
       </td>
       <td className="px-4 py-4 font-medium whitespace-nowrap text-[#676565]">
         {listing.location}

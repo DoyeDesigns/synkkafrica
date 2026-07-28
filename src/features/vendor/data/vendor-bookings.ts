@@ -1,4 +1,4 @@
-export type VendorBookingTab = "upcoming" | "past" | "cancelled";
+export type VendorBookingTab = "upcoming" | "past" | "declined" | "cancelled";
 
 export type VendorBookingStatus =
   | "awaiting_confirmation"
@@ -6,6 +6,10 @@ export type VendorBookingStatus =
   | "declined"
   | "completed"
   | "cancelled";
+
+export type VendorBookingProductType = "car" | "accommodation" | "experience";
+
+export type VendorCarRentalMode = "self_drive" | "with_driver";
 
 export type VendorBookingDateRange =
   | "all"
@@ -20,11 +24,16 @@ export type VendorBooking = {
   listingId: string;
   listingTitle: string;
   listingImage: string;
+  productType?: VendorBookingProductType;
   experienceDate: string;
   experienceTime: string;
   guestCount: number;
   guestFirstName: string;
   specialRequests?: string;
+  carRentalMode?: VendorCarRentalMode;
+  deliveryAddress?: string;
+  pickupAddress?: string;
+  declineReason?: string;
   status: VendorBookingStatus;
   amount: number;
   currency: string;
@@ -85,10 +94,14 @@ export const VENDOR_BOOKINGS: VendorBooking[] = [
     listingId: "toyota-camry-2021",
     listingTitle: "Toyota Camry 2021",
     listingImage: "/hero/car-rentals.png",
+    productType: "car",
     experienceDate: "2026-07-28",
     experienceTime: "09:00",
     guestCount: 1,
     guestFirstName: "Emeka",
+    carRentalMode: "self_drive",
+    deliveryAddress: "14 Admiralty Way, Lekki Phase 1, Lagos",
+    pickupAddress: "42 Ozumba Mbadiwe Ave, Victoria Island, Lagos",
     status: "confirmed",
     amount: 48_000,
     currency: "NGN",
@@ -207,10 +220,14 @@ export const VENDOR_BOOKINGS: VendorBooking[] = [
     listingId: "toyota-camry-2021",
     listingTitle: "Toyota Camry 2021",
     listingImage: "/hero/car-rentals.png",
+    productType: "car",
     experienceDate: "2026-05-20",
     experienceTime: "11:00",
     guestCount: 1,
     guestFirstName: "Kofi",
+    carRentalMode: "with_driver",
+    pickupAddress: "42 Ozumba Mbadiwe Ave, Victoria Island, Lagos",
+    declineReason: "Vehicle unavailable for the requested dates due to scheduled maintenance.",
     status: "declined",
     amount: 48_000,
     currency: "NGN",
@@ -238,11 +255,19 @@ export function getVendorBookingListingOptions(
     .sort((left, right) => left.title.localeCompare(right.title));
 }
 
+export function getVendorListingHref(listingId: string) {
+  return `/vendor/listings?listing=${encodeURIComponent(listingId)}`;
+}
+
 export function getVendorBookingTab(
   booking: VendorBooking,
   referenceDate = new Date(),
 ): VendorBookingTab {
-  if (booking.status === "cancelled" || booking.status === "declined") {
+  if (booking.status === "declined") {
+    return "declined";
+  }
+
+  if (booking.status === "cancelled") {
     return "cancelled";
   }
 

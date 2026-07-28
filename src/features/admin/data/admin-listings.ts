@@ -5,6 +5,7 @@ export type AdminListingStatus = "active" | "inactive";
 export type AdminListing = {
   id: string;
   name: string;
+  image: string;
   location: string;
   vendorName: string;
   vendorId: string;

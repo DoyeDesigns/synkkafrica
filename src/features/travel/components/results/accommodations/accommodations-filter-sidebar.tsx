@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  BadgePercent,
   Building2,
   ChevronDown,
   MapPin,
@@ -18,6 +17,7 @@ import { useTranslation } from "@/hooks/use-translation";
 import { FilterPanel } from "./filter-panel";
 import { OtherFiltersPanel } from "./other-filters-panel";
 import { ClearFilterButton } from "../shared/clear-filter-button";
+import { DiscountFilterPanel } from "../shared/discount-filter-panel";
 
 type AccommodationsFilterSidebarProps = {
   filters: AccommodationFilterState;
@@ -60,41 +60,29 @@ export function AccommodationsFilterSidebar({
         />
       ) : null}
 
+      <FilterPanel>
+        <label className="text-sm font-bold font-montserrat text-foreground">
+          {t("filters.location")}
+        </label>
+        <div className="mt-3 flex items-center gap-2 rounded-lg border border-[#C9C9C9] px-3 py-2.5">
+          <MapPin className="h-4 w-4 shrink-0 text-[#676565]" />
+          <input
+            type="text"
+            value={filters.location}
+            onChange={(event) =>
+              onFilterChange("location", event.target.value)
+            }
+            className="w-full bg-transparent text-sm font-satoshi text-foreground outline-none"
+          />
+        </div>
+      </FilterPanel>
+
+      <DiscountFilterPanel
+        value={filters.discounts}
+        onChange={(value) => onFilterChange("discounts", value)}
+      />
+
       <FilterPanel className="space-y-6">
-        <div>
-          <label className="text-sm font-bold font-montserrat text-foreground">
-            {t("filters.location")}
-          </label>
-          <div className="mt-3 flex items-center gap-2 rounded-lg border border-[#C9C9C9] px-3 py-2.5">
-            <MapPin className="h-4 w-4 shrink-0 text-[#676565]" />
-            <input
-              type="text"
-              value={filters.location}
-              onChange={(event) =>
-                onFilterChange("location", event.target.value)
-              }
-              className="w-full bg-transparent text-sm font-satoshi text-foreground outline-none"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="text-sm font-bold font-montserrat text-foreground">
-            {t("filters.discounts")}
-          </label>
-          <div className="mt-3 flex items-center gap-2 rounded-lg border border-[#C9C9C9] px-3 py-2.5">
-            <BadgePercent className="h-4 w-4 shrink-0 text-[#676565]" />
-            <input
-              type="text"
-              value={filters.discounts}
-              onChange={(event) =>
-                onFilterChange("discounts", event.target.value)
-              }
-              className="w-full bg-transparent text-sm font-satoshi text-foreground outline-none"
-            />
-          </div>
-        </div>
-
         <div>
           <label className="text-sm font-bold font-montserrat text-foreground">
             {t("filters.price")}

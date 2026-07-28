@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  BadgePercent,
   ChevronDown,
   Compass,
   LayoutGrid,
@@ -10,9 +9,9 @@ import {
 
 import { FilterPanel } from "@/features/travel/components/results/accommodations/filter-panel";
 import { ClearFilterButton } from "@/features/travel/components/results/shared/clear-filter-button";
+import { DiscountFilterPanel } from "@/features/travel/components/results/shared/discount-filter-panel";
 import {
   TOUR_CATEGORY_FILTER_OPTIONS,
-  TOUR_DISCOUNT_OPTIONS,
   TOUR_EXPERIENCE_FILTER_OPTIONS,
   TOUR_PRICE_RANGE_OPTIONS,
   type TourFilterState,
@@ -111,26 +110,10 @@ export function ToursFilterSidebar({
         </div>
       </FilterPanel>
 
-      <FilterPanel>
-        <label className="text-sm font-bold font-montserrat text-foreground">
-          {t("filters.discounts")}
-        </label>
-        <div className="relative mt-3">
-          <BadgePercent className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
-          <select
-            value={filters.discounts}
-            onChange={(event) => onFilterChange("discounts", event.target.value)}
-            className="w-full appearance-none rounded-lg border border-[#C9C9C9] bg-white py-2.5 pl-9 pr-8 text-sm font-satoshi text-foreground outline-none"
-          >
-            {TOUR_DISCOUNT_OPTIONS.map((option) => (
-              <option key={option} value={option}>
-                {labelOption(option)}
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/60" />
-        </div>
-      </FilterPanel>
+      <DiscountFilterPanel
+        value={filters.discounts}
+        onChange={(value) => onFilterChange("discounts", value)}
+      />
 
       <FilterPanel className="space-y-4">
         <label className="text-sm font-bold font-montserrat text-foreground">

@@ -1,37 +1,92 @@
 "use client";
 
-import { Pause, Pencil, Star, Trash2 } from "lucide-react";
+import { Pause, Pencil, Play, Star, Trash2 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import type { VendorDashboardListing } from "@/features/vendor/data/vendor-dashboard";
 import { useTranslation } from "@/hooks/use-translation";
+import type { TranslationKey } from "@/lib/preferences/translations";
 
 type VendorListingCardProps = {
   listing: VendorDashboardListing;
   variant?: "dashboard" | "listings";
+  highlighted?: boolean;
+  onPauseToggle?: (listingId: string) => void;
+  onDeleteRequest?: (listingId: string) => void;
+};
+
+const STATUS_LABEL_KEYS: Record<
+  VendorDashboardListing["status"],
+  TranslationKey
+> = {
+  live: "vendor.dashboard.status.live",
+  pending: "vendor.dashboard.status.pending",
+  paused: "vendor.dashboard.status.paused",
+};
+
+const STATUS_BADGE_STYLES: Record<VendorDashboardListing["status"], string> = {
+  live: "bg-[#B9FF7C] text-[#446D14]",
+  pending: "bg-[#D85A30]/12 text-[#D85A30]",
+  paused: "bg-[#FFCE31]/25 text-[#9A7200]",
 };
 
 export function VendorListingCard({
   listing,
   variant = "dashboard",
+  highlighted = false,
+  onPauseToggle,
+  onDeleteRequest,
 }: VendorListingCardProps) {
   const t = useTranslation();
   const isPending = listing.status === "pending";
+  const isPaused = listing.status === "paused";
   const isListingsPage = variant === "listings";
+  const isPauseDisabled = isPending;
+  const editHref = `/vendor/listings?listing=${listing.id}`;
 
   const pendingLabel = isListingsPage
     ? t("vendor.listings.status.pendingApproval")
     : t("vendor.dashboard.status.pending");
 
+  const pausedLabel = isListingsPage
+    ? t("vendor.listings.status.paused")
+    : t("vendor.dashboard.status.paused");
+
+  const statusLabel =
+    listing.status === "pending"
+      ? pendingLabel
+      : listing.status === "paused"
+        ? pausedLabel
+        : t(STATUS_LABEL_KEYS[listing.status]);
+
+  const actionButtonClassName =
+    "rounded-md p-1.5 transition-colors disabled:cursor-not-allowed disabled:opacity-40";
+
+  const cardSurfaceClassName = highlighted
+    ? "border-[#135391] ring-2 ring-[#135391]/20"
+    : isPending
+      ? "border-[#DD2222]/45 bg-[#DD2222]/5"
+      : isPaused
+        ? "border-[#E6A817]/45 bg-[#FFCE31]/10"
+        : "border-[#EEEEEE] bg-[#F5F5F5]";
+
+  const titleClassName = isPending
+    ? "text-[#D75A5A]"
+    : isPaused
+      ? "text-[#B8860B]"
+      : "text-[#004785]";
+
+  const categoryClassName = isPending
+    ? "text-[#D75A5A]"
+    : isPaused
+      ? "text-[#B8860B]"
+      : "text-[#676565]";
+
   return (
     <article
-      className={`rounded-[5px] border p-4 ${
-        isPending
-          ? "border-[#DD2222]/45 bg-[#DD2222]/5"
-          : isListingsPage
-            ? "border-[#EEEEEE] bg-[#F5F5F5]"
-            : "border-[#EEEEEE] bg-[#F5F5F5]"
-      }`}
+      id={`listing-${listing.id}`}
+      className={`rounded-[5px] border p-4 ${cardSurfaceClassName}`}
     >
       <div className="flex gap-4">
         <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg">
@@ -46,26 +101,20 @@ export function VendorListingCard({
 
         <div className="flex min-w-0 flex-1 gap-3">
           <div className="min-w-0 flex-1">
-            <div className="flex flex-col justify-between items-start h-full">
-            <div>
-            <h3
-              className={`truncate text-base font-bold font-satoshi ${
-                isPending ? "text-[#D75A5A]" : "text-[#004785]"
-              }`}
-            >
-              {listing.title}
-            </h3>
-            <p
-              className={`mt-0.5 text-sm font-medium font-satoshi ${
-                isPending ? "text-[#D75A5A]" : "text-[#676565]"
-              }`}
-            >
-              {t(listing.categoryKey)}
-            </p>
-            </div>
+            <div className="flex h-full flex-col items-start justify-between">
+              <div>
+                <h3
+                  className={`truncate text-base font-bold font-satoshi ${titleClassName}`}
+                >
+                  {listing.title}
+                </h3>
+                <p
+                  className={`mt-0.5 text-sm font-medium font-satoshi ${categoryClassName}`}
+                >
+                  {t(listing.categoryKey)}
+                </p>
+              </div>
 
-            <div>
-            {!isPending ? (
               <div className="mb-1.5 flex items-center gap-0.5">
                 {Array.from({ length: 5 }).map((_, index) => (
                   <Star
@@ -78,49 +127,55 @@ export function VendorListingCard({
                   />
                 ))}
               </div>
-            ) : null}
-            </div>
             </div>
           </div>
 
           <div className="flex shrink-0 flex-col items-end justify-between gap-3">
             <span
-              className={`rounded-full px-3 py-1 text-xs font-semibold font-satoshi ${
-                isPending
-                  ? "bg-[#D85A30]/12 text-[#D85A30]"
-                  : "bg-[#B9FF7C] text-[#446D14]"
-              }`}
+              className={`rounded-full px-3 py-1 text-xs font-semibold font-satoshi ${STATUS_BADGE_STYLES[listing.status]}`}
             >
-              {isPending
-                ? pendingLabel
-                : t("vendor.dashboard.status.live")}
+              {statusLabel}
             </span>
 
-            {!isPending ? (
-              <div className="flex gap-1">
-                <button
-                  type="button"
-                  aria-label={t("vendor.dashboard.editListing")}
-                  className="rounded-md p-1.5 text-[#1E1E1E] transition-colors hover:bg-white/80"
-                >
-                  <Pencil className="h-4 w-4" fill="#1E1E1E" stroke="#F5F5F5" strokeWidth={1} />
-                </button>
-                <button
-                  type="button"
-                  aria-label={t("vendor.dashboard.deleteListing")}
-                  className="rounded-md p-1.5 text-[#1E1E1E] transition-colors hover:bg-white/80"
-                >
-                  <Trash2 className="h-4 w-4" strokeWidth={1.75} />
-                </button>
-                <button
-                  type="button"
-                  aria-label={t("vendor.dashboard.pauseListing")}
-                  className="rounded-md p-1.5 text-[#676565] transition-colors hover:bg-white/80"
-                >
-                  <Pause className="h-4 w-4" fill="#1E1E1E" strokeWidth={1} />
-                </button>
-              </div>
-            ) : null}
+            <div className="flex gap-1">
+              <Link
+                href={editHref}
+                aria-label={t("vendor.dashboard.editListing")}
+                className={`${actionButtonClassName} text-[#1E1E1E] hover:bg-white/80`}
+              >
+                <Pencil
+                  className="h-4 w-4"
+                  fill="#1E1E1E"
+                  stroke="#F5F5F5"
+                  strokeWidth={1}
+                />
+              </Link>
+              <button
+                type="button"
+                aria-label={t("vendor.dashboard.deleteListing")}
+                onClick={() => onDeleteRequest?.(listing.id)}
+                className={`${actionButtonClassName} text-[#1E1E1E] hover:bg-white/80`}
+              >
+                <Trash2 className="h-4 w-4" strokeWidth={1.75} />
+              </button>
+              <button
+                type="button"
+                aria-label={
+                  isPaused
+                    ? t("vendor.dashboard.playListing")
+                    : t("vendor.dashboard.pauseListing")
+                }
+                disabled={isPauseDisabled}
+                onClick={() => onPauseToggle?.(listing.id)}
+                className={`${actionButtonClassName} text-[#676565] hover:bg-white/80`}
+              >
+                {isPaused ? (
+                  <Play className="h-4 w-4 fill-[#1E1E1E]" strokeWidth={1} />
+                ) : (
+                  <Pause className="h-4 w-4 fill-[#1E1E1E]" strokeWidth={1} />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>

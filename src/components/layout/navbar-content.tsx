@@ -69,7 +69,7 @@ export function NavbarContent({ session }: NavbarContentProps) {
           </Link>
 
           <Link
-            href="/vendor"
+            href="/vendor/login"
             className="hidden transition-opacity hover:opacity-80 lg:inline"
           >
             {t("nav.becomeVendor")}

@@ -164,12 +164,19 @@ export function HeroPillSelect({
 type HeroRadioOptionProps = {
   label: string;
   selected?: boolean;
+  onSelect?: () => void;
 };
 
-export function HeroRadioOption({ label, selected = false }: HeroRadioOptionProps) {
+export function HeroRadioOption({
+  label,
+  selected = false,
+  onSelect,
+}: HeroRadioOptionProps) {
   return (
     <button
       type="button"
+      aria-pressed={selected}
+      onClick={onSelect}
       className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm text-white ${
         selected ? "border-white bg-white/10" : "border-white/40"
       }`}

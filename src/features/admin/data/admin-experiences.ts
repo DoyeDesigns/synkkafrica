@@ -1,6 +1,23 @@
 import type { AdminListing } from "@/features/admin/data/admin-listings";
 
-export const ADMIN_EXPERIENCES: AdminListing[] = [
+const EXPERIENCE_IMAGES = [
+  "/hero/tours.png",
+  "/destinations/lagos.png",
+  "/promo/experience.png",
+  "/destinations/south-africa.png",
+] as const;
+
+function withExperienceImages(
+  listings: Omit<AdminListing, "image">[],
+): AdminListing[] {
+  return listings.map((listing, index) => ({
+    ...listing,
+    image:
+      EXPERIENCE_IMAGES[index % EXPERIENCE_IMAGES.length] ?? EXPERIENCE_IMAGES[0],
+  }));
+}
+
+export const ADMIN_EXPERIENCES: AdminListing[] = withExperienceImages([
   {
     id: "tour-lagos-sunset",
     name: "Lagos Lagoon Sunset Cruise",
@@ -97,4 +114,4 @@ export const ADMIN_EXPERIENCES: AdminListing[] = [
     status: "inactive",
     publicUrl: "/tours/tour-calabar-carnival/book",
   },
-];
+]);

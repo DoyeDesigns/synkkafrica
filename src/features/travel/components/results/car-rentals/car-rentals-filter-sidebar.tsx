@@ -18,6 +18,7 @@ import {
 } from "@/features/travel/data/car-rental-results";
 import { FilterPanel } from "@/features/travel/components/results/accommodations/filter-panel";
 import { ClearFilterButton } from "@/features/travel/components/results/shared/clear-filter-button";
+import { DiscountFilterPanel } from "@/features/travel/components/results/shared/discount-filter-panel";
 import { useFilterOptionLabel } from "@/hooks/use-filter-option-label";
 import { useTranslation } from "@/hooks/use-translation";
 
@@ -110,6 +111,11 @@ export function CarRentalsFilterSidebar({
           />
         </div>
       </FilterPanel>
+
+      <DiscountFilterPanel
+        value={filters.discounts}
+        onChange={(value) => onFilterChange("discounts", value)}
+      />
 
       <FilterPanel className="space-y-4">
         <label className="text-sm font-bold font-montserrat text-foreground">

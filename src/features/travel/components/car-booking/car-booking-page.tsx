@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+import { CarRentalOptionsSection } from "@/features/travel/components/car-booking/car-rental-options-section";
+import type { CarRentalMode } from "@/features/travel/booking/booking-params";
 import type { CarBookingStepId } from "@/features/travel/booking/car-constants";
 import {
   getDefaultCheckInDate,
@@ -37,6 +39,20 @@ export function CarBookingPage({
   const [pickupDate, setPickupDate] = useState(getDefaultCheckInDate());
   const [selectedTime, setSelectedTime] = useState("09:00");
   const [days, setDays] = useState(1);
+  const [carRentalMode, setCarRentalMode] = useState<CarRentalMode>("self_drive");
+  const [requestDelivery, setRequestDelivery] = useState(false);
+  const [deliveryAddress, setDeliveryAddress] = useState("");
+  const [customerPickupAddress, setCustomerPickupAddress] = useState("");
+
+  const handleRentalModeChange = (mode: CarRentalMode) => {
+    setCarRentalMode(mode);
+    if (mode === "with_driver") {
+      setRequestDelivery(false);
+      setDeliveryAddress("");
+    } else {
+      setCustomerPickupAddress("");
+    }
+  };
 
   const handleBookNow = () => {
     const params = serializeBookingParams({
@@ -46,6 +62,16 @@ export function CarBookingPage({
       days,
       guests: 1,
       rooms: 1,
+      carRentalMode,
+      requestDelivery: carRentalMode === "self_drive" ? requestDelivery : undefined,
+      deliveryAddress:
+        carRentalMode === "self_drive" && requestDelivery
+          ? deliveryAddress.trim() || undefined
+          : undefined,
+      customerPickupAddress:
+        carRentalMode === "with_driver"
+          ? customerPickupAddress.trim() || undefined
+          : undefined,
     });
     router.push(`/car-rentals/${car.id}/book/checkout?${params.toString()}`);
   };
@@ -94,6 +120,20 @@ export function CarBookingPage({
               currency={car.currency}
               onSelectPackage={setSelectedPackageId}
             />
+            <CarRentalOptionsSection
+              rentalMode={carRentalMode}
+              onRentalModeChange={handleRentalModeChange}
+              requestDelivery={requestDelivery}
+              onRequestDeliveryChange={setRequestDelivery}
+              deliveryAddress={deliveryAddress}
+              onDeliveryAddressChange={setDeliveryAddress}
+              customerPickupAddress={customerPickupAddress}
+              onCustomerPickupAddressChange={setCustomerPickupAddress}
+              pickupAddress={car.pickupAddress}
+              driverAddonPrice={car.driverAddonPrice}
+              deliveryFee={car.deliveryFee}
+              currency={car.currency}
+            />
           </div>
 
           <aside className="space-y-5 xl:sticky xl:top-10 xl:self-start">
@@ -102,6 +142,8 @@ export function CarBookingPage({
               packages={car.packages}
               selectedPackageId={selectedPackageId}
               days={days}
+              carRentalMode={carRentalMode}
+              requestDelivery={requestDelivery}
               onSelectPackage={setSelectedPackageId}
               onBookNow={handleBookNow}
             />

@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronDown, Download } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import {
   buildEarningsStatementCsv,
@@ -16,6 +16,7 @@ import {
   type VendorTransaction,
 } from "@/features/vendor/data/vendor-earnings";
 import { useFormatPrice } from "@/hooks/use-format-price";
+import { useClickOutside } from "@/hooks/use-click-outside";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -58,8 +59,12 @@ export function VendorEarningsContent({
     VENDOR_BANK_ACCOUNTS[0]?.id ?? "",
   );
   const [duration, setDuration] = useState<EarningsDuration>("all");
+  const [durationOpen, setDurationOpen] = useState(false);
+  const durationDropdownRef = useRef<HTMLDivElement>(null);
 
   const { currency, availableBalance } = VENDOR_EARNINGS_SUMMARY;
+
+  useClickOutside(durationDropdownRef, () => setDurationOpen(false), durationOpen);
 
   const filteredTransactions = useMemo(
     () => filterTransactionsByDuration(VENDOR_TRANSACTIONS, duration),
@@ -125,110 +130,76 @@ export function VendorEarningsContent({
             </div>
 
             <div className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm">
-              <div className="flex flex-col gap-3">
+              <div className="flex items-start justify-between gap-3">
                 <p className="text-sm font-bold font-satoshi text-[#3C3C3C]">
                   {t("vendor.earnings.lifetimeEarnings")}
                 </p>
 
-                <div
-                  className="grid grid-cols-2 gap-2 sm:grid-cols-4"
-                  role="group"
-                  aria-label={t("vendor.earnings.duration.label")}
-                >
-                  {EARNINGS_DURATION_OPTIONS.map((option) => {
-                    const isActive = duration === option;
+                <div ref={durationDropdownRef} className="relative shrink-0">
+                  <button
+                    type="button"
+                    aria-label={t("vendor.earnings.duration.label")}
+                    aria-expanded={durationOpen}
+                    aria-haspopup="listbox"
+                    onClick={() => setDurationOpen((open) => !open)}
+                    className="flex h-9 min-w-28 items-center justify-between gap-2 rounded-full border border-[#E5E5E5] bg-white px-3 text-xs font-semibold font-satoshi text-[#2F2F2F] outline-none transition-colors hover:border-[#D85A30] focus:border-[#D85A30]"
+                  >
+                    <span>{t(DURATION_LABEL_KEYS[duration])}</span>
+                    <ChevronDown
+                      className={`h-3.5 w-3.5 shrink-0 text-[#676565] transition-transform ${durationOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
 
-                    return (
-                      <button
-                        key={option}
-                        type="button"
-                        onClick={() => setDuration(option)}
-                        className={`rounded-lg border px-2 py-2 text-xs font-semibold font-satoshi transition-colors ${
-                          isActive
-                            ? "border-[#D85A30] bg-[#FFF1EB] text-[#D85A30]"
-                            : "border-[#E5E5E5] bg-[#FAFAFA] text-[#676565] hover:border-[#D0D0D0]"
-                        }`}
-                      >
-                        {t(DURATION_LABEL_KEYS[option])}
-                      </button>
-                    );
-                  })}
+                  {durationOpen ? (
+                    <ul
+                      role="listbox"
+                      aria-label={t("vendor.earnings.duration.label")}
+                      className="absolute right-0 top-[calc(100%+0.5rem)] z-50 min-w-full overflow-hidden rounded-xl border border-[#E5E5E5] bg-white py-1 shadow-lg"
+                    >
+                      {EARNINGS_DURATION_OPTIONS.map((option) => {
+                        const isSelected = option === duration;
+
+                        return (
+                          <li key={option} role="presentation" className="w-full">
+                            <button
+                              type="button"
+                              role="option"
+                              aria-selected={isSelected}
+                              onClick={() => {
+                                setDuration(option);
+                                setDurationOpen(false);
+                              }}
+                              className={`block w-full px-3 py-2 text-left text-xs font-semibold font-satoshi transition-colors ${
+                                isSelected
+                                  ? "bg-[#FFF1EB] text-[#D85A30]"
+                                  : "text-[#2F2F2F] hover:bg-[#FAFAFA]"
+                              }`}
+                            >
+                              {t(DURATION_LABEL_KEYS[option])}
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  ) : null}
                 </div>
-
-                <p className="text-3xl font-bold font-inter text-[#D85A30]">
-                  {formatPrice(
-                    commissionSummary.currency,
-                    commissionSummary.vendorShare,
-                  )}
-                </p>
               </div>
+
+              <p className="mt-2 text-3xl font-bold font-inter text-[#D85A30]">
+                {formatPrice(
+                  commissionSummary.currency,
+                  commissionSummary.vendorShare,
+                )}
+              </p>
+
+              <p className="mt-2 text-xs font-medium font-satoshi text-[#676565]">
+                {t("vendor.earnings.commissionSplitHint", {
+                  vendor: VENDOR_COMMISSION_SPLIT.vendorSharePercent,
+                  platform: VENDOR_COMMISSION_SPLIT.platformSharePercent,
+                })}
+              </p>
             </div>
           </div>
-
-          <section className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <h3 className="text-base font-bold font-satoshi text-[#2F2F2F]">
-                  {t("vendor.earnings.commissionSplit")}
-                </h3>
-                <p className="mt-1 text-xs font-medium font-satoshi text-[#676565]">
-                  {t("vendor.earnings.commissionSplitHint", {
-                    vendor: VENDOR_COMMISSION_SPLIT.vendorSharePercent,
-                    platform: VENDOR_COMMISSION_SPLIT.platformSharePercent,
-                  })}
-                </p>
-              </div>
-
-              <div className="flex shrink-0 gap-2">
-                <span className="rounded-full bg-[#E8F5E9] px-3 py-1 text-xs font-semibold font-satoshi text-[#2E7D32]">
-                  {VENDOR_COMMISSION_SPLIT.vendorSharePercent}%{" "}
-                  {t("vendor.earnings.vendorShare")}
-                </span>
-                <span className="rounded-full bg-[#FFF3E0] px-3 py-1 text-xs font-semibold font-satoshi text-[#E65100]">
-                  {VENDOR_COMMISSION_SPLIT.platformSharePercent}%{" "}
-                  {t("vendor.earnings.platformShare")}
-                </span>
-              </div>
-            </div>
-
-            <dl className="mt-4 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-lg border border-[#E8E8E8] bg-[#FAFAFA] px-4 py-3">
-                <dt className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
-                  {t("vendor.earnings.grossRevenue")}
-                </dt>
-                <dd className="mt-1 text-lg font-bold font-satoshi text-[#2F2F2F]">
-                  {formatPrice(
-                    commissionSummary.currency,
-                    commissionSummary.grossRevenue,
-                  )}
-                </dd>
-              </div>
-              <div className="rounded-lg border border-[#E8E8E8] bg-[#FAFAFA] px-4 py-3">
-                <dt className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
-                  {t("vendor.earnings.vendorShare")} (
-                  {VENDOR_COMMISSION_SPLIT.vendorSharePercent}%)
-                </dt>
-                <dd className="mt-1 text-lg font-bold font-satoshi text-[#2E7D32]">
-                  {formatPrice(
-                    commissionSummary.currency,
-                    commissionSummary.vendorShare,
-                  )}
-                </dd>
-              </div>
-              <div className="rounded-lg border border-[#E8E8E8] bg-[#FAFAFA] px-4 py-3">
-                <dt className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
-                  {t("vendor.earnings.platformShare")} (
-                  {VENDOR_COMMISSION_SPLIT.platformSharePercent}%)
-                </dt>
-                <dd className="mt-1 text-lg font-bold font-satoshi text-[#E65100]">
-                  {formatPrice(
-                    commissionSummary.currency,
-                    commissionSummary.platformFee,
-                  )}
-                </dd>
-              </div>
-            </dl>
-          </section>
 
           <section>
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">

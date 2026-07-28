@@ -27,19 +27,11 @@ export function isAdminDemoEnabled() {
 }
 
 /**
- * Lets account pages render without a real session while designing locally.
- * Set ACCOUNT_DESIGN_PREVIEW=false to require sign-in again in development.
+ * Account stays open for demo deployments unless explicitly disabled.
+ * Set ACCOUNT_DESIGN_PREVIEW=false when real account auth is required.
  */
 export function isAccountDesignPreviewEnabled() {
-  if (process.env.ACCOUNT_DESIGN_PREVIEW === "true") {
-    return true;
-  }
-
-  if (process.env.ACCOUNT_DESIGN_PREVIEW === "false") {
-    return false;
-  }
-
-  return process.env.NODE_ENV === "development";
+  return process.env.ACCOUNT_DESIGN_PREVIEW !== "false";
 }
 
 export function getAccountDesignPreviewSession(): Session | null {

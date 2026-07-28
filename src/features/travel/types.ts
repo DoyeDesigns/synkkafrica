@@ -39,11 +39,13 @@ export type CarRentalsSearchParams = {
   location?: string;
   serviceType?: string;
   maxPrice?: string;
+  date?: string;
 };
 
 export type ToursSearchParams = {
   query?: string;
   location?: string;
+  date?: string;
 };
 
 export type SectionSearchParams =

@@ -1,6 +1,6 @@
 export type VendorDashboardPeriod = "day" | "week" | "month" | "sixMonths" | "year";
 
-export type VendorListingStatus = "live" | "pending";
+export type VendorListingStatus = "live" | "pending" | "paused";
 
 export type VendorDashboardListing = {
   id: string;
@@ -61,16 +61,16 @@ export const VENDOR_DASHBOARD_LISTINGS: VendorDashboardListing[] = [
     title: "Victoria Island Loft",
     category: "Accommodations",
     categoryKey: "vendor.dashboard.category.accommodations",
-    rating: 5,
+    rating: 4,
     image: "/hero/accommodations.png",
-    status: "live",
+    status: "paused",
   },
   {
     id: "toyota-camry-2021",
     title: "Toyota Camry 2021",
     category: "Car rentals",
     categoryKey: "vendor.dashboard.category.carRentals",
-    rating: 5,
+    rating: 0,
     image: "/hero/car-rentals.png",
     status: "pending",
   },

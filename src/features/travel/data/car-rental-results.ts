@@ -1,3 +1,8 @@
+import {
+  DEFAULT_DISCOUNT_FILTER,
+  matchesDiscountFilter,
+} from "@/features/travel/data/discount-filter";
+
 export type CarRentalResult = {
   id: string;
   name: string;
@@ -5,18 +10,21 @@ export type CarRentalResult = {
   rating: number;
   reviewCount: number;
   pricePerDay: number;
+  originalPricePerDay?: number;
   currency: string;
   image: string;
   carType: string;
   serviceType: string;
   transmission: string;
   selfDriveAvailable: boolean;
+  hasDiscount: boolean;
 };
 
 export type CarRentalPriceRangeOption = "under-50k" | "50-150k" | "150k-plus";
 
 export type CarRentalFilterState = {
   location: string;
+  discounts: string;
   priceBudget: string;
   priceMin: number;
   priceMax: number;
@@ -28,6 +36,7 @@ export type CarRentalFilterState = {
 
 export const DEFAULT_CAR_RENTAL_FILTERS: CarRentalFilterState = {
   location: "Lagos Nigeria",
+  discounts: DEFAULT_DISCOUNT_FILTER,
   priceBudget: "",
   priceMin: 50000,
   priceMax: 200000,
@@ -56,57 +65,77 @@ function buildCar(
   id: string,
   overrides: Partial<CarRentalResult> = {},
 ): CarRentalResult {
+  const pricePerDay = overrides.pricePerDay ?? 143500;
+  const hasDiscount =
+    overrides.hasDiscount ?? Boolean(overrides.originalPricePerDay);
+
   return {
     id,
     name: "Toyota Highlander 2025",
     location: "Lekki Phase 1",
     rating: 4.6,
     reviewCount: 12,
-    pricePerDay: 143500,
+    pricePerDay,
     currency: "NGN",
     image: CAR_IMAGE,
     carType: "SUV",
     serviceType: "Self drive",
     transmission: "Automatic",
     selfDriveAvailable: true,
+    hasDiscount,
     ...overrides,
   };
 }
 
 export const CAR_RENTAL_RESULTS: CarRentalResult[] = [
-  buildCar("highlander-lekki-1"),
-  buildCar("highlander-lekki-2"),
-  buildCar("highlander-vi-1", { location: "Victoria Island" }),
-  buildCar("highlander-ikeja-1", { location: "Ikeja" }),
+  buildCar("highlander-lekki-1", { hasDiscount: true, originalPricePerDay: 165000 }),
+  buildCar("highlander-lekki-2", { hasDiscount: false }),
+  buildCar("highlander-vi-1", {
+    location: "Victoria Island",
+    hasDiscount: true,
+    originalPricePerDay: 158000,
+  }),
+  buildCar("highlander-ikeja-1", { location: "Ikeja", hasDiscount: false }),
   buildCar("camry-lekki-1", {
     name: "Toyota Camry 2024",
     carType: "Sedan",
     pricePerDay: 95000,
     selfDriveAvailable: false,
+    hasDiscount: true,
+    originalPricePerDay: 110000,
   }),
   buildCar("rav4-lekki-1", {
     name: "Toyota RAV4 2025",
     pricePerDay: 128000,
+    hasDiscount: false,
   }),
   buildCar("prado-abuja-1", {
     name: "Toyota Prado 2023",
     location: "Abuja",
     pricePerDay: 185000,
+    hasDiscount: true,
+    originalPricePerDay: 210000,
   }),
   buildCar("corolla-lekki-1", {
     name: "Toyota Corolla 2024",
     carType: "Sedan",
     pricePerDay: 72000,
     selfDriveAvailable: false,
+    hasDiscount: false,
   }),
   buildCar("hilux-lekki-1", {
     name: "Toyota Hilux 2024",
     carType: "Pickup",
     pricePerDay: 156000,
+    hasDiscount: true,
+    originalPricePerDay: 175000,
   }),
-  buildCar("highlander-lekki-3"),
-  buildCar("highlander-lekki-4"),
-  buildCar("highlander-lekki-5"),
+  buildCar("highlander-lekki-3", { hasDiscount: false }),
+  buildCar("highlander-lekki-4", {
+    hasDiscount: true,
+    originalPricePerDay: 160000,
+  }),
+  buildCar("highlander-lekki-5", { hasDiscount: false }),
 ];
 
 export function countActiveCarRentalFilters(
@@ -115,6 +144,7 @@ export function countActiveCarRentalFilters(
   let count = 0;
 
   if (filters.location !== DEFAULT_CAR_RENTAL_FILTERS.location) count += 1;
+  if (filters.discounts !== DEFAULT_CAR_RENTAL_FILTERS.discounts) count += 1;
   if (filters.priceBudget.trim()) count += 1;
   if (filters.priceRange) count += 1;
   if (filters.carType !== DEFAULT_CAR_RENTAL_FILTERS.carType) count += 1;
@@ -167,6 +197,10 @@ export function filterCarRentalResults(
       filters.transmission !== DEFAULT_CAR_RENTAL_FILTERS.transmission &&
       result.transmission !== filters.transmission
     ) {
+      return false;
+    }
+
+    if (!matchesDiscountFilter(result.hasDiscount, filters.discounts)) {
       return false;
     }
 

@@ -19,6 +19,9 @@ export type CarDetail = {
   packages: CarRentalPackage[];
   taxesAndFees: number;
   currency: string;
+  pickupAddress?: string;
+  driverAddonPrice?: number;
+  deliveryFee?: number;
 };
 
 const DEFAULT_PACKAGES: CarRentalPackage[] = [
@@ -40,6 +43,9 @@ const CAR_DETAILS: Record<string, CarDetail> = {
     packages: DEFAULT_PACKAGES,
     taxesAndFees: 10000,
     currency: "NGN",
+    pickupAddress: "42 Ozumba Mbadiwe Ave, Victoria Island, Lagos",
+    driverAddonPrice: 25000,
+    deliveryFee: 15000,
   },
 };
 
@@ -82,6 +88,9 @@ function buildFallbackCar(carId: string): CarDetail | null {
     ],
     taxesAndFees: 10000,
     currency: result.currency,
+    pickupAddress: "42 Ozumba Mbadiwe Ave, Victoria Island, Lagos",
+    driverAddonPrice: 25000,
+    deliveryFee: 15000,
   };
 }
 

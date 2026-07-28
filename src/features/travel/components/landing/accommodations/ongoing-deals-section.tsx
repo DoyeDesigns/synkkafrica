@@ -15,16 +15,16 @@ type OngoingDealsSectionProps = {
 
 export function OngoingDealsSection({
   items,
-  seeMoreHref = "/?section=accommodations&view=results",
+  seeMoreHref = "/tour-packages",
 }: OngoingDealsSectionProps) {
   const t = useTranslation();
 
   return (
     <section className="space-y-8">
       <div className="flex items-end justify-between gap-4">
-        <div>
+        <div className="min-w-0">
           <h2 className="text-[22px] font-bold font-montserrat text-[#1E1E1E]">
-            {t("landing.ongoingDeals.title2")}
+            {t("landing.packages.title")}
           </h2>
           <p className="mt-0.5 font-medium font-satoshi text-foreground">
             {t("landing.ongoingDeals.description")}
@@ -33,7 +33,7 @@ export function OngoingDealsSection({
 
         <Link
           href={seeMoreHref}
-          className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:opacity-80"
+          className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-foreground hover:opacity-80"
         >
           {t("common.seeMore")}
           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-black text-white">
@@ -42,7 +42,7 @@ export function OngoingDealsSection({
         </Link>
       </div>
 
-      <InfiniteMarquee itemCount={items.length}>
+      <InfiniteMarquee itemCount={items.length} className="-mx-4 sm:mx-0">
         {[...items, ...items].map((item, index) => (
           <OngoingDealCard key={`${item.id}-${index}`} item={item} />
         ))}

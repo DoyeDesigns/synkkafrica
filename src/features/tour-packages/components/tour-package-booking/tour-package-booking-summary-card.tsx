@@ -1,6 +1,5 @@
 "use client";
 
-import { calculateTourPackageBookingTotal } from "@/features/tour-packages/booking/calculate-tour-package-booking-total";
 import type {
   TourPackageDetail,
   TourPackageTier,
@@ -24,7 +23,6 @@ export function TourPackageBookingSummaryCard({
   tourPackage,
   tiers,
   selectedTierId,
-  days = tourPackage.days,
   onSelectTier,
   onBookNow,
   ctaKey = "common.bookNow",
@@ -34,19 +32,9 @@ export function TourPackageBookingSummaryCard({
   const formatPrice = useFormatPrice();
   const selectedTier =
     tiers.find((tier) => tier.id === selectedTierId) ?? tiers[0];
+  const isSinglePackage = tiers.length === 1;
 
   if (!selectedTier) return null;
-
-  const pricing = calculateTourPackageBookingTotal({
-    tierPrice: selectedTier.price,
-    days,
-    baseDays: tourPackage.days,
-    taxesAndFees: tourPackage.taxesAndFees,
-    currency: tourPackage.currency,
-    tierName: selectedTier.name,
-  });
-
-  const dayLabel = days > 1 ? t("booking.summary.days") : t("booking.summary.day");
 
   const isProceedCta = ctaKey === "booking.cta.proceedToPay";
 
@@ -57,38 +45,56 @@ export function TourPackageBookingSummaryCard({
       </h2>
 
       <div className="mt-4 overflow-hidden rounded-[10px] border border-[#D9D9D9] bg-white">
-        <div className="divide-y divide-[#E5E5E5]">
-          {tiers.map((tier) => {
-            const isSelected = tier.id === selectedTierId;
+        {isSinglePackage ? (
+          <div className="px-4 py-4">
+            <div className="flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <p className="text-sm font-semibold font-inter text-[#606060]">
+                  {labelContent(selectedTier.name)}
+                </p>
+                <p className="text-xs font-medium font-satoshi text-foreground/70">
+                  {labelContent(selectedTier.duration)}
+                </p>
+              </div>
+              <p className="shrink-0 text-sm font-semibold font-inter text-foreground">
+                {formatPrice(tourPackage.currency, tourPackage.packagePrice)}
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="divide-y divide-[#E5E5E5]">
+            {tiers.map((tier) => {
+              const isSelected = tier.id === selectedTierId;
 
-            return (
-              <label key={tier.id} className="block cursor-pointer px-4 py-4">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex min-w-0 items-center gap-3">
-                    <input
-                      type="radio"
-                      name="tour-package-tier-summary"
-                      checked={isSelected}
-                      onChange={() => onSelectTier(tier.id)}
-                      className="h-4 w-4 shrink-0 accent-[#D85A30]"
-                    />
-                    <div className="min-w-0">
-                      <p className="text-sm font-semibold font-inter text-[#606060]">
-                        {labelContent(tier.name)}
-                      </p>
-                      <p className="text-xs font-medium font-satoshi text-foreground/70">
-                        {labelContent(tier.duration)}
-                      </p>
+              return (
+                <label key={tier.id} className="block cursor-pointer px-4 py-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex min-w-0 items-center gap-3">
+                      <input
+                        type="radio"
+                        name="tour-package-tier-summary"
+                        checked={isSelected}
+                        onChange={() => onSelectTier(tier.id)}
+                        className="h-4 w-4 shrink-0 accent-[#D85A30]"
+                      />
+                      <div className="min-w-0">
+                        <p className="text-sm font-semibold font-inter text-[#606060]">
+                          {labelContent(tier.name)}
+                        </p>
+                        <p className="text-xs font-medium font-satoshi text-foreground/70">
+                          {labelContent(tier.duration)}
+                        </p>
+                      </div>
                     </div>
+                    <p className="shrink-0 text-sm font-semibold font-inter text-foreground">
+                      {formatPrice(tourPackage.currency, tier.price)}
+                    </p>
                   </div>
-                  <p className="shrink-0 text-sm font-semibold font-inter text-foreground">
-                    {formatPrice(tourPackage.currency, tier.price)}
-                  </p>
-                </div>
-              </label>
-            );
-          })}
-        </div>
+                </label>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <h3 className="mt-5 text-base font-medium font-satoshi text-foreground">
@@ -99,21 +105,22 @@ export function TourPackageBookingSummaryCard({
         <div className="space-y-2 text-sm font-satoshi">
           <div className="flex items-start justify-between gap-3">
             <span className="text-foreground/80">
-              {labelContent(selectedTier.name)} x {days} {dayLabel} x{" "}
-              <span className="font-bold text-foreground">
-                {formatPrice(tourPackage.currency, selectedTier.price)}
-              </span>
+              {labelContent(selectedTier.name)}
             </span>
             <span className="shrink-0 font-medium text-foreground">
-              {formatPrice(tourPackage.currency, pricing.subtotal)}
+              {formatPrice(tourPackage.currency, tourPackage.packagePrice)}
             </span>
           </div>
-          <div className="flex items-center justify-between gap-3">
-            <span className="text-foreground/80">{t("booking.summary.taxesAndFees")}</span>
-            <span className="font-medium text-foreground">
-              {formatPrice(tourPackage.currency, pricing.taxesAndFees)}
-            </span>
-          </div>
+          {tourPackage.taxesAndFees > 0 ? (
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-foreground/80">
+                {t("booking.summary.taxesAndFees")}
+              </span>
+              <span className="font-medium text-foreground">
+                {formatPrice(tourPackage.currency, tourPackage.taxesAndFees)}
+              </span>
+            </div>
+          ) : null}
         </div>
       </div>
 

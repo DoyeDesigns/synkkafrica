@@ -30,10 +30,21 @@ export function TourPackageBookingBreadcrumbs({
         </li>
         <li>
           <Link
+            href="/?section=accommodations"
+            className="font-medium text-[#D85A30] transition-opacity hover:opacity-80"
+          >
+            {t("breadcrumb.dealsAndPackages")}
+          </Link>
+        </li>
+        <li aria-hidden="true" className="text-foreground/50">
+          |
+        </li>
+        <li>
+          <Link
             href={TOUR_PACKAGES_PATH}
             className="font-medium text-[#D85A30] transition-opacity hover:opacity-80"
           >
-            {t("breadcrumb.tourPackages")}
+            {t("breadcrumb.packages")}
           </Link>
         </li>
         <li aria-hidden="true" className="text-foreground/50">

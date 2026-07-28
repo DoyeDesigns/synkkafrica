@@ -1,6 +1,6 @@
 "use client";
 
-import { BadgeCheck, Clock3, MessageSquare } from "lucide-react";
+import { BadgeCheck, Clock3 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -34,7 +34,6 @@ type VendorBookingCardProps = {
   showActions?: boolean;
   onConfirm?: (bookingId: string) => void;
   onDecline?: (bookingId: string) => void;
-  onComplete?: (bookingId: string) => void;
   onCancel?: (bookingId: string) => void;
 };
 
@@ -43,18 +42,25 @@ export function VendorBookingCard({
   showActions = false,
   onConfirm,
   onDecline,
-  onComplete,
   onCancel,
 }: VendorBookingCardProps) {
   const t = useTranslation();
   const formatPrice = useFormatPrice();
 
   const canConfirmOrDecline = booking.status === "awaiting_confirmation";
-  const canMarkComplete = booking.status === "confirmed";
   const canCancel = booking.status === "confirmed";
   const respondWithin = booking.respondBy
     ? formatRespondWithin(booking.respondBy)
     : null;
+  const isCarBooking = booking.productType === "car";
+  const carAddressLabel =
+    booking.carRentalMode === "self_drive" && booking.deliveryAddress
+      ? t("vendor.bookings.deliveryAddress")
+      : t("vendor.bookings.pickupAddress");
+  const carAddressValue =
+    booking.carRentalMode === "self_drive" && booking.deliveryAddress
+      ? booking.deliveryAddress
+      : booking.pickupAddress;
 
   return (
     <article className="rounded-xl border border-[#EEEEEE] bg-white p-4 shadow-sm sm:p-5">
@@ -129,7 +135,25 @@ export function VendorBookingCard({
         </div>
       </dl>
 
-      {booking.specialRequests ? (
+      {isCarBooking && carAddressValue ? (
+        <div className="mt-4 rounded-lg bg-[#F0F6FC] px-4 py-3">
+          <p className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
+            {carAddressLabel}
+          </p>
+          <p className="mt-1 text-sm font-medium font-satoshi text-[#2F2F2F]">
+            {carAddressValue}
+          </p>
+          {booking.carRentalMode ? (
+            <p className="mt-2 text-xs font-semibold font-satoshi text-[#135391]">
+              {booking.carRentalMode === "self_drive"
+                ? t("vendor.bookings.carMode.selfDrive")
+                : t("vendor.bookings.carMode.withDriver")}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
+
+      {!isCarBooking && booking.specialRequests ? (
         <div className="mt-4 rounded-lg bg-[#F0F6FC] px-4 py-3">
           <p className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#676565]">
             {t("vendor.bookings.specialRequests")}
@@ -140,7 +164,18 @@ export function VendorBookingCard({
         </div>
       ) : null}
 
-      {showActions && (canConfirmOrDecline || canMarkComplete || canCancel) ? (
+      {booking.declineReason ? (
+        <div className="mt-4 rounded-lg border border-[#F5C6CB] bg-[#FDEBEB] px-4 py-3">
+          <p className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#C0392B]">
+            {t("vendor.bookings.declineReason")}
+          </p>
+          <p className="mt-1 text-sm font-medium font-satoshi text-[#C0392B]">
+            {booking.declineReason}
+          </p>
+        </div>
+      ) : null}
+
+      {showActions && (canConfirmOrDecline || canCancel) ? (
         <div className="mt-5 flex flex-wrap gap-2 border-t border-[#F0F0F0] pt-4">
           {canConfirmOrDecline ? (
             <>
@@ -160,24 +195,6 @@ export function VendorBookingCard({
               </button>
             </>
           ) : null}
-
-          {canMarkComplete ? (
-            <button
-              type="button"
-              onClick={() => onComplete?.(booking.id)}
-              className="rounded-lg bg-[#135391] px-4 py-2.5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90"
-            >
-              {t("vendor.bookings.markComplete")}
-            </button>
-          ) : null}
-
-          <button
-            type="button"
-            className="inline-flex items-center gap-2 rounded-lg border border-[#E5E5E5] bg-white px-4 py-2.5 text-sm font-bold font-satoshi text-[#2F2F2F] transition-colors hover:bg-[#FAFAFA]"
-          >
-            <MessageSquare className="h-4 w-4" strokeWidth={2} />
-            {t("vendor.bookings.messageGuest")}
-          </button>
 
           {canCancel ? (
             <button

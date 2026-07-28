@@ -3,6 +3,8 @@
 import { Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+import { CarRentalOptionsSection } from "@/features/travel/components/car-booking/car-rental-options-section";
+import type { CarRentalMode } from "@/features/travel/booking/booking-params";
 import type { CarBookingStepId } from "@/features/travel/booking/car-constants";
 import { parseBookingParams, serializeBookingParams } from "@/features/travel/booking/booking-params";
 import { CarBookingBreadcrumbs } from "@/features/travel/components/car-booking/car-booking-breadcrumbs";
@@ -23,8 +25,6 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
   const t = useTranslation();
   const currentStep: CarBookingStepId = "checkout";
   const bookingParams = parseBookingParams(searchParams);
-  const { identity, setIdentity, identityErrors, guardProceed } =
-    useGuestCheckoutGate();
 
   const initialPackageId = useMemo(() => {
     const fromQuery = bookingParams.package;
@@ -35,10 +35,36 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
 
   const [selectedPackageId, setSelectedPackageId] = useState(initialPackageId);
   const [guestCount, setGuestCount] = useState(bookingParams.guests);
-  const [specialRequests, setSpecialRequests] = useState(
-    bookingParams.specialRequests ?? "",
+  const [carRentalMode, setCarRentalMode] = useState<CarRentalMode>(
+    bookingParams.carRentalMode ?? "self_drive",
   );
+  const [requestDelivery, setRequestDelivery] = useState(
+    bookingParams.requestDelivery ?? false,
+  );
+  const [deliveryAddress, setDeliveryAddress] = useState(
+    bookingParams.deliveryAddress ?? "",
+  );
+  const [customerPickupAddress, setCustomerPickupAddress] = useState(
+    bookingParams.customerPickupAddress ?? "",
+  );
+  const {
+    identities,
+    setIdentityAt,
+    identityErrors,
+    hasIdentityErrors,
+    guardProceed,
+  } = useGuestCheckoutGate(guestCount);
   const days = bookingParams.days ?? 1;
+
+  const handleRentalModeChange = (mode: CarRentalMode) => {
+    setCarRentalMode(mode);
+    if (mode === "with_driver") {
+      setRequestDelivery(false);
+      setDeliveryAddress("");
+    } else {
+      setCustomerPickupAddress("");
+    }
+  };
 
   const handleProceedToPay = () => {
     guardProceed(() => {
@@ -49,7 +75,16 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
         days,
         guests: guestCount,
         rooms: 1,
-        specialRequests,
+        carRentalMode,
+        requestDelivery: carRentalMode === "self_drive" ? requestDelivery : undefined,
+        deliveryAddress:
+          carRentalMode === "self_drive" && requestDelivery
+            ? deliveryAddress.trim() || undefined
+            : undefined,
+        customerPickupAddress:
+          carRentalMode === "with_driver"
+            ? customerPickupAddress.trim() || undefined
+            : undefined,
       });
       router.push(`/car-rentals/${car.id}/book/payment?${params.toString()}`);
     });
@@ -64,19 +99,35 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
         </div>
 
         <div className="mt-8 grid gap-2 xl:grid-cols-[minmax(0,1fr)_340px]">
-          <GuestDetailsForm
-            guestCount={guestCount}
-            onGuestCountChange={setGuestCount}
-            specialRequests={specialRequests}
-            onSpecialRequestsChange={setSpecialRequests}
-            identity={identity}
-            onIdentityChange={setIdentity}
-            identityErrors={identityErrors}
-          />
+          <div className="space-y-4">
+            <CarRentalOptionsSection
+              rentalMode={carRentalMode}
+              onRentalModeChange={handleRentalModeChange}
+              requestDelivery={requestDelivery}
+              onRequestDeliveryChange={setRequestDelivery}
+              deliveryAddress={deliveryAddress}
+              onDeliveryAddressChange={setDeliveryAddress}
+              customerPickupAddress={customerPickupAddress}
+              onCustomerPickupAddressChange={setCustomerPickupAddress}
+              pickupAddress={car.pickupAddress}
+              driverAddonPrice={car.driverAddonPrice}
+              deliveryFee={car.deliveryFee}
+              currency={car.currency}
+            />
+
+            <GuestDetailsForm
+              guestCount={guestCount}
+              onGuestCountChange={setGuestCount}
+              identities={identities}
+              onIdentityChange={setIdentityAt}
+              identityErrors={identityErrors}
+              hideSpecialRequests
+            />
+          </div>
 
           <div>
             <div className="xl:sticky xl:top-10">
-              {Object.keys(identityErrors).length > 0 ? (
+              {hasIdentityErrors ? (
                 <p className="mb-3 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-medium font-inter text-[#D85A30]">
                   {t("booking.guest.idValidationRequired")}
                 </p>
@@ -86,6 +137,8 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
                 packages={car.packages}
                 selectedPackageId={selectedPackageId}
                 days={days}
+                carRentalMode={carRentalMode}
+                requestDelivery={requestDelivery}
                 onSelectPackage={setSelectedPackageId}
                 onBookNow={handleProceedToPay}
                 ctaKey="booking.cta.proceedToPay"

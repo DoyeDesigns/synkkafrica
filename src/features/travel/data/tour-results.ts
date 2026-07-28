@@ -4,6 +4,11 @@ import {
   TOUR_EVENTS,
   type TourEvent,
 } from "@/features/travel/data/tours-landing";
+import {
+  DEFAULT_DISCOUNT_FILTER,
+  DISCOUNT_FILTER_OPTIONS,
+  matchesDiscountFilter,
+} from "@/features/travel/data/discount-filter";
 
 export type TourResult = TourEvent & {
   hasDiscount: boolean;
@@ -22,11 +27,7 @@ export type TourFilterState = {
   experience: string;
 };
 
-export const TOUR_DISCOUNT_OPTIONS = [
-  "All discounts",
-  "With discount",
-  "No discount",
-] as const;
+export const TOUR_DISCOUNT_OPTIONS = DISCOUNT_FILTER_OPTIONS;
 
 export const TOUR_CATEGORY_OPTIONS = TOUR_EVENT_CATEGORIES.filter(
   (option) => option !== "All categories",
@@ -57,7 +58,7 @@ export const TOUR_EXPERIENCE_FILTER_OPTIONS = [
 
 export const DEFAULT_TOUR_FILTERS: TourFilterState = {
   location: "UAE, Dubai",
-  discounts: TOUR_DISCOUNT_OPTIONS[0],
+  discounts: DEFAULT_DISCOUNT_FILTER,
   priceBudget: "",
   priceMin: 10000,
   priceMax: 200000,
@@ -135,14 +136,7 @@ export function filterTourResults(
       }
     }
 
-    if (
-      filters.discounts === "With discount" &&
-      !result.hasDiscount
-    ) {
-      return false;
-    }
-
-    if (filters.discounts === "No discount" && result.hasDiscount) {
+    if (!matchesDiscountFilter(result.hasDiscount, filters.discounts)) {
       return false;
     }
 

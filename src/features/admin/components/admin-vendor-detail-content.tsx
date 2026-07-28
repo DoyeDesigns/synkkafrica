@@ -4,7 +4,6 @@ import {
   Ban,
   Check,
   Flag,
-  GraduationCap,
   Mail,
   MoreVertical,
   Pause,
@@ -19,11 +18,13 @@ import {
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { AdminConfirmModal } from "@/features/admin/components/admin-confirm-modal";
+import { AdminInternalNoteModal } from "@/features/admin/components/admin-internal-note-modal";
+import { AdminRequestDocumentsModal } from "@/features/admin/components/admin-request-documents-modal";
 import {
   formatAdminVendorOnboardedDate,
   formatAdminVendorPayoutDate,
   getAdminVendorDetailById,
-  getAdminVendorNextTier,
   type AdminVendorDetail,
   type AdminVendorDocumentStatus,
   type AdminVendorStatus,
@@ -62,7 +63,6 @@ type AdminVendorDetailContentProps = {
 
 export function AdminVendorDetailContent({ vendorId }: AdminVendorDetailContentProps) {
   const t = useTranslation();
-  const formatPrice = useFormatPrice();
   const vendor = getAdminVendorDetailById(vendorId);
 
   if (!vendor) {
@@ -80,6 +80,22 @@ export function AdminVendorDetailContent({ vendorId }: AdminVendorDetailContentP
       </div>
     );
   }
+
+  return <VendorDetailView vendor={vendor} />;
+}
+
+function formatInternalNoteDate(date: Date) {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  }).format(date);
+}
+
+function VendorDetailView({ vendor }: { vendor: AdminVendorDetail }) {
+  const t = useTranslation();
+  const formatPrice = useFormatPrice();
+  const [internalNote, setInternalNote] = useState(vendor.internalNote);
 
   return (
     <div className="space-y-6">
@@ -102,7 +118,16 @@ export function AdminVendorDetailContent({ vendorId }: AdminVendorDetailContentP
         />
       </div>
 
-      <VendorProfileHeader vendor={vendor} />
+      <VendorProfileHeader
+        vendor={vendor}
+        onSaveInternalNote={(text) =>
+          setInternalNote({
+            text,
+            author: "Admin",
+            date: formatInternalNoteDate(new Date()),
+          })
+        }
+      />
 
       <div className="grid gap-6 lg:grid-cols-2">
         <DetailCard title={t("admin.vendors.detail.accountDocuments")}>
@@ -147,15 +172,15 @@ export function AdminVendorDetailContent({ vendorId }: AdminVendorDetailContentP
         </DetailCard>
 
         <DetailCard title={t("admin.vendors.detail.internalNotes")}>
-          {vendor.internalNote ? (
+          {internalNote ? (
             <div className="rounded-lg bg-[#F0F6FC] px-4 py-4">
               <p className="text-sm italic leading-relaxed text-[#2F2F2F]">
-                &ldquo;{vendor.internalNote.text}&rdquo;
+                &ldquo;{internalNote.text}&rdquo;
               </p>
               <p className="mt-3 text-xs font-medium text-[#676565]">
                 {t("admin.vendors.detail.noteAttribution", {
-                  author: vendor.internalNote.author,
-                  date: vendor.internalNote.date,
+                  author: internalNote.author,
+                  date: internalNote.date,
                 })}
               </p>
             </div>
@@ -179,9 +204,20 @@ function MetricCard({ value, label }: { value: string; label: string }) {
   );
 }
 
-function VendorProfileHeader({ vendor }: { vendor: AdminVendorDetail }) {
+type VendorConfirmAction = "suspend" | "ban";
+
+function VendorProfileHeader({
+  vendor,
+  onSaveInternalNote,
+}: {
+  vendor: AdminVendorDetail;
+  onSaveInternalNote: (text: string) => void;
+}) {
   const t = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [requestDocumentsOpen, setRequestDocumentsOpen] = useState(false);
+  const [internalNoteOpen, setInternalNoteOpen] = useState(false);
+  const [confirmAction, setConfirmAction] = useState<VendorConfirmAction | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -213,9 +249,6 @@ function VendorProfileHeader({ vendor }: { vendor: AdminVendorDetail }) {
             >
               {t(STATUS_LABEL_KEYS[vendor.status])}
             </span>
-            <span className="rounded-full bg-[#E3F2FD] px-2.5 py-1 text-xs font-semibold text-[#1565C0]">
-              {vendor.tierLabel}
-            </span>
           </div>
 
           <p className="mt-3 text-sm font-medium font-satoshi text-[#676565]">
@@ -243,23 +276,86 @@ function VendorProfileHeader({ vendor }: { vendor: AdminVendorDetail }) {
           </button>
 
           {isMenuOpen ? (
-            <VendorOptionsMenu vendor={vendor} onClose={() => setIsMenuOpen(false)} />
+            <VendorOptionsMenu
+              onClose={() => setIsMenuOpen(false)}
+              onRequestDocuments={() => {
+                setIsMenuOpen(false);
+                setRequestDocumentsOpen(true);
+              }}
+              onSuspend={() => {
+                setIsMenuOpen(false);
+                setConfirmAction("suspend");
+              }}
+              onBan={() => {
+                setIsMenuOpen(false);
+                setConfirmAction("ban");
+              }}
+              onAddInternalNote={() => {
+                setIsMenuOpen(false);
+                setInternalNoteOpen(true);
+              }}
+            />
           ) : null}
         </div>
       </div>
+
+      <AdminRequestDocumentsModal
+        open={requestDocumentsOpen}
+        vendorName={vendor.name}
+        onClose={() => setRequestDocumentsOpen(false)}
+      />
+
+      <AdminInternalNoteModal
+        open={internalNoteOpen}
+        title={t("admin.vendors.internalNoteModal.title")}
+        subtitle={t("admin.vendors.internalNoteModal.subtitle", { vendor: vendor.name })}
+        label={t("admin.vendors.internalNoteModal.label")}
+        placeholder={t("admin.vendors.internalNoteModal.placeholder")}
+        submitLabel={t("admin.vendors.internalNoteModal.submit")}
+        cancelLabel={t("admin.vendors.confirm.cancel")}
+        onClose={() => setInternalNoteOpen(false)}
+        onSubmit={onSaveInternalNote}
+      />
+
+      <AdminConfirmModal
+        open={confirmAction === "suspend"}
+        title={t("admin.vendors.confirmSuspend.title")}
+        message={t("admin.vendors.confirmSuspend.message", { vendor: vendor.name })}
+        confirmLabel={t("admin.vendors.menu.suspendAccount")}
+        cancelLabel={t("admin.vendors.confirm.cancel")}
+        destructive
+        onConfirm={() => {}}
+        onClose={() => setConfirmAction(null)}
+      />
+
+      <AdminConfirmModal
+        open={confirmAction === "ban"}
+        title={t("admin.vendors.confirmBan.title")}
+        message={t("admin.vendors.confirmBan.message", { vendor: vendor.name })}
+        confirmLabel={t("admin.vendors.menu.banPermanently")}
+        cancelLabel={t("admin.vendors.confirm.cancel")}
+        destructive
+        onConfirm={() => {}}
+        onClose={() => setConfirmAction(null)}
+      />
     </div>
   );
 }
 
 function VendorOptionsMenu({
-  vendor,
   onClose,
+  onRequestDocuments,
+  onSuspend,
+  onBan,
+  onAddInternalNote,
 }: {
-  vendor: AdminVendorDetail;
   onClose: () => void;
+  onRequestDocuments: () => void;
+  onSuspend: () => void;
+  onBan: () => void;
+  onAddInternalNote: () => void;
 }) {
   const t = useTranslation();
-  const nextTier = getAdminVendorNextTier(vendor.tier);
 
   return (
     <div className="absolute right-0 top-full z-20 mt-1 w-72 overflow-hidden rounded-lg border border-[#EEEEEE] bg-white py-2 shadow-lg">
@@ -272,15 +368,8 @@ function VendorOptionsMenu({
         <MenuItem
           icon={Undo2}
           label={t("admin.vendors.menu.requestAdditionalDocuments")}
-          onClick={onClose}
+          onClick={onRequestDocuments}
         />
-        {nextTier ? (
-          <MenuItem
-            icon={GraduationCap}
-            label={t("admin.vendors.menu.upgradeToTier", { tier: nextTier })}
-            onClick={onClose}
-          />
-        ) : null}
       </MenuSection>
 
       <MenuDivider />
@@ -326,7 +415,7 @@ function VendorOptionsMenu({
         <MenuItem
           icon={Plus}
           label={t("admin.vendors.menu.addInternalNote")}
-          onClick={onClose}
+          onClick={onAddInternalNote}
         />
       </MenuSection>
 
@@ -336,13 +425,13 @@ function VendorOptionsMenu({
         <MenuItem
           icon={Power}
           label={t("admin.vendors.menu.suspendAccount")}
-          onClick={onClose}
+          onClick={onSuspend}
           destructive
         />
         <MenuItem
           icon={Ban}
           label={t("admin.vendors.menu.banPermanently")}
-          onClick={onClose}
+          onClick={onBan}
           destructive
         />
       </MenuSection>

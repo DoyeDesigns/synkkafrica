@@ -53,6 +53,20 @@ export type AdminVendorDetail = AdminVendor & {
 
 export const ADMIN_VENDOR_MAX_TIER = 3;
 
+export const ADMIN_VENDOR_REQUESTABLE_DOCUMENTS = [
+  "Government ID (NIN)",
+  "CAC registration",
+  "BVN",
+  "Vehicle registration",
+  "Roadworthiness certificate",
+  "Comprehensive insurance",
+  "GPS tracker acknowledgment",
+  "Business license",
+  "Tax identification",
+  "Proof of address",
+  "Bank account verification",
+] as const;
+
 const ADMIN_VENDOR_TIER_NAMES: Record<number, string> = {
   1: "Individual",
   2: "Registered business",

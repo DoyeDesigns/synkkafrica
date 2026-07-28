@@ -1,15 +1,20 @@
 import { formatPriceWithPreferences } from "@/lib/preferences/format-price";
 
+export type PackageOfferInclusion = "flights" | "stays" | "carDriver";
+
 export type AccommodationDeal = {
   id: string;
-  name: string;
-  location: string;
-  rating: number;
-  reviewCount: number;
-  originalPrice: number;
+  title: string;
+  days: number;
+  nights: number;
+  scheduleLabel: string;
+  savingsPercent: number;
   currentPrice: number;
+  separateBookingPrice: number;
   currency: string;
   image: string;
+  inclusions: PackageOfferInclusion[];
+  packageId?: string;
 };
 
 export type PropertyType = {
@@ -21,37 +26,46 @@ export type PropertyType = {
 
 export const ACCOMMODATION_DEALS: AccommodationDeal[] = [
   {
-    id: "president-hotel",
-    name: "The President Hotel",
-    location: "Cape town, South Africa",
-    rating: 4.2,
-    reviewCount: 304,
-    originalPrice: 156500,
-    currentPrice: 125200,
+    id: "lagos-weekend-getaway",
+    title: "Lagos Weekend Getaway",
+    days: 4,
+    nights: 3,
+    scheduleLabel: "Fri — Mon",
+    savingsPercent: 20,
+    currentPrice: 887_500,
+    separateBookingPrice: 1_089_000,
     currency: "NGN",
-    image: "/hero/accommodations.png",
+    image: "/destinations/lagos.png",
+    inclusions: ["flights", "stays", "carDriver"],
+    packageId: "singapore-lights",
   },
   {
-    id: "ark-havn",
-    name: "Ark Havn",
-    location: "Cape town, South Africa",
-    rating: 4.2,
-    reviewCount: 304,
-    originalPrice: 156500,
-    currentPrice: 125200,
+    id: "dubai-city-break",
+    title: "Dubai City Break",
+    days: 5,
+    nights: 4,
+    scheduleLabel: "Thu — Mon",
+    savingsPercent: 18,
+    currentPrice: 1_245_000,
+    separateBookingPrice: 1_518_000,
     currency: "NGN",
-    image: "/hero/accommodations.png",
+    image: "/destinations/dubai.png",
+    inclusions: ["flights", "stays", "carDriver"],
+    packageId: "malaysia-getaway",
   },
   {
-    id: "lagoon-view",
-    name: "Lagoon View Suites",
-    location: "Lagos, Nigeria",
-    rating: 4.5,
-    reviewCount: 128,
-    originalPrice: 98000,
-    currentPrice: 78400,
+    id: "cape-coastal-escape",
+    title: "Cape Coastal Escape",
+    days: 6,
+    nights: 5,
+    scheduleLabel: "Sat — Thu",
+    savingsPercent: 15,
+    currentPrice: 962_000,
+    separateBookingPrice: 1_132_000,
     currency: "NGN",
-    image: "/hero/accommodations.png",
+    image: "/destinations/south-africa.png",
+    inclusions: ["flights", "stays", "carDriver"],
+    packageId: "south-africa-safari",
   },
 ];
 

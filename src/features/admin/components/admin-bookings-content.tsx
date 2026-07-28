@@ -21,6 +21,7 @@ import {
   filterAdminBookings,
   formatAdminBookingDate,
   getAdminBookingStats,
+  isAdminBookingInDateRange,
   type AdminBooking,
   type AdminBookingDateRange,
   type AdminBookingProductType,
@@ -100,7 +101,12 @@ export function AdminBookingsContent() {
   const [selectedId, setSelectedId] = useState(ADMIN_BOOKINGS[0]?.id ?? "");
   const [createModalOpen, setCreateModalOpen] = useState(false);
 
-  const stats = useMemo(() => getAdminBookingStats(bookings), [bookings]);
+  const dateRangeBookings = useMemo(
+    () => bookings.filter((booking) => isAdminBookingInDateRange(booking, dateRange)),
+    [bookings, dateRange],
+  );
+
+  const stats = useMemo(() => getAdminBookingStats(dateRangeBookings), [dateRangeBookings]);
 
   const filteredBookings = useMemo(
     () =>
@@ -116,8 +122,9 @@ export function AdminBookingsContent() {
   );
 
   const selectedBooking = useMemo(
-    () => bookings.find((booking) => booking.id === selectedId) ?? filteredBookings[0],
-    [bookings, filteredBookings, selectedId],
+    () =>
+      filteredBookings.find((booking) => booking.id === selectedId) ?? filteredBookings[0],
+    [filteredBookings, selectedId],
   );
 
   const filterCounts = useMemo(() => {
@@ -154,14 +161,17 @@ export function AdminBookingsContent() {
             {t("admin.bookings.subtitle")}
           </p>
         </div>
-        <button
-          type="button"
-          onClick={() => setCreateModalOpen(true)}
-          className="inline-flex h-11 shrink-0 items-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90"
-        >
-          <Plus className="h-4 w-4" strokeWidth={2.5} />
-          {t("admin.bookings.create")}
-        </button>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">
+          <DateRangeFilter value={dateRange} onChange={setDateRange} />
+          <button
+            type="button"
+            onClick={() => setCreateModalOpen(true)}
+            className="inline-flex h-11 shrink-0 items-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90"
+          >
+            <Plus className="h-4 w-4" strokeWidth={2.5} />
+            {t("admin.bookings.create")}
+          </button>
+        </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
@@ -193,7 +203,7 @@ export function AdminBookingsContent() {
       </div>
 
       <div className="space-y-4 rounded-xl border border-[#EEEEEE] bg-white p-4 shadow-sm">
-        <div className="grid gap-3 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,0.8fr))]">
+        <div className="grid gap-3 lg:grid-cols-[minmax(0,1.4fr)_repeat(2,minmax(0,0.8fr))]">
           <div className="relative">
             <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
             <input
@@ -228,8 +238,6 @@ export function AdminBookingsContent() {
               })),
             ]}
           />
-
-          <DateRangeFilter value={dateRange} onChange={setDateRange} />
         </div>
 
         <div className="flex flex-wrap gap-2">
@@ -348,7 +356,7 @@ function DateRangeFilter({
   const t = useTranslation();
 
   return (
-    <div className="relative flex h-11 items-center rounded-lg border border-[#E5E5E5] bg-white pl-4 pr-10">
+    <div className="relative flex h-11 min-w-[200px] items-center rounded-lg border border-[#E5E5E5] bg-white pl-4 pr-10 sm:min-w-[240px]">
       <p className="pointer-events-none text-sm font-medium font-satoshi text-[#2F2F2F]">
         {t("admin.bookings.dateRange.label")}: {t(DATE_RANGE_KEYS[value])}
       </p>

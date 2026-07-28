@@ -1,8 +1,8 @@
 "use client";
 
-import { Calendar, CircleEllipsis, List, Plus, Wallet } from "lucide-react";
+import { Calendar, ChevronDown, CircleEllipsis, List, Plus, Wallet } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { VendorListingCard } from "@/features/vendor/components/vendor-listing-card";
 import { VendorStatCard } from "@/features/vendor/components/vendor-stat-card";
@@ -13,6 +13,7 @@ import {
   type VendorDashboardPeriod,
 } from "@/features/vendor/data/vendor-dashboard";
 import { useFormatPrice } from "@/hooks/use-format-price";
+import { useClickOutside } from "@/hooks/use-click-outside";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -35,7 +36,11 @@ export function VendorDashboardContent({
   const formatPrice = useFormatPrice();
   const displayName = vendorName?.trim() || "Alex Autos";
   const [period, setPeriod] = useState<VendorDashboardPeriod>("month");
+  const [periodOpen, setPeriodOpen] = useState(false);
+  const periodDropdownRef = useRef<HTMLDivElement>(null);
   const stats = VENDOR_DASHBOARD_STATS;
+
+  useClickOutside(periodDropdownRef, () => setPeriodOpen(false), periodOpen);
 
   return (
     <>
@@ -45,34 +50,62 @@ export function VendorDashboardContent({
           <span className="font-bold text-[#D85A30]">{displayName}</span>
         </h2>
 
-        <button
-          type="button"
+        <Link
+          href="/vendor/listings/new"
           className="inline-flex items-center justify-center gap-2 w-45.5 h-11 rounded-[5px] bg-[#D85A30] px-5 py-2.5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90"
         >
           <Plus className="h-4 w-4" strokeWidth={3} />
           {t("vendor.dashboard.addListing")}
-        </button>
+        </Link>
       </div>
 
-      <div
-        className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5 sm:w-fit"
-        role="group"
-        aria-label={t("vendor.dashboard.period.label")}
-      >
-        {VENDOR_DASHBOARD_PERIOD_OPTIONS.map((option) => (
-          <button
-            key={option}
-            type="button"
-            onClick={() => setPeriod(option)}
-            className={`rounded-lg border px-4 py-2 text-xs font-semibold font-satoshi transition-colors ${
-              period === option
-                ? "border-[#D85A30] bg-[#FFF1EB] text-[#D85A30]"
-                : "border-[#E5E5E5] bg-white text-[#676565]"
-            }`}
+      <div ref={periodDropdownRef} className="relative w-full sm:max-w-xs">
+        <button
+          type="button"
+          aria-label={t("vendor.dashboard.period.label")}
+          aria-expanded={periodOpen}
+          aria-haspopup="listbox"
+          onClick={() => setPeriodOpen((open) => !open)}
+          className="flex h-11 w-full items-center justify-between rounded-full border border-[#E5E5E5] bg-white px-4 text-sm font-semibold font-satoshi text-[#2F2F2F] outline-none transition-colors hover:border-[#D85A30] focus:border-[#D85A30]"
+        >
+          <span>{t(PERIOD_LABEL_KEYS[period])}</span>
+          <ChevronDown
+            className={`h-4 w-4 shrink-0 text-[#676565] transition-transform ${periodOpen ? "rotate-180" : ""}`}
+          />
+        </button>
+
+        {periodOpen ? (
+          <ul
+            role="listbox"
+            aria-label={t("vendor.dashboard.period.label")}
+            className="absolute left-0 top-[calc(100%+0.5rem)] z-50 w-full overflow-hidden rounded-xl border border-[#E5E5E5] bg-white py-1 shadow-lg"
           >
-            {t(PERIOD_LABEL_KEYS[option])}
-          </button>
-        ))}
+            {VENDOR_DASHBOARD_PERIOD_OPTIONS.map((option) => {
+              const isSelected = option === period;
+
+              return (
+                <li key={option} role="presentation" className="w-full">
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={isSelected}
+                    onClick={() => {
+                      setPeriod(option);
+                      setPeriodOpen(false);
+                    }}
+                    className={`block w-full px-4 py-2.5 text-left text-sm font-semibold font-satoshi transition-colors ${
+                      isSelected
+                        ? "bg-[#FFF1EB] text-[#D85A30]"
+                        : "text-[#2F2F2F] hover:bg-[#FAFAFA]"
+                    }`}
+                  >
+                    {t(PERIOD_LABEL_KEYS[option])}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        ) : null}
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">

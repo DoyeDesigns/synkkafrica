@@ -1,5 +1,6 @@
 "use client";
 
+import type { CarRentalMode } from "@/features/travel/booking/booking-params";
 import { calculateCarBookingTotal } from "@/features/travel/booking/calculate-car-booking-total";
 import { useBookingContent } from "@/hooks/use-booking-content";
 import { useFormatPrice } from "@/hooks/use-format-price";
@@ -12,6 +13,8 @@ type CarBookingSummaryCardProps = {
   packages: CarRentalPackage[];
   selectedPackageId: string;
   days?: number;
+  carRentalMode?: CarRentalMode;
+  requestDelivery?: boolean;
   onSelectPackage: (packageId: string) => void;
   onBookNow: () => void;
   ctaKey?: TranslationKey;
@@ -22,6 +25,8 @@ export function CarBookingSummaryCard({
   packages,
   selectedPackageId,
   days = 1,
+  carRentalMode = "self_drive",
+  requestDelivery = false,
   onSelectPackage,
   onBookNow,
   ctaKey = "common.bookNow",
@@ -40,6 +45,10 @@ export function CarBookingSummaryCard({
     taxesAndFees: car.taxesAndFees,
     currency: car.currency,
     packageName: selectedPackage.name,
+    driverAddonPrice: car.driverAddonPrice,
+    carRentalMode,
+    deliveryFee: car.deliveryFee,
+    requestDelivery,
   });
 
   const dayLabel = days > 1 ? t("booking.summary.days") : t("booking.summary.day");
@@ -104,10 +113,32 @@ export function CarBookingSummaryCard({
               {formatPrice(car.currency, pricing.subtotal)}
             </span>
           </div>
+          {pricing.driverAddon > 0 ? (
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-foreground/80">{t("booking.car.driverAddonLabel")}</span>
+              <span className="font-medium text-foreground">
+                {formatPrice(car.currency, pricing.driverAddon)}
+              </span>
+            </div>
+          ) : null}
+          {pricing.deliveryFee > 0 ? (
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-foreground/80">{t("booking.car.deliveryFeeLabel")}</span>
+              <span className="font-medium text-foreground">
+                {formatPrice(car.currency, pricing.deliveryFee)}
+              </span>
+            </div>
+          ) : null}
           <div className="flex items-center justify-between gap-3">
             <span className="text-foreground/80">{t("booking.summary.taxesAndFees")}</span>
             <span className="font-medium text-foreground">
               {formatPrice(car.currency, pricing.taxesAndFees)}
+            </span>
+          </div>
+          <div className="flex items-center justify-between gap-3 border-t border-[#F0D4C4] pt-2">
+            <span className="font-semibold text-foreground">{t("booking.summary.total")}</span>
+            <span className="font-bold text-foreground">
+              {formatPrice(car.currency, pricing.total)}
             </span>
           </div>
         </div>

@@ -25,8 +25,6 @@ function TourPackageBookingCheckoutPageContent({
   const t = useTranslation();
   const currentStep: TourPackageBookingStepId = "checkout";
   const bookingParams = parseBookingParams(searchParams);
-  const { identity, setIdentity, identityErrors, guardProceed } =
-    useGuestCheckoutGate();
 
   const initialTierId = useMemo(() => {
     const fromQuery = bookingParams.tier;
@@ -35,11 +33,22 @@ function TourPackageBookingCheckoutPageContent({
     return isValid && fromQuery ? fromQuery : (tourPackage.tiers[0]?.id ?? "");
   }, [bookingParams.tier, tourPackage.tiers]);
 
-  const [selectedTierId, setSelectedTierId] = useState(initialTierId);
-  const [guestCount, setGuestCount] = useState(bookingParams.guests);
+  const [selectedTierId] = useState(initialTierId);
+  const lockedGuestCount = Math.min(
+    Math.max(bookingParams.guests, tourPackage.minGuests),
+    tourPackage.maxGuests,
+  );
+  const [guestCount] = useState(lockedGuestCount);
   const [specialRequests, setSpecialRequests] = useState(
     bookingParams.specialRequests ?? "",
   );
+  const {
+    identities,
+    setIdentityAt,
+    identityErrors,
+    hasIdentityErrors,
+    guardProceed,
+  } = useGuestCheckoutGate(guestCount);
   const days = bookingParams.days ?? tourPackage.days;
 
   const handleProceedToPay = () => {
@@ -71,17 +80,19 @@ function TourPackageBookingCheckoutPageContent({
         <div className="mt-8 grid gap-2 xl:grid-cols-[minmax(0,1fr)_340px]">
           <GuestDetailsForm
             guestCount={guestCount}
-            onGuestCountChange={setGuestCount}
+            onGuestCountChange={() => {}}
+            allowGuestCountChange={false}
+            maxGuests={tourPackage.maxGuests}
             specialRequests={specialRequests}
             onSpecialRequestsChange={setSpecialRequests}
-            identity={identity}
-            onIdentityChange={setIdentity}
+            identities={identities}
+            onIdentityChange={setIdentityAt}
             identityErrors={identityErrors}
           />
 
           <div>
             <div className="xl:sticky xl:top-10">
-              {Object.keys(identityErrors).length > 0 ? (
+              {hasIdentityErrors ? (
                 <p className="mb-3 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-medium font-inter text-[#D85A30]">
                   {t("booking.guest.idValidationRequired")}
                 </p>
@@ -91,7 +102,7 @@ function TourPackageBookingCheckoutPageContent({
                 tiers={tourPackage.tiers}
                 selectedTierId={selectedTierId}
                 days={days}
-                onSelectTier={setSelectedTierId}
+                onSelectTier={() => {}}
                 onBookNow={handleProceedToPay}
                 ctaKey="booking.cta.proceedToPay"
               />

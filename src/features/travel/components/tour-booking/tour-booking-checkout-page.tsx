@@ -23,8 +23,6 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
   const t = useTranslation();
   const currentStep: TourBookingStepId = "checkout";
   const bookingParams = parseBookingParams(searchParams);
-  const { identity, setIdentity, identityErrors, guardProceed } =
-    useGuestCheckoutGate();
 
   const initialOptionId = useMemo(() => {
     const fromQuery = bookingParams.option;
@@ -38,6 +36,13 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
   const [specialRequests, setSpecialRequests] = useState(
     bookingParams.specialRequests ?? "",
   );
+  const {
+    identities,
+    setIdentityAt,
+    identityErrors,
+    hasIdentityErrors,
+    guardProceed,
+  } = useGuestCheckoutGate(guestCount);
   const days = bookingParams.days ?? 1;
 
   const handleProceedToPay = () => {
@@ -69,14 +74,14 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
             onGuestCountChange={setGuestCount}
             specialRequests={specialRequests}
             onSpecialRequestsChange={setSpecialRequests}
-            identity={identity}
-            onIdentityChange={setIdentity}
+            identities={identities}
+            onIdentityChange={setIdentityAt}
             identityErrors={identityErrors}
           />
 
           <div>
             <div className="xl:sticky xl:top-10">
-              {Object.keys(identityErrors).length > 0 ? (
+              {hasIdentityErrors ? (
                 <p className="mb-3 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-medium font-inter text-[#D85A30]">
                   {t("booking.guest.idValidationRequired")}
                 </p>

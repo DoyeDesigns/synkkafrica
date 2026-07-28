@@ -57,14 +57,5 @@ export async function resolveLocationPreferences(): Promise<DetectedPreferences 
     acceptLanguage: headerStore.get("accept-language"),
   });
 
-  const cookieOptions = {
-    path: "/",
-    maxAge: 60 * 60 * 24 * 365,
-    sameSite: "lax" as const,
-  };
-
-  cookieStore.set(LANGUAGE_COOKIE, detected.language, cookieOptions);
-  cookieStore.set(CURRENCY_COOKIE, detected.currency, cookieOptions);
-
   return detected;
 }

@@ -1,6 +1,24 @@
 import type { AdminListing } from "@/features/admin/data/admin-listings";
 
-export const ADMIN_ACCOMMODATIONS: AdminListing[] = [
+const ACCOMMODATION_IMAGES = [
+  "/hero/accomodations/c0ea5f93656a3e5da2a9ee3ef099dd3f316a2a09.jpg",
+  "/hero/accomodations/bc926fd99b1d544dcd78428d822ed93a9d3bec08.jpg",
+  "/hero/accomodations/3bd7c33eb47a06fd682702112980e1d211694a4d.jpg",
+  "/hero/accommodations.png",
+] as const;
+
+function withAccommodationImages(
+  listings: Omit<AdminListing, "image">[],
+): AdminListing[] {
+  return listings.map((listing, index) => ({
+    ...listing,
+    image:
+      ACCOMMODATION_IMAGES[index % ACCOMMODATION_IMAGES.length] ??
+      ACCOMMODATION_IMAGES[0],
+  }));
+}
+
+export const ADMIN_ACCOMMODATIONS: AdminListing[] = withAccommodationImages([
   {
     id: "stay-lekki-garden",
     name: "Lekki Garden Suites",
@@ -97,4 +115,4 @@ export const ADMIN_ACCOMMODATIONS: AdminListing[] = [
     status: "inactive",
     publicUrl: "/accommodations/stay-yaba-loft/book",
   },
-];
+]);

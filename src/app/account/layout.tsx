@@ -15,7 +15,7 @@ export default async function AccountLayout({
   }
 
   return (
-    <div className="min-h-full bg-[#F5F5F5]">
+    <div className="min-h-screen bg-[#F5F5F5]">
       <AccountUserPersistence
         userId={session.user.id ?? "guest"}
         userEmail={session.user.email ?? "guest@synkkaffric.com"}

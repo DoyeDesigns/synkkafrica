@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertTriangle, Building2, ChevronDown, Sparkles, Users, Wallet } from "lucide-react";
+import { AlertTriangle, Building2, ChevronDown, Plus, Sparkles, Users, Wallet } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
 
@@ -50,12 +50,22 @@ export function AdminDashboardContent({
 
   return (
     <>
-      <h2 className="text-xl font-medium font-satoshi text-[#2F2F2F]">
-        {t("admin.dashboard.welcome")}{" "}
-        <span className="font-bold text-[#D85A30]">{displayName}</span>
-      </h2>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <h2 className="text-xl font-medium font-satoshi text-[#2F2F2F]">
+          {t("admin.dashboard.welcome")}{" "}
+          <span className="font-bold text-[#D85A30]">{displayName}</span>
+        </h2>
 
-      <div ref={periodDropdownRef} className="relative w-full">
+        <Link
+          href="/admin/packages/new"
+          className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90"
+        >
+          <Plus className="h-4 w-4" strokeWidth={2.5} />
+          {t("admin.dashboard.addPackages")}
+        </Link>
+      </div>
+
+      <div ref={periodDropdownRef} className="relative w-full sm:max-w-xs">
         <button
           type="button"
           aria-label={t("admin.dashboard.period.label")}
