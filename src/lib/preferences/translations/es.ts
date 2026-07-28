@@ -585,6 +585,7 @@ export const es = {
 
   "breadcrumb.synkkAfrica": "SynkkAfrica",
   "breadcrumb.accommodations": "Alojamientos",
+  "breadcrumb.flights": "Vuelos",
   "breadcrumb.carForHire": "Alquiler de coches",
   "breadcrumb.tours": "Tours y experiencias",
   "breadcrumb.tourPackages": "Paquetes turísticos",

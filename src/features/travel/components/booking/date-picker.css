@@ -1,0 +1,87 @@
+/* Scoped restyle of react-day-picker to match the booking form.
+   Namespaced under .synkka-daypicker so nothing leaks globally. */
+
+.synkka-daypicker {
+  font-size: 14px;
+}
+
+/* react-day-picker declares all --rdp-* vars on .rdp-root itself, so our
+   overrides must live on .rdp-root too (a var set on the element beats one
+   inherited from an ancestor). */
+.synkka-daypicker .rdp-root {
+  --rdp-accent-color: #d85a30;
+  --rdp-accent-background-color: #fdece4;
+  --rdp-today-color: #d85a30;
+  --rdp-day-width: 38px;
+  --rdp-day-height: 38px;
+  --rdp-day_button-width: 34px;
+  --rdp-day_button-height: 34px;
+  --rdp-day_button-border-radius: 8px;
+  --rdp-selected-border: none;
+  --rdp-outside-opacity: 0.4;
+  font-family: var(--font-satoshi, inherit);
+}
+
+.synkka-daypicker .rdp-month_caption {
+  font-weight: 700;
+  color: #1e1e1e;
+}
+
+/* Month / year dropdowns */
+.synkka-daypicker .rdp-dropdowns {
+  gap: 8px;
+}
+.synkka-daypicker .rdp-dropdown_root {
+  border-radius: 8px;
+}
+.synkka-daypicker .rdp-dropdown_root:hover {
+  background-color: #fdece4;
+}
+.synkka-daypicker .rdp-dropdown {
+  cursor: pointer;
+  font-weight: 600;
+}
+.synkka-daypicker .rdp-caption_label {
+  border-radius: 8px;
+  padding: 4px 6px;
+  font-weight: 700;
+}
+
+/* Month/year dropdown + nav chevrons */
+.synkka-daypicker .rdp-chevron {
+  fill: #d85a30;
+}
+
+/* Nav arrows */
+.synkka-daypicker .rdp-button_previous,
+.synkka-daypicker .rdp-button_next {
+  border-radius: 8px;
+  color: #d85a30;
+}
+.synkka-daypicker .rdp-button_previous:hover,
+.synkka-daypicker .rdp-button_next:hover {
+  background-color: #fdece4;
+}
+
+.synkka-daypicker .rdp-weekday {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(30, 30, 30, 0.5);
+  text-transform: none;
+}
+
+.synkka-daypicker .rdp-day_button {
+  font-weight: 500;
+}
+.synkka-daypicker .rdp-day_button:hover:not([disabled]) {
+  background-color: #fdece4;
+}
+
+.synkka-daypicker .rdp-selected .rdp-day_button {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.synkka-daypicker .rdp-today:not(.rdp-selected) .rdp-day_button {
+  font-weight: 700;
+}

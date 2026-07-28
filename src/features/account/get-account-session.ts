@@ -6,13 +6,15 @@ import {
 import type { Session } from "next-auth";
 
 export async function getAccountSession(): Promise<Session | null> {
-  const previewSession = getAccountDesignPreviewSession();
-
-  if (previewSession) {
-    return previewSession;
+  // A real signed-in session always wins — otherwise the design-preview
+  // fallback (dev-only) would mask the logged-in user's token and make the
+  // profile read-only. Preview only fills in when nobody is signed in.
+  const realSession = await auth();
+  if (realSession?.user) {
+    return realSession;
   }
 
-  return auth();
+  return getAccountDesignPreviewSession();
 }
 
 export async function requireAccountSession(): Promise<Session> {

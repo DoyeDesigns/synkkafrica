@@ -13,8 +13,20 @@ export function hasGoogleAuth() {
   );
 }
 
+// The SynkkAfrica backend (NestJS) base URL, e.g. http://localhost:4001/api.
+// Everything the app talks to now lives behind this — auth, flights, bookings.
+export function getApiBaseUrl() {
+  return process.env.NEXT_PUBLIC_API_URL?.trim().replace(/\/+$/, "") ?? "";
+}
+
+export function hasApiUrl() {
+  return Boolean(getApiBaseUrl());
+}
+
+// "Backend ready" now means the API URL is configured — auth is delegated to
+// the backend, so MongoDB is no longer required for the app to function.
 export function isBackendReady() {
-  return hasMongoUri() && hasAuthSecret();
+  return hasApiUrl();
 }
 
 export function getAuthSecret() {

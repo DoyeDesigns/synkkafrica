@@ -6,6 +6,8 @@ import { ToursLanding } from "@/features/travel/components/landing/tours/tours-l
 import { CarRentalsExplorePage } from "@/features/travel/components/results/car-rentals/car-rentals-explore-page";
 import { AccommodationsResultsPage } from "@/features/travel/components/results/accommodations/accommodations-results-page";
 import { ToursResultsPage } from "@/features/travel/components/results/tours/tours-results-page";
+import { FlightsResultsPage } from "@/features/travel/components/results/flights/flights-results-page";
+import { FlightsLanding } from "@/features/travel/components/landing/flights/flights-landing";
 import { useSectionContent } from "@/features/travel/hooks/use-section-content";
 import { useTravelNavigation } from "@/features/travel/hooks/use-travel-navigation";
 
@@ -61,6 +63,7 @@ export function SectionBodyContent() {
     section === "car-rentals" && (view === "landing" || view === "results");
   const isToursResults = section === "tours" && view === "results";
   const isToursLanding = section === "tours" && view === "landing";
+  const isFlightsResults = section === "flights" && view === "results";
 
   if (isToursLanding) {
     return null;
@@ -69,19 +72,21 @@ export function SectionBodyContent() {
   return (
     <main
       className={`${
-        isAccommodationResults || isCarRentalsExplore || isToursResults
+        isAccommodationResults || isCarRentalsExplore || isToursResults || isFlightsResults
           ? "bg-[#F5F5F5]"
           : ""
       }`}
     >
       <section
       className={`xl:mx-auto lg:mx-auto xl:max-w-7xl lg:max-w-5xl sm:px-6 lg:px-8 ${
-        isAccommodationResults || isCarRentalsExplore || isToursResults
+        isAccommodationResults || isCarRentalsExplore || isToursResults || isFlightsResults
           ? "px-4 pb-12 pt-8"
           : "px-4 pt-16.5 py-12"
       }`}
     >
-      {view === "results" && section === "accommodations" ? (
+      {view === "results" && section === "flights" ? (
+        <FlightsResultsPage />
+      ) : view === "results" && section === "accommodations" ? (
         <AccommodationsResultsPage />
       ) : view === "results" && section === "car-rentals" ? (
         <CarRentalsExplorePage />
@@ -89,6 +94,8 @@ export function SectionBodyContent() {
         <ToursResultsPage />
       ) : view === "results" ? (
         <SectionResultsFallback />
+      ) : section === "flights" ? (
+        <FlightsLanding />
       ) : section === "accommodations" ? (
         <AccommodationsLanding />
       ) : section === "car-rentals" ? (
