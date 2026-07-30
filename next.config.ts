@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: projectRoot,
   },
+  env: {
+    AUTH_SECRET: process.env.AUTH_SECRET,
+    AUTH_URL: process.env.AUTH_URL,
+    AUTH_GOOGLE_ID: process.env.AUTH_GOOGLE_ID,
+    AUTH_GOOGLE_SECRET: process.env.AUTH_GOOGLE_SECRET,
+    AUTH_EMAIL_FROM: process.env.AUTH_EMAIL_FROM,
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+  },
 };
 
 export default nextConfig;
