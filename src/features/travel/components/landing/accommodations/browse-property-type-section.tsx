@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 
 import {
   getAccommodationsPropertyTypeResultsHref,
@@ -9,12 +10,29 @@ import {
 import { TRAVEL_CAROUSEL_SCROLL_CLASS } from "@/features/travel/constants";
 import { useFilterOptionLabel } from "@/hooks/use-filter-option-label";
 import { useTranslation } from "@/hooks/use-translation";
+import { listAccommodations } from "@/lib/api/accommodations";
 import { PropertyTypeImage } from "./shared";
 import { FlightAvailabilityPromo } from "../shared/flight-availability-promo";
 
 export function BrowsePropertyTypeSection() {
   const t = useTranslation();
   const { labelPropertyTypeId } = useFilterOptionLabel();
+
+  // Real counts per property type from live listings. The vendor's
+  // `propertyType` value matches these labels exactly.
+  const { data } = useQuery({
+    queryKey: ["accommodations"],
+    queryFn: listAccommodations,
+    refetchOnWindowFocus: false,
+  });
+  const countByType = (data ?? []).reduce<Record<string, number>>(
+    (acc, listing) => {
+      const key = (listing.propertyType ?? "").toLowerCase();
+      if (key) acc[key] = (acc[key] ?? 0) + 1;
+      return acc;
+    },
+    {},
+  );
 
   return (
     <section className="space-y-12 pt-22 pb-16">
@@ -35,7 +53,9 @@ export function BrowsePropertyTypeSection() {
               <p className="text-sm font-bold font-satoshi text-foreground">
                 {labelPropertyTypeId(type.id, type.label)}
               </p>
-              <p className="text-lg font-medium font-satoshi text-[#D85A30]">({type.count})</p>
+              <p className="text-lg font-medium font-satoshi text-[#D85A30]">
+                ({countByType[type.label.toLowerCase()] ?? 0})
+              </p>
             </div>
           </Link>
         ))}

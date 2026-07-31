@@ -1,6 +1,7 @@
 import { apiFetch } from "@/lib/api/backend";
 import type { AccommodationResult } from "@/features/travel/data/accommodation-results";
 import type { PropertyDetail } from "@/features/travel/data/property-booking";
+import type { PropertyListingItem } from "@/features/travel/data/property-listings";
 import { DEFAULT_PROPERTY_AMENITIES } from "@/features/travel/data/property-amenities";
 
 // Mirrors the backend AccommodationSummary / AccommodationDetail (public,
@@ -112,6 +113,25 @@ function amenityIcon(a: string): AccommodationResult["features"][number]["icon"]
   if (s.includes("breakfast") || s.includes("coffee")) return "coffee";
   if (s.includes("park") || s.includes("car")) return "car";
   return "bed";
+}
+
+// Map a backend summary onto the landing "featured property" card shape.
+export function toPropertyListingItem(
+  a: AccommodationSummaryApi,
+): PropertyListingItem {
+  return {
+    id: a.id,
+    name: a.title,
+    location: a.location ?? "",
+    rating: Math.round(a.ratingAvg),
+    price: a.pricePerNight,
+    currency: a.currency,
+    image: a.coverImageUrl ?? a.images[0] ?? FALLBACK_ACCOMMODATION_IMAGE,
+    amenities: a.amenities.slice(0, 2).map((label) => ({
+      icon: /gym|spa|fitness/i.test(label) ? "dumbbell" : "coffee",
+      label,
+    })),
+  };
 }
 
 // Map a backend summary onto the display shape the results card expects.
