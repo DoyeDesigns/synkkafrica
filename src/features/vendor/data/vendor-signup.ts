@@ -46,7 +46,9 @@ export type VendorSignupFormState = {
   confirmPassword: string;
   otpDigits: string[];
   otpSent: boolean;
-  otpVerified: boolean;
+  // Short-lived token returned by the backend verify-otp; carried to the final
+  // signup submit as proof the email was verified. Its presence IS "verified".
+  signupToken: string;
   governmentIdFileName: string;
   governmentIdPreviewUrl: string;
   agreedToTerms: boolean;
@@ -66,7 +68,7 @@ export const EMPTY_VENDOR_SIGNUP_FORM: VendorSignupFormState = {
   confirmPassword: "",
   otpDigits: ["", "", "", "", "", ""],
   otpSent: false,
-  otpVerified: false,
+  signupToken: "",
   governmentIdFileName: "",
   governmentIdPreviewUrl: "",
   agreedToTerms: false,
@@ -80,10 +82,6 @@ export function getNextVendorSignupStep(step: VendorSignupStepId): VendorSignupS
 export function getPreviousVendorSignupStep(step: VendorSignupStepId): VendorSignupStepId | null {
   const index = VENDOR_SIGNUP_STEPS.indexOf(step);
   return index > 0 ? VENDOR_SIGNUP_STEPS[index - 1]! : null;
-}
-
-export function getVendorSignupPhoneDisplay(form: VendorSignupFormState) {
-  return `${form.phoneCountryCode} ${form.phoneNumber}`.trim();
 }
 
 export function getPasswordChecks(password: string) {
@@ -128,7 +126,7 @@ export function isVendorSignupStepValid(step: VendorSignupStepId, form: VendorSi
       return getVendorSignupBusinessMissingFields(form).length === 0;
     case "security":
       return (
-        form.otpVerified &&
+        Boolean(form.signupToken) &&
         isPasswordValid(form.password) &&
         form.password === form.confirmPassword
       );

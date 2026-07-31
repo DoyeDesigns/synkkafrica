@@ -14,6 +14,7 @@ export const de = {
 
   "common.bookNow": "Jetzt buchen",
   "common.continue": "Weiter",
+  "common.loading": "Wird geladen…",
   "common.startingFrom": "Ab",
   "common.perDay": "Pro Tag",
   "common.budget": "Budget",

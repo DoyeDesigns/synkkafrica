@@ -12,6 +12,7 @@ export const en = {
 
   "common.bookNow": "Book Now",
   "common.continue": "Continue",
+  "common.loading": "Loading…",
   "common.startingFrom": "Starting from",
   "common.perDay": "Per day",
   "common.budget": "Budget",

@@ -14,6 +14,7 @@ export const fr = {
 
   "common.bookNow": "Réserver",
   "common.continue": "Continuer",
+  "common.loading": "Chargement…",
   "common.startingFrom": "À partir de",
   "common.perDay": "Par jour",
   "common.budget": "Budget",
