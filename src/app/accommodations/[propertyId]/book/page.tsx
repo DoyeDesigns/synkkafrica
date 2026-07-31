@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 
 import { PropertyBookingPage } from "@/features/travel/components/booking/property-booking-page";
-import { getPropertyById } from "@/features/travel/data/property-booking";
+import { getAccommodation, toPropertyDetail } from "@/lib/api/accommodations";
+import type { PropertyDetail } from "@/features/travel/data/property-booking";
 
 type PropertyBookingRouteProps = {
   params: Promise<{ propertyId: string }>;
@@ -11,9 +12,11 @@ export default async function PropertyBookingRoute({
   params,
 }: PropertyBookingRouteProps) {
   const { propertyId } = await params;
-  const property = getPropertyById(propertyId);
 
-  if (!property) {
+  let property: PropertyDetail;
+  try {
+    property = toPropertyDetail(await getAccommodation(propertyId));
+  } catch {
     notFound();
   }
 
