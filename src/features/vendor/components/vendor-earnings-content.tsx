@@ -2,6 +2,8 @@
 
 import { ChevronDown, Download } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import {
   buildEarningsStatementCsv,
@@ -10,8 +12,6 @@ import {
   filterTransactionsByDuration,
   VENDOR_BANK_ACCOUNTS,
   VENDOR_COMMISSION_SPLIT,
-  VENDOR_EARNINGS_SUMMARY,
-  VENDOR_TRANSACTIONS,
   type EarningsDuration,
   type VendorTransaction,
 } from "@/features/vendor/data/vendor-earnings";
@@ -19,6 +19,25 @@ import { useFormatPrice } from "@/hooks/use-format-price";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
+import {
+  getVendorEarnings,
+  listVendorTransactions,
+  requestVendorPayout,
+  type VendorTransactionApi,
+} from "@/lib/api/vendor";
+
+function toFeTxn(t: VendorTransactionApi): VendorTransaction {
+  return {
+    id: t.id,
+    title: t.title,
+    descriptionKey: t.description as VendorTransaction["descriptionKey"],
+    date: t.date,
+    amount: t.amount,
+    currency: t.currency,
+    type: t.type,
+    status: t.status,
+  };
+}
 
 const STATUS_LABEL_KEYS: Record<
   VendorTransaction["status"],
@@ -49,26 +68,77 @@ type VendorEarningsContentProps = {
 };
 
 export function VendorEarningsContent({
-  vendorName = "Alex Autos",
+  vendorName,
 }: VendorEarningsContentProps) {
   const t = useTranslation();
   const formatPrice = useFormatPrice();
-  const displayName = vendorName?.trim() || "Alex Autos";
+  const { data: session } = useSession();
+  const token = session?.accessToken;
+  const queryClient = useQueryClient();
+  const displayName = vendorName?.trim() || "your business";
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [selectedBankId, setSelectedBankId] = useState(
     VENDOR_BANK_ACCOUNTS[0]?.id ?? "",
   );
   const [duration, setDuration] = useState<EarningsDuration>("all");
   const [durationOpen, setDurationOpen] = useState(false);
+  const [payoutError, setPayoutError] = useState<string | null>(null);
+  const [payoutDone, setPayoutDone] = useState(false);
   const durationDropdownRef = useRef<HTMLDivElement>(null);
 
-  const { currency, availableBalance } = VENDOR_EARNINGS_SUMMARY;
+  const { data: earnings } = useQuery({
+    queryKey: ["vendor-earnings"],
+    queryFn: () => getVendorEarnings(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+  const { data: rawTransactions } = useQuery({
+    queryKey: ["vendor-transactions"],
+    queryFn: () => listVendorTransactions(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+
+  const currency = earnings?.currency ?? "NGN";
+  const availableBalance = earnings?.availableBalance ?? 0;
+  const transactions = useMemo(
+    () => (rawTransactions ?? []).map(toFeTxn),
+    [rawTransactions],
+  );
+
+  const payoutMutation = useMutation({
+    mutationFn: (amount: number) =>
+      requestVendorPayout(token as string, amount, selectedBankId),
+    onSuccess: () => {
+      setWithdrawAmount("");
+      setPayoutError(null);
+      setPayoutDone(true);
+      window.setTimeout(() => setPayoutDone(false), 2500);
+      void queryClient.invalidateQueries({ queryKey: ["vendor-earnings"] });
+      void queryClient.invalidateQueries({ queryKey: ["vendor-transactions"] });
+    },
+    onError: () => setPayoutError("Couldn't process that withdrawal."),
+  });
+
+  const handleWithdraw = () => {
+    const amount = Number(withdrawAmount);
+    setPayoutError(null);
+    if (!Number.isFinite(amount) || amount <= 0) {
+      setPayoutError("Enter a valid amount.");
+      return;
+    }
+    if (amount > availableBalance) {
+      setPayoutError("Amount exceeds your available balance.");
+      return;
+    }
+    payoutMutation.mutate(amount);
+  };
 
   useClickOutside(durationDropdownRef, () => setDurationOpen(false), durationOpen);
 
   const filteredTransactions = useMemo(
-    () => filterTransactionsByDuration(VENDOR_TRANSACTIONS, duration),
-    [duration],
+    () => filterTransactionsByDuration(transactions, duration),
+    [transactions, duration],
   );
 
   const commissionSummary = useMemo(
@@ -334,11 +404,25 @@ export function VendorEarningsContent({
             </div>
           </div>
 
+          {payoutError ? (
+            <p className="mb-2 text-xs font-medium font-satoshi text-[#C0392B]">
+              {payoutError}
+            </p>
+          ) : payoutDone ? (
+            <p className="mb-2 text-xs font-semibold font-satoshi text-[#2E7D32]">
+              {t("vendor.earnings.withdrawFunds")} ✓
+            </p>
+          ) : null}
+
           <button
             type="button"
-            className="w-full rounded-lg bg-[#4B4A4A] px-5 py-3 text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90"
+            onClick={handleWithdraw}
+            disabled={payoutMutation.isPending || availableBalance <= 0}
+            className="w-full rounded-lg bg-[#4B4A4A] px-5 py-3 text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90 disabled:opacity-60"
           >
-            {t("vendor.earnings.withdrawFunds")}
+            {payoutMutation.isPending
+              ? t("common.loading")
+              : t("vendor.earnings.withdrawFunds")}
           </button>
         </aside>
       </div>

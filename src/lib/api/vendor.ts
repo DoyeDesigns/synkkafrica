@@ -303,3 +303,48 @@ export async function declineVendorBooking(
     body: { reason },
   });
 }
+
+// --- Earnings (GET /vendor/earnings, /vendor/transactions, POST /vendor/payouts) ---
+
+export type VendorEarnings = {
+  availableBalance: number;
+  lifetimeEarnings: number;
+  currency: string;
+  vendorSharePercent: number;
+  platformSharePercent: number;
+};
+
+export type VendorTransactionApi = {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  amount: number;
+  currency: string;
+  type: "credit" | "debit";
+  status: "completed" | "pending" | "failed";
+};
+
+export async function getVendorEarnings(
+  token: string,
+): Promise<VendorEarnings> {
+  return apiFetch<VendorEarnings>("/vendor/earnings", { token });
+}
+
+export async function listVendorTransactions(
+  token: string,
+): Promise<VendorTransactionApi[]> {
+  return apiFetch<VendorTransactionApi[]>("/vendor/transactions", { token });
+}
+
+export async function requestVendorPayout(
+  token: string,
+  amount: number,
+  bankAccountId?: string,
+): Promise<{ earnings: VendorEarnings; transaction: VendorTransactionApi }> {
+  return apiFetch("/vendor/payouts", {
+    method: "POST",
+    token,
+    body: { amount, bankAccountId },
+  });
+}
