@@ -75,6 +75,29 @@ export async function bookAccommodation(
   });
 }
 
+// Initialize Paystack checkout; returns the hosted URL to redirect to.
+export async function initAccommodationPayment(
+  bookingId: string,
+  input: { email?: string; callbackUrl?: string },
+  token?: string,
+): Promise<{ authorizationUrl: string; reference: string }> {
+  return apiFetch(`/accommodations/bookings/${bookingId}/pay`, {
+    method: "POST",
+    token,
+    body: input,
+  });
+}
+
+// Verify + read a booking's payment status (called on return from Paystack).
+export async function getAccommodationPaymentStatus(
+  bookingId: string,
+  token?: string,
+): Promise<{ paymentSecured: boolean; status: string }> {
+  return apiFetch(`/accommodations/bookings/${bookingId}/payment-status`, {
+    token,
+  });
+}
+
 export async function getAccommodation(
   id: string,
 ): Promise<AccommodationDetailApi> {

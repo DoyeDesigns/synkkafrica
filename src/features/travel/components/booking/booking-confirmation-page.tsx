@@ -14,6 +14,9 @@ import { BookingConfirmationDetails } from "@/features/travel/components/booking
 import { BookingStepper } from "@/features/travel/components/booking/booking-stepper";
 import { useTranslation } from "@/hooks/use-translation";
 import type { PropertyDetail } from "@/features/travel/data/property-booking";
+import { getAccommodationPaymentStatus } from "@/lib/api/accommodations";
+
+type PaymentState = "checking" | "paid" | "pending" | "none";
 
 type BookingConfirmationPageProps = {
   property: PropertyDetail;
@@ -35,6 +38,7 @@ export function BookingConfirmationPage({ property }: BookingConfirmationPagePro
   const [confirmation, setConfirmation] = useState<StoredBookingConfirmation | null>(
     null,
   );
+  const [payment, setPayment] = useState<PaymentState>("none");
 
   useEffect(() => {
     const stored = getStoredBookingConfirmation();
@@ -53,6 +57,26 @@ export function BookingConfirmationPage({ property }: BookingConfirmationPagePro
       }),
     );
   }, [property.id, property.name]);
+
+  // Verify payment on return from Paystack. The payment page appends
+  // `bookingId` to the callback URL; verify + reflect the real status.
+  useEffect(() => {
+    const bookingId = new URLSearchParams(window.location.search).get(
+      "bookingId",
+    );
+    if (!bookingId) return;
+    let cancelled = false;
+    getAccommodationPaymentStatus(bookingId)
+      .then((res) => {
+        if (!cancelled) setPayment(res.paymentSecured ? "paid" : "pending");
+      })
+      .catch(() => {
+        if (!cancelled) setPayment("pending");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     if (secondsLeft <= 0) {
@@ -74,6 +98,24 @@ export function BookingConfirmationPage({ property }: BookingConfirmationPagePro
           <BookingBreadcrumbs propertyName={property.name} />
           <BookingStepper propertyId={property.id} currentStep={currentStep} />
         </div>
+
+        {payment !== "none" ? (
+          <div
+            className={`mt-6 rounded-lg px-4 py-3 text-center text-sm font-semibold font-satoshi ${
+              payment === "paid"
+                ? "bg-[#E7F6EC] text-[#2E7D32]"
+                : payment === "checking"
+                  ? "bg-[#F1F5F9] text-[#475569]"
+                  : "bg-[#FDF3EF] text-[#C0392B]"
+            }`}
+          >
+            {payment === "paid"
+              ? "Payment received — your booking is awaiting the host's confirmation."
+              : payment === "checking"
+                ? "Confirming your payment…"
+                : "We haven't received your payment yet. If you were charged, it may take a moment to reflect."}
+          </div>
+        ) : null}
 
         <div className="mt-16 flex flex-col items-center pb-16">
           <div className="w-full max-w-xl rounded-xl bg-white px-8 py-14 text-center sm:px-12 sm:py-16">
