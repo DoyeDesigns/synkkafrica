@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
 
 import { getClearedResultsHref } from "@/features/travel/booking/clear-results-url";
 import {
-  CAR_RENTAL_RESULTS,
   CAR_TYPE_OPTIONS,
   DEFAULT_CAR_RENTAL_FILTERS,
   SERVICE_TYPE_OPTIONS,
@@ -13,6 +13,7 @@ import {
   filterCarRentalResults,
   type CarRentalFilterState,
 } from "@/features/travel/data/car-rental-results";
+import { listCars, toCarRentalResult } from "@/lib/api/cars";
 
 function normalizeServiceType(value: string): string {
   const normalized = value.toLowerCase().replace(/-/g, " ");
@@ -90,12 +91,17 @@ export function useCarRentalFilters() {
     () => searchParams.get("carType") ?? "",
   );
 
-  useEffect(() => {
+  // Re-sync editable state on URL change via React's adjust-state-during-render
+  // pattern (no setState-in-effect).
+  const searchKey = searchParams.toString();
+  const [prevSearchKey, setPrevSearchKey] = useState(searchKey);
+  if (searchKey !== prevSearchKey) {
+    setPrevSearchKey(searchKey);
     const nextFilters = getFiltersFromSearchParams(searchParams);
     setDraftFilters(nextFilters);
     setAppliedFilters(nextFilters);
     setSearchQuery(searchParams.get("carType") ?? "");
-  }, [searchParams]);
+  }
 
   const activeFilterCount = useMemo(
     () => countActiveCarRentalFilters(appliedFilters),
@@ -107,9 +113,20 @@ export function useCarRentalFilters() {
     [draftFilters],
   );
 
+  const { data: liveCars, isLoading } = useQuery({
+    queryKey: ["cars"],
+    queryFn: listCars,
+    refetchOnWindowFocus: false,
+  });
+
+  const allResults = useMemo(
+    () => (liveCars ?? []).map(toCarRentalResult),
+    [liveCars],
+  );
+
   const results = useMemo(
-    () => filterCarRentalResults(CAR_RENTAL_RESULTS, appliedFilters, searchQuery),
-    [appliedFilters, searchQuery],
+    () => filterCarRentalResults(allResults, appliedFilters, searchQuery),
+    [allResults, appliedFilters, searchQuery],
   );
 
   const updateDraftFilter = <K extends keyof CarRentalFilterState>(
@@ -142,6 +159,7 @@ export function useCarRentalFilters() {
     activeFilterCount,
     draftFilterCount,
     results,
+    isLoading,
     setSearchQuery,
     updateDraftFilter,
     applyFilters,

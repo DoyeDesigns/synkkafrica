@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 
 import type { CarBookingStepId } from "@/features/travel/booking/car-constants";
 import { CarBookingPage } from "@/features/travel/components/car-booking/car-booking-page";
-import { getCarById } from "@/features/travel/data/car-booking";
+import { getCar, toCarDetail } from "@/lib/api/cars";
+import type { CarDetail } from "@/features/travel/data/car-booking";
 
 const VALID_STEPS: CarBookingStepId[] = ["checkout", "payment", "confirmation"];
 
@@ -19,9 +20,10 @@ export default async function CarBookingStepRoute({
     notFound();
   }
 
-  const car = getCarById(carId);
-
-  if (!car) {
+  let car: CarDetail;
+  try {
+    car = toCarDetail(await getCar(carId));
+  } catch {
     notFound();
   }
 
