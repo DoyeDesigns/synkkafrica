@@ -1,5 +1,5 @@
-import { AdminBookingsContent } from "@/features/admin/components/admin-bookings-content";
+import { AdminBookingsLiveContent } from "@/features/admin/components/admin-bookings-live-content";
 
 export default function AdminBookingsPage() {
-  return <AdminBookingsContent />;
+  return <AdminBookingsLiveContent />;
 }

@@ -1,5 +1,5 @@
-import { AdminPayoutsContent } from "@/features/admin/components/admin-payouts-content";
+import { AdminPayoutsLiveContent } from "@/features/admin/components/admin-payouts-live-content";
 
 export default function AdminPayoutsPage() {
-  return <AdminPayoutsContent />;
+  return <AdminPayoutsLiveContent />;
 }

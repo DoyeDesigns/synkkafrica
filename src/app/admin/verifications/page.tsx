@@ -1,5 +1,5 @@
-import { AdminVerificationsContent } from "@/features/admin/components/admin-verifications-content";
+import { AdminVerificationsLiveContent } from "@/features/admin/components/admin-verifications-live-content";
 
 export default function AdminVerificationsPage() {
-  return <AdminVerificationsContent />;
+  return <AdminVerificationsLiveContent />;
 }

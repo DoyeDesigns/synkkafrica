@@ -5,7 +5,7 @@ declare module "next-auth" {
     user: {
       id: string;
       // Which realm this session belongs to. "vendor" gates the /vendor area.
-      role?: "customer" | "vendor";
+      role?: "customer" | "vendor" | "admin";
       // Vendor approval state (pending/active/suspended/rejected) for gating
       // vendor surfaces behind the verification notice.
       vendorStatus?: string;
@@ -26,8 +26,8 @@ declare module "next-auth/jwt" {
     // Absolute expiry (ms epoch) of the backend access token.
     accessTokenExpires?: number;
     error?: string;
-    realm?: "customer" | "vendor";
-    role?: "customer" | "vendor";
+    realm?: "customer" | "vendor" | "admin";
+    role?: "customer" | "vendor" | "admin";
     vendorStatus?: string;
   }
 }

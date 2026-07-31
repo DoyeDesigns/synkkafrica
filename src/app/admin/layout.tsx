@@ -1,5 +1,6 @@
 import { AdminDashboardLayoutClient } from "@/features/admin/components/admin-dashboard-layout-client";
 import { getAdminSession } from "@/features/admin/get-admin-session";
+import { AuthProvider } from "@/providers/session-provider";
 
 export default async function AdminLayout({
   children,
@@ -8,9 +9,13 @@ export default async function AdminLayout({
 }) {
   const session = await getAdminSession();
 
+  // Admin content components read the access token via useSession(), so this
+  // segment needs the client SessionProvider. QueryProvider is global.
   return (
-    <AdminDashboardLayoutClient adminName={session?.user?.name}>
-      {children}
-    </AdminDashboardLayoutClient>
+    <AuthProvider>
+      <AdminDashboardLayoutClient adminName={session?.user?.name}>
+        {children}
+      </AdminDashboardLayoutClient>
+    </AuthProvider>
   );
 }

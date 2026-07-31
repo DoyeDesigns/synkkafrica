@@ -9,6 +9,7 @@ import {
 import { getAuthSecret, hasApiUrl, hasGoogleAuth } from "@/lib/env";
 import { refreshTokens, signOutBackend, verifyOtp } from "@/lib/api/backend";
 import { loginVendor, refreshVendorTokens } from "@/lib/api/vendor";
+import { refreshAdminTokens, verifyAdminMfa } from "@/lib/api/admin-auth";
 
 // 30s clock-skew guard so we refresh a hair early rather than sending a
 // just-expired access token.
@@ -24,8 +25,8 @@ type BackendToken = {
   refreshToken?: string;
   accessTokenExpires?: number;
   error?: string;
-  realm?: "customer" | "vendor";
-  role?: "customer" | "vendor";
+  realm?: "customer" | "vendor" | "admin";
+  role?: "customer" | "vendor" | "admin";
   vendorStatus?: string;
   name?: string;
   email?: string;
@@ -108,6 +109,44 @@ const providers = [
             }
           },
         }),
+        // Admin realm — the login page runs steps 1-2 (password → MFA ticket)
+        // itself, then hands the ticket + TOTP code here to exchange for
+        // admin-realm tokens via /admin/auth/verify-mfa.
+        Credentials({
+          id: "admin",
+          name: "Admin Login",
+          credentials: {
+            mfaTicket: { label: "MFA Ticket", type: "text" },
+            totpCode: { label: "Code", type: "text" },
+          },
+          authorize: async (credentials) => {
+            const mfaTicket =
+              typeof credentials?.mfaTicket === "string"
+                ? credentials.mfaTicket
+                : "";
+            const totpCode =
+              typeof credentials?.totpCode === "string"
+                ? credentials.totpCode
+                : "";
+            if (!mfaTicket || !totpCode) return null;
+
+            try {
+              const tokens = await verifyAdminMfa(mfaTicket, totpCode);
+              const userId = decodeJwtSub(tokens.accessToken) ?? "admin";
+              return {
+                id: userId,
+                accessToken: tokens.accessToken,
+                refreshToken: tokens.refreshToken,
+                accessTokenExpires:
+                  Date.now() + tokens.accessTokenExpiresIn * 1000,
+                realm: "admin",
+                role: "admin",
+              } as unknown as { id: string };
+            } catch {
+              return null;
+            }
+          },
+        }),
       ]
     : []),
 ];
@@ -126,11 +165,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       const isAdminRoute = nextUrl.pathname.startsWith("/admin");
 
       if (isAdminRoute) {
+        // The admin login page must stay public.
+        if (nextUrl.pathname === "/admin/login") return true;
         if (isAdminDemoEnabled()) {
           return true;
         }
-
-        return !!auth?.user;
+        return auth?.user?.role === "admin";
       }
 
       // Vendor area — everything under /vendor requires a signed-in vendor,
@@ -188,7 +228,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const rotated =
           t.realm === "vendor"
             ? await refreshVendorTokens(t.refreshToken)
-            : await refreshTokens(t.refreshToken);
+            : t.realm === "admin"
+              ? await refreshAdminTokens(t.refreshToken)
+              : await refreshTokens(t.refreshToken);
         t.accessToken = rotated.accessToken;
         t.refreshToken = rotated.refreshToken;
         t.accessTokenExpires = Date.now() + rotated.accessTokenExpiresIn * 1000;

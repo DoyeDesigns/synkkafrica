@@ -1,5 +1,5 @@
-import { AdminExperiencesContent } from "@/features/admin/components/admin-experiences-content";
+import { AdminListingsLiveContent } from "@/features/admin/components/admin-listings-live-content";
 
-export default function AdminExperiencesPage() {
-  return <AdminExperiencesContent />;
+export default function AdminexperiencesPage() {
+  return <AdminListingsLiveContent category="experiences" title="Experiences" />;
 }

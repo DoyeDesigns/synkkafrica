@@ -24,6 +24,11 @@ export function AdminDashboardLayoutClient({
     setIsMobileOpen(false);
   }, [pathname]);
 
+  // The login page renders without the dashboard chrome.
+  if (pathname === "/admin/login") {
+    return <>{children}</>;
+  }
+
   return (
     <div className="flex h-screen overflow-hidden">
       {isMobileOpen ? (
