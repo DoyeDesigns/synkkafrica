@@ -1,17 +1,18 @@
 "use client";
 
 import { ChevronDown, Search } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 import { TourEventCard } from "@/features/travel/components/landing/tours/tour-event-card";
 import {
   TOUR_EVENT_CATEGORIES,
   TOUR_EVENT_EXPERIENCES,
   TOUR_EVENT_LOCATIONS,
-  TOUR_EVENTS,
 } from "@/features/travel/data/tours-landing";
 import { useFilterOptionLabel } from "@/hooks/use-filter-option-label";
 import { useTranslation } from "@/hooks/use-translation";
+import { listExperiences, toTourResult } from "@/lib/api/experiences";
 
 const INITIAL_VISIBLE_COUNT = 6;
 const LOAD_MORE_COUNT = 6;
@@ -54,11 +55,21 @@ export function ToursEventsSection() {
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
 
+  // Live experiences (admin-approved). Shares the ["experiences"] cache.
+  const { data } = useQuery({
+    queryKey: ["experiences"],
+    queryFn: listExperiences,
+    refetchOnWindowFocus: false,
+  });
+  const events = useMemo(() => (data ?? []).map(toTourResult), [data]);
+
   const filteredEvents = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
 
-    return TOUR_EVENTS.filter((event) => {
-      const matchesLocation = event.city === location;
+    return events.filter((event) => {
+      // Treat the first (default) option of each filter as "all".
+      const matchesLocation =
+        location === TOUR_EVENT_LOCATIONS[0] || event.city === location;
       const matchesCategory =
         category === TOUR_EVENT_CATEGORIES[0] || event.category === category;
       const matchesExperience =
@@ -71,14 +82,18 @@ export function ToursEventsSection() {
 
       return matchesLocation && matchesCategory && matchesExperience && matchesSearch;
     });
-  }, [category, experience, location, searchQuery]);
+  }, [events, category, experience, location, searchQuery]);
 
   const visibleEvents = filteredEvents.slice(0, visibleCount);
   const hasMore = visibleCount < filteredEvents.length;
 
-  useEffect(() => {
+  // Reset the visible window when filters change (adjust-state-during-render).
+  const resetKey = `${location}|${category}|${experience}|${searchQuery}`;
+  const [prevResetKey, setPrevResetKey] = useState(resetKey);
+  if (resetKey !== prevResetKey) {
+    setPrevResetKey(resetKey);
     setVisibleCount(INITIAL_VISIBLE_COUNT);
-  }, [location, category, experience, searchQuery]);
+  }
 
   return (
     <section className="w-full mt-20">
