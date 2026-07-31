@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { ToursFilterSidebar } from "./tours-filter-sidebar";
 import { TourResultCard } from "./tour-result-card";
@@ -19,6 +19,7 @@ export function ToursResultsPage() {
     draftFilters,
     draftFilterCount,
     results,
+    isLoading,
     searchQuery,
     setSearchQuery,
     updateDraftFilter,
@@ -31,9 +32,13 @@ export function ToursResultsPage() {
   const visibleResults = results.slice(0, visibleCount);
   const hasMore = visibleCount < results.length;
 
-  useEffect(() => {
+  // Reset the visible window on result/query change (adjust-state-during-render).
+  const resetKey = `${results.length}|${searchQuery}`;
+  const [prevResetKey, setPrevResetKey] = useState(resetKey);
+  if (resetKey !== prevResetKey) {
+    setPrevResetKey(resetKey);
     setVisibleCount(INITIAL_VISIBLE_COUNT);
-  }, [results.length, searchQuery]);
+  }
 
   return (
     <div className="space-y-6">
@@ -65,7 +70,13 @@ export function ToursResultsPage() {
             resultCount={results.length}
           />
 
-          {results.length > 0 ? (
+          {isLoading ? (
+            <div className="rounded-2xl border border-black/10 bg-white p-8 text-center shadow-sm">
+              <p className="text-base font-medium font-satoshi text-foreground">
+                {t("common.loading")}
+              </p>
+            </div>
+          ) : results.length > 0 ? (
             <>
               <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 {visibleResults.map((item) => (
