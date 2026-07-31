@@ -38,6 +38,7 @@ import {
   LISTING_MEDIA_MAX_COUNT,
   revokeListingMediaItem,
   type AddListingFormState,
+  type ListingDocumentId,
   type ListingMediaItem,
   type AddListingStepId,
   type CarHandoverMethod,
@@ -51,6 +52,7 @@ import {
   submitVendorListing,
   getVendorListing,
   uploadVendorFile,
+  uploadListingDocument,
   type CreateVendorListingInput,
 } from "@/lib/api/vendor";
 
@@ -110,6 +112,12 @@ function toUpdateInput(
   void _category;
   return rest;
 }
+
+// Wizard document ids → the backend's canonical listing-document type so an
+// uploaded doc fills the matching requirement in the Documents overview.
+const WIZARD_DOC_TYPE: Partial<Record<ListingDocumentId, string>> = {
+  proof_of_ownership: "ownership",
+};
 
 const inputClassName =
   "h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]";
@@ -268,18 +276,49 @@ export function VendorAddListingContent({
     }
   };
 
+  // Upload the documents collected in the wizard now that the listing exists.
+  // Best-effort per doc — a failed one doesn't block publishing.
+  const uploadWizardDocuments = async (listingId: string) => {
+    if (!token) return;
+    const entries = Object.entries(form.uploadedDocuments) as [
+      ListingDocumentId,
+      AddListingFormState["uploadedDocuments"][ListingDocumentId],
+    ][];
+    for (const [docId, upload] of entries) {
+      if (!upload?.file) continue;
+      try {
+        const { objectPath } = await uploadVendorFile(
+          token,
+          "listing-document",
+          upload.file,
+        );
+        await uploadListingDocument(
+          token,
+          listingId,
+          WIZARD_DOC_TYPE[docId] ?? docId,
+          upload.file.name,
+          objectPath,
+        );
+      } catch {
+        // Skip this doc; vendor can re-upload it from the Documents section.
+      }
+    }
+  };
+
   const handlePublish = async () => {
     if (!token || publishing) return;
     setPublishing(true);
     setPublishError(null);
     try {
       if (draftId) {
-        // Already persisted as a draft — update it in place and submit for
-        // review, rather than creating a duplicate listing.
+        // A saved draft — update it, attach docs, then submit (draft → pending).
         await updateVendorListing(token, draftId, toUpdateInput(form));
+        await uploadWizardDocuments(draftId);
         await submitVendorListing(token, draftId);
       } else {
-        await createVendorListing(token, toCreateInput(form));
+        // A fresh listing is created directly as `pending` — just attach docs.
+        const created = await createVendorListing(token, toCreateInput(form));
+        await uploadWizardDocuments(created.id);
       }
       router.push(exitHref);
       router.refresh();

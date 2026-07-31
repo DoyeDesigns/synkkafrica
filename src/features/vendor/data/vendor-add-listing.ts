@@ -107,6 +107,10 @@ export function revokeListingMediaItem(item: ListingMediaItem) {
 export type ListingDocumentUpload = {
   name: string;
   previewUrl?: string;
+  // The actual file, kept so it can be uploaded to storage once the listing
+  // exists (documents are attached after create — there's no listing id yet
+  // during the wizard). Undefined for docs restored from a saved draft.
+  file?: File;
 };
 
 export function createListingDocumentUpload(file: File): ListingDocumentUpload {
@@ -116,6 +120,7 @@ export function createListingDocumentUpload(file: File): ListingDocumentUpload {
   return {
     name: file.name,
     previewUrl: isImage ? URL.createObjectURL(file) : undefined,
+    file,
   };
 }
 

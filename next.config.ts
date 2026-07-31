@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: projectRoot,
   },
+  images: {
+    remotePatterns: [
+      // Public listing media served from the GCS media bucket.
+      {
+        protocol: "https",
+        hostname: "storage.googleapis.com",
+        pathname: "/media_bucket-12034/**",
+      },
+    ],
+  },
   env: {
     AUTH_SECRET: process.env.AUTH_SECRET,
     AUTH_URL: process.env.AUTH_URL,

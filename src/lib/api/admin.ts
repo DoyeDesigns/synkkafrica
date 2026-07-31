@@ -247,6 +247,16 @@ export async function adminRejectBusinessDoc(
   });
 }
 
+// Short-lived signed URL to view a private KYC document.
+export async function adminBusinessDocViewUrl(
+  token: string,
+  id: string,
+): Promise<{ url: string }> {
+  return apiFetch<{ url: string }>(`/admin/vendor-documents/${id}/view-url`, {
+    token,
+  });
+}
+
 // --- Overview + customers ---
 
 export type AdminOverview = {

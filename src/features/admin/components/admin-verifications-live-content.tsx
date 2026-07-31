@@ -6,6 +6,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import {
   adminApproveBusinessDoc,
+  adminBusinessDocViewUrl,
   adminListBusinessDocs,
   adminRejectBusinessDoc,
   type AdminBusinessDoc,
@@ -53,6 +54,17 @@ export function AdminVerificationsLiveContent() {
 
   const docs = data ?? [];
   const busy = approveMutation.isPending || rejectMutation.isPending;
+
+  // Open a blank tab synchronously (survives popup blockers), then point it at
+  // the short-lived signed URL once fetched.
+  const handleView = (id: string) => {
+    const win = window.open("", "_blank");
+    adminBusinessDocViewUrl(token as string, id)
+      .then(({ url }) => {
+        if (win) win.location.href = url;
+      })
+      .catch(() => win?.close());
+  };
 
   return (
     <section className="space-y-6">
@@ -107,14 +119,13 @@ export function AdminVerificationsLiveContent() {
               </div>
               <div className="flex shrink-0 items-center gap-2">
                 {d.fileUrl ? (
-                  <a
-                    href={d.fileUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
+                    onClick={() => handleView(d.id)}
                     className="text-xs font-bold font-satoshi text-[#135391] underline"
                   >
                     View
-                  </a>
+                  </button>
                 ) : null}
                 <span
                   className={`rounded-full px-3 py-1 text-xs font-semibold font-satoshi capitalize ${STATUS_STYLES[d.status]}`}
