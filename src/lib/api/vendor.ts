@@ -244,3 +244,62 @@ export async function deleteVendorListing(
 ): Promise<void> {
   await apiFetch<void>(`/vendor/listings/${id}`, { method: "DELETE", token });
 }
+
+// --- Bookings (GET /vendor/bookings, PATCH :id/confirm|decline) ---
+
+export type VendorBookingApi = {
+  id: string;
+  bookingReference: string;
+  listingId?: string | null;
+  listingTitle: string;
+  listingImage?: string | null;
+  productType?: string | null;
+  experienceDate?: string | null;
+  experienceTime?: string | null;
+  guestCount: number;
+  guestFirstName?: string | null;
+  specialRequests?: string | null;
+  carRentalMode?: string | null;
+  deliveryAddress?: string | null;
+  pickupAddress?: string | null;
+  declineReason?: string | null;
+  status:
+    | "awaiting_confirmation"
+    | "confirmed"
+    | "declined"
+    | "completed"
+    | "cancelled";
+  amount: number;
+  currency: string;
+  paymentSecured: boolean;
+  respondBy?: string | null;
+  createdAt: string;
+};
+
+export async function listVendorBookings(
+  token: string,
+): Promise<VendorBookingApi[]> {
+  return apiFetch<VendorBookingApi[]>("/vendor/bookings", { token });
+}
+
+export async function confirmVendorBooking(
+  token: string,
+  id: string,
+): Promise<VendorBookingApi> {
+  return apiFetch<VendorBookingApi>(`/vendor/bookings/${id}/confirm`, {
+    method: "PATCH",
+    token,
+  });
+}
+
+export async function declineVendorBooking(
+  token: string,
+  id: string,
+  reason?: string,
+): Promise<VendorBookingApi> {
+  return apiFetch<VendorBookingApi>(`/vendor/bookings/${id}/decline`, {
+    method: "PATCH",
+    token,
+    body: { reason },
+  });
+}

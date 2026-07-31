@@ -2,6 +2,8 @@
 
 import { CalendarDays, ChevronDown, LayoutList, Search } from "lucide-react";
 import { useMemo, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { VendorBookingCard } from "@/features/vendor/components/vendor-booking-card";
 import { VendorBookingsCalendar } from "@/features/vendor/components/vendor-bookings-calendar";
@@ -12,7 +14,6 @@ import {
   getVendorBookingTab,
   isWithinDateRange,
   VENDOR_BOOKING_DATE_RANGE_OPTIONS,
-  VENDOR_BOOKINGS,
   type VendorBooking,
   type VendorBookingDateRange,
   type VendorBookingTab,
@@ -20,6 +21,39 @@ import {
 import { useFormatPrice } from "@/hooks/use-format-price";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
+import {
+  confirmVendorBooking,
+  declineVendorBooking,
+  listVendorBookings,
+  type VendorBookingApi,
+} from "@/lib/api/vendor";
+
+// Backend booking → the frontend's slightly stricter shape (non-null defaults).
+function toFeBooking(b: VendorBookingApi): VendorBooking {
+  return {
+    id: b.id,
+    bookingReference: b.bookingReference,
+    listingId: b.listingId ?? "",
+    listingTitle: b.listingTitle,
+    listingImage: b.listingImage ?? "/destinations/lagos.png",
+    productType: (b.productType as VendorBooking["productType"]) ?? undefined,
+    experienceDate: b.experienceDate ?? "",
+    experienceTime: b.experienceTime ?? "",
+    guestCount: b.guestCount,
+    guestFirstName: b.guestFirstName ?? "",
+    specialRequests: b.specialRequests ?? undefined,
+    carRentalMode:
+      (b.carRentalMode as VendorBooking["carRentalMode"]) ?? undefined,
+    deliveryAddress: b.deliveryAddress ?? undefined,
+    pickupAddress: b.pickupAddress ?? undefined,
+    declineReason: b.declineReason ?? undefined,
+    status: b.status,
+    amount: b.amount,
+    currency: b.currency,
+    paymentSecured: b.paymentSecured,
+    respondBy: b.respondBy ?? undefined,
+  };
+}
 
 const TAB_KEYS: Record<VendorBookingTab, TranslationKey> = {
   upcoming: "vendor.bookings.tab.upcoming",
@@ -71,18 +105,33 @@ type VendorBookingsContentProps = {
 };
 
 export function VendorBookingsContent({
-  vendorName = "Alex Autos",
+  vendorName,
 }: VendorBookingsContentProps) {
   const t = useTranslation();
   const formatPrice = useFormatPrice();
-  const displayName = vendorName?.trim() || "Alex Autos";
+  const { data: session } = useSession();
+  const token = session?.accessToken;
+  const queryClient = useQueryClient();
+  const displayName = vendorName?.trim() || "your business";
   const [activeTab, setActiveTab] = useState<VendorBookingTab>("upcoming");
   const [dateRange, setDateRange] = useState<VendorBookingDateRange>("all");
   const [listingFilter, setListingFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"list" | "calendar">("list");
-  const [bookings, setBookings] = useState<VendorBooking[]>(VENDOR_BOOKINGS);
-  const [decliningBookingId, setDecliningBookingId] = useState<string | null>(null);
+  const [decliningBookingId, setDecliningBookingId] = useState<string | null>(
+    null,
+  );
+
+  const { data: rawBookings } = useQuery({
+    queryKey: ["vendor-bookings"],
+    queryFn: () => listVendorBookings(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+  const bookings = useMemo(
+    () => (rawBookings ?? []).map(toFeBooking),
+    [rawBookings],
+  );
 
   const listingOptions = useMemo(
     () => getVendorBookingListingOptions(bookings),
@@ -143,36 +192,28 @@ export function VendorBookingsContent({
       });
   }, [bookings, dateRange, listingFilter, searchQuery]);
 
-  const handleConfirm = (id: string) => {
-    setBookings((current) =>
-      current.map((booking) =>
-        booking.id === id ? { ...booking, status: "confirmed" } : booking,
-      ),
-    );
-  };
+  const invalidate = () =>
+    queryClient.invalidateQueries({ queryKey: ["vendor-bookings"] });
+
+  const confirmMutation = useMutation({
+    mutationFn: (id: string) => confirmVendorBooking(token as string, id),
+    onSuccess: invalidate,
+  });
+  const declineMutation = useMutation({
+    mutationFn: ({ id, reason }: { id: string; reason: string }) =>
+      declineVendorBooking(token as string, id, reason),
+    onSuccess: () => {
+      setDecliningBookingId(null);
+      setActiveTab("declined");
+      void invalidate();
+    },
+  });
+
+  const handleConfirm = (id: string) => confirmMutation.mutate(id);
 
   const handleDeclineSubmit = (reason: string) => {
-    if (!decliningBookingId) {
-      return;
-    }
-
-    setBookings((current) =>
-      current.map((booking) =>
-        booking.id === decliningBookingId
-          ? { ...booking, status: "declined", declineReason: reason }
-          : booking,
-      ),
-    );
-    setDecliningBookingId(null);
-    setActiveTab("declined");
-  };
-
-  const handleCancel = (id: string) => {
-    setBookings((current) =>
-      current.map((booking) =>
-        booking.id === id ? { ...booking, status: "cancelled" } : booking,
-      ),
-    );
+    if (!decliningBookingId) return;
+    declineMutation.mutate({ id: decliningBookingId, reason });
   };
 
   const getStatValue = (key: (typeof STAT_CONFIG)[number]["key"]) => {
@@ -328,7 +369,6 @@ export function VendorBookingsContent({
                 showActions={activeTab === "upcoming"}
                 onConfirm={handleConfirm}
                 onDecline={setDecliningBookingId}
-                onCancel={handleCancel}
               />
             ))
           ) : (
