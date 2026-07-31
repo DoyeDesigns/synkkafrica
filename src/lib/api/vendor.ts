@@ -80,3 +80,60 @@ export async function signOutVendor(refreshToken: string): Promise<void> {
 export async function getVendorProfile(token: string): Promise<VendorProfile> {
   return apiFetch<VendorProfile>("/vendor/auth/me", { token });
 }
+
+// --- Business profile (GET/PATCH /vendor/profile, POST /vendor/change-password) ---
+
+export type VendorDocument = {
+  id: string;
+  type: string;
+  fileName: string;
+  fileUrl?: string | null;
+  status: string;
+  createdAt: string;
+};
+
+export type VendorFullProfile = VendorProfile & {
+  payoutBankId?: string | null;
+  payoutAccountNumber?: string | null;
+  payoutAccountName?: string | null;
+  documents: VendorDocument[];
+};
+
+export type UpdateVendorProfileInput = Partial<{
+  businessName: string;
+  ownerFullName: string;
+  phoneNumber: string;
+  businessAddress: string;
+  payoutBankId: string;
+  payoutAccountNumber: string;
+  payoutAccountName: string;
+}>;
+
+export async function getVendorFullProfile(
+  token: string,
+): Promise<VendorFullProfile> {
+  return apiFetch<VendorFullProfile>("/vendor/profile", { token });
+}
+
+export async function updateVendorProfile(
+  token: string,
+  patch: UpdateVendorProfileInput,
+): Promise<VendorFullProfile> {
+  return apiFetch<VendorFullProfile>("/vendor/profile", {
+    method: "PATCH",
+    token,
+    body: patch,
+  });
+}
+
+export async function changeVendorPassword(
+  token: string,
+  currentPassword: string,
+  newPassword: string,
+): Promise<void> {
+  await apiFetch<void>("/vendor/change-password", {
+    method: "POST",
+    token,
+    body: { currentPassword, newPassword },
+  });
+}
