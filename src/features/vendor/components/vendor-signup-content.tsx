@@ -80,6 +80,7 @@ export function VendorSignupContent() {
       password: form.password,
       signupToken: form.signupToken,
       governmentIdFileName: form.governmentIdFileName || undefined,
+      governmentIdFileUrl: form.governmentIdObjectPath || undefined,
     });
     if (res.ok) {
       if (res.next === "login") {

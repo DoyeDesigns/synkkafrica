@@ -1,6 +1,6 @@
 export type VendorDashboardPeriod = "day" | "week" | "month" | "sixMonths" | "year";
 
-export type VendorListingStatus = "live" | "pending" | "paused";
+export type VendorListingStatus = "live" | "pending" | "paused" | "draft";
 
 export type VendorDashboardListing = {
   id: string;

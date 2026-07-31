@@ -21,11 +21,17 @@ export type CarTransmission = "automatic" | "manual";
 
 export type ListingMediaKind = "image" | "video";
 
+export type ListingMediaUploadStatus = "uploading" | "uploaded" | "error";
+
 export type ListingMediaItem = {
   id: string;
   name: string;
   previewUrl: string;
   kind: ListingMediaKind;
+  // The stored URL once the direct-to-storage upload completes. Persisted with
+  // the listing (media[].url + coverImageUrl); undefined while uploading/failed.
+  url?: string;
+  status: ListingMediaUploadStatus;
 };
 
 export const LISTING_MEDIA_MAX_BYTES = 10 * 1024 * 1024;
@@ -85,11 +91,17 @@ export function createListingMediaItem(file: File): ListingMediaItem | null {
     name: file.name,
     previewUrl: URL.createObjectURL(file),
     kind: isSupportedVideo(file) ? "video" : "image",
+    // Upload kicks off immediately after the item is added; url fills in then.
+    status: "uploading",
   };
 }
 
 export function revokeListingMediaItem(item: ListingMediaItem) {
-  URL.revokeObjectURL(item.previewUrl);
+  // Only object URLs need revoking — a persisted storage URL (restored on
+  // resume) is a normal https URL and must not be touched.
+  if (item.previewUrl.startsWith("blob:")) {
+    URL.revokeObjectURL(item.previewUrl);
+  }
 }
 
 export type ListingDocumentUpload = {
@@ -318,6 +330,42 @@ export const EMPTY_ADD_LISTING_FORM: AddListingFormState = {
   uploadedDocuments: {},
   gpsAcknowledged: false,
 };
+
+// Rebuild the wizard form from a persisted listing so a draft can be reopened
+// and edited. The backend stores the whole form (minus media/document blobs)
+// as opaque `details`, so merging it back over the empty form restores every
+// text/pricing/selection field. Media previews can't be restored (blob URLs
+// aren't persisted), so they start empty and are re-added if needed.
+export function formStateFromListingDetails(
+  category: ListingCategory,
+  details: Record<string, unknown> | null | undefined,
+  media?: unknown[] | null,
+): AddListingFormState {
+  // Media now persists real storage URLs, so a resumed draft can show its
+  // previously-uploaded images directly (no blob needed).
+  const mediaItems: ListingMediaItem[] = (media ?? [])
+    .map((raw): ListingMediaItem | null => {
+      const m = raw as { name?: string; kind?: string; url?: string };
+      if (!m.url) return null;
+      return {
+        id: makeMediaId(),
+        name: m.name ?? "media",
+        previewUrl: m.url,
+        url: m.url,
+        kind: m.kind === "video" ? "video" : "image",
+        status: "uploaded",
+      };
+    })
+    .filter((m): m is ListingMediaItem => m !== null);
+
+  return {
+    ...EMPTY_ADD_LISTING_FORM,
+    ...((details as Partial<AddListingFormState> | null) ?? {}),
+    category,
+    mediaItems,
+    uploadedDocuments: {},
+  };
+}
 
 export function getDetailsStepLabelKey(category: ListingCategory): TranslationKey {
   switch (category) {

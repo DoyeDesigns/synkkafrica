@@ -17,8 +17,11 @@ import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 import {
   getVendorDocuments,
+  uploadBusinessDocument,
   uploadListingDocument,
+  uploadVendorFile,
   type DocStatus,
+  type VendorUploadKind,
   type VendorBusinessDocApi,
   type VendorListingDocApi,
   type VendorDocumentsOverview,
@@ -29,6 +32,13 @@ const DOCUMENT_STATUS_LABEL_KEYS: Record<DocStatus, TranslationKey> = {
   rejected: "vendor.businessProfile.documents.status.rejected",
   pending: "vendor.businessProfile.documents.status.pending",
   not_uploaded: "vendor.businessProfile.documents.status.notUploaded",
+};
+
+// Business KYC doc type → storage folder/kind for the presigned upload.
+const BUSINESS_UPLOAD_KIND: Record<string, VendorUploadKind> = {
+  government_id: "government-id",
+  cac_certificate: "cac",
+  proof_of_address: "proof-of-address",
 };
 
 type ListingStatus =
@@ -104,8 +114,38 @@ export function VendorBusinessDocumentsSection() {
   });
 
   const uploadMutation = useMutation({
-    mutationFn: (v: { listingId: string; type: string; fileName: string }) =>
-      uploadListingDocument(token as string, v.listingId, v.type, v.fileName),
+    mutationFn: async (v: { listingId: string; type: string; file: File }) => {
+      const { objectPath } = await uploadVendorFile(
+        token as string,
+        "listing-document",
+        v.file,
+      );
+      await uploadListingDocument(
+        token as string,
+        v.listingId,
+        v.type,
+        v.file.name,
+        objectPath,
+      );
+    },
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: ["vendor-documents"] }),
+  });
+
+  const businessUploadMutation = useMutation({
+    mutationFn: async (v: { type: string; file: File }) => {
+      const { objectPath } = await uploadVendorFile(
+        token as string,
+        BUSINESS_UPLOAD_KIND[v.type] ?? "cac",
+        v.file,
+      );
+      await uploadBusinessDocument(
+        token as string,
+        v.type,
+        v.file.name,
+        objectPath,
+      );
+    },
     onSuccess: () =>
       queryClient.invalidateQueries({ queryKey: ["vendor-documents"] }),
   });
@@ -141,7 +181,17 @@ export function VendorBusinessDocumentsSection() {
             </p>
             {business.length > 0 ? (
               business.map((doc) => (
-                <BusinessDocumentRow key={doc.id} document={doc} />
+                <BusinessDocumentRow
+                  key={doc.type}
+                  document={doc}
+                  uploading={
+                    businessUploadMutation.isPending &&
+                    businessUploadMutation.variables?.type === doc.type
+                  }
+                  onUpload={(file) =>
+                    businessUploadMutation.mutate({ type: doc.type, file })
+                  }
+                />
               ))
             ) : (
               <p className="mt-3 rounded-lg border border-[#EEEEEE] bg-[#FAFAFA] px-4 py-4 text-sm font-medium font-satoshi text-[#676565]">
@@ -174,11 +224,11 @@ export function VendorBusinessDocumentsSection() {
                       )
                     }
                     uploading={uploadMutation.isPending}
-                    onUpload={(type, fileName) =>
+                    onUpload={(type, file) =>
                       uploadMutation.mutate({
                         listingId: listing.listingId,
                         type,
-                        fileName,
+                        file,
                       })
                     }
                   />
@@ -198,10 +248,22 @@ export function VendorBusinessDocumentsSection() {
 
 function BusinessDocumentRow({
   document,
+  uploading,
+  onUpload,
 }: {
   document: VendorBusinessDocApi;
+  uploading: boolean;
+  onUpload: (file: File) => void;
 }) {
   const t = useTranslation();
+  const canUpload =
+    document.status === "not_uploaded" || document.status === "rejected";
+
+  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) onUpload(file);
+    event.target.value = "";
+  };
 
   return (
     <div className="mt-3 flex flex-col gap-3 rounded-lg border border-[#EEEEEE] bg-[#FAFAFA] px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
@@ -213,12 +275,14 @@ function BusinessDocumentRow({
           <p className="text-sm font-bold font-satoshi text-[#2F2F2F]">
             {document.label}
           </p>
-          <p className="mt-1 text-xs font-medium font-satoshi text-[#676565]">
-            {t("vendor.businessProfile.documents.uploadedMeta", {
-              date: formatDate(document.uploadedAt),
-              fileName: document.fileName,
-            })}
-          </p>
+          {document.uploadedAt && document.fileName ? (
+            <p className="mt-1 text-xs font-medium font-satoshi text-[#676565]">
+              {t("vendor.businessProfile.documents.uploadedMeta", {
+                date: formatDate(document.uploadedAt),
+                fileName: document.fileName,
+              })}
+            </p>
+          ) : null}
         </div>
       </div>
 
@@ -227,6 +291,33 @@ function BusinessDocumentRow({
           label={t(DOCUMENT_STATUS_LABEL_KEYS[document.status])}
           className={STATUS_BADGE_STYLES[document.status]}
         />
+
+        {canUpload ? (
+          <label
+            className={`inline-flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-bold font-satoshi transition-opacity hover:opacity-90 ${
+              document.status === "rejected"
+                ? "bg-[#D85A30] text-white"
+                : "border border-[#E5E5E5] bg-white font-semibold text-[#135391]"
+            }`}
+          >
+            {uploading ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            ) : document.status === "rejected" ? (
+              <Plus className="h-3.5 w-3.5" strokeWidth={2} />
+            ) : (
+              <Upload className="h-3.5 w-3.5" strokeWidth={1.75} />
+            )}
+            {document.status === "rejected"
+              ? t("vendor.businessProfile.documents.reupload")
+              : t("vendor.businessProfile.documents.upload")}
+            <input
+              type="file"
+              accept="application/pdf,image/*"
+              className="sr-only"
+              onChange={handleFile}
+            />
+          </label>
+        ) : null}
       </div>
     </div>
   );
@@ -243,7 +334,7 @@ function ListingAccordion({
   isExpanded: boolean;
   onToggle: () => void;
   uploading: boolean;
-  onUpload: (type: string, fileName: string) => void;
+  onUpload: (type: string, file: File) => void;
 }) {
   const t = useTranslation();
   const summary = summarize(listing.documents);
@@ -306,7 +397,7 @@ function ListingAccordion({
                 key={document.type}
                 document={document}
                 uploading={uploading}
-                onUpload={(fileName) => onUpload(document.type, fileName)}
+                onUpload={(file) => onUpload(document.type, file)}
               />
             ))}
           </div>
@@ -335,14 +426,14 @@ function DocumentRow({
 }: {
   document: VendorListingDocApi;
   uploading: boolean;
-  onUpload: (fileName: string) => void;
+  onUpload: (file: File) => void;
 }) {
   const t = useTranslation();
   const isRejected = document.status === "rejected";
 
   const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    if (file) onUpload(file.name);
+    if (file) onUpload(file);
     event.target.value = "";
   };
 

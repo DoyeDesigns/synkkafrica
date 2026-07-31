@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { CloudUpload, Shield, X } from "lucide-react";
 
 import {
@@ -7,6 +8,7 @@ import {
   VENDOR_ID_MAX_BYTES,
   type VendorSignupFormState,
 } from "@/features/vendor/data/vendor-signup";
+import { uploadVendorSignupFile } from "@/lib/api/vendor";
 import { useTranslation } from "@/hooks/use-translation";
 
 type VendorSignupIdentityStepProps = {
@@ -16,6 +18,8 @@ type VendorSignupIdentityStepProps = {
 
 export function VendorSignupIdentityStep({ form, onChange }: VendorSignupIdentityStepProps) {
   const t = useTranslation();
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState(false);
 
   const handleUpload = (file: File | null) => {
     if (!file || file.size > VENDOR_ID_MAX_BYTES) {
@@ -29,7 +33,17 @@ export function VendorSignupIdentityStep({ form, onChange }: VendorSignupIdentit
     onChange({
       governmentIdPreviewUrl: URL.createObjectURL(file),
       governmentIdFileName: file.name,
+      governmentIdObjectPath: "",
     });
+
+    // Upload straight to storage, authorized by the signup token. The returned
+    // objectPath is submitted on signup so the backend links the stored file.
+    setUploadError(false);
+    setUploading(true);
+    uploadVendorSignupFile(form.signupToken, file)
+      .then(({ objectPath }) => onChange({ governmentIdObjectPath: objectPath }))
+      .catch(() => setUploadError(true))
+      .finally(() => setUploading(false));
   };
 
   const removeFile = () => {
@@ -37,9 +51,11 @@ export function VendorSignupIdentityStep({ form, onChange }: VendorSignupIdentit
       URL.revokeObjectURL(form.governmentIdPreviewUrl);
     }
 
+    setUploadError(false);
     onChange({
       governmentIdPreviewUrl: "",
       governmentIdFileName: "",
+      governmentIdObjectPath: "",
     });
   };
 
@@ -61,7 +77,11 @@ export function VendorSignupIdentityStep({ form, onChange }: VendorSignupIdentit
               {form.governmentIdFileName}
             </p>
             <p className="mt-0.5 text-xs font-medium font-satoshi text-[#676565]">
-              {t("vendor.signup.idUploaded")}
+              {uploading
+                ? t("vendor.addListing.mediaUploading")
+                : uploadError
+                  ? t("vendor.signup.idUploadFailed")
+                  : t("vendor.signup.idUploaded")}
             </p>
           </div>
           <button

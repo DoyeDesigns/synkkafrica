@@ -10,7 +10,12 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, type KeyboardEvent, type ReactNode } from "react";
+import {
+  useEffect,
+  useState,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
 import { useSession } from "next-auth/react";
 
 import { VendorAddListingStepper } from "@/features/vendor/components/vendor-add-listing-stepper";
@@ -27,11 +32,13 @@ import {
   getPreviousStep,
   isStepValid,
   createListingMediaItem,
+  formStateFromListingDetails,
   getListingMediaRejection,
   LISTING_MEDIA_ACCEPT,
   LISTING_MEDIA_MAX_COUNT,
   revokeListingMediaItem,
   type AddListingFormState,
+  type ListingMediaItem,
   type AddListingStepId,
   type CarHandoverMethod,
   type ListingCategory,
@@ -40,6 +47,10 @@ import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 import {
   createVendorListing,
+  updateVendorListing,
+  submitVendorListing,
+  getVendorListing,
+  uploadVendorFile,
   type CreateVendorListingInput,
 } from "@/lib/api/vendor";
 
@@ -65,7 +76,17 @@ function toCreateInput(form: AddListingFormState): CreateVendorListingInput {
     shortDescription = form.experienceDescription;
     location = form.location;
   }
-  const media = form.mediaItems.map((m) => ({ name: m.name, kind: m.kind }));
+  // Only include media that finished uploading (has a stored URL). The first
+  // uploaded image becomes the cover shown on listing cards.
+  const uploadedMedia = form.mediaItems.filter(
+    (m) => m.status === "uploaded" && m.url,
+  );
+  const media = uploadedMedia.map((m) => ({
+    name: m.name,
+    kind: m.kind,
+    url: m.url,
+  }));
+  const coverImageUrl = uploadedMedia.find((m) => m.kind === "image")?.url;
   const { mediaItems: _media, uploadedDocuments: _docs, ...details } = form;
   void _media;
   void _docs;
@@ -74,9 +95,20 @@ function toCreateInput(form: AddListingFormState): CreateVendorListingInput {
     title: title.trim() || "Untitled listing",
     shortDescription: shortDescription || undefined,
     location: location || undefined,
+    coverImageUrl,
     details,
     media,
   };
+}
+
+// The update endpoint treats category as immutable and rejects unknown fields
+// (forbidNonWhitelisted), so drop `category` when patching an existing row.
+function toUpdateInput(
+  form: AddListingFormState,
+): Omit<CreateVendorListingInput, "category"> {
+  const { category: _category, ...rest } = toCreateInput(form);
+  void _category;
+  return rest;
 }
 
 const inputClassName =
@@ -111,7 +143,15 @@ const CATEGORY_OPTIONS: Array<{
   },
 ];
 
-export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exitHref?: string }) {
+export function VendorAddListingContent({
+  exitHref = "/vendor/listings",
+  editListingId,
+}: {
+  exitHref?: string;
+  // When set, the wizard reopens an existing listing (a draft being resumed,
+  // or a rejected listing being revised) and updates that row on save.
+  editListingId?: string;
+}) {
   const t = useTranslation();
   const router = useRouter();
   const { data: session } = useSession();
@@ -119,11 +159,63 @@ export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exi
   const [currentStep, setCurrentStep] = useState<AddListingStepId>("details");
   const [form, setForm] = useState<AddListingFormState>(EMPTY_ADD_LISTING_FORM);
   const [draftSaved, setDraftSaved] = useState(false);
+  const [savingDraft, setSavingDraft] = useState(false);
+  // The listing id once a draft has been persisted, so repeated "Save as
+  // draft" clicks update the same row instead of spawning duplicate drafts.
+  // Seeded from editListingId when resuming an existing listing.
+  const [draftId, setDraftId] = useState<string | null>(editListingId ?? null);
+  // While an existing listing is being fetched for editing.
+  const [loadingListing, setLoadingListing] = useState(Boolean(editListingId));
+  const [loadError, setLoadError] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [publishError, setPublishError] = useState<string | null>(null);
 
+  // Resume-editing: load the existing listing and rebuild the form from its
+  // persisted `details`. Runs once per (listing, token).
+  useEffect(() => {
+    if (!editListingId || !token) {
+      return;
+    }
+    let cancelled = false;
+    getVendorListing(token, editListingId)
+      .then((listing) => {
+        if (cancelled) return;
+        setForm(
+          formStateFromListingDetails(
+            listing.category,
+            listing.details,
+            listing.media,
+          ),
+        );
+        setCurrentStep("details");
+      })
+      .catch(() => {
+        if (!cancelled) setLoadError(true);
+      })
+      .finally(() => {
+        if (!cancelled) setLoadingListing(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [editListingId, token]);
+
   const updateForm = (patch: Partial<AddListingFormState>) => {
     setForm((current) => ({ ...current, ...patch }));
+  };
+
+  // Functional per-item update so async upload results land on the right media
+  // item without clobbering concurrent uploads.
+  const updateMediaItem = (
+    id: string,
+    patch: Partial<AddListingFormState["mediaItems"][number]>,
+  ) => {
+    setForm((current) => ({
+      ...current,
+      mediaItems: current.mediaItems.map((m) =>
+        m.id === id ? { ...m, ...patch } : m,
+      ),
+    }));
   };
 
   const handleCategoryChange = (category: ListingCategory) => {
@@ -152,9 +244,28 @@ export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exi
     router.push(exitHref);
   };
 
-  const handleSaveDraft = () => {
-    setDraftSaved(true);
-    window.setTimeout(() => setDraftSaved(false), 2500);
+  const handleSaveDraft = async () => {
+    if (!token || savingDraft) {
+      return;
+    }
+    setSavingDraft(true);
+    try {
+      if (draftId) {
+        await updateVendorListing(token, draftId, toUpdateInput(form));
+      } else {
+        const created = await createVendorListing(token, {
+          ...toCreateInput(form),
+          saveAsDraft: true,
+        });
+        setDraftId(created.id);
+      }
+      setDraftSaved(true);
+      window.setTimeout(() => setDraftSaved(false), 2500);
+    } catch {
+      window.alert(t("vendor.addListing.draftSaveFailed"));
+    } finally {
+      setSavingDraft(false);
+    }
   };
 
   const handlePublish = async () => {
@@ -162,7 +273,14 @@ export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exi
     setPublishing(true);
     setPublishError(null);
     try {
-      await createVendorListing(token, toCreateInput(form));
+      if (draftId) {
+        // Already persisted as a draft — update it in place and submit for
+        // review, rather than creating a duplicate listing.
+        await updateVendorListing(token, draftId, toUpdateInput(form));
+        await submitVendorListing(token, draftId);
+      } else {
+        await createVendorListing(token, toCreateInput(form));
+      }
       router.push(exitHref);
       router.refresh();
     } catch {
@@ -177,6 +295,33 @@ export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exi
     currentStep === "details" ? getDetailsStepMissingFields(form) : [];
 
   const isDocumentsStep = currentStep === "documents";
+  const isEditing = Boolean(editListingId);
+
+  if (loadingListing) {
+    return (
+      <div className="flex min-h-[40vh] items-center justify-center">
+        <p className="text-sm font-medium font-satoshi text-[#676565]">
+          {t("common.loading")}
+        </p>
+      </div>
+    );
+  }
+
+  if (loadError) {
+    return (
+      <div className="flex min-h-[40vh] flex-col items-center justify-center gap-3">
+        <p className="text-sm font-medium font-satoshi text-[#C0392B]">
+          {t("vendor.addListing.loadError")}
+        </p>
+        <Link
+          href={exitHref}
+          className="text-sm font-bold font-satoshi text-[#135391] hover:underline"
+        >
+          {t("vendor.addListing.backToListings")}
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -206,7 +351,9 @@ export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exi
         <h2 className="text-2xl font-bold font-satoshi text-[#2F2F2F]">
           {isDocumentsStep
             ? t("vendor.addListing.documents.pageTitle")
-            : t("vendor.addListing.title")}
+            : isEditing
+              ? t("vendor.addListing.editTitle")
+              : t("vendor.addListing.title")}
         </h2>
         <p className="mt-1 text-sm font-medium font-satoshi text-[#676565]">
           {isDocumentsStep
@@ -232,7 +379,12 @@ export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exi
           <DetailsStep form={form} onChange={updateForm} onCategoryChange={handleCategoryChange} />
         ) : null}
         {currentStep === "media" ? (
-          <MediaStep form={form} onChange={updateForm} />
+          <MediaStep
+            form={form}
+            onChange={updateForm}
+            onUpdateItem={updateMediaItem}
+            token={token}
+          />
         ) : null}
         {currentStep === "pricing" ? (
           <PricingStep form={form} onChange={updateForm} />
@@ -269,10 +421,13 @@ export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exi
           ) : (
             <button
               type="button"
-              onClick={handleSaveDraft}
-              className="text-sm font-bold font-satoshi text-[#135391] hover:underline"
+              disabled={savingDraft}
+              onClick={() => void handleSaveDraft()}
+              className="text-sm font-bold font-satoshi text-[#135391] hover:underline disabled:opacity-60"
             >
-              {t("vendor.addListing.saveDraft")}
+              {savingDraft
+                ? t("common.loading")
+                : t("vendor.addListing.saveDraft")}
             </button>
           )}
 
@@ -474,12 +629,18 @@ function CarDetailsFields({
 function MediaStep({
   form,
   onChange,
+  onUpdateItem,
+  token,
 }: {
   form: AddListingFormState;
   onChange: (patch: Partial<AddListingFormState>) => void;
+  onUpdateItem: (
+    id: string,
+    patch: Partial<AddListingFormState["mediaItems"][number]>,
+  ) => void;
+  token?: string;
 }) {
   const t = useTranslation();
-  const [notices, setNotices] = useState<string[]>([]);
   const [isDragging, setIsDragging] = useState(false);
   const [failedPreviews, setFailedPreviews] = useState<Set<string>>(new Set());
 
@@ -524,18 +685,42 @@ function MediaStep({
         t("vendor.addListing.mediaSkippedTooLarge", { count: tooLarge }),
       );
     }
-    setNotices(messages);
+    if (messages.length > 0) {
+      window.alert(messages.join("\n"));
+    }
 
-    const newItems = accepted
+    // Pair each new item with its File so we can upload after adding it.
+    const newPairs = accepted
       .slice(0, remainingSlots)
-      .map(createListingMediaItem)
-      .filter((item): item is NonNullable<typeof item> => item !== null);
+      .map((file) => {
+        const item = createListingMediaItem(file);
+        return item ? { item, file } : null;
+      })
+      .filter((pair): pair is { item: ListingMediaItem; file: File } => pair !== null);
 
-    if (newItems.length === 0) {
+    if (newPairs.length === 0) {
       return;
     }
 
+    const newItems = newPairs.map((pair) => pair.item);
     onChange({ mediaItems: [...form.mediaItems, ...newItems].slice(0, LISTING_MEDIA_MAX_COUNT) });
+
+    // Upload each accepted file directly to storage; mark the item uploaded
+    // (with its URL) or errored when it settles.
+    if (!token) {
+      newItems.forEach((item) => onUpdateItem(item.id, { status: "error" }));
+      return;
+    }
+    newPairs.forEach(({ item, file }) => {
+      uploadVendorFile(token, "listing-media", file)
+        .then(({ url }) =>
+          onUpdateItem(item.id, {
+            url: url ?? undefined,
+            status: url ? "uploaded" : "error",
+          }),
+        )
+        .catch(() => onUpdateItem(item.id, { status: "error" }));
+    });
   };
 
   const handleRemove = (id: string) => {
@@ -598,19 +783,6 @@ function MediaStep({
         />
       </label>
 
-      {notices.length > 0 ? (
-        <div className="rounded-lg border border-[#F1C7B8] bg-[#FDF3EF] px-4 py-3">
-          {notices.map((message) => (
-            <p
-              key={message}
-              className="text-xs font-medium font-satoshi text-[#C0392B]"
-            >
-              {message}
-            </p>
-          ))}
-        </div>
-      ) : null}
-
       {form.mediaItems.length > 0 ? (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {form.mediaItems.map((item) => (
@@ -646,6 +818,19 @@ function MediaStep({
                   }
                 />
               )}
+              {item.status === "uploading" ? (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/35">
+                  <span className="text-[11px] font-semibold font-satoshi text-white">
+                    {t("vendor.addListing.mediaUploading")}
+                  </span>
+                </div>
+              ) : item.status === "error" ? (
+                <div className="absolute inset-0 flex items-center justify-center bg-[#C0392B]/80 px-2 text-center">
+                  <span className="text-[11px] font-semibold font-satoshi text-white">
+                    {t("vendor.addListing.mediaUploadFailed")}
+                  </span>
+                </div>
+              ) : null}
               <button
                 type="button"
                 onClick={() => handleRemove(item.id)}

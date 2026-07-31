@@ -28,7 +28,7 @@ const CATEGORY_FILTERS = [
   "vendor.dashboard.category.toursExperiences",
 ] as const;
 
-const STATUS_FILTERS = ["all", "live", "pending"] as const;
+const STATUS_FILTERS = ["all", "live", "pending", "draft"] as const;
 
 type CategoryFilter = (typeof CATEGORY_FILTERS)[number];
 type StatusFilter = (typeof STATUS_FILTERS)[number];
@@ -36,6 +36,7 @@ type StatusFilter = (typeof STATUS_FILTERS)[number];
 const STATUS_LABEL_KEYS: Record<Exclude<StatusFilter, "all">, TranslationKey> = {
   live: "vendor.listings.filter.status.live",
   pending: "vendor.listings.filter.status.pending",
+  draft: "vendor.listings.filter.status.draft",
 };
 
 const CATEGORY_KEY: Record<
@@ -51,18 +52,15 @@ const CATEGORY_LABEL: Record<VendorListingCategory, string> = {
   accommodations: "Accommodations",
   experiences: "Tours & experiences",
 };
-const CATEGORY_IMAGE: Record<VendorListingCategory, string> = {
-  cars: "/hero/car-rentals.png",
-  accommodations: "/hero/accommodations.png",
-  experiences: "/destinations/lagos.png",
-};
 
-// The card renders three statuses; map the backend's five onto them.
+// Map the backend's five listing statuses onto the card's statuses.
+// `rejected` has no dedicated card treatment yet, so it reads as pending.
 function toDashStatus(
   status: VendorListingSummary["status"],
 ): VendorDashboardListing["status"] {
   if (status === "live") return "live";
   if (status === "paused") return "paused";
+  if (status === "draft") return "draft";
   return "pending";
 }
 
@@ -73,7 +71,9 @@ function toDashListing(l: VendorListingSummary): VendorDashboardListing {
     category: CATEGORY_LABEL[l.category],
     categoryKey: CATEGORY_KEY[l.category],
     rating: Math.round(l.ratingAvg),
-    image: l.coverImageUrl || CATEGORY_IMAGE[l.category],
+    // Empty when no cover has been uploaded → the card shows a category-icon
+    // placeholder rather than a cropped hero banner.
+    image: l.coverImageUrl || "",
     status: toDashStatus(l.status),
   };
 }
@@ -160,7 +160,10 @@ export function VendorListingsContent({
 
   const handlePauseToggle = (id: string) => {
     const current = listings.find((l) => l.id === id);
-    if (!current || current.status === "pending") return;
+    // Only live/paused listings can toggle; pending & draft can't.
+    if (!current || current.status === "pending" || current.status === "draft") {
+      return;
+    }
     statusMutation.mutate({
       id,
       status: current.status === "live" ? "paused" : "live",

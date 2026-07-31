@@ -51,6 +51,9 @@ export type VendorSignupFormState = {
   signupToken: string;
   governmentIdFileName: string;
   governmentIdPreviewUrl: string;
+  // Storage reference (objectPath) once the government ID uploads, submitted
+  // on signup so the backend links the stored file.
+  governmentIdObjectPath: string;
   agreedToTerms: boolean;
 };
 
@@ -71,6 +74,7 @@ export const EMPTY_VENDOR_SIGNUP_FORM: VendorSignupFormState = {
   signupToken: "",
   governmentIdFileName: "",
   governmentIdPreviewUrl: "",
+  governmentIdObjectPath: "",
   agreedToTerms: false,
 };
 
@@ -131,6 +135,8 @@ export function isVendorSignupStepValid(step: VendorSignupStepId, form: VendorSi
         form.password === form.confirmPassword
       );
     case "identity":
-      return Boolean(form.governmentIdPreviewUrl) && form.agreedToTerms;
+      // Require the upload to have completed (objectPath present), not just a
+      // local preview — otherwise the ID would submit without a stored file.
+      return Boolean(form.governmentIdObjectPath) && form.agreedToTerms;
   }
 }

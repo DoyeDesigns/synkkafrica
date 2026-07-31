@@ -54,12 +54,6 @@ const CATEGORY_LABEL: Record<VendorListingCategory, string> = {
   accommodations: "Accommodations",
   experiences: "Tours & experiences",
 };
-const CATEGORY_IMAGE: Record<VendorListingCategory, string> = {
-  cars: "/hero/car-rentals.png",
-  accommodations: "/hero/accommodations.png",
-  experiences: "/destinations/lagos.png",
-};
-
 function toDashListing(l: VendorListingSummary): VendorDashboardListing {
   return {
     id: l.id,
@@ -67,9 +61,16 @@ function toDashListing(l: VendorListingSummary): VendorDashboardListing {
     category: CATEGORY_LABEL[l.category],
     categoryKey: CATEGORY_KEY[l.category],
     rating: Math.round(l.ratingAvg),
-    image: l.coverImageUrl || CATEGORY_IMAGE[l.category],
+    // Empty when no cover uploaded → card renders a category-icon placeholder.
+    image: l.coverImageUrl || "",
     status:
-      l.status === "live" ? "live" : l.status === "paused" ? "paused" : "pending",
+      l.status === "live"
+        ? "live"
+        : l.status === "paused"
+          ? "paused"
+          : l.status === "draft"
+            ? "draft"
+            : "pending",
   };
 }
 

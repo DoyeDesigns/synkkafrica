@@ -1,12 +1,35 @@
 "use client";
 
-import { Pause, Pencil, Play, Star, Trash2 } from "lucide-react";
+import {
+  BedDouble,
+  Car,
+  MapPin,
+  Pause,
+  Pencil,
+  Play,
+  Star,
+  Trash2,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import type { VendorDashboardListing } from "@/features/vendor/data/vendor-dashboard";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
+
+// Icon shown when a listing has no uploaded cover photo yet, keyed by the
+// category translation key. Beats cropping a wide hero banner into a square
+// thumbnail (which reads as a random unrelated photo).
+const CATEGORY_PLACEHOLDER_ICON: Record<
+  VendorDashboardListing["categoryKey"],
+  LucideIcon
+> = {
+  "vendor.dashboard.category.accommodations": BedDouble,
+  "vendor.dashboard.category.carRentals": Car,
+  "vendor.dashboard.category.tours": MapPin,
+  "vendor.dashboard.category.toursExperiences": MapPin,
+};
 
 type VendorListingCardProps = {
   listing: VendorDashboardListing;
@@ -23,12 +46,14 @@ const STATUS_LABEL_KEYS: Record<
   live: "vendor.dashboard.status.live",
   pending: "vendor.dashboard.status.pending",
   paused: "vendor.dashboard.status.paused",
+  draft: "vendor.dashboard.status.draft",
 };
 
 const STATUS_BADGE_STYLES: Record<VendorDashboardListing["status"], string> = {
   live: "bg-[#B9FF7C] text-[#446D14]",
   pending: "bg-[#D85A30]/12 text-[#D85A30]",
   paused: "bg-[#FFCE31]/25 text-[#9A7200]",
+  draft: "bg-[#E5E5E5] text-[#5A5A5A]",
 };
 
 export function VendorListingCard({
@@ -41,9 +66,16 @@ export function VendorListingCard({
   const t = useTranslation();
   const isPending = listing.status === "pending";
   const isPaused = listing.status === "paused";
+  const isDraft = listing.status === "draft";
   const isListingsPage = variant === "listings";
-  const isPauseDisabled = isPending;
-  const editHref = `/vendor/listings?listing=${listing.id}`;
+  // Only a live/paused listing can be paused/resumed. Drafts (not submitted)
+  // and pending (awaiting review) listings can't.
+  const isPauseDisabled = isPending || isDraft;
+  // A draft reopens in the wizard to continue editing; other statuses just
+  // highlight the card on the listings page (in-place edit isn't wired yet).
+  const editHref = isDraft
+    ? `/vendor/listings/${listing.id}/edit`
+    : `/vendor/listings?listing=${listing.id}`;
 
   const pendingLabel = isListingsPage
     ? t("vendor.listings.status.pendingApproval")
@@ -89,14 +121,29 @@ export function VendorListingCard({
       className={`rounded-[5px] border p-4 ${cardSurfaceClassName}`}
     >
       <div className="flex gap-4">
-        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg">
-          <Image
-            src={listing.image}
-            alt={listing.title}
-            fill
-            className="object-cover"
-            sizes="80px"
-          />
+        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-[#ECEFF3]">
+          {listing.image ? (
+            <Image
+              src={listing.image}
+              alt={listing.title}
+              fill
+              className="object-cover"
+              sizes="80px"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center">
+              {(() => {
+                const PlaceholderIcon =
+                  CATEGORY_PLACEHOLDER_ICON[listing.categoryKey];
+                return (
+                  <PlaceholderIcon
+                    className="h-7 w-7 text-[#9AA6B2]"
+                    strokeWidth={1.75}
+                  />
+                );
+              })()}
+            </div>
+          )}
         </div>
 
         <div className="flex min-w-0 flex-1 gap-3">

@@ -31,6 +31,7 @@ export type VendorSignupInput = {
   password: string;
   signupToken: string;
   governmentIdFileName?: string;
+  governmentIdFileUrl?: string;
 };
 
 // Step 1 of signup — email a 6-digit code (no account enumeration).
@@ -176,6 +177,9 @@ export type CreateVendorListingInput = {
   coverImageUrl?: string;
   details?: Record<string, unknown>;
   media?: unknown[];
+  // When true the backend stores it with status `draft` (private to the
+  // vendor) instead of submitting it for admin review (`pending`).
+  saveAsDraft?: boolean;
 };
 
 export async function listVendorListings(
@@ -223,6 +227,17 @@ export async function setVendorListingStatus(
     method: "PATCH",
     token,
     body: { status },
+  });
+}
+
+// Submit a draft (or rejected) listing for admin review → status `pending`.
+export async function submitVendorListing(
+  token: string,
+  id: string,
+): Promise<VendorListingDetail> {
+  return apiFetch<VendorListingDetail>(`/vendor/listings/${id}/submit`, {
+    method: "PATCH",
+    token,
   });
 }
 
@@ -391,13 +406,14 @@ export async function markAllVendorNotificationsRead(
 export type DocStatus = "verified" | "pending" | "rejected" | "not_uploaded";
 
 export type VendorBusinessDocApi = {
-  id: string;
+  id: string | null;
   type: string;
   label: string;
-  fileName: string;
+  fileName?: string;
   fileUrl?: string | null;
   status: DocStatus;
-  uploadedAt: string;
+  uploadedAt?: string;
+  rejectionReason?: string | null;
 };
 
 export type VendorListingDocApi = {
@@ -432,10 +448,120 @@ export async function uploadListingDocument(
   listingId: string,
   type: string,
   fileName: string,
+  fileUrl?: string,
 ): Promise<void> {
   await apiFetch<void>(`/vendor/listings/${listingId}/documents`, {
     method: "POST",
     token,
-    body: { type, fileName },
+    body: { type, fileName, fileUrl },
   });
+}
+
+// Upload / replace a business KYC document (government_id, cac_certificate,
+// proof_of_address).
+export async function uploadBusinessDocument(
+  token: string,
+  type: string,
+  fileName: string,
+  fileUrl?: string,
+): Promise<void> {
+  await apiFetch<void>("/vendor/documents", {
+    method: "POST",
+    token,
+    body: { type, fileName, fileUrl },
+  });
+}
+
+// --- Direct-to-storage uploads (GCS presigned PUT) ---
+
+export type VendorUploadKind =
+  | "listing-media"
+  | "listing-document"
+  | "cac"
+  | "government-id"
+  | "proof-of-address";
+
+export type SignedUpload = {
+  uploadUrl: string;
+  objectPath: string;
+  publicUrl: string | null;
+};
+
+// Some browser File objects have an empty `.type`; derive a MIME from the
+// extension so the value we sign matches what we PUT (the signature binds it).
+function resolveContentType(file: File): string {
+  if (file.type) return file.type;
+  switch (file.name.toLowerCase().split(".").pop()) {
+    case "png":
+      return "image/png";
+    case "jpg":
+    case "jpeg":
+      return "image/jpeg";
+    case "webp":
+      return "image/webp";
+    case "mp4":
+      return "video/mp4";
+    case "pdf":
+      return "application/pdf";
+    default:
+      return "application/octet-stream";
+  }
+}
+
+export async function signVendorUpload(
+  token: string,
+  input: { kind: VendorUploadKind; fileName: string; contentType: string },
+): Promise<SignedUpload> {
+  return apiFetch<SignedUpload>("/vendor/uploads/sign", {
+    method: "POST",
+    token,
+    body: input,
+  });
+}
+
+// Sign, then PUT the raw bytes straight to storage (NOT through apiFetch — the
+// presigned URL points at the bucket and must not carry our auth headers).
+// Returns the stable public URL (for public kinds) and the object path.
+export async function uploadVendorFile(
+  token: string,
+  kind: VendorUploadKind,
+  file: File,
+): Promise<{ url: string | null; objectPath: string }> {
+  const contentType = resolveContentType(file);
+  const signed = await signVendorUpload(token, {
+    kind,
+    fileName: file.name,
+    contentType,
+  });
+  const res = await fetch(signed.uploadUrl, {
+    method: "PUT",
+    headers: { "Content-Type": contentType },
+    body: file,
+  });
+  if (!res.ok) {
+    throw new Error(`Upload failed (${res.status})`);
+  }
+  return { url: signed.publicUrl, objectPath: signed.objectPath };
+}
+
+// Government-ID upload during signup — authorized by the signup token since no
+// vendor account exists yet. Returns the storage objectPath to submit on signup.
+export async function uploadVendorSignupFile(
+  signupToken: string,
+  file: File,
+): Promise<{ objectPath: string }> {
+  const contentType = resolveContentType(file);
+  const signed = await apiFetch<{ uploadUrl: string; objectPath: string }>(
+    "/vendor/auth/signup/sign-upload",
+    { method: "POST", body: { signupToken, fileName: file.name, contentType } },
+  );
+  const res = await fetch(signed.uploadUrl, {
+    method: "PUT",
+    headers: { "Content-Type": contentType },
+    body: file,
+  });
+  if (!res.ok) {
+    throw new Error(`Upload failed (${res.status})`);
+  }
+  return { objectPath: signed.objectPath };
 }
