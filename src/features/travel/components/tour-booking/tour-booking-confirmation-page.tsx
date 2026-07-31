@@ -15,6 +15,7 @@ import { TourBookingStepper } from "@/features/travel/components/tour-booking/to
 import { useTranslation } from "@/hooks/use-translation";
 import type { TourDetail } from "@/features/travel/data/tour-booking";
 import { getExperiencePaymentStatus } from "@/lib/api/experiences";
+import { LeaveReviewForm } from "@/features/travel/components/booking/leave-review-form";
 
 type TourBookingConfirmationPageProps = {
   tour: TourDetail;
@@ -138,6 +139,10 @@ export function TourBookingConfirmationPage({ tour }: TourBookingConfirmationPag
           </div>
 
           {confirmation ? <BookingConfirmationDetails confirmation={confirmation} /> : null}
+
+          {payment === "paid" ? (
+            <LeaveReviewForm listingId={tour.id} />
+          ) : null}
 
           <p className="mt-8 text-sm font-medium font-inter text-foreground">
             {t("booking.confirmation.reloadIn")}{" "}

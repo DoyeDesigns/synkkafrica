@@ -8,6 +8,7 @@ import { CarBookingBreadcrumbs } from "@/features/travel/components/car-booking/
 import { CarBookingStepper } from "@/features/travel/components/car-booking/car-booking-stepper";
 import { useTranslation } from "@/hooks/use-translation";
 import type { CarDetail } from "@/features/travel/data/car-booking";
+import { LeaveReviewForm } from "@/features/travel/components/booking/leave-review-form";
 import { getCarPaymentStatus } from "@/lib/api/cars";
 
 type CarBookingConfirmationPageProps = {
@@ -109,6 +110,10 @@ export function CarBookingConfirmationPage({ car }: CarBookingConfirmationPagePr
               {t("booking.confirmation.subtitle")}
             </p>
           </div>
+
+          {payment === "paid" ? (
+            <LeaveReviewForm listingId={car.id} />
+          ) : null}
 
           <p className="mt-8 text-sm font-medium font-inter text-foreground">
             {t("booking.confirmation.reloadIn")}{" "}

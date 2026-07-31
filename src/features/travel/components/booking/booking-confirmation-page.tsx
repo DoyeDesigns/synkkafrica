@@ -15,6 +15,7 @@ import { BookingStepper } from "@/features/travel/components/booking/booking-ste
 import { useTranslation } from "@/hooks/use-translation";
 import type { PropertyDetail } from "@/features/travel/data/property-booking";
 import { getAccommodationPaymentStatus } from "@/lib/api/accommodations";
+import { LeaveReviewForm } from "@/features/travel/components/booking/leave-review-form";
 
 type PaymentState = "checking" | "paid" | "pending" | "none";
 
@@ -138,6 +139,10 @@ export function BookingConfirmationPage({ property }: BookingConfirmationPagePro
           </div>
 
           {confirmation ? <BookingConfirmationDetails confirmation={confirmation} /> : null}
+
+          {payment === "paid" ? (
+            <LeaveReviewForm listingId={property.id} />
+          ) : null}
 
           <p className="mt-8 text-sm font-medium font-inter text-foreground">
             {t("booking.confirmation.reloadIn")}{" "}

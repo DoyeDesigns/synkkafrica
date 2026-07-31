@@ -246,3 +246,75 @@ export async function adminRejectBusinessDoc(
     token,
   });
 }
+
+// --- Overview + customers ---
+
+export type AdminOverview = {
+  pendingVendors: number;
+  activeVendors: number;
+  pendingListings: number;
+  liveListings: number;
+  pendingPayouts: number;
+  pendingDocuments: number;
+  totalBookings: number;
+  awaitingBookings: number;
+  customers: number;
+  grossBookingValue: number;
+  currency: string;
+};
+
+export async function adminGetOverview(token: string): Promise<AdminOverview> {
+  return apiFetch<AdminOverview>("/admin/overview", { token });
+}
+
+export type AdminCustomer = {
+  id: string;
+  email: string;
+  firstName: string | null;
+  lastName: string | null;
+  phoneNumber: string | null;
+  emailVerified: boolean;
+  deleted: boolean;
+  createdAt: string;
+};
+
+export async function adminListCustomers(
+  token: string,
+): Promise<AdminCustomer[]> {
+  return apiFetch<AdminCustomer[]>("/admin/customers", { token });
+}
+
+// --- Reviews moderation ---
+
+export type AdminReview = {
+  id: string;
+  listingId: string;
+  listingTitle: string | null;
+  authorName: string | null;
+  rating: number;
+  comment: string | null;
+  status: "published" | "hidden";
+  createdAt: string;
+};
+
+export async function adminListReviews(
+  token: string,
+  status?: string,
+): Promise<AdminReview[]> {
+  const qs = status ? `?status=${encodeURIComponent(status)}` : "";
+  return apiFetch<AdminReview[]>(`/admin/reviews${qs}`, { token });
+}
+
+export async function adminHideReview(
+  token: string,
+  id: string,
+): Promise<{ id: string; status: string }> {
+  return apiFetch(`/admin/reviews/${id}/hide`, { method: "PATCH", token });
+}
+
+export async function adminPublishReview(
+  token: string,
+  id: string,
+): Promise<{ id: string; status: string }> {
+  return apiFetch(`/admin/reviews/${id}/publish`, { method: "PATCH", token });
+}
