@@ -348,3 +348,40 @@ export async function requestVendorPayout(
     body: { amount, bankAccountId },
   });
 }
+
+// --- Notifications (GET feed, PATCH read / read-all) ---
+
+export type VendorNotificationApi = {
+  id: string;
+  type: string;
+  title: string;
+  message: string;
+  href?: string | null;
+  read: boolean;
+  createdAt: string;
+};
+
+export async function listVendorNotifications(
+  token: string,
+): Promise<VendorNotificationApi[]> {
+  return apiFetch<VendorNotificationApi[]>("/vendor/notifications", { token });
+}
+
+export async function markVendorNotificationRead(
+  token: string,
+  id: string,
+): Promise<void> {
+  await apiFetch<void>(`/vendor/notifications/${id}/read`, {
+    method: "PATCH",
+    token,
+  });
+}
+
+export async function markAllVendorNotificationsRead(
+  token: string,
+): Promise<void> {
+  await apiFetch<void>("/vendor/notifications/read-all", {
+    method: "PATCH",
+    token,
+  });
+}
