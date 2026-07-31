@@ -1975,6 +1975,8 @@ export const en = {
   "vendor.addListing.saveContinue": "Save & Continue",
   "vendor.addListing.completeRequiredFields": "Complete required fields: {fields}",
   "vendor.addListing.publish": "Publish listing",
+  "vendor.addListing.publishWaitForUploads":
+    "Please wait — your documents are still uploading.",
 } as const;
 
 export type TranslationKey = keyof typeof en;

@@ -107,10 +107,12 @@ export function revokeListingMediaItem(item: ListingMediaItem) {
 export type ListingDocumentUpload = {
   name: string;
   previewUrl?: string;
-  // The actual file, kept so it can be uploaded to storage once the listing
-  // exists (documents are attached after create — there's no listing id yet
-  // during the wizard). Undefined for docs restored from a saved draft.
+  // The actual file (undefined for docs restored from a saved draft).
   file?: File;
+  // Uploaded to storage immediately on select (no listing id needed for the
+  // upload itself). On publish only the metadata is attached — fast.
+  objectPath?: string;
+  status?: "uploading" | "uploaded" | "error";
 };
 
 export function createListingDocumentUpload(file: File): ListingDocumentUpload {

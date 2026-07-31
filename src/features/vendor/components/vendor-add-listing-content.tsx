@@ -31,6 +31,8 @@ import {
   getNextStep,
   getPreviousStep,
   isStepValid,
+  createListingDocumentUpload,
+  revokeListingDocumentUpload,
   createListingMediaItem,
   formStateFromListingDetails,
   getListingMediaRejection,
@@ -39,6 +41,7 @@ import {
   revokeListingMediaItem,
   type AddListingFormState,
   type ListingDocumentId,
+  type ListingDocumentUpload,
   type ListingMediaItem,
   type AddListingStepId,
   type CarHandoverMethod,
@@ -226,6 +229,51 @@ export function VendorAddListingContent({
     }));
   };
 
+  // Functional per-document update so async upload results land on the right
+  // document without clobbering concurrent uploads.
+  const updateDocumentUpload = (
+    docId: ListingDocumentId,
+    patch: Partial<ListingDocumentUpload>,
+  ) => {
+    setForm((current) => {
+      const existing = current.uploadedDocuments[docId];
+      if (!existing) return current;
+      return {
+        ...current,
+        uploadedDocuments: {
+          ...current.uploadedDocuments,
+          [docId]: { ...existing, ...patch },
+        },
+      };
+    });
+  };
+
+  // Selecting a wizard document uploads it to storage immediately (like media),
+  // so publishing only attaches metadata — no waiting on binary uploads then.
+  const handleDocumentSelected = (docId: ListingDocumentId, file: File) => {
+    const upload = createListingDocumentUpload(file);
+    setForm((current) => {
+      const existing = current.uploadedDocuments[docId];
+      if (existing) revokeListingDocumentUpload(existing);
+      return {
+        ...current,
+        uploadedDocuments: {
+          ...current.uploadedDocuments,
+          [docId]: { ...upload, status: "uploading" },
+        },
+      };
+    });
+    if (!token) {
+      updateDocumentUpload(docId, { status: "error" });
+      return;
+    }
+    uploadVendorFile(token, "listing-document", file)
+      .then(({ objectPath }) =>
+        updateDocumentUpload(docId, { objectPath, status: "uploaded" }),
+      )
+      .catch(() => updateDocumentUpload(docId, { status: "error" }));
+  };
+
   const handleCategoryChange = (category: ListingCategory) => {
     updateForm({ category });
     setCurrentStep("details");
@@ -276,33 +324,31 @@ export function VendorAddListingContent({
     }
   };
 
-  // Upload the documents collected in the wizard now that the listing exists.
-  // Best-effort per doc — a failed one doesn't block publishing.
-  const uploadWizardDocuments = async (listingId: string) => {
+  // Attach the wizard documents to the listing. The files were already
+  // uploaded to storage on select, so this only records metadata — fast.
+  // Best-effort per doc; a failed attach doesn't block publishing.
+  const attachWizardDocuments = async (listingId: string) => {
     if (!token) return;
     const entries = Object.entries(form.uploadedDocuments) as [
       ListingDocumentId,
       AddListingFormState["uploadedDocuments"][ListingDocumentId],
     ][];
-    for (const [docId, upload] of entries) {
-      if (!upload?.file) continue;
-      try {
-        const { objectPath } = await uploadVendorFile(
-          token,
-          "listing-document",
-          upload.file,
-        );
-        await uploadListingDocument(
-          token,
-          listingId,
-          WIZARD_DOC_TYPE[docId] ?? docId,
-          upload.file.name,
-          objectPath,
-        );
-      } catch {
-        // Skip this doc; vendor can re-upload it from the Documents section.
-      }
-    }
+    await Promise.all(
+      entries.map(async ([docId, upload]) => {
+        if (!upload?.objectPath) return; // not uploaded (still uploading/failed)
+        try {
+          await uploadListingDocument(
+            token,
+            listingId,
+            WIZARD_DOC_TYPE[docId] ?? docId,
+            upload.name,
+            upload.objectPath,
+          );
+        } catch {
+          // Vendor can re-upload from the Documents section.
+        }
+      }),
+    );
   };
 
   const handlePublish = async () => {
@@ -313,12 +359,12 @@ export function VendorAddListingContent({
       if (draftId) {
         // A saved draft — update it, attach docs, then submit (draft → pending).
         await updateVendorListing(token, draftId, toUpdateInput(form));
-        await uploadWizardDocuments(draftId);
+        await attachWizardDocuments(draftId);
         await submitVendorListing(token, draftId);
       } else {
         // A fresh listing is created directly as `pending` — just attach docs.
         const created = await createVendorListing(token, toCreateInput(form));
-        await uploadWizardDocuments(created.id);
+        await attachWizardDocuments(created.id);
       }
       router.push(exitHref);
       router.refresh();
@@ -335,6 +381,9 @@ export function VendorAddListingContent({
 
   const isDocumentsStep = currentStep === "documents";
   const isEditing = Boolean(editListingId);
+  const documentsUploading = Object.values(form.uploadedDocuments).some(
+    (upload) => upload?.status === "uploading",
+  );
 
   if (loadingListing) {
     return (
@@ -405,6 +454,7 @@ export function VendorAddListingContent({
         <DocumentsStepPage
           form={form}
           onChange={updateForm}
+          onSelectDocument={handleDocumentSelected}
           onEditListing={() => setCurrentStep("details")}
           onSubmit={() => {
             if (isStepValid("documents", form)) {
@@ -479,9 +529,14 @@ export function VendorAddListingContent({
               ) : null}
               <button
                 type="button"
-                disabled={publishing}
+                disabled={publishing || documentsUploading}
+                title={
+                  documentsUploading
+                    ? t("vendor.addListing.publishWaitForUploads")
+                    : undefined
+                }
                 onClick={() => void handlePublish()}
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {publishing ? t("common.loading") : t("vendor.addListing.publish")}
               </button>

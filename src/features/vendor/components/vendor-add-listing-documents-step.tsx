@@ -17,7 +17,6 @@ import type { LucideIcon } from "lucide-react";
 
 import {
   ADD_LISTING_STEPS,
-  createListingDocumentUpload,
   getStepLabelKey,
   isStepValid,
   LISTING_DOCUMENTS_BY_CATEGORY,
@@ -50,6 +49,7 @@ const DOCUMENT_TITLE_KEYS: Partial<Record<ListingDocumentId, TranslationKey>> = 
 type DocumentsStepPageProps = {
   form: AddListingFormState;
   onChange: (patch: Partial<AddListingFormState>) => void;
+  onSelectDocument: (documentId: ListingDocumentId, file: File) => void;
   onEditListing: () => void;
   onSubmit: () => void;
 };
@@ -57,25 +57,12 @@ type DocumentsStepPageProps = {
 export function DocumentsStepPage({
   form,
   onChange,
+  onSelectDocument,
   onEditListing,
   onSubmit,
 }: DocumentsStepPageProps) {
   const t = useTranslation();
   const canSubmit = isStepValid("documents", form);
-
-  const handleUpload = (documentId: ListingDocumentId, upload: ListingDocumentUpload) => {
-    const existing = form.uploadedDocuments[documentId];
-    if (existing) {
-      revokeListingDocumentUpload(existing);
-    }
-
-    onChange({
-      uploadedDocuments: {
-        ...form.uploadedDocuments,
-        [documentId]: upload,
-      },
-    });
-  };
 
   const documents = LISTING_DOCUMENTS_BY_CATEGORY[form.category].filter((document) => {
     if (form.category !== "accommodations") {
@@ -125,7 +112,7 @@ export function DocumentsStepPage({
                   label={t(titleKey)}
                   hint={document.hintKey ? t(document.hintKey) : undefined}
                   upload={form.uploadedDocuments[document.id]}
-                  onUpload={(upload) => handleUpload(document.id, upload)}
+                  onSelectFile={(file) => onSelectDocument(document.id, file)}
                   onRemove={() => {
                     const existing = form.uploadedDocuments[document.id];
                     if (existing) {
@@ -376,14 +363,14 @@ function DocumentUploadCard({
   label,
   hint,
   upload,
-  onUpload,
+  onSelectFile,
   onRemove,
 }: {
   icon: LucideIcon;
   label: string;
   hint?: string;
   upload?: ListingDocumentUpload;
-  onUpload: (upload: ListingDocumentUpload) => void;
+  onSelectFile: (file: File) => void;
   onRemove: () => void;
 }) {
   const t = useTranslation();
@@ -412,6 +399,15 @@ function DocumentUploadCard({
       {upload ? (
         <div className="mt-4 space-y-2">
           <DocumentUploadPreview upload={upload} />
+          {upload.status === "uploading" ? (
+            <p className="text-xs font-semibold font-satoshi text-[#676565]">
+              {t("vendor.addListing.mediaUploading")}
+            </p>
+          ) : upload.status === "error" ? (
+            <p className="text-xs font-semibold font-satoshi text-[#C0392B]">
+              {t("vendor.addListing.mediaUploadFailed")}
+            </p>
+          ) : null}
           <button
             type="button"
             onClick={onRemove}
@@ -436,7 +432,7 @@ function DocumentUploadCard({
             onChange={(event) => {
               const file = event.target.files?.[0];
               if (file) {
-                onUpload(createListingDocumentUpload(file));
+                onSelectFile(file);
               }
               event.target.value = "";
             }}

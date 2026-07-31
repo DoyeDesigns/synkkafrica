@@ -1979,4 +1979,6 @@ export const de = {
   "vendor.addListing.saveContinue": "Speichern & weiter",
   "vendor.addListing.completeRequiredFields": "Pflichtfelder ausfüllen: {fields}",
   "vendor.addListing.publish": "Angebot veröffentlichen",
+  "vendor.addListing.publishWaitForUploads":
+    "Bitte warten — Ihre Dokumente werden noch hochgeladen.",
 } as const satisfies Record<TranslationKey, string>;
