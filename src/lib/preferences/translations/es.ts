@@ -1849,6 +1849,9 @@ export const es = {
   "vendor.addListing.uploadImages": "Arrastra imágenes o videos aquí o haz clic para buscar",
   "vendor.addListing.uploadImagesHint": "PNG, JPG, WEBP o MP4 (máx. 10 MB)",
   "vendor.addListing.removeImage": "Eliminar imagen",
+  "vendor.addListing.mediaSkippedUnsupported": "{count} archivo(s) omitido(s) — formato no compatible. Usa PNG, JPG, WEBP o MP4 (las fotos HEIC de iPhone aún no son compatibles).",
+  "vendor.addListing.mediaSkippedTooLarge": "{count} archivo(s) omitido(s) — cada archivo debe pesar menos de 10 MB.",
+  "vendor.addListing.mediaPreviewFailed": "Vista previa no disponible",
   "vendor.addListing.pickupDeliveryHeading": "Recogida o entrega",
   "vendor.addListing.pickupDeliveryQuestion":
     "¿Qué opciones de entrega ofreces? Selecciona todas las que correspondan.",

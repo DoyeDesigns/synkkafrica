@@ -1849,6 +1849,9 @@ export const fr = {
   "vendor.addListing.uploadImages": "Glissez-déposez des images ou vidéos ici ou cliquez pour parcourir",
   "vendor.addListing.uploadImagesHint": "PNG, JPG, WEBP ou MP4 (max. 10 Mo)",
   "vendor.addListing.removeImage": "Supprimer l'image",
+  "vendor.addListing.mediaSkippedUnsupported": "{count} fichier(s) ignoré(s) — format non pris en charge. Utilisez PNG, JPG, WEBP ou MP4 (les photos HEIC d'iPhone ne sont pas encore prises en charge).",
+  "vendor.addListing.mediaSkippedTooLarge": "{count} fichier(s) ignoré(s) — chaque fichier doit faire moins de 10 Mo.",
+  "vendor.addListing.mediaPreviewFailed": "Aperçu indisponible",
   "vendor.addListing.pickupDeliveryHeading": "Retrait ou livraison",
   "vendor.addListing.pickupDeliveryQuestion":
     "Quelles options de remise proposez-vous ? Sélectionnez toutes celles qui s'appliquent.",

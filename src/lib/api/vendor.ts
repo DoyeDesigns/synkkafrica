@@ -385,3 +385,57 @@ export async function markAllVendorNotificationsRead(
     token,
   });
 }
+
+// --- Documents (GET overview, POST upload a listing document) ---
+
+export type DocStatus = "verified" | "pending" | "rejected" | "not_uploaded";
+
+export type VendorBusinessDocApi = {
+  id: string;
+  type: string;
+  label: string;
+  fileName: string;
+  fileUrl?: string | null;
+  status: DocStatus;
+  uploadedAt: string;
+};
+
+export type VendorListingDocApi = {
+  id: string | null;
+  type: string;
+  label: string;
+  status: DocStatus;
+  fileName?: string;
+  uploadedAt?: string;
+  rejectionReason?: string | null;
+};
+
+export type VendorDocumentsOverview = {
+  business: VendorBusinessDocApi[];
+  listings: {
+    listingId: string;
+    title: string;
+    category: string;
+    reference?: string | null;
+    documents: VendorListingDocApi[];
+  }[];
+};
+
+export async function getVendorDocuments(
+  token: string,
+): Promise<VendorDocumentsOverview> {
+  return apiFetch<VendorDocumentsOverview>("/vendor/documents", { token });
+}
+
+export async function uploadListingDocument(
+  token: string,
+  listingId: string,
+  type: string,
+  fileName: string,
+): Promise<void> {
+  await apiFetch<void>(`/vendor/listings/${listingId}/documents`, {
+    method: "POST",
+    token,
+    body: { type, fileName },
+  });
+}

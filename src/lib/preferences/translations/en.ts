@@ -1845,6 +1845,9 @@ export const en = {
   "vendor.addListing.uploadImages": "Drag and drop images or videos here, or click to browse",
   "vendor.addListing.uploadImagesHint": "PNG, JPG, WEBP or MP4 (Max 10MB)",
   "vendor.addListing.removeImage": "Remove image",
+  "vendor.addListing.mediaSkippedUnsupported": "{count} file(s) skipped — unsupported format. Use PNG, JPG, WEBP or MP4 (iPhone HEIC photos aren't supported yet).",
+  "vendor.addListing.mediaSkippedTooLarge": "{count} file(s) skipped — each file must be under 10MB.",
+  "vendor.addListing.mediaPreviewFailed": "Preview unavailable",
   "vendor.addListing.pickupDeliveryHeading": "Pickup or Delivery",
   "vendor.addListing.pickupDeliveryQuestion":
     "Which handover options do you offer? Select all that apply.",

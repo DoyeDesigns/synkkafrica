@@ -27,6 +27,7 @@ import {
   getPreviousStep,
   isStepValid,
   createListingMediaItem,
+  getListingMediaRejection,
   LISTING_MEDIA_ACCEPT,
   LISTING_MEDIA_MAX_COUNT,
   revokeListingMediaItem,
@@ -478,6 +479,9 @@ function MediaStep({
   onChange: (patch: Partial<AddListingFormState>) => void;
 }) {
   const t = useTranslation();
+  const [notices, setNotices] = useState<string[]>([]);
+  const [isDragging, setIsDragging] = useState(false);
+  const [failedPreviews, setFailedPreviews] = useState<Set<string>>(new Set());
 
   const handleFiles = (files: FileList | null) => {
     if (!files) {
@@ -490,7 +494,39 @@ function MediaStep({
       return;
     }
 
-    const newItems = Array.from(files)
+    const selected = Array.from(files);
+
+    // Classify every selected file so we can tell the vendor *why* any were
+    // dropped, instead of silently discarding them (which looks like the
+    // picker did nothing). Only accepted files become previews.
+    let unsupported = 0;
+    let tooLarge = 0;
+    const accepted: File[] = [];
+    for (const file of selected) {
+      const reason = getListingMediaRejection(file);
+      if (reason === "unsupported") {
+        unsupported += 1;
+      } else if (reason === "too_large") {
+        tooLarge += 1;
+      } else {
+        accepted.push(file);
+      }
+    }
+
+    const messages: string[] = [];
+    if (unsupported > 0) {
+      messages.push(
+        t("vendor.addListing.mediaSkippedUnsupported", { count: unsupported }),
+      );
+    }
+    if (tooLarge > 0) {
+      messages.push(
+        t("vendor.addListing.mediaSkippedTooLarge", { count: tooLarge }),
+      );
+    }
+    setNotices(messages);
+
+    const newItems = accepted
       .slice(0, remainingSlots)
       .map(createListingMediaItem)
       .filter((item): item is NonNullable<typeof item> => item !== null);
@@ -523,7 +559,26 @@ function MediaStep({
         </p>
       </div>
 
-      <label className="flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-[#D0D0D0] bg-[#FAFAFA] px-6 py-10 text-center transition-colors hover:border-[#135391] hover:bg-[#F8FBFF]">
+      <label
+        onDragOver={(event) => {
+          event.preventDefault();
+          setIsDragging(true);
+        }}
+        onDragLeave={(event) => {
+          event.preventDefault();
+          setIsDragging(false);
+        }}
+        onDrop={(event) => {
+          event.preventDefault();
+          setIsDragging(false);
+          handleFiles(event.dataTransfer.files);
+        }}
+        className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed px-6 py-10 text-center transition-colors ${
+          isDragging
+            ? "border-[#135391] bg-[#F8FBFF]"
+            : "border-[#D0D0D0] bg-[#FAFAFA] hover:border-[#135391] hover:bg-[#F8FBFF]"
+        }`}
+      >
         <CloudUpload className="h-8 w-8 text-[#676565]" />
         <p className="mt-3 text-sm font-semibold font-satoshi text-[#2F2F2F]">
           {t("vendor.addListing.uploadImages")}
@@ -543,6 +598,19 @@ function MediaStep({
         />
       </label>
 
+      {notices.length > 0 ? (
+        <div className="rounded-lg border border-[#F1C7B8] bg-[#FDF3EF] px-4 py-3">
+          {notices.map((message) => (
+            <p
+              key={message}
+              className="text-xs font-medium font-satoshi text-[#C0392B]"
+            >
+              {message}
+            </p>
+          ))}
+        </div>
+      ) : null}
+
       {form.mediaItems.length > 0 ? (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {form.mediaItems.map((item) => (
@@ -558,12 +626,24 @@ function MediaStep({
                   playsInline
                   preload="metadata"
                 />
+              ) : failedPreviews.has(item.id) ? (
+                <div className="flex h-full w-full flex-col items-center justify-center gap-1 px-2 text-center">
+                  <span className="text-xs font-semibold font-satoshi text-[#676565]">
+                    {t("vendor.addListing.mediaPreviewFailed")}
+                  </span>
+                  <span className="line-clamp-2 text-[10px] font-medium font-satoshi text-[#9A9A9A]">
+                    {item.name}
+                  </span>
+                </div>
               ) : (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={item.previewUrl}
                   alt={item.name}
                   className="h-full w-full object-cover"
+                  onError={() =>
+                    setFailedPreviews((prev) => new Set(prev).add(item.id))
+                  }
                 />
               )}
               <button

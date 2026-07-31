@@ -34,19 +34,57 @@ export const LISTING_MEDIA_MAX_COUNT = 8;
 export const LISTING_MEDIA_ACCEPT =
   "image/png,image/jpeg,image/webp,video/mp4,.png,.jpg,.jpeg,.webp,.mp4";
 
-export function createListingMediaItem(file: File): ListingMediaItem | null {
-  const isImage = file.type.startsWith("image/") || /\.(png|jpe?g|webp)$/i.test(file.name);
-  const isVideo = file.type === "video/mp4" || /\.mp4$/i.test(file.name);
+// Only formats a browser can actually render in <img>/<video>. Note HEIC —
+// the default format for iPhone photos — reports MIME `image/heic`, which
+// passes a naive `startsWith("image/")` check but cannot be previewed or
+// uploaded, so it must be treated as unsupported (with a clear message).
+const RENDERABLE_IMAGE_MIME = /^image\/(png|jpe?g|webp)$/i;
+const RENDERABLE_IMAGE_EXT = /\.(png|jpe?g|webp)$/i;
 
-  if ((!isImage && !isVideo) || file.size > LISTING_MEDIA_MAX_BYTES) {
+export type ListingMediaRejectionReason = "unsupported" | "too_large";
+
+function isRenderableImage(file: File): boolean {
+  return RENDERABLE_IMAGE_MIME.test(file.type) || RENDERABLE_IMAGE_EXT.test(file.name);
+}
+
+function isSupportedVideo(file: File): boolean {
+  return file.type === "video/mp4" || /\.mp4$/i.test(file.name);
+}
+
+// Returns why a file can't be added, or null if it's acceptable. The UI uses
+// this to tell the vendor which files were skipped (instead of dropping them
+// silently, which reads as "nothing happened when I selected images").
+export function getListingMediaRejection(
+  file: File,
+): ListingMediaRejectionReason | null {
+  if (!isRenderableImage(file) && !isSupportedVideo(file)) {
+    return "unsupported";
+  }
+  if (file.size > LISTING_MEDIA_MAX_BYTES) {
+    return "too_large";
+  }
+  return null;
+}
+
+function makeMediaId(): string {
+  // crypto.randomUUID needs a secure context; fall back so a non-secure host
+  // (LAN IP, custom hostname) can't make file selection throw and no-op.
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return `media-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
+export function createListingMediaItem(file: File): ListingMediaItem | null {
+  if (getListingMediaRejection(file) !== null) {
     return null;
   }
 
   return {
-    id: crypto.randomUUID(),
+    id: makeMediaId(),
     name: file.name,
     previewUrl: URL.createObjectURL(file),
-    kind: isVideo ? "video" : "image",
+    kind: isSupportedVideo(file) ? "video" : "image",
   };
 }
 
