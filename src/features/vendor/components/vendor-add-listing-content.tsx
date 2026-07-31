@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, type KeyboardEvent, type ReactNode } from "react";
+import { useSession } from "next-auth/react";
 
 import { VendorAddListingStepper } from "@/features/vendor/components/vendor-add-listing-stepper";
 import { DocumentsStepPage } from "@/features/vendor/components/vendor-add-listing-documents-step";
@@ -20,7 +21,6 @@ import { AccommodationPricingStep } from "@/features/vendor/components/vendor-ad
 import { ExperiencePricingStep } from "@/features/vendor/components/vendor-add-listing-experience-pricing";
 import { ReviewStepPage } from "@/features/vendor/components/vendor-add-listing-review-step";
 import {
-  ADD_LISTING_STEPS,
   EMPTY_ADD_LISTING_FORM,
   getDetailsStepMissingFields,
   getNextStep,
@@ -37,6 +37,46 @@ import {
 } from "@/features/vendor/data/vendor-add-listing";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
+import {
+  createVendorListing,
+  type CreateVendorListingInput,
+} from "@/lib/api/vendor";
+
+// Map the wide add-listing form onto the backend create payload: derive the
+// common columns (title/description/location) per category and carry the rest
+// as opaque `details`. Blob-backed media/document previews aren't sent — only
+// their metadata (real file upload is a follow-up).
+function toCreateInput(form: AddListingFormState): CreateVendorListingInput {
+  const { category } = form;
+  let title = "";
+  let shortDescription = "";
+  let location = "";
+  if (category === "cars") {
+    title = [form.carName, form.carModel, form.year].filter(Boolean).join(" ");
+    shortDescription = form.shortDescription;
+    location = form.pickupAddress;
+  } else if (category === "accommodations") {
+    title = form.propertyName;
+    shortDescription = form.accommodationDescription;
+    location = form.address;
+  } else {
+    title = form.experienceName;
+    shortDescription = form.experienceDescription;
+    location = form.location;
+  }
+  const media = form.mediaItems.map((m) => ({ name: m.name, kind: m.kind }));
+  const { mediaItems: _media, uploadedDocuments: _docs, ...details } = form;
+  void _media;
+  void _docs;
+  return {
+    category,
+    title: title.trim() || "Untitled listing",
+    shortDescription: shortDescription || undefined,
+    location: location || undefined,
+    details,
+    media,
+  };
+}
 
 const inputClassName =
   "h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]";
@@ -73,9 +113,13 @@ const CATEGORY_OPTIONS: Array<{
 export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exitHref?: string }) {
   const t = useTranslation();
   const router = useRouter();
+  const { data: session } = useSession();
+  const token = session?.accessToken;
   const [currentStep, setCurrentStep] = useState<AddListingStepId>("details");
   const [form, setForm] = useState<AddListingFormState>(EMPTY_ADD_LISTING_FORM);
   const [draftSaved, setDraftSaved] = useState(false);
+  const [publishing, setPublishing] = useState(false);
+  const [publishError, setPublishError] = useState<string | null>(null);
 
   const updateForm = (patch: Partial<AddListingFormState>) => {
     setForm((current) => ({ ...current, ...patch }));
@@ -112,8 +156,18 @@ export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exi
     window.setTimeout(() => setDraftSaved(false), 2500);
   };
 
-  const handlePublish = () => {
-    router.push(exitHref);
+  const handlePublish = async () => {
+    if (!token || publishing) return;
+    setPublishing(true);
+    setPublishError(null);
+    try {
+      await createVendorListing(token, toCreateInput(form));
+      router.push(exitHref);
+      router.refresh();
+    } catch {
+      setPublishing(false);
+      setPublishError("Couldn't publish your listing. Please try again.");
+    }
   };
 
   const isLastStep = currentStep === "review";
@@ -222,13 +276,21 @@ export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exi
           )}
 
           {isLastStep ? (
-            <button
-              type="button"
-              onClick={handlePublish}
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90"
-            >
-              {t("vendor.addListing.publish")}
-            </button>
+            <div className="flex flex-col items-end gap-2">
+              {publishError ? (
+                <span className="text-xs font-medium font-satoshi text-[#C0392B]">
+                  {publishError}
+                </span>
+              ) : null}
+              <button
+                type="button"
+                disabled={publishing}
+                onClick={() => void handlePublish()}
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+              >
+                {publishing ? t("common.loading") : t("vendor.addListing.publish")}
+              </button>
+            </div>
           ) : (
             <button
               type="button"

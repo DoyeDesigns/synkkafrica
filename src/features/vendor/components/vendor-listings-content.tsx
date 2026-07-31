@@ -1,22 +1,30 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronDown, Plus } from "lucide-react";
+import { ChevronDown, Loader2, Plus } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { VendorListingAvailabilityPanel } from "@/features/vendor/components/vendor-listing-availability-panel";
 import { VendorListingCard } from "@/features/vendor/components/vendor-listing-card";
+import { VendorDeleteListingModal } from "@/features/vendor/components/vendor-delete-listing-modal";
 import type { VendorDashboardListing } from "@/features/vendor/data/vendor-dashboard";
-import { VENDOR_LISTINGS_PAGE_ITEMS } from "@/features/vendor/data/vendor-listings";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
+import {
+  deleteVendorListing,
+  listVendorListings,
+  setVendorListingStatus,
+  type VendorListingCategory,
+  type VendorListingSummary,
+} from "@/lib/api/vendor";
 
 const CATEGORY_FILTERS = [
   "all",
   "vendor.dashboard.category.accommodations",
   "vendor.dashboard.category.carRentals",
-  "vendor.dashboard.category.tours",
   "vendor.dashboard.category.toursExperiences",
 ] as const;
 
@@ -29,6 +37,46 @@ const STATUS_LABEL_KEYS: Record<Exclude<StatusFilter, "all">, TranslationKey> = 
   live: "vendor.listings.filter.status.live",
   pending: "vendor.listings.filter.status.pending",
 };
+
+const CATEGORY_KEY: Record<
+  VendorListingCategory,
+  VendorDashboardListing["categoryKey"]
+> = {
+  cars: "vendor.dashboard.category.carRentals",
+  accommodations: "vendor.dashboard.category.accommodations",
+  experiences: "vendor.dashboard.category.toursExperiences",
+};
+const CATEGORY_LABEL: Record<VendorListingCategory, string> = {
+  cars: "Car rentals",
+  accommodations: "Accommodations",
+  experiences: "Tours & experiences",
+};
+const CATEGORY_IMAGE: Record<VendorListingCategory, string> = {
+  cars: "/hero/car-rentals.png",
+  accommodations: "/hero/accommodations.png",
+  experiences: "/destinations/lagos.png",
+};
+
+// The card renders three statuses; map the backend's five onto them.
+function toDashStatus(
+  status: VendorListingSummary["status"],
+): VendorDashboardListing["status"] {
+  if (status === "live") return "live";
+  if (status === "paused") return "paused";
+  return "pending";
+}
+
+function toDashListing(l: VendorListingSummary): VendorDashboardListing {
+  return {
+    id: l.id,
+    title: l.title,
+    category: CATEGORY_LABEL[l.category],
+    categoryKey: CATEGORY_KEY[l.category],
+    rating: Math.round(l.ratingAvg),
+    image: l.coverImageUrl || CATEGORY_IMAGE[l.category],
+    status: toDashStatus(l.status),
+  };
+}
 
 function FilterPill<T extends string>({
   value,
@@ -62,62 +110,78 @@ function FilterPill<T extends string>({
   );
 }
 
-function matchesCategoryFilter(
-  listing: VendorDashboardListing,
-  categoryFilter: CategoryFilter,
-) {
-  if (categoryFilter === "all") {
-    return true;
-  }
-
-  return listing.categoryKey === categoryFilter;
-}
-
-function matchesStatusFilter(
-  listing: VendorDashboardListing,
-  statusFilter: StatusFilter,
-) {
-  if (statusFilter === "all") {
-    return true;
-  }
-
-  return listing.status === statusFilter;
-}
-
 type VendorListingsContentProps = {
   vendorName?: string | null;
 };
 
 export function VendorListingsContent({
-  vendorName = "Alex Autos",
+  vendorName,
 }: VendorListingsContentProps) {
   const t = useTranslation();
   const searchParams = useSearchParams();
-  const displayName = vendorName?.trim() || "Alex Autos";
+  const { data: session } = useSession();
+  const token = session?.accessToken;
+  const queryClient = useQueryClient();
+
+  const displayName = vendorName?.trim() || "your business";
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
+  const [deleteTarget, setDeleteTarget] =
+    useState<VendorDashboardListing | null>(null);
   const highlightedListingId = searchParams.get("listing");
+
+  const { data: rawListings, isLoading } = useQuery({
+    queryKey: ["vendor-listings"],
+    queryFn: () => listVendorListings(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+
+  const listings = useMemo(
+    () => (rawListings ?? []).map(toDashListing),
+    [rawListings],
+  );
+
+  const invalidate = () =>
+    queryClient.invalidateQueries({ queryKey: ["vendor-listings"] });
+
+  const statusMutation = useMutation({
+    mutationFn: ({ id, status }: { id: string; status: "live" | "paused" }) =>
+      setVendorListingStatus(token as string, id, status),
+    onSuccess: invalidate,
+  });
+  const deleteMutation = useMutation({
+    mutationFn: (id: string) => deleteVendorListing(token as string, id),
+    onSuccess: () => {
+      setDeleteTarget(null);
+      void invalidate();
+    },
+  });
+
+  const handlePauseToggle = (id: string) => {
+    const current = listings.find((l) => l.id === id);
+    if (!current || current.status === "pending") return;
+    statusMutation.mutate({
+      id,
+      status: current.status === "live" ? "paused" : "live",
+    });
+  };
 
   const filteredListings = useMemo(
     () =>
-      VENDOR_LISTINGS_PAGE_ITEMS.filter(
+      listings.filter(
         (listing) =>
-          matchesCategoryFilter(listing, categoryFilter) &&
-          matchesStatusFilter(listing, statusFilter),
+          (categoryFilter === "all" ||
+            listing.categoryKey === categoryFilter) &&
+          (statusFilter === "all" || listing.status === statusFilter),
       ),
-    [categoryFilter, statusFilter],
+    [listings, categoryFilter, statusFilter],
   );
 
   useEffect(() => {
-    if (!highlightedListingId) {
-      return;
-    }
-
+    if (!highlightedListingId) return;
     const target = document.getElementById(`listing-${highlightedListingId}`);
-
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
   }, [highlightedListingId, filteredListings.length]);
 
   return (
@@ -172,13 +236,21 @@ export function VendorListingsContent({
           </div>
 
           <div className="space-y-4 rounded-[5px] bg-white p-4">
-            {filteredListings.length > 0 ? (
+            {isLoading ? (
+              <div className="flex items-center justify-center gap-2 p-8 text-sm font-medium font-satoshi text-[#676565]">
+                <Loader2 className="h-4 w-4 animate-spin" /> Loading…
+              </div>
+            ) : filteredListings.length > 0 ? (
               filteredListings.map((listing) => (
                 <VendorListingCard
                   key={listing.id}
                   listing={listing}
                   variant="listings"
                   highlighted={listing.id === highlightedListingId}
+                  onPauseToggle={handlePauseToggle}
+                  onDeleteRequest={(id) =>
+                    setDeleteTarget(listings.find((l) => l.id === id) ?? null)
+                  }
                 />
               ))
             ) : (
@@ -199,6 +271,15 @@ export function VendorListingsContent({
           <VendorListingAvailabilityPanel />
         </aside>
       </div>
+
+      <VendorDeleteListingModal
+        listingTitle={deleteTarget?.title ?? ""}
+        isOpen={Boolean(deleteTarget)}
+        onClose={() => setDeleteTarget(null)}
+        onConfirm={() => {
+          if (deleteTarget) deleteMutation.mutate(deleteTarget.id);
+        }}
+      />
     </>
   );
 }

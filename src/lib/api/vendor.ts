@@ -137,3 +137,110 @@ export async function changeVendorPassword(
     body: { currentPassword, newPassword },
   });
 }
+
+// --- Listings (CRUD under /vendor/listings) ---
+
+export type VendorListingCategory = "cars" | "accommodations" | "experiences";
+export type VendorListingStatus =
+  | "draft"
+  | "pending"
+  | "live"
+  | "paused"
+  | "rejected";
+
+export type VendorListingSummary = {
+  id: string;
+  category: VendorListingCategory;
+  title: string;
+  shortDescription?: string | null;
+  location?: string | null;
+  coverImageUrl?: string | null;
+  status: VendorListingStatus;
+  ratingAvg: number;
+  ratingCount: number;
+  createdAt: string;
+};
+
+export type VendorListingDetail = VendorListingSummary & {
+  details: Record<string, unknown>;
+  media: unknown[];
+  availability?: Record<string, unknown> | null;
+  rejectionReason?: string | null;
+};
+
+export type CreateVendorListingInput = {
+  category: VendorListingCategory;
+  title: string;
+  shortDescription?: string;
+  location?: string;
+  coverImageUrl?: string;
+  details?: Record<string, unknown>;
+  media?: unknown[];
+};
+
+export async function listVendorListings(
+  token: string,
+): Promise<VendorListingSummary[]> {
+  return apiFetch<VendorListingSummary[]>("/vendor/listings", { token });
+}
+
+export async function getVendorListing(
+  token: string,
+  id: string,
+): Promise<VendorListingDetail> {
+  return apiFetch<VendorListingDetail>(`/vendor/listings/${id}`, { token });
+}
+
+export async function createVendorListing(
+  token: string,
+  input: CreateVendorListingInput,
+): Promise<VendorListingDetail> {
+  return apiFetch<VendorListingDetail>("/vendor/listings", {
+    method: "POST",
+    token,
+    body: input,
+  });
+}
+
+export async function updateVendorListing(
+  token: string,
+  id: string,
+  patch: Partial<CreateVendorListingInput>,
+): Promise<VendorListingDetail> {
+  return apiFetch<VendorListingDetail>(`/vendor/listings/${id}`, {
+    method: "PATCH",
+    token,
+    body: patch,
+  });
+}
+
+export async function setVendorListingStatus(
+  token: string,
+  id: string,
+  status: "live" | "paused",
+): Promise<VendorListingDetail> {
+  return apiFetch<VendorListingDetail>(`/vendor/listings/${id}/status`, {
+    method: "PATCH",
+    token,
+    body: { status },
+  });
+}
+
+export async function setVendorListingAvailability(
+  token: string,
+  id: string,
+  availability: Record<string, unknown>,
+): Promise<VendorListingDetail> {
+  return apiFetch<VendorListingDetail>(`/vendor/listings/${id}/availability`, {
+    method: "PUT",
+    token,
+    body: { availability },
+  });
+}
+
+export async function deleteVendorListing(
+  token: string,
+  id: string,
+): Promise<void> {
+  await apiFetch<void>(`/vendor/listings/${id}`, { method: "DELETE", token });
+}
