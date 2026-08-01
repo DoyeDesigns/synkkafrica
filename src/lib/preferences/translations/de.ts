@@ -1581,6 +1581,22 @@ export const de = {
   "vendor.support.status.closed": "Geschlossen",
   "vendor.support.updated": "Aktualisiert",
   "vendor.support.emptyTickets": "Keine Tickets entsprechen diesem Filter.",
+  "vendor.support.created": "Erstellt",
+  "vendor.support.loading": "Tickets werden geladen…",
+  "vendor.support.loadFailed":
+    "Ihre Tickets konnten nicht geladen werden. Bitte erneut versuchen.",
+  "vendor.support.submitFailed":
+    "Ihr Ticket konnte nicht gesendet werden. Bitte erneut versuchen.",
+  "vendor.support.viewConversation": "Konversation ansehen",
+  "vendor.support.backToTickets": "Zurück zu den Tickets",
+  "vendor.support.conversation": "Konversation",
+  "vendor.support.you": "Sie",
+  "vendor.support.supportTeam": "Support-Team",
+  "vendor.support.replyPlaceholder": "Antwort eingeben…",
+  "vendor.support.sendReply": "Antwort senden",
+  "vendor.support.sending": "Wird gesendet…",
+  "vendor.support.replyFailed":
+    "Ihre Antwort konnte nicht gesendet werden. Bitte erneut versuchen.",
 
   "vendor.earnings.availableBalance": "Verfügbares Guthaben",
   "vendor.earnings.lifetimeEarnings": "Gesamteinnahmen",

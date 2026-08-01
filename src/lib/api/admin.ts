@@ -1,5 +1,10 @@
 import { apiFetch } from "@/lib/api/backend";
 import type { PackageApi } from "@/lib/api/packages";
+import type {
+  SupportTicketCategory,
+  SupportTicketPriority,
+  SupportTicketStatus,
+} from "@/features/vendor/data/vendor-support";
 
 export type AdminVendor = {
   id: string;
@@ -266,6 +271,7 @@ export type AdminOverview = {
   liveListings: number;
   pendingPayouts: number;
   pendingDocuments: number;
+  openSupportTickets: number;
   totalBookings: number;
   awaitingBookings: number;
   customers: number;
@@ -327,4 +333,73 @@ export async function adminPublishReview(
   id: string,
 ): Promise<{ id: string; status: string }> {
   return apiFetch(`/admin/reviews/${id}/publish`, { method: "PATCH", token });
+}
+
+// --- Support tickets ---
+
+export type AdminSupportTicket = {
+  id: string;
+  ticketNumber: string;
+  vendorId: string;
+  requesterName: string;
+  audience: "vendors";
+  subject: string;
+  category: SupportTicketCategory;
+  priority: SupportTicketPriority;
+  description: string;
+  status: SupportTicketStatus;
+  bookingReference: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type AdminSupportMessage = {
+  id: string;
+  authorRole: "vendor" | "admin";
+  body: string;
+  createdAt: string;
+};
+
+export type AdminSupportTicketDetail = AdminSupportTicket & {
+  messages: AdminSupportMessage[];
+};
+
+export async function adminListSupportTickets(
+  token: string,
+  status?: string,
+): Promise<AdminSupportTicket[]> {
+  const qs = status ? `?status=${encodeURIComponent(status)}` : "";
+  return apiFetch<AdminSupportTicket[]>(`/admin/support-tickets${qs}`, { token });
+}
+
+export async function adminGetSupportTicket(
+  token: string,
+  id: string,
+): Promise<AdminSupportTicketDetail> {
+  return apiFetch<AdminSupportTicketDetail>(`/admin/support-tickets/${id}`, {
+    token,
+  });
+}
+
+export async function adminReplySupportTicket(
+  token: string,
+  id: string,
+  body: string,
+  status?: SupportTicketStatus,
+): Promise<AdminSupportTicketDetail> {
+  return apiFetch<AdminSupportTicketDetail>(
+    `/admin/support-tickets/${id}/messages`,
+    { method: "POST", token, body: { body, status } },
+  );
+}
+
+export async function adminSetSupportTicketStatus(
+  token: string,
+  id: string,
+  status: SupportTicketStatus,
+): Promise<AdminSupportTicketDetail> {
+  return apiFetch<AdminSupportTicketDetail>(
+    `/admin/support-tickets/${id}/status`,
+    { method: "PATCH", token, body: { status } },
+  );
 }

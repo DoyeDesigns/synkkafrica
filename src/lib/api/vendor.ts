@@ -1,4 +1,9 @@
 import { apiFetch, type BackendTokens } from "@/lib/api/backend";
+import type {
+  SupportTicketCategory,
+  SupportTicketPriority,
+  SupportTicketStatus,
+} from "@/features/vendor/data/vendor-support";
 
 // Mirrors the backend VendorDto (GET /vendor/auth/me, and the `vendor` field on
 // signup/login responses).
@@ -564,4 +569,75 @@ export async function uploadVendorSignupFile(
     throw new Error(`Upload failed (${res.status})`);
   }
   return { objectPath: signed.objectPath };
+}
+
+// --- Support tickets ---
+
+export type SupportTicketApi = {
+  id: string;
+  ticketNumber: string;
+  subject: string;
+  category: SupportTicketCategory;
+  priority: SupportTicketPriority;
+  description: string;
+  status: SupportTicketStatus;
+  bookingReference: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type SupportTicketMessageApi = {
+  id: string;
+  authorRole: "vendor" | "admin";
+  body: string;
+  createdAt: string;
+};
+
+export type SupportTicketDetailApi = SupportTicketApi & {
+  messages: SupportTicketMessageApi[];
+};
+
+export type CreateSupportTicketBody = {
+  subject: string;
+  category: SupportTicketCategory;
+  priority: SupportTicketPriority;
+  description: string;
+  bookingReference?: string;
+};
+
+export async function listSupportTickets(
+  token: string,
+): Promise<SupportTicketApi[]> {
+  return apiFetch<SupportTicketApi[]>("/vendor/support/tickets", { token });
+}
+
+export async function createSupportTicket(
+  token: string,
+  body: CreateSupportTicketBody,
+): Promise<SupportTicketDetailApi> {
+  return apiFetch<SupportTicketDetailApi>("/vendor/support/tickets", {
+    method: "POST",
+    token,
+    body,
+  });
+}
+
+export async function getSupportTicket(
+  token: string,
+  id: string,
+): Promise<SupportTicketDetailApi> {
+  return apiFetch<SupportTicketDetailApi>(`/vendor/support/tickets/${id}`, {
+    token,
+  });
+}
+
+export async function replySupportTicket(
+  token: string,
+  id: string,
+  body: string,
+): Promise<SupportTicketDetailApi> {
+  return apiFetch<SupportTicketDetailApi>(
+    `/vendor/support/tickets/${id}/messages`,
+    { method: "POST", token, body: { body } },
+  );
 }

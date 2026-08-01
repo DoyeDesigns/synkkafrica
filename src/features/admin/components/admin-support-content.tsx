@@ -1,31 +1,27 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { ChevronDown, Send } from "lucide-react";
+import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import {
-  ADMIN_SUPPORT_TICKETS,
-  filterAdminTicketsByAudience,
-  filterAdminTicketsByStatus,
-  type AdminSupportAudience,
-  type AdminSupportTicket,
-} from "@/features/admin/data/admin-support";
+  adminGetSupportTicket,
+  adminListSupportTickets,
+  adminReplySupportTicket,
+  adminSetSupportTicketStatus,
+  type AdminSupportMessage,
+  type AdminSupportTicketDetail,
+} from "@/lib/api/admin";
 import {
   SUPPORT_TICKET_STATUS_FILTERS,
+  formatTicketDate,
+  type SupportTicketCategory,
+  type SupportTicketPriority,
   type SupportTicketStatus,
 } from "@/features/vendor/data/vendor-support";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
-
-const TAB_KEYS: Record<AdminSupportAudience, TranslationKey> = {
-  users: "admin.support.tab.users",
-  vendors: "admin.support.tab.vendors",
-};
-
-const REQUESTER_LABEL_KEYS: Record<AdminSupportAudience, TranslationKey> = {
-  users: "admin.support.user",
-  vendors: "admin.support.vendor",
-};
 
 const STATUS_LABEL_KEYS: Record<SupportTicketStatus, TranslationKey> = {
   open: "vendor.support.status.open",
@@ -34,12 +30,19 @@ const STATUS_LABEL_KEYS: Record<SupportTicketStatus, TranslationKey> = {
   closed: "vendor.support.status.closed",
 };
 
+const STATUS_BADGE_STYLES: Record<SupportTicketStatus, string> = {
+  open: "bg-[#E3F2FD] text-[#1565C0]",
+  in_progress: "bg-[#FFF3E0] text-[#E65100]",
+  resolved: "bg-[#E8F5E9] text-[#2E7D32]",
+  closed: "bg-[#F5F5F5] text-[#676565]",
+};
+
 const PRIORITY_LABEL_KEYS = {
   low: "vendor.support.priority.low",
   medium: "vendor.support.priority.medium",
   high: "vendor.support.priority.high",
   urgent: "vendor.support.priority.urgent",
-} as const satisfies Record<string, TranslationKey>;
+} as const satisfies Record<SupportTicketPriority, TranslationKey>;
 
 const CATEGORY_LABEL_KEYS = {
   booking: "vendor.support.category.booking",
@@ -48,77 +51,34 @@ const CATEGORY_LABEL_KEYS = {
   account: "vendor.support.category.account",
   complaint: "vendor.support.category.complaint",
   other: "vendor.support.category.other",
-} as const satisfies Record<string, TranslationKey>;
+} as const satisfies Record<SupportTicketCategory, TranslationKey>;
 
 export function AdminSupportContent() {
   const t = useTranslation();
-  const [activeTab, setActiveTab] = useState<AdminSupportAudience>("users");
-  const [tickets, setTickets] = useState(ADMIN_SUPPORT_TICKETS);
+  const { data: session } = useSession();
+  const token = session?.accessToken;
   const [statusFilter, setStatusFilter] = useState<SupportTicketStatus | "all">(
     "all",
   );
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [responseDraft, setResponseDraft] = useState("");
+  const [selectedTicketId, setSelectedTicketId] = useState<string | null>(null);
 
-  const tabTickets = useMemo(
-    () => filterAdminTicketsByAudience(tickets, activeTab),
-    [activeTab, tickets],
-  );
-
-  const filtered = useMemo(
-    () => filterAdminTicketsByStatus(tabTickets, statusFilter),
-    [statusFilter, tabTickets],
-  );
-
-  useEffect(() => {
-    setSelectedId((current) => {
-      if (current && filtered.some((ticket) => ticket.id === current)) {
-        return current;
-      }
-
-      return filtered[0]?.id ?? null;
-    });
-  }, [activeTab, filtered]);
-
-  useEffect(() => {
-    setResponseDraft("");
-  }, [activeTab, selectedId]);
-
-  const selected = tickets.find((ticket) => ticket.id === selectedId);
-
-  const updateStatus = (id: string, status: SupportTicketStatus) => {
-    setTickets((current) =>
-      current.map((ticket) =>
-        ticket.id === id
-          ? {
-              ...ticket,
-              status,
-              updatedAt: new Date().toISOString(),
-            }
-          : ticket,
+  const { data: tickets = [], isLoading } = useQuery({
+    queryKey: ["admin-support-tickets", statusFilter],
+    queryFn: () =>
+      adminListSupportTickets(
+        token as string,
+        statusFilter === "all" ? undefined : statusFilter,
       ),
-    );
-  };
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
 
-  const submitResponse = () => {
-    if (!selected || !responseDraft.trim()) {
-      return;
-    }
-
-    setTickets((current) =>
-      current.map((ticket) =>
-        ticket.id === selected.id
-          ? {
-              ...ticket,
-              adminResponse: responseDraft.trim(),
-              status: "in_progress",
-              updatedAt: new Date().toISOString(),
-            }
-          : ticket,
-      ),
-    );
-    setResponseDraft("");
-  };
+  // Derive the effective selection during render (the stored id may point at a
+  // ticket that's been filtered out); fall back to the first ticket.
+  const selectedId =
+    selectedTicketId && tickets.some((ticket) => ticket.id === selectedTicketId)
+      ? selectedTicketId
+      : (tickets[0]?.id ?? null);
 
   return (
     <>
@@ -128,31 +88,6 @@ export function AdminSupportContent() {
       <p className="text-sm font-medium font-satoshi text-[#676565]">
         {t("admin.support.subtitle")}
       </p>
-
-      <div className="flex items-center gap-6 overflow-x-auto border-b border-[#E8E8E8]">
-        {(["users", "vendors"] as const).map((tabId) => {
-          const isActive = activeTab === tabId;
-          const count = filterAdminTicketsByAudience(tickets, tabId).length;
-
-          return (
-            <button
-              key={tabId}
-              type="button"
-              onClick={() => setActiveTab(tabId)}
-              className={`shrink-0 pb-3 text-sm font-bold font-satoshi transition-colors ${
-                isActive
-                  ? "border-b-2 border-[#D85A30] text-[#2F2F2F]"
-                  : "text-[#676565] hover:text-[#2F2F2F]"
-              }`}
-            >
-              {t(TAB_KEYS[tabId])}{" "}
-              <span className={isActive ? "text-[#D85A30]" : "text-[#676565]"}>
-                ({count})
-              </span>
-            </button>
-          );
-        })}
-      </div>
 
       <div className="flex flex-wrap gap-2">
         {SUPPORT_TICKET_STATUS_FILTERS.map((filter) => (
@@ -175,26 +110,38 @@ export function AdminSupportContent() {
 
       <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
         <div className="space-y-2">
-          {filtered.length > 0 ? (
-            filtered.map((ticket) => (
+          {isLoading ? (
+            <p className="text-sm font-medium font-satoshi text-[#676565]">
+              {t("vendor.support.loading")}
+            </p>
+          ) : tickets.length > 0 ? (
+            tickets.map((ticket) => (
               <button
                 key={ticket.id}
                 type="button"
-                onClick={() => setSelectedId(ticket.id)}
+                onClick={() => setSelectedTicketId(ticket.id)}
                 className={`w-full rounded-lg border p-4 text-left transition-colors ${
                   selectedId === ticket.id
                     ? "border-[#135391] bg-[#F0F6FC]"
                     : "border-[#EEEEEE] bg-white hover:bg-[#FAFAFA]"
                 }`}
               >
-                <p className="text-xs font-bold text-[#135391]">
-                  {ticket.ticketNumber}
-                </p>
+                <div className="flex items-center gap-2">
+                  <p className="text-xs font-bold text-[#135391]">
+                    {ticket.ticketNumber}
+                  </p>
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-[10px] font-semibold font-satoshi ${STATUS_BADGE_STYLES[ticket.status]}`}
+                  >
+                    {t(STATUS_LABEL_KEYS[ticket.status])}
+                  </span>
+                </div>
                 <p className="mt-1 font-bold font-satoshi text-[#2F2F2F]">
                   {ticket.subject}
                 </p>
                 <p className="mt-1 text-xs font-medium text-[#676565]">
-                  {ticket.requesterName} · {t(PRIORITY_LABEL_KEYS[ticket.priority])}
+                  {ticket.requesterName} ·{" "}
+                  {t(PRIORITY_LABEL_KEYS[ticket.priority])}
                 </p>
               </button>
             ))
@@ -207,13 +154,11 @@ export function AdminSupportContent() {
           )}
         </div>
 
-        {selected && selected.audience === activeTab ? (
+        {selectedId ? (
           <TicketDetailPanel
-            ticket={selected}
-            responseDraft={responseDraft}
-            onResponseChange={setResponseDraft}
-            onStatusChange={(status) => updateStatus(selected.id, status)}
-            onSubmitResponse={submitResponse}
+            key={selectedId}
+            ticketId={selectedId}
+            token={token}
           />
         ) : null}
       </div>
@@ -222,51 +167,98 @@ export function AdminSupportContent() {
 }
 
 function TicketDetailPanel({
-  ticket,
-  responseDraft,
-  onResponseChange,
-  onStatusChange,
-  onSubmitResponse,
+  ticketId,
+  token,
 }: {
-  ticket: AdminSupportTicket;
-  responseDraft: string;
-  onResponseChange: (value: string) => void;
-  onStatusChange: (status: SupportTicketStatus) => void;
-  onSubmitResponse: () => void;
+  ticketId: string;
+  token?: string;
 }) {
   const t = useTranslation();
+  const queryClient = useQueryClient();
+  const [responseDraft, setResponseDraft] = useState("");
+
+  const { data: ticket, isLoading } = useQuery({
+    queryKey: ["admin-support-ticket", ticketId],
+    queryFn: () => adminGetSupportTicket(token as string, ticketId),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+
+  const onUpdated = (updated: AdminSupportTicketDetail) => {
+    queryClient.setQueryData(["admin-support-ticket", ticketId], updated);
+    queryClient.invalidateQueries({ queryKey: ["admin-support-tickets"] });
+  };
+
+  const replyMutation = useMutation({
+    mutationFn: (body: string) =>
+      adminReplySupportTicket(token as string, ticketId, body),
+    onSuccess: (updated) => {
+      onUpdated(updated);
+      setResponseDraft("");
+    },
+  });
+
+  const statusMutation = useMutation({
+    mutationFn: (status: SupportTicketStatus) =>
+      adminSetSupportTicketStatus(token as string, ticketId, status),
+    onSuccess: onUpdated,
+  });
+
+  if (isLoading || !ticket) {
+    return (
+      <section className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm">
+        <p className="text-sm font-medium font-satoshi text-[#676565]">
+          {t("vendor.support.loading")}
+        </p>
+      </section>
+    );
+  }
 
   return (
     <section className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm">
-      <h3 className="font-bold font-satoshi text-[#2F2F2F]">{ticket.subject}</h3>
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-xs font-bold font-satoshi text-[#135391]">
+          {ticket.ticketNumber}
+        </span>
+        <span
+          className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold font-satoshi ${STATUS_BADGE_STYLES[ticket.status]}`}
+        >
+          {t(STATUS_LABEL_KEYS[ticket.status])}
+        </span>
+      </div>
+      <h3 className="mt-2 font-bold font-satoshi text-[#2F2F2F]">
+        {ticket.subject}
+      </h3>
       <p className="mt-2 text-sm font-medium font-satoshi text-[#676565]">
-        {t(REQUESTER_LABEL_KEYS[ticket.audience])}: {ticket.requesterName}
+        {t("admin.support.vendor")}: {ticket.requesterName}
       </p>
       <p className="mt-1 text-sm font-medium font-satoshi text-[#676565]">
         {t("vendor.support.category")}: {t(CATEGORY_LABEL_KEYS[ticket.category])}{" "}
         · {t("vendor.support.priority")}:{" "}
         {t(PRIORITY_LABEL_KEYS[ticket.priority])}
       </p>
-      <p className="mt-4 text-sm font-satoshi text-[#2F2F2F]">{ticket.description}</p>
 
-      {ticket.adminResponse ? (
-        <div className="mt-4 rounded-lg bg-[#F0F6FC] px-4 py-3">
-          <p className="text-xs font-semibold font-satoshi text-[#135391]">
-            {t("admin.support.previousResponse")}
-          </p>
-          <p className="mt-1 text-sm font-medium font-satoshi text-[#2F2F2F]">
-            {ticket.adminResponse}
-          </p>
-        </div>
-      ) : null}
+      <h4 className="mt-5 text-sm font-bold font-satoshi text-[#2F2F2F]">
+        {t("vendor.support.conversation")}
+      </h4>
+      <div className="mt-3 space-y-3">
+        {ticket.messages.map((message) => (
+          <MessageBubble
+            key={message.id}
+            message={message}
+            requesterName={ticket.requesterName}
+          />
+        ))}
+      </div>
 
-      <label className="mt-4 flex flex-col gap-2">
+      <label className="mt-5 flex flex-col gap-2">
         <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
           {t("admin.support.adminResponse")}
         </span>
         <textarea
           value={responseDraft}
-          onChange={(e) => onResponseChange(e.target.value)}
+          onChange={(e) => setResponseDraft(e.target.value)}
+          placeholder={t("vendor.support.replyPlaceholder")}
           className="min-h-[100px] w-full rounded-lg border border-[#E5E5E5] px-3 py-2 text-sm font-medium font-satoshi outline-none focus:border-[#004785]"
         />
       </label>
@@ -276,9 +268,10 @@ function TicketDetailPanel({
           <select
             value={ticket.status}
             onChange={(e) =>
-              onStatusChange(e.target.value as SupportTicketStatus)
+              statusMutation.mutate(e.target.value as SupportTicketStatus)
             }
-            className="h-11 w-full appearance-none rounded-lg border border-[#E5E5E5] px-3 pr-10 text-sm font-medium font-satoshi outline-none focus:border-[#004785]"
+            disabled={statusMutation.isPending}
+            className="h-11 w-full appearance-none rounded-lg border border-[#E5E5E5] px-3 pr-10 text-sm font-medium font-satoshi outline-none focus:border-[#004785] disabled:opacity-60"
           >
             {(["open", "in_progress", "resolved", "closed"] as const).map(
               (status) => (
@@ -292,13 +285,50 @@ function TicketDetailPanel({
         </div>
         <button
           type="button"
-          onClick={onSubmitResponse}
-          disabled={!responseDraft.trim()}
-          className="rounded-lg bg-[#D85A30] px-5 py-2.5 text-sm font-bold font-satoshi text-white disabled:opacity-50"
+          onClick={() => {
+            const body = responseDraft.trim();
+            if (body && !replyMutation.isPending) replyMutation.mutate(body);
+          }}
+          disabled={!responseDraft.trim() || replyMutation.isPending}
+          className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-5 py-2.5 text-sm font-bold font-satoshi text-white disabled:opacity-50"
         >
-          {t("admin.support.sendResponse")}
+          <Send className="h-4 w-4" strokeWidth={2} />
+          {replyMutation.isPending
+            ? t("vendor.support.sending")
+            : t("admin.support.sendResponse")}
         </button>
       </div>
     </section>
+  );
+}
+
+function MessageBubble({
+  message,
+  requesterName,
+}: {
+  message: AdminSupportMessage;
+  requesterName: string;
+}) {
+  const t = useTranslation();
+  const isAdmin = message.authorRole === "admin";
+
+  return (
+    <div className={`flex ${isAdmin ? "justify-end" : "justify-start"}`}>
+      <div
+        className={`max-w-[85%] rounded-lg px-3.5 py-2.5 ${
+          isAdmin ? "bg-[#FDF3EF] text-[#2F2F2F]" : "bg-[#F0F6FC] text-[#2F2F2F]"
+        }`}
+      >
+        <p className="text-[11px] font-bold font-satoshi text-[#676565]">
+          {isAdmin ? t("vendor.support.supportTeam") : requesterName}
+        </p>
+        <p className="mt-1 whitespace-pre-wrap text-sm font-medium font-satoshi">
+          {message.body}
+        </p>
+        <p className="mt-1 text-[11px] font-medium font-satoshi text-[#9A9A9A]">
+          {formatTicketDate(message.createdAt)}
+        </p>
+      </div>
+    </div>
   );
 }

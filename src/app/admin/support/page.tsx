@@ -1,10 +1,5 @@
-import { AdminNotAvailable } from "@/features/admin/components/admin-not-available";
+import { AdminSupportContent } from "@/features/admin/components/admin-support-content";
 
 export default function AdminSupportPage() {
-  return (
-    <AdminNotAvailable
-      title="Support"
-      note="Support tickets aren't wired to a backend yet."
-    />
-  );
+  return <AdminSupportContent />;
 }
