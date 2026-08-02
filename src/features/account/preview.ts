@@ -19,11 +19,12 @@ export const ADMIN_DESIGN_PREVIEW_SESSION: Session = {
 };
 
 /**
- * Admin stays open for demo deployments unless explicitly disabled.
- * Set ADMIN_DESIGN_PREVIEW=false when real admin auth is required.
+ * Admin auth is enforced by default. Set ADMIN_DESIGN_PREVIEW=true ONLY for
+ * design-preview/demo deployments to open the admin area without signing in.
+ * Leaving it unset (or anything other than "true") requires real admin auth.
  */
 export function isAdminDemoEnabled() {
-  return process.env.ADMIN_DESIGN_PREVIEW !== "false";
+  return process.env.ADMIN_DESIGN_PREVIEW === "true";
 }
 
 /**
