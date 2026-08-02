@@ -24,8 +24,8 @@ export function AdminDashboardLayoutClient({
     setIsMobileOpen(false);
   }, [pathname]);
 
-  // The login page renders without the dashboard chrome.
-  if (pathname === "/admin/login") {
+  // The login and invite-accept pages render without the dashboard chrome.
+  if (pathname === "/admin/login" || pathname === "/admin/accept-invite") {
     return <>{children}</>;
   }
 

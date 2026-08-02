@@ -724,6 +724,7 @@ export const es = {
   "admin.nav.users": "Usuarios",
   "admin.nav.verifications": "Verificaciones",
   "admin.nav.support": "Tickets de soporte",
+  "admin.nav.team": "Equipo",
   "admin.common.all": "Todo",
   "admin.verifications.title": "Verificaciones",
   "admin.verifications.subtitle":

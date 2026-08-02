@@ -52,3 +52,14 @@ export async function refreshAdminTokens(
 export async function getAdminMe(token: string): Promise<AdminMe> {
   return apiFetch<AdminMe>("/admin/auth/me", { token });
 }
+
+// Accept an admin invite: consume the emailed token and set a password to
+// create the account. Public (no token required).
+export async function acceptAdminInvite(
+  token: string,
+  password: string,
+): Promise<{ email: string }> {
+  return apiFetch<{ email: string }>("/admin/auth/accept-invite", {
+    body: { token, password },
+  });
+}

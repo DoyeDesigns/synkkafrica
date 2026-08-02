@@ -722,6 +722,7 @@ export const en = {
   "admin.nav.users": "Users",
   "admin.nav.verifications": "Verifications",
   "admin.nav.support": "Support tickets",
+  "admin.nav.team": "Team",
   "admin.common.all": "All",
 
   "admin.verifications.title": "Verifications",

@@ -14,7 +14,16 @@ export type AdminNavItem = {
     | "reviews"
     | "users"
     | "verifications"
-    | "support";
+    | "support"
+    | "team";
+};
+
+// Super-admin-only nav item, appended in the sidebar when the signed-in admin
+// is a super admin.
+export const ADMIN_TEAM_NAV_ITEM: AdminNavItem = {
+  id: "team",
+  href: "/admin/team",
+  icon: "team",
 };
 
 export const ADMIN_NAV: AdminNavItem[] = [

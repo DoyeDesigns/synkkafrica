@@ -10,6 +10,7 @@ import {
   Home,
   LayoutGrid,
   LogOut,
+  ShieldCheck,
   Sparkles,
   Star,
   Users,
@@ -22,9 +23,14 @@ import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 
-import { ADMIN_NAV, type AdminNavItem } from "@/features/admin/constants";
+import {
+  ADMIN_NAV,
+  ADMIN_TEAM_NAV_ITEM,
+  type AdminNavItem,
+} from "@/features/admin/constants";
 import { useTranslation } from "@/hooks/use-translation";
 import { adminGetOverview, type AdminOverview } from "@/lib/api/admin";
+import { getAdminMe } from "@/lib/api/admin-auth";
 import { signOutAction } from "@/lib/auth/actions";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -55,6 +61,7 @@ const NAV_LABEL_KEYS: Record<AdminNavItem["id"], TranslationKey> = {
   users: "admin.nav.users",
   verifications: "admin.nav.verifications",
   support: "admin.nav.support",
+  team: "admin.nav.team",
 };
 
 const NAV_ICONS: Record<AdminNavItem["icon"], LucideIcon> = {
@@ -69,6 +76,7 @@ const NAV_ICONS: Record<AdminNavItem["icon"], LucideIcon> = {
   users: Users,
   verifications: Check,
   support: CircleHelp,
+  team: ShieldCheck,
 };
 
 function isNavItemActive(pathname: string, href: string) {
@@ -141,6 +149,16 @@ function AdminDashboardSideNavBarContent({
   });
   const badges = navBadges(overview);
 
+  const { data: me } = useQuery({
+    queryKey: ["admin-me"],
+    queryFn: () => getAdminMe(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+  const navItems = me?.isSuperAdmin
+    ? [...ADMIN_NAV, ADMIN_TEAM_NAV_ITEM]
+    : ADMIN_NAV;
+
   return (
     <aside className={getSidebarClassName(isMobileOpen ?? false)}>
       <div className="px-6 pb-6 pt-8">
@@ -160,7 +178,7 @@ function AdminDashboardSideNavBarContent({
 
       <nav className="flex-1 overflow-y-auto px-4 pb-6">
         <div className="space-y-1">
-          {ADMIN_NAV.map((item) => (
+          {navItems.map((item) => (
             <AdminNavLink
               key={item.id}
               item={item}

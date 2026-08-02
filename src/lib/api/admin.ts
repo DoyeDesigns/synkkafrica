@@ -466,3 +466,59 @@ export async function adminSetSupportTicketStatus(
     { method: "PATCH", token, body: { status } },
   );
 }
+
+// --- Admin team (super-admin only) ---
+
+export const INVITABLE_ADMIN_ROLES = ["support", "finance", "pricing"] as const;
+export type InvitableAdminRole = (typeof INVITABLE_ADMIN_ROLES)[number];
+export type AdminRole = InvitableAdminRole | "super_admin";
+
+export type AdminTeamMember = {
+  id: string;
+  email: string;
+  role: AdminRole;
+  isSuperAdmin: boolean;
+  mfaEnrolled: boolean;
+  disabledAt: string | null;
+  lastLoginAt: string | null;
+  createdAt: string;
+};
+
+export type AdminInvite = {
+  id: string;
+  email: string;
+  role: AdminRole;
+  expiresAt: string;
+  acceptedAt: string | null;
+  expired: boolean;
+  createdAt: string;
+};
+
+export async function adminListTeam(token: string): Promise<AdminTeamMember[]> {
+  return apiFetch<AdminTeamMember[]>("/admin/admins", { token });
+}
+
+export async function adminListInvites(token: string): Promise<AdminInvite[]> {
+  return apiFetch<AdminInvite[]>("/admin/admins/invites", { token });
+}
+
+export async function adminInviteAdmin(
+  token: string,
+  input: { email: string; role: InvitableAdminRole },
+): Promise<AdminInvite & { acceptUrl: string }> {
+  return apiFetch<AdminInvite & { acceptUrl: string }>("/admin/admins/invites", {
+    method: "POST",
+    token,
+    body: input,
+  });
+}
+
+export async function adminRevokeInvite(
+  token: string,
+  id: string,
+): Promise<void> {
+  await apiFetch<void>(`/admin/admins/invites/${id}`, {
+    method: "DELETE",
+    token,
+  });
+}

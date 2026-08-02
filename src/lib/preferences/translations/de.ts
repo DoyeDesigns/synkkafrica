@@ -724,6 +724,7 @@ export const de = {
   "admin.nav.users": "Benutzer",
   "admin.nav.verifications": "Verifizierungen",
   "admin.nav.support": "Support-Tickets",
+  "admin.nav.team": "Team",
   "admin.common.all": "Alle",
   "admin.verifications.title": "Verifizierungen",
   "admin.verifications.subtitle":

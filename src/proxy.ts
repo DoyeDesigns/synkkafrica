@@ -17,7 +17,9 @@ export default auth((req) => {
 
   // --- Admin area ---
   if (pathname.startsWith("/admin")) {
-    if (pathname === "/admin/login") return NextResponse.next();
+    if (pathname === "/admin/login" || pathname === "/admin/accept-invite") {
+      return NextResponse.next();
+    }
     if (isAdminDemoEnabled()) return NextResponse.next();
     if (role !== "admin") {
       return NextResponse.redirect(new URL("/admin/login", nextUrl));
