@@ -405,7 +405,7 @@ export type AdminSupportTicket = {
   ticketNumber: string;
   vendorId: string;
   requesterName: string;
-  audience: "vendors";
+  audience: "vendors" | "users";
   subject: string;
   category: SupportTicketCategory;
   priority: SupportTicketPriority;

@@ -163,3 +163,68 @@ export async function markAllNotificationsRead(token: string): Promise<void> {
     token,
   });
 }
+
+// --- Customer support tickets ---
+
+export type SupportTicketApi = {
+  id: string;
+  ticketNumber: string;
+  subject: string;
+  category: string;
+  status: "open" | "resolved";
+  bookingReference: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type SupportTicketMessageApi = {
+  id: string;
+  sender: "user" | "support";
+  body: string;
+  createdAt: string;
+};
+
+export type SupportTicketDetailApi = SupportTicketApi & {
+  messages: SupportTicketMessageApi[];
+};
+
+export async function listMyTickets(token: string): Promise<SupportTicketApi[]> {
+  return apiFetch<SupportTicketApi[]>("/users/me/support/tickets", { token });
+}
+
+export async function createSupportTicket(
+  token: string,
+  input: {
+    category: string;
+    subject: string;
+    message: string;
+    bookingReference?: string;
+  },
+): Promise<SupportTicketDetailApi> {
+  return apiFetch<SupportTicketDetailApi>("/users/me/support/tickets", {
+    method: "POST",
+    token,
+    body: input,
+  });
+}
+
+export async function getSupportTicket(
+  token: string,
+  id: string,
+): Promise<SupportTicketDetailApi> {
+  return apiFetch<SupportTicketDetailApi>(
+    `/users/me/support/tickets/${id}`,
+    { token },
+  );
+}
+
+export async function replySupportTicket(
+  token: string,
+  id: string,
+  body: string,
+): Promise<SupportTicketDetailApi> {
+  return apiFetch<SupportTicketDetailApi>(
+    `/users/me/support/tickets/${id}/messages`,
+    { method: "POST", token, body: { body } },
+  );
+}
