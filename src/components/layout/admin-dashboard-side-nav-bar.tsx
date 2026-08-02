@@ -10,6 +10,7 @@ import {
   Home,
   LayoutGrid,
   LogOut,
+  ScrollText,
   ShieldCheck,
   Sparkles,
   Star,
@@ -25,7 +26,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import {
   ADMIN_NAV,
-  ADMIN_TEAM_NAV_ITEM,
+  ADMIN_SUPER_NAV_ITEMS,
   type AdminNavItem,
 } from "@/features/admin/constants";
 import { useTranslation } from "@/hooks/use-translation";
@@ -62,6 +63,7 @@ const NAV_LABEL_KEYS: Record<AdminNavItem["id"], TranslationKey> = {
   verifications: "admin.nav.verifications",
   support: "admin.nav.support",
   team: "admin.nav.team",
+  audit: "admin.nav.audit",
 };
 
 const NAV_ICONS: Record<AdminNavItem["icon"], LucideIcon> = {
@@ -77,6 +79,7 @@ const NAV_ICONS: Record<AdminNavItem["icon"], LucideIcon> = {
   verifications: Check,
   support: CircleHelp,
   team: ShieldCheck,
+  audit: ScrollText,
 };
 
 function isNavItemActive(pathname: string, href: string) {
@@ -156,7 +159,7 @@ function AdminDashboardSideNavBarContent({
     refetchOnWindowFocus: false,
   });
   const navItems = me?.isSuperAdmin
-    ? [...ADMIN_NAV, ADMIN_TEAM_NAV_ITEM]
+    ? [...ADMIN_NAV, ...ADMIN_SUPER_NAV_ITEMS]
     : ADMIN_NAV;
 
   return (

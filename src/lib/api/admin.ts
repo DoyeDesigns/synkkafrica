@@ -522,3 +522,41 @@ export async function adminRevokeInvite(
     token,
   });
 }
+
+// --- Admin audit log (super-admin only) ---
+
+export type AdminAuditEntry = {
+  id: string;
+  adminId: string;
+  adminEmail: string | null;
+  action: string;
+  module: string;
+  targetType: string | null;
+  targetId: string | null;
+  before: unknown;
+  after: unknown;
+  ip: string | null;
+  userAgent: string | null;
+  requestId: string | null;
+  occurredAt: string;
+};
+
+export type AdminAuditPage = {
+  items: AdminAuditEntry[];
+  total: number;
+  limit: number;
+  offset: number;
+};
+
+export async function adminListAuditLog(
+  token: string,
+  params: { module?: string; limit?: number; offset?: number } = {},
+): Promise<AdminAuditPage> {
+  const qs = new URLSearchParams();
+  if (params.module) qs.set("module", params.module);
+  qs.set("limit", String(params.limit ?? 50));
+  qs.set("offset", String(params.offset ?? 0));
+  return apiFetch<AdminAuditPage>(`/admin/audit-log?${qs.toString()}`, {
+    token,
+  });
+}

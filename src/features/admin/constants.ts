@@ -15,16 +15,16 @@ export type AdminNavItem = {
     | "users"
     | "verifications"
     | "support"
-    | "team";
+    | "team"
+    | "audit";
 };
 
-// Super-admin-only nav item, appended in the sidebar when the signed-in admin
+// Super-admin-only nav items, appended in the sidebar when the signed-in admin
 // is a super admin.
-export const ADMIN_TEAM_NAV_ITEM: AdminNavItem = {
-  id: "team",
-  href: "/admin/team",
-  icon: "team",
-};
+export const ADMIN_SUPER_NAV_ITEMS: AdminNavItem[] = [
+  { id: "team", href: "/admin/team", icon: "team" },
+  { id: "audit", href: "/admin/audit", icon: "audit" },
+];
 
 export const ADMIN_NAV: AdminNavItem[] = [
   { id: "dashboard", href: "/admin", icon: "dashboard" },

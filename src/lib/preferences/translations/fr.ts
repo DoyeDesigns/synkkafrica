@@ -725,6 +725,7 @@ export const fr = {
   "admin.nav.verifications": "Vérifications",
   "admin.nav.support": "Tickets support",
   "admin.nav.team": "Équipe",
+  "admin.nav.audit": "Journal d'audit",
   "admin.common.all": "Tout",
   "admin.verifications.title": "Vérifications",
   "admin.verifications.subtitle":

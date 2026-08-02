@@ -50,18 +50,22 @@ function getInitials(name: string) {
 
 type AdminDashboardHeaderProps = {
   adminName?: string | null;
+  adminEmail?: string | null;
   isMobileOpen?: boolean;
   onMenuToggle?: () => void;
 };
 
 function AdminDashboardHeaderContent({
-  adminName = "SynKKafrica Admin",
+  adminName,
+  adminEmail,
   isMobileOpen = false,
   onMenuToggle,
 }: AdminDashboardHeaderProps) {
   const pathname = usePathname();
   const t = useTranslation();
-  const displayName = adminName?.trim() || "SynKKafrica Admin";
+  // Prefer a real name, fall back to the email, then a generic label.
+  const displayName =
+    adminName?.trim() || adminEmail?.trim() || "SynKKafrica Admin";
   const initials = getInitials(displayName);
 
   return (
@@ -100,7 +104,9 @@ function AdminDashboardHeaderContent({
         <div className="hidden text-right sm:block">
           <p className="font-black font-satoshi text-[#135391]">{displayName}</p>
           <p className="text-sm font-medium font-satoshi text-[#676565]">
-            {t("admin.header.role")}
+            {adminEmail && adminEmail !== displayName
+              ? adminEmail
+              : t("admin.header.role")}
           </p>
         </div>
         <div

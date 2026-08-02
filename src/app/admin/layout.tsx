@@ -13,7 +13,10 @@ export default async function AdminLayout({
   // segment needs the client SessionProvider. QueryProvider is global.
   return (
     <AuthProvider>
-      <AdminDashboardLayoutClient adminName={session?.user?.name}>
+      <AdminDashboardLayoutClient
+        adminName={session?.user?.name}
+        adminEmail={session?.user?.email}
+      >
         {children}
       </AdminDashboardLayoutClient>
     </AuthProvider>
