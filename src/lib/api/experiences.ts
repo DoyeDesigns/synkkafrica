@@ -54,6 +54,15 @@ export async function listExperiences(): Promise<ExperienceSummaryApi[]> {
   return apiFetch<ExperienceSummaryApi[]>("/experiences");
 }
 
+export type ExperienceDestination = { location: string; count: number };
+
+// Distinct locations with live experiences (search autocomplete).
+export async function listExperienceDestinations(): Promise<
+  ExperienceDestination[]
+> {
+  return apiFetch<ExperienceDestination[]>("/experiences/destinations");
+}
+
 export async function getExperience(id: string): Promise<ExperienceDetailApi> {
   return apiFetch<ExperienceDetailApi>(`/experiences/${id}`);
 }

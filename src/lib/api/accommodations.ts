@@ -62,6 +62,19 @@ export async function listAccommodations(): Promise<AccommodationSummaryApi[]> {
   return apiFetch<AccommodationSummaryApi[]>("/accommodations");
 }
 
+export type AccommodationDestination = {
+  location: string;
+  count: number;
+};
+
+// Distinct destinations that currently have live listings (for the search
+// box autocomplete — every suggestion is guaranteed to return results).
+export async function listAccommodationDestinations(): Promise<
+  AccommodationDestination[]
+> {
+  return apiFetch<AccommodationDestination[]>("/accommodations/destinations");
+}
+
 // Create a booking request. Auth is optional — a logged-in customer's token
 // links the booking to their account; guests can still book.
 export async function bookAccommodation(

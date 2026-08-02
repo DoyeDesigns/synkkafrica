@@ -81,6 +81,27 @@ export type PopularFaresResponse = {
 };
 
 // Pre-computed, server-cached cheapest fares. One call powers the whole
+export type FlightPlace = {
+  id: string;
+  type: "airport" | "city";
+  name: string;
+  iataCode: string;
+  cityName: string | null;
+};
+
+// Airport/city autocomplete for the flight origin & destination fields
+// (backed by Duffel Places). Returns real IATA codes.
+export async function suggestFlightPlaces(
+  query: string,
+  signal?: AbortSignal,
+): Promise<FlightPlace[]> {
+  return apiFetch<FlightPlace[]>("/flights/places", {
+    method: "GET",
+    query: { query },
+    signal,
+  });
+}
+
 // "Cheap flights from Nigeria" section — no per-route live searches.
 export async function getPopularFares(
   signal?: AbortSignal,

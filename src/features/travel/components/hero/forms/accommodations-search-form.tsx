@@ -1,6 +1,6 @@
 "use client";
 
-import { Building2, Calendar, MapPin } from "lucide-react";
+import { Building2, Calendar } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
@@ -11,6 +11,8 @@ import {
   HeroPillSelect,
   HeroSearchButton,
 } from "@/features/travel/components/hero/hero-form-primitives";
+import { HeroDestinationField } from "@/features/travel/components/hero/hero-destination-field";
+import { listAccommodationDestinations } from "@/lib/api/accommodations";
 import {
   getDefaultCheckInDate,
   getDefaultCheckOutDate,
@@ -182,12 +184,20 @@ export function AccommodationsSearchForm({
       </HeroFormRow>
 
       <HeroInputShell>
-        <HeroField
-          icon={<MapPin className="h-4 w-4 shrink-0" />}
+        <HeroDestinationField
           placeholder={t("hero.accommodations.destination")}
           value={destination}
           onChange={setDestination}
-          type="search"
+          queryKey="accommodation-destinations"
+          fetchDestinations={listAccommodationDestinations}
+          countLabel={(count) =>
+            t(
+              count === 1
+                ? "hero.accommodations.destinationStay"
+                : "hero.accommodations.destinationStays",
+              { count },
+            )
+          }
         />
         <HeroField
           icon={<Calendar className="h-4 w-4 shrink-0" />}

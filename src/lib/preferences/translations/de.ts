@@ -48,6 +48,8 @@ export const de = {
   "hero.search": "Suchen",
   "hero.clearFilter": "Filter löschen",
   "hero.accommodations.destination": "Ihr Reiseziel",
+  "hero.accommodations.destinationStay": "{count} Unterkunft",
+  "hero.accommodations.destinationStays": "{count} Unterkünfte",
   "hero.accommodations.checkIn": "Anreisedatum",
   "hero.accommodations.checkOut": "Abreisedatum",
   "hero.accommodations.checkAvailability": "Verfügbarkeit prüfen",
@@ -78,6 +80,10 @@ export const de = {
   "hero.common.days": "Tage",
   "hero.common.nights": "Nächte",
   "hero.location": "Standort",
+  "hero.carRentals.destinationCar": "{count} Auto",
+  "hero.carRentals.destinationCars": "{count} Autos",
+  "hero.tours.destinationExperience": "{count} Erlebnis",
+  "hero.tours.destinationExperiences": "{count} Erlebnisse",
 
   "footer.brandDescription":
     "SynKKafrica ist eine aufstrebende All-in-One-Reise- und Premium-Erlebnisplattform, die Menschen weltweit mit dem Herzen des afrikanischen Reise- und Lifestyle-Ökosystems verbindet.",

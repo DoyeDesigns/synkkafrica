@@ -59,6 +59,13 @@ export async function listCars(): Promise<CarSummaryApi[]> {
   return apiFetch<CarSummaryApi[]>("/cars");
 }
 
+export type CarDestination = { location: string; count: number };
+
+// Distinct pickup locations with live car inventory (search autocomplete).
+export async function listCarDestinations(): Promise<CarDestination[]> {
+  return apiFetch<CarDestination[]>("/cars/destinations");
+}
+
 export async function getCar(id: string): Promise<CarDetailApi> {
   return apiFetch<CarDetailApi>(`/cars/${id}`);
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
@@ -13,6 +13,7 @@ import {
   HeroRadioOption,
   HeroSearchButton,
 } from "@/features/travel/components/hero/hero-form-primitives";
+import { HeroAirportField } from "@/features/travel/components/hero/hero-airport-field";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -165,17 +166,17 @@ export function FlightsSearchForm({ onSubmit }: FlightsSearchFormProps) {
       </HeroFormRow>
 
       <HeroInputShell>
-        <HeroField
-          icon={<MapPin className="h-4 w-4 shrink-0" />}
+        <HeroAirportField
           placeholder={t("hero.flights.fromCity")}
           value={from}
           onChange={setFrom}
+          listboxId="hero-flight-from-listbox"
         />
-        <HeroField
-          icon={<MapPin className="h-4 w-4 shrink-0" />}
+        <HeroAirportField
           placeholder={t("hero.flights.toCity")}
           value={to}
           onChange={setTo}
+          listboxId="hero-flight-to-listbox"
         />
         <HeroField
           icon={<Calendar className="h-4 w-4 shrink-0" />}
