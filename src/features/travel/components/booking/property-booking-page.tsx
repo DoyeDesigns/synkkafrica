@@ -122,6 +122,7 @@ export function PropertyBookingPage({
             <PropertyMap
               coordinates={property.mapCoordinates}
               label={property.name}
+              query={property.location}
             />
           </div>
           <CurrentOffersSection offers={property.offers} />
@@ -138,6 +139,7 @@ export function PropertyBookingPage({
             <PropertyMap
               coordinates={property.mapCoordinates}
               label={property.name}
+              query={property.location}
             />
           </div>
           <BookingSummaryCard
