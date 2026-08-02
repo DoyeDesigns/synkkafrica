@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { QRCodeSVG } from "qrcode.react";
 
 import { loginAdmin, type AdminEnrollment } from "@/lib/api/admin-auth";
 
@@ -104,20 +105,24 @@ export function AdminLoginContent() {
                 Set up your authenticator
               </p>
               <p className="mt-1">
-                Add this account to your authenticator app, then enter the
+                Scan this QR code with your authenticator app, then enter the
                 6-digit code.
               </p>
-              <a
-                href={enrollment.otpauthUrl}
-                className="mt-2 block break-all text-[#135391] underline"
-              >
-                {enrollment.otpauthUrl}
-              </a>
-              <p className="mt-2">
-                Manual key:{" "}
-                <span className="font-mono text-[#2F2F2F]">
-                  {enrollment.secret}
-                </span>
+              <div className="mt-3 flex justify-center">
+                <div className="rounded-lg border border-[#E5E5E5] bg-white p-3">
+                  <QRCodeSVG
+                    value={enrollment.otpauthUrl}
+                    size={160}
+                    marginSize={0}
+                    aria-label="Authenticator setup QR code"
+                  />
+                </div>
+              </div>
+              <p className="mt-3">
+                Can&apos;t scan? Enter this key manually:
+              </p>
+              <p className="mt-1 break-all font-mono text-[#2F2F2F]">
+                {enrollment.secret}
               </p>
             </div>
           ) : null}
