@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -48,6 +49,16 @@ export function AdminListingsLiveContent({
     mutationFn: (id: string) => adminApproveListing(token as string, id),
     onSuccess: invalidate,
   });
+  const approveError =
+    approveMutation.isError && approveMutation.variables
+      ? {
+          id: approveMutation.variables,
+          message:
+            approveMutation.error instanceof Error
+              ? approveMutation.error.message
+              : "Couldn't approve this listing.",
+        }
+      : null;
   const rejectMutation = useMutation({
     mutationFn: (v: { id: string; reason?: string }) =>
       adminRejectListing(token as string, v.id, v.reason),
@@ -109,15 +120,25 @@ export function AdminListingsLiveContent({
               className="flex flex-col gap-3 rounded-xl border border-[#EEEEEE] bg-white px-4 py-4 sm:flex-row sm:items-center sm:justify-between"
             >
               <div className="min-w-0">
-                <p className="truncate text-sm font-bold font-satoshi text-[#2F2F2F]">
-                  {l.title}
-                </p>
+                <Link
+                  href={`/admin/listings/${l.id}`}
+                  className="group inline-block max-w-full rounded outline-none focus-visible:ring-2 focus-visible:ring-[#135391]"
+                >
+                  <p className="truncate text-sm font-bold font-satoshi text-[#2F2F2F] group-hover:text-[#135391] group-hover:underline">
+                    {l.title}
+                  </p>
+                </Link>
                 <p className="mt-0.5 truncate text-xs font-medium font-satoshi text-[#676565] capitalize">
                   {l.category} · {l.location ?? "—"}
                 </p>
                 {l.rejectionReason ? (
                   <p className="mt-1 text-xs font-medium font-satoshi text-[#C0392B]">
                     {l.rejectionReason}
+                  </p>
+                ) : null}
+                {approveError?.id === l.id ? (
+                  <p className="mt-1 text-xs font-medium font-satoshi text-[#C0392B]">
+                    {approveError.message}
                   </p>
                 ) : null}
               </div>

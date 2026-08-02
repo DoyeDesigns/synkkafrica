@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -98,8 +99,11 @@ export function AdminVendorsLiveContent() {
               key={v.id}
               className="flex flex-col gap-3 rounded-xl border border-[#EEEEEE] bg-white px-4 py-4 sm:flex-row sm:items-center sm:justify-between"
             >
-              <div className="min-w-0">
-                <p className="truncate text-sm font-bold font-satoshi text-[#2F2F2F]">
+              <Link
+                href={`/admin/vendors/${v.id}`}
+                className="group min-w-0 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-[#135391]"
+              >
+                <p className="truncate text-sm font-bold font-satoshi text-[#2F2F2F] group-hover:text-[#135391] group-hover:underline">
                   {v.businessName}
                 </p>
                 <p className="mt-0.5 truncate text-xs font-medium font-satoshi text-[#676565]">
@@ -110,7 +114,7 @@ export function AdminVendorsLiveContent() {
                     {v.rejectionReason}
                   </p>
                 ) : null}
-              </div>
+              </Link>
 
               <div className="flex shrink-0 items-center gap-2">
                 <span

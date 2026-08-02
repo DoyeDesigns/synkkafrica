@@ -63,6 +63,24 @@ export async function adminRejectVendor(
   });
 }
 
+export type AdminVendorDetail = AdminVendor & {
+  cacRegistrationNumber: string | null;
+  businessAddress: string | null;
+  dateOfBirth: string | null;
+  payoutBankId: string | null;
+  payoutAccountNumber: string | null;
+  payoutAccountName: string | null;
+  documents: AdminBusinessDoc[];
+  listings: AdminListing[];
+};
+
+export async function adminGetVendor(
+  token: string,
+  id: string,
+): Promise<AdminVendorDetail> {
+  return apiFetch<AdminVendorDetail>(`/admin/vendors/${id}`, { token });
+}
+
 // --- Listings ---
 
 export async function adminListListings(
@@ -93,6 +111,51 @@ export async function adminRejectListing(
     token,
     body: { reason },
   });
+}
+
+export type AdminListingMedia = {
+  name?: string;
+  url?: string;
+  kind?: string;
+};
+
+export type AdminListingDocument = {
+  id: string;
+  type: string;
+  fileName: string;
+  fileUrl: string | null;
+  status: "pending" | "approved" | "rejected";
+  rejectionReason: string | null;
+};
+
+export type AdminListingDetail = AdminListing & {
+  shortDescription: string | null;
+  details: Record<string, unknown>;
+  media: AdminListingMedia[];
+  ratingAvg: string;
+  ratingCount: number;
+  reviewedAt: string | null;
+  vendorName: string;
+  vendorStatus: AdminVendor["status"];
+  documents: AdminListingDocument[];
+};
+
+export async function adminGetListing(
+  token: string,
+  id: string,
+): Promise<AdminListingDetail> {
+  return apiFetch<AdminListingDetail>(`/admin/vendor-listings/${id}`, { token });
+}
+
+// Short-lived signed URL to view a private listing compliance document.
+export async function adminListingDocViewUrl(
+  token: string,
+  id: string,
+): Promise<{ url: string }> {
+  return apiFetch<{ url: string }>(
+    `/admin/vendor-listing-documents/${id}/view-url`,
+    { token },
+  );
 }
 
 // --- Packages ---
