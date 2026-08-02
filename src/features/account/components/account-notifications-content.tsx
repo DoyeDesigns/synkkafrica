@@ -28,21 +28,10 @@ const PERIOD_LABEL_KEYS: Record<NotificationPeriod, TranslationKey> = {
   "three-months-ago": "account.notifications.period.threeMonthsAgo",
 };
 
-type AccountNotificationsContentProps = {
-  userId: string;
-  userEmail: string;
-};
-
-export function AccountNotificationsContent({
-  userId,
-  userEmail,
-}: AccountNotificationsContentProps) {
+export function AccountNotificationsContent() {
   const t = useTranslation();
   const [showOlder, setShowOlder] = useState(false);
-  const { ready, notifications, markRead } = useAccountNotifications(
-    userId,
-    userEmail,
-  );
+  const { ready, notifications, markRead } = useAccountNotifications();
 
   const groups = useMemo(() => {
     const grouped = groupNotificationsByPeriod(notifications);

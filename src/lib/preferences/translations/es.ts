@@ -188,6 +188,7 @@ export const es = {
   "account.bookings.detail.yourReview": "Tu reseña",
   "account.bookings.detail.notFound": "No se encontró esta reserva.",
   "account.saved.accommodations": "Alojamientos",
+  "account.saved.empty": "Aún no has guardado nada.",
   "account.saved.cars": "Coches",
   "account.saved.tours": "Tours",
   "account.reviews.title": "Reseñas",

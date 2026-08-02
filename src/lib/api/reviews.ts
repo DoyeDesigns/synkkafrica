@@ -32,3 +32,30 @@ export async function submitReview(
     body: input,
   });
 }
+
+// --- My reviews (customer account) ---
+
+export type MyReviewApi = {
+  id: string;
+  bookingId: string | null;
+  listingId: string;
+  listingTitle: string;
+  listingImage: string | null;
+  category: string | null;
+  authorName: string | null;
+  rating: number;
+  comment: string | null;
+  status: string;
+  createdAt: string;
+};
+
+export async function listMyReviews(token: string): Promise<MyReviewApi[]> {
+  return apiFetch<MyReviewApi[]>("/reviews/mine", { token });
+}
+
+export async function deleteMyReview(
+  token: string,
+  id: string,
+): Promise<void> {
+  await apiFetch<void>(`/reviews/${id}`, { method: "DELETE", token });
+}

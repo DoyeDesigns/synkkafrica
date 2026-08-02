@@ -188,6 +188,7 @@ export const fr = {
   "account.bookings.detail.yourReview": "Votre avis",
   "account.bookings.detail.notFound": "Cette réservation est introuvable.",
   "account.saved.accommodations": "Hébergements",
+  "account.saved.empty": "Vous n'avez encore rien enregistré.",
   "account.saved.cars": "Voitures",
   "account.saved.tours": "Tours",
   "account.reviews.title": "Avis",

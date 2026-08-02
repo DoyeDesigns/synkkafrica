@@ -1,9 +1,10 @@
 "use client";
 
-import { Heart, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import Image from "next/image";
 
 import { ReviewSummaryButton } from "@/features/travel/components/booking/review-summary-button";
+import { SaveListingButton } from "@/features/account/components/save-listing-button";
 import { useBookingContent } from "@/hooks/use-booking-content";
 import { useTranslation } from "@/hooks/use-translation";
 import type { PropertyDetail } from "@/features/travel/data/property-booking";
@@ -27,13 +28,10 @@ export function PropertyGallery({ property }: PropertyGalleryProps) {
           className="object-cover"
           sizes="(max-width: 1024px) 100vw, 760px"
         />
-        <button
-          type="button"
-          aria-label={t("booking.property.saveProperty")}
-          className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm"
-        >
-          <Heart className="h-5 w-5 text-foreground" strokeWidth={1.5} />
-        </button>
+        <SaveListingButton
+          listingId={property.id}
+          className="absolute right-4 top-4"
+        />
       </div>
 
       <div className="grid grid-cols-3 gap-3">

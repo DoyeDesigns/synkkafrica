@@ -186,6 +186,7 @@ export const en = {
   "account.bookings.detail.yourReview": "Your review",
   "account.bookings.detail.notFound": "This booking could not be found.",
   "account.saved.accommodations": "Accommodations",
+  "account.saved.empty": "You haven't saved anything yet.",
   "account.saved.cars": "Cars",
   "account.saved.tours": "Tours",
   "account.reviews.title": "Reviews",
