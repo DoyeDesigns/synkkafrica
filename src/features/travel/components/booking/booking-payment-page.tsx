@@ -42,7 +42,7 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
   } | null>(null);
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [paying, setPaying] = useState(false);
+  const [paying, setPaying] = useState<false | "PAYSTACK" | "STRIPE">(false);
 
   // Create the real booking request once (awaiting vendor confirmation). This
   // reserves it; payment is the next action.
@@ -100,18 +100,19 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
       });
   }, [property, searchParams]);
 
-  const handlePay = () => {
+  const handlePay = (provider: "PAYSTACK" | "STRIPE") => {
     if (!booking || paying) return;
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) {
       setError("Enter a valid email for your receipt.");
       return;
     }
     setError(null);
-    setPaying(true);
+    setPaying(provider);
     const callbackUrl = `${window.location.origin}/accommodations/${property.id}/book/confirmation?${query}&bookingId=${booking.bookingId}`;
     initAccommodationPayment(booking.bookingId, {
       email: email.trim(),
       callbackUrl,
+      provider,
     })
       .then(({ authorizationUrl }) => {
         window.location.href = authorizationUrl;
@@ -178,14 +179,24 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
               </p>
             ) : null}
 
-            <button
-              type="button"
-              onClick={handlePay}
-              disabled={paying}
-              className="mt-5 h-11 w-full rounded-lg bg-[#D85A30] text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-            >
-              {paying ? "Redirecting…" : "Pay with Paystack"}
-            </button>
+            <div className="mt-5 space-y-3">
+              <button
+                type="button"
+                onClick={() => handlePay("PAYSTACK")}
+                disabled={paying !== false}
+                className="h-11 w-full rounded-lg bg-[#D85A30] text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+              >
+                {paying === "PAYSTACK" ? "Redirecting…" : "Pay with Paystack"}
+              </button>
+              <button
+                type="button"
+                onClick={() => handlePay("STRIPE")}
+                disabled={paying !== false}
+                className="h-11 w-full rounded-lg bg-[#635BFF] text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+              >
+                {paying === "STRIPE" ? "Redirecting…" : "Pay with Stripe"}
+              </button>
+            </div>
           </div>
         )}
       </div>

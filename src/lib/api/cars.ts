@@ -84,7 +84,11 @@ export async function bookCar(
 
 export async function initCarPayment(
   bookingId: string,
-  input: { email?: string; callbackUrl?: string },
+  input: {
+    email?: string;
+    callbackUrl?: string;
+    provider?: "PAYSTACK" | "STRIPE";
+  },
   token?: string,
 ): Promise<{ authorizationUrl: string; reference: string }> {
   return apiFetch(`/cars/bookings/${bookingId}/pay`, {

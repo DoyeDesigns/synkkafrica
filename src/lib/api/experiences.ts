@@ -81,7 +81,11 @@ export async function bookExperience(
 
 export async function initExperiencePayment(
   bookingId: string,
-  input: { email?: string; callbackUrl?: string },
+  input: {
+    email?: string;
+    callbackUrl?: string;
+    provider?: "PAYSTACK" | "STRIPE";
+  },
   token?: string,
 ): Promise<{ authorizationUrl: string; reference: string }> {
   return apiFetch(`/experiences/bookings/${bookingId}/pay`, {

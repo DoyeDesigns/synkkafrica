@@ -92,7 +92,11 @@ export async function bookAccommodation(
 // Initialize Paystack checkout; returns the hosted URL to redirect to.
 export async function initAccommodationPayment(
   bookingId: string,
-  input: { email?: string; callbackUrl?: string },
+  input: {
+    email?: string;
+    callbackUrl?: string;
+    provider?: "PAYSTACK" | "STRIPE";
+  },
   token?: string,
 ): Promise<{ authorizationUrl: string; reference: string }> {
   return apiFetch(`/accommodations/bookings/${bookingId}/pay`, {
