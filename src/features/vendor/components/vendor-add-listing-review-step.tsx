@@ -14,19 +14,31 @@ import {
 import { useFormatPrice } from "@/hooks/use-format-price";
 import { useTranslation } from "@/hooks/use-translation";
 
-export function ReviewStepPage({ form }: { form: AddListingFormState }) {
+export function ReviewStepPage({
+  form,
+  showIntro = true,
+}: {
+  form: AddListingFormState;
+  showIntro?: boolean;
+}) {
   if (form.category === "cars") {
-    return <CarListingReview form={form} />;
+    return <CarListingReview form={form} showIntro={showIntro} />;
   }
 
   if (form.category === "accommodations") {
-    return <AccommodationListingReview form={form} />;
+    return <AccommodationListingReview form={form} showIntro={showIntro} />;
   }
 
-  return <ExperienceListingReview form={form} />;
+  return <ExperienceListingReview form={form} showIntro={showIntro} />;
 }
 
-function CarListingReview({ form }: { form: AddListingFormState }) {
+function CarListingReview({
+  form,
+  showIntro,
+}: {
+  form: AddListingFormState;
+  showIntro: boolean;
+}) {
   const t = useTranslation();
   const formatPrice = useFormatPrice();
 
@@ -40,7 +52,7 @@ function CarListingReview({ form }: { form: AddListingFormState }) {
 
   return (
     <section className="space-y-6">
-      <ReviewIntro />
+      {showIntro ? <ReviewIntro /> : null}
 
       <div className="overflow-hidden rounded-xl border border-[#EEEEEE] bg-white shadow-sm">
         <div className="grid gap-0 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
@@ -208,7 +220,13 @@ function CarListingReview({ form }: { form: AddListingFormState }) {
   );
 }
 
-function AccommodationListingReview({ form }: { form: AddListingFormState }) {
+function AccommodationListingReview({
+  form,
+  showIntro,
+}: {
+  form: AddListingFormState;
+  showIntro: boolean;
+}) {
   const t = useTranslation();
   const formatPrice = useFormatPrice();
 
@@ -223,7 +241,7 @@ function AccommodationListingReview({ form }: { form: AddListingFormState }) {
 
   return (
     <section className="space-y-6">
-      <ReviewIntro />
+      {showIntro ? <ReviewIntro /> : null}
 
       <div className="overflow-hidden rounded-xl border border-[#EEEEEE] bg-white shadow-sm">
         <ListingMediaPreview items={form.mediaItems} className="rounded-none" />
@@ -317,42 +335,190 @@ function AccommodationListingReview({ form }: { form: AddListingFormState }) {
           ) : null}
         </div>
       </div>
+
+      {LISTING_DOCUMENTS_BY_CATEGORY.accommodations.some(
+        (document) => form.uploadedDocuments[document.id],
+      ) ? (
+        <ReviewBlock heading={t("vendor.addListing.documentsHeading")} boxed>
+          <ul className="space-y-3">
+            {LISTING_DOCUMENTS_BY_CATEGORY.accommodations.map((document) => {
+              const upload = form.uploadedDocuments[document.id];
+              if (!upload) return null;
+
+              return (
+                <li
+                  key={document.id}
+                  className="flex items-start gap-3 rounded-lg border border-[#EEEEEE] bg-[#FAFAFA] p-3"
+                >
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#2E7D32]" />
+                  <div className="min-w-0">
+                    <p className="text-sm font-bold font-satoshi text-[#2F2F2F]">
+                      {t(document.labelKey)}
+                    </p>
+                    <p className="mt-0.5 truncate text-xs font-medium font-satoshi text-[#676565]">
+                      {upload.name}
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </ReviewBlock>
+      ) : null}
     </section>
   );
 }
 
-function ExperienceListingReview({ form }: { form: AddListingFormState }) {
+function ExperienceListingReview({
+  form,
+  showIntro,
+}: {
+  form: AddListingFormState;
+  showIntro: boolean;
+}) {
   const t = useTranslation();
   const formatPrice = useFormatPrice();
 
+  const documents = LISTING_DOCUMENTS_BY_CATEGORY.experiences.filter(
+    (document) => form.uploadedDocuments[document.id],
+  );
+
   return (
-    <section className="space-y-5">
-      <ReviewIntro />
-      <div className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm">
-        <ListingMediaPreview items={form.mediaItems} className="mb-4 rounded-lg" />
-        <dl className="space-y-3 text-sm font-medium font-satoshi">
-          <ReviewRow label={t("vendor.addListing.experienceName")} value={form.experienceName || "—"} />
-          <ReviewRow label={t("vendor.addListing.experienceType")} value={form.experienceType || "—"} />
-          <ReviewRow label={t("vendor.addListing.location")} value={form.location || "—"} />
-          <ReviewRow label={t("vendor.addListing.duration")} value={form.duration || "—"} />
-          <ReviewRow
-            label={t("vendor.addListing.singleTicketPrice")}
-            value={form.pricePerPerson ? formatPrice("NGN", Number(form.pricePerPerson)) : "—"}
-          />
-          {form.groupTicketPrice ? (
-            <ReviewRow
-              label={t("vendor.addListing.groupTicketPrice")}
-              value={formatPrice("NGN", Number(form.groupTicketPrice))}
+    <section className="space-y-6">
+      {showIntro ? <ReviewIntro /> : null}
+
+      <div className="overflow-hidden rounded-xl border border-[#EEEEEE] bg-white shadow-sm">
+        <div className="grid gap-0 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
+          <div className="border-b border-[#F0F0F0] lg:border-b-0 lg:border-r">
+            <ListingMediaPreview
+              items={form.mediaItems}
+              className="aspect-[4/3] lg:aspect-auto lg:min-h-[280px] lg:rounded-none"
             />
-          ) : null}
-          {form.minGroupSize || form.maxGroupSize ? (
-            <ReviewRow
-              label={t("vendor.addListing.review.groupSize")}
-              value={[form.minGroupSize, form.maxGroupSize].filter(Boolean).join(" – ") || "—"}
-            />
-          ) : null}
-        </dl>
+            {form.mediaItems.length > 1 ? (
+              <div className="grid grid-cols-4 gap-2 p-3">
+                {form.mediaItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="relative aspect-[4/3] overflow-hidden rounded-md border border-[#EEEEEE] bg-[#F5F5F5]"
+                  >
+                    <ListingMediaThumbnail
+                      item={item}
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : null}
+          </div>
+
+          <div className="space-y-5 p-5 sm:p-6">
+            <div>
+              <h4 className="text-xl font-bold font-satoshi text-[#2F2F2F]">
+                {form.experienceName || "—"}
+              </h4>
+              <p className="mt-1 text-sm font-medium font-satoshi text-[#676565]">
+                {[form.experienceType, form.location].filter(Boolean).join(" · ") || "—"}
+              </p>
+            </div>
+
+            <dl className="grid gap-3 sm:grid-cols-2">
+              <ReviewRow label={t("vendor.addListing.duration")} value={form.duration || "—"} />
+              <ReviewRow label={t("vendor.addListing.maxGuests")} value={form.maxGuests || "—"} />
+              <ReviewRow
+                label={t("vendor.addListing.singleTicketPrice")}
+                value={
+                  form.pricePerPerson
+                    ? formatPrice("NGN", Number(form.pricePerPerson))
+                    : "—"
+                }
+              />
+              {form.groupTicketPrice ? (
+                <ReviewRow
+                  label={t("vendor.addListing.groupTicketPrice")}
+                  value={formatPrice("NGN", Number(form.groupTicketPrice))}
+                />
+              ) : null}
+              {form.minGroupSize || form.maxGroupSize ? (
+                <ReviewRow
+                  label={t("vendor.addListing.review.groupSize")}
+                  value={
+                    [form.minGroupSize, form.maxGroupSize].filter(Boolean).join(" – ") ||
+                    "—"
+                  }
+                />
+              ) : null}
+            </dl>
+
+            {form.experienceDescription ? (
+              <ReviewBlock heading={t("vendor.addListing.review.description")}>
+                <p className="text-sm font-medium font-satoshi leading-relaxed text-[#676565]">
+                  {form.experienceDescription}
+                </p>
+              </ReviewBlock>
+            ) : null}
+
+            {form.includes.length > 0 ? (
+              <ReviewBlock heading={t("vendor.addListing.whatsIncluded")}>
+                <ul className="flex flex-wrap gap-2">
+                  {form.includes.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-full bg-[#F0F6FC] px-3 py-1 text-xs font-semibold font-satoshi text-[#135391]"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </ReviewBlock>
+            ) : null}
+
+            {form.whatToBring.length > 0 ? (
+              <ReviewBlock heading={t("vendor.addListing.whatToBring")}>
+                <ul className="flex flex-wrap gap-2">
+                  {form.whatToBring.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-full bg-[#F5F5F5] px-3 py-1 text-xs font-semibold font-satoshi text-[#676565]"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </ReviewBlock>
+            ) : null}
+          </div>
+        </div>
       </div>
+
+      {documents.length > 0 ? (
+        <ReviewBlock heading={t("vendor.addListing.documentsHeading")} boxed>
+          <ul className="space-y-3">
+            {documents.map((document) => {
+              const upload = form.uploadedDocuments[document.id];
+              if (!upload) return null;
+
+              return (
+                <li
+                  key={document.id}
+                  className="flex flex-col gap-3 rounded-lg border border-[#EEEEEE] bg-[#FAFAFA] p-3 sm:flex-row sm:items-start"
+                >
+                  <div className="flex min-w-0 flex-1 items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#2E7D32]" />
+                    <div className="min-w-0">
+                      <p className="text-sm font-bold font-satoshi text-[#2F2F2F]">
+                        {t(document.labelKey)}
+                      </p>
+                      <p className="mt-0.5 truncate text-xs font-medium font-satoshi text-[#676565]">
+                        {upload.name}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </ReviewBlock>
+      ) : null}
     </section>
   );
 }

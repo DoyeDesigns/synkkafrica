@@ -129,7 +129,7 @@ export function VendorListingsContent({
         </h2>
 
         <Link
-          href="/vendor/listings/new"
+          href="/vendor/add-listing"
           className="inline-flex h-11 w-45.5 items-center justify-center gap-2 rounded-[5px] bg-[#D85A30] px-5 py-2.5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90"
         >
           <Plus className="h-4 w-4" strokeWidth={3} />

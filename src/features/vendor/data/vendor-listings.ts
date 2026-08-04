@@ -1,4 +1,5 @@
 import type { VendorDashboardListing } from "@/features/vendor/data/vendor-dashboard";
+import type { ListingCategory } from "@/features/vendor/data/vendor-add-listing";
 
 export const VENDOR_LISTINGS_PAGE_ITEMS: VendorDashboardListing[] = [
   {
@@ -38,3 +39,26 @@ export const VENDOR_LISTINGS_PAGE_ITEMS: VendorDashboardListing[] = [
     status: "live",
   },
 ];
+
+const CATEGORY_KEY_TO_LISTING_CATEGORY: Record<
+  VendorDashboardListing["categoryKey"],
+  ListingCategory
+> = {
+  "vendor.dashboard.category.accommodations": "accommodations",
+  "vendor.dashboard.category.carRentals": "cars",
+  "vendor.dashboard.category.tours": "experiences",
+  "vendor.dashboard.category.toursExperiences": "experiences",
+};
+
+/** One vendor, one service category — set on first saved listing. */
+export { getVendorServiceCategory as getVendorLockedListingCategory } from "@/features/vendor/data/vendor-service-category";
+
+export function getVendorListingById(listingId: string) {
+  return VENDOR_LISTINGS_PAGE_ITEMS.find((listing) => listing.id === listingId);
+}
+
+export function mapListingCategoryKey(
+  categoryKey: VendorDashboardListing["categoryKey"],
+): ListingCategory {
+  return CATEGORY_KEY_TO_LISTING_CATEGORY[categoryKey];
+}

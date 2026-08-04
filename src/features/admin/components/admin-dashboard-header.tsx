@@ -31,6 +31,27 @@ function getPageTitleKey(pathname: string): TranslationKey {
     return "admin.users.details";
   }
 
+  if (
+    pathname.startsWith("/admin/cars/") &&
+    pathname !== "/admin/cars"
+  ) {
+    return "admin.listings.detailTitle";
+  }
+
+  if (
+    pathname.startsWith("/admin/accommodations/") &&
+    pathname !== "/admin/accommodations"
+  ) {
+    return "admin.listings.detailTitle";
+  }
+
+  if (
+    pathname.startsWith("/admin/experiences/") &&
+    pathname !== "/admin/experiences"
+  ) {
+    return "admin.listings.detailTitle";
+  }
+
   return PAGE_TITLE_KEYS[pathname] ?? "admin.nav.dashboard";
 }
 

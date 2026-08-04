@@ -12,7 +12,7 @@ import type { TranslationKey } from "@/lib/preferences/translations";
 const PAGE_TITLE_KEYS: Record<string, TranslationKey> = {
   "/vendor": "vendor.nav.dashboard",
   "/vendor/listings": "vendor.nav.listings",
-  "/vendor/listings/new": "vendor.addListing.title",
+  "/vendor/add-listing": "vendor.addListing.title",
   "/vendor/bookings": "vendor.nav.bookings",
   "/vendor/earnings": "vendor.nav.earnings",
   "/vendor/notifications": "vendor.nav.notifications",
@@ -21,6 +21,14 @@ const PAGE_TITLE_KEYS: Record<string, TranslationKey> = {
 };
 
 function getPageTitleKey(pathname: string): TranslationKey {
+  if (pathname.startsWith("/vendor/listings/detail/")) {
+    return "vendor.nav.listings";
+  }
+
+  if (pathname.startsWith("/vendor/add-listing")) {
+    return "vendor.addListing.title";
+  }
+
   return PAGE_TITLE_KEYS[pathname] ?? "vendor.nav.dashboard";
 }
 
@@ -77,7 +85,7 @@ function VendorDashboardHeaderContent({
 
         <div className="flex min-w-0 items-center gap-2 sm:gap-3">
           <span className="hidden font-bold font-satoshi text-[#D85A30] sm:inline">
-            SynkkAfrica
+            SynkAfrica
           </span>
           <span className="hidden text-[#CCCCCC] sm:inline" aria-hidden="true">
             |
@@ -120,7 +128,7 @@ function VendorDashboardHeaderFallback({
         <div className="size-10 shrink-0 lg:hidden" aria-hidden="true" />
         <div className="flex min-w-0 items-center gap-2 sm:gap-3">
           <span className="hidden font-bold font-satoshi text-[#D85A30] sm:inline">
-            SynkkAfrica
+            SynkAfrica
           </span>
           <span className="hidden text-[#CCCCCC] sm:inline" aria-hidden="true">
             |

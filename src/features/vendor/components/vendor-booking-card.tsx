@@ -7,6 +7,7 @@ import Link from "next/link";
 import {
   formatBookingDateTime,
   formatRespondWithin,
+  getVendorListingHref,
   type VendorBooking,
 } from "@/features/vendor/data/vendor-bookings";
 import { useFormatPrice } from "@/hooks/use-format-price";
@@ -207,7 +208,7 @@ export function VendorBookingCard({
           ) : null}
 
           <Link
-            href="/vendor/listings"
+            href={getVendorListingHref(booking.listingId, { from: "bookings" })}
             className="rounded-lg border border-[#E5E5E5] bg-white px-4 py-2.5 text-sm font-bold font-satoshi text-[#2F2F2F] transition-colors hover:bg-[#FAFAFA]"
           >
             {t("vendor.bookings.viewListing")}

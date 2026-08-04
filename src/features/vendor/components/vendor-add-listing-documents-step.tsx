@@ -124,6 +124,8 @@ export function DocumentsStepPage({
                   icon={Icon}
                   label={t(titleKey)}
                   hint={document.hintKey ? t(document.hintKey) : undefined}
+                  required={document.required}
+                  disabled={!document.required}
                   upload={form.uploadedDocuments[document.id]}
                   onUpload={(upload) => handleUpload(document.id, upload)}
                   onRemove={() => {
@@ -375,6 +377,8 @@ function DocumentUploadCard({
   icon: Icon,
   label,
   hint,
+  required = false,
+  disabled = false,
   upload,
   onUpload,
   onRemove,
@@ -382,6 +386,8 @@ function DocumentUploadCard({
   icon: LucideIcon;
   label: string;
   hint?: string;
+  required?: boolean;
+  disabled?: boolean;
   upload?: ListingDocumentUpload;
   onUpload: (upload: ListingDocumentUpload) => void;
   onRemove: () => void;
@@ -389,7 +395,12 @@ function DocumentUploadCard({
   const t = useTranslation();
 
   return (
-    <div className="rounded-xl border border-[#EEEEEE] bg-white p-4">
+    <div
+      className={`rounded-xl border border-[#EEEEEE] bg-white p-4 ${
+        disabled ? "bg-[#FAFAFA] opacity-55" : ""
+      }`}
+      aria-disabled={disabled || undefined}
+    >
       <div className="flex items-start gap-3">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#F5F5F5]">
           <Icon className="h-5 w-5 text-[#676565]" strokeWidth={1.75} />
@@ -397,9 +408,15 @@ function DocumentUploadCard({
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <p className="text-sm font-bold font-satoshi text-[#2F2F2F]">{label}</p>
-            <span className="rounded-full bg-[#FDEBEB] px-2 py-0.5 text-[10px] font-bold font-satoshi uppercase tracking-wide text-[#C0392B]">
-              {t("vendor.addListing.documents.requiredBadge")}
-            </span>
+            {required ? (
+              <span className="rounded-full bg-[#FDEBEB] px-2 py-0.5 text-[10px] font-bold font-satoshi uppercase tracking-wide text-[#C0392B]">
+                {t("vendor.addListing.documents.requiredBadge")}
+              </span>
+            ) : (
+              <span className="rounded-full bg-[#F0F0F0] px-2 py-0.5 text-[10px] font-bold font-satoshi uppercase tracking-wide text-[#9E9E9E]">
+                {t("vendor.addListing.optional")}
+              </span>
+            )}
           </div>
           {hint ? (
             <p className="mt-1 text-xs font-medium font-satoshi leading-relaxed text-[#676565]">
@@ -409,7 +426,17 @@ function DocumentUploadCard({
         </div>
       </div>
 
-      {upload ? (
+      {disabled ? (
+        <div className="mt-4 flex cursor-not-allowed flex-col items-center justify-center rounded-lg border border-dashed border-[#E0E0E0] bg-[#F5F5F5] px-4 py-8 text-center pointer-events-none">
+          <CloudUpload className="h-6 w-6 text-[#BDBDBD]" />
+          <p className="mt-2 text-xs font-semibold font-satoshi text-[#9E9E9E]">
+            {t("vendor.addListing.documents.uploadPrompt")}
+          </p>
+          <p className="mt-1 text-[11px] font-medium font-satoshi text-[#BDBDBD]">
+            {t("vendor.addListing.documents.uploadFormats")}
+          </p>
+        </div>
+      ) : upload ? (
         <div className="mt-4 space-y-2">
           <DocumentUploadPreview upload={upload} />
           <button

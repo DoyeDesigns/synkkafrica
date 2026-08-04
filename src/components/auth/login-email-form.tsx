@@ -57,7 +57,7 @@ export function LoginEmailForm() {
   if (step === "code") {
     return (
       <form action={handleVerify} className="space-y-4">
-        <p className="text-sm font-satoshi text-foreground/70">
+        <p className="text-center text-sm font-satoshi text-foreground/70">
           We sent a 6-digit code to <span className="font-semibold">{email}</span>.
         </p>
         <div className="relative">

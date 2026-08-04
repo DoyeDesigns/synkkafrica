@@ -8,6 +8,23 @@ const input =
 
 export type TravelerValue = Partial<TravelerInput>;
 
+/** Narrow form state to the full traveler payload expected by createBooking. */
+export function toTravelerInput(value: TravelerValue): TravelerInput {
+  return {
+    title: value.title ?? "MR",
+    firstName: value.firstName ?? "",
+    lastName: value.lastName ?? "",
+    dateOfBirth: value.dateOfBirth ?? "",
+    gender: value.gender ?? "M",
+    nationality: value.nationality ?? "",
+    passportNumber: value.passportNumber ?? "",
+    passportExpiry: value.passportExpiry ?? "",
+    passportIssuingCountry: value.passportIssuingCountry ?? "",
+    frequentFlyerProgram: value.frequentFlyerProgram,
+    frequentFlyerNumber: value.frequentFlyerNumber,
+  };
+}
+
 const TITLES = ["MR", "MS", "MRS", "MISS", "DR"].map((t) => ({
   value: t,
   label: t.charAt(0) + t.slice(1).toLowerCase(),

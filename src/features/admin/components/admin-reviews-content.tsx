@@ -170,6 +170,19 @@ export function AdminReviewsContent() {
         </div>
       </div>
 
+      <section className="rounded-xl border border-[#EEEEEE] bg-[#FAFAFA] p-4">
+        <h3 className="text-sm font-bold font-satoshi text-[#2F2F2F]">
+          {t("admin.reviews.actionsGuideTitle")}
+        </h3>
+        <ul className="mt-3 space-y-2 text-xs font-medium font-satoshi text-[#676565]">
+          <li>{t("admin.reviews.actionsGuide.publish")}</li>
+          <li>{t("admin.reviews.actionsGuide.flag")}</li>
+          <li>{t("admin.reviews.actionsGuide.delete")}</li>
+          <li>{t("admin.reviews.actionsGuide.responseRequired")}</li>
+          <li>{t("admin.reviews.actionsGuide.clearResponseRequired")}</li>
+        </ul>
+      </section>
+
       <div className="flex flex-wrap gap-2">
         {ADMIN_REVIEW_CATEGORY_FILTERS.map((category) => {
           const isActive = categoryFilter === category;
@@ -309,7 +322,7 @@ export function AdminReviewsContent() {
 
                   <label className="mt-4 flex flex-col gap-2">
                     <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
-                      {t("admin.reviews.respondAsSynkkafrica")}
+                      {t("admin.reviews.respondAsSynkAfrica")}
                     </span>
                     <textarea
                       value={responseDrafts[review.id] ?? ""}

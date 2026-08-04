@@ -8,7 +8,11 @@ export type VendorBusinessProfile = {
   payoutBankId: VendorPayoutBankId;
   payoutAccountNumber: string;
   payoutAccountName: string;
+  payoutAccountLastUpdatedAt: string;
 };
+
+/** Minimum months between payout account number changes. */
+export const PAYOUT_ACCOUNT_CHANGE_COOLDOWN_MONTHS = 6;
 
 export const VENDOR_PAYOUT_BANK_OPTIONS: Array<{
   id: VendorPayoutBankId;
@@ -35,8 +39,25 @@ export function createDefaultVendorBusinessProfile(
     payoutBankId: "gtbank",
     payoutAccountNumber: "0123454521",
     payoutAccountName: "Alex Autos Experiences Ltd",
+    payoutAccountLastUpdatedAt: new Date(
+      Date.now() - 45 * 24 * 60 * 60 * 1000,
+    ).toISOString(),
     ...overrides,
   };
+}
+
+export function canChangePayoutAccountNumber(profile: VendorBusinessProfile) {
+  const lastUpdated = new Date(profile.payoutAccountLastUpdatedAt);
+  const nextAllowed = new Date(lastUpdated);
+  nextAllowed.setMonth(nextAllowed.getMonth() + PAYOUT_ACCOUNT_CHANGE_COOLDOWN_MONTHS);
+  return Date.now() >= nextAllowed.getTime();
+}
+
+export function getPayoutAccountNextChangeDate(profile: VendorBusinessProfile) {
+  const lastUpdated = new Date(profile.payoutAccountLastUpdatedAt);
+  const nextAllowed = new Date(lastUpdated);
+  nextAllowed.setMonth(nextAllowed.getMonth() + PAYOUT_ACCOUNT_CHANGE_COOLDOWN_MONTHS);
+  return nextAllowed;
 }
 
 export const DEFAULT_VENDOR_BUSINESS_PROFILE =

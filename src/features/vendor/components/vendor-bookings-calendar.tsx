@@ -191,7 +191,7 @@ export function VendorBookingsCalendar({ bookings }: VendorBookingsCalendarProps
                 >
                   <p className="text-sm font-bold font-satoshi">
                     <Link
-                      href={getVendorListingHref(booking.listingId)}
+                      href={getVendorListingHref(booking.listingId, { from: "bookings" })}
                       className="text-[#135391] underline underline-offset-2 transition-colors hover:text-[#004785]"
                     >
                       {booking.listingTitle}

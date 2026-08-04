@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import {
   BedDouble,
   Car,
@@ -10,15 +11,9 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, type KeyboardEvent, type ReactNode } from "react";
+import { useEffect, useState, type KeyboardEvent, type ReactNode } from "react";
 
 import { VendorAddListingStepper } from "@/features/vendor/components/vendor-add-listing-stepper";
-import { DocumentsStepPage } from "@/features/vendor/components/vendor-add-listing-documents-step";
-import { AccommodationDetailsFields } from "@/features/vendor/components/vendor-add-listing-accommodation-details";
-import { ExperienceDetailsFields } from "@/features/vendor/components/vendor-add-listing-experience-details";
-import { AccommodationPricingStep } from "@/features/vendor/components/vendor-add-listing-accommodation-pricing";
-import { ExperiencePricingStep } from "@/features/vendor/components/vendor-add-listing-experience-pricing";
-import { ReviewStepPage } from "@/features/vendor/components/vendor-add-listing-review-step";
 import {
   ADD_LISTING_STEPS,
   EMPTY_ADD_LISTING_FORM,
@@ -35,8 +30,68 @@ import {
   type CarHandoverMethod,
   type ListingCategory,
 } from "@/features/vendor/data/vendor-add-listing";
+import {
+  getVendorServiceCategory,
+  setVendorServiceCategory,
+} from "@/features/vendor/data/vendor-service-category";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
+
+const DocumentsStepPage = dynamic(
+  () =>
+    import("@/features/vendor/components/vendor-add-listing-documents-step").then(
+      (mod) => mod.DocumentsStepPage,
+    ),
+  { loading: () => <StepLoadingFallback /> },
+);
+
+const AccommodationDetailsFields = dynamic(
+  () =>
+    import("@/features/vendor/components/vendor-add-listing-accommodation-details").then(
+      (mod) => mod.AccommodationDetailsFields,
+    ),
+  { loading: () => <StepLoadingFallback /> },
+);
+
+const ExperienceDetailsFields = dynamic(
+  () =>
+    import("@/features/vendor/components/vendor-add-listing-experience-details").then(
+      (mod) => mod.ExperienceDetailsFields,
+    ),
+  { loading: () => <StepLoadingFallback /> },
+);
+
+const AccommodationPricingStep = dynamic(
+  () =>
+    import("@/features/vendor/components/vendor-add-listing-accommodation-pricing").then(
+      (mod) => mod.AccommodationPricingStep,
+    ),
+  { loading: () => <StepLoadingFallback /> },
+);
+
+const ExperiencePricingStep = dynamic(
+  () =>
+    import("@/features/vendor/components/vendor-add-listing-experience-pricing").then(
+      (mod) => mod.ExperiencePricingStep,
+    ),
+  { loading: () => <StepLoadingFallback /> },
+);
+
+const ReviewStepPage = dynamic(
+  () =>
+    import("@/features/vendor/components/vendor-add-listing-review-step").then(
+      (mod) => mod.ReviewStepPage,
+    ),
+  { loading: () => <StepLoadingFallback /> },
+);
+
+function StepLoadingFallback() {
+  return (
+    <div className="flex min-h-40 items-center justify-center rounded-xl border border-[#EEEEEE] bg-white p-8">
+      <p className="text-sm font-medium font-satoshi text-[#676565]">Loading step…</p>
+    </div>
+  );
+}
 
 const inputClassName =
   "h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]";
@@ -73,15 +128,38 @@ const CATEGORY_OPTIONS: Array<{
 export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exitHref?: string }) {
   const t = useTranslation();
   const router = useRouter();
+  const [lockedCategory, setLockedCategory] = useState<ListingCategory | null>(null);
   const [currentStep, setCurrentStep] = useState<AddListingStepId>("details");
   const [form, setForm] = useState<AddListingFormState>(EMPTY_ADD_LISTING_FORM);
   const [draftSaved, setDraftSaved] = useState(false);
+
+  useEffect(() => {
+    const savedCategory = getVendorServiceCategory();
+    setLockedCategory(savedCategory);
+
+    if (savedCategory) {
+      setForm((current) => ({ ...current, category: savedCategory }));
+    }
+  }, []);
+
+  const persistServiceCategory = (category: ListingCategory) => {
+    if (lockedCategory) {
+      return;
+    }
+
+    setVendorServiceCategory(category);
+    setLockedCategory(category);
+  };
 
   const updateForm = (patch: Partial<AddListingFormState>) => {
     setForm((current) => ({ ...current, ...patch }));
   };
 
   const handleCategoryChange = (category: ListingCategory) => {
+    if (lockedCategory && category !== lockedCategory) {
+      return;
+    }
+
     updateForm({ category });
     setCurrentStep("details");
   };
@@ -108,12 +186,14 @@ export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exi
   };
 
   const handleSaveDraft = () => {
+    persistServiceCategory(form.category);
     setDraftSaved(true);
     window.setTimeout(() => setDraftSaved(false), 2500);
   };
 
   const handlePublish = () => {
-    router.push(exitHref);
+    persistServiceCategory(form.category);
+    router.push("/vendor/add-listing/success");
   };
 
   const isLastStep = currentStep === "review";
@@ -174,7 +254,12 @@ export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exi
       ) : (
       <div className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm sm:p-6">
         {currentStep === "details" ? (
-          <DetailsStep form={form} onChange={updateForm} onCategoryChange={handleCategoryChange} />
+          <DetailsStep
+            form={form}
+            lockedCategory={lockedCategory}
+            onChange={updateForm}
+            onCategoryChange={handleCategoryChange}
+          />
         ) : null}
         {currentStep === "media" ? (
           <MediaStep form={form} onChange={updateForm} />
@@ -250,14 +335,19 @@ export function VendorAddListingContent({ exitHref = "/vendor/listings" }: { exi
 
 function DetailsStep({
   form,
+  lockedCategory,
   onChange,
   onCategoryChange,
 }: {
   form: AddListingFormState;
+  lockedCategory: ListingCategory | null;
   onChange: (patch: Partial<AddListingFormState>) => void;
   onCategoryChange: (category: ListingCategory) => void;
 }) {
   const t = useTranslation();
+  const lockedOption = lockedCategory
+    ? CATEGORY_OPTIONS.find((option) => option.id === lockedCategory)
+    : null;
 
   return (
     <div className="space-y-8">
@@ -265,20 +355,31 @@ function DetailsStep({
         <h3 className="text-base font-bold font-satoshi text-[#2F2F2F]">
           {t("vendor.addListing.whatAreYouListing")}
         </h3>
+        <p className="mt-2 text-xs font-medium font-satoshi text-[#676565]">
+          {lockedCategory
+            ? t("vendor.addListing.categoryLockedHint", {
+                category: lockedOption ? t(lockedOption.titleKey) : lockedCategory,
+              })
+            : t("vendor.addListing.categoryChooseHint")}
+        </p>
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           {CATEGORY_OPTIONS.map((option) => {
             const Icon = option.icon;
             const isSelected = form.category === option.id;
+            const isDisabled = lockedCategory !== null && option.id !== lockedCategory;
 
             return (
               <button
                 key={option.id}
                 type="button"
+                disabled={isDisabled}
                 onClick={() => onCategoryChange(option.id)}
                 className={`relative rounded-xl border px-4 py-6 text-center transition-colors ${
                   isSelected
                     ? "border-[#D85A30] bg-[#FFF8F5]"
-                    : "border-[#E5E5E5] bg-white hover:border-[#D0D0D0]"
+                    : isDisabled
+                      ? "cursor-not-allowed border-[#E5E5E5] bg-[#FAFAFA] opacity-50"
+                      : "border-[#E5E5E5] bg-white hover:border-[#D0D0D0]"
                 }`}
               >
                 <span

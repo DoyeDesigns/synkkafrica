@@ -255,8 +255,12 @@ export function getVendorBookingListingOptions(
     .sort((left, right) => left.title.localeCompare(right.title));
 }
 
-export function getVendorListingHref(listingId: string) {
-  return `/vendor/listings?listing=${encodeURIComponent(listingId)}`;
+export function getVendorListingHref(
+  listingId: string,
+  options?: { from?: "bookings" },
+) {
+  const path = `/vendor/listings/detail/${encodeURIComponent(listingId)}`;
+  return options?.from === "bookings" ? `${path}?from=bookings` : path;
 }
 
 export function getVendorBookingTab(
