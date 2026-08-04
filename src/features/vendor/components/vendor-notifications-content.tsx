@@ -9,17 +9,54 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import {
-  filterNotifications,
   VENDOR_NOTIFICATION_FILTERS,
-  VENDOR_NOTIFICATIONS,
-  type VendorNotification,
   type VendorNotificationFilter,
   type VendorNotificationType,
 } from "@/features/vendor/data/vendor-notifications";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
+import {
+  listVendorNotifications,
+  markAllVendorNotificationsRead,
+  markVendorNotificationRead,
+  type VendorNotificationApi,
+} from "@/lib/api/vendor";
+
+// A notification as the UI renders it (plain title/message from the backend).
+type DisplayNotification = {
+  id: string;
+  type: VendorNotificationType;
+  title: string;
+  message: string;
+  createdAt: string;
+  read: boolean;
+  href?: string | null;
+};
+
+const KNOWN_TYPES: readonly string[] = [
+  "new_booking",
+  "booking_reminder",
+  "payout_confirmation",
+  "admin_message",
+];
+
+function toDisplay(n: VendorNotificationApi): DisplayNotification {
+  return {
+    id: n.id,
+    type: (KNOWN_TYPES.includes(n.type)
+      ? n.type
+      : "admin_message") as VendorNotificationType,
+    title: n.title,
+    message: n.message,
+    createdAt: n.createdAt,
+    read: n.read,
+    href: n.href,
+  };
+}
 
 const FILTER_LABEL_KEYS: Record<VendorNotificationFilter, TranslationKey> = {
   all: "vendor.notifications.filter.all",
@@ -55,18 +92,12 @@ function formatNotificationTime(
   t: (key: TranslationKey, params?: Record<string, string | number>) => string,
 ) {
   const date = new Date(isoDate);
-  const now = new Date();
-  const diffMs = now.getTime() - date.getTime();
-  const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-
-  if (diffHours < 1) {
-    return t("vendor.notifications.time.justNow");
-  }
-
-  if (diffHours < 24) {
+  const diffHours = Math.floor(
+    (Date.now() - date.getTime()) / (1000 * 60 * 60),
+  );
+  if (diffHours < 1) return t("vendor.notifications.time.justNow");
+  if (diffHours < 24)
     return t("vendor.notifications.time.hoursAgo", { count: diffHours });
-  }
-
   return new Intl.DateTimeFormat("en-GB", {
     day: "numeric",
     month: "short",
@@ -80,37 +111,47 @@ type VendorNotificationsContentProps = {
 };
 
 export function VendorNotificationsContent({
-  vendorName = "Alex Autos",
+  vendorName,
 }: VendorNotificationsContentProps) {
   const t = useTranslation();
-  const displayName = vendorName?.trim() || "Alex Autos";
+  const { data: session } = useSession();
+  const token = session?.accessToken;
+  const queryClient = useQueryClient();
+  const displayName = vendorName?.trim() || "your business";
   const [activeFilter, setActiveFilter] =
     useState<VendorNotificationFilter>("all");
-  const [notifications, setNotifications] = useState(VENDOR_NOTIFICATIONS);
+
+  const { data: raw } = useQuery({
+    queryKey: ["vendor-notifications"],
+    queryFn: () => listVendorNotifications(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+  const notifications = useMemo(() => (raw ?? []).map(toDisplay), [raw]);
+
+  const invalidate = () =>
+    queryClient.invalidateQueries({ queryKey: ["vendor-notifications"] });
+  const markReadMutation = useMutation({
+    mutationFn: (id: string) => markVendorNotificationRead(token as string, id),
+    onSuccess: invalidate,
+  });
+  const markAllMutation = useMutation({
+    mutationFn: () => markAllVendorNotificationsRead(token as string),
+    onSuccess: invalidate,
+  });
 
   const filteredNotifications = useMemo(
-    () => filterNotifications(notifications, activeFilter),
+    () =>
+      activeFilter === "all"
+        ? notifications
+        : notifications.filter((n) => n.type === activeFilter),
     [activeFilter, notifications],
   );
 
   const unreadCount = useMemo(
-    () => notifications.filter((notification) => !notification.read).length,
+    () => notifications.filter((n) => !n.read).length,
     [notifications],
   );
-
-  const handleMarkAllRead = () => {
-    setNotifications((current) =>
-      current.map((notification) => ({ ...notification, read: true })),
-    );
-  };
-
-  const handleMarkRead = (id: string) => {
-    setNotifications((current) =>
-      current.map((notification) =>
-        notification.id === id ? { ...notification, read: true } : notification,
-      ),
-    );
-  };
 
   return (
     <>
@@ -123,7 +164,7 @@ export function VendorNotificationsContent({
         {unreadCount > 0 ? (
           <button
             type="button"
-            onClick={handleMarkAllRead}
+            onClick={() => markAllMutation.mutate()}
             className="inline-flex items-center justify-center rounded-lg border border-[#135391] bg-white px-4 py-2.5 text-sm font-bold font-satoshi text-[#135391] transition-colors hover:bg-[#F0F6FC]"
           >
             {t("vendor.notifications.markAllRead")}
@@ -138,15 +179,11 @@ export function VendorNotificationsContent({
               <Bell className="h-5 w-5 text-[#D85A30]" strokeWidth={2} />
               {t("vendor.nav.notifications")}
             </h3>
-            {unreadCount > 0 ? (
-              <p className="mt-1 text-sm font-medium font-satoshi text-[#676565]">
-                {t("vendor.notifications.unreadCount", { count: unreadCount })}
-              </p>
-            ) : (
-              <p className="mt-1 text-sm font-medium font-satoshi text-[#676565]">
-                {t("vendor.notifications.allCaughtUp")}
-              </p>
-            )}
+            <p className="mt-1 text-sm font-medium font-satoshi text-[#676565]">
+              {unreadCount > 0
+                ? t("vendor.notifications.unreadCount", { count: unreadCount })
+                : t("vendor.notifications.allCaughtUp")}
+            </p>
           </div>
         </div>
 
@@ -157,7 +194,6 @@ export function VendorNotificationsContent({
         >
           {VENDOR_NOTIFICATION_FILTERS.map((filter) => {
             const isActive = activeFilter === filter;
-
             return (
               <button
                 key={filter}
@@ -181,7 +217,7 @@ export function VendorNotificationsContent({
               <NotificationCard
                 key={notification.id}
                 notification={notification}
-                onMarkRead={handleMarkRead}
+                onMarkRead={(id) => markReadMutation.mutate(id)}
                 formatTime={(isoDate) => formatNotificationTime(isoDate, t)}
               />
             ))
@@ -203,7 +239,7 @@ function NotificationCard({
   onMarkRead,
   formatTime,
 }: {
-  notification: VendorNotification;
+  notification: DisplayNotification;
   onMarkRead: (id: string) => void;
   formatTime: (isoDate: string) => string;
 }) {
@@ -230,14 +266,14 @@ function NotificationCard({
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">
                 <h4 className="text-sm font-bold font-satoshi text-[#2F2F2F]">
-                  {t(notification.titleKey)}
+                  {notification.title}
                 </h4>
                 {!notification.read ? (
                   <span className="h-2 w-2 rounded-full bg-[#D85A30]" />
                 ) : null}
               </div>
               <p className="mt-1 text-sm font-medium font-satoshi text-[#676565]">
-                {t(notification.messageKey)}
+                {notification.message}
               </p>
             </div>
 

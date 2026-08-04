@@ -33,6 +33,8 @@ export type AccountNotification = {
   period: NotificationPeriod;
   icon: NotificationIconType;
   titleKey: TranslationKey;
+  // Raw title from the backend feed; overrides `titleKey` when present.
+  title?: string;
   messageKey: TranslationKey;
   messageParams?: Record<string, string | number>;
   message?: NotificationMessagePart[];

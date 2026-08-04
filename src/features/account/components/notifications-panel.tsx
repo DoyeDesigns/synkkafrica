@@ -100,7 +100,7 @@ export function NotificationItem({
       </div>
 
       <p className="text-sm font-semibold font-inter text-foreground">
-        {t(notification.titleKey)}
+        {notification.title ?? t(notification.titleKey)}
       </p>
 
       {notification.message ? (

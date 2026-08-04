@@ -2,14 +2,14 @@
 
 import { ChevronDown, Mail, MessageCircle, Paperclip, Phone } from "lucide-react";
 import { useMemo, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { AccountSupportFaqAccordion } from "@/features/account/components/account-support-faq-accordion";
 import { AccountSupportTicketsTab } from "@/features/account/components/account-support-tickets-tab";
 import {
   ACCOUNT_SUPPORT_CATEGORIES,
   ACCOUNT_SUPPORT_CONTACT,
-  ACCOUNT_SUPPORT_TICKETS,
-  createAccountSupportTicket,
   EMPTY_ACCOUNT_SUPPORT_FORM,
   type AccountSupportCategory,
   type AccountSupportTicket,
@@ -18,6 +18,42 @@ import {
 import { useAccountBookings } from "@/features/account/hooks/use-account-bookings";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
+import {
+  createSupportTicket,
+  getSupportTicket,
+  listMyTickets,
+  replySupportTicket,
+  type SupportTicketApi,
+  type SupportTicketDetailApi,
+} from "@/lib/api/users";
+
+function toAccountTicket(
+  s: SupportTicketApi,
+  messages: AccountSupportTicket["messages"] = [],
+): AccountSupportTicket {
+  return {
+    id: s.id,
+    ticketNumber: s.ticketNumber,
+    category: s.category as AccountSupportCategory,
+    subject: s.subject,
+    status: s.status,
+    createdAt: s.createdAt,
+    updatedAt: s.updatedAt,
+    relatedOrderNumber: s.bookingReference ?? undefined,
+    messages,
+  };
+}
+
+function toMessages(
+  detail: SupportTicketDetailApi,
+): AccountSupportTicket["messages"] {
+  return detail.messages.map((m) => ({
+    id: m.id,
+    sender: m.sender,
+    text: m.body,
+    createdAt: m.createdAt,
+  }));
+}
 
 type SupportTab = "contact" | "tickets";
 
@@ -52,9 +88,11 @@ export function AccountSupportContent({
   userEmail,
 }: AccountSupportContentProps) {
   const t = useTranslation();
+  const { data: session } = useSession();
+  const token = session?.accessToken;
+  const queryClient = useQueryClient();
   const { bookings, ready } = useAccountBookings(userId, userEmail);
   const [activeTab, setActiveTab] = useState<SupportTab>("contact");
-  const [tickets, setTickets] = useState(ACCOUNT_SUPPORT_TICKETS);
   const [selectedTicketId, setSelectedTicketId] = useState<string | null>(null);
   const [form, setForm] = useState<CreateAccountSupportTicketInput>(
     EMPTY_ACCOUNT_SUPPORT_FORM,
@@ -62,6 +100,67 @@ export function AccountSupportContent({
   const [submittedTicketNumber, setSubmittedTicketNumber] = useState<
     string | null
   >(null);
+
+  const { data: rawTickets = [] } = useQuery({
+    queryKey: ["account-tickets"],
+    queryFn: () => listMyTickets(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+
+  const { data: selectedDetail } = useQuery({
+    queryKey: ["account-ticket", selectedTicketId],
+    queryFn: () => getSupportTicket(token as string, selectedTicketId as string),
+    enabled: Boolean(token && selectedTicketId),
+    refetchOnWindowFocus: false,
+  });
+
+  // Tickets for the tab: merge the selected ticket's fetched messages in.
+  const tickets = useMemo<AccountSupportTicket[]>(
+    () =>
+      rawTickets.map((s) =>
+        s.id === selectedTicketId && selectedDetail
+          ? toAccountTicket(s, toMessages(selectedDetail))
+          : toAccountTicket(s),
+      ),
+    [rawTickets, selectedTicketId, selectedDetail],
+  );
+
+  const invalidateTickets = () => {
+    queryClient.invalidateQueries({ queryKey: ["account-tickets"] });
+    if (selectedTicketId) {
+      queryClient.invalidateQueries({
+        queryKey: ["account-ticket", selectedTicketId],
+      });
+    }
+  };
+
+  const createMutation = useMutation({
+    mutationFn: (input: CreateAccountSupportTicketInput) =>
+      createSupportTicket(token as string, {
+        category: input.category,
+        subject: input.subject.trim(),
+        message: input.message.trim(),
+        bookingReference:
+          input.relatedOrderNumber && input.relatedOrderNumber !== "none"
+            ? input.relatedOrderNumber
+            : undefined,
+      }),
+    onSuccess: (ticket) => {
+      setForm(EMPTY_ACCOUNT_SUPPORT_FORM);
+      setSubmittedTicketNumber(ticket.ticketNumber);
+      setActiveTab("tickets");
+      setSelectedTicketId(ticket.id);
+      invalidateTickets();
+      window.setTimeout(() => setSubmittedTicketNumber(null), 4000);
+    },
+  });
+
+  const replyMutation = useMutation({
+    mutationFn: (v: { ticketId: string; body: string }) =>
+      replySupportTicket(token as string, v.ticketId, v.body),
+    onSuccess: () => invalidateTickets(),
+  });
 
   const orderOptions = useMemo(
     () =>
@@ -78,33 +177,18 @@ export function AccountSupportContent({
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    if (!form.subject.trim() || !form.message.trim()) {
+    if (!token || !form.subject.trim() || !form.message.trim()) {
       return;
     }
-
-    const ticket = createAccountSupportTicket({
-      ...form,
-      relatedOrderNumber:
-        form.relatedOrderNumber && form.relatedOrderNumber !== "none"
-          ? form.relatedOrderNumber
-          : undefined,
-    });
-
-    setTickets((current) => [ticket, ...current]);
-    setForm(EMPTY_ACCOUNT_SUPPORT_FORM);
-    setSubmittedTicketNumber(ticket.ticketNumber);
-    setActiveTab("tickets");
-    setSelectedTicketId(ticket.id);
-    window.setTimeout(() => setSubmittedTicketNumber(null), 4000);
+    if (!createMutation.isPending) createMutation.mutate(form);
   };
 
+  // The tab appends the new message locally, then hands us the updated ticket.
+  // We extract the newest customer message and persist it via the reply API.
   const handleUpdateTicket = (updatedTicket: AccountSupportTicket) => {
-    setTickets((current) =>
-      current.map((ticket) =>
-        ticket.id === updatedTicket.id ? updatedTicket : ticket,
-      ),
-    );
+    const last = updatedTicket.messages[updatedTicket.messages.length - 1];
+    if (!token || !last || last.sender !== "user" || !last.text) return;
+    replyMutation.mutate({ ticketId: updatedTicket.id, body: last.text });
   };
 
   const isFormValid =

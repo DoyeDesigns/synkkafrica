@@ -2,22 +2,35 @@
 
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 
 import type { AccommodationDeal } from "@/features/travel/data/accommodations-landing";
 import { useTranslation } from "@/hooks/use-translation";
+import { listPackages, toAccommodationDeal } from "@/lib/api/packages";
 import { InfiniteMarquee } from "../infinite-marquee";
 import { OngoingDealCard } from "../ongoing-deal-card";
 
 type OngoingDealsSectionProps = {
-  items: AccommodationDeal[];
+  // Kept for call-site compatibility; live published packages are the source.
+  items?: AccommodationDeal[];
   seeMoreHref?: string;
 };
 
 export function OngoingDealsSection({
-  items,
   seeMoreHref = "/tour-packages",
 }: OngoingDealsSectionProps) {
   const t = useTranslation();
+  const { data } = useQuery({
+    queryKey: ["packages"],
+    queryFn: listPackages,
+    refetchOnWindowFocus: false,
+  });
+  const items = (data ?? []).map(toAccommodationDeal);
+
+  // No published packages → hide the section (no empty carousel).
+  if (items.length === 0) {
+    return null;
+  }
 
   return (
     <section className="space-y-8">

@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 
 import { CarBookingPage } from "@/features/travel/components/car-booking/car-booking-page";
-import { getCarById } from "@/features/travel/data/car-booking";
+import { getCar, toCarDetail } from "@/lib/api/cars";
+import type { CarDetail } from "@/features/travel/data/car-booking";
 
 type CarBookingRouteProps = {
   params: Promise<{ carId: string }>;
@@ -9,9 +10,11 @@ type CarBookingRouteProps = {
 
 export default async function CarBookingRoute({ params }: CarBookingRouteProps) {
   const { carId } = await params;
-  const car = getCarById(carId);
 
-  if (!car) {
+  let car: CarDetail;
+  try {
+    car = toCarDetail(await getCar(carId));
+  } catch {
     notFound();
   }
 

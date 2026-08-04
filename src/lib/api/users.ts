@@ -47,3 +47,184 @@ export async function requestErasure(token: string): Promise<void> {
 export async function exportMyData(token: string): Promise<unknown> {
   return apiFetch<unknown>("/users/me/export", { token });
 }
+
+// --- Customer bookings ---
+
+export type CustomerBookingStatus = "upcoming" | "past" | "cancelled";
+
+export type CustomerBookingApi = {
+  id: string;
+  orderNumber: string;
+  orderDate: string;
+  experienceDate: string | null;
+  experienceTime: string | null;
+  totalAmount: number;
+  currency: string;
+  title: string;
+  description: string;
+  location: string;
+  image: string | null;
+  rating: number;
+  reviewCount: number;
+  status: CustomerBookingStatus;
+  rawStatus: string;
+  guestCount: number;
+  productType: string | null;
+  listingId: string | null;
+  paymentSecured: boolean;
+  cancelledAt: string | null;
+};
+
+export async function listMyBookings(
+  token: string,
+): Promise<CustomerBookingApi[]> {
+  return apiFetch<CustomerBookingApi[]>("/users/me/bookings", { token });
+}
+
+export async function cancelMyBooking(
+  token: string,
+  id: string,
+): Promise<CustomerBookingApi> {
+  return apiFetch<CustomerBookingApi>(`/users/me/bookings/${id}/cancel`, {
+    method: "POST",
+    token,
+  });
+}
+
+// --- Saved listings (wishlist) ---
+
+export type SavedListingApi = {
+  savedId: string;
+  listingId: string;
+  category: "cars" | "accommodations" | "experiences";
+  title: string;
+  location: string | null;
+  coverImageUrl: string | null;
+  ratingAvg: number;
+  ratingCount: number;
+  savedAt: string;
+};
+
+export async function listMySaved(token: string): Promise<SavedListingApi[]> {
+  return apiFetch<SavedListingApi[]>("/users/me/saved", { token });
+}
+
+export async function saveListing(
+  token: string,
+  listingId: string,
+): Promise<{ saved: boolean }> {
+  return apiFetch<{ saved: boolean }>(`/users/me/saved/${listingId}`, {
+    method: "POST",
+    token,
+  });
+}
+
+export async function unsaveListing(
+  token: string,
+  listingId: string,
+): Promise<{ saved: boolean }> {
+  return apiFetch<{ saved: boolean }>(`/users/me/saved/${listingId}`, {
+    method: "DELETE",
+    token,
+  });
+}
+
+// --- Notifications feed ---
+
+export type UserNotificationApi = {
+  id: string;
+  type: string;
+  title: string;
+  message: string;
+  href: string | null;
+  read: boolean;
+  createdAt: string;
+};
+
+export async function listMyNotifications(
+  token: string,
+): Promise<UserNotificationApi[]> {
+  return apiFetch<UserNotificationApi[]>("/users/me/notifications", { token });
+}
+
+export async function markNotificationRead(
+  token: string,
+  id: string,
+): Promise<void> {
+  await apiFetch<void>(`/users/me/notifications/${id}/read`, {
+    method: "PATCH",
+    token,
+  });
+}
+
+export async function markAllNotificationsRead(token: string): Promise<void> {
+  await apiFetch<void>("/users/me/notifications/read-all", {
+    method: "PATCH",
+    token,
+  });
+}
+
+// --- Customer support tickets ---
+
+export type SupportTicketApi = {
+  id: string;
+  ticketNumber: string;
+  subject: string;
+  category: string;
+  status: "open" | "resolved";
+  bookingReference: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type SupportTicketMessageApi = {
+  id: string;
+  sender: "user" | "support";
+  body: string;
+  createdAt: string;
+};
+
+export type SupportTicketDetailApi = SupportTicketApi & {
+  messages: SupportTicketMessageApi[];
+};
+
+export async function listMyTickets(token: string): Promise<SupportTicketApi[]> {
+  return apiFetch<SupportTicketApi[]>("/users/me/support/tickets", { token });
+}
+
+export async function createSupportTicket(
+  token: string,
+  input: {
+    category: string;
+    subject: string;
+    message: string;
+    bookingReference?: string;
+  },
+): Promise<SupportTicketDetailApi> {
+  return apiFetch<SupportTicketDetailApi>("/users/me/support/tickets", {
+    method: "POST",
+    token,
+    body: input,
+  });
+}
+
+export async function getSupportTicket(
+  token: string,
+  id: string,
+): Promise<SupportTicketDetailApi> {
+  return apiFetch<SupportTicketDetailApi>(
+    `/users/me/support/tickets/${id}`,
+    { token },
+  );
+}
+
+export async function replySupportTicket(
+  token: string,
+  id: string,
+  body: string,
+): Promise<SupportTicketDetailApi> {
+  return apiFetch<SupportTicketDetailApi>(
+    `/users/me/support/tickets/${id}/messages`,
+    { method: "POST", token, body: { body } },
+  );
+}

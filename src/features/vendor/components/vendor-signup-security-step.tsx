@@ -10,6 +10,10 @@ import {
   type VendorSignupFormState,
 } from "@/features/vendor/data/vendor-signup";
 import { useTranslation } from "@/hooks/use-translation";
+import {
+  requestVendorOtpAction,
+  verifyVendorOtpAction,
+} from "@/lib/auth/vendor-actions";
 
 const inputClassName =
   "h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]";
@@ -24,6 +28,8 @@ export function VendorSignupSecurityStep({ form, onChange }: VendorSignupSecurit
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [resendSeconds, setResendSeconds] = useState(0);
+  const [sending, setSending] = useState(false);
+  const [otpError, setOtpError] = useState<string | null>(null);
   const otpRefs = useRef<Array<HTMLInputElement | null>>([]);
   const passwordChecks = getPasswordChecks(form.password);
 
@@ -31,13 +37,16 @@ export function VendorSignupSecurityStep({ form, onChange }: VendorSignupSecurit
     onChange({
       ...patch,
       otpSent: false,
-      otpVerified: false,
       otpDigits: ["", "", "", "", "", ""],
+      signupToken: "",
     });
     setResendSeconds(0);
   };
 
-  const canSendOtp = form.phoneNumber.trim().length > 0;
+  // The verification code is emailed to the owner email captured in the
+  // business step (the backend does email OTP, not SMS).
+  const canSendOtp =
+    form.phoneNumber.trim().length > 0 && form.ownerEmail.trim().length > 0;
 
   useEffect(() => {
     if (resendSeconds <= 0) {
@@ -51,11 +60,20 @@ export function VendorSignupSecurityStep({ form, onChange }: VendorSignupSecurit
     return () => window.clearTimeout(timer);
   }, [resendSeconds]);
 
-  const handleSendOtp = () => {
+  const handleSendOtp = async () => {
+    if (sending) return;
+    setSending(true);
+    setOtpError(null);
+    const res = await requestVendorOtpAction(form.ownerEmail);
+    setSending(false);
+    if (!res.ok) {
+      setOtpError(res.error ?? "Could not send a code.");
+      return;
+    }
     onChange({
       otpSent: true,
-      otpVerified: false,
       otpDigits: ["", "", "", "", "", ""],
+      signupToken: "",
     });
     setResendSeconds(45);
     window.setTimeout(() => otpRefs.current[0]?.focus(), 0);
@@ -65,10 +83,11 @@ export function VendorSignupSecurityStep({ form, onChange }: VendorSignupSecurit
     const digit = value.replace(/\D/g, "").slice(-1);
     const nextDigits = [...form.otpDigits];
     nextDigits[index] = digit;
+    setOtpError(null);
 
     onChange({
       otpDigits: nextDigits,
-      otpVerified: false,
+      signupToken: "",
     });
 
     if (digit && index < nextDigits.length - 1) {
@@ -76,9 +95,14 @@ export function VendorSignupSecurityStep({ form, onChange }: VendorSignupSecurit
     }
 
     if (isOtpComplete(nextDigits)) {
-      onChange({
-        otpDigits: nextDigits,
-        otpVerified: true,
+      const code = nextDigits.join("");
+      void verifyVendorOtpAction(form.ownerEmail, code).then((res) => {
+        if (res.ok && res.signupToken) {
+          onChange({ signupToken: res.signupToken });
+        } else {
+          setOtpError(res.error ?? "That code is invalid or expired.");
+          onChange({ signupToken: "" });
+        }
       });
     }
   };
@@ -136,10 +160,16 @@ export function VendorSignupSecurityStep({ form, onChange }: VendorSignupSecurit
         <button
           type="button"
           onClick={handleSendOtp}
-          disabled={!canSendOtp || (resendSeconds > 0 && form.otpSent)}
+          disabled={
+            !canSendOtp || sending || (resendSeconds > 0 && form.otpSent)
+          }
           className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
         >
-          {form.otpSent ? t("vendor.signup.resendOtp") : t("vendor.signup.sendOtp")}
+          {sending
+            ? "Sending…"
+            : form.otpSent
+              ? t("vendor.signup.resendOtp")
+              : t("vendor.signup.sendOtp")}
         </button>
 
         {form.otpSent ? (
@@ -171,9 +201,14 @@ export function VendorSignupSecurityStep({ form, onChange }: VendorSignupSecurit
                 })}
               </p>
             ) : null}
-            {form.otpVerified ? (
+            {form.signupToken ? (
               <p className="text-sm font-semibold font-satoshi text-[#2E7D32]">
                 {t("vendor.signup.otpVerified")}
+              </p>
+            ) : null}
+            {otpError ? (
+              <p className="text-sm font-semibold font-satoshi text-[#C0392B]">
+                {otpError}
               </p>
             ) : null}
           </div>

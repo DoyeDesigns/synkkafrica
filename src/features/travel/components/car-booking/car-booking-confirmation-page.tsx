@@ -8,10 +8,14 @@ import { CarBookingBreadcrumbs } from "@/features/travel/components/car-booking/
 import { CarBookingStepper } from "@/features/travel/components/car-booking/car-booking-stepper";
 import { useTranslation } from "@/hooks/use-translation";
 import type { CarDetail } from "@/features/travel/data/car-booking";
+import { LeaveReviewForm } from "@/features/travel/components/booking/leave-review-form";
+import { getCarPaymentStatus } from "@/lib/api/cars";
 
 type CarBookingConfirmationPageProps = {
   car: CarDetail;
 };
+
+type PaymentState = "checking" | "paid" | "pending" | "none";
 
 const RELOAD_SECONDS = 20;
 
@@ -26,6 +30,26 @@ export function CarBookingConfirmationPage({ car }: CarBookingConfirmationPagePr
   const t = useTranslation();
   const currentStep: CarBookingStepId = "confirmation";
   const [secondsLeft, setSecondsLeft] = useState(RELOAD_SECONDS);
+  const [payment, setPayment] = useState<PaymentState>("none");
+
+  // Verify payment on return from Paystack (bookingId is on the callback URL).
+  useEffect(() => {
+    const bookingId = new URLSearchParams(window.location.search).get(
+      "bookingId",
+    );
+    if (!bookingId) return;
+    let cancelled = false;
+    getCarPaymentStatus(bookingId)
+      .then((res) => {
+        if (!cancelled) setPayment(res.paymentSecured ? "paid" : "pending");
+      })
+      .catch(() => {
+        if (!cancelled) setPayment("pending");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     if (secondsLeft <= 0) {
@@ -48,6 +72,24 @@ export function CarBookingConfirmationPage({ car }: CarBookingConfirmationPagePr
           <CarBookingStepper carId={car.id} currentStep={currentStep} />
         </div>
 
+        {payment !== "none" ? (
+          <div
+            className={`mt-6 rounded-lg px-4 py-3 text-center text-sm font-semibold font-satoshi ${
+              payment === "paid"
+                ? "bg-[#E7F6EC] text-[#2E7D32]"
+                : payment === "checking"
+                  ? "bg-[#F1F5F9] text-[#475569]"
+                  : "bg-[#FDF3EF] text-[#C0392B]"
+            }`}
+          >
+            {payment === "paid"
+              ? "Payment received — your rental is awaiting the host's confirmation."
+              : payment === "checking"
+                ? "Confirming your payment…"
+                : "We haven't received your payment yet. If you were charged, it may take a moment to reflect."}
+          </div>
+        ) : null}
+
         <div className="mt-16 flex flex-col items-center pb-16">
           <div className="w-full max-w-xl rounded-xl bg-white px-8 py-14 text-center shadow-sm sm:px-12 sm:py-16">
             <div className="mx-auto flex h-20 w-20 items-center justify-center">
@@ -68,6 +110,10 @@ export function CarBookingConfirmationPage({ car }: CarBookingConfirmationPagePr
               {t("booking.confirmation.subtitle")}
             </p>
           </div>
+
+          {payment === "paid" ? (
+            <LeaveReviewForm listingId={car.id} />
+          ) : null}
 
           <p className="mt-8 text-sm font-medium font-inter text-foreground">
             {t("booking.confirmation.reloadIn")}{" "}

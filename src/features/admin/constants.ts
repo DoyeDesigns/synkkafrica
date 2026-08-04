@@ -14,9 +14,17 @@ export type AdminNavItem = {
     | "reviews"
     | "users"
     | "verifications"
-    | "support";
-  badge?: number;
+    | "support"
+    | "team"
+    | "audit";
 };
+
+// Super-admin-only nav items, appended in the sidebar when the signed-in admin
+// is a super admin.
+export const ADMIN_SUPER_NAV_ITEMS: AdminNavItem[] = [
+  { id: "team", href: "/admin/team", icon: "team" },
+  { id: "audit", href: "/admin/audit", icon: "audit" },
+];
 
 export const ADMIN_NAV: AdminNavItem[] = [
   { id: "dashboard", href: "/admin", icon: "dashboard" },
@@ -24,15 +32,10 @@ export const ADMIN_NAV: AdminNavItem[] = [
   { id: "cars", href: "/admin/cars", icon: "cars" },
   { id: "accommodations", href: "/admin/accommodations", icon: "accommodations" },
   { id: "vendors", href: "/admin/vendors", icon: "vendors" },
-  { id: "bookings", href: "/admin/bookings", icon: "bookings", badge: 12 },
-  { id: "payouts", href: "/admin/payouts", icon: "payouts", badge: 3 },
-  { id: "reviews", href: "/admin/reviews", icon: "reviews", badge: 2 },
+  { id: "bookings", href: "/admin/bookings", icon: "bookings" },
+  { id: "payouts", href: "/admin/payouts", icon: "payouts" },
+  { id: "reviews", href: "/admin/reviews", icon: "reviews" },
   { id: "users", href: "/admin/users", icon: "users" },
-  {
-    id: "verifications",
-    href: "/admin/verifications",
-    icon: "verifications",
-    badge: 3,
-  },
-  { id: "support", href: "/admin/support", icon: "support", badge: 5 },
+  { id: "verifications", href: "/admin/verifications", icon: "verifications" },
+  { id: "support", href: "/admin/support", icon: "support" },
 ];

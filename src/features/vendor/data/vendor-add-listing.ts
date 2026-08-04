@@ -21,11 +21,17 @@ export type CarTransmission = "automatic" | "manual";
 
 export type ListingMediaKind = "image" | "video";
 
+export type ListingMediaUploadStatus = "uploading" | "uploaded" | "error";
+
 export type ListingMediaItem = {
   id: string;
   name: string;
   previewUrl: string;
   kind: ListingMediaKind;
+  // The stored URL once the direct-to-storage upload completes. Persisted with
+  // the listing (media[].url + coverImageUrl); undefined while uploading/failed.
+  url?: string;
+  status: ListingMediaUploadStatus;
 };
 
 export const LISTING_MEDIA_MAX_BYTES = 10 * 1024 * 1024;
@@ -34,29 +40,79 @@ export const LISTING_MEDIA_MAX_COUNT = 8;
 export const LISTING_MEDIA_ACCEPT =
   "image/png,image/jpeg,image/webp,video/mp4,.png,.jpg,.jpeg,.webp,.mp4";
 
-export function createListingMediaItem(file: File): ListingMediaItem | null {
-  const isImage = file.type.startsWith("image/") || /\.(png|jpe?g|webp)$/i.test(file.name);
-  const isVideo = file.type === "video/mp4" || /\.mp4$/i.test(file.name);
+// Only formats a browser can actually render in <img>/<video>. Note HEIC —
+// the default format for iPhone photos — reports MIME `image/heic`, which
+// passes a naive `startsWith("image/")` check but cannot be previewed or
+// uploaded, so it must be treated as unsupported (with a clear message).
+const RENDERABLE_IMAGE_MIME = /^image\/(png|jpe?g|webp)$/i;
+const RENDERABLE_IMAGE_EXT = /\.(png|jpe?g|webp)$/i;
 
-  if ((!isImage && !isVideo) || file.size > LISTING_MEDIA_MAX_BYTES) {
+export type ListingMediaRejectionReason = "unsupported" | "too_large";
+
+function isRenderableImage(file: File): boolean {
+  return RENDERABLE_IMAGE_MIME.test(file.type) || RENDERABLE_IMAGE_EXT.test(file.name);
+}
+
+function isSupportedVideo(file: File): boolean {
+  return file.type === "video/mp4" || /\.mp4$/i.test(file.name);
+}
+
+// Returns why a file can't be added, or null if it's acceptable. The UI uses
+// this to tell the vendor which files were skipped (instead of dropping them
+// silently, which reads as "nothing happened when I selected images").
+export function getListingMediaRejection(
+  file: File,
+): ListingMediaRejectionReason | null {
+  if (!isRenderableImage(file) && !isSupportedVideo(file)) {
+    return "unsupported";
+  }
+  if (file.size > LISTING_MEDIA_MAX_BYTES) {
+    return "too_large";
+  }
+  return null;
+}
+
+function makeMediaId(): string {
+  // crypto.randomUUID needs a secure context; fall back so a non-secure host
+  // (LAN IP, custom hostname) can't make file selection throw and no-op.
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return `media-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
+export function createListingMediaItem(file: File): ListingMediaItem | null {
+  if (getListingMediaRejection(file) !== null) {
     return null;
   }
 
   return {
-    id: crypto.randomUUID(),
+    id: makeMediaId(),
     name: file.name,
     previewUrl: URL.createObjectURL(file),
-    kind: isVideo ? "video" : "image",
+    kind: isSupportedVideo(file) ? "video" : "image",
+    // Upload kicks off immediately after the item is added; url fills in then.
+    status: "uploading",
   };
 }
 
 export function revokeListingMediaItem(item: ListingMediaItem) {
-  URL.revokeObjectURL(item.previewUrl);
+  // Only object URLs need revoking — a persisted storage URL (restored on
+  // resume) is a normal https URL and must not be touched.
+  if (item.previewUrl.startsWith("blob:")) {
+    URL.revokeObjectURL(item.previewUrl);
+  }
 }
 
 export type ListingDocumentUpload = {
   name: string;
   previewUrl?: string;
+  // The actual file (undefined for docs restored from a saved draft).
+  file?: File;
+  // Uploaded to storage immediately on select (no listing id needed for the
+  // upload itself). On publish only the metadata is attached — fast.
+  objectPath?: string;
+  status?: "uploading" | "uploaded" | "error";
 };
 
 export function createListingDocumentUpload(file: File): ListingDocumentUpload {
@@ -66,6 +122,7 @@ export function createListingDocumentUpload(file: File): ListingDocumentUpload {
   return {
     name: file.name,
     previewUrl: isImage ? URL.createObjectURL(file) : undefined,
+    file,
   };
 }
 
@@ -280,6 +337,42 @@ export const EMPTY_ADD_LISTING_FORM: AddListingFormState = {
   uploadedDocuments: {},
   gpsAcknowledged: false,
 };
+
+// Rebuild the wizard form from a persisted listing so a draft can be reopened
+// and edited. The backend stores the whole form (minus media/document blobs)
+// as opaque `details`, so merging it back over the empty form restores every
+// text/pricing/selection field. Media previews can't be restored (blob URLs
+// aren't persisted), so they start empty and are re-added if needed.
+export function formStateFromListingDetails(
+  category: ListingCategory,
+  details: Record<string, unknown> | null | undefined,
+  media?: unknown[] | null,
+): AddListingFormState {
+  // Media now persists real storage URLs, so a resumed draft can show its
+  // previously-uploaded images directly (no blob needed).
+  const mediaItems: ListingMediaItem[] = (media ?? [])
+    .map((raw): ListingMediaItem | null => {
+      const m = raw as { name?: string; kind?: string; url?: string };
+      if (!m.url) return null;
+      return {
+        id: makeMediaId(),
+        name: m.name ?? "media",
+        previewUrl: m.url,
+        url: m.url,
+        kind: m.kind === "video" ? "video" : "image",
+        status: "uploaded",
+      };
+    })
+    .filter((m): m is ListingMediaItem => m !== null);
+
+  return {
+    ...EMPTY_ADD_LISTING_FORM,
+    ...((details as Partial<AddListingFormState> | null) ?? {}),
+    category,
+    mediaItems,
+    uploadedDocuments: {},
+  };
+}
 
 export function getDetailsStepLabelKey(category: ListingCategory): TranslationKey {
   switch (category) {

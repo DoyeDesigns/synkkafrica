@@ -4,6 +4,11 @@ declare module "next-auth" {
   interface Session {
     user: {
       id: string;
+      // Which realm this session belongs to. "vendor" gates the /vendor area.
+      role?: "customer" | "vendor" | "admin";
+      // Vendor approval state (pending/active/suspended/rejected) for gating
+      // vendor surfaces behind the verification notice.
+      vendorStatus?: string;
     } & DefaultSession["user"];
     // Backend (NestJS) access token — attach as Bearer on API calls.
     accessToken?: string;
@@ -21,5 +26,8 @@ declare module "next-auth/jwt" {
     // Absolute expiry (ms epoch) of the backend access token.
     accessTokenExpires?: number;
     error?: string;
+    realm?: "customer" | "vendor" | "admin";
+    role?: "customer" | "vendor" | "admin";
+    vendorStatus?: string;
   }
 }

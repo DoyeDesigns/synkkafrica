@@ -1,24 +1,49 @@
 "use client";
 
+import Link from "next/link";
 import { ChevronDown, Download } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import {
   buildEarningsStatementCsv,
   computeCommissionSplitSummary,
   EARNINGS_DURATION_OPTIONS,
   filterTransactionsByDuration,
-  VENDOR_BANK_ACCOUNTS,
   VENDOR_COMMISSION_SPLIT,
-  VENDOR_EARNINGS_SUMMARY,
-  VENDOR_TRANSACTIONS,
   type EarningsDuration,
   type VendorTransaction,
 } from "@/features/vendor/data/vendor-earnings";
+import { VENDOR_PAYOUT_BANK_OPTIONS } from "@/features/vendor/data/vendor-business-profile";
 import { useFormatPrice } from "@/hooks/use-format-price";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
+import {
+  getVendorEarnings,
+  getVendorFullProfile,
+  listVendorTransactions,
+  requestVendorPayout,
+  type VendorTransactionApi,
+} from "@/lib/api/vendor";
+
+const BANK_LABEL_BY_ID: Record<string, TranslationKey> = Object.fromEntries(
+  VENDOR_PAYOUT_BANK_OPTIONS.map((b) => [b.id, b.labelKey]),
+);
+
+function toFeTxn(t: VendorTransactionApi): VendorTransaction {
+  return {
+    id: t.id,
+    title: t.title,
+    descriptionKey: t.description as VendorTransaction["descriptionKey"],
+    date: t.date,
+    amount: t.amount,
+    currency: t.currency,
+    type: t.type,
+    status: t.status,
+  };
+}
 
 const STATUS_LABEL_KEYS: Record<
   VendorTransaction["status"],
@@ -49,26 +74,103 @@ type VendorEarningsContentProps = {
 };
 
 export function VendorEarningsContent({
-  vendorName = "Alex Autos",
+  vendorName,
 }: VendorEarningsContentProps) {
   const t = useTranslation();
   const formatPrice = useFormatPrice();
-  const displayName = vendorName?.trim() || "Alex Autos";
+  const { data: session } = useSession();
+  const token = session?.accessToken;
+  const queryClient = useQueryClient();
+  const displayName = vendorName?.trim() || "your business";
   const [withdrawAmount, setWithdrawAmount] = useState("");
-  const [selectedBankId, setSelectedBankId] = useState(
-    VENDOR_BANK_ACCOUNTS[0]?.id ?? "",
-  );
   const [duration, setDuration] = useState<EarningsDuration>("all");
   const [durationOpen, setDurationOpen] = useState(false);
+  const [payoutError, setPayoutError] = useState<string | null>(null);
+  const [payoutDone, setPayoutDone] = useState(false);
   const durationDropdownRef = useRef<HTMLDivElement>(null);
 
-  const { currency, availableBalance } = VENDOR_EARNINGS_SUMMARY;
+  const { data: earnings } = useQuery({
+    queryKey: ["vendor-earnings"],
+    queryFn: () => getVendorEarnings(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+  const { data: rawTransactions } = useQuery({
+    queryKey: ["vendor-transactions"],
+    queryFn: () => listVendorTransactions(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+  const { data: profile } = useQuery({
+    queryKey: ["vendor-full-profile"],
+    queryFn: () => getVendorFullProfile(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+
+  // The vendor's real payout account, from their business profile. One account
+  // per vendor (no dummy multi-account dropdown).
+  const payoutAccount = useMemo(() => {
+    const number = profile?.payoutAccountNumber?.trim();
+    if (!number) return null;
+    const bankLabelKey = profile?.payoutBankId
+      ? BANK_LABEL_BY_ID[profile.payoutBankId]
+      : undefined;
+    const bankLabel = bankLabelKey ? t(bankLabelKey) : (profile?.payoutBankId ?? "");
+    const masked = `••••${number.slice(-4)}`;
+    return {
+      bankLabel,
+      masked,
+      accountName: profile?.payoutAccountName?.trim() ?? "",
+      // Human-readable identifier used as the withdrawal transaction title.
+      title: [bankLabel, masked].filter(Boolean).join(" "),
+    };
+  }, [profile, t]);
+
+  const currency = earnings?.currency ?? "NGN";
+  const availableBalance = earnings?.availableBalance ?? 0;
+  const transactions = useMemo(
+    () => (rawTransactions ?? []).map(toFeTxn),
+    [rawTransactions],
+  );
+
+  const payoutMutation = useMutation({
+    mutationFn: (amount: number) =>
+      requestVendorPayout(token as string, amount, payoutAccount?.title),
+    onSuccess: () => {
+      setWithdrawAmount("");
+      setPayoutError(null);
+      setPayoutDone(true);
+      window.setTimeout(() => setPayoutDone(false), 2500);
+      void queryClient.invalidateQueries({ queryKey: ["vendor-earnings"] });
+      void queryClient.invalidateQueries({ queryKey: ["vendor-transactions"] });
+    },
+    onError: () => setPayoutError("Couldn't process that withdrawal."),
+  });
+
+  const handleWithdraw = () => {
+    const amount = Number(withdrawAmount);
+    setPayoutError(null);
+    if (!payoutAccount) {
+      setPayoutError(t("vendor.earnings.noBankAccount"));
+      return;
+    }
+    if (!Number.isFinite(amount) || amount <= 0) {
+      setPayoutError("Enter a valid amount.");
+      return;
+    }
+    if (amount > availableBalance) {
+      setPayoutError("Amount exceeds your available balance.");
+      return;
+    }
+    payoutMutation.mutate(amount);
+  };
 
   useClickOutside(durationDropdownRef, () => setDurationOpen(false), durationOpen);
 
   const filteredTransactions = useMemo(
-    () => filterTransactionsByDuration(VENDOR_TRANSACTIONS, duration),
-    [duration],
+    () => filterTransactionsByDuration(transactions, duration),
+    [transactions, duration],
   );
 
   const commissionSummary = useMemo(
@@ -303,28 +405,35 @@ export function VendorEarningsContent({
                 </span>
               </label>
 
-              <label className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2">
                 <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
-                  {t("vendor.earnings.selectBankAccount")}
+                  {t("vendor.earnings.payoutAccount")}
                 </span>
-                <div className="relative">
-                  <select
-                    value={selectedBankId}
-                    onChange={(event) => setSelectedBankId(event.target.value)}
-                    className="h-11 w-full appearance-none rounded-lg border border-[#E5E5E5] bg-white px-3 pr-10 text-sm font-medium font-satoshi text-foreground outline-none focus:border-[#004785]"
-                  >
-                    {VENDOR_BANK_ACCOUNTS.map((account) => (
-                      <option key={account.id} value={account.id}>
-                        {t(account.labelKey)} {account.accountNumber}
-                      </option>
-                    ))}
-                  </select>
-                  <ChevronDown
-                    className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]"
-                    strokeWidth={1.75}
-                  />
-                </div>
-              </label>
+                {payoutAccount ? (
+                  <div className="rounded-lg border border-[#E5E5E5] bg-white px-3 py-2.5">
+                    <p className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
+                      {payoutAccount.bankLabel} {payoutAccount.masked}
+                    </p>
+                    {payoutAccount.accountName ? (
+                      <p className="mt-0.5 text-xs font-medium font-satoshi text-[#676565]">
+                        {payoutAccount.accountName}
+                      </p>
+                    ) : null}
+                  </div>
+                ) : (
+                  <div className="rounded-lg border border-[#F1C7B8] bg-[#FDF3EF] px-3 py-2.5">
+                    <p className="text-xs font-medium font-satoshi text-[#C0392B]">
+                      {t("vendor.earnings.noBankAccount")}
+                    </p>
+                    <Link
+                      href="/vendor/business-profile"
+                      className="mt-1 inline-block text-xs font-bold font-satoshi text-[#135391] hover:underline"
+                    >
+                      {t("vendor.earnings.addBankAccount")}
+                    </Link>
+                  </div>
+                )}
+              </div>
 
               <div className="rounded-lg bg-[#F8F8F8] px-3 py-2.5">
                 <p className="text-xs font-medium font-satoshi text-[#676565]">
@@ -334,11 +443,29 @@ export function VendorEarningsContent({
             </div>
           </div>
 
+          {payoutError ? (
+            <p className="mb-2 text-xs font-medium font-satoshi text-[#C0392B]">
+              {payoutError}
+            </p>
+          ) : payoutDone ? (
+            <p className="mb-2 text-xs font-semibold font-satoshi text-[#2E7D32]">
+              {t("vendor.earnings.withdrawFunds")} ✓
+            </p>
+          ) : null}
+
           <button
             type="button"
-            className="w-full rounded-lg bg-[#4B4A4A] px-5 py-3 text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90"
+            onClick={handleWithdraw}
+            disabled={
+              payoutMutation.isPending ||
+              availableBalance <= 0 ||
+              !payoutAccount
+            }
+            className="w-full rounded-lg bg-[#4B4A4A] px-5 py-3 text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90 disabled:opacity-60"
           >
-            {t("vendor.earnings.withdrawFunds")}
+            {payoutMutation.isPending
+              ? t("common.loading")
+              : t("vendor.earnings.withdrawFunds")}
           </button>
         </aside>
       </div>

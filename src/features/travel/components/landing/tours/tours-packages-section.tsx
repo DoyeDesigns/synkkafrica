@@ -4,17 +4,30 @@ import { ArrowRight, ChevronDown, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 import { TRAVEL_CAROUSEL_SCROLL_CLASS } from "@/features/travel/constants";
-import {
-  TOUR_PACKAGE_CAROUSEL_ITEMS,
-  TOUR_PACKAGES_PATH,
-} from "@/features/tour-packages/data/tour-packages";
+import { TOUR_PACKAGES_PATH } from "@/features/tour-packages/data/tour-packages";
 import { useTranslation } from "@/hooks/use-translation";
+import { listPackages } from "@/lib/api/packages";
+
+const FALLBACK_PACKAGE_IMAGE = "/destinations/lagos.png";
 
 export function ToursPackagesSection() {
   const t = useTranslation();
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Live published packages (shares the ["packages"] cache).
+  const { data } = useQuery({
+    queryKey: ["packages"],
+    queryFn: listPackages,
+    refetchOnWindowFocus: false,
+  });
+  const items = (data ?? []).map((p) => ({
+    id: p.id,
+    name: p.title,
+    image: p.image ?? FALLBACK_PACKAGE_IMAGE,
+  }));
 
   const scrollNext = () => {
     const container = scrollRef.current;
@@ -26,6 +39,11 @@ export function ToursPackagesSection() {
 
     container.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
+
+  // No published packages → hide the section.
+  if (items.length === 0) {
+    return null;
+  }
 
   return (
     <section className="w-full mb-25">
@@ -56,7 +74,7 @@ export function ToursPackagesSection() {
             ref={scrollRef}
             className={`flex gap-5 overflow-x-auto scroll-smooth pb-2 pr-14 ${TRAVEL_CAROUSEL_SCROLL_CLASS}`}
           >
-            {TOUR_PACKAGE_CAROUSEL_ITEMS.map((item) => (
+            {items.map((item) => (
               <Link
                 key={item.id}
                 href={TOUR_PACKAGES_PATH}

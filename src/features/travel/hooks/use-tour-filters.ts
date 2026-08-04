@@ -1,16 +1,17 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
 
 import { getClearedResultsHref } from "@/features/travel/booking/clear-results-url";
 import {
   DEFAULT_TOUR_FILTERS,
-  TOUR_RESULTS,
   countActiveTourFilters,
   filterTourResults,
   type TourFilterState,
 } from "@/features/travel/data/tour-results";
+import { listExperiences, toTourResult } from "@/lib/api/experiences";
 
 function getFiltersFromSearchParams(
   searchParams: URLSearchParams,
@@ -41,12 +42,16 @@ export function useTourFilters() {
     () => searchParams.get("query") ?? "",
   );
 
-  useEffect(() => {
+  // Re-sync editable state on URL change via adjust-state-during-render.
+  const searchKey = searchParams.toString();
+  const [prevSearchKey, setPrevSearchKey] = useState(searchKey);
+  if (searchKey !== prevSearchKey) {
+    setPrevSearchKey(searchKey);
     const nextFilters = getFiltersFromSearchParams(searchParams);
     setDraftFilters(nextFilters);
     setAppliedFilters(nextFilters);
     setSearchQuery(searchParams.get("query") ?? "");
-  }, [searchParams]);
+  }
 
   const activeFilterCount = useMemo(
     () => countActiveTourFilters(appliedFilters),
@@ -58,9 +63,20 @@ export function useTourFilters() {
     [draftFilters],
   );
 
+  const { data: liveTours, isLoading } = useQuery({
+    queryKey: ["experiences"],
+    queryFn: listExperiences,
+    refetchOnWindowFocus: false,
+  });
+
+  const allResults = useMemo(
+    () => (liveTours ?? []).map(toTourResult),
+    [liveTours],
+  );
+
   const results = useMemo(
-    () => filterTourResults(TOUR_RESULTS, appliedFilters, searchQuery),
-    [appliedFilters, searchQuery],
+    () => filterTourResults(allResults, appliedFilters, searchQuery),
+    [allResults, appliedFilters, searchQuery],
   );
 
   const updateDraftFilter = <K extends keyof TourFilterState>(
@@ -91,6 +107,7 @@ export function useTourFilters() {
     activeFilterCount,
     draftFilterCount,
     results,
+    isLoading,
     setSearchQuery,
     updateDraftFilter,
     applyFilters,

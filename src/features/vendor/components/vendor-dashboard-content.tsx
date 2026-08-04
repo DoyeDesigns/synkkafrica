@@ -1,21 +1,37 @@
 "use client";
 
-import { Calendar, ChevronDown, CircleEllipsis, List, Plus, Wallet } from "lucide-react";
+import {
+  Calendar,
+  ChevronDown,
+  CircleEllipsis,
+  List,
+  Loader2,
+  Plus,
+  Wallet,
+} from "lucide-react";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useQuery } from "@tanstack/react-query";
 
 import { VendorListingCard } from "@/features/vendor/components/vendor-listing-card";
 import { VendorStatCard } from "@/features/vendor/components/vendor-stat-card";
 import {
-  VENDOR_DASHBOARD_LISTINGS,
   VENDOR_DASHBOARD_PERIOD_OPTIONS,
-  VENDOR_DASHBOARD_STATS,
+  type VendorDashboardListing,
   type VendorDashboardPeriod,
 } from "@/features/vendor/data/vendor-dashboard";
 import { useFormatPrice } from "@/hooks/use-format-price";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
+import {
+  getVendorEarnings,
+  listVendorBookings,
+  listVendorListings,
+  type VendorListingCategory,
+  type VendorListingSummary,
+} from "@/lib/api/vendor";
 
 const PERIOD_LABEL_KEYS: Record<VendorDashboardPeriod, TranslationKey> = {
   day: "vendor.dashboard.period.day",
@@ -25,20 +41,90 @@ const PERIOD_LABEL_KEYS: Record<VendorDashboardPeriod, TranslationKey> = {
   year: "vendor.dashboard.period.year",
 };
 
+const CATEGORY_KEY: Record<
+  VendorListingCategory,
+  VendorDashboardListing["categoryKey"]
+> = {
+  cars: "vendor.dashboard.category.carRentals",
+  accommodations: "vendor.dashboard.category.accommodations",
+  experiences: "vendor.dashboard.category.toursExperiences",
+};
+const CATEGORY_LABEL: Record<VendorListingCategory, string> = {
+  cars: "Car rentals",
+  accommodations: "Accommodations",
+  experiences: "Tours & experiences",
+};
+function toDashListing(l: VendorListingSummary): VendorDashboardListing {
+  return {
+    id: l.id,
+    title: l.title,
+    category: CATEGORY_LABEL[l.category],
+    categoryKey: CATEGORY_KEY[l.category],
+    rating: Math.round(l.ratingAvg),
+    // Empty when no cover uploaded → card renders a category-icon placeholder.
+    image: l.coverImageUrl || "",
+    status:
+      l.status === "live"
+        ? "live"
+        : l.status === "paused"
+          ? "paused"
+          : l.status === "draft"
+            ? "draft"
+            : "pending",
+  };
+}
+
 type VendorDashboardContentProps = {
   vendorName?: string | null;
 };
 
 export function VendorDashboardContent({
-  vendorName = "Alex Autos",
+  vendorName,
 }: VendorDashboardContentProps) {
   const t = useTranslation();
   const formatPrice = useFormatPrice();
-  const displayName = vendorName?.trim() || "Alex Autos";
+  const { data: session } = useSession();
+  const token = session?.accessToken;
+  const displayName = vendorName?.trim() || "your business";
   const [period, setPeriod] = useState<VendorDashboardPeriod>("month");
   const [periodOpen, setPeriodOpen] = useState(false);
   const periodDropdownRef = useRef<HTMLDivElement>(null);
-  const stats = VENDOR_DASHBOARD_STATS;
+
+  const { data: rawListings, isLoading } = useQuery({
+    queryKey: ["vendor-listings"],
+    queryFn: () => listVendorListings(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+  const { data: bookings } = useQuery({
+    queryKey: ["vendor-bookings"],
+    queryFn: () => listVendorBookings(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+  const { data: earnings } = useQuery({
+    queryKey: ["vendor-earnings"],
+    queryFn: () => getVendorEarnings(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+
+  const listings = useMemo(
+    () => (rawListings ?? []).map(toDashListing),
+    [rawListings],
+  );
+
+  const liveListings = (rawListings ?? []).filter(
+    (l) => l.status === "live",
+  ).length;
+  const pendingApproval = (rawListings ?? []).filter(
+    (l) => l.status === "pending",
+  ).length;
+  const newBookings = (bookings ?? []).filter(
+    (b) => b.status === "awaiting_confirmation",
+  ).length;
+  const currency = earnings?.currency ?? "NGN";
+  const lifetimeEarnings = earnings?.lifetimeEarnings ?? 0;
 
   useClickOutside(periodDropdownRef, () => setPeriodOpen(false), periodOpen);
 
@@ -112,27 +198,24 @@ export function VendorDashboardContent({
         <VendorStatCard
           icon={List}
           labelKey="vendor.dashboard.stats.liveListings"
-          value={String(stats.liveListings)}
+          value={String(liveListings)}
         />
         <VendorStatCard
           icon={Calendar}
           labelKey="vendor.dashboard.stats.newBookings"
-          value={String(stats.newBookings[period])}
+          value={String(newBookings)}
           href="/vendor/bookings"
           linkKey="vendor.dashboard.goToBookings"
         />
         <VendorStatCard
           icon={Wallet}
           labelKey="vendor.dashboard.stats.earnings"
-          value={formatPrice(
-            stats.earningsCurrency,
-            stats.earnings[period],
-          )}
+          value={formatPrice(currency, lifetimeEarnings)}
         />
         <VendorStatCard
           icon={CircleEllipsis}
           labelKey="vendor.dashboard.stats.pendingApproval"
-          value={String(stats.pendingApproval)}
+          value={String(pendingApproval)}
         />
       </div>
 
@@ -140,9 +223,7 @@ export function VendorDashboardContent({
         <div className="mb-4 flex items-center justify-between gap-4">
           <h3 className="text-lg font-bold font-satoshi text-[#2F2F2F]">
             {t("vendor.dashboard.yourListings")}{" "}
-            <span className="font-bold text-[#D85A30]">
-              ({VENDOR_DASHBOARD_LISTINGS.length})
-            </span>
+            <span className="font-bold text-[#D85A30]">({listings.length})</span>
           </h3>
           <Link
             href="/vendor/listings"
@@ -153,9 +234,21 @@ export function VendorDashboardContent({
         </div>
 
         <div className="grid gap-4 lg:grid-cols-2 bg-white rounded-[5px] p-5">
-          {VENDOR_DASHBOARD_LISTINGS.map((listing) => (
-            <VendorListingCard key={listing.id} listing={listing} />
-          ))}
+          {isLoading ? (
+            <div className="col-span-full flex items-center justify-center gap-2 p-8 text-sm font-medium font-satoshi text-[#676565]">
+              <Loader2 className="h-4 w-4 animate-spin" /> Loading…
+            </div>
+          ) : listings.length > 0 ? (
+            listings.map((listing) => (
+              <VendorListingCard key={listing.id} listing={listing} />
+            ))
+          ) : (
+            <div className="col-span-full rounded-[5px] border border-[#EEEEEE] bg-[#F5F5F5] p-8 text-center">
+              <p className="text-sm font-medium font-satoshi text-[#676565]">
+                {t("vendor.listings.filter.empty")}
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </>

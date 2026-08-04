@@ -37,12 +37,14 @@ export type VendorNavItem = {
   badge?: number;
 };
 
+// Badges (bookings awaiting-confirmation, unread notifications) are injected
+// live by the side nav bar — no static counts here.
 export const VENDOR_WORKSPACE_NAV: VendorNavItem[] = [
   { id: "dashboard", href: "/vendor", icon: "dashboard" },
   { id: "listings", href: "/vendor/listings", icon: "listings" },
-  { id: "bookings", href: "/vendor/bookings", icon: "bookings", badge: 9 },
+  { id: "bookings", href: "/vendor/bookings", icon: "bookings" },
   { id: "earnings", href: "/vendor/earnings", icon: "earnings" },
-  { id: "notifications", href: "/vendor/notifications", icon: "notifications", badge: 4 },
+  { id: "notifications", href: "/vendor/notifications", icon: "notifications" },
 ];
 
 export const VENDOR_ACCOUNT_NAV: VendorNavItem[] = [

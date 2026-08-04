@@ -15,6 +15,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { useQuery } from "@tanstack/react-query";
 
 import {
   VENDOR_ACCOUNT_NAV,
@@ -24,6 +26,35 @@ import {
 import { useTranslation } from "@/hooks/use-translation";
 import { signOutAction } from "@/lib/auth/actions";
 import type { TranslationKey } from "@/lib/preferences/translations";
+import {
+  listVendorBookings,
+  listVendorNotifications,
+} from "@/lib/api/vendor";
+
+// Live badge counts: awaiting-confirmation bookings + unread notifications.
+// Shares query keys with the pages so it's one deduped fetch each.
+function useVendorNavBadges(): Record<string, number> {
+  const { data: session } = useSession();
+  const token = session?.accessToken;
+  const { data: bookings } = useQuery({
+    queryKey: ["vendor-bookings"],
+    queryFn: () => listVendorBookings(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+  const { data: notifications } = useQuery({
+    queryKey: ["vendor-notifications"],
+    queryFn: () => listVendorNotifications(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+  return {
+    bookings: (bookings ?? []).filter(
+      (b) => b.status === "awaiting_confirmation",
+    ).length,
+    notifications: (notifications ?? []).filter((n) => !n.read).length,
+  };
+}
 
 const NAV_LABEL_KEYS: Record<VendorNavItem["id"], TranslationKey> = {
   dashboard: "vendor.nav.dashboard",
@@ -56,13 +87,15 @@ function isNavItemActive(pathname: string, href: string) {
 type VendorNavLinkProps = {
   item: VendorNavItem;
   pathname: string;
+  badge?: number;
   onNavigate?: () => void;
 };
 
-function VendorNavLink({ item, pathname, onNavigate }: VendorNavLinkProps) {
+function VendorNavLink({ item, pathname, badge, onNavigate }: VendorNavLinkProps) {
   const t = useTranslation();
   const isActive = isNavItemActive(pathname, item.href);
   const Icon = NAV_ICONS[item.icon];
+  const badgeCount = badge ?? item.badge;
 
   return (
     <Link
@@ -79,9 +112,9 @@ function VendorNavLink({ item, pathname, onNavigate }: VendorNavLinkProps) {
         strokeWidth={1.75}
       />
       <span className="flex-1">{t(NAV_LABEL_KEYS[item.id])}</span>
-      {item.badge ? (
+      {badgeCount ? (
         <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#E53935] px-1.5 text-[11px] font-bold text-white">
-          {item.badge}
+          {badgeCount}
         </span>
       ) : null}
     </Link>
@@ -92,6 +125,7 @@ type VendorNavSectionProps = {
   titleKey: TranslationKey;
   items: VendorNavItem[];
   pathname: string;
+  badges?: Record<string, number>;
   onNavigate?: () => void;
 };
 
@@ -99,6 +133,7 @@ function VendorNavSection({
   titleKey,
   items,
   pathname,
+  badges,
   onNavigate,
 }: VendorNavSectionProps) {
   const t = useTranslation();
@@ -114,6 +149,7 @@ function VendorNavSection({
             key={item.id}
             item={item}
             pathname={pathname}
+            badge={badges?.[item.id]}
             onNavigate={onNavigate}
           />
         ))}
@@ -140,6 +176,7 @@ function VendorDashboardSideNavBarContent({
 }: VendorDashboardSideNavBarContentProps) {
   const pathname = usePathname();
   const t = useTranslation();
+  const badges = useVendorNavBadges();
 
   return (
     <aside className={getSidebarClassName(isMobileOpen)}>
@@ -163,6 +200,7 @@ function VendorDashboardSideNavBarContent({
           titleKey="vendor.nav.workspace"
           items={VENDOR_WORKSPACE_NAV}
           pathname={pathname}
+          badges={badges}
           onNavigate={onNavigate}
         />
         <VendorNavSection

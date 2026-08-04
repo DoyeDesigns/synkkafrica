@@ -46,9 +46,14 @@ export type VendorSignupFormState = {
   confirmPassword: string;
   otpDigits: string[];
   otpSent: boolean;
-  otpVerified: boolean;
+  // Short-lived token returned by the backend verify-otp; carried to the final
+  // signup submit as proof the email was verified. Its presence IS "verified".
+  signupToken: string;
   governmentIdFileName: string;
   governmentIdPreviewUrl: string;
+  // Storage reference (objectPath) once the government ID uploads, submitted
+  // on signup so the backend links the stored file.
+  governmentIdObjectPath: string;
   agreedToTerms: boolean;
 };
 
@@ -66,9 +71,10 @@ export const EMPTY_VENDOR_SIGNUP_FORM: VendorSignupFormState = {
   confirmPassword: "",
   otpDigits: ["", "", "", "", "", ""],
   otpSent: false,
-  otpVerified: false,
+  signupToken: "",
   governmentIdFileName: "",
   governmentIdPreviewUrl: "",
+  governmentIdObjectPath: "",
   agreedToTerms: false,
 };
 
@@ -80,10 +86,6 @@ export function getNextVendorSignupStep(step: VendorSignupStepId): VendorSignupS
 export function getPreviousVendorSignupStep(step: VendorSignupStepId): VendorSignupStepId | null {
   const index = VENDOR_SIGNUP_STEPS.indexOf(step);
   return index > 0 ? VENDOR_SIGNUP_STEPS[index - 1]! : null;
-}
-
-export function getVendorSignupPhoneDisplay(form: VendorSignupFormState) {
-  return `${form.phoneCountryCode} ${form.phoneNumber}`.trim();
 }
 
 export function getPasswordChecks(password: string) {
@@ -128,11 +130,13 @@ export function isVendorSignupStepValid(step: VendorSignupStepId, form: VendorSi
       return getVendorSignupBusinessMissingFields(form).length === 0;
     case "security":
       return (
-        form.otpVerified &&
+        Boolean(form.signupToken) &&
         isPasswordValid(form.password) &&
         form.password === form.confirmPassword
       );
     case "identity":
-      return Boolean(form.governmentIdPreviewUrl) && form.agreedToTerms;
+      // Require the upload to have completed (objectPath present), not just a
+      // local preview — otherwise the ID would submit without a stored file.
+      return Boolean(form.governmentIdObjectPath) && form.agreedToTerms;
   }
 }

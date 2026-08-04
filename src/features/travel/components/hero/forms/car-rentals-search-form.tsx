@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
-import { Calendar, ChevronDown, MapPin, Search } from "lucide-react";
+import { Calendar, ChevronDown, Search } from "lucide-react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
@@ -11,6 +11,8 @@ import {
   HeroInputShell,
   HeroSearchButton,
 } from "@/features/travel/components/hero/hero-form-primitives";
+import { HeroDestinationField } from "@/features/travel/components/hero/hero-destination-field";
+import { listCarDestinations } from "@/lib/api/cars";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
@@ -122,11 +124,20 @@ export function CarRentalsSearchForm({
           value={carType}
           onChange={setCarType}
         />
-        <HeroField
-          icon={<MapPin className="h-4 w-4 shrink-0" />}
+        <HeroDestinationField
           placeholder={t("hero.location")}
           value={location}
           onChange={setLocation}
+          queryKey="car-destinations"
+          fetchDestinations={listCarDestinations}
+          countLabel={(count) =>
+            t(
+              count === 1
+                ? "hero.carRentals.destinationCar"
+                : "hero.carRentals.destinationCars",
+              { count },
+            )
+          }
         />
         <HeroField
           icon={<Calendar className="h-4 w-4 shrink-0" />}

@@ -1,16 +1,20 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
 
 import { getClearedResultsHref } from "@/features/travel/booking/clear-results-url";
 import {
-  ACCOMMODATION_RESULTS,
   DEFAULT_ACCOMMODATION_FILTERS,
   countActiveFilters,
   filterAccommodationResults,
   type AccommodationFilterState,
 } from "@/features/travel/data/accommodation-results";
+import {
+  listAccommodations,
+  toAccommodationResult,
+} from "@/lib/api/accommodations";
 
 function getFiltersFromSearchParams(
   searchParams: URLSearchParams,
@@ -41,12 +45,17 @@ export function useAccommodationFilters() {
     () => searchParams.get("destination") ?? "",
   );
 
-  useEffect(() => {
-    setSearchQuery(searchParams.get("destination") ?? "");
+  // Re-sync editable state whenever the URL changes, using React's
+  // adjust-state-during-render pattern (no setState-in-effect).
+  const searchKey = searchParams.toString();
+  const [prevSearchKey, setPrevSearchKey] = useState(searchKey);
+  if (searchKey !== prevSearchKey) {
+    setPrevSearchKey(searchKey);
     const nextFilters = getFiltersFromSearchParams(searchParams);
     setDraftFilters(nextFilters);
     setAppliedFilters(nextFilters);
-  }, [searchParams]);
+    setSearchQuery(searchParams.get("destination") ?? "");
+  }
 
   const activeFilterCount = useMemo(
     () => countActiveFilters(appliedFilters),
@@ -58,9 +67,22 @@ export function useAccommodationFilters() {
     [draftFilters],
   );
 
+  // Live vendor accommodation listings (admin-approved). Filtering stays
+  // client-side over the fetched set, matching the previous behavior.
+  const { data: liveResults, isLoading } = useQuery({
+    queryKey: ["accommodations"],
+    queryFn: listAccommodations,
+    refetchOnWindowFocus: false,
+  });
+
+  const allResults = useMemo(
+    () => (liveResults ?? []).map(toAccommodationResult),
+    [liveResults],
+  );
+
   const results = useMemo(
-    () => filterAccommodationResults(ACCOMMODATION_RESULTS, appliedFilters, searchQuery),
-    [appliedFilters, searchQuery],
+    () => filterAccommodationResults(allResults, appliedFilters, searchQuery),
+    [allResults, appliedFilters, searchQuery],
   );
 
   const updateDraftFilter = <K extends keyof AccommodationFilterState>(
@@ -92,6 +114,7 @@ export function useAccommodationFilters() {
     activeFilterCount,
     draftFilterCount,
     results,
+    isLoading,
     setSearchQuery,
     updateDraftFilter,
     applyFilters,

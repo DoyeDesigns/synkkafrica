@@ -10,6 +10,8 @@ import {
   Home,
   LayoutGrid,
   LogOut,
+  ScrollText,
+  ShieldCheck,
   Sparkles,
   Star,
   Users,
@@ -19,11 +21,34 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { useQuery } from "@tanstack/react-query";
 
-import { ADMIN_NAV, type AdminNavItem } from "@/features/admin/constants";
+import {
+  ADMIN_NAV,
+  ADMIN_SUPER_NAV_ITEMS,
+  type AdminNavItem,
+} from "@/features/admin/constants";
 import { useTranslation } from "@/hooks/use-translation";
+import { adminGetOverview, type AdminOverview } from "@/lib/api/admin";
+import { getAdminMe } from "@/lib/api/admin-auth";
 import { signOutAction } from "@/lib/auth/actions";
 import type { TranslationKey } from "@/lib/preferences/translations";
+
+// Maps the live overview counts onto the actionable nav items. Reviews have no
+// pending queue (published/hidden only), so they carry no badge.
+function navBadges(
+  overview: AdminOverview | undefined,
+): Partial<Record<AdminNavItem["id"], number>> {
+  if (!overview) return {};
+  return {
+    vendors: overview.pendingVendors,
+    bookings: overview.awaitingBookings,
+    payouts: overview.pendingPayouts,
+    verifications: overview.pendingDocuments,
+    support: overview.openSupportTickets,
+  };
+}
 
 const NAV_LABEL_KEYS: Record<AdminNavItem["id"], TranslationKey> = {
   dashboard: "admin.nav.dashboard",
@@ -37,6 +62,8 @@ const NAV_LABEL_KEYS: Record<AdminNavItem["id"], TranslationKey> = {
   users: "admin.nav.users",
   verifications: "admin.nav.verifications",
   support: "admin.nav.support",
+  team: "admin.nav.team",
+  audit: "admin.nav.audit",
 };
 
 const NAV_ICONS: Record<AdminNavItem["icon"], LucideIcon> = {
@@ -51,6 +78,8 @@ const NAV_ICONS: Record<AdminNavItem["icon"], LucideIcon> = {
   users: Users,
   verifications: Check,
   support: CircleHelp,
+  team: ShieldCheck,
+  audit: ScrollText,
 };
 
 function isNavItemActive(pathname: string, href: string) {
@@ -64,10 +93,11 @@ function isNavItemActive(pathname: string, href: string) {
 type AdminNavLinkProps = {
   item: AdminNavItem;
   pathname: string;
+  badge?: number;
   onNavigate?: () => void;
 };
 
-function AdminNavLink({ item, pathname, onNavigate }: AdminNavLinkProps) {
+function AdminNavLink({ item, pathname, badge, onNavigate }: AdminNavLinkProps) {
   const t = useTranslation();
   const isActive = isNavItemActive(pathname, item.href);
   const Icon = NAV_ICONS[item.icon];
@@ -84,9 +114,9 @@ function AdminNavLink({ item, pathname, onNavigate }: AdminNavLinkProps) {
     >
       <Icon className="h-[18px] w-[18px] shrink-0" strokeWidth={1.75} />
       <span className="flex-1">{t(NAV_LABEL_KEYS[item.id])}</span>
-      {item.badge ? (
+      {badge ? (
         <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#E53935] px-1.5 text-[11px] font-bold text-white">
-          {item.badge}
+          {badge}
         </span>
       ) : null}
     </Link>
@@ -111,6 +141,26 @@ function AdminDashboardSideNavBarContent({
 }: AdminDashboardSideNavBarProps) {
   const pathname = usePathname();
   const t = useTranslation();
+  const { data: session } = useSession();
+  const token = session?.accessToken;
+
+  const { data: overview } = useQuery({
+    queryKey: ["admin-overview"],
+    queryFn: () => adminGetOverview(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+  const badges = navBadges(overview);
+
+  const { data: me } = useQuery({
+    queryKey: ["admin-me"],
+    queryFn: () => getAdminMe(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+  const navItems = me?.isSuperAdmin
+    ? [...ADMIN_NAV, ...ADMIN_SUPER_NAV_ITEMS]
+    : ADMIN_NAV;
 
   return (
     <aside className={getSidebarClassName(isMobileOpen ?? false)}>
@@ -131,11 +181,12 @@ function AdminDashboardSideNavBarContent({
 
       <nav className="flex-1 overflow-y-auto px-4 pb-6">
         <div className="space-y-1">
-          {ADMIN_NAV.map((item) => (
+          {navItems.map((item) => (
             <AdminNavLink
               key={item.id}
               item={item}
               pathname={pathname}
+              badge={badges[item.id]}
               onNavigate={onNavigate}
             />
           ))}

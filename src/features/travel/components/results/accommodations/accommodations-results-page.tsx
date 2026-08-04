@@ -15,6 +15,7 @@ export function AccommodationsResultsPage() {
     draftFilters,
     draftFilterCount,
     results,
+    isLoading,
     searchQuery,
     setSearchQuery,
     updateDraftFilter,
@@ -54,7 +55,13 @@ export function AccommodationsResultsPage() {
           />
 
           <div className="space-y-4">
-            {results.length > 0 ? (
+            {isLoading ? (
+              <div className="rounded-2xl border border-black/10 bg-white p-8 text-center shadow-sm">
+                <p className="text-base font-medium font-satoshi text-foreground">
+                  {t("common.loading")}
+                </p>
+              </div>
+            ) : results.length > 0 ? (
               results.map((item) => (
                 <AccommodationResultCard key={item.id} item={item} />
               ))

@@ -1,18 +1,17 @@
 "use client";
 
-import { MapPin } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { getDefaultCheckInDate } from "@/features/travel/booking/booking-params";
 import {
-  HeroField,
   HeroFormRow,
   HeroInputShell,
   HeroPillSelect,
   HeroRadioOption,
   HeroSearchButton,
 } from "@/features/travel/components/hero/hero-form-primitives";
+import { HeroAirportField } from "@/features/travel/components/hero/hero-airport-field";
 import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
@@ -166,18 +165,18 @@ export function FlightsSearchForm({ onSubmit }: FlightsSearchFormProps) {
       </HeroFormRow>
 
       <HeroInputShell>
-        <HeroField
-          icon={<MapPin className="h-4 w-4 shrink-0" />}
+        <HeroAirportField
           placeholder={t("hero.flights.fromCity")}
           value={from}
           onChange={setFrom}
+          listboxId="hero-flight-from-listbox"
           className="w-full min-w-0 lg:!flex-[0.8] lg:!max-w-[170px]"
         />
-        <HeroField
-          icon={<MapPin className="h-4 w-4 shrink-0" />}
+        <HeroAirportField
           placeholder={t("hero.flights.toCity")}
           value={to}
           onChange={setTo}
+          listboxId="hero-flight-to-listbox"
           className="w-full min-w-0 lg:!flex-[0.8] lg:!max-w-[170px]"
         />
         <HeroDateRangeField

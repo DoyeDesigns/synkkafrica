@@ -20,12 +20,15 @@ import {
   type VendorSignupStepId,
 } from "@/features/vendor/data/vendor-signup";
 import { useTranslation } from "@/hooks/use-translation";
+import { signUpVendorAction } from "@/lib/auth/vendor-actions";
 
 export function VendorSignupContent() {
   const t = useTranslation();
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState<VendorSignupStepId>("business");
   const [form, setForm] = useState<VendorSignupFormState>(EMPTY_VENDOR_SIGNUP_FORM);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const updateForm = (patch: Partial<VendorSignupFormState>) => {
     setForm((current) => ({ ...current, ...patch }));
@@ -52,18 +55,67 @@ export function VendorSignupContent() {
     router.push("/vendor/login");
   };
 
-  const handleSubmit = () => {
-    if (!isVendorSignupStepValid("identity", form)) {
+  const handleSubmit = async () => {
+    if (!isVendorSignupStepValid("identity", form) || submitting) {
       return;
     }
-
-    router.push("/vendor");
+    if (!form.signupToken) {
+      setSubmitError("Please verify your email with the code first.");
+      setCurrentStep("security");
+      return;
+    }
+    setSubmitting(true);
+    setSubmitError(null);
+    const res = await signUpVendorAction({
+      businessName: form.businessName,
+      businessType: form.businessType,
+      cacRegistrationNumber: form.cacRegistrationNumber || undefined,
+      businessAddress: form.businessAddress || undefined,
+      ownerFullName: form.ownerFullName,
+      email: form.ownerEmail,
+      phoneNumber: form.phoneNumber
+        ? `${form.phoneCountryCode}${form.phoneNumber.replace(/\D/g, "")}`
+        : undefined,
+      dateOfBirth: form.dateOfBirth || undefined,
+      password: form.password,
+      signupToken: form.signupToken,
+      governmentIdFileName: form.governmentIdFileName || undefined,
+      governmentIdFileUrl: form.governmentIdObjectPath || undefined,
+    });
+    if (res.ok) {
+      if (res.next === "login") {
+        router.push("/vendor/login");
+      } else {
+        router.push("/vendor");
+        router.refresh();
+      }
+      return;
+    }
+    setSubmitting(false);
+    setSubmitError(res.error);
+    // A stale/expired signup token means they must re-verify.
+    if (res.error.toLowerCase().includes("verification")) {
+      setCurrentStep("security");
+    }
   };
 
   const isLastStep = currentStep === "identity";
   const canContinue = isVendorSignupStepValid(currentStep, form);
   const missingBusinessFields =
     currentStep === "business" ? getVendorSignupBusinessMissingFields(form) : [];
+
+  // One hint per step when the step isn't yet complete.
+  const stepHint = canContinue
+    ? null
+    : currentStep === "business" && missingBusinessFields.length > 0
+      ? t("vendor.signup.completeRequiredFields", {
+          fields: missingBusinessFields.map((field) => t(field)).join(", "),
+        })
+      : currentStep === "security"
+        ? t("vendor.signup.securityRequired")
+        : currentStep === "identity"
+          ? t("vendor.signup.identityRequired")
+          : null;
 
   return (
     <div className="min-h-screen bg-white">
@@ -158,34 +210,28 @@ export function VendorSignupContent() {
           </button>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            {!canContinue && missingBusinessFields.length > 0 ? (
+            {stepHint ? (
               <p className="text-xs font-medium font-satoshi text-[#E65100] sm:mr-auto sm:text-right">
-                {t("vendor.signup.completeRequiredFields", {
-                  fields: missingBusinessFields.map((field) => t(field)).join(", "),
-                })}
+                {stepHint}
               </p>
             ) : null}
 
-            {!canContinue && currentStep === "security" ? (
-              <p className="text-xs font-medium font-satoshi text-[#E65100] sm:mr-auto sm:text-right">
-                {t("vendor.signup.securityRequired")}
-              </p>
-            ) : null}
-
-            {!canContinue && currentStep === "identity" ? (
-              <p className="text-xs font-medium font-satoshi text-[#E65100] sm:mr-auto sm:text-right">
-                {t("vendor.signup.identityRequired")}
+            {isLastStep && submitError ? (
+              <p className="text-xs font-medium font-satoshi text-[#C0392B] sm:mr-auto sm:text-right">
+                {submitError}
               </p>
             ) : null}
 
             {isLastStep ? (
               <button
                 type="button"
-                disabled={!canContinue}
-                onClick={handleSubmit}
+                disabled={!canContinue || submitting}
+                onClick={() => void handleSubmit()}
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {t("vendor.signup.createAccount")}
+                {submitting
+                  ? t("common.loading")
+                  : t("vendor.signup.createAccount")}
                 <ChevronRight className="h-4 w-4" />
               </button>
             ) : (

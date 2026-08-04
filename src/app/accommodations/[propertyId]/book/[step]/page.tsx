@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 
 import type { BookingStepId } from "@/features/travel/booking/constants";
 import { PropertyBookingPage } from "@/features/travel/components/booking/property-booking-page";
-import { getPropertyById } from "@/features/travel/data/property-booking";
+import { getAccommodation, toPropertyDetail } from "@/lib/api/accommodations";
+import type { PropertyDetail } from "@/features/travel/data/property-booking";
 
 const VALID_STEPS: BookingStepId[] = ["checkout", "payment", "confirmation"];
 
@@ -17,9 +18,10 @@ export default async function BookingStepRoute({ params }: BookingStepRouteProps
     notFound();
   }
 
-  const property = getPropertyById(propertyId);
-
-  if (!property) {
+  let property: PropertyDetail;
+  try {
+    property = toPropertyDetail(await getAccommodation(propertyId));
+  } catch {
     notFound();
   }
 

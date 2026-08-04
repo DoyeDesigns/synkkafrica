@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { AdminDashboardSideNavBar } from "@/components/layout/admin-dashboard-side-nav-bar";
@@ -10,19 +10,30 @@ import { useTranslation } from "@/hooks/use-translation";
 type AdminDashboardLayoutClientProps = {
   children: React.ReactNode;
   adminName?: string | null;
+  adminEmail?: string | null;
 };
 
 export function AdminDashboardLayoutClient({
   children,
   adminName,
+  adminEmail,
 }: AdminDashboardLayoutClientProps) {
   const pathname = usePathname();
   const t = useTranslation();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  useEffect(() => {
+  // Close the mobile menu on route change — reset during render (not an
+  // effect) to avoid a cascading-render pass.
+  const [lastPath, setLastPath] = useState(pathname);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
     setIsMobileOpen(false);
-  }, [pathname]);
+  }
+
+  // The login and invite-accept pages render without the dashboard chrome.
+  if (pathname === "/admin/login" || pathname === "/admin/accept-invite") {
+    return <>{children}</>;
+  }
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -43,6 +54,7 @@ export function AdminDashboardLayoutClient({
       <div className="flex h-screen min-w-0 flex-1 flex-col overflow-hidden">
         <AdminDashboardHeader
           adminName={adminName}
+          adminEmail={adminEmail}
           isMobileOpen={isMobileOpen}
           onMenuToggle={() => setIsMobileOpen((open) => !open)}
         />
