@@ -15,6 +15,8 @@ function mediaFromImages(images: string[], baseName: string): ListingMediaItem[]
     name: `${baseName}-${index + 1}.jpg`,
     previewUrl,
     kind: "image" as const,
+    url: previewUrl,
+    status: "uploaded" as const,
   }));
 }
 

@@ -37,6 +37,11 @@ function formFromProfile(p: VendorFullProfile): VendorBusinessProfile {
       (p.payoutBankId as VendorBusinessProfile["payoutBankId"]) ?? "gtbank",
     payoutAccountNumber: p.payoutAccountNumber ?? "",
     payoutAccountName: p.payoutAccountName ?? "",
+    // Backend does not yet return this; default far enough back that cooldown
+    // does not block edits until the field is wired from the API.
+    payoutAccountLastUpdatedAt: new Date(
+      Date.now() - 200 * 24 * 60 * 60 * 1000,
+    ).toISOString(),
   };
 }
 

@@ -22,6 +22,8 @@ function mediaFromImage(image: string, baseName: string): ListingMediaItem[] {
       name: `${baseName}-1.jpg`,
       previewUrl: image,
       kind: "image",
+      url: image,
+      status: "uploaded",
     },
   ];
 }
