@@ -392,6 +392,7 @@ export const de = {
   "booking.reviews.viewAll": "Alle Bewertungen anzeigen",
   "booking.reviews.close": "Bewertungen schließen",
   "booking.guest.adultLabel": "Erwachsener (17 Jahre+)",
+  "booking.guest.leadGuestLabel": "Hauptgast",
   "booking.guest.addedCount": "{added}/{total} hinzugefügt",
   "booking.guest.passportHint":
     "Geben Sie Ihren Namen so ein, wie er im Reisepass steht. Der Reisepass muss mindestens 6 Monate ab Reisedatum gültig sein.",

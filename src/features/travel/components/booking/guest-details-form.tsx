@@ -44,8 +44,6 @@ function FormField({
   required?: boolean;
   error?: string;
 }) {
-  const t = useTranslation();
-
   return (
     <label className={`flex flex-col gap-1.5 ${className}`}>
       <span className="text-xs font-bold font-satoshi text-foreground">
@@ -67,6 +65,7 @@ type AdultGuestSectionProps = {
   identity: GuestIdentity;
   identityErrors?: GuestIdentityErrors;
   onIdentityChange: (identity: GuestIdentity) => void;
+  title?: string;
 };
 
 function AdultGuestSection({
@@ -74,6 +73,7 @@ function AdultGuestSection({
   identity,
   identityErrors = {},
   onIdentityChange,
+  title,
 }: AdultGuestSectionProps) {
   const t = useTranslation();
 
@@ -93,7 +93,7 @@ function AdultGuestSection({
           <User className="h-4 w-4" strokeWidth={1.75} />
         </span>
         <p className="text-sm font-semibold font-inter text-foreground">
-          {t("booking.guest.adultCheckbox", { count: index + 1 })}
+          {title ?? t("booking.guest.adultCheckbox", { count: index + 1 })}
         </p>
       </div>
 
@@ -319,6 +319,7 @@ type GuestDetailsFormProps = {
   maxGuests?: number;
   allowGuestCountChange?: boolean;
   hideSpecialRequests?: boolean;
+  leadGuestOnly?: boolean;
 };
 
 export function GuestDetailsForm({
@@ -332,8 +333,13 @@ export function GuestDetailsForm({
   maxGuests = 12,
   allowGuestCountChange = true,
   hideSpecialRequests = false,
+  leadGuestOnly = false,
 }: GuestDetailsFormProps) {
   const t = useTranslation();
+
+  // When leadGuestOnly is set we only collect a single set of details (the lead
+  // guest) even if the booking is for multiple guests.
+  const formCount = leadGuestOnly ? 1 : guestCount;
 
   return (
     <section className="rounded-[10px] bg-white p-5 sm:p-6">
@@ -394,12 +400,19 @@ export function GuestDetailsForm({
             <User className="h-4 w-4" strokeWidth={1.75} />
           </span>
           <p className="text-sm font-semibold font-inter text-foreground">
-            {t("booking.guest.adultLabel")}
+            {leadGuestOnly
+              ? t("booking.guest.leadGuestLabel")
+              : t("booking.guest.adultLabel")}
           </p>
         </div>
-        <span className="text-sm font-medium font-satoshi text-foreground/70">
-          {t("booking.guest.addedCount", { added: guestCount, total: guestCount })}
-        </span>
+        {!leadGuestOnly ? (
+          <span className="text-sm font-medium font-satoshi text-foreground/70">
+            {t("booking.guest.addedCount", {
+              added: guestCount,
+              total: guestCount,
+            })}
+          </span>
+        ) : null}
       </div>
 
       <div className="mt-4 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-normal font-inter text-foreground">
@@ -407,13 +420,14 @@ export function GuestDetailsForm({
       </div>
 
       <div className="mt-5 space-y-4">
-        {Array.from({ length: guestCount }, (_, index) => (
+        {Array.from({ length: formCount }, (_, index) => (
           <AdultGuestSection
             key={index}
             index={index}
             identity={identities[index] ?? identities[0]}
             identityErrors={identityErrors[index]}
             onIdentityChange={(identity) => onIdentityChange(index, identity)}
+            title={leadGuestOnly ? t("booking.guest.leadGuestLabel") : undefined}
           />
         ))}
       </div>

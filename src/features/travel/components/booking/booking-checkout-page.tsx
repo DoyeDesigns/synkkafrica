@@ -48,7 +48,7 @@ function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
     identityErrors,
     hasIdentityErrors,
     guardProceed,
-  } = useGuestCheckoutGate(guestCount);
+  } = useGuestCheckoutGate(guestCount, { leadGuestOnly: true });
 
   const checkIn = bookingParams.checkIn ?? getDefaultCheckInDate();
   const checkOut = bookingParams.checkOut ?? getDefaultCheckOutDate(checkIn);
@@ -93,6 +93,7 @@ function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
             identities={identities}
             onIdentityChange={setIdentityAt}
             identityErrors={identityErrors}
+            leadGuestOnly
           />
 
           <div>

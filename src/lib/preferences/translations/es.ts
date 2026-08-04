@@ -392,6 +392,7 @@ export const es = {
   "booking.reviews.viewAll": "Ver todas las reseñas",
   "booking.reviews.close": "Cerrar reseñas",
   "booking.guest.adultLabel": "Adulto (17 años+)",
+  "booking.guest.leadGuestLabel": "Huésped principal",
   "booking.guest.addedCount": "{added}/{total} añadido(s)",
   "booking.guest.passportHint":
     "Introduce tu nombre tal como aparece en tu pasaporte. El pasaporte debe ser válido al menos 6 meses desde la fecha del viaje.",

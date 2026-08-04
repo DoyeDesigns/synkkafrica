@@ -390,6 +390,7 @@ export const en = {
   "booking.reviews.viewAll": "View all reviews",
   "booking.reviews.close": "Close reviews",
   "booking.guest.adultLabel": "Adult (17 yrs+)",
+  "booking.guest.leadGuestLabel": "Lead guest",
   "booking.guest.addedCount": "{added}/{total} added",
   "booking.guest.passportHint":
     "Enter your name as it is mentioned on your passport. Passport should be valid for a minimum of 6 months from date of travel.",
