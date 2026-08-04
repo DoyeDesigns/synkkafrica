@@ -71,7 +71,14 @@ export const fr = {
   "hero.flights.toCity": "Vers | Sélectionner une ville",
   "hero.flights.departureDate": "Date de départ",
   "hero.flights.returnDate": "Date de retour",
+  "hero.flights.departing": "Départ",
+  "hero.flights.returning": "Retour",
+  "hero.common.addDate": "Ajouter une date",
+  "hero.common.selectDateRange": "Sélectionnez les dates de départ et de retour",
+  "hero.common.selectDate": "Sélectionnez une date",
   "hero.carRentals.searchCarType": "Rechercher un type de voiture",
+  "hero.carRentals.filterCarType": "Filtrer par type de voiture",
+  "hero.carRentals.allCarTypes": "Tous les types",
   "hero.carRentals.selfDrive": "Conduite autonome",
   "hero.carRentals.price": "₦ Prix",
   "hero.carRentals.pickupDate": "Date de prise en charge",
@@ -617,6 +624,9 @@ export const fr = {
   "filters.apply": "Appliquer le filtre",
   "filters.applyCount": "Appliquer le filtre ({count})",
   "filters.location": "Emplacement",
+  "filters.rentalDates": "Dates de location",
+  "filters.startDate": "Date de début",
+  "filters.endDate": "Date de fin",
   "filters.discounts": "Réductions",
   "filters.price": "Prix",
   "filters.category": "Catégorie",
@@ -1019,6 +1029,21 @@ export const fr = {
   "admin.listings.activityStatus": "Statut d'activité",
   "admin.listings.status.active": "Actif",
   "admin.listings.status.inactive": "Inactif",
+  "admin.listings.status.deleted": "Supprimé",
+  "admin.listings.tab.active": "Annonces actives",
+  "admin.listings.tab.deleted": "Annonces supprimées",
+  "admin.listings.deletedHint":
+    "Les annonces retirées du marché apparaissent ici. Vous pouvez consulter les détails ou supprimer définitivement les enregistrements.",
+  "admin.listings.viewDetails": "Voir l'annonce",
+  "admin.listings.deletedAt": "Supprimé le {date}",
+  "admin.listings.detailTitle": "Détails de l'annonce",
+  "admin.listings.detailHint":
+    "Aperçu complet de cette annonce : médias, détails, tarifs et documents.",
+  "admin.listings.detailNotFound": "Cette annonce est introuvable.",
+  "admin.listings.detail.backCars": "Retour aux voitures",
+  "admin.listings.detail.backAccommodations": "Retour aux hébergements",
+  "admin.listings.detail.backExperiences": "Retour aux expériences",
+  "admin.listings.detailClose": "Fermer",
 
   "admin.vendors.title": "Gérer les vendeurs",
   "admin.vendors.add": "Ajouter un vendeur",
@@ -1261,6 +1286,17 @@ export const fr = {
   "admin.reviews.bulkFlag": "Signaler la sélection",
   "admin.reviews.bulkResponseRequired": "Réponse requise",
   "admin.reviews.bulkDelete": "Supprimer la sélection",
+  "admin.reviews.actionsGuideTitle": "Que signifient ces actions ?",
+  "admin.reviews.actionsGuide.publish":
+    "Publier — Rendre l'avis visible sur la page publique de l'annonce.",
+  "admin.reviews.actionsGuide.flag":
+    "Signaler — Marquer l'avis pour un suivi (contenu inapproprié ou suspect).",
+  "admin.reviews.actionsGuide.delete":
+    "Supprimer — Retirer l'avis de la vue publique. Les avis supprimés apparaissent dans l'onglet Supprimés.",
+  "admin.reviews.actionsGuide.responseRequired":
+    "Réponse requise — Indiquer qu'une réponse du vendeur ou de l'admin est nécessaire.",
+  "admin.reviews.actionsGuide.clearResponseRequired":
+    "Effacer réponse requise — Retirer le marqueur après qu'une réponse officielle a été publiée.",
   "admin.reviews.selectReview": "Sélectionner l'avis pour {title}",
   "admin.reviews.unansweredBadge": "Sans réponse",
   "admin.reviews.responseRequiredBadge": "Réponse requise",
@@ -1272,7 +1308,7 @@ export const fr = {
   "admin.reviews.delete": "Supprimer",
   "admin.reviews.hide": "Masquer",
   "admin.reviews.publish": "Publier",
-  "admin.reviews.respondAsSynkkafrica": "Répondre en tant que SynKKafrica",
+  "admin.reviews.respondAsSynkAfrica": "Répondre en tant que SynkAfrica",
   "admin.reviews.responsePlaceholder":
     "Réponse officielle visible par le client et le vendeur...",
   "admin.reviews.photosLabel": "Photos du client",
@@ -1501,6 +1537,8 @@ export const fr = {
     "Les retraits des revenus sont envoyés sur ce compte.",
   "vendor.businessProfile.bankName": "Nom de la banque",
   "vendor.businessProfile.accountNumber": "Numéro de compte",
+  "vendor.businessProfile.accountNumberLocked":
+    "Le numéro de compte ne peut être modifié que tous les {months} mois. Prochaine modification le {date}.",
   "vendor.businessProfile.accountName": "Nom du compte",
   "vendor.businessProfile.bank.zenith": "Zenith Bank",
   "vendor.businessProfile.bank.firstBank": "First Bank",
@@ -1619,6 +1657,30 @@ export const fr = {
   "vendor.earnings.availableHint": "Disponible :",
   "vendor.earnings.processingNote":
     "Les retraits sont traités sous 1 à 2 jours ouvrables.",
+  "vendor.earnings.paymentFlowTitle": "Politique de paiement et retrait",
+  "vendor.earnings.paymentFlowInstant":
+    "Les retraits de 200 000 ₦ et moins sont traités automatiquement après confirmation.",
+  "vendor.earnings.paymentFlowApproval":
+    "Les retraits supérieurs à 200 000 ₦ nécessitent l'approbation d'un super-admin.",
+  "vendor.earnings.paymentFlowAuth":
+    "Lors du retrait, les montants supérieurs à 200 000 ₦ exigent un PIN de transaction et un OTP.",
+  "vendor.earnings.withdrawalModal.title": "Confirmer le retrait",
+  "vendor.earnings.withdrawalModal.pin": "PIN de transaction",
+  "vendor.earnings.withdrawalModal.otp": "Code OTP",
+  "vendor.earnings.withdrawalModal.sendOtp": "Envoyer OTP",
+  "vendor.earnings.withdrawalModal.submit": "Confirmer le retrait",
+  "vendor.earnings.withdrawalModal.pendingApproval":
+    "Ce retrait nécessite l'approbation d'un super-admin. Vous serez notifié une fois approuvé.",
+  "vendor.earnings.withdrawalModal.cancel": "Annuler",
+  "vendor.listings.detail.back": "Retour aux annonces",
+  "vendor.listings.detail.backToBookings": "Retour aux réservations",
+  "vendor.listings.detail.heading": "Détails de l'annonce",
+  "vendor.listings.detail.hint":
+    "Aperçu complet de cette annonce, y compris médias, détails, tarifs et documents.",
+  "vendor.listings.detail.status": "Statut",
+  "vendor.listings.detail.category": "Catégorie",
+  "vendor.listings.detail.rating": "Note",
+  "vendor.listings.detail.notFound": "Annonce introuvable.",
   "vendor.earnings.status.completed": "Terminé",
   "vendor.earnings.status.pending": "En attente",
   "vendor.earnings.status.failed": "Échoué",
@@ -2006,4 +2068,13 @@ export const fr = {
   "vendor.addListing.publish": "Publier l'annonce",
   "vendor.addListing.publishWaitForUploads":
     "Veuillez patienter — vos documents sont encore en cours de téléversement.",
+  "vendor.addListing.success.title": "Annonce soumise pour examen",
+  "vendor.addListing.success.message":
+    "Votre annonce est en cours d'examen. Vous recevrez un e-mail de confirmation sous 2 à 3 jours ouvrables une fois approuvée.",
+  "vendor.addListing.success.addAnother": "Ajouter une autre annonce",
+  "vendor.addListing.success.backToListings": "Retour à mes annonces",
+  "vendor.addListing.categoryChooseHint":
+    "Choisissez le type de service que vous proposez. Ce choix est définitif lors de l'enregistrement de votre première annonce.",
+  "vendor.addListing.categoryLockedHint":
+    "Votre compte vendeur est enregistré pour {category} uniquement. Contactez le support pour changer de catégorie.",
 } as const satisfies Record<TranslationKey, string>;

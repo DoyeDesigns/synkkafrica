@@ -85,3 +85,28 @@
 .synkka-daypicker .rdp-today:not(.rdp-selected) .rdp-day_button {
   font-weight: 700;
 }
+
+/* Range selection (departing / returning, check-in / check-out) */
+.synkka-daypicker .rdp-range_start .rdp-day_button,
+.synkka-daypicker .rdp-range_end .rdp-day_button {
+  background-color: #004785;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.synkka-daypicker .rdp-range_middle {
+  background-color: rgb(0 71 133 / 0.15);
+}
+
+.synkka-daypicker .rdp-range_middle .rdp-day_button {
+  color: #004785;
+  border-radius: 0;
+}
+
+.synkka-daypicker .rdp-range_start:not(.rdp-range_end) {
+  background: linear-gradient(to right, transparent 50%, rgb(0 71 133 / 0.15) 50%);
+}
+
+.synkka-daypicker .rdp-range_end:not(.rdp-range_start) {
+  background: linear-gradient(to right, rgb(0 71 133 / 0.15) 50%, transparent 50%);
+}

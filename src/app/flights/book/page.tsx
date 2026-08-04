@@ -11,6 +11,7 @@ import "@/features/travel/components/booking/phone-input.css";
 
 import {
   FlightTravelerFields,
+  toTravelerInput,
   type TravelerValue,
 } from "@/features/travel/components/booking/flight-traveler-fields";
 import { FlightBookingSummary } from "@/features/travel/components/booking/flight-booking-summary";
@@ -19,7 +20,6 @@ import {
   createBooking,
   isPriceChanged,
   type PriceChangedBody,
-  type TravelerInput,
 } from "@/lib/api/bookings";
 import { priceOffer } from "@/lib/api/flights";
 import { ApiError } from "@/lib/api/backend";
@@ -100,7 +100,9 @@ function BookFlight() {
           offerId: confirm?.offerId ?? offerId,
           contactEmail: email,
           contactPhone: normalizedPhone,
-          travelers: travelers as TravelerInput[],
+          travelers: travelers.map((traveler) => ({
+            inline: toTravelerInput(traveler),
+          })),
           acknowledgedTotalAmount: confirm?.acknowledgedTotalAmount,
         },
         session?.accessToken,

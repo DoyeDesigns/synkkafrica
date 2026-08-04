@@ -71,7 +71,14 @@ export const de = {
   "hero.flights.toCity": "Nach | Stadt wählen",
   "hero.flights.departureDate": "Abflugdatum",
   "hero.flights.returnDate": "Rückflugdatum",
+  "hero.flights.departing": "Abflug",
+  "hero.flights.returning": "Rückflug",
+  "hero.common.addDate": "Datum hinzufügen",
+  "hero.common.selectDateRange": "Abflug- und Rückflugdatum wählen",
+  "hero.common.selectDate": "Datum wählen",
   "hero.carRentals.searchCarType": "Fahrzeugtyp suchen",
+  "hero.carRentals.filterCarType": "Nach Fahrzeugtyp filtern",
+  "hero.carRentals.allCarTypes": "Alle Typen",
   "hero.carRentals.selfDrive": "Selbstfahren",
   "hero.carRentals.price": "₦ Preis",
   "hero.carRentals.pickupDate": "Abholdatum",
@@ -617,6 +624,9 @@ export const de = {
   "filters.apply": "Filter anwenden",
   "filters.applyCount": "Filter anwenden ({count})",
   "filters.location": "Standort",
+  "filters.rentalDates": "Mietdaten",
+  "filters.startDate": "Startdatum",
+  "filters.endDate": "Enddatum",
   "filters.discounts": "Rabatte",
   "filters.price": "Preis",
   "filters.category": "Kategorie",
@@ -1019,6 +1029,21 @@ export const de = {
   "admin.listings.activityStatus": "Aktivitätsstatus",
   "admin.listings.status.active": "Aktiv",
   "admin.listings.status.inactive": "Inaktiv",
+  "admin.listings.status.deleted": "Gelöscht",
+  "admin.listings.tab.active": "Aktive Angebote",
+  "admin.listings.tab.deleted": "Gelöschte Angebote",
+  "admin.listings.deletedHint":
+    "Vom Marktplatz entfernte Angebote erscheinen hier. Sie können Details einsehen oder Einträge dauerhaft löschen.",
+  "admin.listings.viewDetails": "Angebot ansehen",
+  "admin.listings.deletedAt": "Gelöscht am {date}",
+  "admin.listings.detailTitle": "Angebotsdetails",
+  "admin.listings.detailHint":
+    "Vollständige Vorschau dieses Angebots inkl. Medien, Details, Preise und Dokumente.",
+  "admin.listings.detailNotFound": "Dieses Angebot wurde nicht gefunden.",
+  "admin.listings.detail.backCars": "Zurück zu Autos",
+  "admin.listings.detail.backAccommodations": "Zurück zu Unterkünften",
+  "admin.listings.detail.backExperiences": "Zurück zu Erlebnissen",
+  "admin.listings.detailClose": "Schließen",
 
   "admin.vendors.title": "Anbieter verwalten",
   "admin.vendors.add": "Anbieter hinzufügen",
@@ -1261,6 +1286,17 @@ export const de = {
   "admin.reviews.bulkFlag": "Ausgewählte markieren",
   "admin.reviews.bulkResponseRequired": "Antwort erforderlich",
   "admin.reviews.bulkDelete": "Ausgewählte löschen",
+  "admin.reviews.actionsGuideTitle": "Was bedeuten diese Aktionen?",
+  "admin.reviews.actionsGuide.publish":
+    "Veröffentlichen — Die Bewertung auf der öffentlichen Angebotsseite sichtbar machen.",
+  "admin.reviews.actionsGuide.flag":
+    "Markieren — Die Bewertung zur Nachverfolgung kennzeichnen (unangemessen oder verdächtig).",
+  "admin.reviews.actionsGuide.delete":
+    "Löschen — Die Bewertung aus der öffentlichen Ansicht entfernen. Gelöschte Bewertungen erscheinen im Tab Gelöscht.",
+  "admin.reviews.actionsGuide.responseRequired":
+    "Antwort erforderlich — Anzeigen, dass eine Antwort vom Anbieter oder Admin nötig ist.",
+  "admin.reviews.actionsGuide.clearResponseRequired":
+    "Antwort erforderlich aufheben — Markierung entfernen, nachdem eine offizielle Antwort veröffentlicht wurde.",
   "admin.reviews.selectReview": "Bewertung auswählen für {title}",
   "admin.reviews.unansweredBadge": "Unbeantwortet",
   "admin.reviews.responseRequiredBadge": "Antwort erforderlich",
@@ -1272,7 +1308,7 @@ export const de = {
   "admin.reviews.delete": "Löschen",
   "admin.reviews.hide": "Ausblenden",
   "admin.reviews.publish": "Veröffentlichen",
-  "admin.reviews.respondAsSynkkafrica": "Als SynKKafrica antworten",
+  "admin.reviews.respondAsSynkAfrica": "Als SynkAfrica antworten",
   "admin.reviews.responsePlaceholder":
     "Offizielle Antwort sichtbar für Gast und Anbieter...",
   "admin.reviews.photosLabel": "Gastfotos",
@@ -1501,6 +1537,8 @@ export const de = {
     "Auszahlungen aus Einnahmen werden an dieses Konto gesendet.",
   "vendor.businessProfile.bankName": "Bankname",
   "vendor.businessProfile.accountNumber": "Kontonummer",
+  "vendor.businessProfile.accountNumberLocked":
+    "Die Kontonummer kann nur alle {months} Monate geändert werden. Nächste Änderung am {date}.",
   "vendor.businessProfile.accountName": "Kontoinhaber",
   "vendor.businessProfile.bank.zenith": "Zenith Bank",
   "vendor.businessProfile.bank.firstBank": "First Bank",
@@ -1619,6 +1657,30 @@ export const de = {
   "vendor.earnings.availableHint": "Verfügbar:",
   "vendor.earnings.processingNote":
     "Auszahlungen werden innerhalb von 1–2 Werktagen bearbeitet.",
+  "vendor.earnings.paymentFlowTitle": "Zahlungs- und Auszahlungsrichtlinie",
+  "vendor.earnings.paymentFlowInstant":
+    "Auszahlungen von ₦200.000 und weniger werden nach Bestätigung automatisch verarbeitet.",
+  "vendor.earnings.paymentFlowApproval":
+    "Auszahlungen über ₦200.000 erfordern die Freigabe eines Super-Admins.",
+  "vendor.earnings.paymentFlowAuth":
+    "Bei Auszahlungen über ₦200.000 sind eine Transaktions-PIN und ein OTP erforderlich.",
+  "vendor.earnings.withdrawalModal.title": "Auszahlung bestätigen",
+  "vendor.earnings.withdrawalModal.pin": "Transaktions-PIN",
+  "vendor.earnings.withdrawalModal.otp": "OTP-Code",
+  "vendor.earnings.withdrawalModal.sendOtp": "OTP senden",
+  "vendor.earnings.withdrawalModal.submit": "Auszahlung bestätigen",
+  "vendor.earnings.withdrawalModal.pendingApproval":
+    "Diese Auszahlung erfordert die Freigabe eines Super-Admins. Sie werden benachrichtigt, sobald sie genehmigt wurde.",
+  "vendor.earnings.withdrawalModal.cancel": "Abbrechen",
+  "vendor.listings.detail.back": "Zurück zu den Angeboten",
+  "vendor.listings.detail.backToBookings": "Zurück zu Buchungen",
+  "vendor.listings.detail.heading": "Angebotsdetails",
+  "vendor.listings.detail.hint":
+    "Vollständige Vorschau dieses Angebots inklusive Medien, Details, Preise und Dokumente.",
+  "vendor.listings.detail.status": "Status",
+  "vendor.listings.detail.category": "Kategorie",
+  "vendor.listings.detail.rating": "Bewertung",
+  "vendor.listings.detail.notFound": "Angebot nicht gefunden.",
   "vendor.earnings.status.completed": "Abgeschlossen",
   "vendor.earnings.status.pending": "Ausstehend",
   "vendor.earnings.status.failed": "Fehlgeschlagen",
@@ -2005,5 +2067,14 @@ export const de = {
   "vendor.addListing.completeRequiredFields": "Pflichtfelder ausfüllen: {fields}",
   "vendor.addListing.publish": "Angebot veröffentlichen",
   "vendor.addListing.publishWaitForUploads":
-    "Bitte warten — Ihre Dokumente werden noch hochgeladen.",
+   "Bitte warten — Ihre Dokumente werden noch hochgeladen.",
+  "vendor.addListing.success.title": "Angebot zur Prüfung eingereicht",
+  "vendor.addListing.success.message":
+    "Ihr Angebot wird geprüft. Sie erhalten innerhalb von 2–3 Werktagen eine Bestätigungs-E-Mail, sobald es freigegeben wurde.",
+  "vendor.addListing.success.addAnother": "Weiteres Angebot hinzufügen",
+  "vendor.addListing.success.backToListings": "Zurück zu meinen Angeboten",
+  "vendor.addListing.categoryChooseHint":
+    "Wählen Sie die Art des Services, den Sie anbieten. Diese Auswahl wird beim Speichern Ihrer ersten Anzeige festgelegt und kann später nicht geändert werden.",
+  "vendor.addListing.categoryLockedHint":
+    "Ihr Anbieterkonto ist nur für {category} registriert. Kontaktieren Sie den Support für eine Kategorieänderung.",
 } as const satisfies Record<TranslationKey, string>;

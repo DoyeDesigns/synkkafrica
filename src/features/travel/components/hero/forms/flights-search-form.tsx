@@ -1,12 +1,10 @@
 "use client";
 
-import { Calendar } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { getDefaultCheckInDate } from "@/features/travel/booking/booking-params";
 import {
-  HeroField,
   HeroFormRow,
   HeroInputShell,
   HeroPillSelect,
@@ -14,6 +12,7 @@ import {
   HeroSearchButton,
 } from "@/features/travel/components/hero/hero-form-primitives";
 import { HeroAirportField } from "@/features/travel/components/hero/hero-airport-field";
+import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -171,34 +170,30 @@ export function FlightsSearchForm({ onSubmit }: FlightsSearchFormProps) {
           value={from}
           onChange={setFrom}
           listboxId="hero-flight-from-listbox"
+          className="w-full min-w-0 lg:!flex-[0.8] lg:!max-w-[170px]"
         />
         <HeroAirportField
           placeholder={t("hero.flights.toCity")}
           value={to}
           onChange={setTo}
           listboxId="hero-flight-to-listbox"
+          className="w-full min-w-0 lg:!flex-[0.8] lg:!max-w-[170px]"
         />
-        <HeroField
-          icon={<Calendar className="h-4 w-4 shrink-0" />}
-          placeholder={t("hero.flights.departureDate")}
-          value={departureDate}
-          onChange={setDepartureDate}
-          type="date"
-          min={new Date().toISOString().split("T")[0]}
+        <HeroDateRangeField
+          fromLabel={t("hero.flights.departing")}
+          toLabel={t("hero.flights.returning")}
+          addDateLabel={t("hero.common.addDate")}
+          fromDate={departureDate}
+          toDate={returnDate}
+          onFromDateChange={setDepartureDate}
+          onToDateChange={setReturnDate}
+          showToDate={showReturnDate}
+          className="w-full min-w-0 lg:!flex-[1.9]"
         />
-        {showReturnDate ? (
-          <HeroField
-            icon={<Calendar className="h-4 w-4 shrink-0" />}
-            placeholder={t("hero.flights.returnDate")}
-            value={returnDate}
-            onChange={setReturnDate}
-            type="date"
-            min={departureDate || new Date().toISOString().split("T")[0]}
-          />
-        ) : null}
         <HeroSearchButton
           label={t("hero.accommodations.checkAvailability")}
           variant="blue"
+          className="w-full shrink-0 lg:w-auto"
         />
       </HeroInputShell>
     </form>

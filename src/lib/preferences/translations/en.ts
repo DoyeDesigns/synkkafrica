@@ -69,7 +69,14 @@ export const en = {
   "hero.flights.toCity": "To | Select City",
   "hero.flights.departureDate": "Departure date",
   "hero.flights.returnDate": "Return date",
+  "hero.flights.departing": "Departing",
+  "hero.flights.returning": "Returning",
+  "hero.common.addDate": "Add date",
+  "hero.common.selectDateRange": "Select departing and returning dates",
+  "hero.common.selectDate": "Select a date",
   "hero.carRentals.searchCarType": "Search Car type",
+  "hero.carRentals.filterCarType": "Filter by car type",
+  "hero.carRentals.allCarTypes": "All types",
   "hero.carRentals.selfDrive": "Self drive",
   "hero.carRentals.price": "₦ Price",
   "hero.carRentals.pickupDate": "Pickup date",
@@ -615,6 +622,9 @@ export const en = {
   "filters.apply": "Apply filter",
   "filters.applyCount": "Apply filter ({count})",
   "filters.location": "Location",
+  "filters.rentalDates": "Rental dates",
+  "filters.startDate": "Start date",
+  "filters.endDate": "End date",
   "filters.discounts": "Discounts",
   "filters.price": "Price",
   "filters.category": "Category",
@@ -1020,6 +1030,21 @@ export const en = {
   "admin.listings.activityStatus": "Activity status",
   "admin.listings.status.active": "Active",
   "admin.listings.status.inactive": "Inactive",
+  "admin.listings.status.deleted": "Deleted",
+  "admin.listings.tab.active": "Active listings",
+  "admin.listings.tab.deleted": "Deleted listings",
+  "admin.listings.deletedHint":
+    "Listings removed from the marketplace appear here. You can view details or permanently delete records.",
+  "admin.listings.viewDetails": "View listing",
+  "admin.listings.deletedAt": "Deleted on {date}",
+  "admin.listings.detailTitle": "Listing details",
+  "admin.listings.detailHint":
+    "Full preview of this listing, including media, details, pricing, and documents.",
+  "admin.listings.detailNotFound": "This listing could not be found.",
+  "admin.listings.detail.backCars": "Back to cars",
+  "admin.listings.detail.backAccommodations": "Back to accommodations",
+  "admin.listings.detail.backExperiences": "Back to experiences",
+  "admin.listings.detailClose": "Close",
 
   "admin.vendors.title": "Manage vendors",
   "admin.vendors.add": "Add vendor",
@@ -1262,6 +1287,17 @@ export const en = {
   "admin.reviews.bulkFlag": "Flag selected",
   "admin.reviews.bulkResponseRequired": "Response required",
   "admin.reviews.bulkDelete": "Delete selected",
+  "admin.reviews.actionsGuideTitle": "What do these actions mean?",
+  "admin.reviews.actionsGuide.publish":
+    "Publish — Make the review visible on the public listing page.",
+  "admin.reviews.actionsGuide.flag":
+    "Flag — Mark the review for follow-up (inappropriate or suspicious content).",
+  "admin.reviews.actionsGuide.delete":
+    "Delete — Remove the review from public view. Deleted reviews appear in the Deleted tab.",
+  "admin.reviews.actionsGuide.responseRequired":
+    "Response required — Indicate that a vendor or admin response is needed.",
+  "admin.reviews.actionsGuide.clearResponseRequired":
+    "Clear response required — Remove the marker after an official response has been posted.",
   "admin.reviews.selectReview": "Select review for {title}",
   "admin.reviews.unansweredBadge": "Unanswered",
   "admin.reviews.responseRequiredBadge": "Response required",
@@ -1273,7 +1309,7 @@ export const en = {
   "admin.reviews.delete": "Delete",
   "admin.reviews.hide": "Hide",
   "admin.reviews.publish": "Publish",
-  "admin.reviews.respondAsSynkkafrica": "Respond as SynKKafrica",
+  "admin.reviews.respondAsSynkAfrica": "Respond as SynkAfrica",
   "admin.reviews.responsePlaceholder": "Official response visible to guest and vendor...",
   "admin.reviews.photosLabel": "Guest photos",
   "admin.reviews.status.published": "Published",
@@ -1501,6 +1537,8 @@ export const en = {
     "Withdrawals from earnings are sent to this account.",
   "vendor.businessProfile.bankName": "Bank name",
   "vendor.businessProfile.accountNumber": "Account number",
+  "vendor.businessProfile.accountNumberLocked":
+    "Account number can only be changed every {months} months. Next change available on {date}.",
   "vendor.businessProfile.accountName": "Account name",
   "vendor.businessProfile.bank.zenith": "Zenith Bank",
   "vendor.businessProfile.bank.firstBank": "First Bank",
@@ -1614,6 +1652,29 @@ export const en = {
   "vendor.earnings.availableHint": "Available:",
   "vendor.earnings.processingNote":
     "Withdrawals are processed within 1–2 business days.",
+  "vendor.earnings.paymentFlowTitle": "Payment & withdrawal policy",
+  "vendor.earnings.paymentFlowInstant":
+    "Withdrawals of ₦200,000 and below are processed automatically after confirmation.",
+  "vendor.earnings.paymentFlowApproval":
+    "Withdrawals above ₦200,000 require super-admin approval.",
+  "vendor.earnings.paymentFlowAuth":
+    "When withdrawing, amounts above ₦200,000 require a transaction PIN and OTP.",
+  "vendor.earnings.withdrawalModal.title": "Confirm withdrawal",
+  "vendor.earnings.withdrawalModal.pin": "Transaction PIN",
+  "vendor.earnings.withdrawalModal.otp": "OTP code",
+  "vendor.earnings.withdrawalModal.sendOtp": "Send OTP",
+  "vendor.earnings.withdrawalModal.submit": "Confirm withdrawal",
+  "vendor.earnings.withdrawalModal.pendingApproval":
+    "This withdrawal requires super-admin approval. You will be notified once approved.",
+  "vendor.earnings.withdrawalModal.cancel": "Cancel",
+  "vendor.listings.detail.back": "Back to listings",
+  "vendor.listings.detail.backToBookings": "Back to bookings",
+  "vendor.listings.detail.heading": "Listing details",
+  "vendor.listings.detail.hint": "Full preview of this listing, including media, details, pricing, and documents.",
+  "vendor.listings.detail.status": "Status",
+  "vendor.listings.detail.category": "Category",
+  "vendor.listings.detail.rating": "Rating",
+  "vendor.listings.detail.notFound": "Listing not found.",
   "vendor.earnings.status.completed": "Completed",
   "vendor.earnings.status.pending": "Pending",
   "vendor.earnings.status.failed": "Failed",
@@ -1999,6 +2060,15 @@ export const en = {
   "vendor.addListing.publish": "Publish listing",
   "vendor.addListing.publishWaitForUploads":
     "Please wait — your documents are still uploading.",
+  "vendor.addListing.success.title": "Listing submitted for review",
+  "vendor.addListing.success.message":
+    "Your listing is now in review. You will receive a confirmation email within 2–3 business days once it has been approved.",
+  "vendor.addListing.success.addAnother": "Add another listing",
+  "vendor.addListing.success.backToListings": "Back to my listings",
+  "vendor.addListing.categoryChooseHint":
+    "Choose the type of service you offer. This is set once when you save your first listing and cannot be changed later.",
+  "vendor.addListing.categoryLockedHint":
+    "Your vendor account is registered for {category} only. Contact support to change your service category.",
 } as const;
 
 export type TranslationKey = keyof typeof en;

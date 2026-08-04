@@ -166,28 +166,28 @@ export const LISTING_DOCUMENTS_BY_CATEGORY: Record<
 > = {
   cars: [
     {
+      id: "cac",
+      labelKey: "vendor.addListing.documents.cac",
+      hintKey: "vendor.addListing.documents.cacHint",
+      required: true,
+    },
+    {
       id: "proof_of_ownership",
       labelKey: "vendor.addListing.documents.proofOfOwnership",
       hintKey: "vendor.addListing.documents.proofOfOwnershipHint",
-      required: true,
+      required: false,
     },
     {
       id: "roadworthiness",
       labelKey: "vendor.addListing.documents.roadworthiness",
       hintKey: "vendor.addListing.documents.roadworthinessHint",
-      required: true,
+      required: false,
     },
     {
       id: "insurance",
       labelKey: "vendor.addListing.documents.insurance",
       hintKey: "vendor.addListing.documents.insuranceHint",
-      required: true,
-    },
-    {
-      id: "cac",
-      labelKey: "vendor.addListing.documents.cac",
-      hintKey: "vendor.addListing.documents.cacHint",
-      required: true,
+      required: false,
     },
   ],
   accommodations: [
@@ -219,7 +219,7 @@ export const LISTING_DOCUMENTS_BY_CATEGORY: Record<
       id: "address_photos",
       labelKey: "vendor.addListing.documents.addressPhotos",
       hintKey: "vendor.addListing.documents.addressPhotosHint",
-      required: true,
+      required: false,
     },
   ],
   experiences: [
@@ -411,17 +411,7 @@ export function getPreviousStep(step: AddListingStepId): AddListingStepId | null
 }
 
 export function isAccommodationDocumentsValid(form: AddListingFormState) {
-  const uploads = form.uploadedDocuments;
-
-  if (!uploads.cac || !uploads.address_photos) {
-    return false;
-  }
-
-  if (form.isPropertyOwner) {
-    return Boolean(uploads.proof_of_ownership);
-  }
-
-  return Boolean(uploads.agent_authorization && uploads.agent_proof_of_address);
+  return Boolean(form.uploadedDocuments.cac);
 }
 
 export function getDetailsStepMissingFields(form: AddListingFormState): TranslationKey[] {

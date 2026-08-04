@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import {
   BedDouble,
   Car,
@@ -19,12 +20,6 @@ import {
 import { useSession } from "next-auth/react";
 
 import { VendorAddListingStepper } from "@/features/vendor/components/vendor-add-listing-stepper";
-import { DocumentsStepPage } from "@/features/vendor/components/vendor-add-listing-documents-step";
-import { AccommodationDetailsFields } from "@/features/vendor/components/vendor-add-listing-accommodation-details";
-import { ExperienceDetailsFields } from "@/features/vendor/components/vendor-add-listing-experience-details";
-import { AccommodationPricingStep } from "@/features/vendor/components/vendor-add-listing-accommodation-pricing";
-import { ExperiencePricingStep } from "@/features/vendor/components/vendor-add-listing-experience-pricing";
-import { ReviewStepPage } from "@/features/vendor/components/vendor-add-listing-review-step";
 import {
   EMPTY_ADD_LISTING_FORM,
   getDetailsStepMissingFields,
@@ -47,6 +42,10 @@ import {
   type CarHandoverMethod,
   type ListingCategory,
 } from "@/features/vendor/data/vendor-add-listing";
+import {
+  getVendorServiceCategory,
+  setVendorServiceCategory,
+} from "@/features/vendor/data/vendor-service-category";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 import {
@@ -58,6 +57,12 @@ import {
   uploadListingDocument,
   type CreateVendorListingInput,
 } from "@/lib/api/vendor";
+import { ReviewStepPage } from "./vendor-add-listing-review-step";
+import { DocumentsStepPage } from "./vendor-add-listing-documents-step";
+import { ExperiencePricingStep } from "./vendor-add-listing-experience-pricing";
+import { AccommodationPricingStep } from "./vendor-add-listing-accommodation-pricing";
+import { ExperienceDetailsFields } from "./vendor-add-listing-experience-details";
+import { AccommodationDetailsFields } from "./vendor-add-listing-accommodation-details";
 
 // Map the wide add-listing form onto the backend create payload: derive the
 // common columns (title/description/location) per category and carry the rest
@@ -167,6 +172,9 @@ export function VendorAddListingContent({
   const router = useRouter();
   const { data: session } = useSession();
   const token = session?.accessToken;
+  const [lockedCategory, setLockedCategory] = useState<ListingCategory | null>(
+    null,
+  );
   const [currentStep, setCurrentStep] = useState<AddListingStepId>("details");
   const [form, setForm] = useState<AddListingFormState>(EMPTY_ADD_LISTING_FORM);
   const [draftSaved, setDraftSaved] = useState(false);
@@ -180,6 +188,16 @@ export function VendorAddListingContent({
   const [loadError, setLoadError] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [publishError, setPublishError] = useState<string | null>(null);
+
+  // One vendor, one service category — load the saved choice after mount.
+  useEffect(() => {
+    const savedCategory = getVendorServiceCategory();
+    setLockedCategory(savedCategory);
+
+    if (savedCategory && !editListingId) {
+      setForm((current) => ({ ...current, category: savedCategory }));
+    }
+  }, [editListingId]);
 
   // Resume-editing: load the existing listing and rebuild the form from its
   // persisted `details`. Runs once per (listing, token).
@@ -198,6 +216,7 @@ export function VendorAddListingContent({
             listing.media,
           ),
         );
+        setLockedCategory(listing.category);
         setCurrentStep("details");
       })
       .catch(() => {
@@ -210,6 +229,15 @@ export function VendorAddListingContent({
       cancelled = true;
     };
   }, [editListingId, token]);
+
+  const persistServiceCategory = (category: ListingCategory) => {
+    if (lockedCategory) {
+      return;
+    }
+
+    setVendorServiceCategory(category);
+    setLockedCategory(category);
+  };
 
   const updateForm = (patch: Partial<AddListingFormState>) => {
     setForm((current) => ({ ...current, ...patch }));
@@ -275,6 +303,10 @@ export function VendorAddListingContent({
   };
 
   const handleCategoryChange = (category: ListingCategory) => {
+    if (lockedCategory && category !== lockedCategory) {
+      return;
+    }
+
     updateForm({ category });
     setCurrentStep("details");
   };
@@ -315,6 +347,7 @@ export function VendorAddListingContent({
         });
         setDraftId(created.id);
       }
+      persistServiceCategory(form.category);
       setDraftSaved(true);
       window.setTimeout(() => setDraftSaved(false), 2500);
     } catch {
@@ -366,6 +399,7 @@ export function VendorAddListingContent({
         const created = await createVendorListing(token, toCreateInput(form));
         await attachWizardDocuments(created.id);
       }
+      persistServiceCategory(form.category);
       router.push(exitHref);
       router.refresh();
     } catch {
@@ -465,7 +499,12 @@ export function VendorAddListingContent({
       ) : (
       <div className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm sm:p-6">
         {currentStep === "details" ? (
-          <DetailsStep form={form} onChange={updateForm} onCategoryChange={handleCategoryChange} />
+          <DetailsStep
+            form={form}
+            lockedCategory={lockedCategory}
+            onChange={updateForm}
+            onCategoryChange={handleCategoryChange}
+          />
         ) : null}
         {currentStep === "media" ? (
           <MediaStep
@@ -562,14 +601,19 @@ export function VendorAddListingContent({
 
 function DetailsStep({
   form,
+  lockedCategory,
   onChange,
   onCategoryChange,
 }: {
   form: AddListingFormState;
+  lockedCategory: ListingCategory | null;
   onChange: (patch: Partial<AddListingFormState>) => void;
   onCategoryChange: (category: ListingCategory) => void;
 }) {
   const t = useTranslation();
+  const lockedOption = lockedCategory
+    ? CATEGORY_OPTIONS.find((option) => option.id === lockedCategory)
+    : null;
 
   return (
     <div className="space-y-8">
@@ -577,20 +621,31 @@ function DetailsStep({
         <h3 className="text-base font-bold font-satoshi text-[#2F2F2F]">
           {t("vendor.addListing.whatAreYouListing")}
         </h3>
+        <p className="mt-2 text-xs font-medium font-satoshi text-[#676565]">
+          {lockedCategory
+            ? t("vendor.addListing.categoryLockedHint", {
+                category: lockedOption ? t(lockedOption.titleKey) : lockedCategory,
+              })
+            : t("vendor.addListing.categoryChooseHint")}
+        </p>
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           {CATEGORY_OPTIONS.map((option) => {
             const Icon = option.icon;
             const isSelected = form.category === option.id;
+            const isDisabled = lockedCategory !== null && option.id !== lockedCategory;
 
             return (
               <button
                 key={option.id}
                 type="button"
+                disabled={isDisabled}
                 onClick={() => onCategoryChange(option.id)}
                 className={`relative rounded-xl border px-4 py-6 text-center transition-colors ${
                   isSelected
                     ? "border-[#D85A30] bg-[#FFF8F5]"
-                    : "border-[#E5E5E5] bg-white hover:border-[#D0D0D0]"
+                    : isDisabled
+                      ? "cursor-not-allowed border-[#E5E5E5] bg-[#FAFAFA] opacity-50"
+                      : "border-[#E5E5E5] bg-white hover:border-[#D0D0D0]"
                 }`}
               >
                 <span

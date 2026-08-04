@@ -32,6 +32,8 @@ export type CarRentalFilterState = {
   carType: string;
   serviceType: string;
   transmission: string;
+  startDate: string;
+  endDate: string;
 };
 
 export const DEFAULT_CAR_RENTAL_FILTERS: CarRentalFilterState = {
@@ -41,11 +43,14 @@ export const DEFAULT_CAR_RENTAL_FILTERS: CarRentalFilterState = {
   priceMin: 50000,
   priceMax: 200000,
   priceRange: null,
-  carType: "SUV",
+  carType: "",
   serviceType: "Self drive",
   transmission: "Automatic",
+  startDate: "",
+  endDate: "",
 };
 
+export const CAR_TYPE_FILTER_OPTIONS = ["", "SUV", "Sedan", "Pickup"] as const;
 export const CAR_TYPE_OPTIONS = ["SUV", "Sedan", "Hatchback", "Pickup"] as const;
 export const SERVICE_TYPE_OPTIONS = ["Self drive", "Chauffeur"] as const;
 export const TRANSMISSION_OPTIONS = ["Automatic", "Manual"] as const;
@@ -150,6 +155,8 @@ export function countActiveCarRentalFilters(
   if (filters.carType !== DEFAULT_CAR_RENTAL_FILTERS.carType) count += 1;
   if (filters.serviceType !== DEFAULT_CAR_RENTAL_FILTERS.serviceType) count += 1;
   if (filters.transmission !== DEFAULT_CAR_RENTAL_FILTERS.transmission) count += 1;
+  if (filters.startDate.trim()) count += 1;
+  if (filters.endDate.trim()) count += 1;
 
   return count;
 }
@@ -179,10 +186,7 @@ export function filterCarRentalResults(
       return false;
     }
 
-    if (
-      filters.carType !== DEFAULT_CAR_RENTAL_FILTERS.carType &&
-      result.carType !== filters.carType
-    ) {
+    if (filters.carType && result.carType !== filters.carType) {
       return false;
     }
 

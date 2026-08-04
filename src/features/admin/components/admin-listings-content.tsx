@@ -7,6 +7,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import {
   filterAdminListings,
+  getAdminListingDetailHref,
   type AdminListing,
   type AdminListingKind,
   type AdminListingStatus,
@@ -17,11 +18,13 @@ import type { TranslationKey } from "@/lib/preferences/translations";
 const STATUS_LABEL_KEYS: Record<AdminListingStatus, TranslationKey> = {
   active: "admin.listings.status.active",
   inactive: "admin.listings.status.inactive",
+  deleted: "admin.listings.status.deleted",
 };
 
 const STATUS_BADGE_STYLES: Record<AdminListingStatus, string> = {
   active: "bg-[#E8F5E9] text-[#2E7D32]",
   inactive: "bg-[#F5F5F5] text-[#676565]",
+  deleted: "bg-[#FFEBEE] text-[#C62828]",
 };
 
 const SEARCH_KEYS: Record<AdminListingKind, TranslationKey> = {
@@ -55,9 +58,9 @@ const ENABLE_KEYS: Record<AdminListingKind, TranslationKey> = {
 };
 
 const GO_TO_KEYS: Record<AdminListingKind, TranslationKey> = {
-  experiences: "admin.experiences.actions.goTo",
-  cars: "admin.cars.actions.goTo",
-  accommodations: "admin.accommodations.actions.goTo",
+  experiences: "admin.listings.viewDetails",
+  cars: "admin.listings.viewDetails",
+  accommodations: "admin.listings.viewDetails",
 };
 
 const DELETE_KEYS: Record<AdminListingKind, TranslationKey> = {
@@ -269,7 +272,7 @@ function ListingRow({
                 </button>
               )}
               <Link
-                href={listing.publicUrl}
+                href={getAdminListingDetailHref(kind, listing.id)}
                 onClick={onMenuClose}
                 className="block px-4 py-2.5 text-sm font-medium font-satoshi text-[#2F2F2F] transition-colors hover:bg-[#FAFAFA]"
               >

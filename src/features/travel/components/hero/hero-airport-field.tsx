@@ -13,6 +13,7 @@ type HeroAirportFieldProps = {
   value: string;
   onChange: (value: string) => void;
   listboxId: string;
+  className?: string;
 };
 
 // Airport/city autocomplete for flight origin/destination. Backed by Duffel
@@ -24,6 +25,7 @@ export function HeroAirportField({
   value,
   onChange,
   listboxId,
+  className = "",
 }: HeroAirportFieldProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLUListElement>(null);
@@ -154,7 +156,7 @@ export function HeroAirportField({
       : null;
 
   return (
-    <div ref={containerRef} className="relative flex-1">
+    <div ref={containerRef} className={`relative flex-1 ${className}`}>
       <label className="flex min-h-12 items-center gap-2 rounded-xl bg-[#0000003D] px-4 text-sm text-white/90">
         <Plane className="h-4 w-4 shrink-0" />
         <input
