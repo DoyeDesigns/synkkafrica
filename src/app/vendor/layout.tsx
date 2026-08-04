@@ -1,7 +1,6 @@
 import { VendorLayoutSwitcher } from "@/features/vendor/components/vendor-layout-switcher";
 import { type VendorVerificationStatus } from "@/features/vendor/constants";
 import { auth } from "@/auth";
-import { AuthProvider } from "@/providers/session-provider";
 import { getVendorProfile } from "@/lib/api/vendor";
 
 export default async function VendorLayout({
@@ -29,16 +28,13 @@ export default async function VendorLayout({
     }
   }
 
-  // Vendor pages use useSession() (token for API calls + role) and React Query,
-  // so this segment needs the client SessionProvider. QueryProvider is global.
+  // SessionProvider (for useSession()) is mounted once at the root layout.
   return (
-    <AuthProvider>
-      <VendorLayoutSwitcher
-        vendorName={session?.user?.name}
-        verificationStatus={verificationStatus}
-      >
-        {children}
-      </VendorLayoutSwitcher>
-    </AuthProvider>
+    <VendorLayoutSwitcher
+      vendorName={session?.user?.name}
+      verificationStatus={verificationStatus}
+    >
+      {children}
+    </VendorLayoutSwitcher>
   );
 }
