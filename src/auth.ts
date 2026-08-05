@@ -153,6 +153,10 @@ const providers = [
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   secret: getAuthSecret(),
+  // Trust the reverse proxy's forwarded host (Vercel/other). Without this,
+  // Auth.js can fall back to a localhost base in production, which is how an
+  // admin visiting /admin ends up redirected to a localhost login page.
+  trustHost: true,
   providers,
   session: { strategy: "jwt" },
   callbacks: {
