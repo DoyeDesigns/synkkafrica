@@ -6,9 +6,9 @@ import { FlightDealsSection } from "./flight-deals-section";
 export function FlightsLanding() {
   return (
     <div className="space-y-12">
+      <FlightDealsSection seeMoreHref="/flights/deals" />
       <FavouriteDestinationsSection />
       <AirlinePartnersSection />
-      <FlightDealsSection seeMoreHref="/flights/deals" />
       <CheapFlightsSection />
     </div>
   );
