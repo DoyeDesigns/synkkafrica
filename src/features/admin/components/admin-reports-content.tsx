@@ -24,14 +24,14 @@ export function AdminReportsContent() {
   };
 
   const exportRevenue = () => {
-    downloadCsv("synkkafrica-revenue-report.csv", [
+    downloadCsv("synkafrica-revenue-report.csv", [
       [t("admin.reports.metric"), t("admin.reports.value")],
       ...ADMIN_REPORT_METRICS.map((m) => [t(m.labelKey), m.value]),
     ]);
   };
 
   const exportBookings = () => {
-    downloadCsv("synkkafrica-bookings-report.csv", [
+    downloadCsv("synkafrica-bookings-report.csv", [
       [t("admin.reports.experience"), t("admin.reports.bookings")],
       ...ADMIN_POPULAR_EXPERIENCES.map((e) => [
         e.title,

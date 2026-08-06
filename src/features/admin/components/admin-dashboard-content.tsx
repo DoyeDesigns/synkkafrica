@@ -36,11 +36,11 @@ type AdminDashboardContentProps = {
 };
 
 export function AdminDashboardContent({
-  adminName = "SynKKafrica Admin",
+  adminName = "SynkAfrica Admin",
 }: AdminDashboardContentProps) {
   const t = useTranslation();
   const formatPrice = useFormatPrice();
-  const displayName = adminName?.trim() || "SynKKafrica Admin";
+  const displayName = adminName?.trim() || "SynkAfrica Admin";
   const [period, setPeriod] = useState<AdminPeriod>("today");
   const [periodOpen, setPeriodOpen] = useState(false);
   const periodDropdownRef = useRef<HTMLDivElement>(null);

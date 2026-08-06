@@ -272,8 +272,8 @@ export function confirmationToAccountBooking(
     totalAmount: confirmation.total ?? 0,
     currency: confirmation.currency ?? "NGN",
     title: confirmation.productName,
-    description: "Your SynKKafrica booking confirmation.",
-    location: "SynKKafrica",
+    description: "Your SynkAfrica booking confirmation.",
+    location: "SynkAfrica",
     rating: 4.8,
     reviewCount: 0,
     image:

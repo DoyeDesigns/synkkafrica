@@ -112,7 +112,7 @@ export function AdminTeamContent() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="ops@synkkafrica.com"
+              placeholder="ops@synkafrica.com"
               className="mt-1 h-11 w-full rounded-lg border border-[#E5E5E5] px-3 text-sm font-satoshi outline-none focus:border-[#135391]"
             />
           </label>

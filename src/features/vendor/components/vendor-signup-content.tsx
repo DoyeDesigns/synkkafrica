@@ -123,13 +123,13 @@ export function VendorSignupContent() {
         <div className="mx-auto flex max-w-5xl flex-col gap-4">
           <Link href="/" className="inline-flex items-center gap-2.5">
             <Image
-              src="/synkkafrica-logo.svg"
-              alt="SynkkAfrica"
+              src="/synkafrica-logo.svg"
+              alt="SynkAfrica"
               width={40}
               height={40}
               priority
             />
-            <span className="text-lg font-bold font-montserrat text-[#2F2F2F]">SynkkAfrica</span>
+            <span className="text-lg font-bold font-montserrat text-[#2F2F2F]">SynkAfrica</span>
           </Link>
           <VendorSignupStepper currentStep={currentStep} />
         </div>

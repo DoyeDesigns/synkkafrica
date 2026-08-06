@@ -183,7 +183,7 @@ function VendorDashboardSideNavBarContent({
       <div className="px-6 pb-6 pt-8">
         <Link href="/vendor" className="flex items-center">
           <Image
-            src="/synkkafrica-logo.svg"
+            src="/synkafrica-logo.svg"
             alt=""
             width={50}
             height={50}
@@ -234,7 +234,7 @@ function VendorDashboardSideNavBarFallback() {
       <div className="px-6 pb-6 pt-8">
         <Link href="/vendor" className="flex items-center gap-2.5">
           <Image
-            src="/synkkafrica-logo.svg"
+            src="/synkafrica-logo.svg"
             alt=""
             width={40}
             height={40}

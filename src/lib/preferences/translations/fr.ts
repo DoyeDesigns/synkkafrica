@@ -93,8 +93,8 @@ export const fr = {
   "hero.tours.destinationExperiences": "{count} expériences",
 
   "footer.brandDescription":
-    "SynKKafrica est une plateforme émergente tout-en-un de voyage et d'expériences premium, conçue pour connecter les gens du monde entier au cœur de l'écosystème africain du voyage et du style de vie.",
-  "footer.explore.title": "Explorer SynKKafrica",
+    "SynkAfrica est une plateforme émergente tout-en-un de voyage et d'expériences premium, conçue pour connecter les gens du monde entier au cœur de l'écosystème africain du voyage et du style de vie.",
+  "footer.explore.title": "Explorer SynkAfrica",
   "footer.explore.hotels": "Hôtels et hébergements",
   "footer.explore.carRentals": "Location de voitures",
   "footer.explore.flights": "Réservations de vols",
@@ -112,7 +112,7 @@ export const fr = {
   "footer.vendor.listCar": "Inscrire votre voiture",
   "footer.vendor.listService": "Inscrire votre service",
   "footer.vendor.contact": "Nous contacter",
-  "footer.appPromo.headline": "Profitez de l'expérience complète SynKKafrica.",
+  "footer.appPromo.headline": "Profitez de l'expérience complète SynkAfrica.",
   "footer.appPromo.cta": "Téléchargez l'application dès aujourd'hui",
   "footer.appPromo.getItOn": "DISPONIBLE SUR",
   "footer.appPromo.googlePlay": "Google Play",
@@ -122,10 +122,10 @@ export const fr = {
   "footer.legal.terms": "Conditions d'utilisation",
   "footer.legal.security": "Page de sécurité",
   "footer.legal.faqs": "FAQ",
-  "footer.copyright": "Copyright © 2025 Synkkafrica | Tous droits réservés",
+  "footer.copyright": "Copyright © 2025 Synkafrica | Tous droits réservés",
 
   "login.intro":
-    "Vous pouvez vous connecter avec votre compte SynkkAfrica pour accéder à nos services.",
+    "Vous pouvez vous connecter avec votre compte SynkAfrica pour accéder à nos services.",
   "login.backendNotReady":
     "Les variables d'environnement du backend ne sont pas encore configurées. La connexion fonctionnera une fois les identifiants configurés.",
   "login.emailPlaceholder": "Entrez votre e-mail",
@@ -238,7 +238,7 @@ export const fr = {
   "account.notifications.message.reminder24h":
     "Votre expérience {title} commence demain à {time} le {date}. Vérifiez votre réservation et arrivez 15 minutes en avance.",
   "account.notifications.message.reviewRequest":
-    "Comment s'est passée {title} ? Partagez une note et un avis écrit pour aider les autres voyageurs sur SynKKafrica.",
+    "Comment s'est passée {title} ? Partagez une note et un avis écrit pour aider les autres voyageurs sur SynkAfrica.",
   "account.notifications.message.cancellationRefund":
     "Votre réservation pour {title} ({reference}) a été annulée. Tout remboursement éligible sera traité sous 5 à 7 jours ouvrables.",
   "account.notifications.message.bookingConfirmation":
@@ -277,7 +277,7 @@ export const fr = {
   "account.support.backToTickets": "Retour aux tickets",
   "account.support.typeMessage": "Écrire un message...",
   "account.support.send": "Envoyer",
-  "account.support.supportTeam": "Support Synkkafrica",
+  "account.support.supportTeam": "Support Synkafrica",
   "account.support.you": "Vous",
   "account.support.emptyTickets": "Vous n'avez pas encore soumis de ticket support.",
   "account.support.attachedImage": "Image jointe",
@@ -289,7 +289,7 @@ export const fr = {
   "account.support.faq.changeDateAnswer":
     "Contactez le support avec votre référence de réservation. Si l'expérience permet un changement de date, notre équipe vous aidera à reprogrammer ou vous guidera vers les options disponibles.",
   "account.support.faq.paymentSecurityAnswer":
-    "Oui. Les paiements sur Synkkafrica passent par des partenaires de paiement sécurisés et chiffrés. Nous ne stockons jamais l'intégralité de vos coordonnées bancaires sur nos serveurs.",
+    "Oui. Les paiements sur Synkafrica passent par des partenaires de paiement sécurisés et chiffrés. Nous ne stockons jamais l'intégralité de vos coordonnées bancaires sur nos serveurs.",
 
   "booking.step.rooms": "Choisir le séjour et les chambres",
   "booking.step.chooseExperience": "Choisir l'expérience",
@@ -598,7 +598,7 @@ export const fr = {
   "booking.confirmation.openGoogleCalendar": "Ouvrir dans Google Calendar",
   "booking.confirmation.viewBookings": "Voir mes réservations",
 
-  "breadcrumb.synkkAfrica": "SynkkAfrica",
+  "breadcrumb.synkAfrica": "SynkAfrica",
   "breadcrumb.accommodations": "Hébergements",
   "breadcrumb.flights": "Vols",
   "breadcrumb.carForHire": "Location de voiture",
@@ -702,7 +702,7 @@ export const fr = {
     "Profitez d'innombrables expériences, le tout en une seule destination.",
   "landing.experiencesPromo.cta": "Parcourir les expériences",
   "landing.experiencesPromo.imageAlt": "Découvrir les expériences africaines",
-  "landing.tours.attractions.title": "Attractions sur Synkkafrica",
+  "landing.tours.attractions.title": "Attractions sur Synkafrica",
   "landing.tours.events.browsingIn": "Événements consultés à",
   "landing.tours.packages.title": "Forfaits touristiques",
   "landing.tours.packages.description":
@@ -1359,12 +1359,12 @@ export const fr = {
 
   "vendor.signup.title": "Créez votre compte vendeur",
   "vendor.signup.subtitle":
-    "Rejoignez SynkkAfrica et proposez vos voitures, hébergements et expériences aux voyageurs à travers l'Afrique.",
+    "Rejoignez SynkAfrica et proposez vos voitures, hébergements et expériences aux voyageurs à travers l'Afrique.",
   "vendor.signup.alreadyHaveAccount": "Vous avez déjà un compte vendeur ?",
   "vendor.signup.signIn": "Se connecter",
   "vendor.login.title": "Connexion vendeur",
   "vendor.login.intro":
-    "Connectez-vous à votre compte vendeur SynkkAfrica pour gérer vos annonces, réservations et revenus.",
+    "Connectez-vous à votre compte vendeur SynkAfrica pour gérer vos annonces, réservations et revenus.",
   "vendor.login.emailPlaceholder": "Entrez votre e-mail vendeur",
   "vendor.login.signInGoogle": "Se connecter avec Google",
   "vendor.login.noAccount": "Pas encore de compte vendeur ?",
@@ -1482,12 +1482,12 @@ export const fr = {
   "vendor.notifications.sample.payout2.title": "Paiement confirmé",
   "vendor.notifications.sample.payout2.message":
     "Retrait de 150 000 NGN vers Access Bank se terminant par 8834 traité avec succès.",
-  "vendor.notifications.sample.admin.title": "Mise à jour des règles Synkkafrica",
+  "vendor.notifications.sample.admin.title": "Mise à jour des règles Synkafrica",
   "vendor.notifications.sample.admin.message":
     "Les nouvelles directives vendeur pour les expériences sont disponibles. Consultez-les avant le 1er août.",
   "vendor.notifications.sample.admin2.title": "Annonce approuvée",
   "vendor.notifications.sample.admin2.message":
-    "Votre annonce Lagos Lagoon Sunset Cruise est en ligne sur Synkkafrica.",
+    "Votre annonce Lagos Lagoon Sunset Cruise est en ligne sur Synkafrica.",
 
   "vendor.dashboard.welcomeBack": "Bon retour,",
   "vendor.dashboard.addListing": "Ajouter une annonce",
@@ -1528,7 +1528,7 @@ export const fr = {
   "vendor.businessProfile.internalNameLabel": "Nom interne de l'entreprise",
   "vendor.businessProfile.contactDetails": "Coordonnées",
   "vendor.businessProfile.contactDetailsHint":
-    "Comment Synkkafrica et les clients vous contactent pour le support des réservations.",
+    "Comment Synkafrica et les clients vous contactent pour le support des réservations.",
   "vendor.businessProfile.phone": "Numéro de téléphone",
   "vendor.businessProfile.email": "Adresse e-mail",
   "vendor.businessProfile.address": "Adresse de l'entreprise",
@@ -1582,7 +1582,7 @@ export const fr = {
     "Le nom du document ne correspond pas au numéro d'immatriculation enregistré. Veuillez re-téléverser le permis véhicule correspondant à ABJ-771-KD.",
 
   "vendor.support.helpBanner":
-    "Déposez une plainte ou demandez de l'aide à l'équipe vendeur Synkkafrica. Réponse habituelle sous 1 à 2 jours ouvrables.",
+    "Déposez une plainte ou demandez de l'aide à l'équipe vendeur Synkafrica. Réponse habituelle sous 1 à 2 jours ouvrables.",
   "vendor.support.helpBannerEmail":
     "Les mises à jour seront envoyées à {email}.",
   "vendor.support.openTickets": "{count} ticket(s) ouvert(s)",
@@ -1697,7 +1697,7 @@ export const fr = {
   "vendor.earnings.duration.all": "Tout",
   "vendor.earnings.commissionSplit": "Répartition des commissions",
   "vendor.earnings.commissionSplitHint":
-    "Les revenus de réservation sont répartis à {vendor}% pour vous et {platform}% pour Synkkafrica.",
+    "Les revenus de réservation sont répartis à {vendor}% pour vous et {platform}% pour Synkafrica.",
   "vendor.earnings.vendorShare": "Votre part",
   "vendor.earnings.platformShare": "Frais de plateforme",
   "vendor.earnings.grossRevenue": "Revenu brut",

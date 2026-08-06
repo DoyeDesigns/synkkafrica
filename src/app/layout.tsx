@@ -10,8 +10,8 @@ import { QueryProvider } from "@/providers/query-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SynkkAfrica",
-  description: "SynkkAfrica is an african travel platform — connecting travellers to flights, ground transport, luxury rides, and deeply curated African cultural experiences",
+  title: "SynkAfrica",
+  description: "SynkAfrica is an african travel platform — connecting travellers to flights, ground transport, luxury rides, and deeply curated African cultural experiences",
 };
 
 export default async function RootLayout({

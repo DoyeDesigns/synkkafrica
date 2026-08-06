@@ -167,7 +167,7 @@ function AdminDashboardSideNavBarContent({
       <div className="px-6 pb-6 pt-8">
         <Link href="/admin" className="flex items-center">
           <Image
-            src="/synkkafrica-logo.svg"
+            src="/synkafrica-logo.svg"
             alt=""
             width={50}
             height={50}
@@ -216,7 +216,7 @@ function AdminDashboardSideNavBarFallback() {
       <div className="px-6 pb-6 pt-8">
         <Link href="/admin" className="flex items-center gap-2.5">
           <Image
-            src="/synkkafrica-logo.svg"
+            src="/synkafrica-logo.svg"
             alt=""
             width={40}
             height={40}

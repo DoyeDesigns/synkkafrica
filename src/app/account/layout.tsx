@@ -22,7 +22,7 @@ export default async function AccountLayout({
       <div className="min-h-screen bg-[#F5F5F5]">
         <AccountUserPersistence
           userId={session.user.id ?? "guest"}
-          userEmail={session.user.email ?? "guest@synkkaffric.com"}
+          userEmail={session.user.email ?? "guest@synkafrica.com"}
         />
         <div className="mx-auto max-w-6xl px-4 pb-12 pt-20 sm:px-6 lg:px-8">
           <div className="grid gap-6 lg:grid-cols-[260px_minmax(0,1fr)]">

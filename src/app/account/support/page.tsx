@@ -7,7 +7,7 @@ export default async function AccountSupportPage() {
   return (
     <AccountSupportContent
       userId={session?.user?.id ?? "guest"}
-      userEmail={session?.user?.email ?? "guest@synkkaffric.com"}
+      userEmail={session?.user?.email ?? "guest@synkafrica.com"}
     />
   );
 }

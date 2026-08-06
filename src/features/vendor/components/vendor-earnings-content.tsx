@@ -207,7 +207,7 @@ export function VendorEarningsContent({
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `synkkafrica-earnings-${duration}.csv`;
+    link.download = `synkafrica-earnings-${duration}.csv`;
     link.click();
     URL.revokeObjectURL(url);
   };

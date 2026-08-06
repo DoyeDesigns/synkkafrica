@@ -1,6 +1,6 @@
 import { getApiBaseUrl } from "@/lib/env";
 
-// Thin, typed client for the SynkkAfrica NestJS backend. Isomorphic — safe to
+// Thin, typed client for the SynkAfrica NestJS backend. Isomorphic — safe to
 // call from server (NextAuth callbacks, server components/actions) and from
 // client components. Pass a bearer token to authenticate.
 

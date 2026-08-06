@@ -25,7 +25,7 @@ const SUPPORT_LINKS: { key: TranslationKey; href: string }[] = [
 const COMMUNITY_LINKS: { key?: TranslationKey; label?: string; href: string }[] = [
   { key: "footer.community.instagram", href: "https://instagram.com" },
   { key: "footer.community.facebook", href: "https://facebook.com" },
-  { label: "info@synkkafrica.com", href: "mailto:info@synkkafrica.com" },
+  { label: "info@synkafrica.com", href: "mailto:info@synkafrica.com" },
   { key: "footer.community.news", href: "/news" },
 ];
 
@@ -84,13 +84,13 @@ export function FooterContent() {
           <div className="w-fit">
             <Link href="/" className="inline-flex items-center gap-2.5">
               <Image
-                src="/synkkafrica-logo.svg"
+                src="/synkafrica-logo.svg"
                 alt=""
                 width={75}
                 height={75}
               />
               <span className="text-lg -ml-6 font-bold tracking-tight font-montserrat uppercase">
-                Synkkafrica
+                Synkafrica
               </span>
             </Link>
 

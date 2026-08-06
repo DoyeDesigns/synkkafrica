@@ -48,10 +48,10 @@ export const ACCOUNT_SUPPORT_CATEGORIES: AccountSupportCategory[] = [
 ];
 
 export const ACCOUNT_SUPPORT_CONTACT = {
-  whatsapp: "+234 800 SYNKKA",
+  whatsapp: "+234 800 SYNKA",
   whatsappHref: "https://wa.me/2348007965522",
-  email: "support@synkkaafrica.com",
-  emailHref: "mailto:support@synkkaafrica.com",
+  email: "support@synkafrica.com",
+  emailHref: "mailto:support@synkafrica.com",
   phone: "+234 700 000 1234",
   phoneHref: "tel:+2347000001234",
 } as const;

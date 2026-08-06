@@ -21,8 +21,8 @@ export function VendorLoginPageContent({ backendReady }: VendorLoginPageContentP
       <div className="w-full max-w-[557px]">
         <div className="flex flex-col items-center text-center">
           <Image
-            src="/synkkafrica-logo.svg"
-            alt="SynkkAfrica"
+            src="/synkafrica-logo.svg"
+            alt="SynkAfrica"
             width={88}
             height={88}
             priority

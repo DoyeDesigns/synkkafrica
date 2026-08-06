@@ -14,8 +14,8 @@ export type PreferencesState = {
   }) => void;
 };
 
-export const PREFERENCES_STORAGE_KEY = "synkkafrica-preferences";
+export const PREFERENCES_STORAGE_KEY = "synkafrica-preferences";
 
-export const CURRENCY_COOKIE = "synkkafrica-currency";
-export const LANGUAGE_COOKIE = "synkkafrica-language";
-export const USER_PREFERENCES_COOKIE = "synkkafrica-user-preferences";
+export const CURRENCY_COOKIE = "synkafrica-currency";
+export const LANGUAGE_COOKIE = "synkafrica-language";
+export const USER_PREFERENCES_COOKIE = "synkafrica-user-preferences";
