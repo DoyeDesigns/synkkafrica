@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 import {
   createEmptyGuestIdentity,
@@ -32,18 +32,30 @@ function resizeIdentities(
   return previous.slice(0, safeCount);
 }
 
-export function useGuestCheckoutGate(guestCount: number) {
+export function useGuestCheckoutGate(
+  guestCount: number,
+  options?: { leadGuestOnly?: boolean },
+) {
+  // When leadGuestOnly is set we only ever collect and validate a single
+  // (lead) guest's details, regardless of how many guests the booking is for.
+  const identityCount = options?.leadGuestOnly ? 1 : guestCount;
+
   const [identities, setIdentities] = useState<GuestIdentity[]>(() =>
-    Array.from({ length: Math.max(1, guestCount) }, createEmptyGuestIdentity),
+    Array.from({ length: Math.max(1, identityCount) }, createEmptyGuestIdentity),
   );
   const [identityErrors, setIdentityErrors] = useState<GuestIdentityErrors[]>(
     [],
   );
+  const [lastCount, setLastCount] = useState(identityCount);
 
-  useEffect(() => {
-    setIdentities((previous) => resizeIdentities(previous, guestCount));
+  // Reconcile the identities array with the current guest count during render
+  // (React's recommended pattern) rather than in an effect, which avoids a
+  // cascading extra render on every count change.
+  if (lastCount !== identityCount) {
+    setLastCount(identityCount);
+    setIdentities((previous) => resizeIdentities(previous, identityCount));
     setIdentityErrors([]);
-  }, [guestCount]);
+  }
 
   const setIdentityAt = useCallback((index: number, identity: GuestIdentity) => {
     setIdentities((previous) => {

@@ -1,10 +1,23 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 import { auth } from "@/auth";
 import {
   isAccountDesignPreviewEnabled,
   isAdminDemoEnabled,
 } from "@/features/account/preview";
+
+// Behind Vercel's proxy `nextUrl.origin` can resolve to http://localhost:3000,
+// which would send production users to a localhost login page. The public
+// origin is carried in the forwarded headers Vercel always sets, so build
+// redirects against those and fall back to nextUrl only for local dev.
+function redirect(req: NextRequest, pathname: string): NextResponse {
+  const host = req.headers.get("x-forwarded-host") ?? req.headers.get("host");
+  const proto =
+    req.headers.get("x-forwarded-proto") ??
+    req.nextUrl.protocol.replace(":", "");
+  const base = host ? `${proto}://${host}` : req.nextUrl.origin;
+  return NextResponse.redirect(new URL(pathname, base));
+}
 
 // Route guards for the admin, vendor and customer areas. Mirrors the intent of
 // the `authorized` callback in auth.ts, but redirects to the correct per-area
@@ -22,7 +35,7 @@ export default auth((req) => {
     }
     if (isAdminDemoEnabled()) return NextResponse.next();
     if (role !== "admin") {
-      return NextResponse.redirect(new URL("/admin/login", nextUrl));
+      return redirect(req, "/admin/login");
     }
     return NextResponse.next();
   }
@@ -33,7 +46,7 @@ export default auth((req) => {
       return NextResponse.next();
     }
     if (role !== "vendor") {
-      return NextResponse.redirect(new URL("/vendor/login", nextUrl));
+      return redirect(req, "/vendor/login");
     }
     return NextResponse.next();
   }
@@ -44,7 +57,7 @@ export default auth((req) => {
       return NextResponse.next();
     }
     if (!req.auth?.user) {
-      return NextResponse.redirect(new URL("/login", nextUrl));
+      return redirect(req, "/login");
     }
   }
 

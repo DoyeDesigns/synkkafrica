@@ -1,68 +1,78 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { Clock } from "lucide-react";
+import Link from 'next/link';
+import { useState } from 'react';
+import { Clock } from 'lucide-react';
 
-import type { FlightItinerary, FlightOffer } from "@/lib/api/flights";
+import type { FlightItinerary, FlightOffer } from '@/lib/api/flights';
 
 // IATA airline code → display name. Falls back to the code. ZZ is Duffel's
 // test airline; the rest cover the carriers Duffel surfaces for this product.
 const AIRLINES: Record<string, string> = {
-  ZZ: "Duffel Airways",
-  BA: "British Airways",
-  VS: "Virgin Atlantic",
-  AF: "Air France",
-  KL: "KLM",
-  LH: "Lufthansa",
-  EK: "Emirates",
-  QR: "Qatar Airways",
-  TK: "Turkish Airlines",
-  ET: "Ethiopian Airlines",
-  KQ: "Kenya Airways",
-  WB: "RwandAir",
-  SA: "South African Airways",
-  MS: "EgyptAir",
-  AT: "Royal Air Maroc",
-  DL: "Delta Air Lines",
-  UA: "United Airlines",
-  AA: "American Airlines",
-  AC: "Air Canada",
+  ZZ: 'Duffel Airways',
+  BA: 'British Airways',
+  VS: 'Virgin Atlantic',
+  AF: 'Air France',
+  KL: 'KLM',
+  LH: 'Lufthansa',
+  EK: 'Emirates',
+  QR: 'Qatar Airways',
+  TK: 'Turkish Airlines',
+  ET: 'Ethiopian Airlines',
+  KQ: 'Kenya Airways',
+  WB: 'RwandAir',
+  SA: 'South African Airways',
+  MS: 'EgyptAir',
+  AT: 'Royal Air Maroc',
+  DL: 'Delta Air Lines',
+  UA: 'United Airlines',
+  AA: 'American Airlines',
+  AC: 'Air Canada',
 };
 const airlineName = (code: string) => AIRLINES[code] ?? code;
+
+// Duffel hosts airline logos at a stable, IATA-keyed public URL. Deriving it
+// from the carrier code means logos render even for offers projected before the
+// backend started sending `carrierLogoUrl` (cached / not-yet-deployed). The
+// backend-provided URL still wins when present.
+const duffelLogoUrl = (code: string) =>
+  code
+    ? `https://assets.duffel.com/img/airlines/for-light-background/full-color-logo/${code}.svg`
+    : null;
 
 function formatTime(iso: string) {
   const d = new Date(iso);
   return Number.isNaN(d.getTime())
-    ? "--:--"
-    : d.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
+    ? '--:--'
+    : d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
 }
 function formatDate(iso: string) {
   const d = new Date(iso);
   return Number.isNaN(d.getTime())
-    ? ""
+    ? ''
     : d.toLocaleDateString(undefined, {
-        weekday: "short",
-        day: "numeric",
-        month: "short",
+        weekday: 'short',
+        day: 'numeric',
+        month: 'short',
       });
 }
 function legDuration(it: FlightItinerary) {
   const segs = it.segments;
-  if (!segs.length) return "";
+  if (!segs.length) return '';
   const dep = new Date(segs[0].departureAt).getTime();
   const arr = new Date(segs[segs.length - 1].arrivalAt).getTime();
-  if (Number.isNaN(dep) || Number.isNaN(arr) || arr <= dep) return "";
+  if (Number.isNaN(dep) || Number.isNaN(arr) || arr <= dep) return '';
   const mins = Math.round((arr - dep) / 60000);
   const h = Math.floor(mins / 60);
   const m = mins % 60;
-  return [h ? `${h}h` : "", m ? `${m}m` : ""].filter(Boolean).join(" ");
+  return [h ? `${h}h` : '', m ? `${m}m` : ''].filter(Boolean).join(' ');
 }
 function money(amount: string, currency: string) {
   const n = Number(amount);
   if (Number.isNaN(n)) return `${amount} ${currency}`;
   try {
     return new Intl.NumberFormat(undefined, {
-      style: "currency",
+      style: 'currency',
       currency,
       maximumFractionDigits: 0,
     }).format(n);
@@ -71,15 +81,41 @@ function money(amount: string, currency: string) {
   }
 }
 
-function AirlineBadge({ code }: { code: string }) {
+function AirlineBadge({
+  code,
+  name,
+  logoUrl,
+}: {
+  code: string;
+  name: string;
+  logoUrl?: string | null;
+}) {
+  // Prefer the backend-provided logo, else derive it from the IATA code; fall
+  // back to the initials tile only if there's no code or the image fails.
+  const [broken, setBroken] = useState(false);
+  const src = logoUrl || duffelLogoUrl(code);
+  const showLogo = Boolean(src) && !broken;
+
   return (
     <div className="flex items-center gap-2.5">
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#EAF2FA] text-xs font-bold text-[#004785]">
-        {code}
+      <div
+        className={`flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg  text-xs font-bold  ${showLogo ? '' : 'bg-[#EAF2FA] text-[#004785]'}`}
+      >
+        {showLogo ? (
+          // Remote Duffel logo host; next/image would need a domain allowlist.
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={src as string}
+            alt={name}
+            className="h-full w-full object-contain p-1"
+            loading="lazy"
+            onError={() => setBroken(true)}
+          />
+        ) : (
+          code
+        )}
       </div>
-      <span className="text-sm font-medium text-foreground">
-        {airlineName(code)}
-      </span>
+      <span className="text-sm font-medium text-foreground">{name}</span>
     </div>
   );
 }
@@ -114,7 +150,7 @@ function Leg({ itinerary }: { itinerary: FlightItinerary }) {
           <span className="absolute -right-[3px] -top-[3px] h-2 w-2 rounded-full bg-[#004785]" />
         </div>
         <span className="text-[11px] font-medium text-foreground/60">
-          {stops === 0 ? "Non-stop" : `${stops} stop${stops > 1 ? "s" : ""}`}
+          {stops === 0 ? 'Non-stop' : `${stops} stop${stops > 1 ? 's' : ''}`}
         </span>
       </div>
 
@@ -137,15 +173,22 @@ export function FlightResultCard({
   offer: FlightOffer;
   adults: number;
 }) {
-  const carrier = offer.itineraries[0]?.segments[0]?.carrierCode ?? "";
-  const depDate = offer.itineraries[0]?.segments[0]?.departureAt;
+  const firstSegment = offer.itineraries[0]?.segments[0];
+  const carrier = firstSegment?.carrierCode ?? '';
+  const carrierDisplayName =
+    firstSegment?.carrierName?.trim() || airlineName(carrier);
+  const depDate = firstSegment?.departureAt;
 
   return (
     <article className="overflow-hidden rounded-xl border border-black/10 bg-white transition-shadow hover:shadow-md">
       <div className="flex flex-col lg:flex-row">
         <div className="flex-1 p-5">
           <div className="mb-3 flex items-center justify-between">
-            <AirlineBadge code={carrier} />
+            <AirlineBadge
+              code={carrier}
+              name={carrierDisplayName}
+              logoUrl={firstSegment?.carrierLogoUrl}
+            />
             {depDate ? (
               <span className="text-xs text-foreground/50">
                 {formatDate(depDate)}
@@ -166,7 +209,7 @@ export function FlightResultCard({
               {money(offer.totalPrice, offer.currency)}
             </div>
             <div className="text-[11px] text-foreground/50">
-              total{adults > 1 ? ` · ${adults} pax` : ""}
+              total{adults > 1 ? ` · ${adults} pax` : ''}
             </div>
             {offer.holdAvailable ? (
               <div className="mt-1.5 inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-medium text-emerald-700">

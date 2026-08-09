@@ -7,6 +7,7 @@ import { resolveLocationPreferences } from "@/lib/preferences/resolve-location-p
 import { getLanguageOption } from "@/lib/preferences/languages";
 import { PreferencesProvider } from "@/providers/preferences-provider";
 import { QueryProvider } from "@/providers/query-provider";
+import { AuthProvider } from "@/providers/session-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -31,13 +32,15 @@ export default async function RootLayout({
       className="h-full antialiased"
     >
       <body className="min-h-full flex flex-col font-inter text-foreground">
-        <QueryProvider>
-          <PreferencesProvider detectedPreferences={detectedPreferences}>
-            <ConditionalNavbar session={session} />
-            <main className="flex-1">{children}</main>
-            <ConditionalFooter />
-          </PreferencesProvider>
-        </QueryProvider>
+        <AuthProvider session={session}>
+          <QueryProvider>
+            <PreferencesProvider detectedPreferences={detectedPreferences}>
+              <ConditionalNavbar session={session} />
+              <main className="flex-1">{children}</main>
+              <ConditionalFooter />
+            </PreferencesProvider>
+          </QueryProvider>
+        </AuthProvider>
       </body>
     </html>
   );

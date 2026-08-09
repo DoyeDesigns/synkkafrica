@@ -3,6 +3,8 @@ import { apiFetch } from "@/lib/api/backend";
 // Mirrors the backend's FlightOfferDto (src/flights/dto/flight-offer.dto.ts).
 export type FlightSegment = {
   carrierCode: string;
+  carrierName?: string;
+  carrierLogoUrl?: string | null;
   flightNumber: string;
   departureAirport: string;
   arrivalAirport: string;

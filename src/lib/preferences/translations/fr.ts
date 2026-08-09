@@ -392,6 +392,7 @@ export const fr = {
   "booking.reviews.viewAll": "Voir tous les avis",
   "booking.reviews.close": "Fermer les avis",
   "booking.guest.adultLabel": "Adulte (17 ans et +)",
+  "booking.guest.leadGuestLabel": "Voyageur principal",
   "booking.guest.addedCount": "{added}/{total} ajouté(s)",
   "booking.guest.passportHint":
     "Saisissez votre nom tel qu'il figure sur votre passeport. Le passeport doit être valide au moins 6 mois après la date de voyage.",

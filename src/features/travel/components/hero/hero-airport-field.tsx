@@ -116,7 +116,12 @@ export function HeroAirportField({
               position: "fixed",
               top: rect.bottom + 6,
               left: rect.left,
-              width: rect.width,
+              // Grow to fit the longest suggestion instead of clamping to the
+              // (narrow) input width, but stay at least as wide as the input
+              // and never spill past the right viewport edge.
+              minWidth: rect.width,
+              width: "max-content",
+              maxWidth: `calc(100vw - ${Math.round(rect.left)}px - 16px)`,
               zIndex: 60,
             }}
             className="max-h-72 overflow-y-auto rounded-xl border border-black/10 bg-white py-1 shadow-lg"
