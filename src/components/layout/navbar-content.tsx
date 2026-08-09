@@ -48,14 +48,14 @@ export function NavbarContent({ session }: NavbarContentProps) {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center gap-2.5">
           <Image
-            src="/synkkafrica-logo.svg"
+            src="/synkafrica-logo.svg"
             alt=""
             width={75}
             height={75}
             priority
           />
           <span className="text-xl font-bold -ml-6 tracking-tight font-montserrat text-white">
-            Synkkafrica
+            Synkafrica
           </span>
         </Link>
 
@@ -102,14 +102,14 @@ export function NavbarContentFallback({ session }: NavbarContentProps) {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center gap-2.5">
           <Image
-            src="/synkkafrica-logo.svg"
+            src="/synkafrica-logo.svg"
             alt=""
             width={75}
             height={75}
             priority
           />
           <span className="text-xl font-bold -ml-6 tracking-tight font-montserrat text-white">
-            Synkkafrica
+            Synkafrica
           </span>
         </Link>
 

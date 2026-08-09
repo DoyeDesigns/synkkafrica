@@ -224,7 +224,7 @@ function BookFlight() {
                   <span className="text-xs font-bold font-satoshi text-foreground">
                     Mobile No
                   </span>
-                  <div className="synkka-phone w-full font-satoshi">
+                  <div className="synka-phone w-full font-satoshi">
                     <PhoneInput
                       defaultCountry="ng"
                       value={phone}

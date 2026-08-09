@@ -86,7 +86,7 @@ function AdminDashboardHeaderContent({
   const t = useTranslation();
   // Prefer a real name, fall back to the email, then a generic label.
   const displayName =
-    adminName?.trim() || adminEmail?.trim() || "SynKKafrica Admin";
+    adminName?.trim() || adminEmail?.trim() || "SynkAfrica Admin";
   const initials = getInitials(displayName);
 
   return (
@@ -110,7 +110,7 @@ function AdminDashboardHeaderContent({
 
         <div className="flex min-w-0 items-center gap-2 sm:gap-3">
           <span className="hidden font-bold font-satoshi text-[#D85A30] sm:inline">
-            SynkkAfrica
+            SynkAfrica
           </span>
           <span className="hidden text-[#CCCCCC] sm:inline" aria-hidden="true">
             |
@@ -142,10 +142,10 @@ function AdminDashboardHeaderContent({
 }
 
 function AdminDashboardHeaderFallback({
-  adminName = "SynKKafrica Admin",
+  adminName = "SynkAfrica Admin",
 }: AdminDashboardHeaderProps) {
   const t = useTranslation();
-  const displayName = adminName?.trim() || "SynKKafrica Admin";
+  const displayName = adminName?.trim() || "SynkAfrica Admin";
   const initials = getInitials(displayName);
 
   return (

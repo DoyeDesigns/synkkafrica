@@ -34,7 +34,7 @@ type BackendToken = {
 
 const providers = [
   ...(hasGoogleAuth() ? [Google] : []),
-  // Passwordless OTP against the SynkkAfrica backend. The email + code are
+  // Passwordless OTP against the SynkAfrica backend. The email + code are
   // collected in the login UI; `authorize` exchanges them for the backend's
   // access + refresh tokens, which are then carried in the NextAuth JWT.
   ...(hasApiUrl()

@@ -7,7 +7,7 @@ export default async function AccountBookingsPage() {
   return (
     <AccountBookingsContent
       userId={session?.user?.id ?? "guest"}
-      userEmail={session?.user?.email ?? "guest@synkkaffric.com"}
+      userEmail={session?.user?.email ?? "guest@synkafrica.com"}
       authorName={session?.user?.name ?? "Guest"}
     />
   );

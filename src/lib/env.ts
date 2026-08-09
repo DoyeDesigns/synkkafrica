@@ -13,7 +13,7 @@ export function hasGoogleAuth() {
   );
 }
 
-// The SynkkAfrica backend (NestJS) base URL, e.g. http://localhost:4001/api.
+// The SynkAfrica backend (NestJS) base URL, e.g. http://localhost:4001/api.
 // Everything the app talks to now lives behind this — auth, flights, bookings.
 export function getApiBaseUrl() {
   return process.env.NEXT_PUBLIC_API_URL?.trim().replace(/\/+$/, "") ?? "";

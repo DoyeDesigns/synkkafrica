@@ -19,7 +19,7 @@ export function TourBookingBreadcrumbs({ tourTitle }: TourBookingBreadcrumbsProp
             href="/"
             className="font-medium text-[#D85A30] transition-opacity hover:opacity-80"
           >
-            {t("breadcrumb.synkkAfrica")}
+            {t("breadcrumb.synkAfrica")}
           </Link>
         </li>
         <li aria-hidden="true" className="text-foreground/50">

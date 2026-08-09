@@ -20,7 +20,7 @@ export function ExportDataButton({ token }: { token: string }) {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "synkka-data-export.json";
+      a.download = "synka-data-export.json";
       document.body.appendChild(a);
       a.click();
       a.remove();

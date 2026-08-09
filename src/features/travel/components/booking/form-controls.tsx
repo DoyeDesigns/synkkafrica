@@ -158,7 +158,7 @@ export function FormDate({
             className="fixed inset-0 z-10 cursor-default"
             onClick={() => setOpen(false)}
           />
-          <div className="synkka-daypicker absolute left-0 top-full z-20 mt-1 rounded-xl border border-black/10 bg-white p-3 shadow-xl">
+          <div className="synka-daypicker absolute left-0 top-full z-20 mt-1 rounded-xl border border-black/10 bg-white p-3 shadow-xl">
             <DayPicker
               mode="single"
               captionLayout="dropdown"

@@ -49,7 +49,7 @@ export function CarRentalsExplorePage() {
     <div className="space-y-6">
       <ResultsBreadcrumbs
         items={[
-          { label: t("breadcrumb.synkkAfrica"), href: "/" },
+          { label: t("breadcrumb.synkAfrica"), href: "/" },
           { label: t("breadcrumb.carForHire") },
         ]}
       />

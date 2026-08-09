@@ -11,7 +11,7 @@ export type ExperienceListingReview = {
   text: string;
   photos: string[];
   submittedAt: string;
-  source: "guest" | "synkkafrica";
+  source: "guest" | "synkafrica";
 };
 
 const STORAGE_PREFIX = "synk-experience-reviews";

@@ -4,7 +4,7 @@ export const ACCOUNT_DESIGN_PREVIEW_SESSION: Session = {
   user: {
     id: "design-preview-user",
     name: "Victor",
-    email: "victor@synkkaffric.com",
+    email: "victor@synkafrica.com",
   },
   expires: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
 };
@@ -13,7 +13,7 @@ export const ADMIN_DESIGN_PREVIEW_SESSION: Session = {
   user: {
     id: "design-preview-admin",
     name: "Admin",
-    email: "admin@synkkaffric.com",
+    email: "admin@synkafrica.com",
   },
   expires: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
 };

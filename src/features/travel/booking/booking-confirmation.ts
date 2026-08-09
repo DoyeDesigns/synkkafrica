@@ -95,9 +95,9 @@ export function downloadIcsFile(confirmation: StoredBookingConfirmation) {
   const ics = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//SynKKafrica//Booking//EN",
+    "PRODID:-//SynkAfrica//Booking//EN",
     "BEGIN:VEVENT",
-    `UID:${confirmation.reference}@synkkaffric.com`,
+    `UID:${confirmation.reference}@synkafrica.com`,
     `DTSTAMP:${formatIcsDate(new Date().toISOString().split("T")[0] ?? "")}`,
     `DTSTART:${start}`,
     `DTEND:${end}`,

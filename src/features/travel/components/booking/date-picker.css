@@ -1,14 +1,14 @@
 /* Scoped restyle of react-day-picker to match the booking form.
-   Namespaced under .synkka-daypicker so nothing leaks globally. */
+   Namespaced under .synka-daypicker so nothing leaks globally. */
 
-.synkka-daypicker {
+.synka-daypicker {
   font-size: 14px;
 }
 
 /* react-day-picker declares all --rdp-* vars on .rdp-root itself, so our
    overrides must live on .rdp-root too (a var set on the element beats one
    inherited from an ancestor). */
-.synkka-daypicker .rdp-root {
+.synka-daypicker .rdp-root {
   --rdp-accent-color: #d85a30;
   --rdp-accent-background-color: #fdece4;
   --rdp-today-color: #d85a30;
@@ -22,91 +22,91 @@
   font-family: var(--font-satoshi, inherit);
 }
 
-.synkka-daypicker .rdp-month_caption {
+.synka-daypicker .rdp-month_caption {
   font-weight: 700;
   color: #1e1e1e;
 }
 
 /* Month / year dropdowns */
-.synkka-daypicker .rdp-dropdowns {
+.synka-daypicker .rdp-dropdowns {
   gap: 8px;
 }
-.synkka-daypicker .rdp-dropdown_root {
+.synka-daypicker .rdp-dropdown_root {
   border-radius: 8px;
 }
-.synkka-daypicker .rdp-dropdown_root:hover {
+.synka-daypicker .rdp-dropdown_root:hover {
   background-color: #fdece4;
 }
-.synkka-daypicker .rdp-dropdown {
+.synka-daypicker .rdp-dropdown {
   cursor: pointer;
   font-weight: 600;
 }
-.synkka-daypicker .rdp-caption_label {
+.synka-daypicker .rdp-caption_label {
   border-radius: 8px;
   padding: 4px 6px;
   font-weight: 700;
 }
 
 /* Month/year dropdown + nav chevrons */
-.synkka-daypicker .rdp-chevron {
+.synka-daypicker .rdp-chevron {
   fill: #d85a30;
 }
 
 /* Nav arrows */
-.synkka-daypicker .rdp-button_previous,
-.synkka-daypicker .rdp-button_next {
+.synka-daypicker .rdp-button_previous,
+.synka-daypicker .rdp-button_next {
   border-radius: 8px;
   color: #d85a30;
 }
-.synkka-daypicker .rdp-button_previous:hover,
-.synkka-daypicker .rdp-button_next:hover {
+.synka-daypicker .rdp-button_previous:hover,
+.synka-daypicker .rdp-button_next:hover {
   background-color: #fdece4;
 }
 
-.synkka-daypicker .rdp-weekday {
+.synka-daypicker .rdp-weekday {
   font-size: 12px;
   font-weight: 600;
   color: rgba(30, 30, 30, 0.5);
   text-transform: none;
 }
 
-.synkka-daypicker .rdp-day_button {
+.synka-daypicker .rdp-day_button {
   font-weight: 500;
 }
-.synkka-daypicker .rdp-day_button:hover:not([disabled]) {
+.synka-daypicker .rdp-day_button:hover:not([disabled]) {
   background-color: #fdece4;
 }
 
-.synkka-daypicker .rdp-selected .rdp-day_button {
+.synka-daypicker .rdp-selected .rdp-day_button {
   color: #ffffff;
   font-weight: 700;
 }
 
-.synkka-daypicker .rdp-today:not(.rdp-selected) .rdp-day_button {
+.synka-daypicker .rdp-today:not(.rdp-selected) .rdp-day_button {
   font-weight: 700;
 }
 
 /* Range selection (departing / returning, check-in / check-out) */
-.synkka-daypicker .rdp-range_start .rdp-day_button,
-.synkka-daypicker .rdp-range_end .rdp-day_button {
+.synka-daypicker .rdp-range_start .rdp-day_button,
+.synka-daypicker .rdp-range_end .rdp-day_button {
   background-color: #004785;
   color: #ffffff;
   font-weight: 700;
 }
 
-.synkka-daypicker .rdp-range_middle {
+.synka-daypicker .rdp-range_middle {
   background-color: rgb(0 71 133 / 0.15);
 }
 
-.synkka-daypicker .rdp-range_middle .rdp-day_button {
+.synka-daypicker .rdp-range_middle .rdp-day_button {
   color: #004785;
   border-radius: 0;
 }
 
-.synkka-daypicker .rdp-range_start:not(.rdp-range_end) {
+.synka-daypicker .rdp-range_start:not(.rdp-range_end) {
   background: linear-gradient(to right, transparent 50%, rgb(0 71 133 / 0.15) 50%);
 }
 
-.synkka-daypicker .rdp-range_end:not(.rdp-range_start) {
+.synka-daypicker .rdp-range_end:not(.rdp-range_start) {
   background: linear-gradient(to right, rgb(0 71 133 / 0.15) 50%, transparent 50%);
 }
