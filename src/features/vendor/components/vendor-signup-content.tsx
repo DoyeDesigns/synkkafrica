@@ -70,6 +70,7 @@ export function VendorSignupContent() {
       businessName: form.businessName,
       businessType: form.businessType,
       cacRegistrationNumber: form.cacRegistrationNumber || undefined,
+      companyType: form.companyType || undefined,
       businessAddress: form.businessAddress || undefined,
       ownerFullName: form.ownerFullName,
       email: form.ownerEmail,

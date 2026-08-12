@@ -4,6 +4,7 @@ import { CalendarDays, ChevronDown, MapPin } from "lucide-react";
 
 import {
   VENDOR_BUSINESS_TYPES,
+  VENDOR_CAC_COMPANY_TYPES,
   VENDOR_PHONE_COUNTRY_CODES,
   type VendorSignupFormState,
 } from "@/features/vendor/data/vendor-signup";
@@ -55,15 +56,32 @@ export function VendorSignupBusinessStep({ form, onChange }: VendorSignupBusines
           </FormField>
         </div>
 
-        <FormField label={t("vendor.signup.fields.cacRegistrationNumber")} required>
-          <input
-            type="text"
-            value={form.cacRegistrationNumber}
-            onChange={(event) => onChange({ cacRegistrationNumber: event.target.value })}
-            placeholder={t("vendor.signup.placeholders.cacRegistrationNumber")}
-            className={inputClassName}
-          />
-        </FormField>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <FormField label={t("vendor.signup.fields.cacRegistrationNumber")} required>
+            <input
+              type="text"
+              value={form.cacRegistrationNumber}
+              onChange={(event) => onChange({ cacRegistrationNumber: event.target.value })}
+              placeholder={t("vendor.signup.placeholders.cacRegistrationNumber")}
+              className={inputClassName}
+            />
+          </FormField>
+
+          <FormField label={t("vendor.signup.fields.companyType")} required>
+            <select
+              value={form.companyType}
+              onChange={(event) => onChange({ companyType: event.target.value })}
+              className={inputClassName}
+            >
+              <option value="">{t("vendor.signup.placeholders.companyType")}</option>
+              {VENDOR_CAC_COMPANY_TYPES.map((type) => (
+                <option key={type.value} value={type.value}>
+                  {type.label}
+                </option>
+              ))}
+            </select>
+          </FormField>
+        </div>
 
         <FormField label={t("vendor.signup.fields.businessAddress")} required>
           <div className="relative">

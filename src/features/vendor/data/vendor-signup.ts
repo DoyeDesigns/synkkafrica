@@ -22,6 +22,19 @@ export const VENDOR_BUSINESS_TYPES = [
   "Other",
 ] as const;
 
+// CAC company class, sent to the backend (→ Dojah `company_type`). Value is the
+// Dojah enum; label is the human-friendly registration class + CAC prefix.
+export const VENDOR_CAC_COMPANY_TYPES = [
+  { value: "COMPANY", label: "Limited Liability Company (RC)" },
+  { value: "BUSINESS_NAME", label: "Business Name (BN)" },
+  { value: "INCORPORATED_TRUSTEES", label: "Incorporated Trustees (IT)" },
+  { value: "LIMITED_PARTNERSHIP", label: "Limited Partnership (LP)" },
+  {
+    value: "LIMITED_LIABILITY_PARTNERSHIP",
+    label: "Limited Liability Partnership (LLP)",
+  },
+] as const;
+
 export const VENDOR_PHONE_COUNTRY_CODES = [
   { value: "+234", label: "🇳🇬 +234" },
   { value: "+233", label: "🇬🇭 +233" },
@@ -36,6 +49,7 @@ export type VendorSignupFormState = {
   businessName: string;
   businessType: string;
   cacRegistrationNumber: string;
+  companyType: string;
   businessAddress: string;
   ownerFullName: string;
   ownerEmail: string;
@@ -61,6 +75,7 @@ export const EMPTY_VENDOR_SIGNUP_FORM: VendorSignupFormState = {
   businessName: "",
   businessType: "",
   cacRegistrationNumber: "",
+  companyType: "",
   businessAddress: "",
   ownerFullName: "",
   ownerEmail: "",
@@ -115,6 +130,7 @@ export function getVendorSignupBusinessMissingFields(
   if (!form.cacRegistrationNumber.trim()) {
     missing.push("vendor.signup.fields.cacRegistrationNumber");
   }
+  if (!form.companyType.trim()) missing.push("vendor.signup.fields.companyType");
   if (!form.businessAddress.trim()) missing.push("vendor.signup.fields.businessAddress");
   if (!form.ownerFullName.trim()) missing.push("vendor.signup.fields.ownerFullName");
   if (!form.ownerEmail.trim()) missing.push("vendor.signup.fields.ownerEmail");

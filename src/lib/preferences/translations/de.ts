@@ -1398,6 +1398,8 @@ export const de = {
   "vendor.signup.fields.businessName": "Name des Unternehmens",
   "vendor.signup.fields.businessType": "Unternehmensform",
   "vendor.signup.fields.cacRegistrationNumber": "CAC-Registrierungsnummer",
+  "vendor.signup.fields.companyType": "Unternehmenstyp",
+  "vendor.signup.placeholders.companyType": "Unternehmenstyp auswählen",
   "vendor.signup.fields.businessAddress": "Geschäftsadresse",
   "vendor.signup.fields.ownerFullName": "Vollständiger Name des Inhabers",
   "vendor.signup.fields.ownerEmail": "E-Mail-Adresse",

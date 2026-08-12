@@ -15,6 +15,7 @@ export type VendorProfile = {
   businessName: string;
   businessType: string;
   cacRegistrationNumber?: string | null;
+  cacCompanyType?: string | null;
   businessAddress?: string | null;
   ownerFullName: string;
   phoneNumber?: string | null;
@@ -28,6 +29,7 @@ export type VendorSignupInput = {
   businessName: string;
   businessType: string;
   cacRegistrationNumber?: string;
+  companyType?: string;
   businessAddress?: string;
   ownerFullName: string;
   email: string;

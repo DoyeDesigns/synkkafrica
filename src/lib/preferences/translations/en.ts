@@ -1398,6 +1398,8 @@ export const en = {
   "vendor.signup.fields.businessName": "Name of Business",
   "vendor.signup.fields.businessType": "Business Type",
   "vendor.signup.fields.cacRegistrationNumber": "CAC Registration Number",
+  "vendor.signup.fields.companyType": "Company Type",
+  "vendor.signup.placeholders.companyType": "Select company type",
   "vendor.signup.fields.businessAddress": "Business Address",
   "vendor.signup.fields.ownerFullName": "Full Name of Owner",
   "vendor.signup.fields.ownerEmail": "Email Address",

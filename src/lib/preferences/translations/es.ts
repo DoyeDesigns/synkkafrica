@@ -1398,6 +1398,8 @@ export const es = {
   "vendor.signup.fields.businessName": "Nombre del negocio",
   "vendor.signup.fields.businessType": "Tipo de negocio",
   "vendor.signup.fields.cacRegistrationNumber": "Número de registro CAC",
+  "vendor.signup.fields.companyType": "Tipo de empresa",
+  "vendor.signup.placeholders.companyType": "Seleccione el tipo de empresa",
   "vendor.signup.fields.businessAddress": "Dirección del negocio",
   "vendor.signup.fields.ownerFullName": "Nombre completo del propietario",
   "vendor.signup.fields.ownerEmail": "Correo electrónico",
