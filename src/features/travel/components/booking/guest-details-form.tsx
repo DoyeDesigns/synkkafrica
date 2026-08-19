@@ -126,7 +126,7 @@ function AdultGuestSection({
           </FormField>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="grid gap-4 lg:grid-cols-2">
           <FormField label={t("booking.guest.dateOfBirth")} required>
             <div className="relative">
               <input type="date" className={`${inputClassName} pr-10`} />
@@ -148,38 +148,6 @@ function AdultGuestSection({
               <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
             </div>
           </FormField>
-
-          <div className="flex flex-col gap-1.5">
-            <span className="text-xs font-medium font-satoshi text-foreground/70">
-              {t("booking.guest.gender")}
-              <span className="text-[#004785]"> *</span>
-            </span>
-            <div className="grid grid-cols-2 gap-3">
-              <label className="flex cursor-pointer items-center gap-2 rounded-md border border-[#E5E5E5] px-3 py-2.5">
-                <input
-                  type="radio"
-                  name={`gender-${index}`}
-                  value="male"
-                  defaultChecked
-                  className="h-4 w-4 accent-[#004785]"
-                />
-                <span className="text-sm font-medium font-satoshi text-foreground">
-                  {t("booking.guest.male")}
-                </span>
-              </label>
-              <label className="flex cursor-pointer items-center gap-2 rounded-md border border-[#E5E5E5] px-3 py-2.5">
-                <input
-                  type="radio"
-                  name={`gender-${index}`}
-                  value="female"
-                  className="h-4 w-4 accent-[#004785]"
-                />
-                <span className="text-sm font-medium font-satoshi text-foreground">
-                  {t("booking.guest.female")}
-                </span>
-              </label>
-            </div>
-          </div>
         </div>
 
         <div className="rounded-md border border-[#E5E5E5] bg-[#F8F8F8] p-4">

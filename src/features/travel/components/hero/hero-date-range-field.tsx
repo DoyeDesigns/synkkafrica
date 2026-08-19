@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Calendar } from "lucide-react";
+import { MoveRight, Calendar } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -179,8 +179,8 @@ export function HeroDateRangeField({
 
         {showToDate ? (
           <>
-            <div className="flex shrink-0 items-center px-1 text-white/60">
-              <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+            <div className="flex shrink-0 items-center px-1.5 text-white/70">
+              <MoveRight className="h-4.5 w-8" strokeWidth={2} />
             </div>
 
             <button
