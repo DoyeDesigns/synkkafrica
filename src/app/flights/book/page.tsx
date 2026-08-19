@@ -17,6 +17,11 @@ import {
 import { FlightBookingSummary } from "@/features/travel/components/booking/flight-booking-summary";
 import { FlightBookingHeader } from "@/features/travel/components/booking/flight-booking-header";
 import {
+  createEmptyGuestIdentity,
+  validateGuestIdentities,
+  type GuestIdentityErrors,
+} from "@/features/travel/booking/guest-identity";
+import {
   createBooking,
   isPriceChanged,
   type PriceChangedBody,
@@ -24,11 +29,13 @@ import {
 import { priceOffer } from "@/lib/api/flights";
 import { ApiError } from "@/lib/api/backend";
 import { PriceChangeDialog } from "@/features/travel/components/booking/price-change-dialog";
+import { useTranslation } from "@/hooks/use-translation";
 
 const contactInput =
   "w-full rounded-md border border-[#E5E5E5] bg-white px-3 py-2.5 text-sm font-medium font-satoshi text-foreground outline-none placeholder:text-foreground/40 focus:border-[#004785]";
 
 function BookFlight() {
+  const t = useTranslation();
   const params = useSearchParams();
   const { data: session } = useSession();
 
@@ -36,7 +43,13 @@ function BookFlight() {
   const adults = Math.max(1, Math.min(9, Number(params.get("adults") ?? "1")));
 
   const [travelers, setTravelers] = useState<TravelerValue[]>(() =>
-    Array.from({ length: adults }, () => ({ title: "MR", gender: "M" })),
+    Array.from({ length: adults }, () => ({
+      title: "MR",
+      identity: createEmptyGuestIdentity(),
+    })),
+  );
+  const [identityErrors, setIdentityErrors] = useState<GuestIdentityErrors[]>(
+    [],
   );
   const [email, setEmail] = useState(session?.user?.email ?? "");
   const [phone, setPhone] = useState("");
@@ -87,6 +100,16 @@ function BookFlight() {
   }) {
     setError(null);
     setPriceChange(null);
+
+    const validation = validateGuestIdentities(
+      travelers.map((traveler) => traveler.identity ?? createEmptyGuestIdentity()),
+    );
+    setIdentityErrors(validation.errors);
+    if (!validation.isValid) {
+      setError(t("booking.guest.idValidationRequired"));
+      return;
+    }
+
     setSubmitting(true);
     // PhoneInput yields a full E.164 number (with dial code). Ignore a value
     // that's only the dial code (nothing actually typed yet).
@@ -178,16 +201,16 @@ function BookFlight() {
               </div>
 
               <div className="mt-4 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-normal font-inter text-foreground">
-                Enter your name as it is mentioned on your passport. Passport
-                should be valid for a minimum of 6 months from date of travel.
+                {t("booking.guest.idVerificationHint")}
               </div>
 
               <div className="mt-5 space-y-4">
-                {travelers.map((t, i) => (
+                {travelers.map((traveler, i) => (
                   <FlightTravelerFields
                     key={i}
                     index={i}
-                    value={t}
+                    value={traveler}
+                    identityErrors={identityErrors[i]}
                     onChange={(next) =>
                       setTravelers((prev) =>
                         prev.map((p, j) => (j === i ? next : p)),

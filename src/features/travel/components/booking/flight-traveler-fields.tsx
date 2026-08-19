@@ -1,25 +1,55 @@
 "use client";
 
+import { ChevronDown } from "lucide-react";
+
 import { FormDate, FormSelect } from "./form-controls";
+import {
+  createEmptyGuestIdentity,
+  type GuestIdentity,
+  type GuestIdentityErrors,
+  type GuestIdentityField,
+} from "@/features/travel/booking/guest-identity";
 import type { TravelerInput } from "@/lib/api/bookings";
+import { useTranslation } from "@/hooks/use-translation";
+import type { TranslationKey } from "@/lib/preferences/translations";
 
 const input =
   "w-full rounded-md border border-[#E5E5E5] bg-white px-3 py-2.5 text-sm font-medium font-satoshi text-foreground outline-none placeholder:text-foreground/40 focus:border-[#004785]";
 
-export type TravelerValue = Partial<TravelerInput>;
+const selectClassName = `${input} appearance-none`;
+
+export type TravelerValue = Partial<TravelerInput> & {
+  identity?: GuestIdentity;
+};
+
+const ID_TYPE_KEYS: { value: GuestIdentity["idType"]; key: TranslationKey }[] = [
+  { value: "passport", key: "booking.guest.idType.passport" },
+  { value: "national-id", key: "booking.guest.idType.nationalId" },
+  { value: "drivers-license", key: "booking.guest.idType.driversLicense" },
+];
+
+function genderFromTitle(title: TravelerInput["title"] | undefined): "M" | "F" {
+  if (title === "MS" || title === "MRS" || title === "MISS") return "F";
+  return "M";
+}
 
 /** Narrow form state to the full traveler payload expected by createBooking. */
 export function toTravelerInput(value: TravelerValue): TravelerInput {
+  const title = value.title ?? "MR";
+  const identity = value.identity ?? createEmptyGuestIdentity();
+  const nationality = (value.nationality ?? "").toUpperCase();
+
   return {
-    title: value.title ?? "MR",
+    title,
     firstName: value.firstName ?? "",
     lastName: value.lastName ?? "",
     dateOfBirth: value.dateOfBirth ?? "",
-    gender: value.gender ?? "M",
-    nationality: value.nationality ?? "",
-    passportNumber: value.passportNumber ?? "",
-    passportExpiry: value.passportExpiry ?? "",
-    passportIssuingCountry: value.passportIssuingCountry ?? "",
+    // Still required by the flights API — derived from title, not collected in UI.
+    gender: value.gender ?? genderFromTitle(title),
+    nationality,
+    passportNumber: identity.idNumber.trim().toUpperCase(),
+    passportExpiry: identity.expiryDate,
+    passportIssuingCountry: nationality,
     frequentFlyerProgram: value.frequentFlyerProgram,
     frequentFlyerNumber: value.frequentFlyerNumber,
   };
@@ -34,11 +64,13 @@ function Field({
   label,
   required = false,
   className = "",
+  error,
   children,
 }: {
   label: string;
   required?: boolean;
   className?: string;
+  error?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -48,6 +80,11 @@ function Field({
         {required ? <span className="text-[#004785]"> *</span> : null}
       </span>
       {children}
+      {error ? (
+        <span className="text-xs font-medium font-inter text-[#D85A30]">
+          {error}
+        </span>
+      ) : null}
     </label>
   );
 }
@@ -56,15 +93,26 @@ export function FlightTravelerFields({
   index,
   value,
   onChange,
+  identityErrors = {},
 }: {
   index: number;
   value: TravelerValue;
   onChange: (next: TravelerValue) => void;
+  identityErrors?: GuestIdentityErrors;
 }) {
+  const t = useTranslation();
+  const identity = value.identity ?? createEmptyGuestIdentity();
   const set = (patch: Partial<TravelerValue>) => onChange({ ...value, ...patch });
+  const updateIdentity = (patch: Partial<GuestIdentity>) =>
+    set({ identity: { ...identity, ...patch } });
   const iso2 = (v: string) =>
     v.replace(/[^a-zA-Z]/g, "").slice(0, 2).toUpperCase();
   const today = new Date().toISOString().slice(0, 10);
+
+  const fieldError = (field: GuestIdentityField) =>
+    identityErrors[field]
+      ? t(identityErrors[field] as TranslationKey)
+      : undefined;
 
   return (
     <div className="rounded-md border border-[#E5E5E5]">
@@ -128,83 +176,107 @@ export function FlightTravelerFields({
           </Field>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-3">
-          <Field label="Nationality" required>
-            <input
-              className={`${input} uppercase`}
-              placeholder="NG"
-              value={value.nationality ?? ""}
-              onChange={(e) => set({ nationality: iso2(e.target.value) })}
-              required
-            />
-          </Field>
+        <Field label="Nationality" required className="max-w-xs">
+          <input
+            className={`${input} uppercase`}
+            placeholder="NG"
+            value={value.nationality ?? ""}
+            onChange={(e) => set({ nationality: iso2(e.target.value) })}
+            required
+          />
+        </Field>
 
-          <div className="flex flex-col gap-1.5">
-            <span className="text-xs font-bold font-satoshi text-foreground">
-              Gender<span className="text-[#004785]"> *</span>
-            </span>
-            <div className="grid grid-cols-2 gap-3">
-              {(["M", "F"] as const).map((g) => (
-                <label
-                  key={g}
-                  className={`flex cursor-pointer items-center gap-2 rounded-md border px-3 py-2.5 ${
-                    (value.gender ?? "M") === g
-                      ? "border-[#004785]"
-                      : "border-[#E5E5E5]"
-                  }`}
+        <div className="rounded-md border border-[#E5E5E5] bg-[#F8F8F8] p-4">
+          <h3 className="text-sm font-semibold font-inter text-foreground">
+            {t("booking.guest.idVerificationTitle")}
+          </h3>
+          <p className="mt-1 text-xs font-normal font-inter text-foreground/70">
+            {t("booking.guest.idVerificationSubtitle")}
+          </p>
+
+          <div className="mt-4 grid gap-4 lg:grid-cols-3">
+            <Field
+              label={t("booking.guest.idType")}
+              required
+              error={fieldError("idType")}
+            >
+              <div className="relative">
+                <select
+                  className={selectClassName}
+                  value={identity.idType}
+                  onChange={(event) =>
+                    updateIdentity({
+                      idType: event.target.value as GuestIdentity["idType"],
+                    })
+                  }
+                  required
                 >
-                  <input
-                    type="radio"
-                    name={`gender-${index}`}
-                    checked={(value.gender ?? "M") === g}
-                    onChange={() => set({ gender: g })}
-                    className="h-4 w-4 accent-[#004785]"
-                  />
-                  <span className="text-sm font-medium font-satoshi text-foreground">
-                    {g === "M" ? "Male" : "Female"}
-                  </span>
-                </label>
-              ))}
-            </div>
+                  <option value="" disabled>
+                    {t("common.select")}
+                  </option>
+                  {ID_TYPE_KEYS.map((idType) => (
+                    <option key={idType.value} value={idType.value}>
+                      {t(idType.key)}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
+              </div>
+            </Field>
+
+            <Field
+              label={t("booking.guest.idNumber")}
+              required
+              error={fieldError("idNumber")}
+            >
+              <input
+                type="text"
+                className={input}
+                value={identity.idNumber}
+                onChange={(event) =>
+                  updateIdentity({ idNumber: event.target.value })
+                }
+                placeholder={t("booking.guest.idNumberPlaceholder")}
+                required
+              />
+            </Field>
+
+            <Field
+              label={t("booking.guest.idExpiry")}
+              required
+              error={fieldError("expiryDate")}
+            >
+              <input
+                type="date"
+                className={input}
+                value={identity.expiryDate}
+                min={today}
+                onChange={(event) =>
+                  updateIdentity({ expiryDate: event.target.value })
+                }
+                required
+              />
+            </Field>
           </div>
 
-          <Field label="Passport No" required>
+          <label className="mt-4 flex cursor-pointer items-start gap-2 rounded-md border border-[#E5E5E5] bg-white px-3 py-3">
             <input
-              className={`${input} uppercase`}
-              placeholder="A1234567"
-              value={value.passportNumber ?? ""}
-              onChange={(e) =>
-                set({
-                  passportNumber: e.target.value
-                    .replace(/[^a-zA-Z0-9]/g, "")
-                    .toUpperCase(),
-                })
+              type="checkbox"
+              checked={identity.confirmed}
+              onChange={(event) =>
+                updateIdentity({ confirmed: event.target.checked })
               }
-              required
+              className="mt-0.5 h-4 w-4 accent-[#004785]"
             />
-          </Field>
-        </div>
-
-        <div className="grid gap-4 lg:grid-cols-3">
-          <Field label="Passport expiry" required>
-            <FormDate
-              placeholder="Select date"
-              value={value.passportExpiry ?? ""}
-              min={today}
-              onChange={(v) => set({ passportExpiry: v })}
-            />
-          </Field>
-          <Field label="Passport issuing country" required>
-            <input
-              className={`${input} uppercase`}
-              placeholder="NG"
-              value={value.passportIssuingCountry ?? ""}
-              onChange={(e) =>
-                set({ passportIssuingCountry: iso2(e.target.value) })
-              }
-              required
-            />
-          </Field>
+            <span className="text-sm font-medium font-inter text-foreground">
+              {t("booking.guest.confirmId")}
+            </span>
+          </label>
+          {identityErrors.confirmed ? (
+            <p className="mt-2 text-xs font-medium font-inter text-[#D85A30]">
+              {t(identityErrors.confirmed as TranslationKey)}
+            </p>
+          ) : null}
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Plane } from "lucide-react";
+import { type LucideIcon, Plane } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -14,6 +14,7 @@ type HeroAirportFieldProps = {
   onChange: (value: string) => void;
   listboxId: string;
   className?: string;
+  icon?: LucideIcon;
 };
 
 // Airport/city autocomplete for flight origin/destination. Backed by Duffel
@@ -26,6 +27,7 @@ export function HeroAirportField({
   onChange,
   listboxId,
   className = "",
+  icon: Icon = Plane,
 }: HeroAirportFieldProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLUListElement>(null);
@@ -163,7 +165,7 @@ export function HeroAirportField({
   return (
     <div ref={containerRef} className={`relative flex-1 ${className}`}>
       <label className="flex min-h-12 items-center gap-2 rounded-xl bg-[#0000003D] px-4 text-sm text-white/90">
-        <Plane className="h-4 w-4 shrink-0" />
+        <Icon className="h-4 w-4 shrink-0" />
         <input
           type="search"
           value={text}

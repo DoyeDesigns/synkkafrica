@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { ArrowLeftRight, PlaneLanding, PlaneTakeoff } from "lucide-react";
 
 import { getDefaultCheckInDate } from "@/features/travel/booking/booking-params";
 import {
@@ -81,6 +82,8 @@ export function FlightsSearchForm({ onSubmit }: FlightsSearchFormProps) {
   );
   const [from, setFrom] = useState(() => searchParams.get("from") ?? "");
   const [to, setTo] = useState(() => searchParams.get("to") ?? "");
+  const [routeKey, setRouteKey] = useState(0);
+  const [swapSpinning, setSwapSpinning] = useState(false);
   const [departureDate, setDepartureDate] = useState(
     () => searchParams.get("departureDate") ?? getDefaultCheckInDate(),
   );
@@ -119,6 +122,14 @@ export function FlightsSearchForm({ onSubmit }: FlightsSearchFormProps) {
     if (nextTripType === "one-way") {
       setReturnDate("");
     }
+  };
+
+  const handleSwapAirports = () => {
+    setFrom(to);
+    setTo(from);
+    setRouteKey((key) => key + 1);
+    setSwapSpinning(true);
+    window.setTimeout(() => setSwapSpinning(false), 350);
   };
 
   return (
@@ -166,17 +177,34 @@ export function FlightsSearchForm({ onSubmit }: FlightsSearchFormProps) {
 
       <HeroInputShell>
         <HeroAirportField
+          key={`from-${routeKey}`}
           placeholder={t("hero.flights.fromCity")}
           value={from}
           onChange={setFrom}
           listboxId="hero-flight-from-listbox"
+          icon={PlaneTakeoff}
           className="w-full min-w-0 lg:!flex-[0.8] lg:!max-w-[170px]"
         />
+        <button
+          type="button"
+          onClick={handleSwapAirports}
+          aria-label="Swap origin and destination"
+          className="mx-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/25 bg-[#0000003D] text-white transition-colors hover:bg-white/15 lg:mx-0"
+        >
+          <ArrowLeftRight
+            className={`h-4 w-4 transition-transform duration-300 ${
+              swapSpinning ? "rotate-180" : "rotate-0"
+            }`}
+            strokeWidth={2}
+          />
+        </button>
         <HeroAirportField
+          key={`to-${routeKey}`}
           placeholder={t("hero.flights.toCity")}
           value={to}
           onChange={setTo}
           listboxId="hero-flight-to-listbox"
+          icon={PlaneLanding}
           className="w-full min-w-0 lg:!flex-[0.8] lg:!max-w-[170px]"
         />
         <HeroDateRangeField
