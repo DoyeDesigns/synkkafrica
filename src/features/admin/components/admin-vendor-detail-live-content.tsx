@@ -10,9 +10,12 @@ import {
   adminBusinessDocViewUrl,
   adminGetVendor,
   adminRejectVendor,
+  adminVerifyVendorCac,
+  adminVerifyVendorId,
   type AdminBusinessDoc,
   type AdminListing,
   type AdminVendor,
+  type VerificationStatus,
 } from "@/lib/api/admin";
 
 const VENDOR_STATUS_STYLES: Record<AdminVendor["status"], string> = {
@@ -27,6 +30,31 @@ const DOC_STATUS_STYLES: Record<AdminBusinessDoc["status"], string> = {
   approved: "bg-[#E7F6EC] text-[#2E7D32]",
   rejected: "bg-[#FDEBEB] text-[#C0392B]",
 };
+
+const VERIFICATION_STATUS_STYLES: Record<VerificationStatus, string> = {
+  unverified: "bg-[#F5F5F5] text-[#676565]",
+  verified: "bg-[#E7F6EC] text-[#2E7D32]",
+  failed: "bg-[#FDEBEB] text-[#C0392B]",
+};
+
+const VERIFICATION_LABELS: Record<VerificationStatus, string> = {
+  unverified: "Not verified",
+  verified: "Verified",
+  failed: "Failed",
+};
+
+const verifyButtonClass =
+  "rounded-lg border border-[#E5E5E5] bg-white px-3 py-1 text-xs font-bold font-satoshi text-[#135391] hover:bg-[#F5F5F5] disabled:opacity-50";
+
+function VerificationBadge({ status }: { status: VerificationStatus }) {
+  return (
+    <span
+      className={`rounded-full px-2.5 py-0.5 text-xs font-semibold font-satoshi ${VERIFICATION_STATUS_STYLES[status]}`}
+    >
+      {VERIFICATION_LABELS[status]}
+    </span>
+  );
+}
 
 const LISTING_STATUS_STYLES: Record<AdminListing["status"], string> = {
   draft: "bg-[#F5F5F5] text-[#676565]",
@@ -79,6 +107,14 @@ export function AdminVendorDetailLiveContent({
   const rejectMutation = useMutation({
     mutationFn: (reason?: string) =>
       adminRejectVendor(token as string, vendorId, reason),
+    onSuccess: invalidate,
+  });
+  const verifyCacMutation = useMutation({
+    mutationFn: () => adminVerifyVendorCac(token as string, vendorId),
+    onSuccess: invalidate,
+  });
+  const verifyIdMutation = useMutation({
+    mutationFn: () => adminVerifyVendorId(token as string, vendorId),
     onSuccess: invalidate,
   });
   const busy = approveMutation.isPending || rejectMutation.isPending;
@@ -167,10 +203,36 @@ export function AdminVendorDetailLiveContent({
             <dl className="mt-4 grid gap-4 sm:grid-cols-2">
               <DetailRow label="Business type" value={vendor.businessType} />
               <DetailRow label="Phone" value={vendor.phoneNumber} />
-              <DetailRow
-                label="CAC registration"
-                value={vendor.cacRegistrationNumber}
-              />
+              <div>
+                <dt className="text-xs font-semibold font-satoshi uppercase tracking-wide text-[#9A9A9A]">
+                  CAC registration
+                </dt>
+                <dd className="mt-1 flex flex-wrap items-center gap-2 text-sm font-medium font-satoshi text-[#2F2F2F]">
+                  <span>{vendor.cacRegistrationNumber?.trim() || "—"}</span>
+                  <VerificationBadge status={vendor.cacVerificationStatus} />
+                  <button
+                    type="button"
+                    onClick={() => verifyCacMutation.mutate()}
+                    disabled={
+                      verifyCacMutation.isPending ||
+                      !vendor.cacRegistrationNumber
+                    }
+                    className={verifyButtonClass}
+                  >
+                    {verifyCacMutation.isPending ? "Verifying…" : "Verify CAC"}
+                  </button>
+                </dd>
+                {vendor.cacVerifiedName ? (
+                  <p className="mt-1 text-xs font-medium font-satoshi text-[#676565]">
+                    Registry: {vendor.cacVerifiedName}
+                  </p>
+                ) : null}
+                {verifyCacMutation.isError ? (
+                  <p className="mt-1 text-xs font-medium font-satoshi text-[#C0392B]">
+                    Verification failed to run. Try again.
+                  </p>
+                ) : null}
+              </div>
               <DetailRow label="Address" value={vendor.businessAddress} />
               <DetailRow
                 label="Date of birth"
@@ -213,7 +275,7 @@ export function AdminVendorDetailLiveContent({
                         {doc.fileName}
                       </p>
                     </div>
-                    <div className="flex shrink-0 items-center gap-2">
+                    <div className="flex shrink-0 flex-wrap items-center gap-2">
                       {doc.fileUrl ? (
                         <button
                           type="button"
@@ -227,6 +289,25 @@ export function AdminVendorDetailLiveContent({
                           No file uploaded
                         </span>
                       )}
+                      {doc.type === "government_id" ? (
+                        <>
+                          {doc.verificationStatus ? (
+                            <VerificationBadge
+                              status={doc.verificationStatus}
+                            />
+                          ) : null}
+                          <button
+                            type="button"
+                            onClick={() => verifyIdMutation.mutate()}
+                            disabled={verifyIdMutation.isPending || !doc.fileUrl}
+                            className={verifyButtonClass}
+                          >
+                            {verifyIdMutation.isPending
+                              ? "Verifying…"
+                              : "Verify ID"}
+                          </button>
+                        </>
+                      ) : null}
                       <span
                         className={`rounded-full px-3 py-1 text-xs font-semibold font-satoshi capitalize ${DOC_STATUS_STYLES[doc.status]}`}
                       >

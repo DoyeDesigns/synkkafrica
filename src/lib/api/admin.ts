@@ -6,6 +6,8 @@ import type {
   SupportTicketStatus,
 } from "@/features/vendor/data/vendor-support";
 
+export type VerificationStatus = "unverified" | "verified" | "failed";
+
 export type AdminVendor = {
   id: string;
   email: string;
@@ -14,6 +16,7 @@ export type AdminVendor = {
   ownerFullName: string;
   phoneNumber: string | null;
   status: "pending" | "active" | "suspended" | "rejected";
+  cacVerificationStatus: VerificationStatus;
   rejectionReason: string | null;
   createdAt: string;
   reviewedAt: string | null;
@@ -65,6 +68,8 @@ export async function adminRejectVendor(
 
 export type AdminVendorDetail = AdminVendor & {
   cacRegistrationNumber: string | null;
+  cacVerifiedName: string | null;
+  cacVerifiedAt: string | null;
   businessAddress: string | null;
   dateOfBirth: string | null;
   payoutBankId: string | null;
@@ -79,6 +84,24 @@ export async function adminGetVendor(
   id: string,
 ): Promise<AdminVendorDetail> {
   return apiFetch<AdminVendorDetail>(`/admin/vendors/${id}`, { token });
+}
+
+export async function adminVerifyVendorCac(
+  token: string,
+  id: string,
+): Promise<{
+  cacVerificationStatus: VerificationStatus;
+  cacVerifiedName: string | null;
+  cacVerifiedAt: string | null;
+}> {
+  return apiFetch(`/admin/vendors/${id}/verify-cac`, { method: "POST", token });
+}
+
+export async function adminVerifyVendorId(
+  token: string,
+  id: string,
+): Promise<{ verificationStatus: VerificationStatus; verifiedAt: string | null }> {
+  return apiFetch(`/admin/vendors/${id}/verify-id`, { method: "POST", token });
 }
 
 // --- Listings ---
@@ -284,6 +307,8 @@ export type AdminBusinessDoc = {
   fileName: string;
   fileUrl: string | null;
   status: "pending" | "approved" | "rejected";
+  verificationStatus?: VerificationStatus;
+  verifiedAt?: string | null;
   createdAt: string;
 };
 
