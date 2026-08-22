@@ -117,7 +117,10 @@ export function toCarRentalResult(c: CarSummaryApi): CarRentalResult {
     currency: c.currency,
     image: c.coverImageUrl ?? c.images[0] ?? FALLBACK_CAR_IMAGE,
     carType: "",
-    serviceType: c.comesWithDriver ? "With driver" : "Self drive",
+    // Must speak the filter's vocabulary (SERVICE_TYPE_OPTIONS: "Self drive" |
+    // "Chauffeur"). "With driver" matched neither, so filtering by Chauffeur
+    // excluded every chauffeur-driven car.
+    serviceType: c.comesWithDriver ? "Chauffeur" : "Self drive",
     transmission: c.transmission ?? "",
     selfDriveAvailable: !c.comesWithDriver,
     hasDiscount: false,

@@ -40,8 +40,13 @@ export const DEFAULT_CAR_RENTAL_FILTERS: CarRentalFilterState = {
   location: "Lagos Nigeria",
   discounts: DEFAULT_DISCOUNT_FILTER,
   priceBudget: "",
-  priceMin: 50000,
-  priceMax: 200000,
+  // No control in the car-rentals UI binds to these — the sidebar exposes
+  // `priceBudget` and `priceRange`, and the hero writes `?maxPrice`. A non-zero
+  // floor and a finite ceiling here therefore act as an invisible band that
+  // silently hides listings priced outside it, with nothing for the user to
+  // widen. The baseline is "no constraint"; the visible controls narrow it.
+  priceMin: 0,
+  priceMax: Number.POSITIVE_INFINITY,
   priceRange: null,
   carType: "",
   serviceType: "Self drive",

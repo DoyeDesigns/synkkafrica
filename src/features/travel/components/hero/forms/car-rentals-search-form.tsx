@@ -21,8 +21,12 @@ type CarRentalsSearchFormProps = {
   onSubmit: (fields: Record<string, string>) => void;
 };
 
-const MAX_PRICE = 100000;
-const DEFAULT_MAX_PRICE = 50000;
+// The top of the slider means "no maximum", not "1,000,000" — dragging it fully
+// right omits `maxPrice` from the search entirely. The ceiling only has to sit
+// above real inventory; the old 100,000 cap sat below it, so a listing priced
+// higher could not be surfaced by any combination of controls.
+const MAX_PRICE = 1000000;
+const DEFAULT_MAX_PRICE = MAX_PRICE;
 const SERVICE_TYPES = ["self-drive", "chauffeur"] as const;
 
 const SERVICE_TYPE_LABEL_KEYS: Record<
@@ -112,7 +116,9 @@ export function CarRentalsSearchForm({
           carType: carType.trim(),
           location: location.trim(),
           serviceType,
-          maxPrice: String(maxPrice),
+          // Empty drops the param (see submitSearch), leaving the search
+          // uncapped rather than pinned to the slider's ceiling.
+          maxPrice: maxPrice >= MAX_PRICE ? "" : String(maxPrice),
           date: pickupDate,
         });
       }}
@@ -222,7 +228,9 @@ export function CarRentalsSearchForm({
 
           <div className="flex min-h-12 shrink-0 items-center rounded-xl bg-[#0000003D] px-4 text-sm text-white/70">
             <span className="whitespace-nowrap font-medium">
-              {formatHeroPrice(maxPrice)}
+              {maxPrice >= MAX_PRICE
+                ? t("filters.anyPrice")
+                : formatHeroPrice(maxPrice)}
             </span>
           </div>
 
