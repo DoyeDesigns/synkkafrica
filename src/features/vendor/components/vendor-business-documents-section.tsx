@@ -256,8 +256,13 @@ function BusinessDocumentRow({
   onUpload: (file: File) => void;
 }) {
   const t = useTranslation();
-  const canUpload =
-    document.status === "not_uploaded" || document.status === "rejected";
+  // Anything short of verified stays replaceable. A doc sits at `pending` from
+  // the moment it is uploaded until an admin acts on it, so gating on
+  // rejected-only left a vendor who uploaded the wrong file at signup with no
+  // way to fix it. The backend upsert already resets the review + Dojah verdict
+  // on replace, so this is safe at any pre-verified stage.
+  const canUpload = document.status !== "verified";
+  const hasFile = document.status !== "not_uploaded";
 
   const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -307,7 +312,7 @@ function BusinessDocumentRow({
             ) : (
               <Upload className="h-3.5 w-3.5" strokeWidth={1.75} />
             )}
-            {document.status === "rejected"
+            {hasFile
               ? t("vendor.businessProfile.documents.reupload")
               : t("vendor.businessProfile.documents.upload")}
             <input

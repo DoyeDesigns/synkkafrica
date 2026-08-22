@@ -2,6 +2,8 @@ export type VendorPayoutBankId = "gtbank" | "access" | "zenith" | "firstbank";
 
 export type VendorBusinessProfile = {
   internalBusinessName: string;
+  cacRegistrationNumber: string;
+  cacCompanyType: string;
   contactPhone: string;
   contactEmail: string;
   businessAddress: string;
@@ -33,6 +35,8 @@ export function createDefaultVendorBusinessProfile(
 ): VendorBusinessProfile {
   return {
     internalBusinessName: "Alex Autos Experiences Ltd",
+    cacRegistrationNumber: "RC1234567",
+    cacCompanyType: "COMPANY",
     contactPhone: "+234 801 234 5678",
     contactEmail: "alex@alexautos.ng",
     businessAddress: "12 Admiralty Way, Lekki Phase 1, Lagos, Nigeria",

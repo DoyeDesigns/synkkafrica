@@ -1558,6 +1558,32 @@ export const es = {
   "vendor.businessProfile.saveChanges": "Guardar cambios",
   "vendor.businessProfile.saved": "Guardado.",
 
+  "vendor.businessProfile.rejected.title": "Solicitud no aprobada",
+  "vendor.businessProfile.rejected.noReason":
+    "Un administrador no aprobó tu solicitud. Corrige tus datos y documentos abajo y vuelve a enviarla.",
+  "vendor.businessProfile.rejected.resubmit": "Volver a enviar para revisión",
+  "vendor.businessProfile.rejected.resubmitting": "Enviando…",
+  "vendor.businessProfile.rejected.resubmitted":
+    "Enviada de nuevo. Un administrador revisará tu solicitud otra vez.",
+  "vendor.businessProfile.rejected.resubmitFailed":
+    "No se pudo volver a enviar. Inténtalo de nuevo.",
+  "vendor.businessProfile.cac.title": "Registro CAC",
+  "vendor.businessProfile.cac.hint":
+    "Se comprueba con el registro CAC. Puedes corregir estos datos hasta que la comprobación sea correcta.",
+  "vendor.businessProfile.cac.number": "Número de registro CAC",
+  "vendor.businessProfile.cac.companyType": "Tipo de empresa",
+  "vendor.businessProfile.cac.companyTypePlaceholder": "Selecciona el tipo de empresa",
+  "vendor.businessProfile.cac.status.verified": "Verificado",
+  "vendor.businessProfile.cac.status.failed": "Sin verificar",
+  "vendor.businessProfile.cac.status.unverified": "Pendiente de comprobación",
+  "vendor.businessProfile.cac.verifiedAs": "Coincide con {name} en el registro CAC.",
+  "vendor.businessProfile.cac.failedHint":
+    "El registro CAC no coincide con estos datos. Corrígelos y guarda para volver a comprobar.",
+  "vendor.businessProfile.cac.pendingHint":
+    "Al guardar se repite la comprobación CAC. Actualiza en un momento para ver el resultado.",
+  "vendor.businessProfile.cac.lockedHint":
+    "Los datos verificados no se pueden cambiar aquí. Contacta con soporte si hay algún error.",
+
   "vendor.businessProfile.documents.title": "Documentos y verificación",
   "vendor.businessProfile.documents.subtitle":
     "Los documentos a nivel de empresa aplican a toda tu cuenta. Los documentos del vehículo son obligatorios por anuncio antes de que pueda publicarse.",

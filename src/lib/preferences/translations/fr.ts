@@ -1558,6 +1558,32 @@ export const fr = {
   "vendor.businessProfile.saveChanges": "Enregistrer",
   "vendor.businessProfile.saved": "Enregistré.",
 
+  "vendor.businessProfile.rejected.title": "Candidature non approuvée",
+  "vendor.businessProfile.rejected.noReason":
+    "Un administrateur n'a pas approuvé votre candidature. Corrigez vos informations et documents ci-dessous, puis renvoyez-la.",
+  "vendor.businessProfile.rejected.resubmit": "Renvoyer pour examen",
+  "vendor.businessProfile.rejected.resubmitting": "Envoi en cours…",
+  "vendor.businessProfile.rejected.resubmitted":
+    "Renvoyée. Un administrateur réexaminera votre candidature.",
+  "vendor.businessProfile.rejected.resubmitFailed":
+    "Impossible de renvoyer. Réessayez.",
+  "vendor.businessProfile.cac.title": "Immatriculation CAC",
+  "vendor.businessProfile.cac.hint":
+    "Vérifié auprès du registre CAC. Vous pouvez corriger ces informations tant que la vérification échoue.",
+  "vendor.businessProfile.cac.number": "Numéro d'immatriculation CAC",
+  "vendor.businessProfile.cac.companyType": "Type de société",
+  "vendor.businessProfile.cac.companyTypePlaceholder": "Sélectionnez le type de société",
+  "vendor.businessProfile.cac.status.verified": "Vérifié",
+  "vendor.businessProfile.cac.status.failed": "Non vérifié",
+  "vendor.businessProfile.cac.status.unverified": "Vérification en attente",
+  "vendor.businessProfile.cac.verifiedAs": "Correspond à {name} dans le registre CAC.",
+  "vendor.businessProfile.cac.failedHint":
+    "Le registre CAC ne correspond pas à ces informations. Corrigez-les et enregistrez pour réessayer.",
+  "vendor.businessProfile.cac.pendingHint":
+    "L'enregistrement relance la vérification CAC. Actualisez dans un instant pour voir le résultat.",
+  "vendor.businessProfile.cac.lockedHint":
+    "Les informations vérifiées ne peuvent pas être modifiées ici. Contactez le support en cas d'erreur.",
+
   "vendor.businessProfile.documents.title": "Documents et vérification",
   "vendor.businessProfile.documents.subtitle":
     "Les documents au niveau de l'entreprise s'appliquent à l'ensemble de votre compte. Les documents véhicule sont requis par annonce avant sa mise en ligne.",

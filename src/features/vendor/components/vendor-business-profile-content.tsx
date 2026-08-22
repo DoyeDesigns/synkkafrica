@@ -1,6 +1,15 @@
 "use client";
 
-import { Building2, ChevronDown, Lock, Mail, Phone, Save } from "lucide-react";
+import {
+  BadgeCheck,
+  Building2,
+  ChevronDown,
+  Lock,
+  Mail,
+  Phone,
+  Save,
+  ShieldAlert,
+} from "lucide-react";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -10,10 +19,12 @@ import {
   VENDOR_PAYOUT_BANK_OPTIONS,
   type VendorBusinessProfile,
 } from "@/features/vendor/data/vendor-business-profile";
+import { VENDOR_CAC_COMPANY_TYPES } from "@/features/vendor/data/vendor-signup";
 import { useTranslation } from "@/hooks/use-translation";
 import {
   changeVendorPassword,
   getVendorFullProfile,
+  resubmitVendorForReview,
   updateVendorProfile,
   type UpdateVendorProfileInput,
   type VendorFullProfile,
@@ -30,6 +41,8 @@ type VendorBusinessProfileContentProps = {
 function formFromProfile(p: VendorFullProfile): VendorBusinessProfile {
   return {
     internalBusinessName: p.businessName ?? "",
+    cacRegistrationNumber: p.cacRegistrationNumber ?? "",
+    cacCompanyType: p.cacCompanyType ?? "",
     contactPhone: p.phoneNumber ?? "",
     contactEmail: p.email ?? "",
     businessAddress: p.businessAddress ?? "",
@@ -71,6 +84,9 @@ export function VendorBusinessProfileContent({
     newPassword: "",
     confirmPassword: "",
   });
+  const [resubmitState, setResubmitState] = useState<
+    "idle" | "sending" | "done" | "error"
+  >("idle");
   const [savedSection, setSavedSection] = useState<string | null>(null);
   const [savingSection, setSavingSection] = useState<string | null>(null);
   const [errorSection, setErrorSection] = useState<{
@@ -115,6 +131,18 @@ export function VendorBusinessProfileContent({
     }
   }
 
+  async function handleResubmit() {
+    if (!token) return;
+    setResubmitState("sending");
+    try {
+      const updated = await resubmitVendorForReview(token);
+      queryClient.setQueryData(["vendor-profile"], updated);
+      setResubmitState("done");
+    } catch {
+      setResubmitState("error");
+    }
+  }
+
   async function handleUpdatePassword() {
     if (
       !token ||
@@ -149,6 +177,9 @@ export function VendorBusinessProfileContent({
   }
 
   const email = form?.contactEmail ?? vendorEmail ?? "";
+  const cacVerified = profile?.cacVerificationStatus === "verified";
+  const cacFailed = profile?.cacVerificationStatus === "failed";
+  const isRejected = profile?.status === "rejected";
 
   const renderSaveRow = (section: string) => {
     const err = errorSection?.section === section ? errorSection.message : null;
@@ -177,6 +208,11 @@ export function VendorBusinessProfileContent({
                 phoneNumber: form.contactPhone,
                 businessAddress: form.businessAddress,
               });
+            } else if (section === "cac") {
+              void saveSection("cac", {
+                cacRegistrationNumber: form.cacRegistrationNumber,
+                companyType: form.cacCompanyType,
+              });
             } else if (section === "payout") {
               void saveSection("payout", {
                 payoutBankId: form.payoutBankId,
@@ -204,6 +240,57 @@ export function VendorBusinessProfileContent({
       </h2>
 
       <div className="space-y-6">
+        {/* A rejected vendor can still sign in and reach this page — the whole
+            point is that they can see the reason, fix it, and resubmit. */}
+        {isRejected ? (
+          <section
+            role="alert"
+            className="rounded-xl border border-[#F5C6CB] bg-[#FFF5F5] p-5 shadow-sm sm:p-6"
+          >
+            <div className="flex items-start gap-3">
+              <ShieldAlert
+                className="mt-0.5 h-5 w-5 shrink-0 text-[#C0392B]"
+                strokeWidth={2}
+                aria-hidden="true"
+              />
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-bold font-satoshi text-[#C0392B]">
+                  {t("vendor.businessProfile.rejected.title")}
+                </p>
+                <p className="mt-1 text-sm font-medium font-satoshi text-[#922B21]">
+                  {profile?.rejectionReason?.trim() ||
+                    t("vendor.businessProfile.rejected.noReason")}
+                </p>
+
+                <div className="mt-4 flex flex-wrap items-center gap-3">
+                  <button
+                    type="button"
+                    disabled={resubmitState === "sending"}
+                    onClick={() => void handleResubmit()}
+                    className="inline-flex items-center gap-2 rounded-lg bg-[#D85A30] px-4 py-2.5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+                  >
+                    {resubmitState === "sending"
+                      ? t("vendor.businessProfile.rejected.resubmitting")
+                      : t("vendor.businessProfile.rejected.resubmit")}
+                  </button>
+                  {resubmitState === "error" ? (
+                    <span className="text-xs font-semibold font-satoshi text-[#C0392B]">
+                      {t("vendor.businessProfile.rejected.resubmitFailed")}
+                    </span>
+                  ) : null}
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : resubmitState === "done" ? (
+          <section
+            role="status"
+            className="rounded-xl border border-[#C8E6C9] bg-[#F3FBF4] p-5 text-sm font-medium font-satoshi text-[#2E7D32] shadow-sm sm:p-6"
+          >
+            {t("vendor.businessProfile.rejected.resubmitted")}
+          </section>
+        ) : null}
+
         <section className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm sm:p-6">
           <div className="flex items-start gap-3">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E3F2FD] text-[#1565C0]">
@@ -234,6 +321,124 @@ export function VendorBusinessProfileContent({
           </label>
 
           {renderSaveRow("business")}
+        </section>
+
+        <section className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm sm:p-6">
+          <div className="flex items-start gap-3">
+            <div
+              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${
+                cacVerified
+                  ? "bg-[#E8F5E9] text-[#2E7D32]"
+                  : cacFailed
+                    ? "bg-[#FDECEA] text-[#C0392B]"
+                    : "bg-[#E3F2FD] text-[#1565C0]"
+              }`}
+            >
+              {cacVerified ? (
+                <BadgeCheck className="h-5 w-5" strokeWidth={1.75} />
+              ) : cacFailed ? (
+                <ShieldAlert className="h-5 w-5" strokeWidth={1.75} />
+              ) : (
+                <Building2 className="h-5 w-5" strokeWidth={1.75} />
+              )}
+            </div>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-base font-bold font-satoshi text-[#2F2F2F]">
+                {t("vendor.businessProfile.cac.title")}
+              </h3>
+              <p className="mt-1 text-xs font-medium font-satoshi text-[#676565]">
+                {cacVerified
+                  ? t("vendor.businessProfile.cac.lockedHint")
+                  : t("vendor.businessProfile.cac.hint")}
+              </p>
+            </div>
+            <span
+              className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] font-bold font-satoshi ${
+                cacVerified
+                  ? "bg-[#E8F5E9] text-[#2E7D32]"
+                  : cacFailed
+                    ? "bg-[#FDECEA] text-[#C0392B]"
+                    : "bg-[#FFF4E5] text-[#B26A00]"
+              }`}
+            >
+              {cacVerified
+                ? t("vendor.businessProfile.cac.status.verified")
+                : cacFailed
+                  ? t("vendor.businessProfile.cac.status.failed")
+                  : t("vendor.businessProfile.cac.status.unverified")}
+            </span>
+          </div>
+
+          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+            <label className="flex flex-col gap-2">
+              <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
+                {t("vendor.businessProfile.cac.number")}
+              </span>
+              <input
+                type="text"
+                value={form?.cacRegistrationNumber ?? ""}
+                readOnly={cacVerified}
+                onChange={(event) =>
+                  updateForm({ cacRegistrationNumber: event.target.value })
+                }
+                className={
+                  cacVerified
+                    ? `${inputClassName} cursor-default bg-[#FAFAFA] text-foreground/80`
+                    : inputClassName
+                }
+              />
+            </label>
+
+            <label className="flex flex-col gap-2">
+              <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
+                {t("vendor.businessProfile.cac.companyType")}
+              </span>
+              <select
+                value={form?.cacCompanyType ?? ""}
+                disabled={cacVerified}
+                onChange={(event) =>
+                  updateForm({ cacCompanyType: event.target.value })
+                }
+                className={
+                  cacVerified
+                    ? `${inputClassName} cursor-default bg-[#FAFAFA] text-foreground/80`
+                    : inputClassName
+                }
+              >
+                <option value="">
+                  {t("vendor.businessProfile.cac.companyTypePlaceholder")}
+                </option>
+                {VENDOR_CAC_COMPANY_TYPES.map((type) => (
+                  <option key={type.value} value={type.value}>
+                    {type.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          {cacVerified && profile?.cacVerifiedName ? (
+            <p className="mt-3 text-xs font-medium font-satoshi text-[#2E7D32]">
+              {t("vendor.businessProfile.cac.verifiedAs", {
+                name: profile.cacVerifiedName,
+              })}
+            </p>
+          ) : cacFailed ? (
+            <p className="mt-3 text-xs font-medium font-satoshi text-[#C0392B]">
+              {t("vendor.businessProfile.cac.failedHint")}
+            </p>
+          ) : null}
+
+          {/* Re-verification is fire-and-forget server-side, so the verdict
+              lands after this response — say so rather than showing a stale
+              "awaiting" badge as if nothing happened. */}
+          {!cacVerified && savedSection === "cac" ? (
+            <p className="mt-2 text-xs font-medium font-satoshi text-[#676565]">
+              {t("vendor.businessProfile.cac.pendingHint")}
+            </p>
+          ) : null}
+
+          {cacVerified ? null : renderSaveRow("cac")}
         </section>
 
         <section className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm sm:p-6">

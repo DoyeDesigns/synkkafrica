@@ -1558,6 +1558,32 @@ export const de = {
   "vendor.businessProfile.saveChanges": "Änderungen speichern",
   "vendor.businessProfile.saved": "Gespeichert.",
 
+  "vendor.businessProfile.rejected.title": "Antrag nicht genehmigt",
+  "vendor.businessProfile.rejected.noReason":
+    "Ein Administrator hat Ihren Antrag nicht genehmigt. Korrigieren Sie unten Ihre Angaben und Dokumente und reichen Sie ihn erneut ein.",
+  "vendor.businessProfile.rejected.resubmit": "Erneut zur Prüfung einreichen",
+  "vendor.businessProfile.rejected.resubmitting": "Wird eingereicht…",
+  "vendor.businessProfile.rejected.resubmitted":
+    "Erneut eingereicht. Ein Administrator prüft Ihren Antrag noch einmal.",
+  "vendor.businessProfile.rejected.resubmitFailed":
+    "Einreichen fehlgeschlagen. Bitte erneut versuchen.",
+  "vendor.businessProfile.cac.title": "CAC-Registrierung",
+  "vendor.businessProfile.cac.hint":
+    "Wird mit dem CAC-Register abgeglichen. Sie können diese Angaben korrigieren, bis die Prüfung erfolgreich ist.",
+  "vendor.businessProfile.cac.number": "CAC-Registrierungsnummer",
+  "vendor.businessProfile.cac.companyType": "Unternehmensform",
+  "vendor.businessProfile.cac.companyTypePlaceholder": "Unternehmensform wählen",
+  "vendor.businessProfile.cac.status.verified": "Verifiziert",
+  "vendor.businessProfile.cac.status.failed": "Nicht verifiziert",
+  "vendor.businessProfile.cac.status.unverified": "Prüfung ausstehend",
+  "vendor.businessProfile.cac.verifiedAs": "Stimmt mit {name} im CAC-Register überein.",
+  "vendor.businessProfile.cac.failedHint":
+    "Das CAC-Register stimmt mit diesen Angaben nicht überein. Korrigieren und speichern Sie, um erneut zu prüfen.",
+  "vendor.businessProfile.cac.pendingHint":
+    "Beim Speichern wird die CAC-Prüfung erneut ausgeführt. Aktualisieren Sie gleich, um das Ergebnis zu sehen.",
+  "vendor.businessProfile.cac.lockedHint":
+    "Verifizierte Angaben können hier nicht geändert werden. Wenden Sie sich bei Fehlern an den Support.",
+
   "vendor.businessProfile.documents.title": "Dokumente & Verifizierung",
   "vendor.businessProfile.documents.subtitle":
     "Unternehmensdokumente gelten für Ihr gesamtes Konto. Fahrzeugdokumente sind pro Angebot erforderlich, bevor es live gehen kann.",

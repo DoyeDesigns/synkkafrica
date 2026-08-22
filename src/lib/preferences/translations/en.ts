@@ -1557,6 +1557,32 @@ export const en = {
   "vendor.businessProfile.saveChanges": "Save changes",
   "vendor.businessProfile.saved": "Saved.",
 
+  "vendor.businessProfile.rejected.title": "Application not approved",
+  "vendor.businessProfile.rejected.noReason":
+    "An admin did not approve your application. Correct your details and documents below, then resubmit.",
+  "vendor.businessProfile.rejected.resubmit": "Resubmit for review",
+  "vendor.businessProfile.rejected.resubmitting": "Resubmitting…",
+  "vendor.businessProfile.rejected.resubmitted":
+    "Resubmitted. An admin will review your application again.",
+  "vendor.businessProfile.rejected.resubmitFailed":
+    "Could not resubmit. Try again.",
+  "vendor.businessProfile.cac.title": "CAC registration",
+  "vendor.businessProfile.cac.hint":
+    "Checked against the CAC registry. You can correct these details until the check passes.",
+  "vendor.businessProfile.cac.number": "CAC registration number",
+  "vendor.businessProfile.cac.companyType": "Company type",
+  "vendor.businessProfile.cac.companyTypePlaceholder": "Select company type",
+  "vendor.businessProfile.cac.status.verified": "Verified",
+  "vendor.businessProfile.cac.status.failed": "Not verified",
+  "vendor.businessProfile.cac.status.unverified": "Awaiting check",
+  "vendor.businessProfile.cac.verifiedAs": "Matched to {name} on the CAC registry.",
+  "vendor.businessProfile.cac.failedHint":
+    "The CAC registry did not match these details. Correct them and save to check again.",
+  "vendor.businessProfile.cac.pendingHint":
+    "Saving re-runs the CAC check. Refresh in a moment to see the result.",
+  "vendor.businessProfile.cac.lockedHint":
+    "Verified details cannot be changed here. Contact support if something is wrong.",
+
   "vendor.businessProfile.documents.title": "Documents & Verification",
   "vendor.businessProfile.documents.subtitle":
     "Business-level documents apply to your whole account. Vehicle documents are required per listing before it can go live.",

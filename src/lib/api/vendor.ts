@@ -100,7 +100,17 @@ export type VendorDocument = {
   createdAt: string;
 };
 
+export type VendorCacVerificationStatus = "unverified" | "verified" | "failed";
+
 export type VendorFullProfile = VendorProfile & {
+  // The Dojah CAC verdict. `verified` locks the CAC fields against further
+  // edits from this page (the backend rejects them too).
+  cacVerificationStatus: VendorCacVerificationStatus;
+  cacVerifiedName?: string | null;
+  cacVerifiedAt?: string | null;
+  // Set when an admin rejected the application — what the vendor has to fix
+  // before resubmitting.
+  rejectionReason?: string | null;
   payoutBankId?: string | null;
   payoutAccountNumber?: string | null;
   payoutAccountName?: string | null;
@@ -112,6 +122,10 @@ export type UpdateVendorProfileInput = Partial<{
   ownerFullName: string;
   phoneNumber: string;
   businessAddress: string;
+  // Editable only while the CAC is unverified; saving either one clears the
+  // stale verdict and re-runs the Dojah lookup server-side.
+  cacRegistrationNumber: string;
+  companyType: string;
   payoutBankId: string;
   payoutAccountNumber: string;
   payoutAccountName: string;
@@ -131,6 +145,17 @@ export async function updateVendorProfile(
     method: "PATCH",
     token,
     body: patch,
+  });
+}
+
+// Puts a rejected application back in the admin queue (rejected → pending).
+// Only valid from `rejected`; the backend rejects it from any other status.
+export async function resubmitVendorForReview(
+  token: string,
+): Promise<VendorFullProfile> {
+  return apiFetch<VendorFullProfile>("/vendor/profile/resubmit", {
+    method: "POST",
+    token,
   });
 }
 
