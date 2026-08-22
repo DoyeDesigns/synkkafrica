@@ -84,6 +84,13 @@ export async function signUpVendorAction(
   try {
     await signupVendor(input);
   } catch (err) {
+    // The browser only ever sees a display string, so without this the real
+    // cause (a backend 4xx/5xx, or the fetch itself failing) is invisible.
+    // Server actions log to the platform, so this is the only breadcrumb.
+    console.error("[vendor-signup] failed", {
+      status: err instanceof ApiError ? err.status : null,
+      message: err instanceof Error ? err.message : String(err),
+    });
     if (err instanceof ApiError && err.status === 409) {
       return { ok: false, error: "An account with this email already exists." };
     }
@@ -92,6 +99,11 @@ export async function signUpVendorAction(
         ok: false,
         error: "Email verification expired — resend the code.",
       };
+    }
+    // 400s are validation failures the vendor can actually act on (bad phone
+    // format, email mismatch), so pass the backend's message straight through.
+    if (err instanceof ApiError && err.status === 400) {
+      return { ok: false, error: err.message };
     }
     return { ok: false, error: "Could not create your account. Try again." };
   }
