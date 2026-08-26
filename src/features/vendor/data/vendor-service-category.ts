@@ -1,29 +1,28 @@
 import type { ListingCategory } from "@/features/vendor/data/vendor-add-listing";
+import type {
+  VendorListingCategory,
+  VendorListingStatus,
+} from "@/lib/api/vendor";
 
-const STORAGE_KEY = "synkafrica-vendor-service-category";
+/** Statuses that mean the listing was admin-approved at least once. */
+const APPROVED_STATUSES: VendorListingStatus[] = ["live", "paused"];
 
-const VALID_CATEGORIES: ListingCategory[] = ["cars", "accommodations", "experiences"];
+type ListingLike = {
+  category: VendorListingCategory | ListingCategory;
+  status: VendorListingStatus | string;
+};
 
-function isListingCategory(value: string | null): value is ListingCategory {
-  return value !== null && VALID_CATEGORIES.includes(value as ListingCategory);
-}
+/**
+ * One vendor, one service category — locked only after the first listing is
+ * admin-approved (`live`). `paused` still counts (was approved earlier).
+ * Draft / pending / rejected do not lock the category.
+ */
+export function getLockedCategoryFromListings(
+  listings: ListingLike[],
+): ListingCategory | null {
+  const approved = listings.find((listing) =>
+    APPROVED_STATUSES.includes(listing.status as VendorListingStatus),
+  );
 
-/** Returns the vendor's saved service category, or null if not chosen yet. */
-export function getVendorServiceCategory(): ListingCategory | null {
-  if (typeof window === "undefined") {
-    return null;
-  }
-
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  return isListingCategory(stored) ? stored : null;
-}
-
-/** Persists the vendor's one-time service category choice. */
-export function setVendorServiceCategory(category: ListingCategory): void {
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  window.localStorage.setItem(STORAGE_KEY, category);
-  window.dispatchEvent(new Event("vendor-service-category-change"));
+  return (approved?.category as ListingCategory | undefined) ?? null;
 }
