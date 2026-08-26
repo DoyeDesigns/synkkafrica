@@ -50,8 +50,8 @@ const CATEGORY_KEY_TO_LISTING_CATEGORY: Record<
   "vendor.dashboard.category.toursExperiences": "experiences",
 };
 
-/** One vendor, one service category — set on first saved listing. */
-export { getVendorServiceCategory as getVendorLockedListingCategory } from "@/features/vendor/data/vendor-service-category";
+/** One vendor, one service category — derived from first approved (live/paused) listing. */
+export { getLockedCategoryFromListings as getVendorLockedListingCategory } from "@/features/vendor/data/vendor-service-category";
 
 export function getVendorListingById(listingId: string) {
   return VENDOR_LISTINGS_PAGE_ITEMS.find((listing) => listing.id === listingId);

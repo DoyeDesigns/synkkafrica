@@ -42,10 +42,7 @@ import {
   type CarHandoverMethod,
   type ListingCategory,
 } from "@/features/vendor/data/vendor-add-listing";
-import {
-  getVendorServiceCategory,
-  setVendorServiceCategory,
-} from "@/features/vendor/data/vendor-service-category";
+import { getLockedCategoryFromListings } from "@/features/vendor/data/vendor-service-category";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 import {
@@ -53,6 +50,7 @@ import {
   updateVendorListing,
   submitVendorListing,
   getVendorListing,
+  listVendorListings,
   uploadVendorFile,
   uploadListingDocument,
   type CreateVendorListingInput,
@@ -189,15 +187,31 @@ export function VendorAddListingContent({
   const [publishing, setPublishing] = useState(false);
   const [publishError, setPublishError] = useState<string | null>(null);
 
-  // One vendor, one service category — load the saved choice after mount.
+  // One vendor, one service category — lock only after an admin-approved
+  // listing exists (status live or paused). Draft/pending do not lock.
   useEffect(() => {
-    const savedCategory = getVendorServiceCategory();
-    setLockedCategory(savedCategory);
-
-    if (savedCategory && !editListingId) {
-      setForm((current) => ({ ...current, category: savedCategory }));
+    if (!token || editListingId) {
+      return;
     }
-  }, [editListingId]);
+
+    let cancelled = false;
+    listVendorListings(token)
+      .then((listings) => {
+        if (cancelled) return;
+        const locked = getLockedCategoryFromListings(listings);
+        setLockedCategory(locked);
+        if (locked) {
+          setForm((current) => ({ ...current, category: locked }));
+        }
+      })
+      .catch(() => {
+        // If listings can't be loaded, leave categories unlocked.
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [token, editListingId]);
 
   // Resume-editing: load the existing listing and rebuild the form from its
   // persisted `details`. Runs once per (listing, token).
@@ -229,15 +243,6 @@ export function VendorAddListingContent({
       cancelled = true;
     };
   }, [editListingId, token]);
-
-  const persistServiceCategory = (category: ListingCategory) => {
-    if (lockedCategory) {
-      return;
-    }
-
-    setVendorServiceCategory(category);
-    setLockedCategory(category);
-  };
 
   const updateForm = (patch: Partial<AddListingFormState>) => {
     setForm((current) => ({ ...current, ...patch }));
@@ -347,7 +352,6 @@ export function VendorAddListingContent({
         });
         setDraftId(created.id);
       }
-      persistServiceCategory(form.category);
       setDraftSaved(true);
       window.setTimeout(() => setDraftSaved(false), 2500);
     } catch {
@@ -399,7 +403,6 @@ export function VendorAddListingContent({
         const created = await createVendorListing(token, toCreateInput(form));
         await attachWizardDocuments(created.id);
       }
-      persistServiceCategory(form.category);
       router.push(exitHref);
       router.refresh();
     } catch {
