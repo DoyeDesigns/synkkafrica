@@ -519,25 +519,41 @@ export type SignedUpload = {
   publicUrl: string | null;
 };
 
-// Some browser File objects have an empty `.type`; derive a MIME from the
-// extension so the value we sign matches what we PUT (the signature binds it).
+// The backend signs only this fixed set (`@IsIn` on SignUploadDto / the signup
+// DTO) and the V4 signature binds whatever we send, so the value here must be
+// one of these or the sign call 400s before an upload is ever attempted.
+const SIGNABLE_CONTENT_TYPES = new Set([
+  "image/png",
+  "image/jpeg",
+  "image/webp",
+  "video/mp4",
+  "application/pdf",
+]);
+
+const CONTENT_TYPE_BY_EXTENSION: Record<string, string> = {
+  png: "image/png",
+  jpg: "image/jpeg",
+  jpeg: "image/jpeg",
+  webp: "image/webp",
+  mp4: "video/mp4",
+  pdf: "application/pdf",
+};
+
+// Browsers report `.type` unreliably, and the pickers accept a file on either
+// its MIME *or* its extension — so a perfectly good upload can arrive carrying
+// a MIME the backend refuses to sign. iOS hands back `image/heic` for a file
+// the picker named `.jpg`; Android cloud pickers (Drive/OneDrive) hand back
+// `application/octet-stream`; some Android browsers say `image/jpg`. Trust
+// `.type` only when it is already signable, otherwise derive from the
+// extension, which is what the picker validated in the first place.
 function resolveContentType(file: File): string {
-  if (file.type) return file.type;
-  switch (file.name.toLowerCase().split(".").pop()) {
-    case "png":
-      return "image/png";
-    case "jpg":
-    case "jpeg":
-      return "image/jpeg";
-    case "webp":
-      return "image/webp";
-    case "mp4":
-      return "video/mp4";
-    case "pdf":
-      return "application/pdf";
-    default:
-      return "application/octet-stream";
+  if (SIGNABLE_CONTENT_TYPES.has(file.type)) {
+    return file.type;
   }
+  const extension = file.name.toLowerCase().split(".").pop() ?? "";
+  return (
+    CONTENT_TYPE_BY_EXTENSION[extension] ?? file.type ?? "application/octet-stream"
+  );
 }
 
 export async function signVendorUpload(
@@ -565,15 +581,39 @@ export async function uploadVendorFile(
     fileName: file.name,
     contentType,
   });
-  const res = await fetch(signed.uploadUrl, {
-    method: "PUT",
-    headers: { "Content-Type": contentType },
-    body: file,
-  });
-  if (!res.ok) {
-    throw new Error(`Upload failed (${res.status})`);
-  }
+  await putToStorage(signed.uploadUrl, contentType, file);
   return { url: signed.publicUrl, objectPath: signed.objectPath };
+}
+
+// PUT the bytes to the presigned URL. Failures here are otherwise invisible:
+// a CORS-blocked preflight rejects the fetch with an opaque `TypeError`, and a
+// signature/permission mismatch answers with an XML body the caller never sees.
+// Surface both so the console shows a cause, not just "upload failed".
+async function putToStorage(
+  uploadUrl: string,
+  contentType: string,
+  file: File,
+): Promise<void> {
+  let res: Response;
+  try {
+    res = await fetch(uploadUrl, {
+      method: "PUT",
+      headers: { "Content-Type": contentType },
+      body: file,
+    });
+  } catch (err) {
+    throw new Error(
+      `Upload could not reach storage (network or CORS): ${
+        err instanceof Error ? err.message : String(err)
+      }`,
+    );
+  }
+  if (!res.ok) {
+    const detail = await res.text().catch(() => "");
+    throw new Error(
+      `Upload failed (${res.status})${detail ? `: ${detail.slice(0, 300)}` : ""}`,
+    );
+  }
 }
 
 // Government-ID upload during signup — authorized by the signup token since no
@@ -587,14 +627,7 @@ export async function uploadVendorSignupFile(
     "/vendor/auth/signup/sign-upload",
     { method: "POST", body: { signupToken, fileName: file.name, contentType } },
   );
-  const res = await fetch(signed.uploadUrl, {
-    method: "PUT",
-    headers: { "Content-Type": contentType },
-    body: file,
-  });
-  if (!res.ok) {
-    throw new Error(`Upload failed (${res.status})`);
-  }
+  await putToStorage(signed.uploadUrl, contentType, file);
   return { objectPath: signed.objectPath };
 }
 

@@ -55,6 +55,7 @@ import {
   uploadListingDocument,
   type CreateVendorListingInput,
 } from "@/lib/api/vendor";
+import { ApiError } from "@/lib/api/backend";
 import { ReviewStepPage } from "./vendor-add-listing-review-step";
 import { DocumentsStepPage } from "./vendor-add-listing-documents-step";
 import { ExperiencePricingStep } from "./vendor-add-listing-experience-pricing";
@@ -304,7 +305,19 @@ export function VendorAddListingContent({
       .then(({ objectPath }) =>
         updateDocumentUpload(docId, { objectPath, status: "uploaded" }),
       )
-      .catch(() => updateDocumentUpload(docId, { status: "error" }));
+      .catch((err) => {
+        // The tile only ever shows a red "failed" badge, so without this the
+        // cause (a rejected content type, an expired token, a CORS-blocked
+        // preflight) never reaches anyone who could act on it.
+        console.error("[listing-document-upload] failed", {
+          docId,
+          fileName: file.name,
+          fileType: file.type,
+          status: err instanceof ApiError ? err.status : null,
+          message: err instanceof Error ? err.message : String(err),
+        });
+        updateDocumentUpload(docId, { status: "error" });
+      });
   };
 
   const handleCategoryChange = (category: ListingCategory) => {
@@ -871,7 +884,17 @@ function MediaStep({
             status: url ? "uploaded" : "error",
           }),
         )
-        .catch(() => onUpdateItem(item.id, { status: "error" }));
+        .catch((err) => {
+          // Same reasoning as the document upload above: the vendor only sees
+          // a red overlay, so log what actually went wrong.
+          console.error("[listing-media-upload] failed", {
+            fileName: file.name,
+            fileType: file.type,
+            status: err instanceof ApiError ? err.status : null,
+            message: err instanceof Error ? err.message : String(err),
+          });
+          onUpdateItem(item.id, { status: "error" });
+        });
     });
   };
 
