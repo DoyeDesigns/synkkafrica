@@ -7,8 +7,24 @@ export async function signOutAction() {
   await signOut({ redirectTo: "/" });
 }
 
+// Module-specific sign-out: return the vendor/admin to their own login screen
+// rather than the customer home. (next-auth v5 resolves redirectTo against
+// AUTH_URL — ensure AUTH_URL is set in deployed environments, otherwise the
+// post-logout redirect falls back to localhost.)
+export async function signOutVendorAction() {
+  await signOut({ redirectTo: "/vendor/login" });
+}
+
+export async function signOutAdminAction() {
+  await signOut({ redirectTo: "/admin/login" });
+}
+
 export async function signInWithGoogleAction() {
   await signIn("google", { redirectTo: "/" });
+}
+
+export async function signInWithAppleAction() {
+  await signIn("apple", { redirectTo: "/" });
 }
 
 // Step 1 of passwordless login: ask the backend to email a 6-digit code.

@@ -44,6 +44,10 @@ export async function signInWithGoogleAsVendorAction() {
   await signIn("google", { redirectTo: VENDOR_REDIRECT });
 }
 
+export async function signInWithAppleAsVendorAction() {
+  await signIn("apple", { redirectTo: VENDOR_REDIRECT });
+}
+
 // Signup step: email the verification code.
 export async function requestVendorOtpAction(
   email: string,
