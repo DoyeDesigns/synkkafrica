@@ -1,4 +1,5 @@
 import NextAuth from "next-auth";
+import Apple from "next-auth/providers/apple";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
 
@@ -6,7 +7,12 @@ import {
   isAccountDesignPreviewEnabled,
   isAdminDemoEnabled,
 } from "@/features/account/preview";
-import { getAuthSecret, hasApiUrl, hasGoogleAuth } from "@/lib/env";
+import {
+  getAuthSecret,
+  hasApiUrl,
+  hasAppleAuth,
+  hasGoogleAuth,
+} from "@/lib/env";
 import { refreshTokens, signOutBackend, verifyOtp } from "@/lib/api/backend";
 import { loginVendor, refreshVendorTokens } from "@/lib/api/vendor";
 import { refreshAdminTokens, verifyAdminMfa } from "@/lib/api/admin-auth";
@@ -34,6 +40,7 @@ type BackendToken = {
 
 const providers = [
   ...(hasGoogleAuth() ? [Google] : []),
+  ...(hasAppleAuth() ? [Apple] : []),
   // Passwordless OTP against the SynkAfrica backend. The email + code are
   // collected in the login UI; `authorize` exchanges them for the backend's
   // access + refresh tokens, which are then carried in the NextAuth JWT.

@@ -279,6 +279,14 @@ export function getVendorBookingTab(
     return "past";
   }
 
+  // A booking still awaiting the vendor's response always needs action, so it
+  // stays in "upcoming" even if its experience date has already passed —
+  // otherwise pending bookings silently drop into "past" and look like they
+  // never came through.
+  if (booking.status === "awaiting_confirmation") {
+    return "upcoming";
+  }
+
   const experienceDay = startOfDay(new Date(booking.experienceDate));
   const today = startOfDay(referenceDate);
 
@@ -321,16 +329,27 @@ export function isWithinDateRange(
 }
 
 export function formatExperienceDate(date: string) {
+  const parsed = new Date(date);
+  // Guard invalid/missing dates — a bad value would otherwise throw a
+  // RangeError from Intl.format and blank the whole bookings list.
+  if (!date || Number.isNaN(parsed.getTime())) {
+    return "Date TBC";
+  }
   return new Intl.DateTimeFormat("en-GB", {
     weekday: "short",
     day: "numeric",
     month: "short",
     year: "numeric",
-  }).format(new Date(date));
+  }).format(parsed);
 }
 
 export function formatExperienceTime(time: string) {
+  // Cars and accommodations have no experience time — return empty rather than
+  // throwing on an unparseable value (which crashed VendorBookingCard and made
+  // the entire bookings list render blank).
+  if (!time) return "";
   const [hours, minutes] = time.split(":").map(Number);
+  if (Number.isNaN(hours) || Number.isNaN(minutes)) return "";
   const date = new Date();
   date.setHours(hours, minutes, 0, 0);
 
@@ -342,7 +361,10 @@ export function formatExperienceTime(time: string) {
 }
 
 export function formatBookingDateTime(date: string, time: string) {
-  return `${formatExperienceDate(date)} · ${formatExperienceTime(time)}`;
+  const formattedTime = formatExperienceTime(time);
+  const formattedDate = formatExperienceDate(date);
+  // Only append the time segment when there is one.
+  return formattedTime ? `${formattedDate} · ${formattedTime}` : formattedDate;
 }
 
 export function formatRespondWithin(

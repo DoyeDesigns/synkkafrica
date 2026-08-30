@@ -24,7 +24,7 @@ import {
   type VendorNavItem,
 } from "@/features/vendor/constants";
 import { useTranslation } from "@/hooks/use-translation";
-import { signOutAction } from "@/lib/auth/actions";
+import { signOutVendorAction } from "@/lib/auth/actions";
 import type { TranslationKey } from "@/lib/preferences/translations";
 import {
   listVendorBookings,
@@ -212,7 +212,7 @@ function VendorDashboardSideNavBarContent({
       </nav>
 
       <div className="border-t border-[#EEEEEE] p-4">
-        <form action={signOutAction}>
+        <form action={signOutVendorAction}>
           <button
             type="submit"
             className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/15 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222] transition-opacity hover:opacity-90"
@@ -260,7 +260,7 @@ function VendorDashboardSideNavBarFallback() {
       </nav>
 
       <div className="border-t border-[#EEEEEE] p-4">
-        <form action={signOutAction}>
+        <form action={signOutVendorAction}>
           <button
             type="submit"
             className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/15 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222] transition-opacity hover:opacity-90"

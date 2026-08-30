@@ -32,7 +32,7 @@ import {
 import { useTranslation } from "@/hooks/use-translation";
 import { adminGetOverview, type AdminOverview } from "@/lib/api/admin";
 import { getAdminMe } from "@/lib/api/admin-auth";
-import { signOutAction } from "@/lib/auth/actions";
+import { signOutAdminAction } from "@/lib/auth/actions";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
 // Maps the live overview counts onto the actionable nav items. Reviews have no
@@ -194,7 +194,7 @@ function AdminDashboardSideNavBarContent({
       </nav>
 
       <div className="border-t border-[#EEEEEE] p-4">
-        <form action={signOutAction}>
+        <form action={signOutAdminAction}>
           <button
             type="submit"
             className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/15 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222] transition-opacity hover:opacity-90"
@@ -235,7 +235,7 @@ function AdminDashboardSideNavBarFallback() {
         </div>
       </nav>
       <div className="border-t border-[#EEEEEE] p-4">
-        <form action={signOutAction}>
+        <form action={signOutAdminAction}>
           <button
             type="submit"
             className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/15 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222]"

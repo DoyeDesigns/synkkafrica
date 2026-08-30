@@ -8,13 +8,19 @@ import {
   CloudUpload,
   MapPin,
   X,
-} from 'lucide-react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState, type KeyboardEvent, type ReactNode } from 'react';
-import { getSession, useSession } from 'next-auth/react';
+} from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
+import { getSession, useSession } from "next-auth/react";
 
-import { VendorAddListingStepper } from '@/features/vendor/components/vendor-add-listing-stepper';
+import { VendorAddListingStepper } from "@/features/vendor/components/vendor-add-listing-stepper";
 import {
   EMPTY_ADD_LISTING_FORM,
   getDetailsStepMissingFields,
@@ -170,6 +176,55 @@ const CATEGORY_OPTIONS: Array<{
   },
 ];
 
+// --- Local draft autosave ---------------------------------------------------
+// Persist the in-progress form to localStorage so a refresh or accidental
+// navigation doesn't wipe everything the vendor typed. Blob-backed fields
+// (media previews, uploaded-document handles) are not serializable and are
+// intentionally dropped — only the text/selection fields are restored.
+const AUTOSAVE_PREFIX = "synkafrica:vendor-add-listing:";
+
+function autosaveKey(editListingId?: string) {
+  return `${AUTOSAVE_PREFIX}${editListingId ?? "new"}`;
+}
+
+type SerializableForm = Omit<
+  AddListingFormState,
+  "mediaItems" | "uploadedDocuments"
+>;
+
+function serializeForm(form: AddListingFormState): string {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { mediaItems, uploadedDocuments, ...rest } = form;
+  return JSON.stringify(rest satisfies SerializableForm);
+}
+
+function readAutosavedForm(editListingId?: string): AddListingFormState | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(autosaveKey(editListingId));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<AddListingFormState>;
+    return {
+      ...EMPTY_ADD_LISTING_FORM,
+      ...parsed,
+      // Never restore blob-backed fields from storage.
+      mediaItems: [],
+      uploadedDocuments: {},
+    };
+  } catch {
+    return null;
+  }
+}
+
+function clearAutosavedForm(editListingId?: string) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.removeItem(autosaveKey(editListingId));
+  } catch {
+    // Ignore storage errors (private mode, quota) — autosave is best-effort.
+  }
+}
+
 export function VendorAddListingContent({
   exitHref = '/vendor/listings',
   editListingId,
@@ -196,6 +251,10 @@ export function VendorAddListingContent({
   );
   const [currentStep, setCurrentStep] = useState<AddListingStepId>('details');
   const [form, setForm] = useState<AddListingFormState>(EMPTY_ADD_LISTING_FORM);
+  const autosaveTimer = useRef<number | null>(null);
+  // Autosave must not run until the initial localStorage hydration has settled,
+  // otherwise the empty first-render form overwrites the saved draft.
+  const [hydrated, setHydrated] = useState(false);
   const [draftSaved, setDraftSaved] = useState(false);
   const [savingDraft, setSavingDraft] = useState(false);
   // The listing id once a draft has been persisted, so repeated "Save as
@@ -264,6 +323,44 @@ export function VendorAddListingContent({
       cancelled = true;
     };
   }, [editListingId, token]);
+
+  // Hydrate the locally-autosaved draft AFTER mount (not during initial state)
+  // so the first client render matches the server's empty form — otherwise
+  // React throws a hydration mismatch. New listings only; when resuming an
+  // existing listing the server copy is the source of truth.
+  useEffect(() => {
+    if (!editListingId) {
+      const saved = readAutosavedForm(editListingId);
+      // Intentional post-mount hydration from localStorage: doing it here (not
+      // in the initial useState) is what keeps SSR and the first client render
+      // in sync. The one-time cascading render is expected and cheap.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      if (saved) setForm(saved);
+    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setHydrated(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Debounced local autosave: every form change is persisted ~600ms later so a
+  // refresh or accidental navigation doesn't force the vendor to refill the form.
+  useEffect(() => {
+    if (!hydrated || loadingListing) return;
+    if (autosaveTimer.current) window.clearTimeout(autosaveTimer.current);
+    autosaveTimer.current = window.setTimeout(() => {
+      try {
+        window.localStorage.setItem(
+          autosaveKey(editListingId),
+          serializeForm(form),
+        );
+      } catch {
+        // Best-effort — ignore quota/private-mode failures.
+      }
+    }, 600);
+    return () => {
+      if (autosaveTimer.current) window.clearTimeout(autosaveTimer.current);
+    };
+  }, [form, hydrated, loadingListing, editListingId]);
 
   const updateForm = (patch: Partial<AddListingFormState>) => {
     setForm((current) => ({ ...current, ...patch }));
@@ -378,7 +475,13 @@ export function VendorAddListingContent({
   };
 
   const handleSaveDraft = async () => {
-    if (!token || savingDraft) {
+    if (savingDraft) {
+      return;
+    }
+    if (!token) {
+      // The form is still safe locally (autosave), but the backend draft needs a
+      // session — tell the vendor instead of failing silently.
+      window.alert(t("vendor.addListing.draftSaveFailed"));
       return;
     }
     setSavingDraft(true);
@@ -392,10 +495,24 @@ export function VendorAddListingContent({
         });
         setDraftId(created.id);
       }
+      // Persisted server-side now — drop the local autosave copy so it can't
+      // shadow the saved draft on the next visit.
+      clearAutosavedForm(editListingId);
       setDraftSaved(true);
       window.setTimeout(() => setDraftSaved(false), 2500);
-    } catch {
-      window.alert(t('vendor.addListing.draftSaveFailed'));
+    } catch (err) {
+      // Surface the real cause (expired token, rejected payload) rather than a
+      // generic string, so a broken draft save is diagnosable.
+      console.error("[vendor-save-draft] failed", {
+        draftId,
+        status: err instanceof ApiError ? err.status : null,
+        message: err instanceof Error ? err.message : String(err),
+      });
+      window.alert(
+        err instanceof Error && err.message
+          ? err.message
+          : t("vendor.addListing.draftSaveFailed"),
+      );
     } finally {
       setSavingDraft(false);
     }
@@ -443,6 +560,8 @@ export function VendorAddListingContent({
         const created = await createVendorListing(token, toCreateInput(form));
         await attachWizardDocuments(created.id);
       }
+      // Published — the local autosave copy is no longer needed.
+      clearAutosavedForm(editListingId);
       router.push(exitHref);
       router.refresh();
     } catch {
