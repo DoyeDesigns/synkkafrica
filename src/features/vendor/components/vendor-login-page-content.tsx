@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { LoginAppleButton } from "@/components/auth/login-apple-button";
 import { LoginTrustBadges } from "@/components/auth/login-trust-badges";
+import { signInWithAppleAsVendorAction } from "@/lib/auth/vendor-actions";
 import { VendorLoginEmailForm } from "@/features/vendor/components/vendor-login-email-form";
 import { VendorLoginGoogleButton } from "@/features/vendor/components/vendor-login-google-button";
 import { useTranslation } from "@/hooks/use-translation";
@@ -57,7 +58,7 @@ export function VendorLoginPageContent({ backendReady }: VendorLoginPageContentP
 
           <div className="space-y-4">
             <VendorLoginGoogleButton />
-            <LoginAppleButton />
+            <LoginAppleButton action={signInWithAppleAsVendorAction} />
           </div>
         </div>
 

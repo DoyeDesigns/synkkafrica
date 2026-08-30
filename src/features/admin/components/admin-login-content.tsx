@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { Eye, EyeOff } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 
 import { loginAdmin, type AdminEnrollment } from "@/lib/api/admin-auth";
@@ -12,6 +13,7 @@ export function AdminLoginContent() {
   const [step, setStep] = useState<"password" | "mfa">("password");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [mfaTicket, setMfaTicket] = useState("");
   const [enrollment, setEnrollment] = useState<AdminEnrollment | null>(null);
   const [totpCode, setTotpCode] = useState("");
@@ -76,13 +78,27 @@ export function AdminLoginContent() {
             <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
               Password
             </span>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] px-3 text-sm font-satoshi outline-none focus:border-[#135391]"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] px-3 pr-10 text-sm font-satoshi outline-none focus:border-[#135391]"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((current) => !current)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#9E9E9E] hover:text-[#135391]"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? (
+                  <EyeOff className="h-4 w-4" strokeWidth={1.75} />
+                ) : (
+                  <Eye className="h-4 w-4" strokeWidth={1.75} />
+                )}
+              </button>
+            </div>
           </label>
           {error ? (
             <p className="text-xs font-medium font-satoshi text-[#C0392B]">

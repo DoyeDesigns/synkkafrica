@@ -54,6 +54,24 @@ export async function adminApproveVendor(
   });
 }
 
+// Super-admin only: approve a vendor without CAC verification (for government
+// entities that lack registry documentation). Requires a justification reason,
+// which the backend records in the audit trail.
+export async function adminApproveVendorWithoutVerification(
+  token: string,
+  id: string,
+  reason: string,
+): Promise<AdminVendor> {
+  return apiFetch<AdminVendor>(
+    `/admin/vendors/${id}/approve-without-verification`,
+    {
+      method: "PATCH",
+      token,
+      body: { reason },
+    },
+  );
+}
+
 export async function adminRejectVendor(
   token: string,
   id: string,

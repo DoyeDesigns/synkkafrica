@@ -20,7 +20,7 @@ export function DeleteAccountButton({ token }: { token: string | null }) {
     try {
       await requestErasure(token);
       // Account PII is gone — end the session and return home.
-      await signOut({ callbackUrl: "/" });
+      await signOut({ redirectTo: "/" });
     } catch (err) {
       setDeleting(false);
       setError(

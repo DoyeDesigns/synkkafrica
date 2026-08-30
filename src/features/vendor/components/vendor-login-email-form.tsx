@@ -1,8 +1,8 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Lock, Mail } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 
 import { useTranslation } from "@/hooks/use-translation";
 import { signInWithEmailAsVendorAction } from "@/lib/auth/vendor-actions";
@@ -10,6 +10,7 @@ import { signInWithEmailAsVendorAction } from "@/lib/auth/vendor-actions";
 export function VendorLoginEmailForm() {
   const t = useTranslation();
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
   const [state, formAction, pending] = useActionState(
     signInWithEmailAsVendorAction,
     undefined,
@@ -45,12 +46,24 @@ export function VendorLoginEmailForm() {
           strokeWidth={1.75}
         />
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           name="password"
           required
           placeholder="Password"
-          className="h-12 w-full rounded-lg border border-[#C9C9C9] bg-white pl-11 pr-4 text-sm font-medium font-satoshi text-foreground outline-none placeholder:text-[#BDBCBC] focus:border-[#004785]"
+          className="h-12 w-full rounded-lg border border-[#C9C9C9] bg-white pl-11 pr-11 text-sm font-medium font-satoshi text-foreground outline-none placeholder:text-[#BDBCBC] focus:border-[#004785]"
         />
+        <button
+          type="button"
+          onClick={() => setShowPassword((current) => !current)}
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9E9E9E] hover:text-[#004785]"
+          aria-label={showPassword ? "Hide password" : "Show password"}
+        >
+          {showPassword ? (
+            <EyeOff className="h-4 w-4" strokeWidth={1.75} />
+          ) : (
+            <Eye className="h-4 w-4" strokeWidth={1.75} />
+          )}
+        </button>
       </div>
 
       {state?.error ? (
