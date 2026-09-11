@@ -57,6 +57,7 @@ import {
   describeUploadError,
   type CreateVendorListingInput,
 } from '@/lib/api/vendor';
+import { ApiError } from '@/lib/api/backend';
 import { ReviewStepPage } from './vendor-add-listing-review-step';
 import { DocumentsStepPage } from './vendor-add-listing-documents-step';
 import { ExperiencePricingStep } from './vendor-add-listing-experience-pricing';
