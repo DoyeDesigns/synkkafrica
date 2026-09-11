@@ -1,4 +1,4 @@
-import { apiFetch, type BackendTokens } from "@/lib/api/backend";
+import { ApiError, apiFetch, type BackendTokens } from "@/lib/api/backend";
 import type {
   SupportTicketCategory,
   SupportTicketPriority,
@@ -576,19 +576,55 @@ export async function uploadVendorFile(
   file: File,
 ): Promise<{ url: string | null; objectPath: string }> {
   const contentType = resolveContentType(file);
-  const signed = await signVendorUpload(token, {
-    kind,
-    fileName: file.name,
-    contentType,
-  });
+  const signed = await signOrThrow(() =>
+    signVendorUpload(token, { kind, fileName: file.name, contentType }),
+  );
   await putToStorage(signed.uploadUrl, contentType, file);
   return { url: signed.publicUrl, objectPath: signed.objectPath };
+}
+
+// An upload is two hops — our sign endpoint, then the bucket — and they fail
+// for unrelated reasons (sign: expired token, storage credentials on the
+// server; storage: signature mismatch, CORS). Tagging the hop lets the tile
+// name the one that broke, which is the whole diagnosis on a phone with no
+// console.
+export class UploadError extends Error {
+  constructor(
+    readonly stage: "sign" | "storage",
+    readonly status: number | null,
+    readonly reason: string,
+  ) {
+    super(
+      `${stage === "sign" ? "Sign" : "Storage"}${
+        status ? ` ${status}` : ""
+      }: ${reason}`,
+    );
+    this.name = "UploadError";
+  }
+}
+
+async function signOrThrow<T>(sign: () => Promise<T>): Promise<T> {
+  try {
+    return await sign();
+  } catch (err) {
+    throw new UploadError(
+      "sign",
+      err instanceof ApiError && err.status ? err.status : null,
+      err instanceof Error ? err.message : String(err),
+    );
+  }
+}
+
+// One short line for the failed-upload tile. The full message still goes to
+// the console; this only has to fit under "Upload failed".
+export function describeUploadError(err: unknown): string {
+  const message = err instanceof Error ? err.message : String(err);
+  return message.length > 90 ? `${message.slice(0, 89)}…` : message;
 }
 
 // PUT the bytes to the presigned URL. Failures here are otherwise invisible:
 // a CORS-blocked preflight rejects the fetch with an opaque `TypeError`, and a
 // signature/permission mismatch answers with an XML body the caller never sees.
-// Surface both so the console shows a cause, not just "upload failed".
 async function putToStorage(
   uploadUrl: string,
   contentType: string,
@@ -602,16 +638,23 @@ async function putToStorage(
       body: file,
     });
   } catch (err) {
-    throw new Error(
-      `Upload could not reach storage (network or CORS): ${
+    throw new UploadError(
+      "storage",
+      null,
+      `unreachable (network or CORS) — ${
         err instanceof Error ? err.message : String(err)
       }`,
     );
   }
   if (!res.ok) {
+    // GCS answers with XML; its <Code> (SignatureDoesNotMatch, AccessDenied,
+    // ExpiredToken…) is the part worth showing.
     const detail = await res.text().catch(() => "");
-    throw new Error(
-      `Upload failed (${res.status})${detail ? `: ${detail.slice(0, 300)}` : ""}`,
+    const code = /<Code>([^<]+)<\/Code>/.exec(detail)?.[1];
+    throw new UploadError(
+      "storage",
+      res.status,
+      code ?? (detail.slice(0, 200) || res.statusText || "rejected"),
     );
   }
 }
@@ -623,9 +666,11 @@ export async function uploadVendorSignupFile(
   file: File,
 ): Promise<{ objectPath: string }> {
   const contentType = resolveContentType(file);
-  const signed = await apiFetch<{ uploadUrl: string; objectPath: string }>(
-    "/vendor/auth/signup/sign-upload",
-    { method: "POST", body: { signupToken, fileName: file.name, contentType } },
+  const signed = await signOrThrow(() =>
+    apiFetch<{ uploadUrl: string; objectPath: string }>(
+      "/vendor/auth/signup/sign-upload",
+      { method: "POST", body: { signupToken, fileName: file.name, contentType } },
+    ),
   );
   await putToStorage(signed.uploadUrl, contentType, file);
   return { objectPath: signed.objectPath };

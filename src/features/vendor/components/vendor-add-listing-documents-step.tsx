@@ -433,6 +433,11 @@ function DocumentUploadCard({
           ) : upload.status === "error" ? (
             <p className="text-xs font-semibold font-satoshi text-[#C0392B]">
               {t("vendor.addListing.mediaUploadFailed")}
+              {upload.error ? (
+                <span className="mt-0.5 block wrap-break-word text-[11px] font-medium">
+                  {upload.error}
+                </span>
+              ) : null}
             </p>
           ) : null}
           <button

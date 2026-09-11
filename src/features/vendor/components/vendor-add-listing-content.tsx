@@ -54,9 +54,9 @@ import {
   listVendorListings,
   uploadVendorFile,
   uploadListingDocument,
+  describeUploadError,
   type CreateVendorListingInput,
 } from '@/lib/api/vendor';
-import { ApiError } from '@/lib/api/backend';
 import { ReviewStepPage } from './vendor-add-listing-review-step';
 import { DocumentsStepPage } from './vendor-add-listing-documents-step';
 import { ExperiencePricingStep } from './vendor-add-listing-experience-pricing';
@@ -143,6 +143,10 @@ async function resolveAccessToken(
     return undefined;
   }
 }
+
+// Shown on the tile when resolveAccessToken() comes back empty — no request
+// was sent, so there's no status to report.
+const NO_TOKEN_UPLOAD_ERROR = 'No session token — sign in again';
 
 const inputClassName =
   'h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]';
@@ -421,7 +425,10 @@ export function VendorAddListingContent({
         docId,
         fileName: file.name,
       });
-      updateDocumentUpload(docId, { status: 'error' });
+      updateDocumentUpload(docId, {
+        status: 'error',
+        error: NO_TOKEN_UPLOAD_ERROR,
+      });
       return;
     }
     uploadVendorFile(activeToken, 'listing-document', file)
@@ -429,17 +436,16 @@ export function VendorAddListingContent({
         updateDocumentUpload(docId, { objectPath, status: 'uploaded' }),
       )
       .catch((err) => {
-        // The tile only ever shows a red "failed" badge, so without this the
-        // cause (a rejected content type, an expired token, a CORS-blocked
-        // preflight) never reaches anyone who could act on it.
         console.error('[listing-document-upload] failed', {
           docId,
           fileName: file.name,
           fileType: file.type,
-          status: err instanceof ApiError ? err.status : null,
           message: err instanceof Error ? err.message : String(err),
         });
-        updateDocumentUpload(docId, { status: 'error' });
+        updateDocumentUpload(docId, {
+          status: 'error',
+          error: describeUploadError(err),
+        });
       });
     })();
   };
@@ -1057,27 +1063,33 @@ function MediaStep({
         '[listing-media-upload] no access token — not attempting upload',
         { count: newItems.length },
       );
-      newItems.forEach((item) => onUpdateItem(item.id, { status: 'error' }));
+      newItems.forEach((item) =>
+        onUpdateItem(item.id, { status: 'error', error: NO_TOKEN_UPLOAD_ERROR }),
+      );
       return;
     }
     newPairs.forEach(({ item, file }) => {
       uploadVendorFile(activeToken, 'listing-media', file)
         .then(({ url }) =>
-          onUpdateItem(item.id, {
-            url: url ?? undefined,
-            status: url ? 'uploaded' : 'error',
-          }),
+          onUpdateItem(
+            item.id,
+            url
+              ? { url, status: 'uploaded' }
+              : // Media is signed into the public bucket, so a missing URL
+                // means the server signed it as a private kind.
+                { status: 'error', error: 'Sign: no public URL returned' },
+          ),
         )
         .catch((err) => {
-          // Same reasoning as the document upload above: the vendor only sees
-          // a red overlay, so log what actually went wrong.
           console.error('[listing-media-upload] failed', {
             fileName: file.name,
             fileType: file.type,
-            status: err instanceof ApiError ? err.status : null,
             message: err instanceof Error ? err.message : String(err),
           });
-          onUpdateItem(item.id, { status: 'error' });
+          onUpdateItem(item.id, {
+            status: 'error',
+            error: describeUploadError(err),
+          });
         });
     });
     })();
@@ -1187,10 +1199,15 @@ function MediaStep({
                   </span>
                 </div>
               ) : item.status === 'error' ? (
-                <div className="absolute inset-0 flex items-center justify-center bg-[#C0392B]/80 px-2 text-center">
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-[#C0392B]/80 px-3 text-center">
                   <span className="text-[11px] font-semibold font-satoshi text-white">
                     {t('vendor.addListing.mediaUploadFailed')}
                   </span>
+                  {item.error ? (
+                    <span className="line-clamp-3 wrap-break-word text-[10px] font-medium font-satoshi text-white/90">
+                      {item.error}
+                    </span>
+                  ) : null}
                 </div>
               ) : null}
               <button
