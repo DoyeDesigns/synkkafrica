@@ -13,6 +13,12 @@ export function hasGoogleAuth() {
   );
 }
 
+export function hasAppleAuth() {
+  return Boolean(
+    process.env.AUTH_APPLE_ID?.trim() && process.env.AUTH_APPLE_SECRET?.trim(),
+  );
+}
+
 // The SynkAfrica backend (NestJS) base URL, e.g. http://localhost:4001/api.
 // Everything the app talks to now lives behind this — auth, flights, bookings.
 export function getApiBaseUrl() {

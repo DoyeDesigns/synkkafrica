@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 import {
   BedDouble,
   Car,
@@ -13,11 +13,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   useEffect,
+  useRef,
   useState,
   type KeyboardEvent,
   type ReactNode,
 } from "react";
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 
 import { VendorAddListingStepper } from "@/features/vendor/components/vendor-add-listing-stepper";
 import { useVendorVerificationStatus } from "@/features/vendor/components/vendor-verification-context";
@@ -43,10 +44,10 @@ import {
   type AddListingStepId,
   type CarHandoverMethod,
   type ListingCategory,
-} from "@/features/vendor/data/vendor-add-listing";
-import { getLockedCategoryFromListings } from "@/features/vendor/data/vendor-service-category";
-import { useTranslation } from "@/hooks/use-translation";
-import type { TranslationKey } from "@/lib/preferences/translations";
+} from '@/features/vendor/data/vendor-add-listing';
+import { getLockedCategoryFromListings } from '@/features/vendor/data/vendor-service-category';
+import { useTranslation } from '@/hooks/use-translation';
+import type { TranslationKey } from '@/lib/preferences/translations';
 import {
   createVendorListing,
   updateVendorListing,
@@ -55,14 +56,16 @@ import {
   listVendorListings,
   uploadVendorFile,
   uploadListingDocument,
+  describeUploadError,
   type CreateVendorListingInput,
-} from "@/lib/api/vendor";
-import { ReviewStepPage } from "./vendor-add-listing-review-step";
-import { DocumentsStepPage } from "./vendor-add-listing-documents-step";
-import { ExperiencePricingStep } from "./vendor-add-listing-experience-pricing";
-import { AccommodationPricingStep } from "./vendor-add-listing-accommodation-pricing";
-import { ExperienceDetailsFields } from "./vendor-add-listing-experience-details";
-import { AccommodationDetailsFields } from "./vendor-add-listing-accommodation-details";
+} from '@/lib/api/vendor';
+import { ApiError } from '@/lib/api/backend';
+import { ReviewStepPage } from './vendor-add-listing-review-step';
+import { DocumentsStepPage } from './vendor-add-listing-documents-step';
+import { ExperiencePricingStep } from './vendor-add-listing-experience-pricing';
+import { AccommodationPricingStep } from './vendor-add-listing-accommodation-pricing';
+import { ExperienceDetailsFields } from './vendor-add-listing-experience-details';
+import { AccommodationDetailsFields } from './vendor-add-listing-accommodation-details';
 
 // Map the wide add-listing form onto the backend create payload: derive the
 // common columns (title/description/location) per category and carry the rest
@@ -70,14 +73,14 @@ import { AccommodationDetailsFields } from "./vendor-add-listing-accommodation-d
 // their metadata (real file upload is a follow-up).
 function toCreateInput(form: AddListingFormState): CreateVendorListingInput {
   const { category } = form;
-  let title = "";
-  let shortDescription = "";
-  let location = "";
-  if (category === "cars") {
-    title = [form.carName, form.carModel, form.year].filter(Boolean).join(" ");
+  let title = '';
+  let shortDescription = '';
+  let location = '';
+  if (category === 'cars') {
+    title = [form.carName, form.carModel, form.year].filter(Boolean).join(' ');
     shortDescription = form.shortDescription;
     location = form.pickupAddress;
-  } else if (category === "accommodations") {
+  } else if (category === 'accommodations') {
     title = form.propertyName;
     shortDescription = form.accommodationDescription;
     location = form.address;
@@ -89,20 +92,20 @@ function toCreateInput(form: AddListingFormState): CreateVendorListingInput {
   // Only include media that finished uploading (has a stored URL). The first
   // uploaded image becomes the cover shown on listing cards.
   const uploadedMedia = form.mediaItems.filter(
-    (m) => m.status === "uploaded" && m.url,
+    (m) => m.status === 'uploaded' && m.url,
   );
   const media = uploadedMedia.map((m) => ({
     name: m.name,
     kind: m.kind,
     url: m.url,
   }));
-  const coverImageUrl = uploadedMedia.find((m) => m.kind === "image")?.url;
+  const coverImageUrl = uploadedMedia.find((m) => m.kind === 'image')?.url;
   const { mediaItems: _media, uploadedDocuments: _docs, ...details } = form;
   void _media;
   void _docs;
   return {
     category,
-    title: title.trim() || "Untitled listing",
+    title: title.trim() || 'Untitled listing',
     shortDescription: shortDescription || undefined,
     location: location || undefined,
     coverImageUrl,
@@ -115,7 +118,7 @@ function toCreateInput(form: AddListingFormState): CreateVendorListingInput {
 // (forbidNonWhitelisted), so drop `category` when patching an existing row.
 function toUpdateInput(
   form: AddListingFormState,
-): Omit<CreateVendorListingInput, "category"> {
+): Omit<CreateVendorListingInput, 'category'> {
   const { category: _category, ...rest } = toCreateInput(form);
   void _category;
   return rest;
@@ -124,14 +127,35 @@ function toUpdateInput(
 // Wizard document ids → the backend's canonical listing-document type so an
 // uploaded doc fills the matching requirement in the Documents overview.
 const WIZARD_DOC_TYPE: Partial<Record<ListingDocumentId, string>> = {
-  proof_of_ownership: "ownership",
+  proof_of_ownership: 'ownership',
 };
 
+// `useSession()` serves a cached session from context. It is hydrated once from
+// the server and, on a page left open, can lag behind the real session — the
+// backend access token has a 1h TTL while the NextAuth cookie lasts 30 days, so
+// the context can hold no token (or a dead one) while /api/auth/session serves a
+// good one. Uploads used to read the cached value and, finding nothing, fail
+// silently with no request at all. Re-fetch on demand before giving up.
+async function resolveAccessToken(
+  cached: string | undefined,
+): Promise<string | undefined> {
+  if (cached) return cached;
+  try {
+    return (await getSession())?.accessToken;
+  } catch {
+    return undefined;
+  }
+}
+
+// Shown on the tile when resolveAccessToken() comes back empty — no request
+// was sent, so there's no status to report.
+const NO_TOKEN_UPLOAD_ERROR = 'No session token — sign in again';
+
 const inputClassName =
-  "h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]";
+  'h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]';
 
 const textareaClassName =
-  "min-h-[120px] w-full resize-y rounded-lg border border-[#E5E5E5] bg-white px-3 py-2.5 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]";
+  'min-h-[120px] w-full resize-y rounded-lg border border-[#E5E5E5] bg-white px-3 py-2.5 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]';
 
 const CATEGORY_OPTIONS: Array<{
   id: ListingCategory;
@@ -140,27 +164,76 @@ const CATEGORY_OPTIONS: Array<{
   descriptionKey: TranslationKey;
 }> = [
   {
-    id: "cars",
+    id: 'cars',
     icon: Car,
-    titleKey: "vendor.addListing.category.car.title",
-    descriptionKey: "vendor.addListing.category.car.description",
+    titleKey: 'vendor.addListing.category.car.title',
+    descriptionKey: 'vendor.addListing.category.car.description',
   },
   {
-    id: "accommodations",
+    id: 'accommodations',
     icon: BedDouble,
-    titleKey: "vendor.addListing.category.accommodation.title",
-    descriptionKey: "vendor.addListing.category.accommodation.description",
+    titleKey: 'vendor.addListing.category.accommodation.title',
+    descriptionKey: 'vendor.addListing.category.accommodation.description',
   },
   {
-    id: "experiences",
+    id: 'experiences',
     icon: MapPin,
-    titleKey: "vendor.addListing.category.experience.title",
-    descriptionKey: "vendor.addListing.category.experience.description",
+    titleKey: 'vendor.addListing.category.experience.title',
+    descriptionKey: 'vendor.addListing.category.experience.description',
   },
 ];
 
+// --- Local draft autosave ---------------------------------------------------
+// Persist the in-progress form to localStorage so a refresh or accidental
+// navigation doesn't wipe everything the vendor typed. Blob-backed fields
+// (media previews, uploaded-document handles) are not serializable and are
+// intentionally dropped — only the text/selection fields are restored.
+const AUTOSAVE_PREFIX = "synkafrica:vendor-add-listing:";
+
+function autosaveKey(editListingId?: string) {
+  return `${AUTOSAVE_PREFIX}${editListingId ?? "new"}`;
+}
+
+type SerializableForm = Omit<
+  AddListingFormState,
+  "mediaItems" | "uploadedDocuments"
+>;
+
+function serializeForm(form: AddListingFormState): string {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { mediaItems, uploadedDocuments, ...rest } = form;
+  return JSON.stringify(rest satisfies SerializableForm);
+}
+
+function readAutosavedForm(editListingId?: string): AddListingFormState | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(autosaveKey(editListingId));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<AddListingFormState>;
+    return {
+      ...EMPTY_ADD_LISTING_FORM,
+      ...parsed,
+      // Never restore blob-backed fields from storage.
+      mediaItems: [],
+      uploadedDocuments: {},
+    };
+  } catch {
+    return null;
+  }
+}
+
+function clearAutosavedForm(editListingId?: string) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.removeItem(autosaveKey(editListingId));
+  } catch {
+    // Ignore storage errors (private mode, quota) — autosave is best-effort.
+  }
+}
+
 export function VendorAddListingContent({
-  exitHref = "/vendor/listings",
+  exitHref = '/vendor/listings',
   editListingId,
 }: {
   exitHref?: string;
@@ -172,12 +245,24 @@ export function VendorAddListingContent({
   const verificationStatus = useVendorVerificationStatus();
   const router = useRouter();
   const { data: session } = useSession();
+  // Diagnostic: never log `session` wholesale — it carries the raw access
+  // token straight into the browser console.
+  console.log('[vendor-wizard] session', {
+    hasSession: Boolean(session),
+    hasAccessToken: Boolean(session?.accessToken),
+    role: session?.user?.role,
+    error: session?.error,
+  });
   const token = session?.accessToken;
   const [lockedCategory, setLockedCategory] = useState<ListingCategory | null>(
     null,
   );
-  const [currentStep, setCurrentStep] = useState<AddListingStepId>("details");
+  const [currentStep, setCurrentStep] = useState<AddListingStepId>('details');
   const [form, setForm] = useState<AddListingFormState>(EMPTY_ADD_LISTING_FORM);
+  const autosaveTimer = useRef<number | null>(null);
+  // Autosave must not run until the initial localStorage hydration has settled,
+  // otherwise the empty first-render form overwrites the saved draft.
+  const [hydrated, setHydrated] = useState(false);
   const [draftSaved, setDraftSaved] = useState(false);
   const [savingDraft, setSavingDraft] = useState(false);
   // The listing id once a draft has been persisted, so repeated "Save as
@@ -234,7 +319,7 @@ export function VendorAddListingContent({
           ),
         );
         setLockedCategory(listing.category);
-        setCurrentStep("details");
+        setCurrentStep('details');
       })
       .catch(() => {
         if (!cancelled) setLoadError(true);
@@ -247,6 +332,44 @@ export function VendorAddListingContent({
     };
   }, [editListingId, token]);
 
+  // Hydrate the locally-autosaved draft AFTER mount (not during initial state)
+  // so the first client render matches the server's empty form — otherwise
+  // React throws a hydration mismatch. New listings only; when resuming an
+  // existing listing the server copy is the source of truth.
+  useEffect(() => {
+    if (!editListingId) {
+      const saved = readAutosavedForm(editListingId);
+      // Intentional post-mount hydration from localStorage: doing it here (not
+      // in the initial useState) is what keeps SSR and the first client render
+      // in sync. The one-time cascading render is expected and cheap.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      if (saved) setForm(saved);
+    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setHydrated(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Debounced local autosave: every form change is persisted ~600ms later so a
+  // refresh or accidental navigation doesn't force the vendor to refill the form.
+  useEffect(() => {
+    if (!hydrated || loadingListing) return;
+    if (autosaveTimer.current) window.clearTimeout(autosaveTimer.current);
+    autosaveTimer.current = window.setTimeout(() => {
+      try {
+        window.localStorage.setItem(
+          autosaveKey(editListingId),
+          serializeForm(form),
+        );
+      } catch {
+        // Best-effort — ignore quota/private-mode failures.
+      }
+    }, 600);
+    return () => {
+      if (autosaveTimer.current) window.clearTimeout(autosaveTimer.current);
+    };
+  }, [form, hydrated, loadingListing, editListingId]);
+
   const updateForm = (patch: Partial<AddListingFormState>) => {
     setForm((current) => ({ ...current, ...patch }));
   };
@@ -255,7 +378,7 @@ export function VendorAddListingContent({
   // item without clobbering concurrent uploads.
   const updateMediaItem = (
     id: string,
-    patch: Partial<AddListingFormState["mediaItems"][number]>,
+    patch: Partial<AddListingFormState['mediaItems'][number]>,
   ) => {
     setForm((current) => ({
       ...current,
@@ -295,19 +418,40 @@ export function VendorAddListingContent({
         ...current,
         uploadedDocuments: {
           ...current.uploadedDocuments,
-          [docId]: { ...upload, status: "uploading" },
+          [docId]: { ...upload, status: 'uploading' },
         },
       };
     });
-    if (!token) {
-      updateDocumentUpload(docId, { status: "error" });
+    void (async () => {
+    const activeToken = await resolveAccessToken(token);
+    if (!activeToken) {
+      console.error('[listing-document-upload] no access token — not attempting upload', {
+        docId,
+        fileName: file.name,
+      });
+      updateDocumentUpload(docId, {
+        status: 'error',
+        error: NO_TOKEN_UPLOAD_ERROR,
+      });
       return;
     }
-    uploadVendorFile(token, "listing-document", file)
+    uploadVendorFile(activeToken, 'listing-document', file)
       .then(({ objectPath }) =>
-        updateDocumentUpload(docId, { objectPath, status: "uploaded" }),
+        updateDocumentUpload(docId, { objectPath, status: 'uploaded' }),
       )
-      .catch(() => updateDocumentUpload(docId, { status: "error" }));
+      .catch((err) => {
+        console.error('[listing-document-upload] failed', {
+          docId,
+          fileName: file.name,
+          fileType: file.type,
+          message: err instanceof Error ? err.message : String(err),
+        });
+        updateDocumentUpload(docId, {
+          status: 'error',
+          error: describeUploadError(err),
+        });
+      });
+    })();
   };
 
   const handleCategoryChange = (category: ListingCategory) => {
@@ -316,7 +460,7 @@ export function VendorAddListingContent({
     }
 
     updateForm({ category });
-    setCurrentStep("details");
+    setCurrentStep('details');
   };
 
   const handleContinue = () => {
@@ -341,7 +485,13 @@ export function VendorAddListingContent({
   };
 
   const handleSaveDraft = async () => {
-    if (!token || savingDraft) {
+    if (savingDraft) {
+      return;
+    }
+    if (!token) {
+      // The form is still safe locally (autosave), but the backend draft needs a
+      // session — tell the vendor instead of failing silently.
+      window.alert(t("vendor.addListing.draftSaveFailed"));
       return;
     }
     setSavingDraft(true);
@@ -355,10 +505,24 @@ export function VendorAddListingContent({
         });
         setDraftId(created.id);
       }
+      // Persisted server-side now — drop the local autosave copy so it can't
+      // shadow the saved draft on the next visit.
+      clearAutosavedForm(editListingId);
       setDraftSaved(true);
       window.setTimeout(() => setDraftSaved(false), 2500);
-    } catch {
-      window.alert(t("vendor.addListing.draftSaveFailed"));
+    } catch (err) {
+      // Surface the real cause (expired token, rejected payload) rather than a
+      // generic string, so a broken draft save is diagnosable.
+      console.error("[vendor-save-draft] failed", {
+        draftId,
+        status: err instanceof ApiError ? err.status : null,
+        message: err instanceof Error ? err.message : String(err),
+      });
+      window.alert(
+        err instanceof Error && err.message
+          ? err.message
+          : t("vendor.addListing.draftSaveFailed"),
+      );
     } finally {
       setSavingDraft(false);
     }
@@ -371,7 +535,7 @@ export function VendorAddListingContent({
     if (!token) return;
     const entries = Object.entries(form.uploadedDocuments) as [
       ListingDocumentId,
-      AddListingFormState["uploadedDocuments"][ListingDocumentId],
+      AddListingFormState['uploadedDocuments'][ListingDocumentId],
     ][];
     await Promise.all(
       entries.map(async ([docId, upload]) => {
@@ -406,6 +570,8 @@ export function VendorAddListingContent({
         const created = await createVendorListing(token, toCreateInput(form));
         await attachWizardDocuments(created.id);
       }
+      // Published — the local autosave copy is no longer needed.
+      clearAutosavedForm(editListingId);
       router.push(exitHref);
       router.refresh();
     } catch {
@@ -414,22 +580,22 @@ export function VendorAddListingContent({
     }
   };
 
-  const isLastStep = currentStep === "review";
+  const isLastStep = currentStep === 'review';
   const canContinue = isStepValid(currentStep, form);
   const missingDetailFields =
-    currentStep === "details" ? getDetailsStepMissingFields(form) : [];
+    currentStep === 'details' ? getDetailsStepMissingFields(form) : [];
 
-  const isDocumentsStep = currentStep === "documents";
+  const isDocumentsStep = currentStep === 'documents';
   const isEditing = Boolean(editListingId);
   const documentsUploading = Object.values(form.uploadedDocuments).some(
-    (upload) => upload?.status === "uploading",
+    (upload) => upload?.status === 'uploading',
   );
 
   if (loadingListing) {
     return (
       <div className="flex min-h-[40vh] items-center justify-center">
         <p className="text-sm font-medium font-satoshi text-[#676565]">
-          {t("common.loading")}
+          {t('common.loading')}
         </p>
       </div>
     );
@@ -439,13 +605,13 @@ export function VendorAddListingContent({
     return (
       <div className="flex min-h-[40vh] flex-col items-center justify-center gap-3">
         <p className="text-sm font-medium font-satoshi text-[#C0392B]">
-          {t("vendor.addListing.loadError")}
+          {t('vendor.addListing.loadError')}
         </p>
         <Link
           href={exitHref}
           className="text-sm font-bold font-satoshi text-[#135391] hover:underline"
         >
-          {t("vendor.addListing.backToListings")}
+          {t('vendor.addListing.backToListings')}
         </Link>
       </div>
     );
@@ -454,7 +620,10 @@ export function VendorAddListingContent({
   return (
     <>
       <div className="-mx-4 -mt-4 border-b border-[#E5E5E5] bg-white px-4 py-4 sm:-mx-6 sm:-mt-6 sm:px-6 lg:-mx-8 lg:-mt-8 lg:px-8">
-        <VendorAddListingStepper category={form.category} currentStep={currentStep} />
+        <VendorAddListingStepper
+          category={form.category}
+          currentStep={currentStep}
+        />
       </div>
 
       <div className="space-y-6">
@@ -482,131 +651,135 @@ export function VendorAddListingContent({
         </Link>
       )}
 
-      <div>
-        <h2 className="text-2xl font-bold font-satoshi text-[#2F2F2F]">
-          {isDocumentsStep
-            ? t("vendor.addListing.documents.pageTitle")
-            : isEditing
-              ? t("vendor.addListing.editTitle")
-              : t("vendor.addListing.title")}
-        </h2>
-        <p className="mt-1 text-sm font-medium font-satoshi text-[#676565]">
-          {isDocumentsStep
-            ? t("vendor.addListing.documents.pageIntro")
-            : t("vendor.addListing.subtitle")}
-        </p>
-      </div>
-
-      {isDocumentsStep ? (
-        <DocumentsStepPage
-          form={form}
-          onChange={updateForm}
-          onSelectDocument={handleDocumentSelected}
-          onEditListing={() => setCurrentStep("details")}
-          onSubmit={() => {
-            if (isStepValid("documents", form)) {
-              setCurrentStep("review");
-            }
-          }}
-        />
-      ) : (
-      <div className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm sm:p-6">
-        {currentStep === "details" ? (
-          <DetailsStep
-            form={form}
-            lockedCategory={lockedCategory}
-            onChange={updateForm}
-            onCategoryChange={handleCategoryChange}
-          />
-        ) : null}
-        {currentStep === "media" ? (
-          <MediaStep
-            form={form}
-            onChange={updateForm}
-            onUpdateItem={updateMediaItem}
-            token={token}
-          />
-        ) : null}
-        {currentStep === "pricing" ? (
-          <PricingStep form={form} onChange={updateForm} />
-        ) : null}
-        {currentStep === "review" ? <ReviewStepPage form={form} /> : null}
-      </div>
-      )}
-
-      {!isDocumentsStep ? (
-      <div className="flex flex-col gap-3 border-t border-[#EEEEEE] pt-4 sm:flex-row sm:items-center sm:justify-between">
-        <button
-          type="button"
-          onClick={handleBack}
-          className="inline-flex h-11 items-center justify-center rounded-lg border border-[#E5E5E5] bg-white px-5 text-sm font-bold font-satoshi text-[#2F2F2F] transition-colors hover:bg-[#FAFAFA]"
-        >
-          {currentStep === "details"
-            ? t("vendor.addListing.cancel")
-            : t("vendor.addListing.back")}
-        </button>
-
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          {!canContinue && missingDetailFields.length > 0 ? (
-            <p className="text-xs font-medium font-satoshi text-[#E65100] sm:mr-auto sm:text-right">
-              {t("vendor.addListing.completeRequiredFields", {
-                fields: missingDetailFields.map((field) => t(field)).join(", "),
-              })}
-            </p>
-          ) : null}
-
-          {draftSaved ? (
-            <span className="text-sm font-semibold font-satoshi text-[#2E7D32]">
-              {t("vendor.addListing.draftSaved")}
-            </span>
-          ) : (
-            <button
-              type="button"
-              disabled={savingDraft}
-              onClick={() => void handleSaveDraft()}
-              className="text-sm font-bold font-satoshi text-[#135391] hover:underline disabled:opacity-60"
-            >
-              {savingDraft
-                ? t("common.loading")
-                : t("vendor.addListing.saveDraft")}
-            </button>
-          )}
-
-          {isLastStep ? (
-            <div className="flex flex-col items-end gap-2">
-              {publishError ? (
-                <span className="text-xs font-medium font-satoshi text-[#C0392B]">
-                  {publishError}
-                </span>
-              ) : null}
-              <button
-                type="button"
-                disabled={publishing || documentsUploading}
-                title={
-                  documentsUploading
-                    ? t("vendor.addListing.publishWaitForUploads")
-                    : undefined
-                }
-                onClick={() => void handlePublish()}
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {publishing ? t("common.loading") : t("vendor.addListing.publish")}
-              </button>
-            </div>
-          ) : (
-            <button
-              type="button"
-              disabled={!canContinue}
-              onClick={handleContinue}
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              {t("vendor.addListing.saveContinue")}
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          )}
+        <div>
+          <h2 className="text-2xl font-bold font-satoshi text-[#2F2F2F]">
+            {isDocumentsStep
+              ? t('vendor.addListing.documents.pageTitle')
+              : isEditing
+                ? t('vendor.addListing.editTitle')
+                : t('vendor.addListing.title')}
+          </h2>
+          <p className="mt-1 text-sm font-medium font-satoshi text-[#676565]">
+            {isDocumentsStep
+              ? t('vendor.addListing.documents.pageIntro')
+              : t('vendor.addListing.subtitle')}
+          </p>
         </div>
-      </div>
-      ) : null}
+
+        {isDocumentsStep ? (
+          <DocumentsStepPage
+            form={form}
+            onChange={updateForm}
+            onSelectDocument={handleDocumentSelected}
+            onEditListing={() => setCurrentStep('details')}
+            onSubmit={() => {
+              if (isStepValid('documents', form)) {
+                setCurrentStep('review');
+              }
+            }}
+          />
+        ) : (
+          <div className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm sm:p-6">
+            {currentStep === 'details' ? (
+              <DetailsStep
+                form={form}
+                lockedCategory={lockedCategory}
+                onChange={updateForm}
+                onCategoryChange={handleCategoryChange}
+              />
+            ) : null}
+            {currentStep === 'media' ? (
+              <MediaStep
+                form={form}
+                onChange={updateForm}
+                onUpdateItem={updateMediaItem}
+                token={token}
+              />
+            ) : null}
+            {currentStep === 'pricing' ? (
+              <PricingStep form={form} onChange={updateForm} />
+            ) : null}
+            {currentStep === 'review' ? <ReviewStepPage form={form} /> : null}
+          </div>
+        )}
+
+        {!isDocumentsStep ? (
+          <div className="flex flex-col gap-3 border-t border-[#EEEEEE] pt-4 sm:flex-row sm:items-center sm:justify-between">
+            <button
+              type="button"
+              onClick={handleBack}
+              className="inline-flex h-11 items-center justify-center rounded-lg border border-[#E5E5E5] bg-white px-5 text-sm font-bold font-satoshi text-[#2F2F2F] transition-colors hover:bg-[#FAFAFA]"
+            >
+              {currentStep === 'details'
+                ? t('vendor.addListing.cancel')
+                : t('vendor.addListing.back')}
+            </button>
+
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              {!canContinue && missingDetailFields.length > 0 ? (
+                <p className="text-xs font-medium font-satoshi text-[#E65100] sm:mr-auto sm:text-right">
+                  {t('vendor.addListing.completeRequiredFields', {
+                    fields: missingDetailFields
+                      .map((field) => t(field))
+                      .join(', '),
+                  })}
+                </p>
+              ) : null}
+
+              {draftSaved ? (
+                <span className="text-sm font-semibold font-satoshi text-[#2E7D32]">
+                  {t('vendor.addListing.draftSaved')}
+                </span>
+              ) : (
+                <button
+                  type="button"
+                  disabled={savingDraft}
+                  onClick={() => void handleSaveDraft()}
+                  className="text-sm font-bold font-satoshi text-[#135391] hover:underline disabled:opacity-60"
+                >
+                  {savingDraft
+                    ? t('common.loading')
+                    : t('vendor.addListing.saveDraft')}
+                </button>
+              )}
+
+              {isLastStep ? (
+                <div className="flex flex-col items-end gap-2">
+                  {publishError ? (
+                    <span className="text-xs font-medium font-satoshi text-[#C0392B]">
+                      {publishError}
+                    </span>
+                  ) : null}
+                  <button
+                    type="button"
+                    disabled={publishing || documentsUploading}
+                    title={
+                      documentsUploading
+                        ? t('vendor.addListing.publishWaitForUploads')
+                        : undefined
+                    }
+                    onClick={() => void handlePublish()}
+                    className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {publishing
+                      ? t('common.loading')
+                      : t('vendor.addListing.publish')}
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  disabled={!canContinue}
+                  onClick={handleContinue}
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {t('vendor.addListing.saveContinue')}
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              )}
+            </div>
+          </div>
+        ) : null}
       </div>
     </>
   );
@@ -632,20 +805,23 @@ function DetailsStep({
     <div className="space-y-8">
       <section>
         <h3 className="text-base font-bold font-satoshi text-[#2F2F2F]">
-          {t("vendor.addListing.whatAreYouListing")}
+          {t('vendor.addListing.whatAreYouListing')}
         </h3>
         <p className="mt-2 text-xs font-medium font-satoshi text-[#676565]">
           {lockedCategory
-            ? t("vendor.addListing.categoryLockedHint", {
-                category: lockedOption ? t(lockedOption.titleKey) : lockedCategory,
+            ? t('vendor.addListing.categoryLockedHint', {
+                category: lockedOption
+                  ? t(lockedOption.titleKey)
+                  : lockedCategory,
               })
-            : t("vendor.addListing.categoryChooseHint")}
+            : t('vendor.addListing.categoryChooseHint')}
         </p>
         <div className="mt-4 grid gap-3 md:grid-cols-3">
           {CATEGORY_OPTIONS.map((option) => {
             const Icon = option.icon;
             const isSelected = form.category === option.id;
-            const isDisabled = lockedCategory !== null && option.id !== lockedCategory;
+            const isDisabled =
+              lockedCategory !== null && option.id !== lockedCategory;
 
             return (
               <button
@@ -655,17 +831,17 @@ function DetailsStep({
                 onClick={() => onCategoryChange(option.id)}
                 className={`relative rounded-xl border px-4 py-6 text-center transition-colors ${
                   isSelected
-                    ? "border-[#D85A30] bg-[#FFF8F5]"
+                    ? 'border-[#D85A30] bg-[#FFF8F5]'
                     : isDisabled
-                      ? "cursor-not-allowed border-[#E5E5E5] bg-[#FAFAFA] opacity-50"
-                      : "border-[#E5E5E5] bg-white hover:border-[#D0D0D0]"
+                      ? 'cursor-not-allowed border-[#E5E5E5] bg-[#FAFAFA] opacity-50'
+                      : 'border-[#E5E5E5] bg-white hover:border-[#D0D0D0]'
                 }`}
               >
                 <span
                   className={`absolute left-4 top-4 flex h-4 w-4 items-center justify-center rounded-full border ${
                     isSelected
-                      ? "border-[#D85A30] bg-[#D85A30]"
-                      : "border-[#CFCFCF] bg-white"
+                      ? 'border-[#D85A30] bg-[#D85A30]'
+                      : 'border-[#CFCFCF] bg-white'
                   }`}
                 >
                   {isSelected ? (
@@ -674,7 +850,7 @@ function DetailsStep({
                 </span>
 
                 <Icon
-                  className={`mx-auto h-8 w-8 ${isSelected ? "text-[#D85A30]" : "text-[#9E9E9E]"}`}
+                  className={`mx-auto h-8 w-8 ${isSelected ? 'text-[#D85A30]' : 'text-[#9E9E9E]'}`}
                   strokeWidth={1.5}
                 />
                 <p className="mt-4 text-sm font-bold font-satoshi text-[#2F2F2F]">
@@ -689,13 +865,13 @@ function DetailsStep({
         </div>
       </section>
 
-      {form.category === "cars" ? (
+      {form.category === 'cars' ? (
         <CarDetailsFields form={form} onChange={onChange} />
       ) : null}
-      {form.category === "accommodations" ? (
+      {form.category === 'accommodations' ? (
         <AccommodationDetailsFields form={form} onChange={onChange} />
       ) : null}
-      {form.category === "experiences" ? (
+      {form.category === 'experiences' ? (
         <ExperienceDetailsFields form={form} onChange={onChange} />
       ) : null}
     </div>
@@ -714,73 +890,85 @@ function CarDetailsFields({
   return (
     <section className="space-y-4">
       <h3 className="text-base font-bold font-satoshi text-[#2F2F2F]">
-        {t("vendor.addListing.carDetailsHeading")}
+        {t('vendor.addListing.carDetailsHeading')}
       </h3>
 
-      <FormField label={t("vendor.addListing.carName")} required>
+      <FormField label={t('vendor.addListing.carName')} required>
         <input
           type="text"
           value={form.carName}
           onChange={(event) => onChange({ carName: event.target.value })}
-          placeholder={t("vendor.addListing.carNamePlaceholder")}
+          placeholder={t('vendor.addListing.carNamePlaceholder')}
           className={inputClassName}
         />
       </FormField>
 
-      <FormField label={t("vendor.addListing.carModel")} required>
+      <FormField label={t('vendor.addListing.carModel')} required>
         <input
           type="text"
           value={form.carModel}
           onChange={(event) => onChange({ carModel: event.target.value })}
-          placeholder={t("vendor.addListing.carModelPlaceholder")}
+          placeholder={t('vendor.addListing.carModelPlaceholder')}
           className={inputClassName}
         />
       </FormField>
 
-      <FormField label={t("vendor.addListing.transmission")} required>
+      <FormField label={t('vendor.addListing.transmission')} required>
         <RadioGroup
           value={form.transmission}
           options={[
-            { value: "automatic", label: t("vendor.addListing.transmission.automatic") },
-            { value: "manual", label: t("vendor.addListing.transmission.manual") },
+            {
+              value: 'automatic',
+              label: t('vendor.addListing.transmission.automatic'),
+            },
+            {
+              value: 'manual',
+              label: t('vendor.addListing.transmission.manual'),
+            },
           ]}
-          onChange={(value) => onChange({ transmission: value as AddListingFormState["transmission"] })}
+          onChange={(value) =>
+            onChange({
+              transmission: value as AddListingFormState['transmission'],
+            })
+          }
         />
       </FormField>
 
-      <FormField label={t("vendor.addListing.year")} required>
+      <FormField label={t('vendor.addListing.year')} required>
         <input
           type="text"
           value={form.year}
           onChange={(event) => onChange({ year: event.target.value })}
-          placeholder={t("vendor.addListing.yearPlaceholder")}
+          placeholder={t('vendor.addListing.yearPlaceholder')}
           className={inputClassName}
         />
       </FormField>
 
-      <FormField label={t("vendor.addListing.comesWithDriver")} required>
+      <FormField label={t('vendor.addListing.comesWithDriver')} required>
         <RadioGroup
-          value={form.comesWithDriver ? "yes" : "no"}
+          value={form.comesWithDriver ? 'yes' : 'no'}
           options={[
-            { value: "yes", label: t("vendor.addListing.yes") },
-            { value: "no", label: t("vendor.addListing.no") },
+            { value: 'yes', label: t('vendor.addListing.yes') },
+            { value: 'no', label: t('vendor.addListing.no') },
           ]}
-          onChange={(value) => onChange({ comesWithDriver: value === "yes" })}
+          onChange={(value) => onChange({ comesWithDriver: value === 'yes' })}
         />
       </FormField>
 
-      <FormField label={t("vendor.addListing.shortDescription")} required>
+      <FormField label={t('vendor.addListing.shortDescription')} required>
         <textarea
           value={form.shortDescription}
-          onChange={(event) => onChange({ shortDescription: event.target.value })}
-          placeholder={t("vendor.addListing.carDescriptionPlaceholder")}
+          onChange={(event) =>
+            onChange({ shortDescription: event.target.value })
+          }
+          placeholder={t('vendor.addListing.carDescriptionPlaceholder')}
           className={textareaClassName}
         />
       </FormField>
 
       <TagInputField
-        label={t("vendor.addListing.perksFeatures")}
-        placeholder={t("vendor.addListing.perksPlaceholder")}
+        label={t('vendor.addListing.perksFeatures')}
+        placeholder={t('vendor.addListing.perksPlaceholder')}
         tags={form.perks}
         onChange={(perks) => onChange({ perks })}
       />
@@ -798,7 +986,7 @@ function MediaStep({
   onChange: (patch: Partial<AddListingFormState>) => void;
   onUpdateItem: (
     id: string,
-    patch: Partial<AddListingFormState["mediaItems"][number]>,
+    patch: Partial<AddListingFormState['mediaItems'][number]>,
   ) => void;
   token?: string;
 }) {
@@ -827,9 +1015,9 @@ function MediaStep({
     const accepted: File[] = [];
     for (const file of selected) {
       const reason = getListingMediaRejection(file);
-      if (reason === "unsupported") {
+      if (reason === 'unsupported') {
         unsupported += 1;
-      } else if (reason === "too_large") {
+      } else if (reason === 'too_large') {
         tooLarge += 1;
       } else {
         accepted.push(file);
@@ -839,16 +1027,16 @@ function MediaStep({
     const messages: string[] = [];
     if (unsupported > 0) {
       messages.push(
-        t("vendor.addListing.mediaSkippedUnsupported", { count: unsupported }),
+        t('vendor.addListing.mediaSkippedUnsupported', { count: unsupported }),
       );
     }
     if (tooLarge > 0) {
       messages.push(
-        t("vendor.addListing.mediaSkippedTooLarge", { count: tooLarge }),
+        t('vendor.addListing.mediaSkippedTooLarge', { count: tooLarge }),
       );
     }
     if (messages.length > 0) {
-      window.alert(messages.join("\n"));
+      window.alert(messages.join('\n'));
     }
 
     // Pair each new item with its File so we can upload after adding it.
@@ -858,33 +1046,64 @@ function MediaStep({
         const item = createListingMediaItem(file);
         return item ? { item, file } : null;
       })
-      .filter((pair): pair is { item: ListingMediaItem; file: File } => pair !== null);
+      .filter(
+        (pair): pair is { item: ListingMediaItem; file: File } => pair !== null,
+      );
 
     if (newPairs.length === 0) {
       return;
     }
 
     const newItems = newPairs.map((pair) => pair.item);
-    onChange({ mediaItems: [...form.mediaItems, ...newItems].slice(0, LISTING_MEDIA_MAX_COUNT) });
+    onChange({
+      mediaItems: [...form.mediaItems, ...newItems].slice(
+        0,
+        LISTING_MEDIA_MAX_COUNT,
+      ),
+    });
 
     // Upload each accepted file directly to storage; mark the item uploaded
     // (with its URL) or errored when it settles.
-    if (!token) {
-      newItems.forEach((item) => onUpdateItem(item.id, { status: "error" }));
+    void (async () => {
+    const activeToken = await resolveAccessToken(token);
+    if (!activeToken) {
+      // This used to return silently: no request, no log, just a red tile —
+      // indistinguishable from a failed upload, and the reason it took a
+      // network trace to notice nothing was ever sent.
+      console.error(
+        '[listing-media-upload] no access token — not attempting upload',
+        { count: newItems.length },
+      );
+      newItems.forEach((item) =>
+        onUpdateItem(item.id, { status: 'error', error: NO_TOKEN_UPLOAD_ERROR }),
+      );
       return;
     }
     newPairs.forEach(({ item, file }) => {
-      uploadVendorFile(token, "listing-media", file)
-        .then(({ url, objectPath }) =>
-          onUpdateItem(item.id, {
-            // Prefer the public CDN URL; fall back to objectPath so a successful
-            // PUT is not marked failed when the backend returns publicUrl: null.
-            url: url ?? objectPath,
-            status: objectPath ? "uploaded" : "error",
-          }),
+      uploadVendorFile(activeToken, 'listing-media', file)
+        .then(({ url }) =>
+          onUpdateItem(
+            item.id,
+            url
+              ? { url, status: 'uploaded' }
+              : // Media is signed into the public bucket, so a missing URL
+                // means the server signed it as a private kind.
+                { status: 'error', error: 'Sign: no public URL returned' },
+          ),
         )
-        .catch(() => onUpdateItem(item.id, { status: "error" }));
+        .catch((err) => {
+          console.error('[listing-media-upload] failed', {
+            fileName: file.name,
+            fileType: file.type,
+            message: err instanceof Error ? err.message : String(err),
+          });
+          onUpdateItem(item.id, {
+            status: 'error',
+            error: describeUploadError(err),
+          });
+        });
     });
+    })();
   };
 
   const handleRemove = (id: string) => {
@@ -894,17 +1113,19 @@ function MediaStep({
       revokeListingMediaItem(item);
     }
 
-    onChange({ mediaItems: form.mediaItems.filter((mediaItem) => mediaItem.id !== id) });
+    onChange({
+      mediaItems: form.mediaItems.filter((mediaItem) => mediaItem.id !== id),
+    });
   };
 
   return (
     <section className="space-y-4">
       <div>
         <h3 className="text-base font-bold font-satoshi text-[#2F2F2F]">
-          {t("vendor.addListing.mediaHeading")}
+          {t('vendor.addListing.mediaHeading')}
         </h3>
         <p className="mt-1 text-xs font-medium font-satoshi text-[#676565]">
-          {t("vendor.addListing.mediaHint")}
+          {t('vendor.addListing.mediaHint')}
         </p>
       </div>
 
@@ -924,16 +1145,16 @@ function MediaStep({
         }}
         className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed px-6 py-10 text-center transition-colors ${
           isDragging
-            ? "border-[#135391] bg-[#F8FBFF]"
-            : "border-[#D0D0D0] bg-[#FAFAFA] hover:border-[#135391] hover:bg-[#F8FBFF]"
+            ? 'border-[#135391] bg-[#F8FBFF]'
+            : 'border-[#D0D0D0] bg-[#FAFAFA] hover:border-[#135391] hover:bg-[#F8FBFF]'
         }`}
       >
         <CloudUpload className="h-8 w-8 text-[#676565]" />
         <p className="mt-3 text-sm font-semibold font-satoshi text-[#2F2F2F]">
-          {t("vendor.addListing.uploadImages")}
+          {t('vendor.addListing.uploadImages')}
         </p>
         <p className="mt-1 text-xs font-medium font-satoshi text-[#676565]">
-          {t("vendor.addListing.uploadImagesHint")}
+          {t('vendor.addListing.uploadImagesHint')}
         </p>
         <input
           type="file"
@@ -942,7 +1163,7 @@ function MediaStep({
           className="sr-only"
           onChange={(event) => {
             handleFiles(event.target.files);
-            event.target.value = "";
+            event.target.value = '';
           }}
         />
       </label>
@@ -954,7 +1175,7 @@ function MediaStep({
               key={item.id}
               className="relative aspect-[4/3] overflow-hidden rounded-lg border border-[#E5E5E5] bg-[#F5F5F5]"
             >
-              {item.kind === "video" ? (
+              {item.kind === 'video' ? (
                 <video
                   src={item.previewUrl}
                   className="h-full w-full object-cover"
@@ -965,7 +1186,7 @@ function MediaStep({
               ) : failedPreviews.has(item.id) ? (
                 <div className="flex h-full w-full flex-col items-center justify-center gap-1 px-2 text-center">
                   <span className="text-xs font-semibold font-satoshi text-[#676565]">
-                    {t("vendor.addListing.mediaPreviewFailed")}
+                    {t('vendor.addListing.mediaPreviewFailed')}
                   </span>
                   <span className="line-clamp-2 text-[10px] font-medium font-satoshi text-[#9A9A9A]">
                     {item.name}
@@ -982,24 +1203,29 @@ function MediaStep({
                   }
                 />
               )}
-              {item.status === "uploading" ? (
+              {item.status === 'uploading' ? (
                 <div className="absolute inset-0 flex items-center justify-center bg-black/35">
                   <span className="text-[11px] font-semibold font-satoshi text-white">
-                    {t("vendor.addListing.mediaUploading")}
+                    {t('vendor.addListing.mediaUploading')}
                   </span>
                 </div>
-              ) : item.status === "error" ? (
-                <div className="absolute inset-0 flex items-center justify-center bg-[#C0392B]/80 px-2 text-center">
+              ) : item.status === 'error' ? (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-[#C0392B]/80 px-3 text-center">
                   <span className="text-[11px] font-semibold font-satoshi text-white">
-                    {t("vendor.addListing.mediaUploadFailed")}
+                    {t('vendor.addListing.mediaUploadFailed')}
                   </span>
+                  {item.error ? (
+                    <span className="line-clamp-3 wrap-break-word text-[10px] font-medium font-satoshi text-white/90">
+                      {item.error}
+                    </span>
+                  ) : null}
                 </div>
               ) : null}
               <button
                 type="button"
                 onClick={() => handleRemove(item.id)}
                 className="absolute right-2 top-2 rounded-full bg-white p-1 text-[#676565] shadow-sm hover:text-[#C0392B]"
-                aria-label={t("vendor.addListing.removeImage")}
+                aria-label={t('vendor.addListing.removeImage')}
               >
                 <X className="h-3.5 w-3.5" />
               </button>
@@ -1030,7 +1256,7 @@ function PricingStep({
 
       onChange({
         handoverMethods: form.handoverMethods.filter((item) => item !== method),
-        ...(method === "delivery" ? { deliveryFee: "" } : {}),
+        ...(method === 'delivery' ? { deliveryFee: '' } : {}),
       });
       return;
     }
@@ -1040,37 +1266,39 @@ function PricingStep({
     });
   };
 
-  if (form.category === "cars") {
+  if (form.category === 'cars') {
     return (
       <section className="space-y-6">
         <div>
           <h3 className="text-base font-bold font-satoshi text-[#2F2F2F]">
-            {t("vendor.addListing.pickupDeliveryHeading")}
+            {t('vendor.addListing.pickupDeliveryHeading')}
           </h3>
           <p className="mt-1 text-xs font-medium font-satoshi text-[#676565]">
-            {t("vendor.addListing.pickupDeliveryQuestion")}
+            {t('vendor.addListing.pickupDeliveryQuestion')}
           </p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <OptionCard
-              selected={form.handoverMethods.includes("client_pickup")}
-              title={t("vendor.addListing.clientPickup")}
-              description={t("vendor.addListing.clientPickupHint")}
-              onSelect={() => toggleHandoverMethod("client_pickup")}
+              selected={form.handoverMethods.includes('client_pickup')}
+              title={t('vendor.addListing.clientPickup')}
+              description={t('vendor.addListing.clientPickupHint')}
+              onSelect={() => toggleHandoverMethod('client_pickup')}
             />
             <OptionCard
-              selected={form.handoverMethods.includes("delivery")}
-              title={t("vendor.addListing.deliveryDropoff")}
-              description={t("vendor.addListing.deliveryDropoffHint")}
-              onSelect={() => toggleHandoverMethod("delivery")}
+              selected={form.handoverMethods.includes('delivery')}
+              title={t('vendor.addListing.deliveryDropoff')}
+              description={t('vendor.addListing.deliveryDropoffHint')}
+              onSelect={() => toggleHandoverMethod('delivery')}
             />
           </div>
 
-          <FormField label={t("vendor.addListing.pickupAddress")} required>
+          <FormField label={t('vendor.addListing.pickupAddress')} required>
             <input
               type="text"
               value={form.pickupAddress}
-              onChange={(event) => onChange({ pickupAddress: event.target.value })}
-              placeholder={t("vendor.addListing.pickupAddressPlaceholder")}
+              onChange={(event) =>
+                onChange({ pickupAddress: event.target.value })
+              }
+              placeholder={t('vendor.addListing.pickupAddressPlaceholder')}
               className={inputClassName}
             />
           </FormField>
@@ -1078,22 +1306,22 @@ function PricingStep({
 
         <div className="space-y-4">
           <h3 className="text-base font-bold font-satoshi text-[#2F2F2F]">
-            {t("vendor.addListing.carPricingHeading")}
+            {t('vendor.addListing.carPricingHeading')}
           </h3>
 
           <div className="grid gap-4 sm:grid-cols-3">
             <PriceField
-              label={t("vendor.addListing.price12hr")}
+              label={t('vendor.addListing.price12hr')}
               value={form.price12hr}
               onChange={(value) => onChange({ price12hr: value })}
             />
             <PriceField
-              label={t("vendor.addListing.price24hr")}
+              label={t('vendor.addListing.price24hr')}
               value={form.price24hr}
               onChange={(value) => onChange({ price24hr: value })}
             />
             <PriceField
-              label={t("vendor.addListing.priceMultiDay")}
+              label={t('vendor.addListing.priceMultiDay')}
               value={form.priceMultiDay}
               onChange={(value) => onChange({ priceMultiDay: value })}
             />
@@ -1101,19 +1329,19 @@ function PricingStep({
 
           {form.comesWithDriver ? (
             <PriceField
-              label={t("vendor.addListing.driverAddonPrice")}
+              label={t('vendor.addListing.driverAddonPrice')}
               value={form.driverAddonPrice}
               onChange={(value) => onChange({ driverAddonPrice: value })}
             />
           ) : (
             <p className="text-xs font-medium font-satoshi text-[#676565]">
-              {t("vendor.addListing.selfDriveNoPrice")}
+              {t('vendor.addListing.selfDriveNoPrice')}
             </p>
           )}
 
-          {form.handoverMethods.includes("delivery") ? (
+          {form.handoverMethods.includes('delivery') ? (
             <PriceField
-              label={t("vendor.addListing.deliveryFee")}
+              label={t('vendor.addListing.deliveryFee')}
               value={form.deliveryFee}
               onChange={(value) => onChange({ deliveryFee: value })}
             />
@@ -1123,7 +1351,7 @@ function PricingStep({
     );
   }
 
-  if (form.category === "accommodations") {
+  if (form.category === 'accommodations') {
     return <AccommodationPricingStep form={form} onChange={onChange} />;
   }
 
@@ -1162,7 +1390,10 @@ function RadioGroup({
   return (
     <div className="flex flex-wrap gap-4">
       {options.map((option) => (
-        <label key={option.value} className="inline-flex items-center gap-2 text-sm font-medium font-satoshi text-[#2F2F2F]">
+        <label
+          key={option.value}
+          className="inline-flex items-center gap-2 text-sm font-medium font-satoshi text-[#2F2F2F]"
+        >
           <input
             type="radio"
             checked={value === option.value}
@@ -1187,7 +1418,7 @@ function TagInputField({
   tags: string[];
   onChange: (tags: string[]) => void;
 }) {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
 
   const addTag = () => {
     const value = input.trim();
@@ -1197,11 +1428,11 @@ function TagInputField({
     }
 
     onChange([...tags, value]);
-    setInput("");
+    setInput('');
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       event.preventDefault();
       addTag();
     }
@@ -1209,7 +1440,9 @@ function TagInputField({
 
   return (
     <div className="space-y-2">
-      <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">{label}</span>
+      <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
+        {label}
+      </span>
       <input
         type="text"
         value={input}
@@ -1282,17 +1515,25 @@ function OptionCard({
       type="button"
       onClick={onSelect}
       className={`rounded-xl border p-4 text-left transition-colors ${
-        selected ? "border-[#D85A30] bg-[#FFF8F5]" : "border-[#E5E5E5] bg-white hover:border-[#D0D0D0]"
+        selected
+          ? 'border-[#D85A30] bg-[#FFF8F5]'
+          : 'border-[#E5E5E5] bg-white hover:border-[#D0D0D0]'
       }`}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-bold font-satoshi text-[#2F2F2F]">{title}</p>
-          <p className="mt-1 text-xs font-medium font-satoshi text-[#676565]">{description}</p>
+          <p className="text-sm font-bold font-satoshi text-[#2F2F2F]">
+            {title}
+          </p>
+          <p className="mt-1 text-xs font-medium font-satoshi text-[#676565]">
+            {description}
+          </p>
         </div>
         <span
           className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded border ${
-            selected ? "border-[#D85A30] bg-[#D85A30]" : "border-[#CFCFCF] bg-white"
+            selected
+              ? 'border-[#D85A30] bg-[#D85A30]'
+              : 'border-[#CFCFCF] bg-white'
           }`}
         >
           {selected ? (

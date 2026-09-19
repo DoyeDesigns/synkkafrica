@@ -7,6 +7,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import {
   adminApproveVendor,
+  adminApproveVendorWithoutVerification,
   adminBusinessDocViewUrl,
   adminGetVendor,
   adminRejectVendor,
@@ -104,6 +105,11 @@ export function AdminVendorDetailLiveContent({
     mutationFn: () => adminApproveVendor(token as string, vendorId),
     onSuccess: invalidate,
   });
+  const bypassMutation = useMutation({
+    mutationFn: (reason: string) =>
+      adminApproveVendorWithoutVerification(token as string, vendorId, reason),
+    onSuccess: invalidate,
+  });
   const rejectMutation = useMutation({
     mutationFn: (reason?: string) =>
       adminRejectVendor(token as string, vendorId, reason),
@@ -117,7 +123,15 @@ export function AdminVendorDetailLiveContent({
     mutationFn: () => adminVerifyVendorId(token as string, vendorId),
     onSuccess: invalidate,
   });
-  const busy = approveMutation.isPending || rejectMutation.isPending;
+  const busy =
+    approveMutation.isPending ||
+    bypassMutation.isPending ||
+    rejectMutation.isPending;
+  const actionError = (
+    approveMutation.error ||
+    bypassMutation.error ||
+    rejectMutation.error
+  ) as Error | null;
 
   // Open a blank tab synchronously (survives popup blockers), then redirect it
   // to the short-lived signed URL once fetched.
@@ -175,6 +189,26 @@ export function AdminVendorDetailLiveContent({
                     type="button"
                     disabled={busy}
                     onClick={() => {
+                      const reason = window.prompt(
+                        "Approve WITHOUT verification — this bypasses CAC checks and is audited. Enter a justification (e.g. \"Government entity, no CAC on file\"):",
+                      );
+                      if (!reason || reason.trim().length < 10) {
+                        if (reason !== null)
+                          window.alert(
+                            "A justification of at least 10 characters is required.",
+                          );
+                        return;
+                      }
+                      bypassMutation.mutate(reason.trim());
+                    }}
+                    className="rounded-lg border border-[#D9A400] bg-[#FFF8E6] px-3 py-2 text-xs font-bold font-satoshi text-[#9A7200] disabled:opacity-60"
+                  >
+                    Approve without verification
+                  </button>
+                  <button
+                    type="button"
+                    disabled={busy}
+                    onClick={() => {
                       const reason =
                         window.prompt("Reason for rejection (optional):") ??
                         undefined;
@@ -188,6 +222,12 @@ export function AdminVendorDetailLiveContent({
               ) : null}
             </div>
           </div>
+
+          {actionError ? (
+            <p className="rounded-lg border border-[#FDEBEB] bg-[#FDEBEB] px-4 py-3 text-sm font-medium font-satoshi text-[#C0392B]">
+              {actionError.message || "That action could not be completed."}
+            </p>
+          ) : null}
 
           {vendor.rejectionReason ? (
             <p className="rounded-lg border border-[#FDEBEB] bg-[#FDEBEB] px-4 py-3 text-sm font-medium font-satoshi text-[#C0392B]">

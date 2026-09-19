@@ -32,6 +32,8 @@ export type ListingMediaItem = {
   // the listing (media[].url + coverImageUrl); undefined while uploading/failed.
   url?: string;
   status: ListingMediaUploadStatus;
+  // Why the upload failed, shown on the tile (status "error" only).
+  error?: string;
 };
 
 export const LISTING_MEDIA_MAX_BYTES = 10 * 1024 * 1024;
@@ -113,6 +115,8 @@ export type ListingDocumentUpload = {
   // upload itself). On publish only the metadata is attached — fast.
   objectPath?: string;
   status?: "uploading" | "uploaded" | "error";
+  // Why the upload failed, shown under the file (status "error" only).
+  error?: string;
 };
 
 export function createListingDocumentUpload(file: File): ListingDocumentUpload {
