@@ -3,6 +3,8 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
+import { geocodeAddress } from "@/lib/api/places";
+
 const PropertyMapInner = dynamic(
   () =>
     import("./property-map-inner").then((module) => module.PropertyMapInner),
@@ -40,22 +42,17 @@ export function PropertyMap({ coordinates, label, query }: PropertyMapProps) {
   const resolved = immediate ?? geocoded;
 
   useEffect(() => {
-    // Real coordinates or no query to geocode → nothing async to do. (No
-    // synchronous setState here, so no cascading-render lint.)
     if (immediate || !q) return;
+
     let active = true;
-    fetch(
-      `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(q)}`,
-      { headers: { Accept: "application/json" } },
-    )
-      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-      .then((results: Array<{ lat?: string; lon?: string }>) => {
+    setGeocoded(null);
+    setGeoFailed(false);
+
+    geocodeAddress(q)
+      .then((place) => {
         if (!active) return;
-        const first = Array.isArray(results) ? results[0] : undefined;
-        const lat = first ? Number(first.lat) : NaN;
-        const lon = first ? Number(first.lon) : NaN;
-        if (Number.isFinite(lat) && Number.isFinite(lon)) {
-          setGeocoded([lat, lon]);
+        if (place) {
+          setGeocoded([place.lat, place.lon]);
         } else {
           setGeoFailed(true);
         }
@@ -63,6 +60,7 @@ export function PropertyMap({ coordinates, label, query }: PropertyMapProps) {
       .catch(() => {
         if (active) setGeoFailed(true);
       });
+
     return () => {
       active = false;
     };
@@ -73,7 +71,11 @@ export function PropertyMap({ coordinates, label, query }: PropertyMapProps) {
   return (
     <div className="h-56 overflow-hidden rounded-xl sm:h-64">
       {resolved ? (
-        <PropertyMapInner coordinates={resolved} label={label} />
+        <PropertyMapInner
+          key={`${resolved[0]},${resolved[1]}`}
+          coordinates={resolved}
+          label={label}
+        />
       ) : unavailable ? (
         <div className="flex h-full w-full items-center justify-center rounded-2xl bg-zinc-100 px-4 text-center text-sm font-medium font-satoshi text-foreground/60">
           {q || "Location not available"}

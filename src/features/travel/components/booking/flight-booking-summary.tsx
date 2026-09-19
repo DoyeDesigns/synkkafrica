@@ -3,6 +3,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { Loader2, Plane } from "lucide-react";
 
+import { calculateSyncAfricaFeeDecimal } from "@/features/travel/booking/sync-africa-fee";
+import { SyncAfricaFeeLine } from "@/features/travel/components/booking/sync-africa-fee-line";
+import { useTranslation } from "@/hooks/use-translation";
 import { priceOffer, type FlightItinerary } from "@/lib/api/flights";
 
 function time(iso: string) {
@@ -75,6 +78,7 @@ export function FlightBookingSummary({
   submitting?: boolean;
   disabled?: boolean;
 }) {
+  const t = useTranslation();
   const { data, isLoading, isError } = useQuery({
     queryKey: ["offer-price", offerId],
     queryFn: ({ signal }) => priceOffer(offerId, signal),
@@ -84,6 +88,11 @@ export function FlightBookingSummary({
   });
 
   const currency = data?.offer.currency ?? "USD";
+  const fare = data ? Number(data.offer.totalPrice) : Number.NaN;
+  const syncAfricaFee = Number.isFinite(fare)
+    ? calculateSyncAfricaFeeDecimal(fare)
+    : 0;
+  const checkoutTotal = Number.isFinite(fare) ? fare + syncAfricaFee : Number.NaN;
 
   return (
     <aside className="rounded-xl bg-white p-5">
@@ -130,6 +139,19 @@ export function FlightBookingSummary({
           <div className="flex items-center justify-between gap-3">
             <span className="text-foreground/80">Taxes and Fees</span>
             <span className="font-medium text-foreground">Included</span>
+          </div>
+          <SyncAfricaFeeLine
+            formattedAmount={
+              Number.isFinite(fare) ? money(String(syncAfricaFee), currency) : "—"
+            }
+          />
+          <div className="flex items-center justify-between gap-3 border-t border-[#F0D4C4] pt-2">
+            <span className="font-semibold text-foreground">{t("booking.summary.total")}</span>
+            <span className="font-bold text-foreground">
+              {Number.isFinite(checkoutTotal)
+                ? money(String(checkoutTotal), currency)
+                : "—"}
+            </span>
           </div>
         </div>
       </div>

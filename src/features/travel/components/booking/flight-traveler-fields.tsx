@@ -1,6 +1,7 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+// Identity verification + nationality are temporarily hidden.
+// import { ChevronDown } from "lucide-react";
 
 import { FormDate, FormSelect } from "./form-controls";
 import {
@@ -16,17 +17,18 @@ import type { TranslationKey } from "@/lib/preferences/translations";
 const input =
   "w-full rounded-md border border-[#E5E5E5] bg-white px-3 py-2.5 text-sm font-medium font-satoshi text-foreground outline-none placeholder:text-foreground/40 focus:border-[#004785]";
 
-const selectClassName = `${input} appearance-none`;
+// const selectClassName = `${input} appearance-none`;
 
 export type TravelerValue = Partial<TravelerInput> & {
   identity?: GuestIdentity;
 };
 
-const ID_TYPE_KEYS: { value: GuestIdentity["idType"]; key: TranslationKey }[] = [
-  { value: "passport", key: "booking.guest.idType.passport" },
-  { value: "national-id", key: "booking.guest.idType.nationalId" },
-  { value: "drivers-license", key: "booking.guest.idType.driversLicense" },
-];
+// Identity verification is temporarily hidden.
+// const ID_TYPE_KEYS: { value: GuestIdentity["idType"]; key: TranslationKey }[] = [
+//   { value: "passport", key: "booking.guest.idType.passport" },
+//   { value: "national-id", key: "booking.guest.idType.nationalId" },
+//   { value: "drivers-license", key: "booking.guest.idType.driversLicense" },
+// ];
 
 function genderFromTitle(title: TravelerInput["title"] | undefined): "M" | "F" {
   if (title === "MS" || title === "MRS" || title === "MISS") return "F";
@@ -37,6 +39,7 @@ function genderFromTitle(title: TravelerInput["title"] | undefined): "M" | "F" {
 export function toTravelerInput(value: TravelerValue): TravelerInput {
   const title = value.title ?? "MR";
   const identity = value.identity ?? createEmptyGuestIdentity();
+  // Nationality / passport are hidden in the UI; send empty values until restored.
   const nationality = (value.nationality ?? "").toUpperCase();
 
   return {
@@ -105,14 +108,17 @@ export function FlightTravelerFields({
   const set = (patch: Partial<TravelerValue>) => onChange({ ...value, ...patch });
   const updateIdentity = (patch: Partial<GuestIdentity>) =>
     set({ identity: { ...identity, ...patch } });
-  const iso2 = (v: string) =>
-    v.replace(/[^a-zA-Z]/g, "").slice(0, 2).toUpperCase();
+  // const iso2 = (v: string) =>
+  //   v.replace(/[^a-zA-Z]/g, "").slice(0, 2).toUpperCase();
   const today = new Date().toISOString().slice(0, 10);
 
   const fieldError = (field: GuestIdentityField) =>
     identityErrors[field]
       ? t(identityErrors[field] as TranslationKey)
       : undefined;
+  // Identity verification is temporarily disabled — keep helpers for restore.
+  void updateIdentity;
+  void fieldError;
 
   return (
     <div className="rounded-md border border-[#E5E5E5]">
@@ -176,6 +182,7 @@ export function FlightTravelerFields({
           </Field>
         </div>
 
+        {/* Nationality — temporarily hidden
         <Field label="Nationality" required className="max-w-xs">
           <input
             className={`${input} uppercase`}
@@ -185,7 +192,9 @@ export function FlightTravelerFields({
             required
           />
         </Field>
+        */}
 
+        {/* Identity verification — temporarily hidden
         <div className="rounded-md border border-[#E5E5E5] bg-[#F8F8F8] p-4">
           <h3 className="text-sm font-semibold font-inter text-foreground">
             {t("booking.guest.idVerificationTitle")}
@@ -278,6 +287,7 @@ export function FlightTravelerFields({
             </p>
           ) : null}
         </div>
+        */}
       </div>
     </div>
   );

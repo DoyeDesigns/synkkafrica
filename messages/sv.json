@@ -1,0 +1,2483 @@
+{
+  "nav": {
+    "downloadApp": "Ladda ner appen",
+    "becomeVendor": "Bli leverantör",
+    "chooseCurrency": "Välj valuta",
+    "signInCreate": "Logga in | Skapa konto",
+    "searchCurrency": "Sök valuta",
+    "signOut": "Logga ut",
+    "myAccount": "Mitt konto",
+    "bookingsTrips": "Bokningar och resor",
+    "saved": "Sparat",
+    "reviews": "Recensioner"
+  },
+  "common": {
+    "bookNow": "Boka nu",
+    "continue": "Fortsätt",
+    "loading": "Laddar…",
+    "startingFrom": "Från och med",
+    "perDay": "Per dag",
+    "budget": "Budget",
+    "seeMore": "Se mer",
+    "showMore": "Visa mer",
+    "reviews": "Recensioner",
+    "available": "Finns tillgängligt",
+    "selfDriveAvailable": "Möjlighet till självkörning",
+    "excludingTaxes": "exklusive skatter och avgifter",
+    "select": "Välj",
+    "search": "Sök",
+    "edit": "Redigera",
+    "cancel": "Avbryt",
+    "notifications": "Meddelanden",
+    "contactSupport": "Kontakta supporten",
+    "signOut": "Logga ut",
+    "noReviewsYet": "Inga recensioner ännu",
+    "viewPhoto": "Visa foto {index}",
+    "photoViewer": "Bildvisare",
+    "closePhotoViewer": "Stäng bildvisaren",
+    "previousPhoto": "Föregående bild",
+    "nextPhoto": "Nästa foto",
+    "photoOfTotal": "{aktuellt} av {totalt}",
+    "secured": "Säker"
+  },
+  "hero": {
+    "headline": "Upplev Afrika med trygghet",
+    "tab": {
+      "accommodations": "Boende",
+      "flights": "Flyg",
+      "carRentals": "Biluthyrning",
+      "tours": "Rundturer och upplevelser"
+    },
+    "search": "Sök",
+    "clearFilter": "Rensa filter",
+    "accommodations": {
+      "destination": "Din destination",
+      "destinationStay": "{antal} kvar",
+      "destinationStays": "{antal} kvar",
+      "checkIn": "Incheckningsdatum",
+      "checkAvailability": "Kontrollera tillgänglighet",
+      "propertyType": "Fastighetstyp",
+      "oneRoom": "1 rum",
+      "oneGuest": "1 gäst",
+      "roomsCount": "{antal} Rum",
+      "guestsCount": "{count} Gäster",
+      "checkOut": "Kolla in datumet"
+    },
+    "flights": {
+      "roundTrip": "Tur och retur",
+      "oneWay": "Enkelresa",
+      "directFlight": "Direktflyg",
+      "economyClass": "Ekonomiklass",
+      "premiumEconomyClass": "Premium Economy",
+      "businessClass": "Businessklass",
+      "firstClass": "Första klass",
+      "onePassenger": "1 passagerare",
+      "passengersCount": "{antal} Passagerare",
+      "fromCity": "Från | Välj stad",
+      "toCity": "Till | Välj stad",
+      "departureDate": "Avresedatum",
+      "returnDate": "Återlämningsdatum",
+      "departing": "Avgång",
+      "returning": "Återvända",
+      "nonstop": "Nonstop",
+      "oneStop": "Ett ställe",
+      "multipleStops": "Flera stopp"
+    },
+    "common": {
+      "addDate": "Lägg till datum",
+      "selectDateRange": "Välj avresedatum och återresedatum",
+      "selectDate": "Välj ett datum",
+      "days": "Dagar",
+      "nights": "Nätter"
+    },
+    "carRentals": {
+      "searchCarType": "Sök efter biltyp",
+      "filterCarType": "Filtrera efter biltyp",
+      "allCarTypes": "Alla typer",
+      "selfDrive": "Egenkörning",
+      "price": "₦ Pris",
+      "pickupDate": "Upphämtningsdatum",
+      "destinationCar": "{antal} bil",
+      "destinationCars": "{antal} bilar"
+    },
+    "tours": {
+      "searchPlaceholder": "Sök efter platser, sevärdheter och upplevelser",
+      "startDate": "Startdatum",
+      "destinationExperience": "{antal} erfarenhet",
+      "destinationExperiences": "{antal} upplevelser"
+    },
+    "location": "Plats"
+  },
+  "footer": {
+    "brandDescription": "SynkAfrica är en ny, heltäckande plattform för resor och exklusiva upplevelser som är utformad för att koppla samman människor världen över med hjärtat av det afrikanska ekosystemet för resor och livsstil.",
+    "explore": {
+      "title": "Upptäck SynkAfrica",
+      "hotels": "Hotell och boende",
+      "carRentals": "Biluthyrning",
+      "flights": "Flygbokningar",
+      "restaurants": "Mat & restauranger"
+    },
+    "support": {
+      "title": "Stöd",
+      "contact": "Kontakta supporten",
+      "changeBooking": "Ändra eller avboka din bokning",
+      "paymentOptions": "Betalningsalternativ",
+      "receipt": "Visa eller skriv ut ditt bokningskvitto"
+    },
+    "community": {
+      "title": "Gemenskap",
+      "instagram": "Vårt Instagram-konto",
+      "facebook": "Facebook",
+      "news": "I nyheterna"
+    },
+    "vendor": {
+      "title": "Bli leverantör",
+      "listCar": "Lägg upp din bil",
+      "listService": "Lägg till din tjänst",
+      "contact": "Kontakta oss"
+    },
+    "appPromo": {
+      "headline": "Upplev SynkAfrica till fullo.",
+      "cta": "Ladda ner appen redan idag",
+      "getItOn": "KÖP DET",
+      "googlePlay": "Google Play",
+      "downloadOn": "Ladda ner på",
+      "appStore": "App Store"
+    },
+    "legal": {
+      "privacy": "Integritetspolicy",
+      "terms": "Användarvillkor",
+      "security": "Säkerhetssida",
+      "faqs": "Vanliga frågor"
+    },
+    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+  },
+  "login": {
+    "intro": "Du kan logga in med ditt SynkAfrica-konto för att få tillgång till våra tjänster.",
+    "backendNotReady": "Miljövariablerna för backend har ännu inte ställts in. Inloggningen kommer att fungera så snart inloggningsuppgifterna har konfigurerats.",
+    "emailPlaceholder": "Ange din e-postadress",
+    "orUseOptions": "eller använd något av följande alternativ",
+    "signInGoogle": "Logga in med Google",
+    "continueApple": "Fortsätt med Apple"
+  },
+  "account": {
+    "nav": {
+      "notifications": "Meddelanden"
+    },
+    "contactSupport": "Kontakta supporten",
+    "profile": {
+      "edit": "Redigera",
+      "fullName": "Fullständigt namn",
+      "fullNamePlaceholder": "Ange fullständigt namn",
+      "location": "Plats",
+      "dateOfBirth": "Födelsedatum",
+      "dobPlaceholder": "MM | DD | ÅÅ",
+      "gender": "Kön",
+      "notAdded": "Har inte lagts till",
+      "contactDetails": "Kontaktuppgifter",
+      "phone": "Telefonnummer",
+      "email": "E-postadress",
+      "passwordSecurity": "Lösenord och säkerhet",
+      "password": "Lösenord",
+      "changePassword": "Ändra lösenord"
+    },
+    "deleteAccount": "Ta bort konto",
+    "bookings": {
+      "title": "Dina beställningar",
+      "tab": {
+        "upcoming": "Kommande",
+        "past": "Tidigare",
+        "cancelled": "Inställt",
+        "bookings": "Bokningar"
+      },
+      "empty": {
+        "upcoming": "Inga kommande bokningar.",
+        "past": "Det finns inga tidigare bokningar för denna period.",
+        "cancelled": "Inga avbeställda order för denna period.",
+        "bookings": "Inga bokningar för denna period."
+      },
+      "orderDate": "Beställningsdatum:",
+      "experienceDate": "Datum för upplevelsen:",
+      "totalAmount": "Totalt belopp:",
+      "orderNumber": "Beställning:",
+      "guestCount": "Gäster",
+      "specialRequests": "Särskilda önskemål",
+      "cancel": "Avbryt",
+      "receiptRecipient": "Kvitto och QR-mottagare",
+      "viewDetails": "Visa detaljer",
+      "leaveReview": "Skriv en recension",
+      "reviewSubmitted": "Recension inlämnad",
+      "cancelWindowClosed": "Avbokningsfristen för denna bokning har löpt ut.",
+      "cancelledOn": "Inställt den {datum}",
+      "cancelConfirmTitle": "Vill du avboka denna bokning?",
+      "cancelConfirmBody": "Du kan avboka inom avbokningsperioden innan din upplevelse börjar. Denna åtgärd går inte att ångra.",
+      "confirmCancel": "Ja, avboka bokningen",
+      "filterPeriod": "Filtrera efter period",
+      "badge": {
+        "upcoming": "Kommande",
+        "past": "Tidigare",
+        "cancelled": "Inställt"
+      },
+      "countdown": {
+        "label": "Upplevelsen börjar i",
+        "daysHours": "{dagar}d {timmar}h",
+        "hoursMinutes": "{timmar}h {minuter}m",
+        "detailHint": "Nedräkningen uppdateras i realtid fram till dess att din upplevelse börjar."
+      },
+      "review": {
+        "title": "Skriv en recension",
+        "ratingLabel": "Ditt betyg",
+        "commentLabel": "Din recension",
+        "commentPlaceholder": "Berätta vad du tyckte om den här upplevelsen...",
+        "submit": "Skicka in recension",
+        "dismiss": "Stäng granskningsdialogrutan"
+      },
+      "detail": {
+        "back": "Tillbaka till bokningarna",
+        "reference": "Bokningsnummer",
+        "yourReview": "Din recension",
+        "notFound": "Den här bokningen kunde inte hittas."
+      }
+    },
+    "saved": {
+      "accommodations": "Boende",
+      "empty": "Du har inte sparat någonting än.",
+      "cars": "Bilar",
+      "tours": "Rundturer"
+    },
+    "reviews": {
+      "title": "Recensioner",
+      "youRated": "Du har betygsatt",
+      "writeReview": "Skriv en recension",
+      "ratingLabel": "Ditt betyg",
+      "commentLabel": "Din recension",
+      "commentPlaceholder": "Berätta vad du tyckte om den här upplevelsen...",
+      "photosLabel": "Bilder",
+      "photosCount": "{antal}/{max} har laddats upp",
+      "addPhoto": "Lägg till foto",
+      "removePhoto": "Ta bort foto",
+      "submit": "Skicka in omdöme",
+      "pendingTitle": "Granska en genomförd bokning",
+      "pendingHint": "Recensioner kan endast lämnas för tidigare bokningar som är kopplade till ditt konto.",
+      "selectBooking": "Välj en genomförd bokning ovan för att skriva din recension.",
+      "noPending": "Du har inga avslutade bokningar som väntar på omdöme.",
+      "submittedTitle": "Dina inskickade recensioner",
+      "empty": "Du har ännu inte lämnat några omdömen.",
+      "deleteReview": "Ta bort recension",
+      "bookingReference": "Bokning {referens}",
+      "listingBadge": "Gästrecensioner",
+      "experienceListingTitle": "Gästrecensioner"
+    },
+    "notifications": {
+      "title": {
+        "reminder24h": "Upplevelsen börjar om 24 timmar",
+        "reviewRequest": "Berätta om dina erfarenheter",
+        "cancellationRefund": "Bokningen har avbokats",
+        "bookingConfirmation": "Bokningen har bekräftats",
+        "info": "Resepåminnelse"
+      },
+      "empty": "Inga meddelanden än.",
+      "period": {
+        "mostRecent": "Senaste",
+        "weekEarlier": "En vecka tidigare",
+        "threeMonthsAgo": "För 3 månader sedan"
+      },
+      "kind": {
+        "bookingConfirmation": "Bokningen är bekräftad",
+        "reminder24h": "24-timmarspåminnelse",
+        "reviewRequest": "Begäran om granskning",
+        "cancellationRefund": "Avbokning och återbetalning",
+        "info": "Resetips"
+      },
+      "message": {
+        "reminder24h": "Din upplevelse {titel} börjar imorgon kl. {tid} den {datum}. Kontrollera dina bokningsuppgifter och kom 15 minuter i förväg.",
+        "reviewRequest": "Vad tyckte du om {title}? Dela med dig av ett betyg i stjärnor och en skriftlig recension för att hjälpa andra resenärer på SynkAfrica.",
+        "cancellationRefund": "Din bokning av {title} ({reference}) har avbokats. Eventuell återbetalning kommer att behandlas inom 5–7 arbetsdagar.",
+        "bookingConfirmation": "Din bokning av {title} i {location} är bekräftad. Kolla din e-post för att se kvittot och QR-koden.",
+        "passportReminder": "Se till att ditt pass är giltigt i minst 6 månader efter resedatumet."
+      }
+    },
+    "support": {
+      "contact": {
+        "whatsapp": "WhatsApp",
+        "email": "E-post",
+        "phone": "Ring oss"
+      },
+      "createTicket": "Skapa ett supportärende",
+      "topic": "Vad handlar det här om?",
+      "relatedOrder": "Relaterad beställning (valfritt)",
+      "relatedOrderNone": "Inget",
+      "subject": "Ämne",
+      "subjectPlaceholder": "Kort sammanfattning av frågan",
+      "message": "Meddelande",
+      "messagePlaceholder": "Berätta vad som händer...",
+      "attachFile": "Bifoga en bild eller en skärmdump",
+      "submitTicket": "Skicka in ett ärende",
+      "ticketSubmitted": "ärende nr {nummer} har skickats in. Vi återkommer snart.",
+      "yourTickets": "Dina biljetter",
+      "commonQuestions": "Vanliga frågor",
+      "ticketMeta": "Biljett nr {nummer} · {datum}",
+      "status": {
+        "open": "Öppna",
+        "resolved": "Beslut"
+      },
+      "category": {
+        "booking": "Problem med bokningen",
+        "paymentRefund": "Betalning / återbetalning",
+        "account": "Konto och profil",
+        "other": "Övrigt"
+      },
+      "faq": {
+        "cancelBooking": "Hur avbokar jag en bokning?",
+        "refundTiming": "När får jag min återbetalning?",
+        "changeDate": "Hur ändrar jag mitt resedatum?",
+        "paymentSecurity": "Är min betalning säker?",
+        "cancelBookingAnswer": "Öppna din bokning under ”Bokningar och resor”, välj beställningen och använd avbokningsalternativet om avbokningstiden ännu inte har löpt ut. Återbetalningar hanteras automatiskt för bokningar som uppfyller kraven.",
+        "refundTimingAnswer": "Återbetalningar som uppfyller kraven behandlas vanligtvis inom 5–7 arbetsdagar efter avbokningen, beroende på vilken bank eller betalningsleverantör du använder.",
+        "changeDateAnswer": "Kontakta kundtjänst och ange ditt bokningsnummer. Om det går att ändra datum för upplevelsen kommer vårt team att hjälpa dig att boka om eller guida dig genom de tillgängliga alternativen.",
+        "paymentSecurityAnswer": "Ja. Betalningar på Synkafrica hanteras via säkra, krypterade betalningspartner. Vi lagrar aldrig dina fullständiga kortuppgifter på våra servrar."
+      },
+      "tabs": {
+        "label": "Supportavsnitt"
+      },
+      "backToTickets": "Tillbaka till biljetterna",
+      "typeMessage": "Skriv ett meddelande...",
+      "send": "Skicka",
+      "supportTeam": "Synkafrica-support",
+      "you": "Du",
+      "emptyTickets": "Du har ännu inte skickat in några supportärenden.",
+      "attachedImage": "Bifogad bild",
+      "removeAttachment": "Ta bort bilagan"
+    }
+  },
+  "booking": {
+    "step": {
+      "rooms": "Välj boende och rum",
+      "chooseExperience": "Välj upplevelse",
+      "chooseCar": "Välj bil",
+      "choosePackage": "Välj paket",
+      "checkout": "Kassa",
+      "payment": "Betalning",
+      "confirmation": "Bekräftelse"
+    },
+    "cta": {
+      "proceedToPay": "GÅ VIDARE TILL BETALNING"
+    },
+    "guest": {
+      "title": {
+        "mr": "Herr",
+        "mrs": "Fru",
+        "ms": "Fru",
+        "miss": "Fröken",
+        "dr": "Dr"
+      },
+      "adultLabel": "Vuxen (17 år och äldre)",
+      "leadGuestLabel": "Huvudgäst",
+      "addedCount": "{tillagt}/{totalt} tillagt",
+      "passportHint": "Ange ditt namn precis som det står i ditt pass. Passet måste vara giltigt i minst 6 månader från resedatumet.",
+      "idVerificationHint": "Ett giltigt, av myndigheterna utfärdat ID-kort krävs innan du kan slutföra en bokning.",
+      "idVerificationTitle": "Identitetsverifiering",
+      "idVerificationSubtitle": "Ange dina ID-uppgifter exakt så som de står i ditt dokument.",
+      "idType": {
+        "passport": "Pass",
+        "nationalId": "Nationellt ID-nummer",
+        "driversLicense": "Körkort"
+      },
+      "idNumber": "ID-nummer",
+      "idNumberPlaceholder": "Ange ditt ID-nummer",
+      "idExpiry": "Utgångsdatum",
+      "confirmId": "Jag bekräftar att mina identitetsuppgifter är korrekta och att mitt identitetsdokument är giltigt i minst 6 månader från resedatumet.",
+      "idTypeRequired": "Välj en ID-typ.",
+      "idNumberInvalid": "Ange ett giltigt ID-nummer.",
+      "idExpiryRequired": "Ange ID-kortets giltighetstid.",
+      "idExpiryInvalid": "ID-handlingen måste vara giltig i minst 6 månader från och med idag.",
+      "idConfirmRequired": "Bekräfta dina identitetsuppgifter för att fortsätta.",
+      "idValidationRequired": "Fyll i och bekräfta dina identitetsuppgifter innan du går vidare till betalningen.",
+      "adultCheckbox": "Vuxen – {antal}",
+      "titleField": "Titel",
+      "lastName": "Efternamn",
+      "firstName": "Förnamn",
+      "middleName": "Mellannamn",
+      "dateOfBirth": "Födelsedatum",
+      "datePlaceholder": "åååå-mm-dd",
+      "nationality": "Nationalitet",
+      "gender": "Kön",
+      "male": "Man",
+      "female": "Kvinna",
+      "mobileNo": "Mobilnummer",
+      "emailAddress": "E-postadress",
+      "openCalendar": "Öppen kalender",
+      "countLabel": "Antal gäster",
+      "countHint": "Priserna uppdateras automatiskt utifrån antalet gäster.",
+      "decreaseGuests": "Minska antalet gäster",
+      "increaseGuests": "Öka antalet gäster",
+      "specialRequests": "Särskilda önskemål",
+      "specialRequestsPlaceholder": "Tidig incheckning, kostönskemål, tillgänglighetskrav m.m."
+    },
+    "summary": {
+      "selectRoom": "Välj ett rum",
+      "selectCar": "Välj en bil",
+      "selectExperience": "Välj en upplevelse",
+      "selectPackage": "Välj ett paket",
+      "priceDetails": "Prisinformation",
+      "taxesAndFees": "Skatter och avgifter",
+      "night": "natt",
+      "nights": "nätter",
+      "room": "rum",
+      "rooms": "rum",
+      "day": "dag",
+      "days": "dagar",
+      "total": "Totalt",
+      "guests": "gäster"
+    },
+    "table": {
+      "selectRoom": "Välj ett rum",
+      "guestCount": "Antal gäster",
+      "pricePerNight": "Pris per natt",
+      "includesTaxes": "Inkluderar skatter och avgifter",
+      "packages": "Paket",
+      "hours": "Öppettider",
+      "price": "Pris",
+      "experiences": "Erfarenheter",
+      "duration": "Varaktighet"
+    },
+    "dates": {
+      "checkIn": "Incheckningsdatum",
+      "checkOut": "Kolla in datumet",
+      "guests": "Gäster",
+      "rooms": "Rum",
+      "nights": "Nätter",
+      "days": "Dagar",
+      "rentalDays": "Hyresdagar",
+      "tripDuration": "Resans längd",
+      "tripDurationHint": "Välj hur många dagar du vill stanna eller utforska området.",
+      "decreaseNights": "Minska antalet nätter",
+      "increaseNights": "Öka antalet övernattningar",
+      "decreaseDays": "Antal dagar minskar",
+      "increaseDays": "Öka antalet dagar"
+    },
+    "car": {
+      "rentalModeHeading": "Hur skulle du vilja använda den här bilen?",
+      "rentalModeHint": "Välj att köra själv eller lägg till en professionell chaufför i din bokning.",
+      "selfDrive": "Egenkörning",
+      "selfDriveHint": "Kör bilen själv. Hämta den hos säljaren eller begär leverans mot en extra avgift.",
+      "withDriver": "Med förare",
+      "withDriverHint": "En yrkesförare ingår i resan.",
+      "noExtraCost": "Ingen extra kostnad",
+      "driverAddon": "+ {belopp} tilläggstjänst för förare",
+      "requestDelivery": "Begär leverans av bil",
+      "requestDeliveryHint": "Låt bilen levereras till din adress mot en extra avgift.",
+      "deliveryFee": "+ {belopp} fraktavgift",
+      "deliveryAddress": "Leveransadress",
+      "deliveryAddressPlaceholder": "Ange den adress dit bilen ska levereras",
+      "pickupAddress": "Upphämtningsadress",
+      "pickupAddressHint": "Hämta bilen hos denna återförsäljare om du inte väljer leverans.",
+      "customerPickupAddress": "Din upphämtningsplats",
+      "customerPickupAddressPlaceholder": "Ange var föraren ska hämta dig",
+      "customerPickupAddressHint": "Chauffören möter upp dig på den här adressen.",
+      "driverAddonLabel": "Tillägg för förare",
+      "deliveryFeeLabel": "Fraktavgift",
+      "about": "Om den här bilen",
+      "saveCar": "Spara bil"
+    },
+    "property": {
+      "saveProperty": "Spara fastighet",
+      "morePhotos": "+{antal} bilder",
+      "currentOffers": "Aktuella erbjudanden"
+    },
+    "amenity": {
+      "free": "Gratis!",
+      "additionalCharge": "Tilläggsavgift"
+    },
+    "tour": {
+      "about": "Om den här upplevelsen",
+      "saveTour": "Spara rundtur"
+    },
+    "package": {
+      "about": "Om detta paket",
+      "savePackage": "Spara paket",
+      "sharePackage": "Delningspaket",
+      "nightsDays": "[[[nätter]]] Nätter / {dagar} Dagar",
+      "durationShort": "{dagar}D / [[[nätter]]]N",
+      "guestRange": "{intervall} Gäster",
+      "moduleCount": "{antal} Moduler",
+      "highlight": {
+        "duration": "Varaktighet",
+        "groupSize": "Gruppstorlek",
+        "included": "Ingår",
+        "cancellation": "Avbokning+",
+        "free": "Gratis",
+        "standard": "Standard"
+      },
+      "whatsIncluded": "Vad ingår",
+      "included": "Ingår",
+      "priceBreakdown": "Prisöversikt",
+      "packageDiscount": "Paketrabatt",
+      "packagePrice": "Paketpris",
+      "whyBook": "Varför välja just detta paket?",
+      "guestCountLocked": "Antalet gäster är fastställt för detta paket och kan inte ändras vid utcheckningen."
+    },
+    "payment": {
+      "processing": "Bearbetar betalningen..."
+    },
+    "confirmation": {
+      "imageAlt": "Bekräftelse: lyckades",
+      "title": "Betalningen genomfördes",
+      "subtitle": "Vänligen kontrollera din e-post för att se ditt kvitto och dina QR-uppgifter",
+      "reloadIn": "Den här sidan kommer att laddas om om",
+      "reloadNow": "Ladda om nu",
+      "referenceLabel": "Bokningsnummer",
+      "copyReference": "Kopiera",
+      "copied": "Kopierat",
+      "summaryTitle": "Bokningsöversikt",
+      "product": "Reserverad artikel",
+      "totalPaid": "Totalt utbetalt",
+      "addToCalendar": "Lägg till i kalendern",
+      "openGoogleCalendar": "Öppna i Google Kalender",
+      "viewBookings": "Visa mina bokningar"
+    },
+    "reviews": {
+      "nextReview": "Nästa recension",
+      "allReviews": "Alla recensioner",
+      "viewAll": "Visa alla recensioner",
+      "close": "Stäng recensioner"
+    },
+    "content": {
+      "property": {
+        "arkHavn": {
+          "desc0": "The Ark Haven ligger i hjärtat av Marrakesh och erbjuder en fridfull tillflyktsort som förenar modern komfort med traditionell marockansk charm. Här kan du njuta av utomhuspoolen, baren på plats och rum med luftkonditionering och platt-TV.",
+          "desc1": "Gästerna kan utforska sevärdheterna i närheten, utnyttja pendeltrafiken, tennisbanorna och biluthyrningen. Oavsett om du är här på semester eller i affärer erbjuder The Ark Haven en minnesvärd vistelse med enastående gästfrihet."
+        },
+        "fallback": {
+          "desc0": "{name} erbjuder bekväma vistelser med moderna bekvämligheter och ett utmärkt läge i {location}.",
+          "desc1": "Här kan du njuta av välutrustade rum, vänlig service och enkel tillgång till lokala sevärdheter och restauranger."
+        }
+      },
+      "review": {
+        "review1": "Ark Haven överträffade mina förväntningar. Personalen var otroligt välkomnande, och poolområdet var en perfekt plats att koppla av på efter att ha utforskat staden.",
+        "review2": "Vackra rum, utmärkt läge och frukosten var fantastisk. Jag skulle definitivt bo här igen vid min nästa resa till Marocko.",
+        "review3": "Rymlig svit, rena lokaler och en hjälpsam concierge. Tack vare pendeltrafiken var det väldigt enkelt att ta sig runt i Marrakesh."
+      },
+      "offer": {
+        "drinkPromo": "Köp en dryck, få en gratis",
+        "mealsOff": "10 % rabatt på måltider",
+        "freeWifi": "Gratis Wi-Fi"
+      },
+      "room": {
+        "deluxeSuite": "Deluxe-svit",
+        "supremeRoom": "Supreme-rummet",
+        "standardRoom": "Standardrum",
+        "subtitle": {
+          "deluxe": "Deluxe (lägenhet med 1 sovrum)",
+          "supreme": "Supreme (studio)",
+          "standard": "Standard (dubbelrum)"
+        },
+        "size592": "592 kvadratfot",
+        "size420": "420 kvadratfot",
+        "size310": "310 kvadratfot",
+        "sleeps2Adults": "Plats för 2 vuxna"
+      },
+      "package": {
+        "dailyHire": "Daglig hyra",
+        "halfDayHire": "Halvdagshyrning",
+        "extraHours": "Övertid",
+        "hours24": "24 timmar",
+        "hours12": "12 timmar",
+        "hours3": "3 timmar"
+      },
+      "feature": {
+        "automatic": "Automatisk",
+        "driverAvailable": "Förare finns tillgänglig",
+        "selfDrive": "Egenkörning",
+        "available": "Finns tillgängligt",
+        "limitedSlots": "Begränsat antal platser",
+        "guidedTour": "Guidad rundtur",
+        "selfDriveAvailable": "Möjlighet till självkörning",
+        "flightsIncluded": "Flygresor ingår",
+        "hotelStay": "Hotellvistelse",
+        "guidedTours": "Guidade turer",
+        "nightsDays": "[[[nätter]]] nätter / {dagar} dagar"
+      },
+      "tourOption": {
+        "standard": "Standardbiljett",
+        "premium": "En förstklassig upplevelse",
+        "private": "Privat grupp",
+        "hours5": "5 timmar",
+        "fullDay": "Heldag"
+      },
+      "tier": {
+        "standard": "Standardpaket",
+        "deluxe": "Deluxe-paket",
+        "allInclusive": "Allt ingår"
+      },
+      "amenityCat": {
+        "greatForStay": "Perfekt för din vistelse",
+        "outdoors": "Utomhus",
+        "pets": "Husdjur",
+        "internet": "Internet",
+        "onSiteParking": "Parkering på plats",
+        "frontDesk": "Receptionstjänster",
+        "familyServices": "Underhållning och familjetjänster",
+        "cleaningServices": "Städtjänster",
+        "general": "Allmänt",
+        "accessibility": "Tillgänglighet",
+        "swimmingPools": "2 simbassänger",
+        "pool1Outdoor": "Pool 1 – utomhus"
+      },
+      "amenityDesc": {
+        "petsAllowed": "Husdjur är tillåtna på förfrågan. Ingen extra avgift.",
+        "wifiFree": "Wi-Fi finns tillgängligt i alla utrymmen och är kostnadsfritt.",
+        "parkingFree": "Det finns gratis allmän parkering på plats (ingen bokning krävs)."
+      },
+      "amenityItem": {
+        "restaurant": "Restaurang",
+        "freeWifi": "Gratis Wi-Fi",
+        "parking": "Parkering",
+        "spa": "Spa",
+        "familyRooms": "Familjerum",
+        "roomService": "Rumsservice",
+        "airportShuttle": "Flygplatsbuss",
+        "bbqFacilities": "Grillmöjligheter",
+        "petFriendly": "Husdjursvänligt",
+        "nonSmokingRooms": "Rökfria rum",
+        "outdoorFireplace": "Utomhuseldstad",
+        "beachfront": "Vid stranden",
+        "sunDeck": "Soldäck",
+        "privateBeach": "Privat strandområde",
+        "terrace": "Terrass",
+        "garden": "Trädgård",
+        "valetParking": "Parkering med betjänad parkering",
+        "parkingGarage": "Parkeringshus",
+        "accessibleParking": "Handikappanpassade parkeringsplatser",
+        "lockers": "Förvaringsskåp",
+        "concierge": "Concierge",
+        "atmOnSite": "Bankomat på plats",
+        "baggageStorage": "Bagageförvaring",
+        "currencyExchange": "Valutaväxling",
+        "frontDesk24h": "24-timmarsreception",
+        "outdoorPlayEquipment": "Lekredskap för barn utomhus",
+        "dailyHousekeeping": "Daglig städning",
+        "ironingService": "Strykservice",
+        "shuttleService": "Transferservice",
+        "sharedLounge": "Gemensamt sällskapsrum/TV-rum",
+        "airConditioning": "Luftkonditionering",
+        "carRental": "Biluthyrning",
+        "packedLunches": "Lunchpaket",
+        "disabledFacilities": "Anpassningar för gäster med funktionsnedsättning",
+        "bathroomEmergencyCord": "Nödsladd för badrummet",
+        "openAllYear": "Öppet året runt",
+        "adultsOnly": "Endast vuxna",
+        "poolBeachTowels": "Pool- och strandhanddukar",
+        "poolBar": "Poolbaren",
+        "beachChairs": "Strandstolar/solstolar"
+      },
+      "tour": {
+        "desc": {
+          "boatAccess": "Man kan endast ta sig dit med båt eller vattentaxi. Platsen är känd för sina relativt lugna vatten.",
+          "lekkiCanopy": "Gå över Afrikas längsta hängbro i trädkronorna och utforska de frodiga mangrovestigarna.",
+          "nikeArt": "Upptäck en av de största samlingarna av samtida afrikansk konst i Västafrika.",
+          "badagry": "Upptäck den transatlantiska slavhandelns historia genom museer och sevärdheter.",
+          "desertSafari": "Att köra i sanddynerna, kamelridning och ett traditionellt beduinläger under stjärnhimlen.",
+          "cotonou": "Upptäck marknaderna, den koloniala arkitekturen och Benins livliga kust.",
+          "winelands": "Besök vingårdarna i Stellenbosch med vinprovningar och vackra utsikter över bergen.",
+          "monacoYacht": "Segla längs den franska Rivierans kust med utsikt över Monte Carlo och lyxiga hamnar.",
+          "lagosFood": "Prova suya, puff-puff och lokala delikatesser på stadens bästa matställen.",
+          "dubaiKayak": "Paddla genom småbåtshamnen i solnedgången med utsikt över stadssilhuetten och under ledning av en instruktör."
+        }
+      }
+    },
+    "dateTime": {
+      "title": "Välj datum och tid",
+      "rangeHint": "Välj inchecknings- och utcheckningsdatum i kalendern.",
+      "singleHint": "Välj datum för din upplevelse i kalendern.",
+      "legendAvailable": "Finns tillgängligt",
+      "legendUnavailable": "Ej tillgängligt",
+      "selectCheckout": "Välj kassa",
+      "timeSlots": "Tidsintervall",
+      "experienceDate": "Datum för upplevelsen"
+    }
+  },
+  "breadcrumb": {
+    "synkAfrica": "SynkAfrica",
+    "accommodations": "Boende",
+    "flights": "Flyg",
+    "carForHire": "Biluthyrning",
+    "tours": "Rundturer och upplevelser",
+    "tourPackages": "Resepaket",
+    "dealsAndPackages": "Erbjudanden och paket",
+    "packages": "Paket"
+  },
+  "results": {
+    "accommodations": {
+      "title": "Vistelser",
+      "staysFound": "{antal} fynd kvar",
+      "searchPlaceholder": "Sök boende",
+      "empty": "Inga boenden uppfyller dina sökkriterier."
+    },
+    "carRentals": {
+      "title": "Upptäck hyrbilar",
+      "carsFound": "{antal} bilar hittades",
+      "searchPlaceholder": "Sök bil",
+      "empty": "Inga bilar uppfyller dina sökkriterier."
+    },
+    "tours": {
+      "title": "{antal} Sökresultat",
+      "searchPlaceholder": "Sökupplevelse",
+      "empty": "Det finns inga upplevelser som matchar dina filter."
+    },
+    "emptyHint": "Prova att ändra dina sök- eller filterinställningar.",
+    "promoSubtitle": "Kampanjer, erbjudanden och specialerbjudanden för dig"
+  },
+  "filters": {
+    "apply": "Tillämpa filter",
+    "applyCount": "Tillämpa filter ({antal})",
+    "location": "Plats",
+    "rentalDates": "Hyresperioder",
+    "startDate": "Startdatum",
+    "endDate": "Slutdatum",
+    "discounts": "Rabatter",
+    "price": "Pris",
+    "category": "Kategori",
+    "experiences": "Erfarenheter",
+    "other": "Övriga filter",
+    "budget": "Budget",
+    "perNight": "| Natt",
+    "perDaily": "| dagligen",
+    "anyPrice": "Vilket pris som helst",
+    "apartmentType": "Lägenhetstyp",
+    "bedrooms": "Antal sovrum",
+    "ratings": "Betyg",
+    "perks": "Förmåner och bekvämligheter",
+    "priceRange": {
+      "under50k": "Under 50 000",
+      "50to150k": "50–150 000",
+      "150kPlus": "150 000 och uppåt"
+    },
+    "propertyType": {
+      "hotels": "Hotell",
+      "apartments": "Lägenheter",
+      "resorts": "Semesteranläggningar",
+      "bbs": "Pensionat",
+      "guestHouse": "Pensionat",
+      "beachHouse": "Strandhus",
+      "motels": "Motell"
+    },
+    "bedroom": {
+      "studio": "Studio",
+      "one": "1 sovrum",
+      "two": "2 sovrum",
+      "threePlus": "3 eller fler sovrum"
+    },
+    "perk": {
+      "breakfast": "Frukost ingår",
+      "cancellation": "Avbokning utan kostnad",
+      "pool": "Tillgång till poolen",
+      "shuttle": "Flygplatsbuss"
+    },
+    "discount": {
+      "all": "Alla rabatter",
+      "withDiscount": "Med rabatt",
+      "noDiscount": "Ingen rabatt",
+      "tenPercent": "10 % rabatt"
+    },
+    "carType": {
+      "suv": "SUV",
+      "sedan": "Sedan",
+      "hatchback": "Kombi",
+      "pickup": "Upphämtning"
+    },
+    "serviceType": {
+      "selfDrive": "Egenkörning",
+      "chauffeur": "Chaufför"
+    },
+    "transmission": {
+      "automatic": "Automatisk",
+      "manual": "Handbok"
+    },
+    "tourCategory": {
+      "all": "Alla kategorier",
+      "outdoor": "Utomhus",
+      "artsCulture": "Konst och kultur",
+      "adventure": "Äventyr",
+      "foodDrink": "Mat och dryck"
+    },
+    "experienceType": {
+      "all": "Alla upplevelser",
+      "tours": "Rundturer",
+      "activities": "Aktiviteter",
+      "workshops": "Workshops",
+      "dayTrips": "Dagsutflykter"
+    }
+  },
+  "landing": {
+    "ongoingDeals": {
+      "title": "Pågående erbjudanden",
+      "title2": "Paket som erbjuds",
+      "description": "Kampanjer, erbjudanden och specialerbjudanden för dig",
+      "scrollPackages": "Rullpaket"
+    },
+    "packages": {
+      "title": "Paket"
+    },
+    "fansFavourite": {
+      "title": "Fansens favorit"
+    },
+    "packageOffer": {
+      "inclusion": {
+        "flights": "Flyg",
+        "stays": "Vistelser",
+        "carDriver": "Bil + förare"
+      },
+      "duration": "{dagar} Dagar • [[[nätter]]] Nätter • {schema}",
+      "bookedSeparately": "om det bokas separat"
+    },
+    "bestDealsApartments": {
+      "title": "De bästa erbjudandena på lägenheter"
+    },
+    "browsePropertyType": "Sök efter fastighetstyp",
+    "favouriteDestinations": "Upptäck populära resmål",
+    "activitiesCount": "{antal} aktiviteter",
+    "flightPromo": {
+      "headline": "Det har aldrig varit enklare att boka flyg",
+      "cta": "Kontrollera tillgänglighet"
+    },
+    "experiencesPromo": {
+      "headline": "Njut av otaliga upplevelser – allt på en och samma destination.",
+      "cta": "Utforska upplevelser",
+      "imageAlt": "Upptäck upplevelser i Afrika"
+    },
+    "tours": {
+      "attractions": {
+        "title": "Sevärdheter på Synkafrica"
+      },
+      "events": {
+        "browsingIn": "Bläddra bland evenemang i"
+      },
+      "packages": {
+        "title": "Resepaket",
+        "description": "Hitta de bästa erbjudandena på utflykter och boka enkelt."
+      }
+    },
+    "carRentals": {
+      "feature1": {
+        "title": "Professionell service",
+        "description": "Vi anlitar välrenommerade leverantörer av flygplatstransfer i hela Afrika."
+      },
+      "feature2": {
+        "title": "Flexibla avbokningsvillkor",
+        "description": "Om dina planer ändras kan du avboka enligt flexibla villkor."
+      },
+      "feature3": {
+        "title": "Konkurrenskraftiga priser",
+        "description": "Vårt team jämför dagligen taxipriserna från flygplatsen för att du ska få det bästa erbjudandet."
+      }
+    }
+  },
+  "tourPackages": {
+    "hero": {
+      "title": "Resepaket",
+      "subtitle": "Noggrant utvalda resepaket som är utformade för oförglömliga äventyr i Afrika."
+    },
+    "searchPlaceholder": "Sök resmål",
+    "empty": "Det finns inga resepaket som stämmer överens med din sökning."
+  },
+  "admin": {
+    "header": {
+      "role": "Plattformadministratör"
+    },
+    "nav": {
+      "dashboard": "Instrumentpanelen",
+      "experiences": "Erfarenheter",
+      "cars": "Bilar",
+      "accommodations": "Boende",
+      "vendors": "Leverantörer",
+      "bookings": "Bokningar",
+      "payouts": "Utbetalningar",
+      "reviews": "Recensioner",
+      "users": "Användare",
+      "verifications": "Kontroller",
+      "support": "Supportärenden",
+      "team": "Team",
+      "audit": "Revisionslogg"
+    },
+    "common": {
+      "all": "Alla",
+      "enabled": "Aktiverad",
+      "disabled": "Funktionshindrade",
+      "edit": "Redigera",
+      "actions": "Åtgärder"
+    },
+    "verifications": {
+      "title": "Kontroller",
+      "subtitle": "Ansökningar som vår verifieringsleverantör har flaggat för manuell granskning – de flesta ID- och ansiktskontroller godkänns automatiskt och hamnar aldrig i denna kö.",
+      "stats": {
+        "needsManualReview": "Måste granskas manuellt",
+        "approvedToday": "Godkänt idag",
+        "deniedToday": "Avslag idag",
+        "avgReviewTime": "Genomsnittlig granskningstid",
+        "avgReviewTimeValue": "{minuter} min"
+      },
+      "searchPlaceholder": "Sök efter namn eller konto-ID...",
+      "filter": {
+        "users": "Användare",
+        "vendors": "Leverantörer"
+      },
+      "status": {
+        "pendingReview": "Väntar på granskning",
+        "approved": "Godkänt",
+        "denied": "Avslagen"
+      },
+      "audience": {
+        "user": "Användare",
+        "vendor": "Leverantör"
+      },
+      "submitted": "Inskickat {datum}",
+      "pendingElapsed": "Väntar på [[[förfluten tid]]]",
+      "blocking": {
+        "firstCheckout": "blockering av första utcheckningen"
+      },
+      "empty": "Inga verifieringsansökningar stämmer överens med dina filter.",
+      "accountId": "Konto {id}",
+      "viewAccount": "Visa konto →",
+      "pendingManualReview": "Väntar på manuell granskning",
+      "elapsed": "[[[förfluten tid]]] förfluten tid",
+      "documentPreviews": "Dokumentförhandsvisningar",
+      "documentViewLogged": "Dokumentvisningen loggas för efterlevnad",
+      "providerResults": "Resultat från verifieringsleverantören (DIDIT)",
+      "approve": "Godkänn",
+      "deny": "Förneka",
+      "requestResubmission": "Begär omprövning",
+      "notifyUser": "Meddela användaren om beslutet",
+      "notifyVendor": "Meddela leverantören om beslutet",
+      "verificationApproved": "Verifiering godkänd",
+      "verificationDenied": "Verifiering avvisad",
+      "reviewedInElapsed": "Recenserad i {elapsed}",
+      "approvedBy": "Godkänt av",
+      "approvedByValue": "Admin — {datum}",
+      "reasonForDenial": "Skäl till avslag",
+      "revokeApproval": "Återkalla godkännandet",
+      "inviteResubmission": "Inbjudan till ny inlämning",
+      "viewHistory": "Visa historik",
+      "providerResultsHeading": "Leverantörsresultat — DIDIT",
+      "document": {
+        "ninSlip": "NIN-fel",
+        "passportPhoto": "Sidan med passfoto",
+        "selfie": "Selfie / kontroll av att personen är vid liv",
+        "cac": "CAC-certifikat",
+        "driversLicense": "Körkort (framsidan)"
+      },
+      "check": {
+        "cacRegistrationLookup": "Sökning efter CAC-registrering",
+        "cacRegistrationVerified": "Verifierad",
+        "faceMatchConfidence": "Konfidensgrad för ansiktsmatchning",
+        "faceMatchConfidenceDetail": "96 %",
+        "documentExpiredDetail": "Misslyckades — dokumentet har gått ut",
+        "documentAuthenticity": "Dokumentets äkthet",
+        "liveness": "Livsförsökskontroll",
+        "faceMatch": "Konfidensgrad för ansiktsmatchning",
+        "nameMatch": "Namnet stämmer överens med kontot",
+        "businessRegistration": "Företagsregistrering",
+        "faceMatchDetail": "78 % — under tröskelvärdet för automatisk godkännande",
+        "nameMatchDetail": "Match",
+        "documentFailedDetail": "Misslyckades — dokumentet går inte att läsa",
+        "faceMatchFailedDetail": "42 % — under tröskelvärdet",
+        "businessRegistrationDetail": "Delvis matchning — manuell granskning krävs"
+      },
+      "denialReason": {
+        "expiredLicense": "Körkortet gick ut i mars 2026. Skicka in ansökan på nytt tillsammans med ett giltigt, icke utgånget officiellt ID-kort."
+      },
+      "documentType": {
+        "passport": "Pass",
+        "cacNin": "CAC + NIN",
+        "driversLicense": "Körkort"
+      },
+      "checkResult": {
+        "passed": "Godkänd",
+        "failed": "Misslyckades",
+        "warning": "Granskning krävs"
+      }
+    },
+    "dashboard": {
+      "welcome": "Administratörskonsolen,",
+      "addPackages": "Lägg till paket",
+      "period": {
+        "label": "Mätperiod",
+        "today": "Idag",
+        "week": "Den här veckan",
+        "month": "Den här månaden",
+        "sixMonths": "6 månader",
+        "year": "1 år",
+        "all": "Alla"
+      },
+      "users": "Användare",
+      "bookings": "Bokningar",
+      "revenue": "Intäkter",
+      "activeExperiences": "Aktiva upplevelser",
+      "activeVendors": "Aktiva leverantörer",
+      "viewAll": "Visa alla",
+      "manage": "Hantera",
+      "alerts": "Varningar",
+      "alert": {
+        "pendingPayouts": "3 utbetalningar till leverantörer som väntar på godkännande",
+        "flaggedReview": "2 recensioner som har flaggats för granskning",
+        "openTicket": "5 öppna supportärenden hos leverantören",
+        "disabledVendor": "1 leverantörskonto har inaktiverats – granskning krävs"
+      }
+    },
+    "packages": {
+      "createTitle": "Skapa nytt paket / erbjudande",
+      "createSubtitle": "Skapa ett oemotståndligt resepaket genom att kombinera flyg, boende, hyrbilar och upplevelser.",
+      "addTitle": "Lägg till paket",
+      "backToDashboard": "← Tillbaka till översiktssidan",
+      "progressLabel": "Paketets leveransstatus",
+      "steps": {
+        "details": "Paketinformation",
+        "modules": "Lägg till moduler",
+        "pricing": "Priser",
+        "review": "Granska och publicera"
+      },
+      "cancel": "Avbryt",
+      "back": "Tillbaka",
+      "saveDraft": "Spara som utkast",
+      "draftSaved": "Utkast sparat",
+      "saveContinue": "Spara och fortsätt",
+      "submit": "Skicka paket",
+      "completeRequiredFields": "Fyll i de obligatoriska fälten: [[[fält]]]",
+      "sections": {
+        "basicInfo": "Paketinformation",
+        "basicInfoHint": "Grundläggande information och metadata för ditt paket.",
+        "additionalSettings": "Ytterligare inställningar",
+        "additionalSettingsHint": "Riktlinjer, måltider och visningsalternativ."
+      },
+      "fields": {
+        "packageName": "Paketnamn",
+        "packageSlug": "Paketets slug (URL)",
+        "shortDescription": "Kort beskrivning",
+        "detailedDescription": "Detaljerad beskrivning",
+        "banner": "Bild på förpackningsbanner",
+        "category": "Produktkategori",
+        "bestFor": "Bäst för",
+        "tags": "Pakettaggar",
+        "includedMeals": "Måltider som ingår",
+        "cancellationPolicy": "Avbokningsregler",
+        "refundPolicy": "Återbetalningspolicy",
+        "maxGuests": "Max antal gäster",
+        "featuredDeal": "Paketets höjdpunkter",
+        "currency": "Valuta",
+        "normalPrice": "Ordinarie pris",
+        "salesPrice": "Försäljningspris",
+        "showSavingsBadge": "Visa besparingsmärket",
+        "savingsBadgePercent": "Procent av sparbeloppet",
+        "validFrom": "Gäller från",
+        "validUntil": "Giltigt till",
+        "minimumBookingNotice": "Minsta bokningstid",
+        "packageActive": "Paketstatus"
+      },
+      "placeholders": {
+        "packageName": "t.ex. Lagos & Paris – en flykt från vardagen",
+        "packageSlug": "Lagos–Paris-semester",
+        "shortDescription": "En kort sammanfattning som finns på förpackningskortet.",
+        "detailedDescription": "Beskriv hela resplanen, vad som ingår och höjdpunkterna.",
+        "category": "Välj kategori",
+        "tags": "t.ex. strand, äventyr",
+        "maxGuests": "t.ex. 4",
+        "select": "Välj"
+      },
+      "hints": {
+        "packageSlug": "Detta kommer att användas i paketets URL.",
+        "tags": "Lägg till varje tagg och tryck på Enter.",
+        "featuredDeal": "Visa det här paketet som ett utvalt erbjudande.",
+        "showSavingsBadge": "Visa en sparmarkering på förpackningskortet.",
+        "savingsBadgePercent": "Ställ in den procentandel som ska visas på besparingsmärket. Fylls i automatiskt utifrån dina priser.",
+        "packageActive": "Aktiva paket syns för kunderna."
+      },
+      "uploadBanner": "Klicka för att ladda upp eller dra och släpp",
+      "uploadBannerHint": "JPG, PNG eller WEBP (max 5 MB)",
+      "removeBanner": "Ta bort bannern",
+      "tips": {
+        "title": "Tips för ett bra paket",
+        "one": "Använd ett tydligt och tilltalande paketnamn.",
+        "two": "Kombinera kompletterande moduler för att få mer värde för pengarna.",
+        "three": "Framhäv besparingarna med ett konkurrenskraftigt försäljningspris.",
+        "four": "Lägg till taggar för att göra det lättare att hitta innehållet."
+      },
+      "moduleType": {
+        "flight": "Flygning",
+        "accommodation": "Boende",
+        "car": "Bil",
+        "experience": "Erfarenhet"
+      },
+      "modules": {
+        "selectHeading": "Lägg till moduler",
+        "selectHint": "Bläddra bland och lägg till flyg, boende, hyrbilar och upplevelser för att sätta ihop ditt resepaket.",
+        "addedHeading": "Paketmoduler",
+        "countLabel": "moduler",
+        "empty": "Inga moduler har lagts till ännu. Välj objekt från panelerna ovan.",
+        "add": "Lägg till",
+        "added": "Lagt till",
+        "remove": "Ta bort modul",
+        "dragHandle": "Dra för att ändra ordningen",
+        "reorderHint": "Dra och släpp modulerna för att ändra ordningen på dem så som de kommer att visas för kunderna.",
+        "required": "Lägg till minst en modul för att fortsätta.",
+        "searchPlaceholder": "Sökmoduler…",
+        "noResults": "Inga moduler stämmer överens med din sökning.",
+        "availableLabel": "tillgänglig"
+      },
+      "pricing": {
+        "heading": "Priser",
+        "hint": "Bestäm dina biljettpriser.",
+        "savingsDisplay": "Du sparar {belopp} ({procent}%)"
+      },
+      "availability": {
+        "heading": "Tillgänglighet",
+        "hint": "Ange när detta paket kan bokas."
+      },
+      "review": {
+        "heading": "Granska och publicera",
+        "hint": "Kontrollera alla uppgifter om paketet innan du skickar in det."
+      }
+    },
+    "users": {
+      "title": "Resenärer",
+      "searchPlaceholder": "Sök efter namn, användar-ID, e-postadress eller plats...",
+      "userId": "Användar-ID",
+      "traveler": "Resenär",
+      "contact": "Kontakt",
+      "location": "Plats",
+      "tier": {
+        "bronze": "Brons",
+        "silver": "Silver",
+        "gold": "Guld",
+        "platinum": "Platina"
+      },
+      "bookingsSpend": "Bokningar / Utgifter",
+      "lastTrip": "Senaste resan",
+      "status": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
+      },
+      "stats": {
+        "found": "Resenärer hittades",
+        "active": "Aktiv",
+        "combinedSpend": "Sammanlagda utgifter",
+        "page": "Sida",
+        "pageValue": "{aktuellt} / {totalt}"
+      },
+      "pagination": {
+        "previous": "Föregående",
+        "next": "Nästa",
+        "showing": "Sida {aktuell} av {totalt}"
+      },
+      "details": "Detaljer",
+      "empty": "Det finns inga resenärer som stämmer överens med din sökning.",
+      "notFound": "Resenären hittades inte.",
+      "backToList": "Tillbaka till resenärerna",
+      "accountDetails": "Kontoinformation",
+      "detail": {
+        "totalBookings": "Totalt antal bokningar",
+        "lifetimeSpend": "Totala utgifter under livstiden",
+        "primaryCorridor": "Huvudkorridor",
+        "openTickets": "Öppna ärenden",
+        "idFaceVerified": "ID + ansiktsverifiering",
+        "joined": "Blev medlem {datum}",
+        "lastActive": "Senast aktiv [[[förfluten tid]]]",
+        "phoneWhatsApp": "{telefon} (kopplad till WhatsApp)",
+        "identityVerification": "Identitetsverifiering",
+        "governmentId": "Officiellt identitetsbevis ({typ})",
+        "faceMatch": "Ansikts- och livsteckenmatchning",
+        "verifiedVia": "Verifierat via",
+        "verified": "Verifierad",
+        "notVerified": "Ej verifierat",
+        "paymentMethods": "Registrerade betalningssätt",
+        "card": "Kort",
+        "defaultCurrency": "Standardvaluta",
+        "recentBookings": "Senaste bokningarna",
+        "internalNotes": "Interna anteckningar",
+        "noNotes": "Inga interna anteckningar ännu.",
+        "noteAttribution": "— [[[författare]]], {datum}",
+        "bookingStatus": {
+          "confirmed": "Bekräftat",
+          "completed": "Avslutat",
+          "cancelled": "Inställt"
+        }
+      },
+      "menu": {
+        "verification": "Verifiering",
+        "rerunIdVerification": "Utför ID-verifieringen på nytt",
+        "rerunFaceVerification": "Utför ansiktsverifiering på nytt",
+        "financial": "Ekonomi",
+        "issueRefund": "Utfärda återbetalning",
+        "holdBookingPayment": "Håll inne betalningen för bokningen",
+        "support": "Stöd",
+        "viewAsReadOnly": "Visa som (skrivskyddad)",
+        "addInternalNote": "Lägg till intern anteckning",
+        "dataAccount": "Data och konto",
+        "mergeDuplicateAccount": "Slå samman dubbla konton",
+        "exportUserData": "Exportera användardata (GDPR)",
+        "suspendAccount": "Avaktivera kontot"
+      }
+    },
+    "experiences": {
+      "title": "Hantera upplevelser",
+      "searchPlaceholder": "Sökupplevelser",
+      "name": "Namn på upplevelse",
+      "empty": "Det finns inga upplevelser som stämmer överens med din sökning.",
+      "actions": {
+        "disable": "Inaktivera upplevelsen",
+        "enable": "Aktivera upplevelsen",
+        "goTo": "Gå till upplevelsen",
+        "delete": "Ta bort upplevelse"
+      }
+    },
+    "cars": {
+      "title": "Hantera bilar",
+      "searchPlaceholder": "Sök efter bilar",
+      "name": "Bilens namn",
+      "empty": "Inga bilar stämmer överens med din sökning.",
+      "actions": {
+        "disable": "Inaktivera bilen",
+        "enable": "Aktivera bilen",
+        "goTo": "Gå till bilen",
+        "delete": "Ta bort bil"
+      }
+    },
+    "accommodations": {
+      "title": "Hantera boende",
+      "searchPlaceholder": "Sök boende",
+      "name": "Boendets namn",
+      "empty": "Det finns inga boenden som stämmer överens med din sökning.",
+      "actions": {
+        "disable": "Inaktivera anpassningar",
+        "enable": "Aktivera anpassningar",
+        "goTo": "Gå till boende",
+        "delete": "Ta bort boende"
+      }
+    },
+    "listings": {
+      "location": "Plats för annonsen",
+      "vendor": "Leverantör",
+      "bookings": "Bokningar",
+      "ratings": "Betyg",
+      "reviews": "recensioner",
+      "activityStatus": "Aktivitetsstatus",
+      "status": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv",
+        "deleted": "Borttaget"
+      },
+      "tab": {
+        "active": "Aktiva annonser",
+        "deleted": "Borttagna annonser"
+      },
+      "deletedHint": "Här visas annonser som har tagits bort från marknadsplatsen. Du kan visa detaljer eller radera posterna permanent.",
+      "viewDetails": "Visa annonsen",
+      "deletedAt": "Borttaget den {datum}",
+      "detailTitle": "Uppgifter om annonsen",
+      "detailHint": "Fullständig förhandsvisning av detta objekt, inklusive bilder, detaljer, priser och dokument.",
+      "detailNotFound": "Den här annonsen kunde inte hittas.",
+      "detail": {
+        "backCars": "Tillbaka till bilar",
+        "backAccommodations": "Tillbaka till boenden",
+        "backExperiences": "Tillbaka till upplevelser"
+      },
+      "detailClose": "Stäng"
+    },
+    "vendors": {
+      "title": "Hantera leverantörer",
+      "add": "Lägg till leverantör",
+      "searchPlaceholder": "Sök efter namn, leverantörs-ID, e-postadress eller telefonnummer...",
+      "vendorId": "Leverantörs-ID",
+      "name": "Leverantör",
+      "userId": "Användar-ID",
+      "stats": {
+        "found": "Leverantörer hittade",
+        "active": "Aktiv",
+        "combinedRevenue": "Sammanlagda intäkter",
+        "page": "Sida",
+        "pageValue": "{aktuellt} / {totalt}"
+      },
+      "pagination": {
+        "previous": "Föregående",
+        "next": "Nästa",
+        "showing": "Sida {aktuell} av {totalt}"
+      },
+      "contactInfo": "Kontaktuppgifter",
+      "listings": "Annonser",
+      "commission": "Kommissionen",
+      "commissionValue": "{betyg}%",
+      "status": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
+      },
+      "revenue": "Intäkter",
+      "rating": "Betyg",
+      "reviews": "recensioner",
+      "details": "Detaljer",
+      "empty": "Inga leverantörer matchar din sökning.",
+      "notFound": "Leverantören hittades inte.",
+      "backToList": "Tillbaka till leverantörerna",
+      "accountDetails": "Kontoinformation",
+      "joined": "Blev medlem",
+      "detail": {
+        "activeListings": "Aktiva annonser",
+        "completedBookings": "Genomförda bokningar",
+        "averageRating": "Genomsnittligt betyg",
+        "openStrikes": "Öppna strejker",
+        "category": "Kategori",
+        "onboarded": "Anställd {datum}",
+        "accountDocuments": "Kontohandlingar",
+        "listingDocuments": "Listningsdokument — {kategori}",
+        "payoutSummary": "Utbetalningsöversikt",
+        "pendingPayout": "Väntande utbetalning",
+        "lastPayout": "Senaste utbetalning",
+        "internalNotes": "Interna anteckningar",
+        "noNotes": "Inga interna anteckningar ännu.",
+        "noteAttribution": "— [[[författare]]], {datum}",
+        "viewListings": "Visa annonser",
+        "suspendVendor": "Avstänga leverantör",
+        "documentStatus": {
+          "verified": "Verifierad",
+          "pendingReview": "Väntar på granskning",
+          "signed": "Undertecknat",
+          "notVerified": "Ej verifierat"
+        }
+      },
+      "menu": {
+        "verification": "Verifiering",
+        "approvePendingListing": "Godkänn väntande annons",
+        "requestAdditionalDocuments": "Begär ytterligare handlingar",
+        "upgradeToTier": "Uppgradera till nivå [[[nivå]]]",
+        "standingTrust": "Ställning och förtroende",
+        "grantInstantBook": "Bevilja behörigheten ”Instant Book”",
+        "addStrike": "Lägg till strejk / intern markering",
+        "clearStrike": "Avskriva en strejk",
+        "financial": "Ekonomi",
+        "holdPendingPayout": "Håll kvar väntande utbetalning",
+        "adjustCommissionRate": "Justera provisionssatsen",
+        "communication": "Kommunikation",
+        "contactVendor": "Kontakta leverantören",
+        "addInternalNote": "Lägg till en intern anteckning",
+        "account": "Konto",
+        "suspendAccount": "Avaktivera kontot",
+        "banPermanently": "Stäng av permanent"
+      },
+      "requestDocumentsModal": {
+        "title": "Begär ytterligare handlingar",
+        "subtitle": "Skicka en dokumentförfrågan till [[[leverantör]]].",
+        "documentLabel": "Välj dokument",
+        "documentPlaceholder": "Välj ett dokument",
+        "otherOption": "Övrigt (ej angivet)",
+        "customDocumentLabel": "Ange dokumentets namn",
+        "customDocumentPlaceholder": "Skriv in dokumentets namn",
+        "submit": "Skicka förfrågan",
+        "cancel": "Avbryt"
+      },
+      "confirm": {
+        "cancel": "Avbryt"
+      },
+      "confirmSuspend": {
+        "title": "Är du säker?",
+        "message": "Du är på väg att stänga av [[[leverantör]]]. De kommer att förlora åtkomsten till sitt konto tills det återaktiveras."
+      },
+      "confirmBan": {
+        "title": "Är du säker?",
+        "message": "Du är på väg att permanent blockera {vendor}. Denna åtgärd kan inte ångras."
+      },
+      "internalNoteModal": {
+        "title": "Lägg till intern anteckning",
+        "subtitle": "Lägg till en observation eller anteckning för [[[leverantör]]].",
+        "label": "Iakttagelse",
+        "placeholder": "Skriv dina iakttagelser eller anteckningar här...",
+        "submit": "Spara anteckning"
+      },
+      "experiences": "Erfarenheter",
+      "earnings": "Totala intäkter"
+    },
+    "bookings": {
+      "title": "Bokningar",
+      "subtitle": "Alla bokningar av flyg, hyrbilar, boende och upplevelser – oavsett om de gjorts via appen, webben eller manuellt.",
+      "create": "Skapa bokning",
+      "searchPlaceholder": "Sök efter kund, leverantör eller boknings-ID...",
+      "empty": "Inga bokningar stämmer överens med dina sökkriterier.",
+      "guests": "gäster",
+      "vendor": "Leverantör",
+      "contactCustomer": "Kontakta kundtjänst",
+      "contactVendor": "Kontakta leverantören",
+      "addInternalNote": "Lägg till intern anteckning",
+      "partialRefund": "Delvis återbetalning",
+      "cancelRefund": "Avbokning och återbetalning",
+      "flagDispute": "Markera som tvist",
+      "saveChanges": "Spara ändringarna",
+      "stats": {
+        "upcoming": "Kommande (7 dagar)",
+        "awaiting": "Väntar på bekräftelse",
+        "confirmed": "Bekräftat",
+        "disputed": "Omtvistat / flaggat",
+        "totalMonth": "Totalt denna månad"
+      },
+      "product": {
+        "all": "Alla produkttyper",
+        "flights": "Flyg",
+        "cars": "Bilar",
+        "accommodations": "Vistelser",
+        "experiences": "Erfarenheter"
+      },
+      "source": {
+        "all": "Alla källor",
+        "website": "Webbplats",
+        "mobileApp": "Mobilapp",
+        "admin": "Skapad av admin"
+      },
+      "dateRange": {
+        "label": "Datumintervall",
+        "day": "1 dag",
+        "week": "1 vecka",
+        "month": "1 månad",
+        "sixMonths": "6 månader",
+        "year": "1 år",
+        "all": "Alla"
+      },
+      "filter": {
+        "all": "Alla ({antal})",
+        "upcoming": "Kommande ({antal})",
+        "awaiting": "Väntar på bekräftelse ({antal})",
+        "confirmed": "Bekräftat ({antal})",
+        "completed": "Avslutade ({antal})",
+        "cancelled": "Avbokade ({antal})",
+        "disputed": "Omtvistat ({antal})"
+      },
+      "status": {
+        "confirmed": "Bekräftat",
+        "awaiting": "Väntar på bekräftelse",
+        "cancelled": "Inställt",
+        "completed": "Avslutat",
+        "disputed": "Omtvistat"
+      },
+      "sidebar": {
+        "customer": "Kund",
+        "source": "Källa: [[[källa]]]",
+        "vendor": "Leverantör",
+        "bookingDetails": "Bokningsinformation",
+        "payment": "Betalning",
+        "timeline": "Tidslinje",
+        "name": "Namn",
+        "contact": "Kontakt",
+        "whatsapp": "WhatsApp",
+        "assignedTo": "Tilldelad till",
+        "vendorContact": "Kontaktuppgifter till leverantören",
+        "checkIn": "Incheckningsdatum",
+        "checkOut": "Utcheckningsdatum",
+        "amount": "Belopp",
+        "paymentStatus": "Status",
+        "chargedCurrency": "Valuta som debiteras"
+      },
+      "createModal": {
+        "title": "Skapa bokning",
+        "subtitle": "Skapa en bokning åt en kund.",
+        "infoBannerPrefix": "Denna bokning kommer att märkas",
+        "infoBannerSource": "Källa: Skapad av admin",
+        "infoBannerSuffix": "och kommer att visas på kundens konto och i appen på samma sätt som en självbetjäningsbokning.",
+        "productType": "Produkttyp",
+        "product": {
+          "accommodations": "Boende",
+          "flights": "Flyg",
+          "cars": "Bilar",
+          "experiences": "Erfarenheter"
+        },
+        "customer": "Kund",
+        "customerPlaceholder": "Sök efter befintliga kunder efter namn, e-postadress eller telefonnummer...",
+        "vendorListing": "Leverantör / annons",
+        "vendorPlaceholder": "Sök efter leverantör eller annons...",
+        "startDate": "Startdatum",
+        "endDate": "Slutdatum",
+        "guestsUnits": "Gäster / boendeenheter",
+        "guestsPlaceholder": "t.ex. 2",
+        "totalAmount": "Totalt belopp",
+        "amountPlaceholder": "NGN",
+        "paymentStatus": "Betalningsstatus",
+        "payment": {
+          "sendLink": "Skicka betalningslänken till kunden",
+          "paidInFull": "Markera som fullt betalt",
+          "pending": "Betalning väntar – ingen länk har skickats"
+        },
+        "internalNote": "Intern anteckning",
+        "internalNotePlaceholder": "t.ex. Bokning via förfrågan på WhatsApp, kunden önskade ett rum på bottenvåningen",
+        "cancel": "Avbryt",
+        "submit": "Skapa bokning"
+      }
+    },
+    "payouts": {
+      "title": "Utbetalningar",
+      "subtitle": "Leverantörernas intäkter i alla kategorier, uppdelat efter avräkningsperiod.",
+      "searchPlaceholder": "Sök efter leverantörsnamn eller referensnummer...",
+      "pendingCount": "{antal} utestående utbetalningar",
+      "markComplete": "Markera som slutfört",
+      "contactVendor": "Kontakta leverantören",
+      "decline": "Minskning",
+      "empty": "Inga utbetalningar stämmer överens med din sökning.",
+      "requested": "Begärt {datum}",
+      "periodLabel": "Period: {period}",
+      "listBookingsBank": "{antal} bokningar · {bank} {konto}",
+      "netPayoutToVendor": "Nettobetalning till leverantören",
+      "grossEarnings": "Bruttointäkter från bokningar",
+      "platformCommission": "Plattformsprovision ({provisionssats} %)",
+      "netPayout": "Nettoutbetalning",
+      "paymentDestination": "Betalningsmottagare",
+      "bank": "Bank",
+      "accountNumber": "Kontonummer",
+      "accountName": "Kontonamn",
+      "payoutMethod": "Utbetalningssätt",
+      "associatedBookings": "Relaterade bokningar ({antal})",
+      "internalNote": "Intern anteckning",
+      "noteAttribution": "— [[[författare]]], {datum}",
+      "period": {
+        "thisMonth": "Den här månaden – juli 2026",
+        "lastMonth": "Förra månaden – juni 2026",
+        "quarter": "Detta kvartal – andra kvartalet 2026"
+      },
+      "stats": {
+        "totalPeriod": "Total utbetalning — period",
+        "totalVendors": "Hos {antal} leverantörer",
+        "pending": "Väntar på beslut",
+        "pendingSubtitle": "{antal} utbetalningar som väntar på åtgärd",
+        "completed": "Avslutat",
+        "completedSubtitle": "{count} utbetalningar har genomförts",
+        "declinedFailed": "Avvisad / Misslyckad",
+        "declinedFailedSubtitle": "{avvisad} avvisad · {misslyckad} misslyckad överföring"
+      },
+      "filter": {
+        "all": "Alla ({antal})",
+        "pending": "Väntar ({antal})",
+        "completed": "Avslutade ({antal})",
+        "declined": "Avvisade ({antal})",
+        "failed": "Misslyckades ({antal})"
+      },
+      "status": {
+        "pending": "Väntar på beslut",
+        "completed": "Avslutat",
+        "declined": "Avvisad",
+        "failed": "Misslyckades",
+        "failedTransfer": "Misslyckad överföring"
+      }
+    },
+    "reviews": {
+      "title": "Granskning av kommentarer",
+      "category": {
+        "unanswered": "Obesvarat",
+        "responseRequired": "Svar krävs",
+        "flagged": "Markerad",
+        "deleted": "Borttaget",
+        "published": "Publicerad"
+      },
+      "selectAll": "Markera allt",
+      "deselectAll": "Avmarkera alla",
+      "bulkPublish": "Publicera det markerade",
+      "bulkFlag": "Flagga vald",
+      "bulkResponseRequired": "Svar krävs",
+      "bulkDelete": "Ta bort det markerade",
+      "actionsGuideTitle": "Vad innebär dessa åtgärder?",
+      "actionsGuide": {
+        "publish": "Publicera — Gör recensionen synlig på den offentliga listningssidan.",
+        "flag": "Flagga — Markera recensionen för uppföljning (olämpligt eller misstänkt innehåll).",
+        "delete": "Ta bort — Ta bort recensionen så att den inte längre är synlig för allmänheten. Borttagna recensioner visas under fliken ”Borttagna”.",
+        "responseRequired": "Svar krävs — Ange att ett svar från en leverantör eller administratör krävs.",
+        "clearResponseRequired": "Ett tydligt svar krävs — Ta bort markeringen när ett officiellt svar har publicerats."
+      },
+      "selectReview": "Välj recension för {titel}",
+      "unansweredBadge": "Obesvarat",
+      "responseRequiredBadge": "Svar krävs",
+      "officialResponse": "Officiellt svar",
+      "empty": "Det finns inga recensioner i den här kategorin.",
+      "flag": "Flagga",
+      "responseRequired": "Svar krävs",
+      "clearResponseRequired": "Ett tydligt svar krävs",
+      "delete": "Ta bort",
+      "hide": "Dölj",
+      "publish": "Publicera",
+      "respondAsSynkAfrica": "Svara som SynkAfrica",
+      "responsePlaceholder": "Officiellt svar som är synligt för gäster och leverantörer...",
+      "photosLabel": "Gästfoton",
+      "status": {
+        "published": "Publicerad",
+        "flagged": "Markerad",
+        "deleted": "Borttaget",
+        "hidden": "Dold"
+      }
+    },
+    "reports": {
+      "title": "Rapporter",
+      "totalRevenue": "Totala intäkter (månad)",
+      "totalBookings": "Totalt antal bokningar (månad)",
+      "topExperience": "En oförglömlig upplevelse",
+      "activeVendors": "Aktiva leverantörer",
+      "popularExperiences": "Populära upplevelser",
+      "bookings": "bokningar",
+      "metric": "Metriska mått",
+      "value": "Värde",
+      "experience": "Erfarenhet",
+      "exportRevenue": "CSV-fil med exportintäkter",
+      "exportBookings": "Exportera bokningar som CSV-fil"
+    },
+    "support": {
+      "title": "Supportärenden",
+      "subtitle": "Granska supportförfrågningar från användare och leverantörer, uppdatera ärendestatus och skicka officiella svar.",
+      "tab": {
+        "users": "Användare",
+        "vendors": "Leverantörer"
+      },
+      "user": "Användare",
+      "vendor": "Leverantör",
+      "empty": "Inga biljetter uppfyller dessa sökkriterier.",
+      "adminResponse": "Svar från administratören",
+      "previousResponse": "Föregående svar",
+      "sendResponse": "Skicka svar"
+    }
+  },
+  "vendor": {
+    "nav": {
+      "workspace": "Arbetsyta",
+      "account": "Konto",
+      "dashboard": "Instrumentpanelen",
+      "listings": "Annonser",
+      "bookings": "Bokningar",
+      "earnings": "Resultat",
+      "notifications": "Meddelanden",
+      "businessProfile": "Företagsprofil",
+      "settings": "Inställningar",
+      "support": "Stöd",
+      "logOut": "Logga ut",
+      "openMenu": "Öppna menyn",
+      "closeMenu": "Stäng menyn"
+    },
+    "header": {
+      "verifiedVendor": "Verifierad leverantör",
+      "unverifiedVendor": "Overifierad leverantör",
+      "pendingVendor": "Verifiering pågår"
+    },
+    "signup": {
+      "title": "Skapa ditt leverantörskonto",
+      "subtitle": "Gå med i SynkAfrica och börja lägga upp dina bilar, boenden och upplevelser för resenärer över hela Afrika.",
+      "alreadyHaveAccount": "Har du redan ett leverantörskonto?",
+      "signIn": "Logga in",
+      "progressLabel": "Framsteg i leverantörsregistreringen",
+      "steps": {
+        "business": "Företags- och ägarinformation",
+        "security": "Säkerhet och verifiering",
+        "identity": "Identitetsverifiering"
+      },
+      "cancel": "Avbryt",
+      "back": "Tillbaka",
+      "continue": "Fortsätt",
+      "createAccount": "Skapa konto",
+      "completeRequiredFields": "Fyll i de obligatoriska fälten: [[[fält]]]",
+      "securityRequired": "Verifiera din telefon med en engångskod (OTP) och skapa ett giltigt lösenord för att fortsätta.",
+      "identityRequired": "Ladda upp ditt officiella ID-kort och godkänn villkoren för att skapa ditt konto.",
+      "sections": {
+        "businessInfo": "Företagsinformation",
+        "businessInfoHint": "Berätta om ditt företag.",
+        "ownerInfo": "Information om ägaren",
+        "ownerInfoHint": "Uppgifter om företagets ägare eller huvudkontaktperson.",
+        "phoneVerification": "Telefonverifiering",
+        "phoneVerificationHint": "Vi skickar en engångskod till det telefonnummer du har angett.",
+        "accountSecurity": "Kontosäkerhet",
+        "accountSecurityHint": "Skapa ett starkt lösenord till ditt leverantörskonto.",
+        "governmentId": "Officiellt utfärdat ID-kort",
+        "governmentIdHint": "Ladda upp ett giltigt pass, körkort eller NIN-kvitto för identitetsverifiering."
+      },
+      "fields": {
+        "businessName": "Företagets namn",
+        "businessType": "Verksamhetstyp",
+        "cacRegistrationNumber": "CAC-registreringsnummer",
+        "companyType": "Företagstyp",
+        "businessAddress": "Företagsadress",
+        "ownerFullName": "Ägarens fullständiga namn",
+        "ownerEmail": "E-postadress",
+        "phoneNumber": "Telefonnummer",
+        "dateOfBirth": "Födelsedatum",
+        "password": "Lösenord",
+        "confirmPassword": "Bekräfta lösenord"
+      },
+      "placeholders": {
+        "companyType": "Välj företagstyp",
+        "businessName": "t.ex. Coastal Trails NG",
+        "businessType": "Välj företagstyp",
+        "cacRegistrationNumber": "t.ex. RC1234567",
+        "businessAddress": "Gata, stad, delstat",
+        "ownerFullName": "Fullständigt juridiskt namn",
+        "ownerEmail": "du@business.com",
+        "phoneNumber": "7812345678",
+        "password": "Skapa ett lösenord",
+        "confirmPassword": "Ange ditt lösenord igen"
+      },
+      "sendOtp": "Skicka engångskod",
+      "resendOtp": "Skicka OTP på nytt",
+      "enterOtp": "Ange engångskoden",
+      "resendIn": "Skicka igen om 00:{sekunder}",
+      "otpVerified": "Telefonnumret har verifierats.",
+      "passwordRules": {
+        "minLength": "Minst 8 tecken",
+        "hasNumber": "Innehåller ett antal",
+        "hasUppercase": "Innehåller versaler"
+      },
+      "passwordMismatch": "Lösenorden stämmer inte överens.",
+      "togglePasswordVisibility": "Växla mellan att visa och dölja lösenordet",
+      "uploadId": "Dra och släpp ditt ID här",
+      "uploadIdHint": "JPG, PNG eller PDF (max 5 MB)",
+      "chooseFile": "Välj fil",
+      "idUploaded": "Dokumentet har laddats upp",
+      "idUploadFailed": "Uppladdningen misslyckades – försök igen.",
+      "removeId": "Ta bort ID",
+      "idPrivacyNote": "Ditt ID lagras på ett säkert sätt och används endast för verifieringsändamål. Vi delar aldrig dina personliga dokument med tredje part.",
+      "securityBanner": {
+        "title": "Dina uppgifter är säkra hos oss",
+        "message": "Vi använder säkerhetsåtgärder som följer branschstandard för att skydda dina uppgifter och säkerställa att ditt konto är säkert."
+      },
+      "agreeTermsPrefix": "Jag godkänner",
+      "termsOfService": "Användarvillkor",
+      "and": "och",
+      "privacyPolicy": "Integritetspolicy"
+    },
+    "login": {
+      "title": "Inloggning för leverantörer",
+      "intro": "Logga in på ditt SynkAfrica-leverantörskonto för att hantera annonser, bokningar och intäkter.",
+      "emailPlaceholder": "Ange din leverantörs e-postadress",
+      "signInGoogle": "Logga in med Google",
+      "noAccount": "Har du inget leverantörskonto?",
+      "signUp": "Registrera dig"
+    },
+    "verificationNotice": {
+      "unverified": {
+        "title": "Verifiering krävs",
+        "message": "Slutför verifieringen av din säljarkonto för att kunna publicera annonser och ta emot utbetalningar."
+      },
+      "pending": {
+        "title": "Verifiering pågår",
+        "message": "Din verifiering granskas just nu. Vissa funktioner kan vara begränsade tills godkännandet har skett."
+      },
+      "completeVerification": "Fullständig verifiering"
+    },
+    "notifications": {
+      "filter": {
+        "label": "Filtrera aviseringar",
+        "all": "Alla",
+        "newBooking": "Nya bokningar",
+        "bookingReminder": "24-timmarspåminnelser",
+        "payoutConfirmation": "Utbetalningar",
+        "adminMessage": "Administration"
+      },
+      "type": {
+        "newBooking": "Ny bokning",
+        "bookingReminder": "24-timmars påminnelse",
+        "payoutConfirmation": "Utbetalning",
+        "adminMessage": "Meddelande från administratören"
+      },
+      "unreadCount": "{antal} olästa meddelanden",
+      "allCaughtUp": "Nu är du helt uppdaterad.",
+      "markRead": "Markera som läst",
+      "markAllRead": "Markera alla som lästa",
+      "empty": "Inga meddelanden i denna kategori.",
+      "time": {
+        "justNow": "Alldeles nyss",
+        "hoursAgo": "{antal} timmar sedan"
+      },
+      "sample": {
+        "newBooking": {
+          "title": "Ny bokning mottagen",
+          "message": "Amara har bokat en solnedgångskryssning på Lagos Lagoon den 25 juli · 4 gäster. Bekräfta eller avböj inom 24 timmar."
+        },
+        "newBooking2": {
+          "title": "Ny bokning mottagen",
+          "message": "Chidi bokade Lekki Garden Suites för den 3 augusti · 2 gäster."
+        },
+        "reminder": {
+          "title": "Bokning inom 24 timmar",
+          "message": "Påminnelse: Solnedgångskryssning i Lagos-lagunen med Fatima imorgon kl. 17.30 · 6 gäster."
+        },
+        "reminder2": {
+          "title": "Bokning inom 24 timmar",
+          "message": "Påminnelse: Uthyrning av en Toyota Camry 2021 hos Emeka imorgon kl. 09.00."
+        },
+        "payout": {
+          "title": "Utbetalning bekräftad",
+          "message": "200 000 NGN har överförts till ditt GTBank-konto som slutar på 4521."
+        },
+        "payout2": {
+          "title": "Utbetalning bekräftad",
+          "message": "Uttaget på 150 000 NGN till Access Bank med slutnummer 8834 har genomförts utan problem."
+        },
+        "admin": {
+          "title": "Uppdatering av riktlinjerna från Synkafrica",
+          "message": "Uppdaterade riktlinjer för leverantörer av upplevelser finns nu tillgängliga. Vänligen läs igenom dem senast den 1 augusti."
+        },
+        "admin2": {
+          "title": "Annonsen har godkänts",
+          "message": "Din annons för ”Lagos Lagoon Sunset Cruise” är nu publicerad på Synkafrica."
+        }
+      }
+    },
+    "dashboard": {
+      "welcomeBack": "Välkommen tillbaka,",
+      "addListing": "Lägg till annons",
+      "period": {
+        "label": "Mätperiod",
+        "day": "En dag",
+        "week": "En vecka",
+        "month": "En månad",
+        "sixMonths": "Sex månader",
+        "year": "Ett år"
+      },
+      "stats": {
+        "liveListings": "Aktuella annonser",
+        "newBookings": "Nya bokningar",
+        "earnings": "Resultat",
+        "pendingApproval": "Väntar på godkännande"
+      },
+      "goToBookings": "Gå till bokningar",
+      "yourListings": "Dina annonser",
+      "seeAll": "Visa alla",
+      "status": {
+        "live": "Aktuella annonser",
+        "pending": "Väntar...",
+        "paused": "Pausad",
+        "draft": "Utkast"
+      },
+      "editListing": "Redigera annons",
+      "deleteListing": "Ta bort annonsen",
+      "pauseListing": "Pausa listningen",
+      "playListing": "Lista över CV:n",
+      "deleteListingModal": {
+        "title": "Ta bort annonsen?",
+        "message": "Är du säker på att du vill ta bort ”{title}”? Den här åtgärden går inte att ångra.",
+        "confirm": "Ta bort annonsen",
+        "cancel": "Avbryt"
+      },
+      "category": {
+        "accommodations": "Boende",
+        "carRentals": "Biluthyrning",
+        "tours": "Rundturer",
+        "toursExperiences": "Rundturer och upplevelser"
+      }
+    },
+    "businessProfile": {
+      "businessName": "Företagsnamn",
+      "businessNameHint": "Internt namn som används i utbetalningar och leverantörsposter. Visas inte i offentliga listor.",
+      "internalNameLabel": "Internt företagsnamn",
+      "contactDetails": "Kontaktuppgifter",
+      "contactDetailsHint": "Hur Synkafrica och gästerna kontaktar dig för hjälp med bokningen.",
+      "phone": "Telefonnummer",
+      "email": "E-postadress",
+      "address": "Företagsadress",
+      "payoutAccount": "Bankkonto för utbetalningar",
+      "payoutAccountHint": "Utbetalningar från intäkterna överförs till detta konto.",
+      "bankName": "Bankens namn",
+      "accountNumber": "Kontonummer",
+      "accountNumberLocked": "Kontonumret kan endast ändras var [[[månader]]] månader. Nästa möjlighet att ändra det är den {datum}.",
+      "accountName": "Kontonamn",
+      "bank": {
+        "zenith": "Zenith Bank",
+        "firstBank": "Första banken"
+      },
+      "passwordUpdate": "Lösenordsuppdatering",
+      "passwordUpdateHint": "Välj ett starkt lösenord som du inte använder någon annanstans.",
+      "currentPassword": "Nuvarande lösenord",
+      "newPassword": "Nytt lösenord",
+      "confirmPassword": "Bekräfta nytt lösenord",
+      "passwordMismatch": "De nya lösenorden stämmer inte överens.",
+      "updatePassword": "Uppdatera lösenord",
+      "passwordUpdated": "Lösenordet har uppdaterats.",
+      "saveChanges": "Spara ändringarna",
+      "saved": "Sparat.",
+      "rejected": {
+        "title": "Ansökan har inte godkänts",
+        "noReason": "En administratör har inte godkänt din ansökan. Rätta till dina uppgifter och dokument nedan och skicka in ansökan på nytt.",
+        "resubmit": "Skicka in på nytt för granskning",
+        "resubmitting": "Skickar in igen…",
+        "resubmitted": "Inskickad på nytt. En administratör kommer att granska din ansökan på nytt.",
+        "resubmitFailed": "Det gick inte att skicka in på nytt. Försök igen."
+      },
+      "cac": {
+        "title": "CAC-registrering",
+        "hint": "Uppgifterna har kontrollerats mot CAC-registret. Du kan korrigera dessa uppgifter tills kontrollen godkänns.",
+        "number": "CAC-registreringsnummer",
+        "companyType": "Företagstyp",
+        "companyTypePlaceholder": "Välj företagstyp",
+        "status": {
+          "verified": "Verifierad",
+          "failed": "Ej verifierat",
+          "unverified": "Väntar på kontroll"
+        },
+        "verifiedAs": "Stämmer överens med {namn} i CAC-registret.",
+        "failedHint": "Uppgifterna stämde inte överens med CAC-registret. Rätta till dem och spara för att kontrollera igen.",
+        "pendingHint": "När du sparar utförs CAC-kontrollen på nytt. Uppdatera sidan om en stund för att se resultatet.",
+        "lockedHint": "Verifierade uppgifter kan inte ändras här. Kontakta supporten om något är fel."
+      },
+      "documents": {
+        "title": "Dokument och verifiering",
+        "subtitle": "Dokument på företagsnivå gäller för hela ditt konto. Fordonsdokument krävs för varje annons innan den kan publiceras.",
+        "businessSection": "Affärsdokument",
+        "business": {
+          "cac": "Registreringsbevis (CAC)"
+        },
+        "uploadedMeta": "Laddad upp {datum} · {filnamn}",
+        "view": "Visa",
+        "vehicleSection": "Fordonshandlingar · {antal} annonser",
+        "vehicleLegend": "Försäkring · Trafiksäkerhet · Ägarbevis",
+        "type": {
+          "insurance": "Försäkringsintyg",
+          "roadworthiness": "Trafiksäkerhetsintyg",
+          "ownership": "Ägarbevis"
+        },
+        "status": {
+          "verified": "Verifierad",
+          "rejected": "Avvisad",
+          "pending": "Väntar på beslut",
+          "notUploaded": "Har inte laddats upp"
+        },
+        "listingStatus": {
+          "allVerified": "Alla verifierade",
+          "actionNeeded": "Åtgärder krävs",
+          "notStarted": "Inte påbörjat",
+          "inProgress": "Pågår"
+        },
+        "reupload": "Ladda upp på nytt",
+        "upload": "Ladda upp",
+        "rejection": {
+          "plateMismatch": "Dokumentets namn stämmer inte överens med det registrerade registreringsnumret. Ladda upp ett nytt fordonstillstånd som stämmer överens med ABJ-771-KD."
+        }
+      }
+    },
+    "support": {
+      "helpBanner": "Lämna in ett klagomål eller be om hjälp från Synkafricas supportteam. Vi svarar vanligtvis inom 1–2 arbetsdagar.",
+      "helpBannerEmail": "Uppdateringar kommer att skickas till [[[e-postadress]].",
+      "openTickets": "{antal} öppna ärenden",
+      "tabs": {
+        "label": "Supportavsnitt"
+      },
+      "createTicket": "Skapa ett supportärende",
+      "createTicketHint": "Beskriv ditt problem i detalj så att vi kan lösa det snabbt.",
+      "subject": "Ämne",
+      "subjectPlaceholder": "Kort sammanfattning av ditt ärende",
+      "category": {
+        "booking": "Problem med bokningen",
+        "payout": "Utbetalning och intäkter",
+        "listing": "Utbud och tillgänglighet",
+        "account": "Konto och profil",
+        "complaint": "Klagomål",
+        "other": "Övrigt"
+      },
+      "priority": {
+        "low": "Låg",
+        "medium": "Medium",
+        "high": "Hög",
+        "urgent": "Brådskande"
+      },
+      "priorityHint": "Använd endast ”Brådskande” vid tidsmässigt känsliga boknings- eller utbetalningsärenden.",
+      "bookingReference": "Bokningsnummer",
+      "bookingReferencePlaceholder": "t.ex. VB-3 eller ordernummer (valfritt)",
+      "description": "Beskrivning",
+      "descriptionPlaceholder": "Förklara vad som hände, när det inträffade och vilket resultat du behöver.",
+      "submitTicket": "Skicka in ärende",
+      "ticketSubmitted": "Ärende {nummer} har skickats in. Vårt team kommer att återkomma inom kort.",
+      "responseTime": "Obligatoriska fält är markerade med *.",
+      "yourTickets": "Dina biljetter",
+      "yourTicketsHint": "Håll koll på de klagomål och supportförfrågningar som du har skickat in.",
+      "filter": {
+        "label": "Filtrera ärenden efter status",
+        "all": "Alla"
+      },
+      "status": {
+        "open": "Öppna",
+        "inProgress": "Pågår",
+        "resolved": "Beslut",
+        "closed": "Stängt"
+      },
+      "updated": "Uppdaterad",
+      "created": "Skapad",
+      "emptyTickets": "Inga biljetter uppfyller dessa sökkriterier.",
+      "loading": "Laddar biljetter…",
+      "loadFailed": "Det gick inte att ladda dina biljetter. Försök igen.",
+      "submitFailed": "Det gick inte att skicka in ditt ärende. Försök igen.",
+      "viewConversation": "Visa konversationen",
+      "backToTickets": "Tillbaka till biljetterna",
+      "conversation": "Samtal",
+      "you": "Du",
+      "supportTeam": "Supportteamet",
+      "replyPlaceholder": "Skriv ditt svar…",
+      "sendReply": "Skicka svar",
+      "sending": "Skickar…",
+      "replyFailed": "Det gick inte att skicka ditt svar. Försök igen."
+    },
+    "earnings": {
+      "availableBalance": "Tillgängligt saldo",
+      "lifetimeEarnings": "Livstidsinkomst",
+      "transactionHistory": "Transaktionshistorik",
+      "withdrawFunds": "Ta ut pengar",
+      "amountToWithdraw": "Belopp att ta ut",
+      "selectBankAccount": "Välj bankkonto",
+      "payoutAccount": "Utbetalningskonto",
+      "noBankAccount": "Inget utbetalningskonto har lagts till ännu.",
+      "addBankAccount": "Lägg till ett bankkonto under Företagsprofil →",
+      "availableHint": "Finns:",
+      "processingNote": "Uttag behandlas inom 1–2 arbetsdagar.",
+      "paymentFlowTitle": "Regler för betalning och uttag",
+      "paymentFlowInstant": "Uttag på högst ₦200 000 behandlas automatiskt efter bekräftelse.",
+      "paymentFlowApproval": "Uttag på över ₦200 000 kräver godkännande av superadministratören.",
+      "paymentFlowAuth": "Vid uttag krävs en transaktions-PIN och en engångskod för belopp över ₦200 000.",
+      "withdrawalModal": {
+        "title": "Bekräfta uttaget",
+        "pin": "Transaktions-PIN-kod",
+        "otp": "OTP-kod",
+        "sendOtp": "Skicka engångskod",
+        "submit": "Bekräfta uttaget",
+        "pendingApproval": "Detta uttag måste godkännas av superadministratören. Du kommer att få ett meddelande så snart det har godkänts.",
+        "cancel": "Avbryt"
+      },
+      "status": {
+        "completed": "Avslutat",
+        "pending": "Väntar på beslut",
+        "failed": "Misslyckades"
+      },
+      "transaction": {
+        "bookingPayment": "Betalning för bokningen",
+        "withdrawal": "Uttag",
+        "platformFee": "Plattformsavgift",
+        "refund": "Återbetalning"
+      },
+      "bank": {
+        "gtbank": "GTBank",
+        "access": "Access Bank"
+      },
+      "duration": {
+        "label": "Resultatperiod",
+        "daily": "Dagligen",
+        "weekly": "Varje vecka",
+        "monthly": "Månadsvis",
+        "all": "Alla"
+      },
+      "commissionSplit": "Provisionsfördelning",
+      "commissionSplitHint": "Bokningsintäkterna fördelas så att [[[leverantör]]] % går till dig och {plattform} % till Synkafrica.",
+      "vendorShare": "Din andel",
+      "platformShare": "Plattformsavgift",
+      "grossRevenue": "Bruttointäkter",
+      "downloadStatements": "Ladda ner redovisningen",
+      "emptyTransactions": "Inga transaktioner under denna period.",
+      "statement": {
+        "date": "Datum",
+        "title": "Titel",
+        "description": "Beskrivning",
+        "type": "Typ",
+        "amount": "Belopp",
+        "status": "Status"
+      }
+    },
+    "listings": {
+      "detail": {
+        "back": "Tillbaka till listorna",
+        "backToBookings": "Tillbaka till bokningarna",
+        "heading": "Uppgifter om annonsen",
+        "hint": "Fullständig förhandsvisning av detta objekt, inklusive bilder, detaljer, priser och dokument.",
+        "status": "Status",
+        "category": "Kategori",
+        "rating": "Betyg",
+        "notFound": "Inlägget hittades inte."
+      },
+      "bookingAvailability": "Tillgänglighet för bokning",
+      "filter": {
+        "allCategories": "Alla kategorier",
+        "allStatuses": "Alla statusar",
+        "statusLabel": "Status",
+        "status": {
+          "live": "Bo",
+          "pending": "Väntar på beslut",
+          "draft": "Utkast",
+          "paused": "Pausad"
+        },
+        "empty": "Inga annonser matchar dina sökkriterier."
+      },
+      "status": {
+        "pendingApproval": "Väntar på godkännande",
+        "paused": "Pausad"
+      },
+      "availability": {
+        "selectListing": "Förteckning",
+        "modeAvailable": "Markera som tillgänglig",
+        "modeBlock": "Blockerade datum",
+        "modeAvailableHint": "Klicka på datumen för att öppna dem för bokningar. Klicka igen för att ta bort tillgängligheten.",
+        "modeBlockHint": "Klicka på datum för att spärra bokningar. Klicka igen för att häva spärren.",
+        "legendAvailable": "Finns",
+        "legendBlocked": "Blockerad",
+        "legendSelected": "Valt",
+        "available": "Finns tillgängligt",
+        "blocked": "Blockerad",
+        "timeSlots": "Tidsintervall",
+        "capacity": "Kapacitet",
+        "selectDayHint": "Välj ett datum i kalendern för att ställa in tidsintervall.",
+        "selectAvailableDay": "Markera detta datum som ledigt för att kunna ställa in tidsluckor.",
+        "blockedDayMessage": "Det här datumet är spärrat. Avspärra det för att ställa in tidsintervall.",
+        "defaultCapacity": "Standardkapacitet",
+        "defaultCapacityHint": "Gäller för nya tillgängliga datum och aktiverade tidsintervall.",
+        "leadTime": "Leveranstid",
+        "leadTimeHint": "Minsta uppsägningstid som krävs innan en gäst kan boka.",
+        "leadTimeUnitHours": "Öppettider",
+        "leadTimeUnitDays": "Dagar"
+      },
+      "calendar": {
+        "sun": "Söndag",
+        "mon": "Mån",
+        "tue": "tis",
+        "wed": "Ons",
+        "thu": "Tors",
+        "fri": "fre",
+        "sat": "lör",
+        "previousMonth": "Föregående månad",
+        "nextMonth": "Nästa månad"
+      }
+    },
+    "bookings": {
+      "tab": {
+        "upcoming": "Kommande",
+        "past": "Tidigare",
+        "cancelled": "Inställt",
+        "declined": "Avvisat"
+      },
+      "stats": {
+        "awaitingConfirmation": "Väntar på bekräftelse",
+        "upcomingConfirmed": "Kommande (bekräftade)",
+        "earningsThisMonth": "Intäkter denna månad",
+        "responseRate": "Svarsfrekvens (30 dagar)"
+      },
+      "searchPlaceholder": "Sök efter gästens namn eller bokningsnummer...",
+      "allListings": "Alla annonser",
+      "viewModeLabel": "Översikt över bokningar",
+      "view": {
+        "list": "Lista",
+        "calendar": "Kalender"
+      },
+      "calendarComingSoon": "Kalendervyn kommer snart.",
+      "respondWithin": "Svara inom {tid}",
+      "paymentSecured": "Betalningen är säkrad",
+      "messageGuest": "Meddelande till gästen",
+      "viewListing": "Visa annonsen",
+      "cancelBooking": "Avboka bokningen",
+      "dateRangeLabel": "Filtrera efter datumintervall",
+      "dateRange": {
+        "all": "Genom tiderna",
+        "pastMonth": "Förra månaden",
+        "past3Months": "De senaste 3 månaderna",
+        "past6Months": "De senaste 6 månaderna",
+        "pastYear": "Det senaste året"
+      },
+      "empty": {
+        "upcoming": "Inga kommande bokningar för denna period.",
+        "past": "Det finns inga tidigare bokningar för denna period.",
+        "cancelled": "Det finns inga avbokade bokningar för denna period.",
+        "declined": "Inga avbokningar för denna period."
+      },
+      "declineModal": {
+        "title": "Avboka bokningen",
+        "subtitle": "Förklara för [[[gäst]]] varför bokningen av {referens} avslås.",
+        "reasonLabel": "Anledning till avslaget",
+        "reasonPlaceholder": "Förklara varför du inte kan godkänna denna bokning...",
+        "cancel": "Avbryt",
+        "submit": "Avboka bokningen"
+      },
+      "declineReason": "Orsak till avslag",
+      "deliveryAddress": "Leveransadress",
+      "pickupAddress": "Upphämtningsadress",
+      "carMode": {
+        "selfDrive": "Egenkörning",
+        "withDriver": "Med förare"
+      },
+      "calendar": {
+        "selectedDay": "{antal} bokning(ar) denna dag",
+        "noBookings": "Inga bokningar denna dag."
+      },
+      "pendingConfirmation": "{antal} bokning(ar) väntar på din bekräftelse.",
+      "specialRequests": "Särskilda önskemål",
+      "confirm": "Bekräfta",
+      "decline": "Minskning",
+      "markComplete": "Markera som avslutat",
+      "status": {
+        "awaitingConfirmation": "Väntar på bekräftelse",
+        "confirmed": "Bekräftat",
+        "declined": "Avvisad",
+        "completed": "Avslutat",
+        "cancelled": "Inställt"
+      }
+    },
+    "addListing": {
+      "title": "Lägg till ny annons",
+      "editTitle": "Redigera annons",
+      "loadError": "Det gick inte att ladda den här annonsen. Försök igen.",
+      "subtitle": "Skapa en ny annons och börja nå ut till fler kunder.",
+      "backToListings": "← Tillbaka till listan",
+      "backToListing": "← Tillbaka till listan",
+      "progressLabel": "Förloppet för noteringen",
+      "steps": {
+        "carDetails": "Bilinformation",
+        "accommodationDetails": "Information om boendet",
+        "experienceDetails": "Uppgifter om upplevelsen",
+        "media": "Media",
+        "pricing": "Priser",
+        "documents": "Dokument",
+        "review": "Granska och publicera"
+      },
+      "whatAreYouListing": "Vad lägger du ut till försäljning?",
+      "category": {
+        "car": {
+          "title": "Bil",
+          "description": "Lägg upp en bil för uthyrning."
+        },
+        "accommodation": {
+          "title": "Boende",
+          "description": "Ange ett boende."
+        },
+        "experience": {
+          "title": "Erfarenhet",
+          "description": "Ange en aktivitet eller en rundtur."
+        }
+      },
+      "carDetailsHeading": "Bilinformation",
+      "accommodationDetailsHeading": "Information om boende",
+      "experienceDetailsHeading": "Uppgifter om upplevelsen",
+      "experienceType": "Typ av upplevelse / Kategori",
+      "experienceTypeSelect": "Välj typ av upplevelse",
+      "experienceLocationPlaceholder": "t.ex. Lekki, Lagos, Nigeria",
+      "experienceHighlights": "Höjdpunkter / Kort beskrivning",
+      "experienceHighlightsHint": "En kort och fängslande sammanfattning av vad gästerna kommer att göra och uppleva.",
+      "experienceHighlightsPlaceholder": "Beskriv upplevelsen, vad som gör den unik och varför gästerna kommer att uppskatta den.",
+      "experienceAvailabilityHeading": "Tillgänglighet",
+      "experienceAvailabilityHint": "Ange när din upplevelse är tillgänglig.",
+      "operatingDays": "Öppettider",
+      "startTime": "Starttid",
+      "endTime": "Sluttid",
+      "experienceScheduleWeekly": "Upprepas varje vecka",
+      "experienceScheduleWeeklyHint": "Denna upplevelse erbjuds varje vecka på utvalda dagar.",
+      "experienceScheduleDateRange": "Anpassat datumintervall",
+      "experienceScheduleDateRangeHint": "Ange ett specifikt tidsintervall för denna upplevelse.",
+      "experienceDateRangeHeading": "Välj datumintervall",
+      "experienceDateRangeHint": "Välj start- och slutdatum för när denna upplevelse ska vara tillgänglig.",
+      "experienceDateRangeStart": "Startdatum",
+      "experienceDateRangeEnd": "Slutdatum",
+      "additionalInfoSection": "Ytterligare information",
+      "whatsIncludedHint": "Ange vad som ingår i upplevelsen.",
+      "includesItemsPlaceholder": "t.ex. Utrustning, guide, säkerhetsutrustning, vatten på flaska",
+      "whatToBring": "Vad man ska ta med sig / ha på sig",
+      "whatToBringHint": "Berätta för gästerna vad de ska ta med sig eller ha på sig.",
+      "whatToBringPlaceholder": "t.ex. bekväma kläder, slutna skor, solkräm",
+      "tagInputFooter": "Lägg till varje artikel och tryck på Enter",
+      "additionalInformationHeading": "Ytterligare information",
+      "additionalInformationHint": "Lägg till annan användbar information för dina gäster.",
+      "additionalInformationPlaceholder": "t.ex. åldersgränser, hälsokrav, avbokningsregler, information om mötesplats",
+      "weekday": {
+        "mon": "Mån",
+        "tue": "tis",
+        "wed": "Ons",
+        "thu": "Tors",
+        "fri": "fre",
+        "sat": "lör",
+        "sun": "Söndag"
+      },
+      "carName": "Bilens namn",
+      "carNamePlaceholder": "t.ex. Toyota Highlander 2024",
+      "carModel": "Bilmodell / Utförande",
+      "carModelPlaceholder": "t.ex. 2,4 l Limited AWD",
+      "transmission": {
+        "automatic": "Automatisk",
+        "manual": "Handbok"
+      },
+      "year": "År",
+      "yearPlaceholder": "t.ex. 2024",
+      "comesWithDriver": "Ingår drivrutinen?",
+      "yes": "Ja",
+      "no": "Nej",
+      "shortDescription": "Kort beskrivning",
+      "carDescriptionPlaceholder": "Beskriv bilen, dess skick och vad som ingår för hyresgästen.",
+      "perksFeatures": "Fördelar och funktioner",
+      "perksPlaceholder": "Lägg till varje förmån och tryck på Enter",
+      "propertyName": "Fastighetsnamn",
+      "accommodationName": "Boendets namn",
+      "accommodationNamePlaceholder": "t.ex. Oceanview Suites Lekki",
+      "propertyNamePlaceholder": "t.ex. Lekki Garden Suites",
+      "propertyType": "Fastighetstyp",
+      "propertyTypeSelect": "Välj fastighetstyp",
+      "propertyTypePlaceholder": "t.ex. lägenhet, villa, hotell",
+      "address": "Adress",
+      "addressPlaceholder": "Fastighetens fullständiga adress",
+      "accommodationLocationPlaceholder": "t.ex. Lekki fas 1, Lagos, Nigeria",
+      "accommodationMaxGuests": "Maximalt antal gäster (boende)",
+      "accommodationMaxGuestsPlaceholder": "t.ex. 12",
+      "checkInTime": "Incheckningstid",
+      "checkOutTime": "Utcheckningstid",
+      "availability": "Tillgänglighet",
+      "availabilityAlways": "Alltid tillgänglig",
+      "availabilityDateRange": "Ange datumintervall",
+      "availabilityHint": "Du kan också hantera specifika datum i din kalender efter publiceringen.",
+      "popularPerks": "Populära förmåner",
+      "popularPerksHint": "Välj vilka bekvämligheter som finns på din fastighet.",
+      "viewAllPerks": "Visa alla förmåner",
+      "showLessPerks": "Visa mindre",
+      "propertyOwner": "Är du fastighetsägaren?",
+      "propertyOwnerYes": "Ja, jag är ägaren",
+      "propertyOwnerNo": "Nej, jag är en auktoriserad ombud",
+      "bedrooms": "Sovrum",
+      "bathrooms": "Badrum",
+      "accommodationDescriptionPlaceholder": "Beskriv kortfattat ditt boende, atmosfären, sevärdheterna i närheten och vad som gör det speciellt.",
+      "amenities": "Bekvämligheter",
+      "amenitiesPlaceholder": "Lägg till varje bekvämlighet och tryck på Enter",
+      "experienceName": "Namn på upplevelsen",
+      "experienceNamePlaceholder": "t.ex. Paintball Adventure Lagos",
+      "location": "Plats",
+      "locationPlaceholder": "t.ex. Victoria Island, Lagos",
+      "duration": "Varaktighet",
+      "durationPlaceholder": "t.ex. 2 timmar",
+      "maxGuests": "Maximalt antal gäster",
+      "experienceDescriptionPlaceholder": "Beskriv aktiviteten, resplanen och vad gästerna kan förvänta sig.",
+      "whatsIncluded": "Vad ingår",
+      "includesPlaceholder": "Lägg till varje post och tryck på Enter",
+      "mediaHeading": "Bilder i annonsen",
+      "mediaHint": "Ladda upp tydliga bilder eller videoklipp. Upp till 8 filer.",
+      "uploadImages": "Dra och släpp bilder eller videoklipp här, eller klicka för att bläddra",
+      "uploadImagesHint": "PNG, JPG, WEBP eller MP4 (max 10 MB)",
+      "removeImage": "Ta bort bilden",
+      "mediaSkippedUnsupported": "{count} fil(er) har hoppats över — formatet stöds inte. Använd PNG, JPG, WEBP eller MP4 (HEIC-bilder från iPhone stöds inte ännu).",
+      "mediaSkippedTooLarge": "{count} fil(er) hoppades över — varje fil måste vara mindre än 10 MB.",
+      "mediaPreviewFailed": "Förhandsgranskning ej tillgänglig",
+      "mediaUploading": "Laddar upp…",
+      "mediaUploadFailed": "Uppladdningen misslyckades",
+      "pickupDeliveryHeading": "Avhämtning eller leverans",
+      "pickupDeliveryQuestion": "Vilka överlämningsalternativ erbjuder ni? Markera alla alternativ som gäller.",
+      "pickupAddress": "Upphämtningsadress",
+      "pickupAddressPlaceholder": "Ange adressen där gästerna kan hämta bilen",
+      "clientPickup": "Avhämtning hos kunden",
+      "clientPickupHint": "Kunden hämtar bilen hos dig.",
+      "deliveryDropoff": "Leverans / Avlämning",
+      "deliveryDropoffHint": "Du levererar bilen till kunden.",
+      "carPricingHeading": "Hyrespriser",
+      "price12hr": "12 timmars hyra (NGN)",
+      "price24hr": "24-timmarsuthyrning (NGN)",
+      "priceMultiDay": "Flera dagar (per dag, NGN)",
+      "driverAddonPrice": "Tilläggspris för förare (NGN)",
+      "selfDriveNoPrice": "Självkörning valt — ingen extra kostnad för chaufför krävs.",
+      "deliveryFee": "Leverans-/avlämningsavgift (NGN)",
+      "clientPickupNoPrice": "Upphämtning hos kund har valts — ingen leveransavgift tillkommer.",
+      "pricingLocationHint": "I nästa steg kan du ange ytterligare uppgifter om upphämtnings- eller leveransplatsen.",
+      "accommodationPricingHeading": "Priser för vistelser",
+      "roomTypesPricing": "Rumstyper och priser",
+      "roomTypesPricingHint": "Ange vilka olika typer av rum ni erbjuder.",
+      "addRoomType": "Lägg till rumstyp",
+      "addRoomTypeModalTitle": "Lägg till rumstyp",
+      "editRoomTypeModalTitle": "Redigera rumstyp",
+      "saveRoomType": "Spara rumstyp",
+      "roomType": "Rumstyp",
+      "roomTypePlaceholder": "t.ex. Deluxe-svit",
+      "roomDescription": "Beskrivning",
+      "roomDescriptionPlaceholder": "Beskriv kortfattat denna rumstyp",
+      "roomMaxGuests": "Max antal gäster",
+      "roomMaxGuestsPlaceholder": "t.ex. 2",
+      "roomPricePerNight": "Pris (per natt)",
+      "roomTypesEmptyTitle": "Inga rumstyper har lagts till ännu",
+      "roomTypesEmptyHint": "Klicka på ”Lägg till rumstyp” för att komma igång.",
+      "actions": "Åtgärder",
+      "edit": "Redigera",
+      "delete": "Ta bort",
+      "nightlyRate": "Pris per natt (NGN)",
+      "cleaningFee": "Städavgift (NGN)",
+      "experiencePricingHeading": "Priser",
+      "experiencePricingHint": "Bestäm dina biljettpriser.",
+      "singleTicketPrice": "Pris för enstaka biljett",
+      "singleTicketPriceHint": "Pris per person",
+      "groupTicketPrice": "Gruppbiljettpris (från) (valfritt)",
+      "groupTicketPriceHint": "Pris per person för grupper",
+      "minGroupSizeOptional": "Minsta gruppstorlek (valfritt)",
+      "maxGroupSizeOptional": "Maximal gruppstorlek (valfritt)",
+      "minGroupSizePlaceholder": "t.ex. 5",
+      "maxGroupSizePlaceholder": "t.ex. 20",
+      "optional": "Valfritt",
+      "review": {
+        "groupSize": "Gruppstorlek",
+        "category": "Kategori",
+        "title": "Titel",
+        "images": "Bilder",
+        "documents": "Uppladdade dokument",
+        "description": "Beskrivning",
+        "gpsConfirmed": "GPS-spårningsenhet bekräftad"
+      },
+      "pricePerPerson": "Pris per person (NGN)",
+      "minGroupSize": "Minsta gruppstorlek",
+      "documents": {
+        "stepTitle": "Uppladdning av dokument",
+        "pageTitle": "Ladda upp nödvändiga dokument",
+        "pageIntro": "Ladda upp de dokument som krävs för att verifiera din bilannons.",
+        "pageSubtitle": "Ladda upp tydliga och giltiga dokument för att skapa förtroende och få din annons godkänd snabbare.",
+        "intro": {
+          "cars": "Ladda upp dokumenten nedan innan din bilannons kan publiceras.",
+          "accommodations": "Ladda upp handlingar som styrker ägarskap eller fullmakt från ombud för denna boendeannons.",
+          "experiences": "Ladda upp ditt verifieringsdokument för företaget innan du publicerar."
+        },
+        "proofOfOwnership": "Ägarbevis",
+        "proofOfOwnershipHint": "Ladda upp dokumentet som styrker äganderätten till fordonet (t.ex. fordonshandboken eller köpkvittot).",
+        "roadworthiness": "Trafiksäkerhetsintyg",
+        "roadworthinessHint": "Ladda upp ett giltigt trafiksäkerhetsintyg för fordonet.",
+        "insurance": "Försäkring",
+        "insuranceDocument": "Försäkringshandling",
+        "insuranceHint": "Ladda upp det aktuella försäkringsbeviset för fordonet.",
+        "cac": "CAC-registrering",
+        "cacRegistration": "CAC-registreringsbevis",
+        "cacHint": "Ladda upp ditt registreringsbevis för företagsnamnet (CAC).",
+        "accommodationOwnershipHint": "Ägarbevis, hyresavtal eller ägarbevis för fastigheten",
+        "agentAuthorization": "Fullmakt för ombud",
+        "agentAuthorizationHint": "Undertecknat brev från fastighetsägaren där denne ger dig tillstånd att lägga ut fastigheten till försäljning",
+        "agentProofOfAddress": "Bevis på adress för ombudet",
+        "agentProofOfAddressHint": "Elräkning eller kontoutdrag där din adress framgår",
+        "addressPhotos": "Bilder som stämmer överens med den angivna adressen",
+        "addressPhotosHint": "Bilder som tydligt visar fastigheten på den angivna adressen",
+        "gpsAcknowledgment": "Jag intygar att detta fordon är utrustat med en fungerande GPS-spårningsenhet, och jag är ansvarig om detta visar sig vara felaktigt.",
+        "requiredBadge": "Obligatoriskt",
+        "uploadPrompt": "Klicka för att ladda upp eller dra och släpp",
+        "uploadFormats": "PDF, JPG, PNG, max 10 MB",
+        "safetyTitle": "Dina dokument är i tryggt förvar",
+        "safetyText": "Alla dokument förvaras på ett säkert sätt och används endast i verifieringssyfte. De kommer inte att offentliggöras.",
+        "submitForReview": "Skicka in för granskning",
+        "submitHint": "Din annons kommer att granskas och du får ett meddelande så snart den har godkänts.",
+        "untitledListing": "Annons utan titel",
+        "sidebar": {
+          "listingPreview": "Förhandsgranskning av annonsen",
+          "edit": "Redigera",
+          "carsListing": "Bilannonser",
+          "accommodationsListing": "Lista över boenden",
+          "experiencesListing": "Erfarenhetsförteckning",
+          "comesWithDriver": "Levereras med drivrutin",
+          "selfDrive": "Självkörning",
+          "pricing": "Priser",
+          "halfDay": "Halvdag",
+          "fullDay": "Heldag",
+          "extraHour": "En extra timme",
+          "progress": "Förloppet för noteringen"
+        }
+      },
+      "documentsHeading": "Nödvändiga handlingar",
+      "uploadDocument": "Ladda upp dokument",
+      "removeFile": "Ta bort",
+      "reviewHeading": "Granska din annons",
+      "reviewHint": "Kontrollera uppgifterna nedan innan du publicerar.",
+      "cancel": "Avbryt",
+      "back": "Tillbaka",
+      "saveDraft": "Spara som utkast",
+      "draftSaved": "Utkast sparat",
+      "draftSaveFailed": "Det gick inte att spara ditt utkast. Försök igen.",
+      "saveContinue": "Spara och fortsätt",
+      "completeRequiredFields": "Fyll i de obligatoriska fälten: [[[fält]]]",
+      "publish": "Publicera annons",
+      "publishWaitForUploads": "Vänta ett ögonblick – dina dokument laddas fortfarande upp.",
+      "success": {
+        "title": "Inlämnad annons för granskning",
+        "message": "Din annons är nu under granskning. Du kommer att få ett bekräftelsemejl inom 2–3 arbetsdagar så snart den har godkänts.",
+        "addAnother": "Lägg till ytterligare en annons",
+        "backToListings": "Tillbaka till mina annonser"
+      },
+      "categoryChooseHint": "Välj vilken typ av tjänst du erbjuder. Detta anges en gång när du sparar din första annons och kan inte ändras senare.",
+      "categoryLockedHint": "Ditt leverantörskonto är endast registrerat för {kategori}. Kontakta supporten för att ändra din tjänstekategori."
+    }
+  }
+}

@@ -17,6 +17,8 @@ export type BookingParams = {
   deliveryAddress?: string;
   customerPickupAddress?: string;
   requestDelivery?: boolean;
+  email?: string;
+  guestFirstName?: string;
 };
 
 export function parseBookingParams(searchParams: URLSearchParams): BookingParams {
@@ -46,7 +48,13 @@ export function parseBookingParams(searchParams: URLSearchParams): BookingParams
     deliveryAddress: searchParams.get("deliveryAddress") ?? undefined,
     customerPickupAddress: searchParams.get("customerPickupAddress") ?? undefined,
     requestDelivery: searchParams.get("requestDelivery") === "true",
+    email: searchParams.get("email") ?? undefined,
+    guestFirstName: searchParams.get("guestFirstName") ?? undefined,
   };
+}
+
+export function isValidGuestEmail(value: string) {
+  return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value.trim());
 }
 
 export function serializeBookingParams(
@@ -79,6 +87,10 @@ export function serializeBookingParams(
   }
   if (params.requestDelivery) {
     searchParams.set("requestDelivery", "true");
+  }
+  if (params.email) searchParams.set("email", params.email);
+  if (params.guestFirstName) {
+    searchParams.set("guestFirstName", params.guestFirstName);
   }
 
   return searchParams;

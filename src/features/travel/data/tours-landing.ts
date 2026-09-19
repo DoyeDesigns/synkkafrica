@@ -311,3 +311,14 @@ export function getTourAttractionResultsHref(attractionId: string) {
 
   return `/?${params.toString()}`;
 }
+
+export const BROWSE_EVENTS_SECTION_ID = "browse-events";
+export const ALL_EVENT_LOCATIONS = "all";
+
+export function getBrowseEventsHref(location: string) {
+  const params = new URLSearchParams({ section: "tours" });
+  if (location && location !== ALL_EVENT_LOCATIONS) {
+    params.set("eventLocation", location);
+  }
+  return `/?${params.toString()}#${BROWSE_EVENTS_SECTION_ID}`;
+}

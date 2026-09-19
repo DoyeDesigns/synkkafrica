@@ -21,6 +21,8 @@ import {
 import { getSession, useSession } from "next-auth/react";
 
 import { VendorAddListingStepper } from "@/features/vendor/components/vendor-add-listing-stepper";
+import { useVendorVerificationStatus } from "@/features/vendor/components/vendor-verification-context";
+import { VendorVerificationNotice } from "@/features/vendor/components/vendor-verification-notice";
 import {
   EMPTY_ADD_LISTING_FORM,
   getDetailsStepMissingFields,
@@ -240,6 +242,7 @@ export function VendorAddListingContent({
   editListingId?: string;
 }) {
   const t = useTranslation();
+  const verificationStatus = useVendorVerificationStatus();
   const router = useRouter();
   const { data: session } = useSession();
   // Diagnostic: never log `session` wholesale — it carries the raw access
@@ -624,22 +627,29 @@ export function VendorAddListingContent({
       </div>
 
       <div className="space-y-6">
-        {isDocumentsStep ? (
-          <button
-            type="button"
-            onClick={handleBack}
-            className="inline-flex text-sm font-medium font-satoshi text-[#135391] hover:underline"
-          >
-            {t('vendor.addListing.backToListing')}
-          </button>
-        ) : (
-          <Link
-            href={exitHref}
-            className="inline-flex text-sm font-medium font-satoshi text-[#135391] hover:underline"
-          >
-            {t('vendor.addListing.backToListings')}
-          </Link>
-        )}
+      {verificationStatus === "unverified" ||
+      verificationStatus === "pending" ? (
+        <div className="flex justify-center">
+          <VendorVerificationNotice status={verificationStatus} />
+        </div>
+      ) : null}
+
+      {isDocumentsStep ? (
+        <button
+          type="button"
+          onClick={handleBack}
+          className="inline-flex text-sm font-medium font-satoshi text-[#135391] hover:underline"
+        >
+          {t("vendor.addListing.backToListing")}
+        </button>
+      ) : (
+        <Link
+          href={exitHref}
+          className="inline-flex text-sm font-medium font-satoshi text-[#135391] hover:underline"
+        >
+          {t("vendor.addListing.backToListings")}
+        </Link>
+      )}
 
         <div>
           <h2 className="text-2xl font-bold font-satoshi text-[#2F2F2F]">

@@ -2,6 +2,7 @@ import {
   DEFAULT_DISCOUNT_FILTER,
   matchesDiscountFilter,
 } from "@/features/travel/data/discount-filter";
+import { locationsOverlap } from "@/features/travel/data/location-match";
 
 export type CarRentalResult = {
   id: string;
@@ -40,11 +41,8 @@ export const DEFAULT_CAR_RENTAL_FILTERS: CarRentalFilterState = {
   location: "Lagos Nigeria",
   discounts: DEFAULT_DISCOUNT_FILTER,
   priceBudget: "",
-  // No control in the car-rentals UI binds to these — the sidebar exposes
-  // `priceBudget` and `priceRange`, and the hero writes `?maxPrice`. A non-zero
-  // floor and a finite ceiling here therefore act as an invisible band that
-  // silently hides listings priced outside it, with nothing for the user to
-  // widen. The baseline is "no constraint"; the visible controls narrow it.
+  // Slider + budget start unconstrained. A finite ceiling here would hide
+  // listings priced above it before the user touches the control.
   priceMin: 0,
   priceMax: Number.POSITIVE_INFINITY,
   priceRange: null,
@@ -185,8 +183,7 @@ export function filterCarRentalResults(
 
     if (
       filters.location !== DEFAULT_CAR_RENTAL_FILTERS.location &&
-      !result.location.toLowerCase().includes(filters.location.toLowerCase()) &&
-      !filters.location.toLowerCase().includes(result.location.toLowerCase())
+      !locationsOverlap(filters.location, result.location)
     ) {
       return false;
     }

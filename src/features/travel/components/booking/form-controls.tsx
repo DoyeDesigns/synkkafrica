@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { CalendarDays, ChevronDown } from "lucide-react";
-import { DayPicker, type Matcher } from "react-day-picker";
-import "react-day-picker/style.css";
-import "./date-picker.css";
+
+import { HeroRangeCalendar } from "@/features/travel/components/hero/hero-range-calendar";
 
 const base =
   "flex h-11 w-full items-center rounded-md border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-foreground outline-none focus:border-[#004785]";
@@ -101,8 +100,7 @@ function displayDate(d: Date): string {
   });
 }
 
-// Custom calendar popover (no native date input). Month + year dropdowns make
-// picking a birth year / passport-expiry year quick.
+// Custom calendar popover using the shared flights calendar.
 export function FormDate({
   value,
   onChange,
@@ -122,15 +120,8 @@ export function FormDate({
 }) {
   const [open, setOpen] = useState(false);
   const selected = parseISO(value);
-  const minDate = parseISO(min);
-  const maxDate = parseISO(max);
-  const today = new Date();
-
-  const startMonth = minDate ?? new Date(1920, 0);
-  const endMonth = maxDate ?? new Date(today.getFullYear() + 20, 11);
-  const disabledDays: Matcher[] = [];
-  if (minDate) disabledDays.push({ before: minDate });
-  if (maxDate) disabledDays.push({ after: maxDate });
+  const today = toISO(new Date());
+  const disablePast = Boolean(min && min >= today);
 
   return (
     <div className="relative">
@@ -158,21 +149,20 @@ export function FormDate({
             className="fixed inset-0 z-10 cursor-default"
             onClick={() => setOpen(false)}
           />
-          <div className="synka-daypicker absolute left-0 top-full z-20 mt-1 rounded-xl border border-black/10 bg-white p-3 shadow-xl">
-            <DayPicker
+          <div className="absolute left-0 top-full z-20 mt-1 w-[min(100%,22rem)] rounded-xl border border-[#E5E5E5] bg-white p-4 shadow-xl">
+            <HeroRangeCalendar
               mode="single"
-              captionLayout="dropdown"
-              selected={selected}
-              defaultMonth={selected ?? maxDate ?? minDate ?? today}
-              startMonth={startMonth}
-              endMonth={endMonth}
-              disabled={disabledDays}
-              onSelect={(d) => {
-                if (d) {
-                  onChange(toISO(d));
-                  setOpen(false);
-                }
+              fromDate={value || null}
+              toDate={null}
+              onFromChange={(dateKey) => {
+                onChange(dateKey);
+                setOpen(false);
               }}
+              onToChange={() => undefined}
+              minDate={min}
+              maxDate={max}
+              disablePast={disablePast}
+              showCaptionDropdown
             />
           </div>
         </>

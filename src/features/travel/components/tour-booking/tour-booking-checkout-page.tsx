@@ -4,7 +4,11 @@ import { Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import type { TourBookingStepId } from "@/features/travel/booking/tour-constants";
-import { parseBookingParams, serializeBookingParams } from "@/features/travel/booking/booking-params";
+import {
+  isValidGuestEmail,
+  parseBookingParams,
+  serializeBookingParams,
+} from "@/features/travel/booking/booking-params";
 import { GuestDetailsForm } from "@/features/travel/components/booking/guest-details-form";
 import { TourBookingBreadcrumbs } from "@/features/travel/components/tour-booking/tour-booking-breadcrumbs";
 import { TourBookingStepper } from "@/features/travel/components/tour-booking/tour-booking-stepper";
@@ -40,13 +44,24 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
     identities,
     setIdentityAt,
     identityErrors,
-    hasIdentityErrors,
+    // hasIdentityErrors,
     guardProceed,
   } = useGuestCheckoutGate(guestCount);
   const days = bookingParams.days ?? 1;
+  const [email, setEmail] = useState(bookingParams.email ?? "");
+  const [guestFirstName, setGuestFirstName] = useState(
+    bookingParams.guestFirstName ?? "",
+  );
+  const [emailError, setEmailError] = useState("");
 
   const handleProceedToPay = () => {
+    if (!isValidGuestEmail(email)) {
+      setEmailError(t("booking.guest.emailRequired"));
+      return;
+    }
+
     guardProceed(() => {
+      setEmailError("");
       const params = serializeBookingParams({
         option: selectedOptionId,
         date: bookingParams.date,
@@ -55,6 +70,8 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
         days,
         rooms: 1,
         specialRequests,
+        email: email.trim(),
+        guestFirstName: guestFirstName.trim() || undefined,
       });
       router.push(`/tours/${tour.id}/book/payment?${params.toString()}`);
     });
@@ -77,15 +94,25 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
             identities={identities}
             onIdentityChange={setIdentityAt}
             identityErrors={identityErrors}
+            email={email}
+            onEmailChange={(value) => {
+              setEmail(value);
+              if (emailError) setEmailError("");
+            }}
+            firstName={guestFirstName}
+            onFirstNameChange={setGuestFirstName}
+            emailError={emailError}
           />
 
           <div>
             <div className="xl:sticky xl:top-10">
+              {/* Identity validation error — temporarily hidden
               {hasIdentityErrors ? (
                 <p className="mb-3 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-medium font-inter text-[#D85A30]">
                   {t("booking.guest.idValidationRequired")}
                 </p>
               ) : null}
+              */}
               <TourBookingSummaryCard
                 tour={tour}
                 options={tour.options}

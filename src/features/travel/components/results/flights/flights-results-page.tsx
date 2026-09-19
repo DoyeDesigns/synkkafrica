@@ -4,8 +4,10 @@ import { useMemo, useState } from "react";
 import { AlertCircle, Loader2, PlaneTakeoff } from "lucide-react";
 
 import { FlightResultCard } from "@/features/travel/components/results/flights/flight-result-card";
+import { FilterAddressField } from "@/features/travel/components/results/shared/filter-address-field";
 import { useFlightSearch } from "@/features/travel/hooks/use-flight-search";
 import { useTravelNavigation } from "@/features/travel/hooks/use-travel-navigation";
+import { useTranslation } from "@/hooks/use-translation";
 import type { FlightOffer } from "@/lib/api/flights";
 
 type Sort = "cheapest" | "fastest" | "best";
@@ -53,12 +55,14 @@ function bucketOf(stops: number) {
 }
 
 export function FlightsResultsPage() {
+  const t = useTranslation();
   const { resetToLanding } = useTravelNavigation();
   const { data, isLoading, isError, error, input, isValid } = useFlightSearch();
 
   const all = useMemo(() => (data?.items ?? []).map(meta), [data]);
 
   const [sort, setSort] = useState<Sort>("cheapest");
+  const [location, setLocation] = useState("");
   const [stopFilter, setStopFilter] = useState<Set<string>>(new Set());
   const [airlineFilter, setAirlineFilter] = useState<Set<string>>(new Set());
   const [maxPrice, setMaxPrice] = useState<number | null>(null);
@@ -163,6 +167,16 @@ export function FlightsResultsPage() {
         <div className="grid gap-6 lg:grid-cols-[240px_1fr]">
           {/* Filters */}
           <aside className="space-y-6 lg:sticky lg:top-6 lg:self-start">
+            <FilterGroup title={t("filters.location")}>
+              <FilterAddressField
+                value={location}
+                onChange={setLocation}
+                placeholder={t("filters.searchAddress")}
+                listboxId="flights-filter-address"
+                className=""
+              />
+            </FilterGroup>
+
             <FilterGroup title="Stops">
               {STOP_BUCKETS.map((b) => {
                 const from = cheapestBy((m) => bucketOf(m.stops) === b.key);

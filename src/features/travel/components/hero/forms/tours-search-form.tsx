@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 
@@ -10,6 +10,7 @@ import {
   HeroInputShell,
   HeroSearchButton,
 } from "@/features/travel/components/hero/hero-form-primitives";
+import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
 import { HeroDestinationField } from "@/features/travel/components/hero/hero-destination-field";
 import { listExperienceDestinations } from "@/lib/api/experiences";
 import { useTranslation } from "@/hooks/use-translation";
@@ -64,13 +65,15 @@ export function ToursSearchForm({ onSubmit }: ToursSearchFormProps) {
             )
           }
         />
-        <HeroField
-          icon={<Calendar className="h-4 w-4 shrink-0" />}
-          placeholder={t("hero.tours.startDate")}
-          value={date}
-          onChange={setDate}
-          type="date"
-          min={new Date().toISOString().split("T")[0]}
+        <HeroDateRangeField
+          fromLabel={t("hero.tours.startDate")}
+          toLabel=""
+          addDateLabel={t("hero.common.addDate")}
+          fromDate={date}
+          toDate=""
+          onFromDateChange={setDate}
+          onToDateChange={() => undefined}
+          showToDate={false}
         />
         <HeroSearchButton label={t("hero.search")} variant="blue" className="rounded-lg" />
       </HeroInputShell>

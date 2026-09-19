@@ -34,9 +34,16 @@ function normalizeServiceType(value: string): string {
 }
 
 function hasCarRentalSearchParams(searchParams: URLSearchParams) {
-  return ["carType", "location", "serviceType", "maxPrice", "date"].some((key) =>
-    searchParams.get(key),
-  );
+  return [
+    "carType",
+    "location",
+    "dropoffLocation",
+    "serviceType",
+    "maxPrice",
+    "date",
+    "rentalMode",
+    "locationKind",
+  ].some((key) => searchParams.get(key));
 }
 
 function getFiltersFromSearchParams(

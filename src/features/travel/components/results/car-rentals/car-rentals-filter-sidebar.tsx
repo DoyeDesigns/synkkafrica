@@ -3,7 +3,6 @@
 import {
   CarFront,
   ChevronDown,
-  MapPin,
   Settings,
 } from "lucide-react";
 import Image from "next/image";
@@ -19,8 +18,12 @@ import {
 import { FilterPanel } from "@/features/travel/components/results/accommodations/filter-panel";
 import { ClearFilterButton } from "@/features/travel/components/results/shared/clear-filter-button";
 import { DiscountFilterPanel } from "@/features/travel/components/results/shared/discount-filter-panel";
+import { FilterAddressField } from "@/features/travel/components/results/shared/filter-address-field";
 import { useFilterOptionLabel } from "@/hooks/use-filter-option-label";
 import { useTranslation } from "@/hooks/use-translation";
+
+const PRICE_SLIDER_MIN = 10000;
+const PRICE_SLIDER_MAX = 300000;
 
 type CarRentalsFilterSidebarProps = {
   filters: CarRentalFilterState;
@@ -78,6 +81,9 @@ export function CarRentalsFilterSidebar({
 }: CarRentalsFilterSidebarProps) {
   const t = useTranslation();
   const { labelOption, labelPriceRange } = useFilterOptionLabel();
+  const sliderValue = Number.isFinite(filters.priceMax)
+    ? Math.min(PRICE_SLIDER_MAX, Math.max(PRICE_SLIDER_MIN, filters.priceMax))
+    : PRICE_SLIDER_MAX;
 
   return (
     <aside className="space-y-4">
@@ -101,15 +107,12 @@ export function CarRentalsFilterSidebar({
         <label className="text-sm font-bold font-montserrat text-foreground">
           {t("filters.location")}
         </label>
-        <div className="mt-3 flex items-center gap-2 rounded-lg border border-[#C9C9C9] px-3 py-2.5">
-          <MapPin className="h-4 w-4 shrink-0 text-[#676565]" />
-          <input
-            type="text"
-            value={filters.location}
-            onChange={(event) => onFilterChange("location", event.target.value)}
-            className="w-full bg-transparent text-sm font-satoshi text-foreground outline-none"
-          />
-        </div>
+        <FilterAddressField
+          value={filters.location}
+          onChange={(value) => onFilterChange("location", value)}
+          placeholder={t("filters.searchAddress")}
+          listboxId="car-rentals-filter-address"
+        />
       </FilterPanel>
 
       <DiscountFilterPanel
@@ -128,13 +131,41 @@ export function CarRentalsFilterSidebar({
             type="text"
             inputMode="numeric"
             value={filters.priceBudget}
-            onChange={(event) => onFilterChange("priceBudget", event.target.value)}
+            onChange={(event) => {
+              const raw = event.target.value;
+              onFilterChange("priceBudget", raw);
+              const parsed = Number.parseInt(raw.replace(/[^\d]/g, ""), 10);
+              if (!Number.isNaN(parsed)) {
+                onFilterChange(
+                  "priceMax",
+                  Math.min(PRICE_SLIDER_MAX, Math.max(PRICE_SLIDER_MIN, parsed)),
+                );
+              }
+            }}
             placeholder={t("filters.budget")}
             className="min-w-0 flex-1 bg-transparent px-1.5 text-sm font-satoshi text-foreground outline-none placeholder:font-medium placeholder:text-foreground/60"
           />
           <span className="shrink-0 text-sm font-satoshi text-foreground/70">
             {t("filters.perDaily")}
           </span>
+        </div>
+
+        <div className="mt-4 space-y-3">
+          <div className="rounded-lg bg-[#0000003D] px-2 pt-2">
+            <input
+              type="range"
+              min={PRICE_SLIDER_MIN}
+              max={PRICE_SLIDER_MAX}
+              step={5000}
+              value={sliderValue}
+              onChange={(event) => {
+                const value = Number(event.target.value);
+                onFilterChange("priceMax", value);
+                onFilterChange("priceBudget", value.toLocaleString("en-NG"));
+              }}
+              className="w-full cursor-pointer accent-[#D85A30]"
+            />
+          </div>
         </div>
 
         <div className="space-y-5">

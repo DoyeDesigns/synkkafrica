@@ -1,7 +1,8 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 
 import { useClickOutside } from "@/hooks/use-click-outside";
 
@@ -235,6 +236,130 @@ export function HeroInputShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex flex-col gap-3 rounded-[25px] border-[1.5px] border-white/70 p-2 lg:flex-row lg:items-center bg-[#B4B4B4]/34">
       {children}
+    </div>
+  );
+}
+
+type HeroGlassSelectProps = {
+  label: string;
+  value: string;
+  options: HeroPillSelectOption[];
+  onChange: (value: string) => void;
+  icon?: ReactNode;
+  className?: string;
+};
+
+export function HeroGlassSelect({
+  label,
+  value,
+  options,
+  onChange,
+  icon,
+  className = "",
+}: HeroGlassSelectProps) {
+  const [open, setOpen] = useState(false);
+  const [rect, setRect] = useState<DOMRect | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLUListElement>(null);
+  const selectedLabel =
+    options.find((option) => option.value === value)?.label ?? label;
+
+  useEffect(() => {
+    if (!open) return;
+    const measure = () => {
+      const el = containerRef.current;
+      if (el) setRect(el.getBoundingClientRect());
+    };
+    measure();
+    window.addEventListener("scroll", measure, true);
+    window.addEventListener("resize", measure);
+    return () => {
+      window.removeEventListener("scroll", measure, true);
+      window.removeEventListener("resize", measure);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (
+        !containerRef.current?.contains(target) &&
+        !menuRef.current?.contains(target)
+      ) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, [open]);
+
+  const menu =
+    open && rect && typeof document !== "undefined"
+      ? createPortal(
+          <ul
+            ref={menuRef}
+            role="listbox"
+            aria-label={label}
+            style={{
+              position: "fixed",
+              top: rect.bottom + 8,
+              left: rect.left,
+              width: Math.max(rect.width, 180),
+              zIndex: 60,
+            }}
+            className="max-h-60 overflow-y-auto rounded-xl border border-[#E5E5E5] bg-white py-1 shadow-lg"
+          >
+            {options.map((option) => {
+              const isSelected = option.value === value;
+
+              return (
+                <li key={option.value} role="presentation">
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={isSelected}
+                    onClick={() => {
+                      onChange(option.value);
+                      setOpen(false);
+                    }}
+                    className={`flex w-full px-4 py-2.5 text-left text-sm font-medium font-satoshi transition-colors ${
+                      isSelected
+                        ? "bg-[#E8F4FD] text-[#2F2F2F]"
+                        : "text-[#2F2F2F] hover:bg-zinc-50"
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>,
+          document.body,
+        )
+      : null;
+
+  return (
+    <div ref={containerRef} className={`relative min-w-0 flex-1 ${className}`}>
+      <button
+        type="button"
+        aria-label={label}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        onClick={() => setOpen((current) => !current)}
+        className="inline-flex min-h-12 w-full min-w-0 items-center justify-between gap-2 rounded-xl bg-[#0000003D] px-4 text-sm font-medium text-white"
+      >
+        <span className="flex min-w-0 items-center gap-2">
+          {icon}
+          <span className="truncate">{selectedLabel}</span>
+        </span>
+        <ChevronDown
+          className={`h-4 w-4 shrink-0 text-white/80 transition-transform ${
+            open ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+      {menu}
     </div>
   );
 }

@@ -1,0 +1,2483 @@
+{
+  "nav": {
+    "downloadApp": "Descargar aplicación",
+    "becomeVendor": "Conviértete en vendedor",
+    "chooseCurrency": "Elegir moneda",
+    "signInCreate": "Iniciar sesión | Crear cuenta",
+    "searchCurrency": "Buscar moneda",
+    "signOut": "Cerrar sesión",
+    "myAccount": "Mi cuenta",
+    "bookingsTrips": "Reservas y viajes",
+    "saved": "Guardados",
+    "reviews": "Reseñas"
+  },
+  "common": {
+    "bookNow": "Reservar",
+    "continue": "Continuar",
+    "loading": "Cargando…",
+    "startingFrom": "Desde",
+    "perDay": "Por día",
+    "budget": "Presupuesto",
+    "seeMore": "Ver más",
+    "showMore": "Mostrar más",
+    "reviews": "Reseñas",
+    "available": "Disponible",
+    "selfDriveAvailable": "Autoconducción disponible",
+    "excludingTaxes": "sin impuestos ni tasas",
+    "select": "Seleccionar",
+    "search": "Buscar",
+    "edit": "Editar",
+    "cancel": "Cancelar",
+    "notifications": "Notificaciones",
+    "contactSupport": "Contactar soporte",
+    "signOut": "Cerrar sesión",
+    "noReviewsYet": "Aún no hay reseñas",
+    "viewPhoto": "Ver foto {index}",
+    "photoViewer": "Visor de fotos",
+    "closePhotoViewer": "Cerrar visor de fotos",
+    "previousPhoto": "Foto anterior",
+    "nextPhoto": "Foto siguiente",
+    "photoOfTotal": "{current} de {total}",
+    "secured": "Seguro"
+  },
+  "hero": {
+    "headline": "Vive África con confianza",
+    "tab": {
+      "accommodations": "Alojamientos",
+      "flights": "Vuelos",
+      "carRentals": "Alquiler de coches",
+      "tours": "Tours y experiencias"
+    },
+    "search": "Buscar",
+    "clearFilter": "Borrar filtro",
+    "accommodations": {
+      "destination": "Tu destino",
+      "destinationStay": "{count} alojamiento",
+      "destinationStays": "{count} alojamientos",
+      "checkIn": "Fecha de entrada",
+      "checkOut": "Fecha de salida",
+      "checkAvailability": "Comprobar disponibilidad",
+      "propertyType": "Tipo de propiedad",
+      "oneRoom": "1 habitación",
+      "oneGuest": "1 huésped",
+      "roomsCount": "{count} habitaciones",
+      "guestsCount": "{count} huéspedes"
+    },
+    "flights": {
+      "roundTrip": "Ida y vuelta",
+      "oneWay": "Solo ida",
+      "directFlight": "Vuelo directo",
+      "economyClass": "Clase económica",
+      "premiumEconomyClass": "Económica premium",
+      "businessClass": "Clase ejecutiva",
+      "firstClass": "Primera clase",
+      "onePassenger": "1 pasajero",
+      "passengersCount": "{count} pasajeros",
+      "fromCity": "Desde | Seleccionar ciudad",
+      "toCity": "Hacia | Seleccionar ciudad",
+      "departureDate": "Fecha de salida",
+      "returnDate": "Fecha de regreso",
+      "departing": "Salida",
+      "returning": "Regreso",
+      "nonstop": "Sin escalas",
+      "oneStop": "Una escala",
+      "multipleStops": "Varias paradas"
+    },
+    "common": {
+      "addDate": "Añadir fecha",
+      "selectDateRange": "Selecciona las fechas de salida y regreso",
+      "selectDate": "Selecciona una fecha",
+      "days": "Días",
+      "nights": "Noches"
+    },
+    "carRentals": {
+      "searchCarType": "Buscar tipo de coche",
+      "filterCarType": "Filtrar por tipo de coche",
+      "allCarTypes": "Todos los tipos",
+      "selfDrive": "Autoconducción",
+      "price": "₦ Precio",
+      "pickupDate": "Fecha de recogida",
+      "destinationCar": "{count} coche",
+      "destinationCars": "{count} coches"
+    },
+    "tours": {
+      "searchPlaceholder": "Buscar lugares, atracciones y experiencias",
+      "startDate": "Fecha de inicio",
+      "destinationExperience": "{count} experiencia",
+      "destinationExperiences": "{count} experiencias"
+    },
+    "location": "Ubicación"
+  },
+  "footer": {
+    "brandDescription": "SynkAfrica es una plataforma emergente todo en uno de viajes y experiencias premium, diseñada para conectar a personas de todo el mundo con el corazón del ecosistema africano de viajes y estilo de vida.",
+    "explore": {
+      "title": "Explorar SynkAfrica",
+      "hotels": "Hoteles y alojamientos",
+      "carRentals": "Alquiler de coches",
+      "flights": "Reservas de vuelos",
+      "restaurants": "Restauración y restaurantes"
+    },
+    "support": {
+      "title": "Soporte",
+      "contact": "Contactar soporte",
+      "changeBooking": "Cambiar o cancelar tu reserva",
+      "paymentOptions": "Opciones de pago",
+      "receipt": "Ver o imprimir tu recibo de reserva"
+    },
+    "community": {
+      "title": "Comunidad",
+      "instagram": "Nuestro Instagram",
+      "facebook": "Facebook",
+      "news": "En las noticias"
+    },
+    "vendor": {
+      "title": "Conviértete en vendedor",
+      "listCar": "Publica tu coche",
+      "listService": "Publica tu servicio",
+      "contact": "Contáctanos"
+    },
+    "appPromo": {
+      "headline": "Vive la experiencia completa de SynkAfrica.",
+      "cta": "Descarga la aplicación hoy",
+      "getItOn": "DISPONIBLE EN",
+      "googlePlay": "GooglePlay",
+      "downloadOn": "Descargar en la",
+      "appStore": "Tienda de aplicaciones"
+    },
+    "legal": {
+      "privacy": "Política de privacidad",
+      "terms": "Términos de uso",
+      "security": "Página de seguridad",
+      "faqs": "Preguntas frecuentes"
+    },
+    "copyright": "Copyright © 2025 Synkafrica | Todos los derechos reservados"
+  },
+  "login": {
+    "intro": "Puedes iniciar sesión con tu cuenta de SynkAfrica para acceder a nuestros servicios.",
+    "backendNotReady": "Las variables de entorno del backend aún no están configuradas. El inicio de sesión funcionará una vez configuradas las credenciales.",
+    "emailPlaceholder": "Introduce tu correo electrónico",
+    "orUseOptions": "o usa una de estas opciones",
+    "signInGoogle": "Iniciar sesión con Google",
+    "continueApple": "Continuar con Apple"
+  },
+  "account": {
+    "nav": {
+      "notifications": "Notificaciones"
+    },
+    "contactSupport": "Contactar soporte",
+    "profile": {
+      "edit": "Editar",
+      "fullName": "Nombre completo",
+      "fullNamePlaceholder": "Introduce el nombre completo",
+      "location": "Ubicación",
+      "dateOfBirth": "Fecha de nacimiento",
+      "dobPlaceholder": "MM | DD | AA",
+      "gender": "Género",
+      "notAdded": "No añadido",
+      "contactDetails": "Datos de contacto",
+      "phone": "Número de teléfono",
+      "email": "Correo electrónico",
+      "passwordSecurity": "Contraseña y seguridad",
+      "password": "Contraseña",
+      "changePassword": "Cambiar contraseña"
+    },
+    "deleteAccount": "Eliminar cuenta",
+    "bookings": {
+      "title": "Tus pedidos",
+      "tab": {
+        "upcoming": "Próximas",
+        "past": "Pasadas",
+        "cancelled": "Canceladas",
+        "bookings": "Reservas"
+      },
+      "empty": {
+        "upcoming": "No hay reservas próximas.",
+        "past": "No hay reservas pasadas para este período.",
+        "cancelled": "No hay pedidos cancelados para este período.",
+        "bookings": "No hay reservas para este período."
+      },
+      "orderDate": "Fecha del pedido:",
+      "experienceDate": "Fecha de la experiencia:",
+      "totalAmount": "Importe total:",
+      "orderNumber": "Pedido:",
+      "guestCount": "Huéspedes",
+      "specialRequests": "Solicitudes especiales",
+      "cancel": "Cancelar",
+      "receiptRecipient": "Destinatario del recibo y QR",
+      "viewDetails": "Ver detalles",
+      "leaveReview": "Dejar una reseña",
+      "reviewSubmitted": "Reseña enviada",
+      "cancelWindowClosed": "El plazo de cancelación ha cerrado para esta reserva.",
+      "cancelledOn": "Cancelada el {date}",
+      "cancelConfirmTitle": "¿Cancelar esta reserva?",
+      "cancelConfirmBody": "Puedes cancelar dentro del plazo antes de que comience la experiencia. Esta acción no se puede deshacer.",
+      "confirmCancel": "Sí, cancelar reserva",
+      "filterPeriod": "Filtrar por período",
+      "badge": {
+        "upcoming": "Próxima",
+        "past": "Pasada",
+        "cancelled": "Cancelada"
+      },
+      "countdown": {
+        "label": "La experiencia comienza en",
+        "daysHours": "⟦días⟧d {horas}h",
+        "hoursMinutes": "{horas}h {minutos}m",
+        "detailHint": "La cuenta atrás se actualiza en tiempo real hasta que comience la experiencia."
+      },
+      "review": {
+        "title": "Dejar una reseña",
+        "ratingLabel": "Tu valoración",
+        "commentLabel": "Tu reseña",
+        "commentPlaceholder": "Comparte lo que más te gustó...",
+        "submit": "Enviar reseña",
+        "dismiss": "Cerrar diálogo de reseña"
+      },
+      "detail": {
+        "back": "Volver a reservas",
+        "reference": "Referencia de reserva",
+        "yourReview": "Tu reseña",
+        "notFound": "No se encontró esta reserva."
+      }
+    },
+    "saved": {
+      "accommodations": "Alojamientos",
+      "empty": "Aún no has guardado nada.",
+      "cars": "Coches",
+      "tours": "Visitas guiadas"
+    },
+    "reviews": {
+      "title": "Reseñas",
+      "youRated": "Calificaste",
+      "writeReview": "Escribir una reseña",
+      "ratingLabel": "Tu valoración",
+      "commentLabel": "Tu reseña",
+      "commentPlaceholder": "Comparte lo que más te gustó...",
+      "photosLabel": "Fotos",
+      "photosCount": "{count}/{max} subidas",
+      "addPhoto": "Añadir foto",
+      "removePhoto": "Eliminar foto",
+      "submit": "Enviar reseña",
+      "pendingTitle": "Reseñar una reserva completada",
+      "pendingHint": "Solo puedes enviar reseñas de reservas pasadas vinculadas a tu cuenta.",
+      "selectBooking": "Selecciona una reserva completada arriba para escribir tu reseña.",
+      "noPending": "No tienes reservas completadas pendientes de reseña.",
+      "submittedTitle": "Tus reseñas enviadas",
+      "empty": "Aún no has enviado ninguna reseña.",
+      "deleteReview": "Eliminar reseña",
+      "bookingReference": "Reserva {reference}",
+      "listingBadge": "Reseñas de huéspedes",
+      "experienceListingTitle": "Reseñas de huéspedes"
+    },
+    "notifications": {
+      "title": {
+        "reminder24h": "La experiencia comienza en 24 horas",
+        "reviewRequest": "Cuéntanos sobre tu experiencia",
+        "cancellationRefund": "Reserva cancelada",
+        "bookingConfirmation": "Reserva confirmada",
+        "info": "Recordatorio de viaje"
+      },
+      "empty": "Aún no hay notificaciones.",
+      "period": {
+        "mostRecent": "Más reciente",
+        "weekEarlier": "Hace una semana",
+        "threeMonthsAgo": "Hace 3 meses"
+      },
+      "kind": {
+        "bookingConfirmation": "Reserva confirmada",
+        "reminder24h": "Recordatorio 24 h",
+        "reviewRequest": "Solicitud de reseña",
+        "cancellationRefund": "Cancelación y reembolso",
+        "info": "Consejo de viaje"
+      },
+      "message": {
+        "reminder24h": "Tu experiencia {title} comienza mañana a las {time} el {date}. Revisa tu reserva y llega 15 minutos antes.",
+        "reviewRequest": "¿Cómo fue {title}? Comparte una valoración y reseña escrita para ayudar a otros viajeros en SynkAfrica.",
+        "cancellationRefund": "Tu reserva de {title} ({reference}) fue cancelada. Cualquier reembolso elegible se procesará en 5–7 días hábiles.",
+        "bookingConfirmation": "Tu reserva de {title} en {location} está confirmada. Revisa tu correo para el recibo y credenciales QR.",
+        "passportReminder": "Asegúrate de que tu pasaporte sea válido al menos 6 meses después de tu fecha de viaje."
+      }
+    },
+    "support": {
+      "contact": {
+        "whatsapp": "WhatsApp",
+        "email": "Correo electrónico",
+        "phone": "Llámanos"
+      },
+      "createTicket": "Crear un ticket de soporte",
+      "topic": "¿De qué se trata?",
+      "relatedOrder": "Pedido relacionado (opcional)",
+      "relatedOrderNone": "Ninguno",
+      "subject": "Asunto",
+      "subjectPlaceholder": "Breve resumen del problema",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntanos qué está pasando...",
+      "attachFile": "Adjuntar una foto o captura de pantalla",
+      "submitTicket": "Enviar ticket",
+      "ticketSubmitted": "Ticket #{number} enviado. Te responderemos pronto.",
+      "yourTickets": "Tus tickets",
+      "commonQuestions": "Preguntas frecuentes",
+      "ticketMeta": "Boleto #⟦número⟧ · {fecha}",
+      "status": {
+        "open": "Abierto",
+        "resolved": "Resuelto"
+      },
+      "category": {
+        "booking": "Problema con la reserva",
+        "paymentRefund": "Pago / reembolso",
+        "account": "Cuenta y perfil",
+        "other": "Otro"
+      },
+      "faq": {
+        "cancelBooking": "¿Cómo cancelo una reserva?",
+        "refundTiming": "¿Cuándo recibiré mi reembolso?",
+        "changeDate": "¿Cómo cambio mi fecha de viaje?",
+        "paymentSecurity": "¿Es seguro mi pago?",
+        "cancelBookingAnswer": "Abre tu reserva desde Reservas y viajes, selecciona el pedido y usa la opción de cancelación si aún estás dentro del plazo permitido. Los reembolsos elegibles se procesan automáticamente.",
+        "refundTimingAnswer": "Los reembolsos elegibles suelen procesarse en 5–7 días hábiles después de la cancelación, según tu banco o proveedor de pago.",
+        "changeDateAnswer": "Contacta con soporte con tu referencia de reserva. Si la experiencia permite cambios de fecha, nuestro equipo te ayudará a reprogramar o te orientará sobre las opciones disponibles.",
+        "paymentSecurityAnswer": "Sí. Los pagos en Synkafrica se procesan a través de socios de pago seguros y cifrados. Nunca almacenamos los datos completos de tu tarjeta en nuestros servidores."
+      },
+      "tabs": {
+        "label": "Secciones de soporte"
+      },
+      "backToTickets": "Volver a tickets",
+      "typeMessage": "Escribe un mensaje...",
+      "send": "Enviar",
+      "supportTeam": "Soporte Synkafrica",
+      "you": "Tú",
+      "emptyTickets": "Aún no has enviado ningún ticket de soporte.",
+      "attachedImage": "Imagen adjunta",
+      "removeAttachment": "Eliminar adjunto"
+    }
+  },
+  "booking": {
+    "step": {
+      "rooms": "Elegir estancia y habitaciones",
+      "chooseExperience": "Elegir experiencia",
+      "chooseCar": "Elegir coche",
+      "choosePackage": "Elegir paquete",
+      "checkout": "Pago",
+      "payment": "Pago",
+      "confirmation": "Confirmación"
+    },
+    "cta": {
+      "proceedToPay": "PROCEDER AL PAGO"
+    },
+    "guest": {
+      "title": {
+        "mr": "Sr.",
+        "mrs": "Sra.",
+        "ms": "Srta.",
+        "miss": "Extrañar",
+        "dr": "Dr."
+      },
+      "adultLabel": "Adulto (17 años+)",
+      "leadGuestLabel": "Huésped principal",
+      "addedCount": "{added}/{total} añadido(s)",
+      "passportHint": "Introduce tu nombre tal como aparece en tu pasaporte. El pasaporte debe ser válido al menos 6 meses desde la fecha del viaje.",
+      "idVerificationHint": "Se requiere una identificación oficial válida antes de completar cualquier reserva.",
+      "idVerificationTitle": "Verificación de identidad",
+      "idVerificationSubtitle": "Introduce los datos de tu identificación exactamente como aparecen en el documento.",
+      "idType": {
+        "passport": "Pasaporte",
+        "nationalId": "Documento nacional de identidad",
+        "driversLicense": "Licencia de conducir"
+      },
+      "idNumber": "Número de identificación",
+      "idNumberPlaceholder": "Introduce tu número de identificación",
+      "idExpiry": "Fecha de vencimiento",
+      "confirmId": "Confirmo que mis datos de identificación son correctos y que mi documento es válido al menos 6 meses desde la fecha de viaje.",
+      "idTypeRequired": "Selecciona un tipo de identificación.",
+      "idNumberInvalid": "Introduce un número de identificación válido.",
+      "idExpiryRequired": "Introduce la fecha de vencimiento.",
+      "idExpiryInvalid": "La identificación debe ser válida al menos 6 meses desde hoy.",
+      "idConfirmRequired": "Confirma tus datos de identificación para continuar.",
+      "idValidationRequired": "Completa y confirma tus datos de identificación antes de proceder al pago.",
+      "adultCheckbox": "Adulto - {count}",
+      "titleField": "Título",
+      "lastName": "Apellido",
+      "firstName": "Nombre",
+      "middleName": "Segundo nombre",
+      "dateOfBirth": "Fecha de nacimiento",
+      "datePlaceholder": "aaaa-mm-dd",
+      "nationality": "Nacionalidad",
+      "gender": "Género",
+      "male": "Hombre",
+      "female": "Mujer",
+      "mobileNo": "N.º de móvil",
+      "emailAddress": "Correo electrónico",
+      "openCalendar": "Abrir calendario",
+      "countLabel": "Número de huéspedes",
+      "countHint": "El precio se actualiza automáticamente según el número de huéspedes.",
+      "decreaseGuests": "Reducir huéspedes",
+      "increaseGuests": "Aumentar huéspedes",
+      "specialRequests": "Solicitudes especiales",
+      "specialRequestsPlaceholder": "Llegada anticipada, dieta, accesibilidad, etc."
+    },
+    "summary": {
+      "selectRoom": "Seleccionar una habitación",
+      "selectCar": "Seleccionar un coche",
+      "selectExperience": "Seleccionar una experiencia",
+      "selectPackage": "Seleccionar un paquete",
+      "priceDetails": "Detalles del precio",
+      "taxesAndFees": "Impuestos y tasas",
+      "night": "noche",
+      "nights": "noches",
+      "room": "habitación",
+      "rooms": "habitaciones",
+      "day": "día",
+      "days": "días",
+      "total": "Total",
+      "guests": "huéspedes"
+    },
+    "table": {
+      "selectRoom": "Seleccionar una habitación",
+      "guestCount": "N.º de huéspedes",
+      "pricePerNight": "Precio por noche",
+      "includesTaxes": "Incluye impuestos y cargos",
+      "packages": "Paquetes",
+      "hours": "Horas",
+      "price": "Precio",
+      "experiences": "Experiencias",
+      "duration": "Duración"
+    },
+    "dates": {
+      "checkIn": "Fecha de entrada",
+      "checkOut": "Fecha de salida",
+      "guests": "Huéspedes",
+      "rooms": "Habitaciones",
+      "nights": "Noches",
+      "days": "Días",
+      "rentalDays": "Días de alquiler",
+      "tripDuration": "Duración del viaje",
+      "tripDurationHint": "Ajusta cuántos días quieres quedarte o explorar.",
+      "decreaseNights": "Reducir noches",
+      "increaseNights": "Aumentar noches",
+      "decreaseDays": "Reducir días",
+      "increaseDays": "Aumentar días"
+    },
+    "car": {
+      "rentalModeHeading": "¿Cómo quieres usar este coche?",
+      "rentalModeHint": "Elige conducción autónoma o añade un conductor profesional.",
+      "selfDrive": "Conducción autónoma",
+      "selfDriveHint": "Conduce tú mismo. Recoge el coche en la ubicación del proveedor o solicita entrega con un coste adicional.",
+      "withDriver": "Con conductor",
+      "withDriverHint": "Un conductor profesional está incluido en tu viaje.",
+      "noExtraCost": "Sin coste adicional",
+      "driverAddon": "+ {amount} suplemento de conductor",
+      "requestDelivery": "Solicitar entrega del coche",
+      "requestDeliveryHint": "Recibe el coche en tu ubicación por un coste adicional.",
+      "deliveryFee": "+ {amount} tarifa de entrega",
+      "deliveryAddress": "Dirección de entrega",
+      "deliveryAddressPlaceholder": "Introduce la dirección donde se entregará el coche",
+      "pickupAddress": "Dirección de recogida",
+      "pickupAddressHint": "Recoge el coche en esta ubicación si no solicitas entrega.",
+      "customerPickupAddress": "Tu lugar de recogida",
+      "customerPickupAddressPlaceholder": "Introduce dónde debe recogerte el conductor",
+      "customerPickupAddressHint": "El conductor te encontrará en esta dirección.",
+      "driverAddonLabel": "Suplemento de conductor",
+      "deliveryFeeLabel": "Tarifa de entrega",
+      "about": "Sobre este coche",
+      "saveCar": "Guardar coche"
+    },
+    "property": {
+      "saveProperty": "Guardar propiedad",
+      "morePhotos": "+{count} fotos",
+      "currentOffers": "Ofertas actuales"
+    },
+    "amenity": {
+      "free": "¡Gratis!",
+      "additionalCharge": "Cargo adicional"
+    },
+    "tour": {
+      "about": "Sobre esta experiencia",
+      "saveTour": "Guardar experiencia"
+    },
+    "package": {
+      "about": "Sobre este paquete",
+      "savePackage": "Guardar paquete",
+      "sharePackage": "Compartir paquete",
+      "nightsDays": "{nights} noches / {days} días",
+      "durationShort": "⟦días⟧D / {noches}N",
+      "guestRange": "{range} huéspedes",
+      "moduleCount": "{count} módulos",
+      "highlight": {
+        "duration": "Duración",
+        "groupSize": "Tamaño del grupo",
+        "included": "Incluido",
+        "cancellation": "Cancelación+",
+        "free": "Gratis",
+        "standard": "Estándar"
+      },
+      "whatsIncluded": "Qué incluye",
+      "included": "Incluido",
+      "priceBreakdown": "Desglose de precios",
+      "packageDiscount": "Descuento del paquete",
+      "packagePrice": "Precio del paquete",
+      "whyBook": "Por qué reservar este paquete",
+      "guestCountLocked": "El número de huéspedes es fijo para este paquete y no se puede cambiar en el checkout."
+    },
+    "payment": {
+      "processing": "Procesando pago..."
+    },
+    "confirmation": {
+      "imageAlt": "Confirmación exitosa",
+      "title": "Pago exitoso",
+      "subtitle": "Revisa tu correo electrónico para obtener tu recibo y credenciales QR",
+      "reloadIn": "Esta página se recargará en",
+      "reloadNow": "Recargar ahora",
+      "referenceLabel": "Referencia de reserva",
+      "copyReference": "Copiar",
+      "copied": "Copiado",
+      "summaryTitle": "Resumen de la reserva",
+      "product": "Artículo reservado",
+      "totalPaid": "Total pagado",
+      "addToCalendar": "Añadir al calendario",
+      "openGoogleCalendar": "Abrir en Google Calendar",
+      "viewBookings": "Ver mis reservas"
+    },
+    "reviews": {
+      "nextReview": "Siguiente reseña",
+      "allReviews": "Todas las reseñas",
+      "viewAll": "Ver todas las reseñas",
+      "close": "Cerrar reseñas"
+    },
+    "content": {
+      "property": {
+        "arkHavn": {
+          "desc0": "Ubicado en el corazón de Marrakech, The Ark Haven ofrece un refugio sereno con una mezcla de confort moderno y encanto marroquí tradicional. Disfruta de la piscina al aire libre, el bar en el lugar y habitaciones con aire acondicionado y TV de pantalla plana.",
+          "desc1": "Los huéspedes pueden explorar atracciones cercanas, disfrutar de servicios de traslado, canchas de tenis y alquiler de coches. Ya sea por ocio o negocios, The Ark Haven ofrece una estancia memorable con una hospitalidad excepcional."
+        },
+        "fallback": {
+          "desc0": "{name} ofrece estancias cómodas con comodidades modernas y una ubicación privilegiada en {location}.",
+          "desc1": "Disfruta de habitaciones bien equipadas, un servicio amable y fácil acceso a atracciones locales y restaurantes."
+        }
+      },
+      "review": {
+        "review1": "The Ark Haven superó mis expectativas. El personal fue increíblemente acogedor y la zona de la piscina fue el lugar perfecto para relajarse después de explorar la ciudad.",
+        "review2": "Habitaciones hermosas, excelente ubicación y un desayuno excepcional. Sin duda me alojaría aquí de nuevo en mi próximo viaje a Marruecos.",
+        "review3": "Suite espaciosa, instalaciones limpias y conserje servicial. El servicio de traslado facilitó mucho moverse por Marrakech."
+      },
+      "offer": {
+        "drinkPromo": "Compra 1 bebida y llévate otra gratis",
+        "mealsOff": "10 % de descuento en comidas",
+        "freeWifi": "Wifi gratis"
+      },
+      "room": {
+        "deluxeSuite": "Suite Deluxe",
+        "supremeRoom": "Habitación Supreme",
+        "standardRoom": "Habitación Standard",
+        "subtitle": {
+          "deluxe": "Deluxe (Apartamento de 1 dormitorio)",
+          "supreme": "Supreme (Estudio)",
+          "standard": "Standard (Habitación doble)"
+        },
+        "size592": "592 pies cuadrados",
+        "size420": "420 pies cuadrados",
+        "size310": "310 pies cuadrados",
+        "sleeps2Adults": "2 adultos"
+      },
+      "package": {
+        "dailyHire": "Alquiler diario",
+        "halfDayHire": "Alquiler medio día",
+        "extraHours": "Horas extra",
+        "hours24": "24 horas",
+        "hours12": "12 horas",
+        "hours3": "3 horas"
+      },
+      "feature": {
+        "automatic": "Automático",
+        "driverAvailable": "Conductor disponible",
+        "selfDrive": "Conducción propia",
+        "available": "Disponible",
+        "limitedSlots": "Plazas limitadas",
+        "guidedTour": "Visita guiada",
+        "selfDriveAvailable": "Conducción propia disponible",
+        "flightsIncluded": "Vuelos incluidos",
+        "hotelStay": "Estancia en hotel",
+        "guidedTours": "Visitas guiadas",
+        "nightsDays": "{nights} noches / {days} días"
+      },
+      "tourOption": {
+        "standard": "Entrada estándar",
+        "premium": "Experiencia premium",
+        "private": "Grupo privado",
+        "hours5": "5 horas",
+        "fullDay": "Día completo"
+      },
+      "tier": {
+        "standard": "Paquete estándar",
+        "deluxe": "Paquete deluxe",
+        "allInclusive": "Todo incluido"
+      },
+      "amenityCat": {
+        "greatForStay": "Ideal para tu estancia",
+        "outdoors": "Exterior",
+        "pets": "Mascotas",
+        "internet": "Internet",
+        "onSiteParking": "Aparcamiento en el lugar",
+        "frontDesk": "Servicios de recepción",
+        "familyServices": "Entretenimiento y servicios familiares",
+        "cleaningServices": "Servicios de limpieza",
+        "general": "General",
+        "accessibility": "Accesibilidad",
+        "swimmingPools": "2 piscinas",
+        "pool1Outdoor": "Piscina 1 – exterior"
+      },
+      "amenityDesc": {
+        "petsAllowed": "Se admiten mascotas bajo petición. Sin cargos adicionales.",
+        "wifiFree": "Wifi disponible en todas las zonas y es gratuito.",
+        "parkingFree": "Aparcamiento público gratuito disponible en el lugar (no se necesita reserva)."
+      },
+      "amenityItem": {
+        "restaurant": "Restaurante",
+        "freeWifi": "Wifi gratis",
+        "parking": "Aparcamiento",
+        "spa": "Spa",
+        "familyRooms": "Habitaciones familiares",
+        "roomService": "Servicio de habitaciones",
+        "airportShuttle": "Traslado al aeropuerto",
+        "bbqFacilities": "Instalaciones de barbacoa",
+        "petFriendly": "Admite mascotas",
+        "nonSmokingRooms": "Habitaciones para no fumadores",
+        "outdoorFireplace": "Chimenea exterior",
+        "beachfront": "Frente a la playa",
+        "sunDeck": "Terraza soleada",
+        "privateBeach": "Zona de playa privada",
+        "terrace": "Terraza",
+        "garden": "Jardín",
+        "valetParking": "Aparcacoches",
+        "parkingGarage": "Garaje de aparcamiento",
+        "accessibleParking": "Aparcamiento accesible",
+        "lockers": "Taquillas",
+        "concierge": "Conserjería",
+        "atmOnSite": "Cajero automático en el lugar",
+        "baggageStorage": "Consigna de equipaje",
+        "currencyExchange": "Cambio de divisas",
+        "frontDesk24h": "Recepción 24 horas",
+        "outdoorPlayEquipment": "Juegos de exterior para niños",
+        "dailyHousekeeping": "Limpieza diaria",
+        "ironingService": "Servicio de planchado",
+        "shuttleService": "Servicio de traslado",
+        "sharedLounge": "Salón/TV compartido",
+        "airConditioning": "Aire acondicionado",
+        "carRental": "Alquiler de coches",
+        "packedLunches": "Almuerzos para llevar",
+        "disabledFacilities": "Instalaciones para personas con discapacidad",
+        "bathroomEmergencyCord": "Cuerda de emergencia en el baño",
+        "openAllYear": "Abierto todo el año",
+        "adultsOnly": "Solo adultos",
+        "poolBeachTowels": "Toallas de piscina/playa",
+        "poolBar": "Bar de piscina",
+        "beachChairs": "Tumbonas de playa"
+      },
+      "tour": {
+        "desc": {
+          "boatAccess": "Accesible solo en barco o taxi acuático. Famoso por sus aguas relativamente tranquilas.",
+          "lekkiCanopy": "Recorre el puente de dosel más largo de África y explora frondosos senderos de manglar.",
+          "nikeArt": "Descubre una de las mayores colecciones de arte africano contemporáneo en África Occidental.",
+          "badagry": "Sigue la historia del comercio transatlántico de esclavos a través de museos y monumentos.",
+          "desertSafari": "Dune bashing, paseos en camello y un campamento beduino tradicional bajo las estrellas.",
+          "cotonou": "Explora mercados, arquitectura colonial y la vibrante costa de Benín.",
+          "winelands": "Visita viñedos de Stellenbosch con degustaciones y vistas panorámicas a las montañas.",
+          "monacoYacht": "Navega por la Costa Azul con vistas a Monte Carlo y puertos de lujo.",
+          "lagosFood": "Prueba suya, puff-puff y delicias locales en los mejores lugares gastronómicos de la ciudad.",
+          "dubaiKayak": "Rema por la marina al atardecer con vistas al skyline e instrucción guiada."
+        }
+      }
+    },
+    "dateTime": {
+      "title": "Seleccionar fecha y hora",
+      "rangeHint": "Elige tus fechas de entrada y salida en el calendario.",
+      "singleHint": "Elige la fecha de tu experiencia en el calendario.",
+      "legendAvailable": "Disponible",
+      "legendUnavailable": "No disponible",
+      "selectCheckout": "Seleccionar salida",
+      "timeSlots": "Franja horaria",
+      "experienceDate": "Fecha de la experiencia"
+    }
+  },
+  "breadcrumb": {
+    "synkAfrica": "SynkÁfrica",
+    "accommodations": "Alojamientos",
+    "flights": "Vuelos",
+    "carForHire": "Alquiler de coches",
+    "tours": "Tours y experiencias",
+    "tourPackages": "Paquetes turísticos",
+    "dealsAndPackages": "Ofertas y paquetes",
+    "packages": "Paquetes"
+  },
+  "results": {
+    "accommodations": {
+      "title": "Estancias",
+      "staysFound": "{count} estancias encontradas",
+      "searchPlaceholder": "Buscar alojamientos",
+      "empty": "Ninguna estancia coincide con tus filtros."
+    },
+    "carRentals": {
+      "title": "Explorar coches de alquiler",
+      "carsFound": "{count} coches encontrados",
+      "searchPlaceholder": "Buscar coche",
+      "empty": "Ningún coche coincide con tus filtros."
+    },
+    "tours": {
+      "title": "{count} resultados de búsqueda",
+      "searchPlaceholder": "Buscar experiencia",
+      "empty": "Ninguna experiencia coincide con tus filtros."
+    },
+    "emptyHint": "Intenta ajustar tu búsqueda o las opciones de filtro.",
+    "promoSubtitle": "Promociones, ofertas y ofertas especiales para ti"
+  },
+  "filters": {
+    "apply": "Aplicar filtro",
+    "applyCount": "Aplicar filtro ({count})",
+    "location": "Ubicación",
+    "rentalDates": "Fechas de alquiler",
+    "startDate": "Fecha de inicio",
+    "endDate": "Fecha de fin",
+    "discounts": "Descuentos",
+    "price": "Precio",
+    "category": "Categoría",
+    "experiences": "Experiencias",
+    "other": "Otros filtros",
+    "budget": "Presupuesto",
+    "perNight": "| Noche",
+    "perDaily": "| día",
+    "anyPrice": "Cualquier precio",
+    "apartmentType": "Tipo de apartamento",
+    "bedrooms": "Número de habitaciones",
+    "ratings": "Valoraciones",
+    "perks": "Ventajas y servicios",
+    "priceRange": {
+      "under50k": "Menos de 50k",
+      "50to150k": "50 - 150 000",
+      "150kPlus": "150k y más"
+    },
+    "propertyType": {
+      "hotels": "Hoteles",
+      "apartments": "Apartamentos",
+      "resorts": "Complejos turísticos",
+      "bbs": "B&B",
+      "guestHouse": "Casa de huéspedes",
+      "beachHouse": "Casa de playa",
+      "motels": "Moteles"
+    },
+    "bedroom": {
+      "studio": "Estudio",
+      "one": "1 habitación",
+      "two": "2 habitaciones",
+      "threePlus": "3+ habitaciones"
+    },
+    "perk": {
+      "breakfast": "Desayuno incluido",
+      "cancellation": "Cancelación gratuita",
+      "pool": "Acceso a piscina",
+      "shuttle": "Traslado al aeropuerto"
+    },
+    "discount": {
+      "all": "Todos los descuentos",
+      "withDiscount": "Con descuento",
+      "noDiscount": "Sin descuento",
+      "tenPercent": "10% de descuento"
+    },
+    "carType": {
+      "suv": "SUV",
+      "sedan": "Sedán",
+      "hatchback": "Hatchback",
+      "pickup": "Levantar"
+    },
+    "serviceType": {
+      "selfDrive": "Conducción propia",
+      "chauffeur": "Chófer"
+    },
+    "transmission": {
+      "automatic": "Automático",
+      "manual": "Manual"
+    },
+    "tourCategory": {
+      "all": "Todas las categorías",
+      "outdoor": "Aire libre",
+      "artsCulture": "Arte y cultura",
+      "adventure": "Aventura",
+      "foodDrink": "Comida y bebida"
+    },
+    "experienceType": {
+      "all": "Todas las experiencias",
+      "tours": "Visitas guiadas",
+      "activities": "Actividades",
+      "workshops": "Talleres",
+      "dayTrips": "Excursiones de un día"
+    }
+  },
+  "landing": {
+    "ongoingDeals": {
+      "title": "Ofertas en curso",
+      "title2": "Paquetes en oferta",
+      "description": "Promociones, ofertas y ofertas especiales para ti",
+      "scrollPackages": "Desplazar paquetes"
+    },
+    "packages": {
+      "title": "Paquetes"
+    },
+    "fansFavourite": {
+      "title": "Favoritos de los fans"
+    },
+    "packageOffer": {
+      "inclusion": {
+        "flights": "Vuelos",
+        "stays": "Estancias",
+        "carDriver": "Coche + Conductor"
+      },
+      "duration": "{days} días • {nights} noches • {schedule}",
+      "bookedSeparately": "si se reserva por separado"
+    },
+    "bestDealsApartments": {
+      "title": "Mejores ofertas en apartamentos"
+    },
+    "browsePropertyType": "Explorar por tipo de propiedad",
+    "favouriteDestinations": "Explorar destinos favoritos",
+    "activitiesCount": "{count} actividades",
+    "flightPromo": {
+      "headline": "Reservar vuelos nunca ha sido tan fácil",
+      "cta": "Comprobar disponibilidad"
+    },
+    "experiencesPromo": {
+      "headline": "Disfruta de innumerables experiencias, todo en un solo destino.",
+      "cta": "Explorar experiencias",
+      "imageAlt": "Explorar experiencias africanas"
+    },
+    "tours": {
+      "attractions": {
+        "title": "Atracciones en Synkafrica"
+      },
+      "events": {
+        "browsingIn": "Explorando eventos en"
+      },
+      "packages": {
+        "title": "Paquetes turísticos",
+        "description": "Obtén las mejores ofertas en tours y reserva con facilidad."
+      }
+    },
+    "carRentals": {
+      "feature1": {
+        "title": "Servicio profesional",
+        "description": "Trabajamos con proveedores de traslados al aeropuerto de confianza en toda África."
+      },
+      "feature2": {
+        "title": "Cancelaciones flexibles",
+        "description": "Si tus planes cambian, puedes cancelar con condiciones flexibles."
+      },
+      "feature3": {
+        "title": "Precios competitivos",
+        "description": "Nuestro equipo compara diariamente los precios de taxis al aeropuerto para ofrecerte la mejor oferta."
+      }
+    }
+  },
+  "tourPackages": {
+    "hero": {
+      "title": "Paquetes turísticos",
+      "subtitle": "Paquetes de viaje seleccionados para aventuras africanas inolvidables."
+    },
+    "searchPlaceholder": "Buscar destino",
+    "empty": "Ningún paquete turístico coincide con tu búsqueda."
+  },
+  "admin": {
+    "header": {
+      "role": "Administrador de plataforma"
+    },
+    "nav": {
+      "dashboard": "Panel",
+      "experiences": "Experiencias",
+      "cars": "Coches",
+      "accommodations": "Alojamientos",
+      "vendors": "Vendedores",
+      "bookings": "Reservas",
+      "payouts": "Pagos",
+      "reviews": "Reseñas",
+      "users": "Usuarios",
+      "verifications": "Verificaciones",
+      "support": "Tickets de soporte",
+      "team": "Equipo",
+      "audit": "Registro de auditoría"
+    },
+    "common": {
+      "all": "Todo",
+      "enabled": "Activo",
+      "disabled": "Inactivo",
+      "edit": "Editar",
+      "actions": "Acciones"
+    },
+    "verifications": {
+      "title": "Verificaciones",
+      "subtitle": "Envíos marcados por nuestro proveedor de verificación para revisión manual — la mayoría de las comprobaciones de ID/rostro se aprueban automáticamente y nunca llegan a esta cola.",
+      "stats": {
+        "needsManualReview": "Revisión manual necesaria",
+        "approvedToday": "Aprobadas hoy",
+        "deniedToday": "Rechazadas hoy",
+        "avgReviewTime": "Tiempo medio de revisión",
+        "avgReviewTimeValue": "{minutos} min"
+      },
+      "searchPlaceholder": "Buscar por nombre o ID de cuenta...",
+      "filter": {
+        "users": "Usuarios",
+        "vendors": "Vendedores"
+      },
+      "status": {
+        "pendingReview": "Revisión pendiente",
+        "approved": "Aprobada",
+        "denied": "Rechazada"
+      },
+      "audience": {
+        "user": "Usuario",
+        "vendor": "Vendedor"
+      },
+      "submitted": "Enviado {date}",
+      "pendingElapsed": "Pendiente {elapsed}",
+      "blocking": {
+        "firstCheckout": "bloqueando el primer pago"
+      },
+      "empty": "Ninguna verificación coincide con tus filtros.",
+      "accountId": "Cuenta {id}",
+      "viewAccount": "Ver cuenta →",
+      "pendingManualReview": "Revisión manual pendiente",
+      "elapsed": "{elapsed} transcurridos",
+      "documentPreviews": "Vistas previas de documentos",
+      "documentViewLogged": "La visualización de documentos se registra por cumplimiento",
+      "providerResults": "Resultados del proveedor (DIDIT)",
+      "approve": "Aprobar",
+      "deny": "Rechazar",
+      "requestResubmission": "Solicitar reenvío",
+      "notifyUser": "Notificar al usuario la decisión",
+      "notifyVendor": "Notificar al vendedor la decisión",
+      "verificationApproved": "Verificación aprobada",
+      "verificationDenied": "Verificación rechazada",
+      "reviewedInElapsed": "Revisado en {elapsed}",
+      "approvedBy": "Aprobado por",
+      "approvedByValue": "Administrador — {fecha}",
+      "reasonForDenial": "Motivo del rechazo",
+      "revokeApproval": "Revocar aprobación",
+      "inviteResubmission": "Invitar a reenviar",
+      "viewHistory": "Ver historial",
+      "providerResultsHeading": "Resultado del proveedor — DIDIT",
+      "document": {
+        "ninSlip": "Comprobante NIN",
+        "passportPhoto": "Página de foto del pasaporte",
+        "selfie": "Selfie / captura liveness",
+        "cac": "Certificado CAC",
+        "driversLicense": "Licencia de conducir (anverso)"
+      },
+      "check": {
+        "cacRegistrationLookup": "Consulta de registro CAC",
+        "cacRegistrationVerified": "Verificado",
+        "faceMatchConfidence": "Confianza de coincidencia facial",
+        "faceMatchConfidenceDetail": "96 %",
+        "documentExpiredDetail": "Fallido — documento vencido",
+        "documentAuthenticity": "Autenticidad del documento",
+        "liveness": "Comprobación liveness",
+        "faceMatch": "Confianza de coincidencia facial",
+        "nameMatch": "Coincidencia de nombre con la cuenta",
+        "businessRegistration": "Registro comercial",
+        "faceMatchDetail": "78 % — por debajo del umbral de autoaprobación",
+        "nameMatchDetail": "Coincidencia",
+        "documentFailedDetail": "Fallido — documento ilegible",
+        "faceMatchFailedDetail": "42 % — por debajo del umbral",
+        "businessRegistrationDetail": "Coincidencia parcial — revisión manual requerida"
+      },
+      "denialReason": {
+        "expiredLicense": "Licencia de conducir vencida en marzo de 2026. Vuelva a enviar una identificación gubernamental válida y vigente."
+      },
+      "documentType": {
+        "passport": "Pasaporte",
+        "cacNin": "CAC + NIN",
+        "driversLicense": "Licencia de conducir"
+      },
+      "checkResult": {
+        "passed": "Aprobado",
+        "failed": "Fallido",
+        "warning": "Revisión requerida"
+      }
+    },
+    "dashboard": {
+      "welcome": "Consola admin,",
+      "addPackages": "Añadir paquetes",
+      "period": {
+        "label": "Periodo de métricas",
+        "today": "Hoy",
+        "week": "Esta semana",
+        "month": "Este mes",
+        "sixMonths": "6 meses",
+        "year": "1 año",
+        "all": "Todo"
+      },
+      "users": "Usuarios",
+      "bookings": "Reservas",
+      "revenue": "Ingresos",
+      "activeExperiences": "Experiencias activas",
+      "activeVendors": "Vendedores activos",
+      "viewAll": "Ver todo",
+      "manage": "Gestionar",
+      "alerts": "Alertas",
+      "alert": {
+        "pendingPayouts": "3 pagos a vendedores pendientes de aprobación",
+        "flaggedReview": "2 reseñas marcadas para moderación",
+        "openTicket": "5 tickets de soporte de vendedores abiertos",
+        "disabledVendor": "1 cuenta de vendedor desactivada — revisión requerida"
+      }
+    },
+    "packages": {
+      "createTitle": "Crear nuevo paquete / oferta",
+      "createSubtitle": "Crea un paquete de viaje irresistible combinando vuelos, estancias, coches y experiencias.",
+      "addTitle": "Añadir paquete",
+      "backToDashboard": "← Volver al panel",
+      "progressLabel": "Progreso del paquete",
+      "steps": {
+        "details": "Detalles del paquete",
+        "modules": "Añadir módulos",
+        "pricing": "Precios",
+        "review": "Revisar y publicar"
+      },
+      "cancel": "Cancelar",
+      "back": "Atrás",
+      "saveDraft": "Guardar borrador",
+      "draftSaved": "Borrador guardado",
+      "saveContinue": "Guardar y continuar",
+      "submit": "Enviar paquete",
+      "completeRequiredFields": "Complete los campos obligatorios: {fields}",
+      "sections": {
+        "basicInfo": "Detalles del paquete",
+        "basicInfoHint": "Información básica y metadatos del paquete.",
+        "additionalSettings": "Configuración adicional",
+        "additionalSettingsHint": "Políticas, comidas y opciones de visualización."
+      },
+      "fields": {
+        "packageName": "Nombre del paquete",
+        "packageSlug": "Slug del paquete (URL)",
+        "shortDescription": "Descripción breve",
+        "detailedDescription": "Descripción detallada",
+        "banner": "Imagen banner del paquete",
+        "category": "Categoría del paquete",
+        "bestFor": "Ideal para",
+        "tags": "Etiquetas del paquete",
+        "includedMeals": "Comidas incluidas",
+        "cancellationPolicy": "Política de cancelación",
+        "refundPolicy": "Política de reembolso",
+        "maxGuests": "Máx. huéspedes",
+        "featuredDeal": "Destacar paquete",
+        "currency": "Moneda",
+        "normalPrice": "Precio normal",
+        "salesPrice": "Precio de venta",
+        "showSavingsBadge": "Mostrar badge de ahorro",
+        "savingsBadgePercent": "Porcentaje del badge de ahorro",
+        "validFrom": "Válido desde",
+        "validUntil": "Válido hasta",
+        "minimumBookingNotice": "Aviso mínimo de reserva",
+        "packageActive": "Estado del paquete"
+      },
+      "placeholders": {
+        "packageName": "p. ej. Lagos & Paris Escape",
+        "packageSlug": "lagos-parís-escapada",
+        "shortDescription": "Resumen breve para las tarjetas del paquete.",
+        "detailedDescription": "Describe el itinerario, inclusiones y destacados.",
+        "category": "Seleccionar categoría",
+        "tags": "p. ej. Playa, Aventura",
+        "maxGuests": "p. ej. 4",
+        "select": "Seleccionar"
+      },
+      "hints": {
+        "packageSlug": "Se usará en la URL del paquete.",
+        "tags": "Añade cada etiqueta y pulsa Enter.",
+        "featuredDeal": "Mostrar este paquete como oferta destacada.",
+        "showSavingsBadge": "Mostrar badge de ahorro en la tarjeta del paquete.",
+        "savingsBadgePercent": "Define el porcentaje mostrado en el badge. Se rellena automáticamente según tus precios.",
+        "packageActive": "Los paquetes activos son visibles para los clientes."
+      },
+      "uploadBanner": "Clic para subir o arrastrar y soltar",
+      "uploadBannerHint": "JPG, PNG o WEBP (máx. 5 MB)",
+      "removeBanner": "Eliminar banner",
+      "tips": {
+        "title": "Consejos para un gran paquete",
+        "one": "Usa un nombre claro y atractivo.",
+        "two": "Combina módulos complementarios para más valor.",
+        "three": "Destaca el ahorro con un buen precio de venta.",
+        "four": "Añade etiquetas para mejorar la visibilidad."
+      },
+      "moduleType": {
+        "flight": "Vuelo",
+        "accommodation": "Alojamiento",
+        "car": "Coche",
+        "experience": "Experiencia"
+      },
+      "modules": {
+        "selectHeading": "Añadir módulos",
+        "selectHint": "Explora y añade vuelos, estancias, coches y experiencias.",
+        "addedHeading": "Módulos del paquete",
+        "countLabel": "módulos",
+        "empty": "Sin módulos aún. Selecciona elementos arriba.",
+        "add": "Añadir",
+        "added": "Añadido",
+        "remove": "Eliminar módulo",
+        "dragHandle": "Arrastrar para reordenar",
+        "reorderHint": "Arrastra y suelta los módulos en el orden de visualización.",
+        "required": "Añade al menos un módulo para continuar.",
+        "searchPlaceholder": "Buscar módulos…",
+        "noResults": "Ningún módulo coincide con tu búsqueda.",
+        "availableLabel": "disponibles"
+      },
+      "pricing": {
+        "heading": "Precios",
+        "hint": "Define tus precios.",
+        "savingsDisplay": "Ahorras {amount} ({percent}%)"
+      },
+      "availability": {
+        "heading": "Disponibilidad",
+        "hint": "Define cuándo se puede reservar este paquete."
+      },
+      "review": {
+        "heading": "Revisar y publicar",
+        "hint": "Revisa todos los detalles antes de enviar."
+      }
+    },
+    "users": {
+      "title": "Viajeros",
+      "searchPlaceholder": "Buscar por nombre, ID de usuario, correo o ubicación...",
+      "userId": "ID de usuario",
+      "traveler": "Viajero",
+      "contact": "Contacto",
+      "location": "Ubicación",
+      "tier": {
+        "bronze": "Bronce",
+        "silver": "Plata",
+        "gold": "Oro",
+        "platinum": "Platino"
+      },
+      "bookingsSpend": "Reservas / Gasto",
+      "lastTrip": "Último viaje",
+      "status": {
+        "active": "Activo",
+        "inactive": "Inactivo"
+      },
+      "stats": {
+        "found": "Viajeros encontrados",
+        "active": "Activos",
+        "combinedSpend": "Gasto combinado",
+        "page": "Página",
+        "pageValue": "{actual} / {total}"
+      },
+      "pagination": {
+        "previous": "Anterior",
+        "next": "Siguiente",
+        "showing": "Página {current} de {total}"
+      },
+      "details": "Detalles",
+      "empty": "Ningún viajero coincide con tu búsqueda.",
+      "notFound": "Viajero no encontrado.",
+      "backToList": "Volver a viajeros",
+      "accountDetails": "Detalles de la cuenta",
+      "detail": {
+        "totalBookings": "Reservas totales",
+        "lifetimeSpend": "Gasto total",
+        "primaryCorridor": "Corredor principal",
+        "openTickets": "Tickets abiertos",
+        "idFaceVerified": "ID + rostro verificados",
+        "joined": "Registro {date}",
+        "lastActive": "Última actividad {elapsed}",
+        "phoneWhatsApp": "{phone} (WhatsApp vinculado)",
+        "identityVerification": "Verificación de identidad",
+        "governmentId": "Documento de identidad ({type})",
+        "faceMatch": "Coincidencia facial / prueba de vida",
+        "verifiedVia": "Verificado vía",
+        "verified": "Verificado",
+        "notVerified": "No verificado",
+        "paymentMethods": "Métodos de pago registrados",
+        "card": "Tarjeta",
+        "defaultCurrency": "Moneda predeterminada",
+        "recentBookings": "Reservas recientes",
+        "internalNotes": "Notas internas",
+        "noNotes": "Aún no hay notas internas.",
+        "noteAttribution": "— {autor}, {fecha}",
+        "bookingStatus": {
+          "confirmed": "Confirmada",
+          "completed": "Completada",
+          "cancelled": "Cancelada"
+        }
+      },
+      "menu": {
+        "verification": "Verificación",
+        "rerunIdVerification": "Reejecutar verificación de ID",
+        "rerunFaceVerification": "Reejecutar verificación facial",
+        "financial": "Financiero",
+        "issueRefund": "Emitir reembolso",
+        "holdBookingPayment": "Retener pago de reserva",
+        "support": "Soporte",
+        "viewAsReadOnly": "Ver como usuario (solo lectura)",
+        "addInternalNote": "Añadir nota interna",
+        "dataAccount": "Datos y cuenta",
+        "mergeDuplicateAccount": "Fusionar cuenta duplicada",
+        "exportUserData": "Exportar datos del usuario (RGPD)",
+        "suspendAccount": "Suspender cuenta"
+      }
+    },
+    "experiences": {
+      "title": "Gestionar experiencias",
+      "searchPlaceholder": "Buscar experiencias",
+      "name": "Nombre de la experiencia",
+      "empty": "Ninguna experiencia coincide con tu búsqueda.",
+      "actions": {
+        "disable": "Desactivar experiencia",
+        "enable": "Activar experiencia",
+        "goTo": "Ir a la experiencia",
+        "delete": "Eliminar experiencia"
+      }
+    },
+    "cars": {
+      "title": "Gestionar coches",
+      "searchPlaceholder": "Buscar coches",
+      "name": "Nombre del coche",
+      "empty": "Ningún coche coincide con tu búsqueda.",
+      "actions": {
+        "disable": "Desactivar coche",
+        "enable": "Activar coche",
+        "goTo": "Ir al coche",
+        "delete": "Eliminar coche"
+      }
+    },
+    "accommodations": {
+      "title": "Gestionar alojamientos",
+      "searchPlaceholder": "Buscar alojamientos",
+      "name": "Nombre del alojamiento",
+      "empty": "Ningún alojamiento coincide con tu búsqueda.",
+      "actions": {
+        "disable": "Desactivar alojamiento",
+        "enable": "Activar alojamiento",
+        "goTo": "Ir al alojamiento",
+        "delete": "Eliminar alojamiento"
+      }
+    },
+    "listings": {
+      "location": "Ubicación",
+      "vendor": "Vendedor",
+      "bookings": "Reservas",
+      "ratings": "Valoraciones",
+      "reviews": "reseñas",
+      "activityStatus": "Estado de actividad",
+      "status": {
+        "active": "Activo",
+        "inactive": "Inactivo",
+        "deleted": "Eliminado"
+      },
+      "tab": {
+        "active": "Anuncios activos",
+        "deleted": "Anuncios eliminados"
+      },
+      "deletedHint": "Los anuncios retirados del mercado aparecen aquí. Puede revisar detalles o eliminar registros permanentemente.",
+      "viewDetails": "Ver anuncio",
+      "deletedAt": "Eliminado el {date}",
+      "detailTitle": "Detalles del anuncio",
+      "detailHint": "Vista previa completa del anuncio: medios, detalles, precios y documentos.",
+      "detailNotFound": "No se encontró este anuncio.",
+      "detail": {
+        "backCars": "Volver a coches",
+        "backAccommodations": "Volver a alojamientos",
+        "backExperiences": "Volver a experiencias"
+      },
+      "detailClose": "Cerrar"
+    },
+    "vendors": {
+      "title": "Gestionar vendedores",
+      "add": "Añadir vendedor",
+      "searchPlaceholder": "Buscar por nombre, ID de vendedor, correo o teléfono...",
+      "vendorId": "ID de vendedor",
+      "name": "Vendedor",
+      "userId": "ID de usuario",
+      "stats": {
+        "found": "Vendedores encontrados",
+        "active": "Activos",
+        "combinedRevenue": "Ingresos combinados",
+        "page": "Página",
+        "pageValue": "{actual} / {total}"
+      },
+      "pagination": {
+        "previous": "Anterior",
+        "next": "Siguiente",
+        "showing": "Página {current} de {total}"
+      },
+      "contactInfo": "Información de contacto",
+      "listings": "Anuncios",
+      "commission": "Comisión",
+      "commissionValue": "{rate} %",
+      "status": {
+        "active": "Activo",
+        "inactive": "Inactivo"
+      },
+      "revenue": "Ingresos",
+      "rating": "Valoración",
+      "reviews": "reseñas",
+      "details": "Detalles",
+      "empty": "Ningún vendedor coincide con tu búsqueda.",
+      "notFound": "Vendedor no encontrado.",
+      "backToList": "Volver a vendedores",
+      "accountDetails": "Detalles de la cuenta",
+      "joined": "Registrado",
+      "detail": {
+        "activeListings": "Anuncios activos",
+        "completedBookings": "Reservas completadas",
+        "averageRating": "Valoración media",
+        "openStrikes": "Infracciones abiertas",
+        "category": "Categoría",
+        "onboarded": "Registrado {date}",
+        "accountDocuments": "Documentos de la cuenta",
+        "listingDocuments": "Documentos del anuncio — {category}",
+        "payoutSummary": "Resumen de pagos",
+        "pendingPayout": "Pago pendiente",
+        "lastPayout": "Último pago",
+        "internalNotes": "Notas internas",
+        "noNotes": "Aún no hay notas internas.",
+        "noteAttribution": "— {autor}, {fecha}",
+        "viewListings": "Ver anuncios",
+        "suspendVendor": "Suspender vendedor",
+        "documentStatus": {
+          "verified": "Verificado",
+          "pendingReview": "Pendiente de revisión",
+          "signed": "Firmado",
+          "notVerified": "No verificado"
+        }
+      },
+      "menu": {
+        "verification": "Verificación",
+        "approvePendingListing": "Aprobar anuncio pendiente",
+        "requestAdditionalDocuments": "Solicitar documentos adicionales",
+        "upgradeToTier": "Actualizar a nivel {tier}",
+        "standingTrust": "Reputación y confianza",
+        "grantInstantBook": "Conceder reserva instantánea",
+        "addStrike": "Añadir infracción / marca interna",
+        "clearStrike": "Eliminar infracción",
+        "financial": "Financiero",
+        "holdPendingPayout": "Retener pago pendiente",
+        "adjustCommissionRate": "Ajustar tasa de comisión",
+        "communication": "Comunicación",
+        "contactVendor": "Contactar vendedor",
+        "addInternalNote": "Añadir nota interna",
+        "account": "Cuenta",
+        "suspendAccount": "Suspender cuenta",
+        "banPermanently": "Banear permanentemente"
+      },
+      "requestDocumentsModal": {
+        "title": "Solicitar documentos adicionales",
+        "subtitle": "Enviar una solicitud de documento a {vendor}.",
+        "documentLabel": "Seleccionar documento",
+        "documentPlaceholder": "Elegir un documento",
+        "otherOption": "Otro (no listado)",
+        "customDocumentLabel": "Agregar nombre del documento",
+        "customDocumentPlaceholder": "Escribir el nombre del documento",
+        "submit": "Enviar solicitud",
+        "cancel": "Cancelar"
+      },
+      "confirm": {
+        "cancel": "Cancelar"
+      },
+      "confirmSuspend": {
+        "title": "¿Está seguro?",
+        "message": "Está a punto de suspender a {vendor}. Perderá el acceso a su cuenta hasta que se reactive."
+      },
+      "confirmBan": {
+        "title": "¿Está seguro?",
+        "message": "Está a punto de banear permanentemente a {vendor}. Esta acción no se puede deshacer."
+      },
+      "internalNoteModal": {
+        "title": "Añadir nota interna",
+        "subtitle": "Añadir una observación o nota para {vendor}.",
+        "label": "Observación",
+        "placeholder": "Escriba su observación o nota aquí...",
+        "submit": "Guardar nota"
+      },
+      "experiences": "Experiencias",
+      "earnings": "Ingresos totales"
+    },
+    "bookings": {
+      "title": "Reservas",
+      "subtitle": "Todas las reservas de vuelos, coches, alojamientos y experiencias — app, web y creación manual.",
+      "create": "Crear reserva",
+      "searchPlaceholder": "Buscar por cliente, vendedor o ID de reserva...",
+      "empty": "Ninguna reserva coincide con tus filtros.",
+      "guests": "huéspedes",
+      "vendor": "Vendedor",
+      "contactCustomer": "Contactar cliente",
+      "contactVendor": "Contactar vendedor",
+      "addInternalNote": "Añadir nota interna",
+      "partialRefund": "Reembolso parcial",
+      "cancelRefund": "Cancelar y reembolsar",
+      "flagDispute": "Marcar como disputa",
+      "saveChanges": "Guardar cambios",
+      "stats": {
+        "upcoming": "Próximas (7 días)",
+        "awaiting": "Pendientes de confirmación",
+        "confirmed": "Confirmadas",
+        "disputed": "Disputadas / marcadas",
+        "totalMonth": "Total este mes"
+      },
+      "product": {
+        "all": "Todos los tipos de producto",
+        "flights": "Vuelos",
+        "cars": "Coches",
+        "accommodations": "Alojamiento",
+        "experiences": "Experiencias"
+      },
+      "source": {
+        "all": "Todas las fuentes",
+        "website": "Sitio web",
+        "mobileApp": "App móvil",
+        "admin": "Creado por admin"
+      },
+      "dateRange": {
+        "label": "Rango de fechas",
+        "day": "1 día",
+        "week": "1 semana",
+        "month": "1 mes",
+        "sixMonths": "6 meses",
+        "year": "1 año",
+        "all": "Todo"
+      },
+      "filter": {
+        "all": "Todas ({count})",
+        "upcoming": "Próximas ({count})",
+        "awaiting": "Pendientes ({count})",
+        "confirmed": "Confirmadas ({count})",
+        "completed": "Completadas ({count})",
+        "cancelled": "Canceladas ({count})",
+        "disputed": "Disputadas ({count})"
+      },
+      "status": {
+        "confirmed": "Confirmada",
+        "awaiting": "Pendiente de confirmación",
+        "cancelled": "Cancelada",
+        "completed": "Completada",
+        "disputed": "Disputada"
+      },
+      "sidebar": {
+        "customer": "Cliente",
+        "source": "Fuente: {source}",
+        "vendor": "Vendedor",
+        "bookingDetails": "Detalles de la reserva",
+        "payment": "Pago",
+        "timeline": "Cronología",
+        "name": "Nombre",
+        "contact": "Contacto",
+        "whatsapp": "WhatsApp",
+        "assignedTo": "Asignado a",
+        "vendorContact": "Contacto del vendedor",
+        "checkIn": "Fecha de entrada",
+        "checkOut": "Fecha de salida",
+        "amount": "Importe",
+        "paymentStatus": "Estado",
+        "chargedCurrency": "Moneda cobrada"
+      },
+      "createModal": {
+        "title": "Crear reserva",
+        "subtitle": "Crea una reserva en nombre de un cliente.",
+        "infoBannerPrefix": "Esta reserva se etiquetará como",
+        "infoBannerSource": "Origen: Creada por admin",
+        "infoBannerSuffix": "y aparecerá en la cuenta y la app del cliente igual que una reserva autoservicio.",
+        "productType": "Tipo de producto",
+        "product": {
+          "accommodations": "Alojamiento",
+          "flights": "Vuelos",
+          "cars": "Coches",
+          "experiences": "Experiencias"
+        },
+        "customer": "Cliente",
+        "customerPlaceholder": "Buscar cliente existente por nombre, correo o teléfono...",
+        "vendorListing": "Vendedor / anuncio",
+        "vendorPlaceholder": "Buscar vendedor o anuncio...",
+        "startDate": "Fecha de inicio",
+        "endDate": "Fecha de fin",
+        "guestsUnits": "Huéspedes / unidades",
+        "guestsPlaceholder": "p. ej. 2",
+        "totalAmount": "Importe total",
+        "amountPlaceholder": "NGN",
+        "paymentStatus": "Estado del pago",
+        "payment": {
+          "sendLink": "Enviar enlace de pago al cliente",
+          "paidInFull": "Marcar como pagado en su totalidad",
+          "pending": "Pago pendiente — sin enlace enviado"
+        },
+        "internalNote": "Nota interna",
+        "internalNotePlaceholder": "p. ej. Reservado por WhatsApp, el cliente pidió habitación en planta baja",
+        "cancel": "Cancelar",
+        "submit": "Crear reserva"
+      }
+    },
+    "payouts": {
+      "title": "Pagos",
+      "subtitle": "Ingresos de vendedores en todas las categorías, por periodo de liquidación.",
+      "searchPlaceholder": "Buscar por nombre de vendedor o referencia...",
+      "pendingCount": "{count} pago(s) pendiente(s)",
+      "markComplete": "Marcar completado",
+      "contactVendor": "Contactar vendedor",
+      "decline": "Rechazar",
+      "empty": "Ningún pago coincide con tu búsqueda.",
+      "requested": "Solicitado {date}",
+      "periodLabel": "Periodo: {period}",
+      "listBookingsBank": "{count} reservas · {bank} {account}",
+      "netPayoutToVendor": "Pago neto al vendedor",
+      "grossEarnings": "Ingresos brutos por reservas",
+      "platformCommission": "Comisión de plataforma ({rate}%)",
+      "netPayout": "Pago neto",
+      "paymentDestination": "Destino del pago",
+      "bank": "Banco",
+      "accountNumber": "Número de cuenta",
+      "accountName": "Nombre de la cuenta",
+      "payoutMethod": "Método de pago",
+      "associatedBookings": "Reservas asociadas ({count})",
+      "internalNote": "Nota interna",
+      "noteAttribution": "— {autor}, {fecha}",
+      "period": {
+        "thisMonth": "Este mes — jul 2026",
+        "lastMonth": "Mes pasado — jun 2026",
+        "quarter": "Este trimestre — T2 2026"
+      },
+      "stats": {
+        "totalPeriod": "Pago total — periodo",
+        "totalVendors": "En {count} vendedores",
+        "pending": "Pendiente",
+        "pendingSubtitle": "{count} pagos en espera de acción",
+        "completed": "Completado",
+        "completedSubtitle": "{count} pagos liquidados",
+        "declinedFailed": "Rechazado / Fallido",
+        "declinedFailedSubtitle": "{declined} rechazado · {failed} transferencia fallida"
+      },
+      "filter": {
+        "all": "Todos ({count})",
+        "pending": "Pendiente ({count})",
+        "completed": "Completado ({count})",
+        "declined": "Rechazado ({count})",
+        "failed": "Fallido ({count})"
+      },
+      "status": {
+        "pending": "Pendiente",
+        "completed": "Completado",
+        "declined": "Rechazado",
+        "failed": "Fallido",
+        "failedTransfer": "Transferencia fallida"
+      }
+    },
+    "reviews": {
+      "title": "Moderación de reseñas",
+      "category": {
+        "unanswered": "Sin responder",
+        "responseRequired": "Respuesta requerida",
+        "flagged": "Marcadas",
+        "deleted": "Eliminadas",
+        "published": "Publicadas"
+      },
+      "selectAll": "Seleccionar todo",
+      "deselectAll": "Deseleccionar todo",
+      "bulkPublish": "Publicar seleccionadas",
+      "bulkFlag": "Marcar seleccionadas",
+      "bulkResponseRequired": "Respuesta requerida",
+      "bulkDelete": "Eliminar seleccionadas",
+      "actionsGuideTitle": "¿Qué significan estas acciones?",
+      "actionsGuide": {
+        "publish": "Publicar — Hacer visible la reseña en la página pública del anuncio.",
+        "flag": "Marcar — Señalar la reseña para seguimiento (contenido inapropiado o sospechoso).",
+        "delete": "Eliminar — Quitar la reseña de la vista pública. Las eliminadas aparecen en la pestaña Eliminadas.",
+        "responseRequired": "Respuesta requerida — Indicar que se necesita respuesta del vendedor o admin.",
+        "clearResponseRequired": "Quitar respuesta requerida — Eliminar el marcador tras publicar una respuesta oficial."
+      },
+      "selectReview": "Seleccionar reseña de {title}",
+      "unansweredBadge": "Sin responder",
+      "responseRequiredBadge": "Respuesta requerida",
+      "officialResponse": "Respuesta oficial",
+      "empty": "No hay reseñas en esta categoría.",
+      "flag": "Marcar",
+      "responseRequired": "Respuesta requerida",
+      "clearResponseRequired": "Quitar respuesta requerida",
+      "delete": "Eliminar",
+      "hide": "Ocultar",
+      "publish": "Publicar",
+      "respondAsSynkAfrica": "Responder como SynkAfrica",
+      "responsePlaceholder": "Respuesta oficial visible para huésped y vendedor...",
+      "photosLabel": "Fotos del huésped",
+      "status": {
+        "published": "Publicada",
+        "flagged": "Marcada",
+        "deleted": "Eliminada",
+        "hidden": "Oculta"
+      }
+    },
+    "reports": {
+      "title": "Informes",
+      "totalRevenue": "Ingresos totales (mes)",
+      "totalBookings": "Reservas totales (mes)",
+      "topExperience": "Mejor experiencia",
+      "activeVendors": "Vendedores activos",
+      "popularExperiences": "Experiencias populares",
+      "bookings": "reservas",
+      "metric": "Métrica",
+      "value": "Valor",
+      "experience": "Experiencia",
+      "exportRevenue": "Exportar ingresos CSV",
+      "exportBookings": "Exportar reservas CSV"
+    },
+    "support": {
+      "title": "Tickets de soporte",
+      "subtitle": "Revisa solicitudes de soporte de usuarios y vendedores, actualiza el estado y envía respuestas oficiales.",
+      "tab": {
+        "users": "Usuarios",
+        "vendors": "Vendedores"
+      },
+      "user": "Usuario",
+      "vendor": "Vendedor",
+      "empty": "No hay tickets que coincidan con este filtro.",
+      "adminResponse": "Respuesta admin",
+      "previousResponse": "Respuesta anterior",
+      "sendResponse": "Enviar respuesta"
+    }
+  },
+  "vendor": {
+    "nav": {
+      "workspace": "Espacio de trabajo",
+      "account": "Cuenta",
+      "dashboard": "Panel",
+      "listings": "Anuncios",
+      "bookings": "Reservas",
+      "earnings": "Ingresos",
+      "notifications": "Notificaciones",
+      "businessProfile": "Perfil comercial",
+      "settings": "Configuración",
+      "support": "Soporte",
+      "logOut": "Cerrar sesión",
+      "openMenu": "Abrir menú",
+      "closeMenu": "Cerrar menú"
+    },
+    "header": {
+      "verifiedVendor": "Vendedor verificado",
+      "unverifiedVendor": "Vendedor no verificado",
+      "pendingVendor": "Verificación pendiente"
+    },
+    "signup": {
+      "title": "Crea tu cuenta de vendedor",
+      "subtitle": "Únete a SynkAfrica y publica tus coches, alojamientos y experiencias para viajeros en toda África.",
+      "alreadyHaveAccount": "¿Ya tienes una cuenta de vendedor?",
+      "signIn": "Iniciar sesión",
+      "progressLabel": "Progreso del registro de vendedor",
+      "steps": {
+        "business": "Empresa y propietario",
+        "security": "Seguridad y verificación",
+        "identity": "Verificación de identidad"
+      },
+      "cancel": "Cancelar",
+      "back": "Atrás",
+      "continue": "Continuar",
+      "createAccount": "Crear cuenta",
+      "completeRequiredFields": "Completa los campos obligatorios: {fields}",
+      "securityRequired": "Verifica tu teléfono con OTP y crea una contraseña válida para continuar.",
+      "identityRequired": "Sube tu identificación oficial y acepta los términos para crear tu cuenta.",
+      "sections": {
+        "businessInfo": "Información del negocio",
+        "businessInfoHint": "Cuéntanos sobre tu negocio.",
+        "ownerInfo": "Información del propietario",
+        "ownerInfoHint": "Datos del propietario o contacto principal.",
+        "phoneVerification": "Verificación telefónica",
+        "phoneVerificationHint": "Enviaremos un código de un solo uso al número que proporcionaste.",
+        "accountSecurity": "Seguridad de la cuenta",
+        "accountSecurityHint": "Crea una contraseña segura para tu cuenta de vendedor.",
+        "governmentId": "Identificación oficial",
+        "governmentIdHint": "Sube un pasaporte, licencia de conducir o NIN válido para verificación."
+      },
+      "fields": {
+        "businessName": "Nombre del negocio",
+        "businessType": "Tipo de negocio",
+        "cacRegistrationNumber": "Número de registro CAC",
+        "companyType": "Tipo de empresa",
+        "businessAddress": "Dirección del negocio",
+        "ownerFullName": "Nombre completo del propietario",
+        "ownerEmail": "Correo electrónico",
+        "phoneNumber": "Número de teléfono",
+        "dateOfBirth": "Fecha de nacimiento",
+        "password": "Contraseña",
+        "confirmPassword": "Confirmar contraseña"
+      },
+      "placeholders": {
+        "companyType": "Seleccione el tipo de empresa",
+        "businessName": "ej. Coastal Trails NG",
+        "businessType": "Seleccionar tipo",
+        "cacRegistrationNumber": "ej. RC1234567",
+        "businessAddress": "Calle, ciudad, estado",
+        "ownerFullName": "Nombre legal completo",
+        "ownerEmail": "tu@negocio.com",
+        "phoneNumber": "7812345678",
+        "password": "Crea una contraseña",
+        "confirmPassword": "Vuelve a escribir la contraseña"
+      },
+      "sendOtp": "Enviar OTP",
+      "resendOtp": "Reenviar OTP",
+      "enterOtp": "Introduce el OTP",
+      "resendIn": "Reenviar en 00:{seconds}",
+      "otpVerified": "Número de teléfono verificado.",
+      "passwordRules": {
+        "minLength": "Al menos 8 caracteres",
+        "hasNumber": "Incluye un número",
+        "hasUppercase": "Incluye una mayúscula"
+      },
+      "passwordMismatch": "Las contraseñas no coinciden.",
+      "togglePasswordVisibility": "Mostrar u ocultar contraseña",
+      "uploadId": "Arrastra y suelta tu identificación aquí",
+      "uploadIdHint": "JPG, PNG o PDF (máx. 5 MB)",
+      "chooseFile": "Elegir archivo",
+      "idUploaded": "Documento subido",
+      "idUploadFailed": "Error al subir — inténtalo de nuevo.",
+      "removeId": "Eliminar identificación",
+      "idPrivacyNote": "Tu identificación se almacena de forma segura y solo se usa para verificación. Nunca compartimos tus documentos personales con terceros.",
+      "securityBanner": {
+        "title": "Tu información está segura con nosotros",
+        "message": "Usamos seguridad de nivel industrial para proteger tus datos y mantener tu cuenta segura."
+      },
+      "agreeTermsPrefix": "Acepto los",
+      "termsOfService": "Términos de servicio",
+      "and": "y la",
+      "privacyPolicy": "Política de privacidad"
+    },
+    "login": {
+      "title": "Inicio de sesión de vendedor",
+      "intro": "Inicia sesión en tu cuenta de vendedor de SynkAfrica para gestionar anuncios, reservas e ingresos.",
+      "emailPlaceholder": "Introduce tu correo de vendedor",
+      "signInGoogle": "Iniciar sesión con Google",
+      "noAccount": "¿No tienes cuenta de vendedor?",
+      "signUp": "Registrarse"
+    },
+    "verificationNotice": {
+      "unverified": {
+        "title": "Verificación requerida",
+        "message": "Complete la verificación de vendedor para publicar anuncios y recibir pagos."
+      },
+      "pending": {
+        "title": "Verificación en curso",
+        "message": "Su verificación está en revisión. Algunas funciones pueden permanecer limitadas hasta la aprobación."
+      },
+      "completeVerification": "Completar verificación"
+    },
+    "notifications": {
+      "filter": {
+        "label": "Filtrar notificaciones",
+        "all": "Todo",
+        "newBooking": "Nuevas reservas",
+        "bookingReminder": "Recordatorios 24h",
+        "payoutConfirmation": "Pagos",
+        "adminMessage": "Administración"
+      },
+      "type": {
+        "newBooking": "Nueva reserva",
+        "bookingReminder": "Recordatorio 24h",
+        "payoutConfirmation": "Pago",
+        "adminMessage": "Mensaje admin"
+      },
+      "unreadCount": "{count} notificación(es) sin leer",
+      "allCaughtUp": "Estás al día.",
+      "markRead": "Marcar como leída",
+      "markAllRead": "Marcar todas como leídas",
+      "empty": "No hay notificaciones en esta categoría.",
+      "time": {
+        "justNow": "Ahora mismo",
+        "hoursAgo": "Hace {count} h"
+      },
+      "sample": {
+        "newBooking": {
+          "title": "Nueva reserva recibida",
+          "message": "Amara reservó Lagos Lagoon Sunset Cruise para el 25 jul · 4 huéspedes. Confirma o rechaza en 24 horas."
+        },
+        "newBooking2": {
+          "title": "Nueva reserva recibida",
+          "message": "Chidi reservó Lekki Garden Suites para el 3 ago · 2 huéspedes."
+        },
+        "reminder": {
+          "title": "Reserva en 24 horas",
+          "message": "Recordatorio: Lagos Lagoon Sunset Cruise con Fatima mañana a las 17:30 · 6 huéspedes."
+        },
+        "reminder2": {
+          "title": "Reserva en 24 horas",
+          "message": "Recordatorio: alquiler Toyota Camry 2021 con Emeka mañana a las 9:00."
+        },
+        "payout": {
+          "title": "Pago confirmado",
+          "message": "Se enviaron 200 000 NGN a tu cuenta GTBank terminada en 4521."
+        },
+        "payout2": {
+          "title": "Pago confirmado",
+          "message": "Retiro de 150 000 NGN a Access Bank terminada en 8834 procesado correctamente."
+        },
+        "admin": {
+          "title": "Actualización de políticas Synkafrica",
+          "message": "Las nuevas directrices para anuncios de experiencias están disponibles. Revísalas antes del 1 ago."
+        },
+        "admin2": {
+          "title": "Anuncio aprobado",
+          "message": "Tu anuncio Lagos Lagoon Sunset Cruise ya está activo en Synkafrica."
+        }
+      }
+    },
+    "dashboard": {
+      "welcomeBack": "Bienvenido de nuevo,",
+      "addListing": "Añadir anuncio",
+      "period": {
+        "label": "Periodo de métricas",
+        "day": "Un día",
+        "week": "Una semana",
+        "month": "Un mes",
+        "sixMonths": "Seis meses",
+        "year": "Un año"
+      },
+      "stats": {
+        "liveListings": "Anuncios activos",
+        "newBookings": "Nuevas reservas",
+        "earnings": "Ingresos",
+        "pendingApproval": "Pendiente de aprobación"
+      },
+      "goToBookings": "Ir a reservas",
+      "yourListings": "Tus anuncios",
+      "seeAll": "Ver todo",
+      "status": {
+        "live": "Anuncio activo",
+        "pending": "Pendiente...",
+        "paused": "Pausado",
+        "draft": "Borrador"
+      },
+      "editListing": "Editar anuncio",
+      "deleteListing": "Eliminar anuncio",
+      "pauseListing": "Pausar anuncio",
+      "playListing": "Reanudar anuncio",
+      "deleteListingModal": {
+        "title": "¿Eliminar anuncio?",
+        "message": "¿Seguro que quieres eliminar \"{title}\"? Esta acción no se puede deshacer.",
+        "confirm": "Eliminar anuncio",
+        "cancel": "Cancelar"
+      },
+      "category": {
+        "accommodations": "Alojamientos",
+        "carRentals": "Alquiler de coches",
+        "tours": "Visitas guiadas",
+        "toursExperiences": "Tours y experiencias"
+      }
+    },
+    "businessProfile": {
+      "businessName": "Nombre comercial",
+      "businessNameHint": "Nombre interno usado en pagos y registros de vendedor. No se muestra en anuncios públicos.",
+      "internalNameLabel": "Nombre interno del negocio",
+      "contactDetails": "Datos de contacto",
+      "contactDetailsHint": "Cómo Synkafrica y los huéspedes te contactan para soporte de reservas.",
+      "phone": "Número de teléfono",
+      "email": "Correo electrónico",
+      "address": "Dirección comercial",
+      "payoutAccount": "Cuenta bancaria para pagos",
+      "payoutAccountHint": "Los retiros de ingresos se envían a esta cuenta.",
+      "bankName": "Nombre del banco",
+      "accountNumber": "Número de cuenta",
+      "accountNumberLocked": "El número de cuenta solo puede cambiarse cada {months} meses. Próximo cambio el {date}.",
+      "accountName": "Nombre de la cuenta",
+      "bank": {
+        "zenith": "Banco Zenith",
+        "firstBank": "primer banco"
+      },
+      "passwordUpdate": "Actualizar contraseña",
+      "passwordUpdateHint": "Elige una contraseña segura que no uses en otros sitios.",
+      "currentPassword": "Contraseña actual",
+      "newPassword": "Nueva contraseña",
+      "confirmPassword": "Confirmar nueva contraseña",
+      "passwordMismatch": "Las nuevas contraseñas no coinciden.",
+      "updatePassword": "Actualizar contraseña",
+      "passwordUpdated": "Contraseña actualizada.",
+      "saveChanges": "Guardar cambios",
+      "saved": "Guardado.",
+      "rejected": {
+        "title": "Solicitud no aprobada",
+        "noReason": "Un administrador no aprobó tu solicitud. Corrige tus datos y documentos abajo y vuelve a enviarla.",
+        "resubmit": "Volver a enviar para revisión",
+        "resubmitting": "Enviando…",
+        "resubmitted": "Enviada de nuevo. Un administrador revisará tu solicitud otra vez.",
+        "resubmitFailed": "No se pudo volver a enviar. Inténtalo de nuevo."
+      },
+      "cac": {
+        "title": "Registro CAC",
+        "hint": "Se comprueba con el registro CAC. Puedes corregir estos datos hasta que la comprobación sea correcta.",
+        "number": "Número de registro CAC",
+        "companyType": "Tipo de empresa",
+        "companyTypePlaceholder": "Selecciona el tipo de empresa",
+        "status": {
+          "verified": "Verificado",
+          "failed": "Sin verificar",
+          "unverified": "Pendiente de comprobación"
+        },
+        "verifiedAs": "Coincide con {name} en el registro CAC.",
+        "failedHint": "El registro CAC no coincide con estos datos. Corrígelos y guarda para volver a comprobar.",
+        "pendingHint": "Al guardar se repite la comprobación CAC. Actualiza en un momento para ver el resultado.",
+        "lockedHint": "Los datos verificados no se pueden cambiar aquí. Contacta con soporte si hay algún error."
+      },
+      "documents": {
+        "title": "Documentos y verificación",
+        "subtitle": "Los documentos a nivel de empresa aplican a toda tu cuenta. Los documentos del vehículo son obligatorios por anuncio antes de que pueda publicarse.",
+        "businessSection": "Documento de empresa",
+        "business": {
+          "cac": "Certificado de incorporación (CAC)"
+        },
+        "uploadedMeta": "Subido el {date} · {fileName}",
+        "view": "Ver",
+        "vehicleSection": "Documentos del vehículo · {count} anuncios",
+        "vehicleLegend": "Seguro · Revisión técnica · Prueba de propiedad",
+        "type": {
+          "insurance": "Certificado de seguro",
+          "roadworthiness": "Certificado de revisión técnica",
+          "ownership": "Prueba de propiedad"
+        },
+        "status": {
+          "verified": "Verificado",
+          "rejected": "Rechazado",
+          "pending": "Pendiente",
+          "notUploaded": "No subido"
+        },
+        "listingStatus": {
+          "allVerified": "Todo verificado",
+          "actionNeeded": "Acción requerida",
+          "notStarted": "No iniciado",
+          "inProgress": "En progreso"
+        },
+        "reupload": "Volver a subir",
+        "upload": "Subir",
+        "rejection": {
+          "plateMismatch": "El nombre del documento no coincide con la matrícula registrada. Vuelve a subir la licencia del vehículo que coincida con ABJ-771-KD."
+        }
+      }
+    },
+    "support": {
+      "helpBanner": "Presenta una queja o solicita ayuda al equipo de vendedores de Synkafrica. Respondemos normalmente en 1–2 días hábiles.",
+      "helpBannerEmail": "Las actualizaciones se enviarán a {email}.",
+      "openTickets": "{count} ticket(s) abierto(s)",
+      "tabs": {
+        "label": "Secciones de soporte"
+      },
+      "createTicket": "Crear ticket de soporte",
+      "createTicketHint": "Describe tu problema con detalle para resolverlo rápidamente.",
+      "subject": "Asunto",
+      "subjectPlaceholder": "Resumen breve de tu problema",
+      "category": {
+        "booking": "Problema de reserva",
+        "payout": "Pagos e ingresos",
+        "listing": "Anuncio y disponibilidad",
+        "account": "Cuenta y perfil",
+        "complaint": "Queja",
+        "other": "Otro"
+      },
+      "priority": {
+        "low": "Baja",
+        "medium": "Media",
+        "high": "Alta",
+        "urgent": "Urgente"
+      },
+      "priorityHint": "Usa Urgente solo para problemas urgentes de reservas o pagos.",
+      "bookingReference": "Referencia de reserva",
+      "bookingReferencePlaceholder": "ej. VB-3 o número de pedido (opcional)",
+      "description": "Descripción",
+      "descriptionPlaceholder": "Explica qué ocurrió, cuándo y qué resultado necesitas.",
+      "submitTicket": "Enviar ticket",
+      "ticketSubmitted": "Ticket {number} enviado. Nuestro equipo te contactará pronto.",
+      "responseTime": "Los campos obligatorios están marcados con *.",
+      "yourTickets": "Tus tickets",
+      "yourTicketsHint": "Sigue las quejas y solicitudes de soporte que has enviado.",
+      "filter": {
+        "label": "Filtrar tickets por estado",
+        "all": "Todo"
+      },
+      "status": {
+        "open": "Abierto",
+        "inProgress": "En progreso",
+        "resolved": "Resuelto",
+        "closed": "Cerrado"
+      },
+      "updated": "Actualizado",
+      "emptyTickets": "Ningún ticket coincide con este filtro.",
+      "created": "Creado",
+      "loading": "Cargando tickets…",
+      "loadFailed": "No se pudieron cargar tus tickets. Inténtalo de nuevo.",
+      "submitFailed": "No se pudo enviar tu ticket. Inténtalo de nuevo.",
+      "viewConversation": "Ver conversación",
+      "backToTickets": "Volver a los tickets",
+      "conversation": "Conversación",
+      "you": "Tú",
+      "supportTeam": "Equipo de soporte",
+      "replyPlaceholder": "Escribe tu respuesta…",
+      "sendReply": "Enviar respuesta",
+      "sending": "Enviando…",
+      "replyFailed": "No se pudo enviar tu respuesta. Inténtalo de nuevo."
+    },
+    "earnings": {
+      "availableBalance": "Saldo disponible",
+      "lifetimeEarnings": "Ingresos totales",
+      "transactionHistory": "Historial de transacciones",
+      "withdrawFunds": "Retirar fondos",
+      "amountToWithdraw": "Importe a retirar",
+      "selectBankAccount": "Seleccionar cuenta bancaria",
+      "payoutAccount": "Cuenta de pago",
+      "noBankAccount": "Aún no has añadido una cuenta de pago.",
+      "addBankAccount": "Añade una cuenta bancaria en Perfil de empresa →",
+      "availableHint": "Disponible:",
+      "processingNote": "Los retiros se procesan en 1–2 días hábiles.",
+      "paymentFlowTitle": "Política de pagos y retiros",
+      "paymentFlowInstant": "Los retiros de 200.000 ₦ o menos se procesan automáticamente tras confirmar.",
+      "paymentFlowApproval": "Los retiros superiores a 200.000 ₦ requieren aprobación de super-admin.",
+      "paymentFlowAuth": "Al retirar, montos superiores a 200.000 ₦ requieren PIN de transacción y OTP.",
+      "withdrawalModal": {
+        "title": "Confirmar retiro",
+        "pin": "PIN de transacción",
+        "otp": "Código OTP",
+        "sendOtp": "Enviar OTP",
+        "submit": "Confirmar retiro",
+        "pendingApproval": "Este retiro requiere aprobación de super-admin. Se le notificará cuando sea aprobado.",
+        "cancel": "Cancelar"
+      },
+      "status": {
+        "completed": "Completado",
+        "pending": "Pendiente",
+        "failed": "Fallido"
+      },
+      "transaction": {
+        "bookingPayment": "Pago de reserva",
+        "withdrawal": "Retiro",
+        "platformFee": "Comisión de plataforma",
+        "refund": "Reembolso"
+      },
+      "bank": {
+        "gtbank": "GTBank",
+        "access": "Acceso al banco"
+      },
+      "duration": {
+        "label": "Periodo de ganancias",
+        "daily": "Diario",
+        "weekly": "Semanal",
+        "monthly": "Mensual",
+        "all": "Todo"
+      },
+      "commissionSplit": "Reparto de comisión",
+      "commissionSplitHint": "Los ingresos por reserva se reparten {vendor}% para ti y {platform}% para Synkafrica.",
+      "vendorShare": "Tu parte",
+      "platformShare": "Comisión de plataforma",
+      "grossRevenue": "Ingresos brutos",
+      "downloadStatements": "Descargar extracto",
+      "emptyTransactions": "No hay transacciones para este periodo.",
+      "statement": {
+        "date": "Fecha",
+        "title": "Título",
+        "description": "Descripción",
+        "type": "Tipo",
+        "amount": "Importe",
+        "status": "Estado"
+      }
+    },
+    "listings": {
+      "detail": {
+        "back": "Volver a anuncios",
+        "backToBookings": "Volver a reservas",
+        "heading": "Detalles del anuncio",
+        "hint": "Vista previa completa de este anuncio, incluidos medios, detalles, precios y documentos.",
+        "status": "Estado",
+        "category": "Categoría",
+        "rating": "Valoración",
+        "notFound": "Anuncio no encontrado."
+      },
+      "bookingAvailability": "Disponibilidad de reservas",
+      "filter": {
+        "allCategories": "Todas las categorías",
+        "allStatuses": "Todos los estados",
+        "statusLabel": "Estado",
+        "status": {
+          "live": "Activo",
+          "pending": "Pendiente",
+          "draft": "Borradores",
+          "paused": "Pausado"
+        },
+        "empty": "Ningún anuncio coincide con tus filtros."
+      },
+      "status": {
+        "pendingApproval": "Pendiente de aprobación",
+        "paused": "Pausado"
+      },
+      "availability": {
+        "selectListing": "Anuncio",
+        "modeAvailable": "Marcar disponible",
+        "modeBlock": "Bloquear fechas",
+        "modeAvailableHint": "Haz clic en las fechas para abrirlas a reservas. Haz clic de nuevo para quitar la disponibilidad.",
+        "modeBlockHint": "Haz clic en las fechas para bloquear reservas. Haz clic de nuevo para desbloquear.",
+        "legendAvailable": "Disponible",
+        "legendBlocked": "Bloqueada",
+        "legendSelected": "Seleccionada",
+        "available": "Disponible",
+        "blocked": "Bloqueada",
+        "timeSlots": "Franjas horarias",
+        "capacity": "Capacidad",
+        "selectDayHint": "Selecciona una fecha en el calendario para configurar las franjas.",
+        "selectAvailableDay": "Marca esta fecha como disponible para configurar las franjas.",
+        "blockedDayMessage": "Esta fecha está bloqueada. Desbloquéala para configurar las franjas.",
+        "defaultCapacity": "Capacidad predeterminada",
+        "defaultCapacityHint": "Se aplica a nuevas fechas disponibles y franjas activadas.",
+        "leadTime": "Tiempo de antelación",
+        "leadTimeHint": "Aviso mínimo requerido antes de que un huésped pueda reservar.",
+        "leadTimeUnitHours": "Horas",
+        "leadTimeUnitDays": "Días"
+      },
+      "calendar": {
+        "sun": "Dom",
+        "mon": "Lun",
+        "tue": "Mar",
+        "wed": "Mié",
+        "thu": "Jue",
+        "fri": "Vie",
+        "sat": "Sáb",
+        "previousMonth": "Mes anterior",
+        "nextMonth": "Mes siguiente"
+      }
+    },
+    "bookings": {
+      "tab": {
+        "upcoming": "Próximas",
+        "past": "Pasadas",
+        "cancelled": "Canceladas",
+        "declined": "Rechazadas"
+      },
+      "stats": {
+        "awaitingConfirmation": "Pendientes de confirmación",
+        "upcomingConfirmed": "Próximas (confirmadas)",
+        "earningsThisMonth": "Ganancias este mes",
+        "responseRate": "Tasa de respuesta (30 días)"
+      },
+      "searchPlaceholder": "Buscar por nombre del huésped o ID de reserva...",
+      "allListings": "Todos los anuncios",
+      "viewModeLabel": "Vista de reservas",
+      "view": {
+        "list": "Lista",
+        "calendar": "Calendario"
+      },
+      "calendarComingSoon": "La vista de calendario estará disponible pronto.",
+      "respondWithin": "Responder en {time}",
+      "paymentSecured": "Pago asegurado",
+      "messageGuest": "Mensaje al huésped",
+      "viewListing": "Ver anuncio",
+      "cancelBooking": "Cancelar reserva",
+      "dateRangeLabel": "Filtrar por periodo",
+      "dateRange": {
+        "all": "Todo el tiempo",
+        "pastMonth": "Último mes",
+        "past3Months": "Últimos 3 meses",
+        "past6Months": "Últimos 6 meses",
+        "pastYear": "Último año"
+      },
+      "empty": {
+        "upcoming": "No hay reservas próximas para este periodo.",
+        "past": "No hay reservas pasadas para este periodo.",
+        "cancelled": "No hay reservas canceladas para este periodo.",
+        "declined": "No hay reservas rechazadas para este periodo."
+      },
+      "declineModal": {
+        "title": "Rechazar reserva",
+        "subtitle": "Indica a {guest} por qué se rechaza la reserva {reference}.",
+        "reasonLabel": "Motivo del rechazo",
+        "reasonPlaceholder": "Explica por qué no puedes aceptar esta reserva...",
+        "cancel": "Cancelar",
+        "submit": "Rechazar reserva"
+      },
+      "declineReason": "Motivo del rechazo",
+      "deliveryAddress": "Dirección de entrega",
+      "pickupAddress": "Dirección de recogida",
+      "carMode": {
+        "selfDrive": "Conducción autónoma",
+        "withDriver": "Con conductor"
+      },
+      "calendar": {
+        "selectedDay": "{count} reserva(s) este día",
+        "noBookings": "No hay reservas este día."
+      },
+      "pendingConfirmation": "{count} reserva(s) esperando tu confirmación.",
+      "specialRequests": "Solicitudes especiales",
+      "confirm": "Confirmar",
+      "decline": "Rechazar",
+      "markComplete": "Marcar como completada",
+      "status": {
+        "awaitingConfirmation": "Pendiente de confirmación",
+        "confirmed": "Confirmada",
+        "declined": "Rechazada",
+        "completed": "Completada",
+        "cancelled": "Cancelada"
+      }
+    },
+    "addListing": {
+      "title": "Añadir anuncio",
+      "editTitle": "Editar publicación",
+      "loadError": "No se pudo cargar esta publicación. Inténtalo de nuevo.",
+      "subtitle": "Crea un nuevo anuncio y llega a más clientes.",
+      "backToListings": "← Volver a anuncios",
+      "backToListing": "← Volver al anuncio",
+      "progressLabel": "Progreso del anuncio",
+      "steps": {
+        "carDetails": "Detalles del coche",
+        "accommodationDetails": "Detalles del alojamiento",
+        "experienceDetails": "Detalles de la experiencia",
+        "media": "Medios",
+        "pricing": "Precios",
+        "documents": "Documentos",
+        "review": "Revisar y publicar"
+      },
+      "whatAreYouListing": "¿Qué estás publicando?",
+      "category": {
+        "car": {
+          "title": "Coche",
+          "description": "Publica un coche de alquiler."
+        },
+        "accommodation": {
+          "title": "Alojamiento",
+          "description": "Publica un lugar donde alojarse."
+        },
+        "experience": {
+          "title": "Experiencia",
+          "description": "Publica una actividad o tour."
+        }
+      },
+      "carDetailsHeading": "Detalles del coche",
+      "accommodationDetailsHeading": "Detalles del alojamiento",
+      "experienceDetailsHeading": "Detalles de la experiencia",
+      "experienceType": "Tipo / categoría de experiencia",
+      "experienceTypeSelect": "Seleccionar tipo de experiencia",
+      "experienceLocationPlaceholder": "p. ej. Lekki, Lagos, Nigeria",
+      "experienceHighlights": "Destacados / descripción breve",
+      "experienceHighlightsHint": "Un resumen breve y atractivo de lo que harán y vivirán los huéspedes.",
+      "experienceHighlightsPlaceholder": "Describe la experiencia, qué la hace única y por qué a los huéspedes les encantará.",
+      "experienceAvailabilityHeading": "Disponibilidad",
+      "experienceAvailabilityHint": "Define cuándo está disponible tu experiencia.",
+      "operatingDays": "Días de operación",
+      "startTime": "Hora de inicio",
+      "endTime": "Hora de fin",
+      "experienceScheduleWeekly": "Se repite semanalmente",
+      "experienceScheduleWeeklyHint": "Esta experiencia está disponible cada semana en los días seleccionados.",
+      "experienceScheduleDateRange": "Rango de fechas personalizado",
+      "experienceScheduleDateRangeHint": "Define un rango de fechas específico para esta experiencia.",
+      "experienceDateRangeHeading": "Seleccionar rango de fechas",
+      "experienceDateRangeHint": "Elige las fechas de inicio y fin en las que estará disponible esta experiencia.",
+      "experienceDateRangeStart": "Fecha de inicio",
+      "experienceDateRangeEnd": "Fecha de fin",
+      "additionalInfoSection": "Información adicional",
+      "whatsIncludedHint": "Enumera lo que incluye la experiencia.",
+      "includesItemsPlaceholder": "p. ej. Equipo, Guía, Equipo de seguridad, Agua embotellada",
+      "whatToBring": "Qué traer / usar",
+      "whatToBringHint": "Indica a los huéspedes qué deben traer o usar.",
+      "whatToBringPlaceholder": "p. ej. Ropa cómoda, Zapatos cerrados, Protector solar",
+      "tagInputFooter": "Añade cada elemento y pulsa Enter",
+      "additionalInformationHeading": "Información complementaria",
+      "additionalInformationHint": "Añade cualquier otra información útil para tus huéspedes.",
+      "additionalInformationPlaceholder": "p. ej. Restricciones de edad, Requisitos de salud, Política de cancelación, Punto de encuentro",
+      "weekday": {
+        "mon": "Lun",
+        "tue": "Mar",
+        "wed": "Mié",
+        "thu": "Jue",
+        "fri": "Vie",
+        "sat": "Sáb",
+        "sun": "Dom"
+      },
+      "carName": "Nombre del coche",
+      "carNamePlaceholder": "p. ej. Toyota Highlander 2024",
+      "carModel": "Modelo / variante",
+      "carModelPlaceholder": "p. ej. 2.4L Limited AWD",
+      "transmission": {
+        "automatic": "Automática",
+        "manual": "Manual"
+      },
+      "year": "Año",
+      "yearPlaceholder": "p. ej. 2024",
+      "comesWithDriver": "¿Incluye conductor?",
+      "yes": "Sí",
+      "no": "No",
+      "shortDescription": "Descripción breve",
+      "carDescriptionPlaceholder": "Describe el coche y lo que incluye.",
+      "perksFeatures": "Ventajas y características",
+      "perksPlaceholder": "Añade una ventaja y pulsa Enter",
+      "propertyName": "Nombre de la propiedad",
+      "accommodationName": "Nombre del alojamiento",
+      "accommodationNamePlaceholder": "p. ej. Oceanview Suites Lekki",
+      "propertyNamePlaceholder": "p. ej. Lekki Garden Suites",
+      "propertyType": "Tipo de propiedad",
+      "propertyTypeSelect": "Seleccionar tipo de propiedad",
+      "propertyTypePlaceholder": "p. ej. Apartamento, villa, hotel",
+      "address": "Dirección",
+      "addressPlaceholder": "Dirección completa",
+      "accommodationLocationPlaceholder": "p. ej. Lekki Phase 1, Lagos, Nigeria",
+      "accommodationMaxGuests": "Huéspedes máx. (propiedad)",
+      "accommodationMaxGuestsPlaceholder": "p. ej. 12",
+      "checkInTime": "Hora de check-in",
+      "checkOutTime": "Hora de check-out",
+      "availability": "Disponibilidad",
+      "availabilityAlways": "Siempre disponible",
+      "availabilityDateRange": "Definir rango de fechas",
+      "availabilityHint": "También puedes gestionar fechas específicas desde tu calendario después de publicar.",
+      "popularPerks": "Ventajas populares",
+      "popularPerksHint": "Selecciona las comodidades disponibles en tu propiedad.",
+      "viewAllPerks": "Ver todas las ventajas",
+      "showLessPerks": "Ver menos",
+      "propertyOwner": "¿Eres el propietario?",
+      "propertyOwnerYes": "Sí, soy el propietario",
+      "propertyOwnerNo": "No, soy agente autorizado",
+      "bedrooms": "Dormitorios",
+      "bathrooms": "Baños",
+      "accommodationDescriptionPlaceholder": "Describe brevemente tu alojamiento, el ambiente, las atracciones cercanas y lo que lo hace especial.",
+      "amenities": "Comodidades",
+      "amenitiesPlaceholder": "Añade una comodidad y pulsa Enter",
+      "experienceName": "Nombre de la experiencia",
+      "experienceNamePlaceholder": "p. ej. Crucero al atardecer",
+      "location": "Ubicación",
+      "locationPlaceholder": "p. ej. Victoria Island, Lagos",
+      "duration": "Duración",
+      "durationPlaceholder": "p. ej. 3 horas",
+      "maxGuests": "Máximo de huéspedes",
+      "experienceDescriptionPlaceholder": "Describe la actividad y el itinerario.",
+      "whatsIncluded": "Qué incluye",
+      "includesPlaceholder": "Añade una inclusión y pulsa Enter",
+      "mediaHeading": "Imágenes del anuncio",
+      "mediaHint": "Sube fotos o videos claros. Hasta 8 archivos.",
+      "uploadImages": "Arrastra imágenes o videos aquí o haz clic para buscar",
+      "uploadImagesHint": "PNG, JPG, WEBP o MP4 (máx. 10 MB)",
+      "removeImage": "Eliminar imagen",
+      "mediaSkippedUnsupported": "{count} archivo(s) omitido(s) — formato no compatible. Usa PNG, JPG, WEBP o MP4 (las fotos HEIC de iPhone aún no son compatibles).",
+      "mediaSkippedTooLarge": "{count} archivo(s) omitido(s) — cada archivo debe pesar menos de 10 MB.",
+      "mediaPreviewFailed": "Vista previa no disponible",
+      "mediaUploading": "Subiendo…",
+      "mediaUploadFailed": "Error al subir",
+      "pickupDeliveryHeading": "Recogida o entrega",
+      "pickupDeliveryQuestion": "¿Qué opciones de entrega ofreces? Selecciona todas las que correspondan.",
+      "pickupAddress": "Dirección de recogida",
+      "pickupAddressPlaceholder": "Introduce la dirección donde los clientes pueden recoger el coche",
+      "clientPickup": "Recogida del cliente",
+      "clientPickupHint": "El cliente recoge el coche en tu ubicación.",
+      "deliveryDropoff": "Entrega / devolución",
+      "deliveryDropoffHint": "Entregas el coche al cliente.",
+      "carPricingHeading": "Precios de alquiler",
+      "price12hr": "Alquiler 12 h (NGN)",
+      "price24hr": "Alquiler 24 h (NGN)",
+      "priceMultiDay": "Varios días (por día, NGN)",
+      "driverAddonPrice": "Suplemento conductor (NGN)",
+      "selfDriveNoPrice": "Conducción propia — no se requiere suplemento de conductor.",
+      "deliveryFee": "Tarifa de entrega (NGN)",
+      "clientPickupNoPrice": "Recogida del cliente — no se requiere tarifa de entrega.",
+      "pricingLocationHint": "Puedes añadir más detalles sobre la ubicación de recogida o entrega en el siguiente paso.",
+      "accommodationPricingHeading": "Precios del alojamiento",
+      "roomTypesPricing": "Tipos de habitación y precios",
+      "roomTypesPricingHint": "Añade los diferentes tipos de habitaciones que ofreces.",
+      "addRoomType": "Añadir tipo de habitación",
+      "addRoomTypeModalTitle": "Añadir tipo de habitación",
+      "editRoomTypeModalTitle": "Editar tipo de habitación",
+      "saveRoomType": "Guardar tipo de habitación",
+      "roomType": "Tipo de habitación",
+      "roomTypePlaceholder": "p. ej. Suite Deluxe",
+      "roomDescription": "Descripción",
+      "roomDescriptionPlaceholder": "Describe brevemente este tipo de habitación",
+      "roomMaxGuests": "Huéspedes máx.",
+      "roomMaxGuestsPlaceholder": "p. ej. 2",
+      "roomPricePerNight": "Precio (por noche)",
+      "roomTypesEmptyTitle": "Aún no hay tipos de habitación",
+      "roomTypesEmptyHint": "Haz clic en \"Añadir tipo de habitación\" para empezar.",
+      "actions": "Acciones",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "nightlyRate": "Precio por noche (NGN)",
+      "cleaningFee": "Tarifa de limpieza (NGN)",
+      "experiencePricingHeading": "Precios",
+      "experiencePricingHint": "Define los precios de tus entradas.",
+      "singleTicketPrice": "Precio de entrada individual",
+      "singleTicketPriceHint": "Precio para una persona",
+      "groupTicketPrice": "Precio de entrada grupal (desde) (Opcional)",
+      "groupTicketPriceHint": "Precio por persona para grupos",
+      "minGroupSizeOptional": "Tamaño mínimo del grupo (Opcional)",
+      "maxGroupSizeOptional": "Tamaño máximo del grupo (Opcional)",
+      "minGroupSizePlaceholder": "p. ej. 5",
+      "maxGroupSizePlaceholder": "p. ej. 20",
+      "optional": "Opcional",
+      "review": {
+        "groupSize": "Tamaño del grupo",
+        "category": "Categoría",
+        "title": "Título",
+        "images": "Imágenes",
+        "documents": "Documentos subidos",
+        "description": "Descripción",
+        "gpsConfirmed": "GPS confirmado"
+      },
+      "pricePerPerson": "Precio por persona (NGN)",
+      "minGroupSize": "Tamaño mínimo del grupo",
+      "documents": {
+        "stepTitle": "Subida de documentos",
+        "pageTitle": "Subir documentos requeridos",
+        "pageIntro": "Sube los documentos necesarios para verificar tu anuncio de coche.",
+        "pageSubtitle": "Sube documentos claros y válidos para generar confianza y acelerar la aprobación.",
+        "intro": {
+          "cars": "Sube los documentos antes de publicar tu coche.",
+          "accommodations": "Sube documentos de propiedad o de agente para este alojamiento.",
+          "experiences": "Sube tu documento de verificación comercial."
+        },
+        "proofOfOwnership": "Prueba de propiedad",
+        "proofOfOwnershipHint": "Sube el documento de propiedad del vehículo (p. ej. permiso de circulación o recibo de compra).",
+        "roadworthiness": "Certificado de roadworthiness",
+        "roadworthinessHint": "Sube un certificado de roadworthiness válido para el vehículo.",
+        "insurance": "Seguro",
+        "insuranceDocument": "Documento de seguro",
+        "insuranceHint": "Sube el certificado de seguro actual del vehículo.",
+        "cac": "Registro CAC",
+        "cacRegistration": "Certificado de registro CAC",
+        "cacHint": "Sube tu certificado de registro comercial (CAC).",
+        "accommodationOwnershipHint": "Escritura, contrato de arrendamiento o prueba de propiedad",
+        "agentAuthorization": "Carta de autorización del agente",
+        "agentAuthorizationHint": "Carta firmada del propietario",
+        "agentProofOfAddress": "Comprobante de domicilio del agente",
+        "agentProofOfAddressHint": "Factura de servicios o extracto bancario",
+        "addressPhotos": "Fotos que coincidan con la dirección",
+        "addressPhotosHint": "Fotos que muestren claramente la propiedad",
+        "gpsAcknowledgment": "Confirmo que este vehículo tiene un GPS funcional y soy responsable si esto resulta falso.",
+        "requiredBadge": "Requerido",
+        "uploadPrompt": "Haz clic para subir o arrastra y suelta",
+        "uploadFormats": "PDF, JPG, PNG, máx. 10 MB",
+        "safetyTitle": "Tus documentos están seguros",
+        "safetyText": "Todos los documentos se almacenan de forma segura y se usan solo para verificación. No se compartirán públicamente.",
+        "submitForReview": "Enviar para revisión",
+        "submitHint": "Tu anuncio será revisado y te notificaremos cuando sea aprobado.",
+        "untitledListing": "Anuncio sin título",
+        "sidebar": {
+          "listingPreview": "Vista previa del anuncio",
+          "edit": "Editar",
+          "carsListing": "Anuncio de coche",
+          "accommodationsListing": "Anuncio de alojamiento",
+          "experiencesListing": "Anuncio de experiencia",
+          "comesWithDriver": "Con conductor",
+          "selfDrive": "Autoconducción",
+          "pricing": "Precios",
+          "halfDay": "Medio día",
+          "fullDay": "Día completo",
+          "extraHour": "Hora extra",
+          "progress": "Progreso del anuncio"
+        }
+      },
+      "documentsHeading": "Documentos requeridos",
+      "uploadDocument": "Subir documento",
+      "removeFile": "Eliminar",
+      "reviewHeading": "Revisar tu anuncio",
+      "reviewHint": "Revisa los detalles antes de publicar.",
+      "cancel": "Cancelar",
+      "back": "Atrás",
+      "saveDraft": "Guardar borrador",
+      "draftSaved": "Borrador guardado",
+      "draftSaveFailed": "No se pudo guardar tu borrador. Inténtalo de nuevo.",
+      "saveContinue": "Guardar y continuar",
+      "completeRequiredFields": "Completa los campos obligatorios: {fields}",
+      "publish": "Publicar anuncio",
+      "publishWaitForUploads": "Espera, por favor — tus documentos aún se están subiendo.",
+      "success": {
+        "title": "Anuncio enviado para revisión",
+        "message": "Su anuncio está en revisión. Recibirá un correo de confirmación en 2–3 días hábiles una vez aprobado.",
+        "addAnother": "Añadir otro anuncio",
+        "backToListings": "Volver a mis anuncios"
+      },
+      "categoryChooseHint": "Elija el tipo de servicio que ofrece. Se establece una sola vez al guardar su primer anuncio y no se puede cambiar después.",
+      "categoryLockedHint": "Su cuenta de vendedor está registrada solo para {category}. Contacte soporte para cambiar de categoría."
+    }
+  }
+}

@@ -37,6 +37,11 @@ export type AccommodationDetailApi = AccommodationSummaryApi & {
   checkInTime: string | null;
   checkOutTime: string | null;
   rooms: AccommodationRoomApi[];
+  latitude?: number | null;
+  longitude?: number | null;
+  lat?: number | null;
+  lng?: number | null;
+  lon?: number | null;
 };
 
 export type BookAccommodationInput = {
@@ -172,6 +177,25 @@ export function toAccommodationResult(
   };
 }
 
+function coordsFromAccommodation(
+  a: AccommodationDetailApi,
+): [number, number] | null {
+  const lat = a.latitude ?? a.lat;
+  const lon = a.longitude ?? a.lng ?? a.lon;
+
+  if (
+    typeof lat === "number" &&
+    typeof lon === "number" &&
+    Number.isFinite(lat) &&
+    Number.isFinite(lon) &&
+    (Math.abs(lat) > 0.001 || Math.abs(lon) > 0.001)
+  ) {
+    return [lat, lon];
+  }
+
+  return null;
+}
+
 // Map a backend detail onto the rich PropertyDetail the booking flow renders.
 // Fields the vendor doesn't capture (reviews, map, taxes) get safe defaults.
 export function toPropertyDetail(a: AccommodationDetailApi): PropertyDetail {
@@ -212,7 +236,7 @@ export function toPropertyDetail(a: AccommodationDetailApi): PropertyDetail {
     description: a.description ? [a.description] : [],
     images,
     extraPhotoCount: Math.max(0, images.length - 5),
-    mapCoordinates: [0, 0],
+    mapCoordinates: coordsFromAccommodation(a) ?? [0, 0],
     rooms,
     reviews: [],
     offers: [],

@@ -1,3 +1,5 @@
+import { calculateSyncAfricaFee } from "@/features/travel/booking/sync-africa-fee";
+
 export type BookingPricingInput = {
   pricePerNight: number;
   nights: number;
@@ -12,6 +14,7 @@ export type BookingPricingBreakdown = {
   lineLabel: string;
   subtotal: number;
   taxesAndFees: number;
+  syncAfricaFee: number;
   total: number;
   currency: string;
 };
@@ -32,12 +35,14 @@ export function calculateBookingTotal({
   const roomSubtotal = pricePerNight * safeNights * safeRooms;
   const guestSubtotal = extraGuestFeePerNight * extraGuests * safeNights * safeRooms;
   const subtotal = roomSubtotal + guestSubtotal;
-  const total = subtotal + taxesAndFees;
+  const syncAfricaFee = calculateSyncAfricaFee(subtotal + taxesAndFees);
+  const total = subtotal + taxesAndFees + syncAfricaFee;
 
   return {
     lineLabel: `${safeNights} night${safeNights > 1 ? "s" : ""} x ${safeRooms} room${safeRooms > 1 ? "s" : ""} x ${currency} ${pricePerNight.toLocaleString("en-NG")}`,
     subtotal,
     taxesAndFees,
+    syncAfricaFee,
     total,
     currency,
   };

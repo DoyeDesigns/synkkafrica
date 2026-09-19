@@ -1,0 +1,2483 @@
+{
+  "nav": {
+    "downloadApp": "تحميل التطبيق",
+    "becomeVendor": "كن بائعًا",
+    "chooseCurrency": "اختر العملة",
+    "signInCreate": "تسجيل الدخول | إنشاء حساب",
+    "searchCurrency": "بحث العملة",
+    "signOut": "تسجيل الخروج",
+    "myAccount": "حسابي",
+    "bookingsTrips": "الحجوزات والرحلات",
+    "saved": "أنقذ",
+    "reviews": "التعليقات"
+  },
+  "common": {
+    "bookNow": "احجز الآن",
+    "continue": "يكمل",
+    "loading": "تحميل…",
+    "startingFrom": "ابتداء من",
+    "perDay": "في اليوم الواحد",
+    "budget": "ميزانية",
+    "seeMore": "شاهد المزيد",
+    "showMore": "عرض المزيد",
+    "reviews": "التعليقات",
+    "available": "متاح",
+    "selfDriveAvailable": "القيادة الذاتية متاحة",
+    "excludingTaxes": "باستثناء الضرائب والرسوم",
+    "select": "يختار",
+    "search": "يبحث",
+    "edit": "يحرر",
+    "cancel": "يلغي",
+    "notifications": "إشعارات",
+    "contactSupport": "اتصل بالدعم",
+    "signOut": "تسجيل الخروج",
+    "noReviewsYet": "لا توجد تعليقات حتى الآن",
+    "viewPhoto": "عرض الصورة ⟦الفهرس⟧",
+    "photoViewer": "عارض الصور",
+    "closePhotoViewer": "إغلاق عارض الصور",
+    "previousPhoto": "الصورة السابقة",
+    "nextPhoto": "الصورة التالية",
+    "photoOfTotal": "⟦الحالي⟧ من ⟦الإجمالي⟧",
+    "secured": "مؤمن"
+  },
+  "hero": {
+    "headline": "استمتع بتجربة أفريقيا بثقة",
+    "tab": {
+      "accommodations": "أماكن الإقامة",
+      "flights": "الرحلات الجوية",
+      "carRentals": "تأجير السيارات",
+      "tours": "الجولات والتجارب"
+    },
+    "search": "يبحث",
+    "clearFilter": "مسح التصفية",
+    "accommodations": {
+      "destination": "وجهتك",
+      "destinationStay": "⟦عد⟧ البقاء",
+      "destinationStays": "{count} يبقى",
+      "checkIn": "تاريخ الدخول",
+      "checkAvailability": "التحقق من التوفر",
+      "propertyType": "نوع العقار",
+      "oneRoom": "1 غرفة",
+      "oneGuest": "1 ضيف",
+      "roomsCount": "⟦عدد⟧ الغرف",
+      "guestsCount": "⟦عدد⟧ الضيوف",
+      "checkOut": "تاريخ الخروج"
+    },
+    "flights": {
+      "roundTrip": "رحلة ذهابا وإيابا",
+      "oneWay": "طريقة واحدة",
+      "directFlight": "الطيران المباشر",
+      "economyClass": "الدرجة السياحية",
+      "premiumEconomyClass": "الاقتصاد المتميز",
+      "businessClass": "درجة الأعمال",
+      "firstClass": "الدرجة الأولى",
+      "onePassenger": "1 راكب",
+      "passengersCount": "⟦عدد⟧ الركاب",
+      "fromCity": "من | اختر المدينة",
+      "toCity": "إلى | اختر المدينة",
+      "departureDate": "تاريخ المغادرة",
+      "returnDate": "تاريخ العودة",
+      "departing": "المغادرة",
+      "returning": "العودة",
+      "nonstop": "بدون توقف",
+      "oneStop": "محطة واحدة",
+      "multipleStops": "محطات متعددة"
+    },
+    "common": {
+      "addDate": "أضف التاريخ",
+      "selectDateRange": "حدد مواعيد المغادرة والعودة",
+      "selectDate": "حدد تاريخا",
+      "days": "أيام",
+      "nights": "ليالي"
+    },
+    "carRentals": {
+      "searchCarType": "بحث عن نوع السيارة",
+      "filterCarType": "التصفية حسب نوع السيارة",
+      "allCarTypes": "جميع الأنواع",
+      "selfDrive": "القيادة الذاتية",
+      "price": "₦ السعر",
+      "pickupDate": "تاريخ الاستلام",
+      "destinationCar": "{count} سيارة",
+      "destinationCars": "{count} السيارات"
+    },
+    "tours": {
+      "searchPlaceholder": "البحث عن المواقع والمعالم السياحية والتجارب",
+      "startDate": "تاريخ البدء",
+      "destinationExperience": "{count} الخبرة",
+      "destinationExperiences": "⟦عدد⟧ الخبرات"
+    },
+    "location": "موقع"
+  },
+  "footer": {
+    "brandDescription": "SynkAfrica هي منصة ناشئة متكاملة للسفر والخبرة المتميزة مصممة لربط الأشخاص على مستوى العالم بقلب النظام البيئي للسفر وأسلوب الحياة الأفريقي.",
+    "explore": {
+      "title": "اكتشف سينك أفريكا",
+      "hotels": "الفنادق وأماكن الإقامة",
+      "carRentals": "تأجير السيارات",
+      "flights": "حجوزات الطيران",
+      "restaurants": "الطعام والمطاعم"
+    },
+    "support": {
+      "title": "يدعم",
+      "contact": "اتصل بالدعم",
+      "changeBooking": "تغيير أو إلغاء الحجز الخاص بك",
+      "paymentOptions": "خيارات الدفع",
+      "receipt": "عرض أو طباعة إيصال الحجز الخاص بك"
+    },
+    "community": {
+      "title": "مجتمع",
+      "instagram": "إنستغرام الخاص بنا",
+      "facebook": "فيسبوك",
+      "news": "في الأخبار"
+    },
+    "vendor": {
+      "title": "كن بائعًا",
+      "listCar": "قائمة سيارتك",
+      "listService": "قائمة الخدمة الخاصة بك",
+      "contact": "اتصل بنا"
+    },
+    "appPromo": {
+      "headline": "احصل على تجربة SynkAfrica الكاملة.",
+      "cta": "قم بتنزيل التطبيق اليوم",
+      "getItOn": "احصل عليه",
+      "googlePlay": "جوجل بلاي",
+      "downloadOn": "تحميل على",
+      "appStore": "متجر التطبيقات"
+    },
+    "legal": {
+      "privacy": "سياسة الخصوصية",
+      "terms": "شروط الاستخدام",
+      "security": "صفحة الأمان",
+      "faqs": "الأسئلة الشائعة"
+    },
+    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+  },
+  "login": {
+    "intro": "يمكنك تسجيل الدخول باستخدام حساب SynkAfrica الخاص بك للوصول إلى خدماتنا.",
+    "backendNotReady": "لم يتم تعيين vars env للواجهة الخلفية بعد. سيعمل تسجيل الدخول بمجرد تكوين بيانات الاعتماد.",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "orUseOptions": "أو استخدم أحد هذه الخيارات",
+    "signInGoogle": "قم بتسجيل الدخول باستخدام جوجل",
+    "continueApple": "تواصل مع أبل"
+  },
+  "account": {
+    "nav": {
+      "notifications": "إشعارات"
+    },
+    "contactSupport": "اتصل بالدعم",
+    "profile": {
+      "edit": "يحرر",
+      "fullName": "الاسم الكامل",
+      "fullNamePlaceholder": "أدخل الاسم الكامل",
+      "location": "موقع",
+      "dateOfBirth": "تاريخ الميلاد",
+      "dobPlaceholder": "مم | د | ص",
+      "gender": "جنس",
+      "notAdded": "لم تتم إضافته",
+      "contactDetails": "تفاصيل الاتصال",
+      "phone": "رقم التليفون",
+      "email": "عنوان البريد الإلكتروني",
+      "passwordSecurity": "كلمة المرور والأمن",
+      "password": "كلمة المرور",
+      "changePassword": "تغيير كلمة المرور"
+    },
+    "deleteAccount": "حذف الحساب",
+    "bookings": {
+      "title": "طلباتك",
+      "tab": {
+        "upcoming": "القادمة",
+        "past": "ماضي",
+        "cancelled": "تم الإلغاء",
+        "bookings": "الحجوزات"
+      },
+      "empty": {
+        "upcoming": "لا توجد حجوزات قادمة.",
+        "past": "لا توجد حجوزات سابقة لهذه الفترة.",
+        "cancelled": "لا توجد طلبات ملغاة لهذه الفترة.",
+        "bookings": "لا توجد حجوزات لهذه الفترة."
+      },
+      "orderDate": "تاريخ الطلب:",
+      "experienceDate": "تاريخ الخبرة:",
+      "totalAmount": "المبلغ الإجمالي:",
+      "orderNumber": "طلب:",
+      "guestCount": "الضيوف",
+      "specialRequests": "طلبات خاصة",
+      "cancel": "يلغي",
+      "receiptRecipient": "إيصال ومستلم QR",
+      "viewDetails": "عرض التفاصيل",
+      "leaveReview": "ترك التعليق",
+      "reviewSubmitted": "تم إرسال المراجعة",
+      "cancelWindowClosed": "تم إغلاق نافذة الإلغاء لهذا الحجز.",
+      "cancelledOn": "تم الإلغاء في {date}",
+      "cancelConfirmTitle": "إلغاء هذا الحجز؟",
+      "cancelConfirmBody": "يمكنك الإلغاء ضمن نافذة الإلغاء قبل أن تبدأ تجربتك. لا يمكن التراجع عن هذا الإجراء.",
+      "confirmCancel": "نعم الغاء الحجز",
+      "filterPeriod": "تصفية حسب الفترة",
+      "badge": {
+        "upcoming": "القادمة",
+        "past": "ماضي",
+        "cancelled": "تم الإلغاء"
+      },
+      "countdown": {
+        "label": "تبدأ الخبرة في",
+        "daysHours": "⟦أيام⟧د ⟦ساعات⟧ح",
+        "hoursMinutes": "⟦ ساعات⟧ ح ⟦ دقائق⟧ م",
+        "detailHint": "تحديثات العد التنازلي في الوقت الحقيقي حتى تبدأ تجربتك."
+      },
+      "review": {
+        "title": "ترك التعليق",
+        "ratingLabel": "تقييمك",
+        "commentLabel": "رأيك",
+        "commentPlaceholder": "شاركنا بما أحببته في هذه التجربة...",
+        "submit": "إرسال المراجعة",
+        "dismiss": "إغلاق مربع حوار المراجعة"
+      },
+      "detail": {
+        "back": "العودة إلى الحجوزات",
+        "reference": "مرجع الحجز",
+        "yourReview": "رأيك",
+        "notFound": "لا يمكن العثور على هذا الحجز."
+      }
+    },
+    "saved": {
+      "accommodations": "أماكن الإقامة",
+      "empty": "لم تقم بحفظ أي شيء بعد.",
+      "cars": "سيارات",
+      "tours": "جولات"
+    },
+    "reviews": {
+      "title": "التعليقات",
+      "youRated": "لقد قمت بالتقييم",
+      "writeReview": "اكتب مراجعة",
+      "ratingLabel": "تقييمك",
+      "commentLabel": "رأيك",
+      "commentPlaceholder": "شاركنا بما أحببته في هذه التجربة...",
+      "photosLabel": "صور",
+      "photosCount": "{count}/{max} تم الرفع",
+      "addPhoto": "أضف صورة",
+      "removePhoto": "إزالة الصورة",
+      "submit": "إرسال المراجعة",
+      "pendingTitle": "مراجعة الحجز المكتمل",
+      "pendingHint": "لا يمكن تقديم التقييمات إلا للحجوزات السابقة المرتبطة بحسابك.",
+      "selectBooking": "حدد حجزًا مكتملًا أعلاه لكتابة رأيك.",
+      "noPending": "ليس لديك أي حجوزات مكتملة في انتظار المراجعة.",
+      "submittedTitle": "الاستعراضات الخاصة بك المقدمة",
+      "empty": "لم تقم بتقديم أي تعليقات حتى الآن.",
+      "deleteReview": "حذف المراجعة",
+      "bookingReference": "الحجز ⟦المرجع⟧",
+      "listingBadge": "تقييمات الضيوف",
+      "experienceListingTitle": "تقييمات الضيوف"
+    },
+    "notifications": {
+      "title": {
+        "reminder24h": "تبدأ التجربة خلال 24 ساعة",
+        "reviewRequest": "أخبرنا عن تجربتك",
+        "cancellationRefund": "تم إلغاء الحجز",
+        "bookingConfirmation": "تم تأكيد الحجز",
+        "info": "تذكير بالسفر"
+      },
+      "empty": "لا توجد إخطارات حتى الآن.",
+      "period": {
+        "mostRecent": "الأحدث",
+        "weekEarlier": "قبل اسبوع",
+        "threeMonthsAgo": "منذ 3 أشهر"
+      },
+      "kind": {
+        "bookingConfirmation": "تم تأكيد الحجز",
+        "reminder24h": "تذكير 24 ساعة",
+        "reviewRequest": "طلب المراجعة",
+        "cancellationRefund": "الإلغاء واسترداد الأموال",
+        "info": "نصيحة السفر"
+      },
+      "message": {
+        "reminder24h": "تجربتك ⟦العنوان⟧ تبدأ غدًا في ⟦الوقت⟧ في ⟦التاريخ⟧. قم بمراجعة تفاصيل الحجز الخاص بك والوصول قبل 15 دقيقة.",
+        "reviewRequest": "كيف كان ⟦العنوان⟧؟ شارك تقييمًا بالنجوم ومراجعة مكتوبة لمساعدة المسافرين الآخرين على SynkAfrica.",
+        "cancellationRefund": "تم إلغاء حجزك لـ {title} ({reference}). ستتم معالجة أي مبلغ مسترد مؤهل خلال 5 إلى 7 أيام عمل.",
+        "bookingConfirmation": "تم تأكيد حجزك لـ {title} في {location}. تحقق من بريدك الإلكتروني للحصول على إيصالك وبيانات اعتماد QR.",
+        "passportReminder": "تأكد من أن جواز سفرك صالح لمدة 6 أشهر على الأقل بعد تاريخ سفرك."
+      }
+    },
+    "support": {
+      "contact": {
+        "whatsapp": "واتساب",
+        "email": "بريد إلكتروني",
+        "phone": "اتصل بنا"
+      },
+      "createTicket": "إنشاء تذكرة دعم",
+      "topic": "ما هذا؟",
+      "relatedOrder": "الطلب ذو الصلة (اختياري)",
+      "relatedOrderNone": "لا أحد",
+      "subject": "موضوع",
+      "subjectPlaceholder": "ملخص قصير للمسألة",
+      "message": "رسالة",
+      "messagePlaceholder": "أخبرنا ماذا يحدث...",
+      "attachFile": "إرفاق صورة أو لقطة شاشة",
+      "submitTicket": "إرسال تذكرة",
+      "ticketSubmitted": "تم إرسال التذكرة رقم⟦الرقم⟧. سوف نعود اليكم قريبا.",
+      "yourTickets": "التذاكر الخاصة بك",
+      "commonQuestions": "الأسئلة الشائعة",
+      "ticketMeta": "التذكرة #⟦الرقم⟧ · ⟦التاريخ⟧",
+      "status": {
+        "open": "يفتح",
+        "resolved": "تم الحل"
+      },
+      "category": {
+        "booking": "مشكلة الحجز",
+        "paymentRefund": "الدفع / الاسترداد",
+        "account": "الحساب والملف الشخصي",
+        "other": "آخر"
+      },
+      "faq": {
+        "cancelBooking": "كيف يمكنني إلغاء الحجز؟",
+        "refundTiming": "متى سأسترد أموالي؟",
+        "changeDate": "كيف يمكنني تغيير تاريخ سفري؟",
+        "paymentSecurity": "هل دفعتي آمنة؟",
+        "cancelBookingAnswer": "افتح حجزك من Bookings & Trips، وحدد الطلب، واستخدم خيار الإلغاء إذا كان لا يزال ضمن نافذة الإلغاء. تتم معالجة المبالغ المستردة تلقائيًا للحجوزات المؤهلة.",
+        "refundTimingAnswer": "عادةً ما تتم معالجة المبالغ المستردة المؤهلة في غضون 5 إلى 7 أيام عمل بعد الإلغاء، اعتمادًا على البنك الذي تتعامل معه أو مزود الدفع.",
+        "changeDateAnswer": "اتصل بالدعم مع مرجع الحجز الخاص بك. إذا كانت التجربة تسمح بتغيير التاريخ، فسيساعدك فريقنا على إعادة الجدولة أو إرشادك عبر الخيارات المتاحة.",
+        "paymentSecurityAnswer": "نعم. تتم معالجة المدفوعات على Synkafrica من خلال شركاء دفع آمنين ومشفرين. نحن لا نقوم أبدًا بتخزين تفاصيل بطاقتك الكاملة على خوادمنا."
+      },
+      "tabs": {
+        "label": "أقسام الدعم"
+      },
+      "backToTickets": "العودة إلى التذاكر",
+      "typeMessage": "اكتب رسالة...",
+      "send": "يرسل",
+      "supportTeam": "دعم سينكافريكا",
+      "you": "أنت",
+      "emptyTickets": "لم تقم بإرسال أي تذاكر دعم حتى الآن.",
+      "attachedImage": "الصورة المرفقة",
+      "removeAttachment": "إزالة المرفق"
+    }
+  },
+  "booking": {
+    "step": {
+      "rooms": "اختر الإقامة والغرف",
+      "chooseExperience": "اختر الخبرة",
+      "chooseCar": "اختر السيارة",
+      "choosePackage": "اختر الحزمة",
+      "checkout": "الدفع",
+      "payment": "قسط",
+      "confirmation": "تأكيد"
+    },
+    "cta": {
+      "proceedToPay": "المضي قدما في الدفع"
+    },
+    "guest": {
+      "title": {
+        "mr": "السيد",
+        "mrs": "السّيدة",
+        "ms": "آنسة",
+        "miss": "يفتقد",
+        "dr": "دكتور"
+      },
+      "adultLabel": "بالغ (17 سنة فما فوق)",
+      "leadGuestLabel": "الضيف الرئيسي",
+      "addedCount": "⟦تم الإضافة⟧/⟦الإجمالي⟧ تمت الإضافة",
+      "passportHint": "أدخل اسمك كما هو مذكور في جواز سفرك. يجب أن يكون جواز السفر صالحًا لمدة لا تقل عن 6 أشهر من تاريخ السفر.",
+      "idVerificationHint": "مطلوب بطاقة هوية صالحة صادرة عن الحكومة قبل أن تتمكن من إكمال أي حجز.",
+      "idVerificationTitle": "التحقق من الهوية",
+      "idVerificationSubtitle": "أدخل تفاصيل هويتك تمامًا كما تظهر في مستندك.",
+      "idType": {
+        "passport": "جواز سفر",
+        "nationalId": "الهوية الوطنية",
+        "driversLicense": "رخصة السائق"
+      },
+      "idNumber": "رقم الهوية",
+      "idNumberPlaceholder": "أدخل رقم الهوية الخاص بك",
+      "idExpiry": "تاريخ انتهاء الصلاحية",
+      "confirmId": "أؤكد أن تفاصيل هويتي صحيحة وأن وثيقتي صالحة لمدة 6 أشهر على الأقل من تاريخ السفر.",
+      "idTypeRequired": "حدد نوع الهوية.",
+      "idNumberInvalid": "أدخل رقم هوية صالح.",
+      "idExpiryRequired": "أدخل تاريخ انتهاء الهوية.",
+      "idExpiryInvalid": "يجب أن تكون الهوية صالحة لمدة 6 أشهر على الأقل من اليوم.",
+      "idConfirmRequired": "قم بتأكيد تفاصيل هويتك للمتابعة.",
+      "idValidationRequired": "قم بإكمال وتأكيد تفاصيل هويتك قبل متابعة الدفع.",
+      "adultCheckbox": "بالغ - {count}",
+      "titleField": "عنوان",
+      "lastName": "اسم العائلة",
+      "firstName": "الاسم الأول",
+      "middleName": "الاسم الأوسط",
+      "dateOfBirth": "تاريخ الميلاد",
+      "datePlaceholder": "yyyy-mm-dd",
+      "nationality": "جنسية",
+      "gender": "جنس",
+      "male": "ذكر",
+      "female": "أنثى",
+      "mobileNo": "رقم الجوال",
+      "emailAddress": "عنوان البريد الإلكتروني",
+      "openCalendar": "افتح التقويم",
+      "countLabel": "عدد الضيوف",
+      "countHint": "يتم تحديث الأسعار تلقائيًا بناءً على عدد الضيوف.",
+      "decreaseGuests": "تقليل الضيوف",
+      "increaseGuests": "زيادة الضيوف",
+      "specialRequests": "طلبات خاصة",
+      "specialRequestsPlaceholder": "تسجيل الوصول المبكر، والاحتياجات الغذائية، ومتطلبات الوصول، وما إلى ذلك."
+    },
+    "summary": {
+      "selectRoom": "اختر غرفة",
+      "selectCar": "اختر سيارة",
+      "selectExperience": "اختر تجربة",
+      "selectPackage": "حدد الحزمة",
+      "priceDetails": "تفاصيل الأسعار",
+      "taxesAndFees": "الضرائب والرسوم",
+      "night": "ليلة",
+      "nights": "الليالي",
+      "room": "غرفة",
+      "rooms": "غرف",
+      "day": "يوم",
+      "days": "أيام",
+      "total": "المجموع",
+      "guests": "الضيوف"
+    },
+    "table": {
+      "selectRoom": "اختر غرفة",
+      "guestCount": "عدد الضيوف",
+      "pricePerNight": "سعر الليلة الواحدة",
+      "includesTaxes": "يشمل الضرائب والرسوم",
+      "packages": "الحزم",
+      "hours": "ساعات",
+      "price": "سعر",
+      "experiences": "الخبرات",
+      "duration": "مدة"
+    },
+    "dates": {
+      "checkIn": "تاريخ الدخول",
+      "checkOut": "تاريخ الخروج",
+      "guests": "الضيوف",
+      "rooms": "الغرف",
+      "nights": "ليالي",
+      "days": "أيام",
+      "rentalDays": "أيام الإيجار",
+      "tripDuration": "مدة الرحلة",
+      "tripDurationHint": "اضبط عدد الأيام التي تريد البقاء فيها أو الاستكشاف.",
+      "decreaseNights": "تقليل الليالي",
+      "increaseNights": "زيادة الليالي",
+      "decreaseDays": "تقليل الأيام",
+      "increaseDays": "زيادة الأيام"
+    },
+    "car": {
+      "rentalModeHeading": "كيف تريد استخدام هذه السيارة؟",
+      "rentalModeHint": "اختر القيادة الذاتية أو قم بإضافة سائق محترف إلى حجزك.",
+      "selfDrive": "القيادة الذاتية",
+      "selfDriveHint": "قيادة السيارة بنفسك. الاستلام من البائع أو طلب التسليم مقابل رسوم إضافية.",
+      "withDriver": "مع السائق",
+      "withDriverHint": "يتم تضمين سائق محترف لرحلتك.",
+      "noExtraCost": "لا توجد تكلفة إضافية",
+      "driverAddon": "+ ⟦المبلغ⟧ الوظيفة الإضافية للسائق",
+      "requestDelivery": "طلب تسليم السيارة",
+      "requestDeliveryHint": "قم بتوصيل السيارة إلى موقعك مقابل رسوم إضافية.",
+      "deliveryFee": "+ ⟦المبلغ⟧ رسوم التوصيل",
+      "deliveryAddress": "عنوان التسليم",
+      "deliveryAddressPlaceholder": "أدخل العنوان الذي سيتم تسليم السيارة إليه",
+      "pickupAddress": "عنوان الالتقاط",
+      "pickupAddressHint": "استلم السيارة من موقع البائع هذا إذا لم تطلب التسليم.",
+      "customerPickupAddress": "موقع الالتقاط الخاص بك",
+      "customerPickupAddressPlaceholder": "أدخل المكان الذي يجب أن يقلك فيه السائق",
+      "customerPickupAddressHint": "سوف يقابلك السائق في هذا العنوان.",
+      "driverAddonLabel": "الوظيفة الإضافية للسائق",
+      "deliveryFeeLabel": "رسوم التوصيل",
+      "about": "حول هذه السيارة",
+      "saveCar": "حفظ السيارة"
+    },
+    "property": {
+      "saveProperty": "حفظ الممتلكات",
+      "morePhotos": "+⟦عدد⟧ الصور",
+      "currentOffers": "العروض الحالية"
+    },
+    "amenity": {
+      "free": "حر!",
+      "additionalCharge": "رسوم إضافية"
+    },
+    "tour": {
+      "about": "حول هذه التجربة",
+      "saveTour": "حفظ الجولة"
+    },
+    "package": {
+      "about": "حول هذه الحزمة",
+      "savePackage": "حفظ الحزمة",
+      "sharePackage": "حصة الحزمة",
+      "nightsDays": "⟦الليالي⟧ الليالي / ⟦الأيام⟧ الأيام",
+      "durationShort": "⟦أيام⟧د / ⟦ليالي⟧ن",
+      "guestRange": "⟦النطاق⟧ الضيوف",
+      "moduleCount": "{count} الوحدات",
+      "highlight": {
+        "duration": "مدة",
+        "groupSize": "حجم المجموعة",
+        "included": "متضمنة",
+        "cancellation": "الإلغاء+",
+        "free": "حر",
+        "standard": "معيار"
+      },
+      "whatsIncluded": "ما هو مدرج",
+      "included": "متضمنة",
+      "priceBreakdown": "انهيار الأسعار",
+      "packageDiscount": "خصم الحزمة",
+      "packagePrice": "سعر الحزمة",
+      "whyBook": "لماذا حجز هذه الباقة",
+      "guestCountLocked": "عدد الضيوف ثابت لهذه الباقة ولا يمكن تغييره عند الخروج."
+    },
+    "payment": {
+      "processing": "جارٍ معالجة الدفع..."
+    },
+    "confirmation": {
+      "imageAlt": "نجاح التأكيد",
+      "title": "تم الدفع بنجاح",
+      "subtitle": "يرجى التحقق من بريدك الإلكتروني للحصول على الإيصال وبيانات اعتماد QR",
+      "reloadIn": "سيتم إعادة تحميل هذه الصفحة في",
+      "reloadNow": "أعد التحميل الآن",
+      "referenceLabel": "مرجع الحجز",
+      "copyReference": "ينسخ",
+      "copied": "منقول",
+      "summaryTitle": "ملخص الحجز",
+      "product": "البند المحجوز",
+      "totalPaid": "مجموع المدفوعة",
+      "addToCalendar": "أضف إلى التقويم",
+      "openGoogleCalendar": "افتح في تقويم Google",
+      "viewBookings": "عرض حجوزاتي"
+    },
+    "reviews": {
+      "nextReview": "المراجعة القادمة",
+      "allReviews": "جميع التقييمات",
+      "viewAll": "عرض جميع التقييمات",
+      "close": "إغلاق المراجعات"
+    },
+    "content": {
+      "property": {
+        "arkHavn": {
+          "desc0": "يقع The Ark Haven في قلب مدينة مراكش، ويوفر ملاذًا هادئًا مع مزيج من وسائل الراحة الحديثة والسحر المغربي التقليدي. يمكنك الاستمتاع بالمسبح الخارجي والبار الموجود في الموقع والغرف المكيفة المجهزة بأجهزة تلفزيون بشاشات مسطحة.",
+          "desc1": "يمكن للضيوف استكشاف مناطق الجذب القريبة والاستمتاع بخدمات النقل المكوكية وملاعب التنس وتأجير السيارات. سواء كنت هنا للترفيه أو العمل، يوفر The Ark Haven إقامة لا تنسى مع ضيافة استثنائية."
+        },
+        "fallback": {
+          "desc0": "يوفر {name} إقامات مريحة مع وسائل الراحة الحديثة وموقعًا متميزًا في {location}.",
+          "desc1": "استمتع بغرف مجهزة تجهيزًا جيدًا وخدمة ودية وسهولة الوصول إلى مناطق الجذب المحلية وأماكن تناول الطعام."
+        }
+      },
+      "review": {
+        "review1": "لقد تجاوز Ark Haven توقعاتي. كان الموظفون مرحبين بشكل لا يصدق، وكانت منطقة حمام السباحة مكانًا مثاليًا للاسترخاء بعد استكشاف المدينة.",
+        "review2": "غرف جميلة، موقع رائع، والافطار كان رائعا. بالتأكيد سأبقى هنا مرة أخرى في رحلتي القادمة إلى المغرب.",
+        "review3": "جناح واسع ومرافق نظيفة وبواب مفيد. جعلت خدمة النقل المكوكية التجول في مراكش أمرًا سهلاً للغاية."
+      },
+      "offer": {
+        "drinkPromo": "اشتري مشروبًا واحدًا واحصل على الآخر مجانًا",
+        "mealsOff": "خصم 10% على الوجبات",
+        "freeWifi": "خدمة الاتصال اللاسلكي بالإنترنت عبر تقنية واي فاي"
+      },
+      "room": {
+        "deluxeSuite": "جناح ديلوكس",
+        "supremeRoom": "الغرفة العليا",
+        "standardRoom": "غرفة قياسية",
+        "subtitle": {
+          "deluxe": "ديلوكس (شقة بغرفة نوم واحدة)",
+          "supreme": "سوبريم (شقة استوديو)",
+          "standard": "قياسية (غرفة مزدوجة)"
+        },
+        "size592": "592 قدم مربع",
+        "size420": "420 قدم مربع",
+        "size310": "310 قدم مربع",
+        "sleeps2Adults": "تتسع لشخصين بالغين"
+      },
+      "package": {
+        "dailyHire": "تأجير يومي",
+        "halfDayHire": "تأجير نصف يوم",
+        "extraHours": "ساعات اضافية",
+        "hours24": "24 ساعة",
+        "hours12": "12 ساعة",
+        "hours3": "3 ساعات"
+      },
+      "feature": {
+        "automatic": "تلقائي",
+        "driverAvailable": "السائق متاح",
+        "selfDrive": "القيادة الذاتية",
+        "available": "متاح",
+        "limitedSlots": "فتحات محدودة",
+        "guidedTour": "جولة إرشادية",
+        "selfDriveAvailable": "القيادة الذاتية متاحة",
+        "flightsIncluded": "الرحلات متضمنة",
+        "hotelStay": "الإقامة في الفندق",
+        "guidedTours": "الجولات المصحوبة بمرشدين",
+        "nightsDays": "⟦الليالي⟧ الليالي / ⟦الأيام⟧ الأيام"
+      },
+      "tourOption": {
+        "standard": "تذكرة عادية",
+        "premium": "تجربة متميزة",
+        "private": "مجموعة خاصة",
+        "hours5": "5 ساعات",
+        "fullDay": "يوم كامل"
+      },
+      "tier": {
+        "standard": "الحزمة القياسية",
+        "deluxe": "باقة ديلوكس",
+        "allInclusive": "شامل كليًا"
+      },
+      "amenityCat": {
+        "greatForStay": "عظيم لإقامتك",
+        "outdoors": "في الهواء الطلق",
+        "pets": "حيوانات أليفة",
+        "internet": "إنترنت",
+        "onSiteParking": "موقف سيارات في الموقع",
+        "frontDesk": "خدمات مكتب الاستقبال",
+        "familyServices": "خدمات الترفيه والعائلة",
+        "cleaningServices": "خدمات التنظيف",
+        "general": "عام",
+        "accessibility": "إمكانية الوصول",
+        "swimmingPools": "2 حمامات سباحة",
+        "pool1Outdoor": "حمام سباحة 1 – خارجي"
+      },
+      "amenityDesc": {
+        "petsAllowed": "يُسمح بالحيوانات الأليفة عند الطلب. لا رسوم إضافية.",
+        "wifiFree": "تتوفر خدمة الواي فاي في جميع المناطق مجانًا.",
+        "parkingFree": "يتوفر موقف عام مجاني للسيارات في الموقع (لا يُطلب الحجز المسبق)."
+      },
+      "amenityItem": {
+        "restaurant": "مطعم",
+        "freeWifi": "خدمة الاتصال اللاسلكي بالإنترنت عبر تقنية واي فاي",
+        "parking": "وقوف السيارات",
+        "spa": "سبا",
+        "familyRooms": "غرف عائلية",
+        "roomService": "خدمة الغرف",
+        "airportShuttle": "خدمة نقل المطار",
+        "bbqFacilities": "مرافق للشواء",
+        "petFriendly": "صديق للحيوانات الأليفة",
+        "nonSmokingRooms": "غرف لغير المدخنين",
+        "outdoorFireplace": "مدفأة خارجية",
+        "beachfront": "على شاطئ البحر",
+        "sunDeck": "سطح الشمس",
+        "privateBeach": "منطقة شاطئ خاص",
+        "terrace": "تراس",
+        "garden": "حديقة",
+        "valetParking": "خدمة صف السيارات",
+        "parkingGarage": "مرآب للسيارات",
+        "accessibleParking": "موقف سيارات يمكن الوصول إليه",
+        "lockers": "خزائن",
+        "concierge": "بواب",
+        "atmOnSite": "أجهزة الصراف الآلي في الموقع",
+        "baggageStorage": "تخزين الأمتعة",
+        "currencyExchange": "صرف العملات",
+        "frontDesk24h": "مكتب استقبال مفتوح 24 ساعة",
+        "outdoorPlayEquipment": "معدات اللعب في الهواء الطلق للأطفال",
+        "dailyHousekeeping": "التدبير المنزلي اليومي",
+        "ironingService": "خدمة كي الملابس",
+        "shuttleService": "خدمة نقل مكوكية",
+        "sharedLounge": "صالة مشتركة / منطقة تلفزيون",
+        "airConditioning": "تكييف",
+        "carRental": "تأجير سيارات",
+        "packedLunches": "وجبات غداء مرزومة",
+        "disabledFacilities": "مرافق للضيوف ذوي الاحتياجات الخاصة",
+        "bathroomEmergencyCord": "سلك الطوارئ للحمام",
+        "openAllYear": "مفتوح طوال العام",
+        "adultsOnly": "الكبار فقط",
+        "poolBeachTowels": "مناشف حمام السباحة/الشاطئ",
+        "poolBar": "بار حمام السباحة",
+        "beachChairs": "كراسي الشاطئ/كراسي الاستلقاء"
+      },
+      "tour": {
+        "desc": {
+          "boatAccess": "لا يمكن الوصول إليها إلا عن طريق القوارب أو التاكسي المائي. وتشتهر بمياهها الهادئة نسبياً.",
+          "lekkiCanopy": "قم بالسير على أطول جسر مظلي في أفريقيا واستكشف مسارات أشجار المنغروف الخضراء.",
+          "nikeArt": "اكتشف واحدة من أكبر مجموعات الفن الأفريقي المعاصر في غرب أفريقيا.",
+          "badagry": "تتبع تاريخ تجارة الرقيق عبر المحيط الأطلسي من خلال المتاحف والمعالم.",
+          "desertSafari": "ركوب الكثبان الرملية وركوب الجمال ومخيم بدوي تقليدي تحت النجوم.",
+          "cotonou": "استكشف الأسواق والهندسة المعمارية الاستعمارية وساحل بنين النابض بالحياة.",
+          "winelands": "قم بزيارة مزارع الكروم في ستيلينبوش واستمتع بالتذوق والمناظر الجبلية الخلابة.",
+          "monacoYacht": "أبحر على ساحل الريفييرا الفرنسية مع إطلالات على مونت كارلو والموانئ الفاخرة.",
+          "lagosFood": "تذوّق أطباق الصويا والبف باف والأطباق المحلية الشهية في أفضل أماكن تناول الطعام بالمدينة.",
+          "dubaiKayak": "يمكنك التجديف عبر المرسى عند غروب الشمس مع إطلالات على الأفق وتعليمات إرشادية."
+        }
+      }
+    },
+    "dateTime": {
+      "title": "حدد التاريخ والوقت",
+      "rangeHint": "اختر مواعيد تسجيل الوصول والمغادرة في التقويم.",
+      "singleHint": "اختر تاريخ تجربتك في التقويم.",
+      "legendAvailable": "متاح",
+      "legendUnavailable": "غير متاح",
+      "selectCheckout": "حدد الخروج",
+      "timeSlots": "فتحة زمنية",
+      "experienceDate": "تاريخ الخبرة"
+    }
+  },
+  "breadcrumb": {
+    "synkAfrica": "سينكأفريقيا",
+    "accommodations": "أماكن الإقامة",
+    "flights": "الرحلات الجوية",
+    "carForHire": "تأجير سيارات",
+    "tours": "الجولات والتجارب",
+    "tourPackages": "عروض سياحية",
+    "dealsAndPackages": "العروض والحزم",
+    "packages": "الحزم"
+  },
+  "results": {
+    "accommodations": {
+      "title": "يبقى",
+      "staysFound": "{count} تم العثور على الإقامات",
+      "searchPlaceholder": "البحث عن أماكن الإقامة",
+      "empty": "لا توجد إقامات تتطابق مع المرشحات الخاصة بك."
+    },
+    "carRentals": {
+      "title": "استكشاف السيارات للتأجير",
+      "carsFound": "تم العثور على {count} السيارات",
+      "searchPlaceholder": "بحث السيارة",
+      "empty": "لا توجد سيارات تتطابق مع المرشحات الخاصة بك."
+    },
+    "tours": {
+      "title": "{count} نتائج البحث",
+      "searchPlaceholder": "تجربة البحث",
+      "empty": "لا توجد تجارب تتطابق مع عوامل التصفية الخاصة بك."
+    },
+    "emptyHint": "حاول تعديل خيارات البحث أو التصفية.",
+    "promoSubtitle": "العروض الترويجية والصفقات والعروض الخاصة بالنسبة لك"
+  },
+  "filters": {
+    "apply": "تطبيق الفلتر",
+    "applyCount": "تطبيق الفلتر ({count})",
+    "location": "موقع",
+    "rentalDates": "مواعيد الإيجار",
+    "startDate": "تاريخ البدء",
+    "endDate": "تاريخ الانتهاء",
+    "discounts": "خصومات",
+    "price": "سعر",
+    "category": "فئة",
+    "experiences": "الخبرات",
+    "other": "مرشحات أخرى",
+    "budget": "ميزانية",
+    "perNight": "| ليلة",
+    "perDaily": "| يوميًا",
+    "anyPrice": "أي سعر",
+    "apartmentType": "نوع الشقة",
+    "bedrooms": "عدد غرف النوم",
+    "ratings": "التقييمات",
+    "perks": "الامتيازات والمرافق",
+    "priceRange": {
+      "under50k": "تحت 50 ألف",
+      "50to150k": "50 - 150 ألف",
+      "150kPlus": "150 الف فما فوق"
+    },
+    "propertyType": {
+      "hotels": "الفنادق",
+      "apartments": "شقق",
+      "resorts": "المنتجعات",
+      "bbs": "فنادق المبيت والإفطار",
+      "guestHouse": "منزل الضيف",
+      "beachHouse": "بيت الشاطئ",
+      "motels": "الموتيلات"
+    },
+    "bedroom": {
+      "studio": "استوديو",
+      "one": "1 غرفة نوم",
+      "two": "2 غرف نوم",
+      "threePlus": "3+ غرف نوم"
+    },
+    "perk": {
+      "breakfast": "وجبة الإفطار متضمنة",
+      "cancellation": "إلغاء مجاني",
+      "pool": "الوصول إلى حمام السباحة",
+      "shuttle": "خدمة نقل المطار"
+    },
+    "discount": {
+      "all": "جميع الخصومات",
+      "withDiscount": "مع الخصم",
+      "noDiscount": "لا يوجد خصم",
+      "tenPercent": "خصم 10% على الخصومات"
+    },
+    "carType": {
+      "suv": "سيارات الدفع الرباعي",
+      "sedan": "سيدان",
+      "hatchback": "هاتشباك",
+      "pickup": "يلتقط"
+    },
+    "serviceType": {
+      "selfDrive": "القيادة الذاتية",
+      "chauffeur": "سائق"
+    },
+    "transmission": {
+      "automatic": "تلقائي",
+      "manual": "يدوي"
+    },
+    "tourCategory": {
+      "all": "جميع الفئات",
+      "outdoor": "في الهواء الطلق",
+      "artsCulture": "الفنون والثقافة",
+      "adventure": "مفامرة",
+      "foodDrink": "الطعام والشراب"
+    },
+    "experienceType": {
+      "all": "كل التجارب",
+      "tours": "جولات",
+      "activities": "أنشطة",
+      "workshops": "ورش العمل",
+      "dayTrips": "رحلات يومية"
+    }
+  },
+  "landing": {
+    "ongoingDeals": {
+      "title": "الصفقات الجارية",
+      "title2": "الحزم المعروضة",
+      "description": "العروض الترويجية والصفقات والعروض الخاصة بالنسبة لك",
+      "scrollPackages": "حزم التمرير"
+    },
+    "packages": {
+      "title": "الحزم"
+    },
+    "fansFavourite": {
+      "title": "المفضلة لدى المعجبين"
+    },
+    "packageOffer": {
+      "inclusion": {
+        "flights": "الرحلات الجوية",
+        "stays": "يبقى",
+        "carDriver": "سيارة + سائق"
+      },
+      "duration": "⟦الأيام⟧ الأيام • ⟦الليالي⟧ الليالي • ⟦الجدول الزمني⟧",
+      "bookedSeparately": "إذا حجزت بشكل منفصل"
+    },
+    "bestDealsApartments": {
+      "title": "أفضل العروض على الشقق"
+    },
+    "browsePropertyType": "تصفح حسب نوع العقار",
+    "favouriteDestinations": "اكتشف الوجهات المفضلة",
+    "activitiesCount": "{count} الأنشطة",
+    "flightPromo": {
+      "headline": "حجز الرحلات الجوية لم يكن أسهل من أي وقت مضى",
+      "cta": "تحقق من التوفر"
+    },
+    "experiencesPromo": {
+      "headline": "استمتع بتجارب لا حصر لها في وجهة واحدة.",
+      "cta": "تصفح الخبرات",
+      "imageAlt": "تصفح التجارب الأفريقية"
+    },
+    "tours": {
+      "attractions": {
+        "title": "مناطق الجذب في Synkafrica"
+      },
+      "events": {
+        "browsingIn": "تصفح الأحداث في"
+      },
+      "packages": {
+        "title": "عروض سياحية",
+        "description": "احصل على أفضل العروض على الجولات واحجزها بكل سهولة."
+      }
+    },
+    "carRentals": {
+      "feature1": {
+        "title": "خدمة احترافية",
+        "description": "نحن نستخدم مقدمي خدمات نقل المطار ذوي السمعة الطيبة في جميع أنحاء أفريقيا."
+      },
+      "feature2": {
+        "title": "الإلغاءات المرنة",
+        "description": "إذا تغيرت خططك، يمكنك الإلغاء بشروط مرنة."
+      },
+      "feature3": {
+        "title": "أسعار تنافسية",
+        "description": "يقوم فريقنا بمقارنة أسعار سيارات الأجرة في المطار يوميًا لتحصل على أفضل صفقة."
+      }
+    }
+  },
+  "tourPackages": {
+    "hero": {
+      "title": "عروض سياحية",
+      "subtitle": "باقات سفر منتقاة بعناية لمغامرات أفريقية لا تُنسى."
+    },
+    "searchPlaceholder": "وجهة البحث",
+    "empty": "لا توجد برامج سياحية تطابق بحثك."
+  },
+  "admin": {
+    "header": {
+      "role": "مسؤول المنصة"
+    },
+    "nav": {
+      "dashboard": "لوحة القيادة",
+      "experiences": "الخبرات",
+      "cars": "سيارات",
+      "accommodations": "أماكن الإقامة",
+      "vendors": "الباعة",
+      "bookings": "الحجوزات",
+      "payouts": "الدفعات",
+      "reviews": "التعليقات",
+      "users": "المستخدمين",
+      "verifications": "التحقق",
+      "support": "تذاكر الدعم",
+      "team": "فريق",
+      "audit": "سجل التدقيق"
+    },
+    "common": {
+      "all": "الجميع",
+      "enabled": "ممكّن",
+      "disabled": "عاجز",
+      "edit": "يحرر",
+      "actions": "الإجراءات"
+    },
+    "verifications": {
+      "title": "التحقق",
+      "subtitle": "تم وضع علامة على الإرسالات بواسطة موفر التحقق الخاص بنا للمراجعة اليدوية - تتم الموافقة تلقائيًا على معظم عمليات التحقق من الهوية/الوجه ولا تصل أبدًا إلى قائمة الانتظار هذه.",
+      "stats": {
+        "needsManualReview": "يحتاج إلى مراجعة يدوية",
+        "approvedToday": "تمت الموافقة عليه اليوم",
+        "deniedToday": "نفى اليوم",
+        "avgReviewTime": "متوسط وقت المراجعة",
+        "avgReviewTimeValue": "⟦دقيقة⟧ دقيقة"
+      },
+      "searchPlaceholder": "البحث حسب الاسم أو معرف الحساب...",
+      "filter": {
+        "users": "المستخدمين",
+        "vendors": "الباعة"
+      },
+      "status": {
+        "pendingReview": "في انتظار المراجعة",
+        "approved": "موافقة",
+        "denied": "رفض"
+      },
+      "audience": {
+        "user": "مستخدم",
+        "vendor": "بائع"
+      },
+      "submitted": "تم الإرسال ⟦التاريخ⟧",
+      "pendingElapsed": "في انتظار ⟦منقضي⟧",
+      "blocking": {
+        "firstCheckout": "منع الخروج الأول"
+      },
+      "empty": "لا توجد عمليات إرسال للتحقق تتطابق مع عوامل التصفية الخاصة بك.",
+      "accountId": "الحساب ⟦المعرف⟧",
+      "viewAccount": "عرض الحساب →",
+      "pendingManualReview": "في انتظار المراجعة اليدوية",
+      "elapsed": "⟦انقضت⟧ انقضت",
+      "documentPreviews": "معاينات الوثيقة",
+      "documentViewLogged": "يتم تسجيل عرض المستند للامتثال",
+      "providerResults": "نتائج مزود التحقق (DIDIT)",
+      "approve": "يعتمد",
+      "deny": "ينكر",
+      "requestResubmission": "طلب إعادة التقديم",
+      "notifyUser": "إخطار المستخدم بالقرار",
+      "notifyVendor": "إخطار البائع بالقرار",
+      "verificationApproved": "تمت الموافقة على التحقق",
+      "verificationDenied": "تم رفض التحقق",
+      "reviewedInElapsed": "تمت المراجعة في ⟦منقضي⟧",
+      "approvedBy": "تمت الموافقة عليه من قبل",
+      "approvedByValue": "المشرف — ⟦التاريخ⟧",
+      "reasonForDenial": "سبب الرفض",
+      "revokeApproval": "إلغاء الموافقة",
+      "inviteResubmission": "دعوة لإعادة التقديم",
+      "viewHistory": "عرض التاريخ",
+      "providerResultsHeading": "نتيجة الموفر - DIDIT",
+      "document": {
+        "ninSlip": "زلة نين",
+        "passportPhoto": "صفحة صور جواز السفر",
+        "selfie": "التقاط الصور الشخصية/الحيوية",
+        "cac": "شهادة كاك",
+        "driversLicense": "رخصة القيادة (الجبهة)"
+      },
+      "check": {
+        "cacRegistrationLookup": "بحث تسجيل CAC",
+        "cacRegistrationVerified": "تم التحقق منه",
+        "faceMatchConfidence": "مواجهة الثقة",
+        "faceMatchConfidenceDetail": "96%",
+        "documentExpiredDetail": "فشل — مستند منتهية الصلاحية",
+        "documentAuthenticity": "صحة الوثيقة",
+        "liveness": "فحص الحيوية",
+        "faceMatch": "مواجهة الثقة",
+        "nameMatch": "تطابق الاسم مع الحساب",
+        "businessRegistration": "تسجيل الأعمال",
+        "faceMatchDetail": "78% — أقل من حد الموافقة التلقائية",
+        "nameMatchDetail": "مباراة",
+        "documentFailedDetail": "فشل — المستند غير قابل للقراءة",
+        "faceMatchFailedDetail": "42% - أقل من العتبة",
+        "businessRegistrationDetail": "مطابقة جزئية - المراجعة اليدوية مطلوبة"
+      },
+      "denialReason": {
+        "expiredLicense": "انتهت صلاحية رخصة القيادة في مارس 2026. يُرجى إعادة تقديمها باستخدام بطاقة هوية حكومية صالحة وغير منتهية الصلاحية."
+      },
+      "documentType": {
+        "passport": "جواز سفر",
+        "cacNin": "كاك + نين",
+        "driversLicense": "رخصة السائق"
+      },
+      "checkResult": {
+        "passed": "اجتاز",
+        "failed": "فشل",
+        "warning": "المراجعة مطلوبة"
+      }
+    },
+    "dashboard": {
+      "welcome": "وحدة تحكم المشرف,",
+      "addPackages": "أضف الحزم",
+      "period": {
+        "label": "فترة المقاييس",
+        "today": "اليوم",
+        "week": "هذا الاسبوع",
+        "month": "هذا الشهر",
+        "sixMonths": "6 أشهر",
+        "year": "1 سنة",
+        "all": "الجميع"
+      },
+      "users": "المستخدمين",
+      "bookings": "الحجوزات",
+      "revenue": "ربح",
+      "activeExperiences": "تجارب نشطة",
+      "activeVendors": "البائعين النشطين",
+      "viewAll": "عرض الكل",
+      "manage": "يدير",
+      "alerts": "التنبيهات",
+      "alert": {
+        "pendingPayouts": "3 دفعات للبائعين في انتظار الموافقة",
+        "flaggedReview": "تم وضع علامة على 2 مراجعة للاعتدال",
+        "openTicket": "5 تذاكر دعم مفتوحة للبائعين",
+        "disabledVendor": "تم تعطيل حساب بائع واحد — المراجعة مطلوبة"
+      }
+    },
+    "packages": {
+      "createTitle": "إنشاء حزمة / صفقة جديدة",
+      "createSubtitle": "صمم باقة سفر لا تقاوم من خلال الجمع بين رحلات الطيران والإقامات والسيارات والتجارب.",
+      "addTitle": "أضف الحزمة",
+      "backToDashboard": "← العودة إلى لوحة القيادة",
+      "progressLabel": "تقدم الحزمة",
+      "steps": {
+        "details": "تفاصيل الحزمة",
+        "modules": "إضافة وحدات",
+        "pricing": "التسعير",
+        "review": "المراجعة والنشر"
+      },
+      "cancel": "يلغي",
+      "back": "خلف",
+      "saveDraft": "حفظ كمسودة",
+      "draftSaved": "تم حفظ المسودة",
+      "saveContinue": "حفظ ومتابعة",
+      "submit": "إرسال الحزمة",
+      "completeRequiredFields": "أكمل الحقول المطلوبة: ⟦الحقول⟧",
+      "sections": {
+        "basicInfo": "تفاصيل الحزمة",
+        "basicInfoHint": "المعلومات الأساسية والبيانات الوصفية لحزمتك.",
+        "additionalSettings": "إعدادات إضافية",
+        "additionalSettingsHint": "السياسات والوجبات وخيارات العرض."
+      },
+      "fields": {
+        "packageName": "اسم الحزمة",
+        "packageSlug": "سبيكة الحزمة (URL)",
+        "shortDescription": "وصف قصير",
+        "detailedDescription": "وصف تفصيلي",
+        "banner": "صورة بانر الحزمة",
+        "category": "فئة الحزمة",
+        "bestFor": "أفضل ل",
+        "tags": "علامات الحزمة",
+        "includedMeals": "الوجبات المتضمنة",
+        "cancellationPolicy": "سياسة الإلغاء",
+        "refundPolicy": "سياسة استرداد الأموال",
+        "maxGuests": "ضيوف ماكس",
+        "featuredDeal": "تسليط الضوء على الحزمة",
+        "currency": "عملة",
+        "normalPrice": "السعر العادي",
+        "salesPrice": "سعر البيع",
+        "showSavingsBadge": "إظهار شارة التوفير",
+        "savingsBadgePercent": "نسبة شارة الادخار",
+        "validFrom": "صالح من",
+        "validUntil": "صالحة حتى",
+        "minimumBookingNotice": "الحد الأدنى لإشعار الحجز",
+        "packageActive": "حالة الحزمة"
+      },
+      "placeholders": {
+        "packageName": "على سبيل المثال لاغوس وباريس الهروب",
+        "packageSlug": "لاغوس-باريس-الهروب",
+        "shortDescription": "ملخص قصير يظهر على بطاقات الحزمة.",
+        "detailedDescription": "وصف خط سير الرحلة الكامل، والادراج، ويسلط الضوء على.",
+        "category": "اختر فئة",
+        "tags": "على سبيل المثال الشاطئ، المغامرة",
+        "maxGuests": "على سبيل المثال 4",
+        "select": "يختار"
+      },
+      "hints": {
+        "packageSlug": "سيتم استخدام هذا في عنوان URL للحزمة.",
+        "tags": "أضف كل علامة واضغط على Enter.",
+        "featuredDeal": "أظهر هذه الحزمة كصفقة مميزة.",
+        "showSavingsBadge": "عرض شارة التوفير على بطاقة الحزمة.",
+        "savingsBadgePercent": "قم بتعيين النسبة المئوية الظاهرة على شارة التوفير. يتم ملؤها تلقائيًا من الأسعار الخاصة بك.",
+        "packageActive": "الحزم النشطة مرئية للعملاء."
+      },
+      "uploadBanner": "انقر للتحميل أو السحب والإفلات",
+      "uploadBannerHint": "JPG أو PNG أو WEBP (بحد أقصى 5 ميجابايت)",
+      "removeBanner": "إزالة الشعار",
+      "tips": {
+        "title": "نصائح لحزمة رائعة",
+        "one": "استخدم اسم حزمة واضحًا ومقنعًا.",
+        "two": "الجمع بين الوحدات التكميلية للحصول على قيمة أفضل.",
+        "three": "تسليط الضوء على المدخرات مع سعر مبيعات قوي.",
+        "four": "أضف علامات لتحسين إمكانية الاكتشاف."
+      },
+      "moduleType": {
+        "flight": "رحلة جوية",
+        "accommodation": "إقامة",
+        "car": "سيارة",
+        "experience": "خبرة"
+      },
+      "modules": {
+        "selectHeading": "إضافة وحدات",
+        "selectHint": "تصفح وأضف رحلات الطيران والإقامات والسيارات والتجارب لإنشاء باقتك.",
+        "addedHeading": "وحدات الحزمة",
+        "countLabel": "وحدات",
+        "empty": "لم تتم إضافة أي وحدات حتى الآن. حدد العناصر من اللوحات أعلاه.",
+        "add": "يضيف",
+        "added": "تمت الإضافة",
+        "remove": "إزالة الوحدة النمطية",
+        "dragHandle": "اسحب لإعادة الترتيب",
+        "reorderHint": "قم بسحب وإفلات الوحدات لإعادة ترتيبها كما ستظهر للعملاء.",
+        "required": "أضف وحدة واحدة على الأقل للمتابعة.",
+        "searchPlaceholder": "وحدات البحث...",
+        "noResults": "لا توجد وحدات تطابق بحثك.",
+        "availableLabel": "متاح"
+      },
+      "pricing": {
+        "heading": "التسعير",
+        "hint": "تحديد أسعار التذاكر الخاصة بك.",
+        "savingsDisplay": "لقد قمت بتوفير ⟦المبلغ⟧ (⟦بالمائة⟧%)"
+      },
+      "availability": {
+        "heading": "التوفر",
+        "hint": "حدد متى يمكن حجز هذه الباقة."
+      },
+      "review": {
+        "heading": "المراجعة والنشر",
+        "hint": "قم بمراجعة جميع تفاصيل الحزمة قبل الإرسال."
+      }
+    },
+    "users": {
+      "title": "المسافرون",
+      "searchPlaceholder": "البحث حسب الاسم أو معرف المستخدم أو البريد الإلكتروني أو الموقع...",
+      "userId": "معرف المستخدم",
+      "traveler": "مسافر",
+      "contact": "اتصال",
+      "location": "موقع",
+      "tier": {
+        "bronze": "برونزية",
+        "silver": "فضي",
+        "gold": "ذهب",
+        "platinum": "البلاتين"
+      },
+      "bookingsSpend": "الحجوزات / الإنفاق",
+      "lastTrip": "الرحلة الأخيرة",
+      "status": {
+        "active": "نشيط",
+        "inactive": "غير نشط"
+      },
+      "stats": {
+        "found": "تم العثور على المسافرين",
+        "active": "نشيط",
+        "combinedSpend": "الإنفاق المشترك",
+        "page": "صفحة",
+        "pageValue": "⟦الحالي⟧ / ⟦الإجمالي⟧"
+      },
+      "pagination": {
+        "previous": "سابق",
+        "next": "التالي",
+        "showing": "الصفحة ⟦الحالية⟧ من ⟦الإجمالي⟧"
+      },
+      "details": "تفاصيل",
+      "empty": "لا يوجد مسافرون مطابقون لبحثك.",
+      "notFound": "لم يتم العثور على المسافر.",
+      "backToList": "العودة إلى المسافرين",
+      "accountDetails": "تفاصيل الحساب",
+      "detail": {
+        "totalBookings": "إجمالي الحجوزات",
+        "lifetimeSpend": "إنفاق مدى الحياة",
+        "primaryCorridor": "الممر الأساسي",
+        "openTickets": "تذاكر مفتوحة",
+        "idFaceVerified": "تم التحقق من الهوية + الوجه",
+        "joined": "انضم ⟦التاريخ⟧",
+        "lastActive": "آخر نشاط ⟦منقضي⟧",
+        "phoneWhatsApp": "⟦الهاتف⟧ (مرتبط بالواتس اب)",
+        "identityVerification": "التحقق من الهوية",
+        "governmentId": "الهوية الحكومية (⟦النوع⟧)",
+        "faceMatch": "مباراة الوجه/الحيوية",
+        "verifiedVia": "تم التحقق عبر",
+        "verified": "تم التحقق منه",
+        "notVerified": "لم يتم التحقق منها",
+        "paymentMethods": "طرق الدفع في الملف",
+        "card": "بطاقة",
+        "defaultCurrency": "العملة الافتراضية",
+        "recentBookings": "الحجوزات الأخيرة",
+        "internalNotes": "ملاحظات داخلية",
+        "noNotes": "لا توجد ملاحظات داخلية حتى الآن.",
+        "noteAttribution": "— ⟦المؤلف⟧، ⟦التاريخ⟧",
+        "bookingStatus": {
+          "confirmed": "مؤكد",
+          "completed": "مكتمل",
+          "cancelled": "تم الإلغاء"
+        }
+      },
+      "menu": {
+        "verification": "تَحَقّق",
+        "rerunIdVerification": "أعد تشغيل التحقق من الهوية",
+        "rerunFaceVerification": "أعد تشغيل التحقق من الوجه",
+        "financial": "مالي",
+        "issueRefund": "إصدار استرداد",
+        "holdBookingPayment": "تعليق دفع الحجز",
+        "support": "يدعم",
+        "viewAsReadOnly": "عرض كـ (للقراءة فقط)",
+        "addInternalNote": "إضافة ملاحظة داخلية",
+        "dataAccount": "البيانات والحساب",
+        "mergeDuplicateAccount": "دمج الحساب المكرر",
+        "exportUserData": "تصدير بيانات المستخدم (GDPR)",
+        "suspendAccount": "تعليق الحساب"
+      }
+    },
+    "experiences": {
+      "title": "إدارة الخبرات",
+      "searchPlaceholder": "تجارب البحث",
+      "name": "اسم التجربة",
+      "empty": "لا توجد تجارب تطابق بحثك.",
+      "actions": {
+        "disable": "تعطيل الخبرة",
+        "enable": "تمكين الخبرة",
+        "goTo": "اذهب إلى التجربة",
+        "delete": "حذف الخبرة"
+      }
+    },
+    "cars": {
+      "title": "إدارة السيارات",
+      "searchPlaceholder": "بحث السيارات",
+      "name": "اسم السيارة",
+      "empty": "لا توجد سيارات تطابق بحثك.",
+      "actions": {
+        "disable": "تعطيل السيارة",
+        "enable": "تمكين السيارة",
+        "goTo": "اذهب إلى السيارة",
+        "delete": "حذف السيارة"
+      }
+    },
+    "accommodations": {
+      "title": "إدارة أماكن الإقامة",
+      "searchPlaceholder": "البحث عن أماكن الإقامة",
+      "name": "اسم السكن",
+      "empty": "لا توجد أماكن إقامة تطابق بحثك.",
+      "actions": {
+        "disable": "تعطيل الإقامة",
+        "enable": "تمكين الإقامة",
+        "goTo": "الذهاب إلى السكن",
+        "delete": "حذف السكن"
+      }
+    },
+    "listings": {
+      "location": "موقع القائمة",
+      "vendor": "بائع",
+      "bookings": "الحجوزات",
+      "ratings": "التقييمات",
+      "reviews": "المراجعات",
+      "activityStatus": "حالة النشاط",
+      "status": {
+        "active": "نشيط",
+        "inactive": "غير نشط",
+        "deleted": "تم الحذف"
+      },
+      "tab": {
+        "active": "القوائم النشطة",
+        "deleted": "القوائم المحذوفة"
+      },
+      "deletedHint": "تظهر هنا القوائم التي تمت إزالتها من السوق. يمكنك عرض التفاصيل أو حذف السجلات نهائيًا.",
+      "viewDetails": "عرض القائمة",
+      "deletedAt": "تم الحذف في {date}",
+      "detailTitle": "تفاصيل القائمة",
+      "detailHint": "معاينة كاملة لهذه القائمة، بما في ذلك الوسائط والتفاصيل والأسعار والمستندات.",
+      "detailNotFound": "لا يمكن العثور على هذه القائمة.",
+      "detail": {
+        "backCars": "العودة إلى السيارات",
+        "backAccommodations": "العودة إلى أماكن الإقامة",
+        "backExperiences": "العودة إلى التجارب"
+      },
+      "detailClose": "يغلق"
+    },
+    "vendors": {
+      "title": "إدارة البائعين",
+      "add": "إضافة بائع",
+      "searchPlaceholder": "البحث حسب الاسم أو معرف البائع أو البريد الإلكتروني أو الهاتف...",
+      "vendorId": "معرف البائع",
+      "name": "بائع",
+      "userId": "معرف المستخدم",
+      "stats": {
+        "found": "تم العثور على البائعين",
+        "active": "نشيط",
+        "combinedRevenue": "الإيرادات المجمعة",
+        "page": "صفحة",
+        "pageValue": "⟦الحالي⟧ / ⟦الإجمالي⟧"
+      },
+      "pagination": {
+        "previous": "سابق",
+        "next": "التالي",
+        "showing": "الصفحة ⟦الحالية⟧ من ⟦الإجمالي⟧"
+      },
+      "contactInfo": "معلومات الاتصال",
+      "listings": "القوائم",
+      "commission": "عمولة",
+      "commissionValue": "⟦معدل⟧٪",
+      "status": {
+        "active": "نشيط",
+        "inactive": "غير نشط"
+      },
+      "revenue": "ربح",
+      "rating": "تصنيف",
+      "reviews": "المراجعات",
+      "details": "تفاصيل",
+      "empty": "لا يوجد بائعون مطابقون لبحثك.",
+      "notFound": "لم يتم العثور على البائع.",
+      "backToList": "العودة إلى البائعين",
+      "accountDetails": "تفاصيل الحساب",
+      "joined": "انضم",
+      "detail": {
+        "activeListings": "القوائم النشطة",
+        "completedBookings": "الحجوزات المكتملة",
+        "averageRating": "متوسط ​​التقييم",
+        "openStrikes": "الضربات المفتوحة",
+        "category": "فئة",
+        "onboarded": "على متن الطائرة ⟦التاريخ⟧",
+        "accountDocuments": "وثائق الحساب",
+        "listingDocuments": "وثائق الإدراج — {category}",
+        "payoutSummary": "ملخص الدفع",
+        "pendingPayout": "في انتظار الدفع",
+        "lastPayout": "الدفع الأخير",
+        "internalNotes": "ملاحظات داخلية",
+        "noNotes": "لا توجد ملاحظات داخلية حتى الآن.",
+        "noteAttribution": "— ⟦المؤلف⟧، ⟦التاريخ⟧",
+        "viewListings": "عرض القوائم",
+        "suspendVendor": "إيقاف البائع",
+        "documentStatus": {
+          "verified": "تم التحقق منه",
+          "pendingReview": "في انتظار المراجعة",
+          "signed": "وقعت",
+          "notVerified": "لم يتم التحقق منها"
+        }
+      },
+      "menu": {
+        "verification": "تَحَقّق",
+        "approvePendingListing": "الموافقة على القائمة المعلقة",
+        "requestAdditionalDocuments": "طلب وثائق إضافية",
+        "upgradeToTier": "الترقية إلى المستوى {tier}",
+        "standingTrust": "الوقوف والثقة",
+        "grantInstantBook": "منح امتياز الكتاب الفوري",
+        "addStrike": "إضافة الإضراب / العلم الداخلي",
+        "clearStrike": "مسح المخالفة",
+        "financial": "مالي",
+        "holdPendingPayout": "عقد دفع تعويضات في انتظار",
+        "adjustCommissionRate": "ضبط معدل العمولة",
+        "communication": "تواصل",
+        "contactVendor": "اتصل بالبائع",
+        "addInternalNote": "إضافة ملاحظة داخلية",
+        "account": "حساب",
+        "suspendAccount": "تعليق الحساب",
+        "banPermanently": "الحظر نهائيا"
+      },
+      "requestDocumentsModal": {
+        "title": "طلب وثائق إضافية",
+        "subtitle": "أرسل طلب مستند إلى {vendor}.",
+        "documentLabel": "حدد المستند",
+        "documentPlaceholder": "اختر مستندًا",
+        "otherOption": "أخرى (غير مدرجة)",
+        "customDocumentLabel": "أضف اسم المستند",
+        "customDocumentPlaceholder": "اكتب اسم المستند",
+        "submit": "إرسال الطلب",
+        "cancel": "يلغي"
+      },
+      "confirm": {
+        "cancel": "يلغي"
+      },
+      "confirmSuspend": {
+        "title": "هل أنت متأكد؟",
+        "message": "أنت على وشك تعليق {vendor}. وسيفقدون إمكانية الوصول إلى حساباتهم حتى يتم إعادة تنشيطها."
+      },
+      "confirmBan": {
+        "title": "هل أنت متأكد؟",
+        "message": "أنت على وشك حظر {vendor} بشكل دائم. لا يمكن التراجع عن هذا الإجراء."
+      },
+      "internalNoteModal": {
+        "title": "إضافة ملاحظة داخلية",
+        "subtitle": "أضف ملاحظة أو ملاحظة لـ {vendor}.",
+        "label": "ملاحظة",
+        "placeholder": "اكتب ملاحظتك أو ملاحظتك هنا...",
+        "submit": "حفظ الملاحظة"
+      },
+      "experiences": "الخبرات",
+      "earnings": "إجمالي الأرباح"
+    },
+    "bookings": {
+      "title": "الحجوزات",
+      "subtitle": "جميع الحجوزات عبر رحلات الطيران والسيارات وأماكن الإقامة والتجارب - من التطبيق والويب والتي تم إنشاؤها يدويًا.",
+      "create": "إنشاء الحجز",
+      "searchPlaceholder": "البحث حسب العميل أو البائع أو معرف الحجز...",
+      "empty": "لا توجد حجوزات تتطابق مع عوامل التصفية الخاصة بك.",
+      "guests": "الضيوف",
+      "vendor": "بائع",
+      "contactCustomer": "اتصل بالعميل",
+      "contactVendor": "اتصل بالبائع",
+      "addInternalNote": "إضافة ملاحظة داخلية",
+      "partialRefund": "استرداد جزئي",
+      "cancelRefund": "إلغاء واسترداد الأموال",
+      "flagDispute": "ضع علامة كنزاع",
+      "saveChanges": "حفظ التغييرات",
+      "stats": {
+        "upcoming": "القادمة (7 أيام)",
+        "awaiting": "في انتظار التأكيد",
+        "confirmed": "مؤكد",
+        "disputed": "المتنازع عليها / وضع علامة عليها",
+        "totalMonth": "المجموع هذا الشهر"
+      },
+      "product": {
+        "all": "جميع أنواع المنتجات",
+        "flights": "الرحلات الجوية",
+        "cars": "سيارات",
+        "accommodations": "يبقى",
+        "experiences": "الخبرات"
+      },
+      "source": {
+        "all": "جميع المصادر",
+        "website": "موقع إلكتروني",
+        "mobileApp": "تطبيق الجوال",
+        "admin": "تم إنشاؤها بواسطة المشرف"
+      },
+      "dateRange": {
+        "label": "النطاق الزمني",
+        "day": "يوم واحد",
+        "week": "1 أسبوع",
+        "month": "شهر واحد",
+        "sixMonths": "6 أشهر",
+        "year": "1 سنة",
+        "all": "الجميع"
+      },
+      "filter": {
+        "all": "الكل (⟦العدد⟧)",
+        "upcoming": "القادمة (⟦العدد⟧)",
+        "awaiting": "في انتظار التأكيد ({count})",
+        "confirmed": "تم التأكيد (⟦عدد⟧)",
+        "completed": "مكتمل (⟦العدد⟧)",
+        "cancelled": "تم الإلغاء (⟦العدد⟧)",
+        "disputed": "المتنازع عليها (⟦العدد⟧)"
+      },
+      "status": {
+        "confirmed": "مؤكد",
+        "awaiting": "في انتظار التأكيد",
+        "cancelled": "تم الإلغاء",
+        "completed": "مكتمل",
+        "disputed": "المتنازع عليها"
+      },
+      "sidebar": {
+        "customer": "عميل",
+        "source": "المصدر: ⟦المصدر⟧",
+        "vendor": "بائع",
+        "bookingDetails": "تفاصيل الحجز",
+        "payment": "قسط",
+        "timeline": "الجدول الزمني",
+        "name": "اسم",
+        "contact": "اتصال",
+        "whatsapp": "واتساب",
+        "assignedTo": "المخصصة ل",
+        "vendorContact": "الاتصال بالمورد",
+        "checkIn": "تاريخ الوصول",
+        "checkOut": "تاريخ المغادرة",
+        "amount": "كمية",
+        "paymentStatus": "حالة",
+        "chargedCurrency": "العملة المشحونة"
+      },
+      "createModal": {
+        "title": "إنشاء الحجز",
+        "subtitle": "إنشاء حجز نيابة عن العميل.",
+        "infoBannerPrefix": "سيتم وضع علامة على هذا الحجز",
+        "infoBannerSource": "المصدر: تم إنشاؤه بواسطة المشرف",
+        "infoBannerSuffix": "وسيظهر في حساب العميل والتطبيق مثل حجز الخدمة الذاتية.",
+        "productType": "نوع المنتج",
+        "product": {
+          "accommodations": "إقامة",
+          "flights": "الرحلات الجوية",
+          "cars": "سيارات",
+          "experiences": "الخبرات"
+        },
+        "customer": "عميل",
+        "customerPlaceholder": "ابحث عن العميل الحالي حسب الاسم أو البريد الإلكتروني أو الهاتف...",
+        "vendorListing": "البائع / القائمة",
+        "vendorPlaceholder": "البحث عن بائع أو قائمة...",
+        "startDate": "تاريخ البدء",
+        "endDate": "تاريخ الانتهاء",
+        "guestsUnits": "الضيوف / الوحدات",
+        "guestsPlaceholder": "على سبيل المثال 2",
+        "totalAmount": "المبلغ الإجمالي",
+        "amountPlaceholder": "شبكات الجيل التالي",
+        "paymentStatus": "حالة الدفع",
+        "payment": {
+          "sendLink": "إرسال رابط الدفع للعميل",
+          "paidInFull": "وضع علامة على أنها مدفوعة بالكامل",
+          "pending": "الدفع معلق — لم يتم إرسال أي رابط"
+        },
+        "internalNote": "ملاحظة داخلية",
+        "internalNotePlaceholder": "على سبيل المثال تم الحجز عبر الاستفسار عبر الواتساب، وطلب العميل غرفة في الطابق الأرضي",
+        "cancel": "يلغي",
+        "submit": "إنشاء الحجز"
+      }
+    },
+    "payouts": {
+      "title": "الدفعات",
+      "subtitle": "أرباح البائعين في جميع الفئات، حسب فترة التسوية.",
+      "searchPlaceholder": "البحث حسب اسم البائع أو المرجع...",
+      "pendingCount": "{count} الدفعات المعلقة",
+      "markComplete": "وضع علامة مكتملة",
+      "contactVendor": "اتصل بالبائع",
+      "decline": "انخفاض",
+      "empty": "لا توجد دفعات تطابق بحثك.",
+      "requested": "تم الطلب ⟦التاريخ⟧",
+      "periodLabel": "الفترة: ⟦الفترة⟧",
+      "listBookingsBank": "⟦عدد⟧ الحجوزات · ⟦بنك⟧ ⟦حساب⟧",
+      "netPayoutToVendor": "صافي الدفع للبائع",
+      "grossEarnings": "إجمالي أرباح الحجز",
+      "platformCommission": "عمولة المنصة (⟦المعدل⟧%)",
+      "netPayout": "صافي الدفع",
+      "paymentDestination": "وجهة الدفع",
+      "bank": "بنك",
+      "accountNumber": "رقم الحساب",
+      "accountName": "إسم الحساب",
+      "payoutMethod": "طريقة الدفع",
+      "associatedBookings": "الحجوزات المرتبطة ({count})",
+      "internalNote": "ملاحظة داخلية",
+      "noteAttribution": "— ⟦المؤلف⟧، ⟦التاريخ⟧",
+      "period": {
+        "thisMonth": "هذا الشهر – يوليو 2026",
+        "lastMonth": "الشهر الماضي – يونيو 2026",
+        "quarter": "هذا الربع – الربع الثاني من عام 2026"
+      },
+      "stats": {
+        "totalPeriod": "إجمالي الدفع - الفترة",
+        "totalVendors": "عبر {count} البائعين",
+        "pending": "قيد الانتظار",
+        "pendingSubtitle": "{count} دفعات في انتظار الإجراء",
+        "completed": "مكتمل",
+        "completedSubtitle": "{count} تمت تسوية الدفعات",
+        "declinedFailed": "رفض / فشل",
+        "declinedFailedSubtitle": "⟦مرفوض⟧ مرفوض · ⟦فشل⟧ فشل النقل"
+      },
+      "filter": {
+        "all": "الكل (⟦العدد⟧)",
+        "pending": "في انتظار (⟦العدد⟧)",
+        "completed": "مكتمل (⟦العدد⟧)",
+        "declined": "تم الرفض ({count})",
+        "failed": "فشل (⟦العدد⟧)"
+      },
+      "status": {
+        "pending": "قيد الانتظار",
+        "completed": "مكتمل",
+        "declined": "انخفض",
+        "failed": "فشل",
+        "failedTransfer": "فشل النقل"
+      }
+    },
+    "reviews": {
+      "title": "مراجعة الاعتدال",
+      "category": {
+        "unanswered": "لم تتم الإجابة عليه",
+        "responseRequired": "الاستجابة مطلوبة",
+        "flagged": "تم وضع علامة عليها",
+        "deleted": "تم الحذف",
+        "published": "تم النشر"
+      },
+      "selectAll": "حدد الكل",
+      "deselectAll": "قم بإلغاء تحديد الكل",
+      "bulkPublish": "نشر المحدد",
+      "bulkFlag": "تم تحديد العلم",
+      "bulkResponseRequired": "الاستجابة مطلوبة",
+      "bulkDelete": "حذف المحدد",
+      "actionsGuideTitle": "ماذا تعني هذه التصرفات؟",
+      "actionsGuide": {
+        "publish": "النشر - اجعل المراجعة مرئية على صفحة القائمة العامة.",
+        "flag": "وضع علامة — قم بوضع علامة على المراجعة للمتابعة (محتوى غير لائق أو مشبوه).",
+        "delete": "حذف — إزالة المراجعة من العرض العام. تظهر المراجعات المحذوفة في علامة التبويب المحذوفة.",
+        "responseRequired": "الاستجابة مطلوبة — تشير إلى أن هناك حاجة إلى استجابة من البائع أو المسؤول.",
+        "clearResponseRequired": "مطلوب رد واضح — قم بإزالة العلامة بعد نشر الرد الرسمي."
+      },
+      "selectReview": "اختر مراجعة لـ {title}",
+      "unansweredBadge": "لم تتم الإجابة عليه",
+      "responseRequiredBadge": "الاستجابة مطلوبة",
+      "officialResponse": "الرد الرسمي",
+      "empty": "لا توجد تعليقات في هذه الفئة.",
+      "flag": "علَم",
+      "responseRequired": "الاستجابة مطلوبة",
+      "clearResponseRequired": "مطلوب رد واضح",
+      "delete": "يمسح",
+      "hide": "يخفي",
+      "publish": "نشر",
+      "respondAsSynkAfrica": "الرد باسم SynkAfrica",
+      "responsePlaceholder": "الرد الرسمي مرئي للضيف والبائعين...",
+      "photosLabel": "صور الضيوف",
+      "status": {
+        "published": "تم النشر",
+        "flagged": "تم وضع علامة عليها",
+        "deleted": "تم الحذف",
+        "hidden": "مختفي"
+      }
+    },
+    "reports": {
+      "title": "التقارير",
+      "totalRevenue": "إجمالي الإيرادات (الشهر)",
+      "totalBookings": "إجمالي الحجوزات (شهر)",
+      "topExperience": "أعلى تجربة",
+      "activeVendors": "البائعين النشطين",
+      "popularExperiences": "تجارب شعبية",
+      "bookings": "الحجوزات",
+      "metric": "متري",
+      "value": "قيمة",
+      "experience": "خبرة",
+      "exportRevenue": "تصدير الإيرادات CSV",
+      "exportBookings": "تصدير الحجوزات CSV"
+    },
+    "support": {
+      "title": "تذاكر الدعم",
+      "subtitle": "قم بمراجعة طلبات دعم المستخدمين والبائعين، وتحديث حالة التذكرة، وإرسال الردود الرسمية.",
+      "tab": {
+        "users": "المستخدمين",
+        "vendors": "الباعة"
+      },
+      "user": "مستخدم",
+      "vendor": "بائع",
+      "empty": "لا توجد تذاكر تتطابق مع هذا الفلتر.",
+      "adminResponse": "رد المشرف",
+      "previousResponse": "الرد السابق",
+      "sendResponse": "إرسال الرد"
+    }
+  },
+  "vendor": {
+    "nav": {
+      "workspace": "مساحة العمل",
+      "account": "حساب",
+      "dashboard": "لوحة القيادة",
+      "listings": "القوائم",
+      "bookings": "الحجوزات",
+      "earnings": "الأرباح",
+      "notifications": "إشعارات",
+      "businessProfile": "الملف التجاري",
+      "settings": "إعدادات",
+      "support": "يدعم",
+      "logOut": "تسجيل الخروج",
+      "openMenu": "فتح القائمة",
+      "closeMenu": "إغلاق القائمة"
+    },
+    "header": {
+      "verifiedVendor": "بائع تم التحقق منه",
+      "unverifiedVendor": "بائع لم يتم التحقق منه",
+      "pendingVendor": "التحقق معلق"
+    },
+    "signup": {
+      "title": "قم بإنشاء حساب البائع الخاص بك",
+      "subtitle": "انضم إلى SynkAfrica وابدأ في إدراج سياراتك وأماكن إقامتك وتجاربك للمسافرين عبر إفريقيا.",
+      "alreadyHaveAccount": "هل لديك حساب بائع بالفعل؟",
+      "signIn": "تسجيل الدخول",
+      "progressLabel": "تقدم تسجيل البائع",
+      "steps": {
+        "business": "معلومات الأعمال والمالك",
+        "security": "الأمن والتحقق",
+        "identity": "التحقق من الهوية"
+      },
+      "cancel": "يلغي",
+      "back": "خلف",
+      "continue": "يكمل",
+      "createAccount": "إنشاء حساب",
+      "completeRequiredFields": "أكمل الحقول المطلوبة: ⟦الحقول⟧",
+      "securityRequired": "تحقق من هاتفك باستخدام OTP وقم بإنشاء كلمة مرور صالحة للمتابعة.",
+      "identityRequired": "قم بتحميل هويتك الحكومية واقبل الشروط لإنشاء حسابك.",
+      "sections": {
+        "businessInfo": "معلومات الأعمال",
+        "businessInfoHint": "أخبرنا عن عملك.",
+        "ownerInfo": "معلومات المالك",
+        "ownerInfoHint": "تفاصيل حول صاحب العمل أو جهة الاتصال الأساسية.",
+        "phoneVerification": "التحقق من الهاتف",
+        "phoneVerificationHint": "سوف نقوم بإرسال رمز لمرة واحدة إلى رقم الهاتف الذي قدمته.",
+        "accountSecurity": "أمان الحساب",
+        "accountSecurityHint": "قم بإنشاء كلمة مرور قوية لحساب البائع الخاص بك.",
+        "governmentId": "بطاقة هوية صادرة عن الحكومة",
+        "governmentIdHint": "قم بتحميل جواز سفر أو رخصة قيادة أو قسيمة NIN صالحة للتحقق من الهوية."
+      },
+      "fields": {
+        "businessName": "اسم العمل",
+        "businessType": "نوع العمل",
+        "cacRegistrationNumber": "رقم تسجيل CAC",
+        "companyType": "نوع الشركة",
+        "businessAddress": "عنوان العمل",
+        "ownerFullName": "الاسم الكامل للمالك",
+        "ownerEmail": "عنوان البريد الإلكتروني",
+        "phoneNumber": "رقم التليفون",
+        "dateOfBirth": "تاريخ الميلاد",
+        "password": "كلمة المرور",
+        "confirmPassword": "تأكيد كلمة المرور"
+      },
+      "placeholders": {
+        "companyType": "اختر نوع الشركة",
+        "businessName": "على سبيل المثال الممرات الساحلية NG",
+        "businessType": "اختر نوع العمل",
+        "cacRegistrationNumber": "على سبيل المثال RC1234567",
+        "businessAddress": "الشارع، المدينة، الدولة",
+        "ownerFullName": "الاسم القانوني الكامل",
+        "ownerEmail": "أنت@business.com",
+        "phoneNumber": "7812345678",
+        "password": "قم بإنشاء كلمة مرور",
+        "confirmPassword": "أعد إدخال كلمة المرور الخاصة بك"
+      },
+      "sendOtp": "أرسل كلمة مرور لمرة واحدة",
+      "resendOtp": "إعادة إرسال كلمة المرور لمرة واحدة",
+      "enterOtp": "أدخل كلمة المرور لمرة واحدة",
+      "resendIn": "إعادة الإرسال خلال 00:⟦ثواني⟧",
+      "otpVerified": "تم التحقق من رقم الهاتف.",
+      "passwordRules": {
+        "minLength": "ما لا يقل عن 8 أحرف",
+        "hasNumber": "يتضمن عددا",
+        "hasUppercase": "يتضمن حرفًا كبيرًا"
+      },
+      "passwordMismatch": "كلمات المرور غير متطابقة.",
+      "togglePasswordVisibility": "تبديل رؤية كلمة المرور",
+      "uploadId": "اسحب وأفلت هويتك هنا",
+      "uploadIdHint": "JPG أو PNG أو PDF (بحد أقصى 5 ميجابايت)",
+      "chooseFile": "اختر ملف",
+      "idUploaded": "تم تحميل المستند",
+      "idUploadFailed": "فشل التحميل — يرجى المحاولة مرة أخرى.",
+      "removeId": "إزالة الهوية",
+      "idPrivacyNote": "يتم تخزين هويتك بشكل آمن وتستخدم فقط لأغراض التحقق. نحن لا نشارك مستنداتك الشخصية أبدًا مع أطراف ثالثة.",
+      "securityBanner": {
+        "title": "معلوماتك آمنة معنا",
+        "message": "نحن نستخدم الأمان المتوافق مع معايير الصناعة لحماية بياناتك والحفاظ على أمان حسابك."
+      },
+      "agreeTermsPrefix": "أنا أوافق على",
+      "termsOfService": "شروط الخدمة",
+      "and": "و",
+      "privacyPolicy": "سياسة الخصوصية"
+    },
+    "login": {
+      "title": "تسجيل دخول البائع",
+      "intro": "قم بتسجيل الدخول إلى حساب البائع الخاص بك في SynkAfrica لإدارة القوائم والحجوزات والأرباح.",
+      "emailPlaceholder": "أدخل البريد الإلكتروني للبائع الخاص بك",
+      "signInGoogle": "قم بتسجيل الدخول باستخدام جوجل",
+      "noAccount": "ليس لديك حساب بائع؟",
+      "signUp": "اشتراك"
+    },
+    "verificationNotice": {
+      "unverified": {
+        "title": "التحقق مطلوب",
+        "message": "أكمل التحقق من البائع الخاص بك لنشر القوائم وتلقي العوائد."
+      },
+      "pending": {
+        "title": "جارٍ التحقق",
+        "message": "جاري مراجعة عملية التحقق الخاصة بك. قد تظل بعض الميزات محدودة حتى تتم الموافقة عليها."
+      },
+      "completeVerification": "التحقق الكامل"
+    },
+    "notifications": {
+      "filter": {
+        "label": "تصفية الإخطارات",
+        "all": "الجميع",
+        "newBooking": "حجوزات جديدة",
+        "bookingReminder": "تذكير 24 ساعة",
+        "payoutConfirmation": "الدفعات",
+        "adminMessage": "مسؤل"
+      },
+      "type": {
+        "newBooking": "حجز جديد",
+        "bookingReminder": "تذكير 24 ساعة",
+        "payoutConfirmation": "الدفع",
+        "adminMessage": "رسالة المشرف"
+      },
+      "unreadCount": "⟦عدد⟧ الإشعارات غير المقروءة",
+      "allCaughtUp": "أنتم جميعًا محاصرون.",
+      "markRead": "وضع علامة كمقروءة",
+      "markAllRead": "وضع علامة على الكل كمقروءة",
+      "empty": "لا توجد إخطارات في هذه الفئة.",
+      "time": {
+        "justNow": "الآن",
+        "hoursAgo": "{count}h منذ"
+      },
+      "sample": {
+        "newBooking": {
+          "title": "تم استلام حجز جديد",
+          "message": "حجزت Amara رحلة Lagos Lagoon Sunset Cruise ليوم 25 يوليو · 4 ضيوف. التأكيد أو الرفض خلال 24 ساعة."
+        },
+        "newBooking2": {
+          "title": "تم استلام حجز جديد",
+          "message": "قام Chidi بحجز Lekki Garden Suites لعدد 3 أغسطس · ضيفين."
+        },
+        "reminder": {
+          "title": "الحجز خلال 24 ساعة",
+          "message": "تذكير: رحلة بحرية في Lagos Lagoon Sunset مع فاطمة غدًا الساعة 5:30 مساءً · 6 ضيوف."
+        },
+        "reminder2": {
+          "title": "الحجز خلال 24 ساعة",
+          "message": "تذكير: تأجير تويوتا كامري 2021 مع إيميكا غدا الساعة 9:00 صباحا."
+        },
+        "payout": {
+          "title": "تم تأكيد الدفع",
+          "message": "تم إرسال مبلغ 200.000 NGN إلى حساب GTBank الخاص بك والذي ينتهي بالرقم 4521."
+        },
+        "payout2": {
+          "title": "تم تأكيد الدفع",
+          "message": "تمت معالجة سحب مبلغ 150,000 NGN إلى Access Bank المنتهي بالرقم 8834 بنجاح."
+        },
+        "admin": {
+          "title": "تحديث السياسة من Synkafrica",
+          "message": "تتوفر الآن إرشادات البائع المحدثة لقوائم الخبرة. يرجى المراجعة بحلول 1 أغسطس."
+        },
+        "admin2": {
+          "title": "تمت الموافقة على الإدراج",
+          "message": "أصبحت قائمة Lagos Lagoon Sunset Cruise الخاصة بك متاحة الآن على Synkafrica."
+        }
+      }
+    },
+    "dashboard": {
+      "welcomeBack": "مرحبًا بعودتك،",
+      "addListing": "إضافة قائمة",
+      "period": {
+        "label": "فترة المقاييس",
+        "day": "يوم واحد",
+        "week": "أسبوع واحد",
+        "month": "شهر واحد",
+        "sixMonths": "ستة أشهر",
+        "year": "سنة واحدة"
+      },
+      "stats": {
+        "liveListings": "القوائم الحية",
+        "newBookings": "حجوزات جديدة",
+        "earnings": "الأرباح",
+        "pendingApproval": "في انتظار الموافقة"
+      },
+      "goToBookings": "اذهب إلى الحجوزات",
+      "yourListings": "قوائمك",
+      "seeAll": "رؤية الكل",
+      "status": {
+        "live": "قائمة حية",
+        "pending": "قيد الانتظار...",
+        "paused": "متوقف مؤقتًا",
+        "draft": "مسودة"
+      },
+      "editListing": "تحرير القائمة",
+      "deleteListing": "حذف القائمة",
+      "pauseListing": "وقفة القائمة",
+      "playListing": "استئناف الإدراج",
+      "deleteListingModal": {
+        "title": "هل تريد حذف القائمة؟",
+        "message": "هل أنت متأكد أنك تريد حذف \"{title}\"؟ لا يمكن التراجع عن هذا الإجراء.",
+        "confirm": "حذف القائمة",
+        "cancel": "يلغي"
+      },
+      "category": {
+        "accommodations": "أماكن الإقامة",
+        "carRentals": "تأجير السيارات",
+        "tours": "جولات",
+        "toursExperiences": "جولات وتجارب"
+      }
+    },
+    "businessProfile": {
+      "businessName": "اسم العمل",
+      "businessNameHint": "الاسم الداخلي المستخدم في الدفعات وسجلات البائعين. لا تظهر في القوائم العامة.",
+      "internalNameLabel": "اسم العمل الداخلي",
+      "contactDetails": "تفاصيل الاتصال",
+      "contactDetailsHint": "كيف يتواصل Synkafrica والضيوف معك للحصول على دعم الحجز.",
+      "phone": "رقم التليفون",
+      "email": "عنوان البريد الإلكتروني",
+      "address": "عنوان العمل",
+      "payoutAccount": "الحساب البنكي للمدفوعات",
+      "payoutAccountHint": "يتم إرسال عمليات السحب من الأرباح إلى هذا الحساب.",
+      "bankName": "اسم البنك",
+      "accountNumber": "رقم الحساب",
+      "accountNumberLocked": "لا يمكن تغيير رقم الحساب إلا كل ⟦أشهر⟧ أشهر. التغيير التالي متاح في {date}.",
+      "accountName": "إسم الحساب",
+      "bank": {
+        "zenith": "بنك زينيث",
+        "firstBank": "البنك الأول"
+      },
+      "passwordUpdate": "تحديث كلمة المرور",
+      "passwordUpdateHint": "اختر كلمة مرور قوية لا تستخدمها في أي مكان آخر.",
+      "currentPassword": "كلمة المرور الحالية",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmPassword": "تأكيد كلمة المرور الجديدة",
+      "passwordMismatch": "كلمات المرور الجديدة غير متطابقة.",
+      "updatePassword": "تحديث كلمة المرور",
+      "passwordUpdated": "تم تحديث كلمة المرور.",
+      "saveChanges": "حفظ التغييرات",
+      "saved": "أنقذ.",
+      "rejected": {
+        "title": "لم تتم الموافقة على الطلب",
+        "noReason": "لم يوافق المشرف على طلبك. قم بتصحيح بياناتك ومستنداتك أدناه، ثم قم بإعادة الإرسال.",
+        "resubmit": "إعادة تقديم للمراجعة",
+        "resubmitting": "جارٍ إعادة الإرسال…",
+        "resubmitted": "إعادة الإرسال. سيقوم المشرف بمراجعة طلبك مرة أخرى.",
+        "resubmitFailed": "لا يمكن إعادة الإرسال. حاول ثانية."
+      },
+      "cac": {
+        "title": "تسجيل CAC",
+        "hint": "تم فحصه مقابل سجل CAC. يمكنك تصحيح هذه التفاصيل حتى يمر الشيك.",
+        "number": "رقم تسجيل CAC",
+        "companyType": "نوع الشركة",
+        "companyTypePlaceholder": "اختر نوع الشركة",
+        "status": {
+          "verified": "تم التحقق منه",
+          "failed": "لم يتم التحقق منها",
+          "unverified": "في انتظار الاختيار"
+        },
+        "verifiedAs": "مطابق لـ {name} في سجل CAC.",
+        "failedHint": "لم يتطابق تسجيل CAC مع هذه التفاصيل. قم بتصحيحها وحفظها للتحقق مرة أخرى.",
+        "pendingHint": "يؤدي الحفظ إلى إعادة تشغيل فحص CAC. قم بالتحديث في لحظة لرؤية النتيجة.",
+        "lockedHint": "لا يمكن تغيير التفاصيل التي تم التحقق منها هنا. اتصل بالدعم إذا كان هناك شيء خاطئ."
+      },
+      "documents": {
+        "title": "الوثائق والتحقق",
+        "subtitle": "تنطبق المستندات على مستوى الأعمال على حسابك بالكامل. مستندات المركبة مطلوبة لكل قائمة قبل أن يتم نشرها.",
+        "businessSection": "وثيقة الأعمال",
+        "business": {
+          "cac": "شهادة التأسيس (CAC)"
+        },
+        "uploadedMeta": "تم الرفع ⟦التاريخ⟧ · ⟦اسم الملف⟧",
+        "view": "منظر",
+        "vehicleSection": "وثائق المركبة · {count} القوائم",
+        "vehicleLegend": "التأمين · صلاحية الطريق · إثبات الملكية",
+        "type": {
+          "insurance": "شهادة التأمين",
+          "roadworthiness": "شهادة صلاحية الطريق",
+          "ownership": "إثبات الملكية"
+        },
+        "status": {
+          "verified": "تم التحقق منه",
+          "rejected": "مرفوض",
+          "pending": "قيد الانتظار",
+          "notUploaded": "لم يتم تحميلها"
+        },
+        "listingStatus": {
+          "allVerified": "تم التحقق من كل شيء",
+          "actionNeeded": "الإجراء مطلوب",
+          "notStarted": "لم يبدأ",
+          "inProgress": "في تَقَدم"
+        },
+        "reupload": "إعادة التحميل",
+        "upload": "رفع",
+        "rejection": {
+          "plateMismatch": "اسم الوثيقة لا يتطابق مع رقم اللوحة المسجل. يرجى إعادة تحميل رخصة المركبة المطابقة لـ ABJ-771-KD."
+        }
+      }
+    },
+    "support": {
+      "helpBanner": "قدم شكوى أو اطلب المساعدة من فريق الموردين في Synkafrica. نرد عادةً خلال 1-2 أيام عمل.",
+      "helpBannerEmail": "سيتم إرسال التحديثات إلى {email}.",
+      "openTickets": "⟦عدد⟧ التذاكر المفتوحة",
+      "tabs": {
+        "label": "أقسام الدعم"
+      },
+      "createTicket": "إنشاء تذكرة دعم",
+      "createTicketHint": "قم بوصف مشكلتك بالتفصيل حتى نتمكن من حلها بسرعة.",
+      "subject": "موضوع",
+      "subjectPlaceholder": "ملخص موجز لمشكلتك",
+      "category": {
+        "booking": "مشكلة الحجز",
+        "payout": "الدفع والأرباح",
+        "listing": "القائمة والتوافر",
+        "account": "الحساب والملف الشخصي",
+        "complaint": "شكوى",
+        "other": "آخر"
+      },
+      "priority": {
+        "low": "قليل",
+        "medium": "واسطة",
+        "high": "عالي",
+        "urgent": "عاجل"
+      },
+      "priorityHint": "استخدم \"عاجل\" فقط في حالات الحجز أو الدفع الحساسة للوقت.",
+      "bookingReference": "مرجع الحجز",
+      "bookingReferencePlaceholder": "على سبيل المثال VB-3 أو رقم الطلب (اختياري)",
+      "description": "وصف",
+      "descriptionPlaceholder": "اشرح ما حدث ومتى حدث وما هي النتيجة التي تريدها.",
+      "submitTicket": "إرسال تذكرة",
+      "ticketSubmitted": "تم إرسال التذكرة ⟦الرقم⟧. سيقوم فريقنا بالمتابعة قريبًا.",
+      "responseTime": "الحقول المطلوبة مشار إليها بـ *.",
+      "yourTickets": "التذاكر الخاصة بك",
+      "yourTicketsHint": "تتبع الشكاوى وطلبات الدعم التي قدمتها.",
+      "filter": {
+        "label": "تصفية التذاكر حسب الحالة",
+        "all": "الجميع"
+      },
+      "status": {
+        "open": "يفتح",
+        "inProgress": "في تَقَدم",
+        "resolved": "تم الحل",
+        "closed": "مغلق"
+      },
+      "updated": "تم التحديث",
+      "created": "مخلوق",
+      "emptyTickets": "لا توجد تذاكر تتطابق مع هذا الفلتر.",
+      "loading": "جارٍ تحميل التذاكر…",
+      "loadFailed": "تعذر تحميل التذاكر الخاصة بك. يرجى المحاولة مرة أخرى.",
+      "submitFailed": "تعذر إرسال تذكرتك. يرجى المحاولة مرة أخرى.",
+      "viewConversation": "عرض المحادثة",
+      "backToTickets": "العودة إلى التذاكر",
+      "conversation": "محادثة",
+      "you": "أنت",
+      "supportTeam": "فريق الدعم",
+      "replyPlaceholder": "اكتب ردك...",
+      "sendReply": "إرسال الرد",
+      "sending": "إرسال…",
+      "replyFailed": "تعذر إرسال ردك. يرجى المحاولة مرة أخرى."
+    },
+    "earnings": {
+      "availableBalance": "الرصيد المتاح",
+      "lifetimeEarnings": "أرباح مدى الحياة",
+      "transactionHistory": "تاريخ المعاملات",
+      "withdrawFunds": "سحب الأموال",
+      "amountToWithdraw": "المبلغ المراد سحبه",
+      "selectBankAccount": "اختر الحساب البنكي",
+      "payoutAccount": "حساب الدفع",
+      "noBankAccount": "لم تتم إضافة أي حساب دفع بعد.",
+      "addBankAccount": "أضف حسابًا مصرفيًا في الملف التجاري →",
+      "availableHint": "متاح:",
+      "processingNote": "تتم معالجة عمليات السحب خلال 1-2 أيام عمل.",
+      "paymentFlowTitle": "سياسة الدفع والسحب",
+      "paymentFlowInstant": "تتم معالجة عمليات السحب بقيمة ₦200,000 أو أقل تلقائيًا بعد التأكيد.",
+      "paymentFlowApproval": "تتطلب عمليات السحب التي تزيد عن ₦200,000 موافقة المشرف المتميز.",
+      "paymentFlowAuth": "عند السحب، تتطلب المبالغ التي تزيد عن 200,000 ين ياباني رقم التعريف الشخصي (PIN) للمعاملة وكلمة المرور لمرة واحدة (OTP).",
+      "withdrawalModal": {
+        "title": "تأكيد الانسحاب",
+        "pin": "رقم التعريف الشخصي للمعاملة",
+        "otp": "رمز مكتب المدعي العام",
+        "sendOtp": "أرسل كلمة مرور لمرة واحدة",
+        "submit": "تأكيد الانسحاب",
+        "pendingApproval": "يتطلب هذا الانسحاب موافقة المشرف المتميز. سيتم اعلامك بمجرد الموافقة.",
+        "cancel": "يلغي"
+      },
+      "status": {
+        "completed": "مكتمل",
+        "pending": "قيد الانتظار",
+        "failed": "فشل"
+      },
+      "transaction": {
+        "bookingPayment": "دفع الحجز",
+        "withdrawal": "انسحاب",
+        "platformFee": "رسوم المنصة",
+        "refund": "استرداد"
+      },
+      "bank": {
+        "gtbank": "GTBank",
+        "access": "الوصول إلى البنك"
+      },
+      "duration": {
+        "label": "فترة الأرباح",
+        "daily": "يوميًا",
+        "weekly": "أسبوعي",
+        "monthly": "شهريا",
+        "all": "الجميع"
+      },
+      "commissionSplit": "تقسيم العمولة",
+      "commissionSplitHint": "يتم تقسيم إيرادات الحجز ⟦البائع⟧% عليك و⟦المنصة⟧% إلى Synkafrica.",
+      "vendorShare": "نصيبك",
+      "platformShare": "رسوم المنصة",
+      "grossRevenue": "إجمالي الإيرادات",
+      "downloadStatements": "تحميل البيان",
+      "emptyTransactions": "لا توجد معاملات لهذه الفترة.",
+      "statement": {
+        "date": "تاريخ",
+        "title": "عنوان",
+        "description": "وصف",
+        "type": "يكتب",
+        "amount": "كمية",
+        "status": "حالة"
+      }
+    },
+    "listings": {
+      "detail": {
+        "back": "العودة إلى القوائم",
+        "backToBookings": "العودة إلى الحجوزات",
+        "heading": "تفاصيل القائمة",
+        "hint": "معاينة كاملة لهذه القائمة، بما في ذلك الوسائط والتفاصيل والأسعار والمستندات.",
+        "status": "حالة",
+        "category": "فئة",
+        "rating": "تصنيف",
+        "notFound": "لم يتم العثور على القائمة."
+      },
+      "bookingAvailability": "توافر الحجز",
+      "filter": {
+        "allCategories": "جميع الفئات",
+        "allStatuses": "جميع الحالات",
+        "statusLabel": "حالة",
+        "status": {
+          "live": "يعيش",
+          "pending": "قيد الانتظار",
+          "draft": "المسودات",
+          "paused": "متوقف مؤقتًا"
+        },
+        "empty": "لا توجد قوائم تطابق عوامل التصفية الخاصة بك."
+      },
+      "status": {
+        "pendingApproval": "في انتظار الموافقة",
+        "paused": "متوقف مؤقتًا"
+      },
+      "availability": {
+        "selectListing": "قائمة",
+        "modeAvailable": "العلامة المتاحة",
+        "modeBlock": "تواريخ الحظر",
+        "modeAvailableHint": "انقر على التواريخ لفتحها للحجوزات. انقر مرة أخرى لإزالة التوفر.",
+        "modeBlockHint": "انقر على التواريخ لمنع الحجوزات. انقر مرة أخرى لإلغاء الحظر.",
+        "legendAvailable": "متاح",
+        "legendBlocked": "محظور",
+        "legendSelected": "مختارة",
+        "available": "متاح",
+        "blocked": "محظور",
+        "timeSlots": "فتحات الوقت",
+        "capacity": "سعة",
+        "selectDayHint": "حدد تاريخًا في التقويم لتكوين الفترات الزمنية.",
+        "selectAvailableDay": "حدد هذا التاريخ باعتباره متاحًا لتكوين الفترات الزمنية.",
+        "blockedDayMessage": "تم حظر هذا التاريخ. قم بإلغاء حظره لتكوين فترات زمنية.",
+        "defaultCapacity": "القدرة الافتراضية",
+        "defaultCapacityHint": "يتم تطبيقه على التواريخ الجديدة المتاحة والفترات الزمنية الممكّنة.",
+        "leadTime": "مهلة",
+        "leadTimeHint": "الحد الأدنى من الإشعار مطلوب قبل أن يتمكن الضيف من الحجز.",
+        "leadTimeUnitHours": "ساعات",
+        "leadTimeUnitDays": "أيام"
+      },
+      "calendar": {
+        "sun": "شمس",
+        "mon": "الاثنين",
+        "tue": "الثلاثاء",
+        "wed": "تزوج",
+        "thu": "الخميس",
+        "fri": "الجمعة",
+        "sat": "قعد",
+        "previousMonth": "الشهر السابق",
+        "nextMonth": "الشهر المقبل"
+      }
+    },
+    "bookings": {
+      "tab": {
+        "upcoming": "القادمة",
+        "past": "ماضي",
+        "cancelled": "تم الإلغاء",
+        "declined": "انخفض"
+      },
+      "stats": {
+        "awaitingConfirmation": "في انتظار التأكيد",
+        "upcomingConfirmed": "القادمة (مؤكدة)",
+        "earningsThisMonth": "أرباح هذا الشهر",
+        "responseRate": "معدل الاستجابة (30 يومًا)"
+      },
+      "searchPlaceholder": "البحث حسب اسم الضيف أو معرف الحجز...",
+      "allListings": "جميع القوائم",
+      "viewModeLabel": "عرض الحجوزات",
+      "view": {
+        "list": "قائمة",
+        "calendar": "تقويم"
+      },
+      "calendarComingSoon": "عرض التقويم قريبا.",
+      "respondWithin": "الرد خلال ⟦الوقت⟧",
+      "paymentSecured": "الدفع مضمون",
+      "messageGuest": "ضيف الرسالة",
+      "viewListing": "عرض القائمة",
+      "cancelBooking": "إلغاء الحجز",
+      "dateRangeLabel": "التصفية حسب النطاق الزمني",
+      "dateRange": {
+        "all": "كل الوقت",
+        "pastMonth": "الشهر الماضي",
+        "past3Months": "3 أشهر الماضية",
+        "past6Months": "6 أشهر الماضية",
+        "pastYear": "العام الماضي"
+      },
+      "empty": {
+        "upcoming": "لا توجد حجوزات قادمة لهذه الفترة.",
+        "past": "لا توجد حجوزات سابقة لهذه الفترة.",
+        "cancelled": "لا توجد حجوزات ملغاة لهذه الفترة.",
+        "declined": "لا توجد حجوزات مرفوضة لهذه الفترة."
+      },
+      "declineModal": {
+        "title": "رفض الحجز",
+        "subtitle": "أخبر ⟦ضيف⟧ سبب رفض الحجز ⟦المرجع⟧.",
+        "reasonLabel": "سبب الانخفاض",
+        "reasonPlaceholder": "اشرح سبب عدم قدرتك على قبول هذا الحجز...",
+        "cancel": "يلغي",
+        "submit": "رفض الحجز"
+      },
+      "declineReason": "سبب الرفض",
+      "deliveryAddress": "عنوان التسليم",
+      "pickupAddress": "عنوان الالتقاط",
+      "carMode": {
+        "selfDrive": "القيادة الذاتية",
+        "withDriver": "مع السائق"
+      },
+      "calendar": {
+        "selectedDay": "⟦عدد⟧ الحجوزات في هذا اليوم",
+        "noBookings": "لا يوجد حجوزات في هذا اليوم."
+      },
+      "pendingConfirmation": "⟦عدد⟧ الحجوزات في انتظار تأكيدك.",
+      "specialRequests": "طلبات خاصة",
+      "confirm": "يتأكد",
+      "decline": "انخفاض",
+      "markComplete": "وضع علامة كمكتملة",
+      "status": {
+        "awaitingConfirmation": "في انتظار التأكيد",
+        "confirmed": "مؤكد",
+        "declined": "انخفض",
+        "completed": "مكتمل",
+        "cancelled": "تم الإلغاء"
+      }
+    },
+    "addListing": {
+      "title": "إضافة قائمة جديدة",
+      "editTitle": "تحرير القائمة",
+      "loadError": "تعذر تحميل هذه القائمة. يرجى المحاولة مرة أخرى.",
+      "subtitle": "أنشئ قائمة جديدة وابدأ في الوصول إلى المزيد من العملاء.",
+      "backToListings": "← العودة إلى القوائم",
+      "backToListing": "← العودة إلى القائمة",
+      "progressLabel": "تقدم القائمة",
+      "steps": {
+        "carDetails": "تفاصيل السيارة",
+        "accommodationDetails": "تفاصيل الإقامة",
+        "experienceDetails": "تفاصيل التجربة",
+        "media": "وسائط",
+        "pricing": "التسعير",
+        "documents": "وثائق",
+        "review": "المراجعة والنشر"
+      },
+      "whatAreYouListing": "ما الذي تقوم بإدراجه؟",
+      "category": {
+        "car": {
+          "title": "سيارة",
+          "description": "قائمة سيارة للتأجير."
+        },
+        "accommodation": {
+          "title": "إقامة",
+          "description": "قائمة مكان للإقامة."
+        },
+        "experience": {
+          "title": "خبرة",
+          "description": "قم بإدراج نشاط أو جولة."
+        }
+      },
+      "carDetailsHeading": "تفاصيل السيارة",
+      "accommodationDetailsHeading": "تفاصيل الإقامة",
+      "experienceDetailsHeading": "تفاصيل الخبرة",
+      "experienceType": "نوع الخبرة / الفئة",
+      "experienceTypeSelect": "اختر نوع الخبرة",
+      "experienceLocationPlaceholder": "على سبيل المثال ليكي، لاغوس، نيجيريا",
+      "experienceHighlights": "يسلط الضوء على / وصف قصير",
+      "experienceHighlightsHint": "ملخص قصير وجذاب لما سيفعله الضيوف ويختبرونه.",
+      "experienceHighlightsPlaceholder": "قم بوصف التجربة وما الذي يجعلها فريدة ولماذا سيحبها الضيوف.",
+      "experienceAvailabilityHeading": "التوفر",
+      "experienceAvailabilityHint": "حدد متى تكون تجربتك متاحة.",
+      "operatingDays": "أيام التشغيل",
+      "startTime": "وقت البدء",
+      "endTime": "وقت النهاية",
+      "experienceScheduleWeekly": "يتكرر اسبوعيا",
+      "experienceScheduleWeeklyHint": "هذه التجربة متاحة كل أسبوع في أيام محددة.",
+      "experienceScheduleDateRange": "النطاق الزمني المخصص",
+      "experienceScheduleDateRangeHint": "قم بتعيين نطاق زمني محدد لهذه التجربة.",
+      "experienceDateRangeHeading": "حدد النطاق الزمني",
+      "experienceDateRangeHint": "اختر تاريخي البدء والانتهاء عندما تكون هذه التجربة متاحة.",
+      "experienceDateRangeStart": "تاريخ البدء",
+      "experienceDateRangeEnd": "تاريخ الانتهاء",
+      "additionalInfoSection": "معلومات إضافية",
+      "whatsIncludedHint": "اذكر ما تم تضمينه في التجربة.",
+      "includesItemsPlaceholder": "على سبيل المثال المعدات، الدليل، معدات السلامة، المياه المعبأة في زجاجات",
+      "whatToBring": "ما يجب إحضاره / ارتدائه",
+      "whatToBringHint": "دع الضيوف يعرفون ما يجب إحضاره أو ارتدائه.",
+      "whatToBringPlaceholder": "على سبيل المثال ملابس مريحة، أحذية مغلقة، واقي من الشمس",
+      "tagInputFooter": "أضف كل عنصر واضغط على Enter",
+      "additionalInformationHeading": "معلومات إضافية",
+      "additionalInformationHint": "أضف أي معلومات أخرى مفيدة لضيوفك.",
+      "additionalInformationPlaceholder": "على سبيل المثال القيود العمرية، المتطلبات الصحية، سياسة الإلغاء، تفاصيل نقطة الالتقاء",
+      "weekday": {
+        "mon": "الاثنين",
+        "tue": "الثلاثاء",
+        "wed": "تزوج",
+        "thu": "الخميس",
+        "fri": "الجمعة",
+        "sat": "قعد",
+        "sun": "شمس"
+      },
+      "carName": "اسم السيارة",
+      "carNamePlaceholder": "على سبيل المثال تويوتا هايلاندر 2024",
+      "carModel": "طراز السيارة / البديل",
+      "carModelPlaceholder": "على سبيل المثال 2.4 لتر دفع رباعي محدود",
+      "transmission": {
+        "automatic": "تلقائي",
+        "manual": "يدوي"
+      },
+      "year": "سنة",
+      "yearPlaceholder": "على سبيل المثال 2024",
+      "comesWithDriver": "يأتي مع سائق؟",
+      "yes": "نعم",
+      "no": "لا",
+      "shortDescription": "وصف قصير",
+      "carDescriptionPlaceholder": "وصف السيارة وحالتها وما يشمله المستأجر.",
+      "perksFeatures": "الامتيازات والميزات",
+      "perksPlaceholder": "أضف كل ميزة واضغط على Enter",
+      "propertyName": "اسم العقار",
+      "accommodationName": "اسم السكن",
+      "accommodationNamePlaceholder": "على سبيل المثال أجنحة مطلة على المحيط ليكي",
+      "propertyNamePlaceholder": "على سبيل المثال أجنحة ليكي جاردن",
+      "propertyType": "نوع العقار",
+      "propertyTypeSelect": "اختر نوع العقار",
+      "propertyTypePlaceholder": "على سبيل المثال شقة، فيلا، فندق",
+      "address": "عنوان",
+      "addressPlaceholder": "عنوان العقار كاملا",
+      "accommodationLocationPlaceholder": "على سبيل المثال المرحلة الأولى من ليكي، لاغوس، نيجيريا",
+      "accommodationMaxGuests": "الحد الأقصى للضيوف (العقار)",
+      "accommodationMaxGuestsPlaceholder": "على سبيل المثال 12",
+      "checkInTime": "وقت تسجيل الوصول",
+      "checkOutTime": "وقت الخروج",
+      "availability": "التوفر",
+      "availabilityAlways": "متاح دائما",
+      "availabilityDateRange": "تعيين النطاق الزمني",
+      "availabilityHint": "يمكنك أيضًا إدارة تواريخ محددة من التقويم الخاص بك بعد النشر.",
+      "popularPerks": "الامتيازات الشعبية",
+      "popularPerksHint": "حدد وسائل الراحة المتاحة في الممتلكات الخاصة بك.",
+      "viewAllPerks": "عرض جميع الامتيازات",
+      "showLessPerks": "عرض أقل",
+      "propertyOwner": "هل أنت مالك العقار؟",
+      "propertyOwnerYes": "نعم أنا المالك",
+      "propertyOwnerNo": "لا، أنا وكيل معتمد",
+      "bedrooms": "غرف نوم",
+      "bathrooms": "الحمامات",
+      "accommodationDescriptionPlaceholder": "صف بإيجاز مكان إقامتك والأجواء والمعالم السياحية القريبة وما يجعلها مميزة.",
+      "amenities": "وسائل الراحة",
+      "amenitiesPlaceholder": "أضف كل ميزة واضغط على Enter",
+      "experienceName": "اسم التجربة",
+      "experienceNamePlaceholder": "على سبيل المثال مغامرة كرة الطلاء لاغوس",
+      "location": "موقع",
+      "locationPlaceholder": "على سبيل المثال جزيرة فيكتوريا، لاغوس",
+      "duration": "مدة",
+      "durationPlaceholder": "على سبيل المثال ساعاتين",
+      "maxGuests": "الحد الأقصى للضيوف",
+      "experienceDescriptionPlaceholder": "قم بوصف النشاط وخط سير الرحلة وما يجب أن يتوقعه الضيوف.",
+      "whatsIncluded": "ما هو مدرج",
+      "includesPlaceholder": "أضف كل إدراج واضغط على Enter",
+      "mediaHeading": "صور القائمة",
+      "mediaHint": "قم بتحميل صور أو مقاطع فيديو واضحة. ما يصل إلى 8 ملفات.",
+      "uploadImages": "قم بسحب وإسقاط الصور أو مقاطع الفيديو هنا، أو انقر للتصفح",
+      "uploadImagesHint": "PNG أو JPG أو WEBP أو MP4 (بحد أقصى 10 ميجابايت)",
+      "removeImage": "إزالة الصورة",
+      "mediaSkippedUnsupported": "{count} الملف (الملفات) التي تم تخطيها - تنسيق غير مدعوم. استخدم PNG أو JPG أو WEBP أو MP4 (صور iPhone HEIC غير مدعومة حتى الآن).",
+      "mediaSkippedTooLarge": "⟦عدد⟧ الملف (الملفات) التي تم تخطيها - يجب أن يكون حجم كل ملف أقل من 10 ميغابايت.",
+      "mediaPreviewFailed": "المعاينة غير متاحة",
+      "mediaUploading": "جارٍ التحميل…",
+      "mediaUploadFailed": "فشل التحميل",
+      "pickupDeliveryHeading": "الاستلام أو التسليم",
+      "pickupDeliveryQuestion": "ما هي خيارات التسليم التي تقدمها؟ حدد كل ما ينطبق.",
+      "pickupAddress": "عنوان الالتقاط",
+      "pickupAddressPlaceholder": "أدخل العنوان حيث يمكن للضيوف استلام السيارة",
+      "clientPickup": "بيك اب العميل",
+      "clientPickupHint": "يقوم العميل باستلام السيارة من موقعك.",
+      "deliveryDropoff": "التسليم / الانزال",
+      "deliveryDropoffHint": "تقوم بتسليم السيارة للعميل.",
+      "carPricingHeading": "تسعير الإيجار",
+      "price12hr": "الإيجار لمدة 12 ساعة (NGN)",
+      "price24hr": "تأجير على مدار 24 ساعة (NGN)",
+      "priceMultiDay": "عدة أيام (في اليوم، NGN)",
+      "driverAddonPrice": "سعر إضافة برنامج التشغيل (NGN)",
+      "selfDriveNoPrice": "تم تحديد القيادة الذاتية - لا يلزم وجود سعر إضافي للسائق.",
+      "deliveryFee": "رسوم التسليم/التوصيل (NGN)",
+      "clientPickupNoPrice": "تم اختيار خدمة استلام العميل - لا توجد رسوم توصيل مطلوبة.",
+      "pricingLocationHint": "يمكنك تقديم المزيد من التفاصيل حول موقع الاستلام أو التسليم في الخطوة التالية.",
+      "accommodationPricingHeading": "تسعير البقاء",
+      "roomTypesPricing": "أنواع الغرف وأسعارها",
+      "roomTypesPricingHint": "أضف الأنواع المختلفة من الغرف التي تقدمها.",
+      "addRoomType": "أضف نوع الغرفة",
+      "addRoomTypeModalTitle": "أضف نوع الغرفة",
+      "editRoomTypeModalTitle": "تعديل نوع الغرفة",
+      "saveRoomType": "حفظ نوع الغرفة",
+      "roomType": "نوع الغرفة",
+      "roomTypePlaceholder": "على سبيل المثال جناح ديلوكس",
+      "roomDescription": "وصف",
+      "roomDescriptionPlaceholder": "وصف موجز لهذا النوع من الغرف",
+      "roomMaxGuests": "ضيوف ماكس",
+      "roomMaxGuestsPlaceholder": "على سبيل المثال 2",
+      "roomPricePerNight": "السعر (لليلة)",
+      "roomTypesEmptyTitle": "لم تتم إضافة أي أنواع غرف حتى الآن",
+      "roomTypesEmptyHint": "انقر على \"إضافة نوع الغرفة\" للبدء.",
+      "actions": "الإجراءات",
+      "edit": "يحرر",
+      "delete": "يمسح",
+      "nightlyRate": "سعر الليلة (NGN)",
+      "cleaningFee": "رسوم التنظيف (NGN)",
+      "experiencePricingHeading": "التسعير",
+      "experiencePricingHint": "تحديد أسعار التذاكر الخاصة بك.",
+      "singleTicketPrice": "سعر التذكرة الواحدة",
+      "singleTicketPriceHint": "السعر لشخص واحد",
+      "groupTicketPrice": "سعر تذكرة المجموعة (من) (اختياري)",
+      "groupTicketPriceHint": "السعر للشخص الواحد للمجموعات",
+      "minGroupSizeOptional": "الحد الأدنى لحجم المجموعة (اختياري)",
+      "maxGroupSizeOptional": "الحد الأقصى لحجم المجموعة (اختياري)",
+      "minGroupSizePlaceholder": "على سبيل المثال 5",
+      "maxGroupSizePlaceholder": "على سبيل المثال 20",
+      "optional": "خياري",
+      "review": {
+        "groupSize": "حجم المجموعة",
+        "category": "فئة",
+        "title": "عنوان",
+        "images": "الصور",
+        "documents": "تم تحميل المستندات",
+        "description": "وصف",
+        "gpsConfirmed": "تم تأكيد جهاز تتبع GPS"
+      },
+      "pricePerPerson": "السعر للشخص الواحد (NGN)",
+      "minGroupSize": "الحد الأدنى لحجم المجموعة",
+      "documents": {
+        "stepTitle": "تحميل الوثيقة",
+        "pageTitle": "تحميل المستندات المطلوبة",
+        "pageIntro": "يرجى تحميل المستندات اللازمة للتحقق من قائمة سيارتك.",
+        "pageSubtitle": "قم بتحميل مستندات واضحة وصالحة لبناء الثقة والحصول على الموافقة على قائمتك بشكل أسرع.",
+        "intro": {
+          "cars": "قم بتحميل المستندات أدناه قبل أن يتم نشر قائمة سيارتك.",
+          "accommodations": "قم بتحميل وثائق الملكية أو تفويض الوكيل لقائمة الإقامة هذه.",
+          "experiences": "قم بتحميل مستند التحقق من عملك قبل النشر."
+        },
+        "proofOfOwnership": "إثبات الملكية",
+        "proofOfOwnershipHint": "قم بتحميل وثيقة ملكية المركبة (مثل سجل السيارة أو إيصال الشراء).",
+        "roadworthiness": "شهادة صلاحية الطريق",
+        "roadworthinessHint": "تحميل شهادة صلاحية السيارة للسير سارية المفعول.",
+        "insurance": "تأمين",
+        "insuranceDocument": "وثيقة التأمين",
+        "insuranceHint": "قم بتحميل شهادة تأمين المركبة الحالية.",
+        "cac": "تسجيل CAC",
+        "cacRegistration": "شهادة تسجيل CAC",
+        "cacHint": "قم بتحميل شهادة تسجيل اسم عملك (CAC).",
+        "accommodationOwnershipHint": "سند الملكية أو عقد الإيجار أو إثبات ملكية العقار",
+        "agentAuthorization": "خطاب تفويض الوكيل",
+        "agentAuthorizationHint": "خطاب موقع من مالك العقار يسمح لك بالإدراج",
+        "agentProofOfAddress": "إثبات عنوان الوكيل",
+        "agentProofOfAddressHint": "فاتورة مرافق أو كشف حساب بنكي يوضح عنوانك",
+        "addressPhotos": "الصور مطابقة للعنوان المدرج",
+        "addressPhotosHint": "الصور التي تظهر العقار بوضوح في العنوان المدرج",
+        "gpsAcknowledgment": "أؤكد أن هذه السيارة مزودة بجهاز تتبع GPS فعال، وأنا مسؤول إذا تبين أن هذا غير صحيح.",
+        "requiredBadge": "مطلوب",
+        "uploadPrompt": "انقر للتحميل أو السحب والإفلات",
+        "uploadFormats": "PDF، JPG، PNG، بحد أقصى 10 ميجابايت",
+        "safetyTitle": "المستندات الخاصة بك آمنة",
+        "safetyText": "يتم تخزين جميع المستندات بشكل آمن واستخدامها فقط لأغراض التحقق. ولن يتم مشاركتها مع الجمهور.",
+        "submitForReview": "إرسال للمراجعة",
+        "submitHint": "ستتم مراجعة قائمتك وسيتم إعلامك بمجرد الموافقة عليها.",
+        "untitledListing": "قائمة بلا عنوان",
+        "sidebar": {
+          "listingPreview": "معاينة القائمة",
+          "edit": "يحرر",
+          "carsListing": "قائمة السيارات",
+          "accommodationsListing": "قائمة الإقامة",
+          "experiencesListing": "قائمة الخبرة",
+          "comesWithDriver": "يأتي مع سائق",
+          "selfDrive": "القيادة الذاتية",
+          "pricing": "التسعير",
+          "halfDay": "نصف يوم",
+          "fullDay": "يوم كامل",
+          "extraHour": "ساعة إضافية",
+          "progress": "تقدم الإدراج"
+        }
+      },
+      "documentsHeading": "المستندات المطلوبة",
+      "uploadDocument": "تحميل الوثيقة",
+      "removeFile": "يزيل",
+      "reviewHeading": "قم بمراجعة قائمتك",
+      "reviewHint": "تحقق من التفاصيل أدناه قبل النشر.",
+      "cancel": "يلغي",
+      "back": "خلف",
+      "saveDraft": "حفظ كمسودة",
+      "draftSaved": "تم حفظ المسودة",
+      "draftSaveFailed": "تعذر حفظ مسودتك. يرجى المحاولة مرة أخرى.",
+      "saveContinue": "حفظ ومتابعة",
+      "completeRequiredFields": "أكمل الحقول المطلوبة: ⟦الحقول⟧",
+      "publish": "نشر القائمة",
+      "publishWaitForUploads": "الرجاء الانتظار — لا يزال يتم تحميل مستنداتك.",
+      "success": {
+        "title": "القائمة المقدمة للمراجعة",
+        "message": "قائمتك الآن قيد المراجعة. ستتلقى رسالة تأكيد عبر البريد الإلكتروني خلال 2-3 أيام عمل بمجرد الموافقة عليها.",
+        "addAnother": "إضافة قائمة أخرى",
+        "backToListings": "العودة إلى القوائم الخاصة بي"
+      },
+      "categoryChooseHint": "اختر نوع الخدمة التي تقدمها. يتم تعيين هذا مرة واحدة عند حفظ قائمتك الأولى ولا يمكن تغييره لاحقًا.",
+      "categoryLockedHint": "تم تسجيل حساب البائع الخاص بك في {category} فقط. اتصل بالدعم لتغيير فئة الخدمة الخاصة بك."
+    }
+  }
+}

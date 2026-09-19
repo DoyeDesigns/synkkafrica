@@ -1,0 +1,2483 @@
+{
+  "nav": {
+    "downloadApp": "下载应用程序",
+    "becomeVendor": "成为供应商",
+    "chooseCurrency": "选择货币",
+    "signInCreate": "登录 |创建账户",
+    "searchCurrency": "搜索货币",
+    "signOut": "登出",
+    "myAccount": "我的账户",
+    "bookingsTrips": "预订和旅行",
+    "saved": "已保存",
+    "reviews": "评论"
+  },
+  "common": {
+    "bookNow": "立即预订",
+    "continue": "继续",
+    "loading": "加载中…",
+    "startingFrom": "开始于",
+    "perDay": "每天",
+    "budget": "预算",
+    "seeMore": "查看更多",
+    "showMore": "显示更多",
+    "reviews": "评论",
+    "available": "可用的",
+    "selfDriveAvailable": "可自驾",
+    "excludingTaxes": "不含税费",
+    "select": "选择",
+    "search": "搜索",
+    "edit": "编辑",
+    "cancel": "取消",
+    "notifications": "通知",
+    "contactSupport": "联系支持人员",
+    "signOut": "登出",
+    "noReviewsYet": "还没有评论",
+    "viewPhoto": "查看照片⟦索引⟧",
+    "photoViewer": "照片浏览器",
+    "closePhotoViewer": "关闭照片查看器",
+    "previousPhoto": "上一张照片",
+    "nextPhoto": "下一张照片",
+    "photoOfTotal": "⟦当前⟧ 共⟦总计⟧",
+    "secured": "有担保"
+  },
+  "hero": {
+    "headline": "充满信心地体验非洲",
+    "tab": {
+      "accommodations": "住宿",
+      "flights": "航班",
+      "carRentals": "租车",
+      "tours": "游览与体验"
+    },
+    "search": "搜索",
+    "clearFilter": "清除过滤器",
+    "accommodations": {
+      "destination": "您的目的地",
+      "destinationStay": "⟦计数⟧停留",
+      "destinationStays": "⟦计数⟧ 停留",
+      "checkIn": "入住日期",
+      "checkAvailability": "检查可用性",
+      "propertyType": "物业类型",
+      "oneRoom": "1 间客房",
+      "oneGuest": "1 位客人",
+      "roomsCount": "⟦计数⟧ 房间",
+      "guestsCount": "⟦计数⟧ 客人",
+      "checkOut": "退房日期"
+    },
+    "flights": {
+      "roundTrip": "往返",
+      "oneWay": "单程",
+      "directFlight": "直达航班",
+      "economyClass": "经济舱",
+      "premiumEconomyClass": "豪华经济舱",
+      "businessClass": "商务舱",
+      "firstClass": "头等舱",
+      "onePassenger": "1 名乘客",
+      "passengersCount": "⟦计数⟧乘客",
+      "fromCity": "来自 |选择城市",
+      "toCity": "至 |选择城市",
+      "departureDate": "出发日期",
+      "returnDate": "返回日期",
+      "departing": "出发",
+      "returning": "返回",
+      "nonstop": "直达",
+      "oneStop": "经停一站",
+      "multipleStops": "多个停靠点"
+    },
+    "common": {
+      "addDate": "添加日期",
+      "selectDateRange": "选择出发和返回日期",
+      "selectDate": "选择日期",
+      "days": "天",
+      "nights": "夜晚"
+    },
+    "carRentals": {
+      "searchCarType": "搜索车型",
+      "filterCarType": "按车型过滤",
+      "allCarTypes": "所有类型",
+      "selfDrive": "自驾",
+      "price": "₦ 价格",
+      "pickupDate": "提货日期",
+      "destinationCar": "⟦数⟧车",
+      "destinationCars": "⟦数⟧汽车"
+    },
+    "tours": {
+      "searchPlaceholder": "搜索地点、景点和体验",
+      "startDate": "开始日期",
+      "destinationExperience": "⟦数⟧经验",
+      "destinationExperiences": "⟦数⟧经历"
+    },
+    "location": "地点"
+  },
+  "footer": {
+    "brandDescription": "SynkAfrica 是一个新兴的一体化旅游和优质体验平台，旨在将全球人们与非洲旅游和生活方式生态系统的核心联系起来。",
+    "explore": {
+      "title": "探索 Synk 非洲",
+      "hotels": "酒店及住宿",
+      "carRentals": "租车",
+      "flights": "航班预订",
+      "restaurants": "餐饮及餐厅"
+    },
+    "support": {
+      "title": "支持",
+      "contact": "联系支持人员",
+      "changeBooking": "更改或取消您的预订",
+      "paymentOptions": "付款方式",
+      "receipt": "查看或打印您的预订收据"
+    },
+    "community": {
+      "title": "社区",
+      "instagram": "我们的Instagram",
+      "facebook": "Facebook",
+      "news": "在新闻中"
+    },
+    "vendor": {
+      "title": "成为供应商",
+      "listCar": "列出您的汽车",
+      "listService": "列出您的服务",
+      "contact": "联系我们"
+    },
+    "appPromo": {
+      "headline": "获得完整的 SynkAfrica 体验。",
+      "cta": "立即下载应用程序",
+      "getItOn": "穿上它",
+      "googlePlay": "谷歌游戏",
+      "downloadOn": "下载于",
+      "appStore": "应用商店"
+    },
+    "legal": {
+      "privacy": "隐私政策",
+      "terms": "使用条款",
+      "security": "安全页面",
+      "faqs": "常见问题解答"
+    },
+    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+  },
+  "login": {
+    "intro": "您可以使用您的 SynkAfrica 帐户登录来访问我们的服务。",
+    "backendNotReady": "后端环境变量尚未设置。配置凭据后即可登录。",
+    "emailPlaceholder": "输入您的电子邮件",
+    "orUseOptions": "或使用这些选项之一",
+    "signInGoogle": "使用 Google 登录",
+    "continueApple": "继续使用苹果"
+  },
+  "account": {
+    "nav": {
+      "notifications": "通知"
+    },
+    "contactSupport": "联系支持人员",
+    "profile": {
+      "edit": "编辑",
+      "fullName": "姓名",
+      "fullNamePlaceholder": "输入全名",
+      "location": "地点",
+      "dateOfBirth": "出生日期",
+      "dobPlaceholder": "MM | DD | YY",
+      "gender": "性别",
+      "notAdded": "未添加",
+      "contactDetails": "联系方式",
+      "phone": "电话号码",
+      "email": "电子邮件",
+      "passwordSecurity": "密码与安全",
+      "password": "密码",
+      "changePassword": "更改密码"
+    },
+    "deleteAccount": "删除帐户",
+    "bookings": {
+      "title": "您的订单",
+      "tab": {
+        "upcoming": "即将推出",
+        "past": "过去的",
+        "cancelled": "取消",
+        "bookings": "预订"
+      },
+      "empty": {
+        "upcoming": "没有即将到来的预订。",
+        "past": "此期间没有过去的预订。",
+        "cancelled": "此期间没有取消订单。",
+        "bookings": "此期间无预订。"
+      },
+      "orderDate": "订购日期：",
+      "experienceDate": "体验日期：",
+      "totalAmount": "总金额：",
+      "orderNumber": "命令：",
+      "guestCount": "嘉宾",
+      "specialRequests": "特殊要求",
+      "cancel": "取消",
+      "receiptRecipient": "收据和二维码收件人",
+      "viewDetails": "查看详情",
+      "leaveReview": "发表评论",
+      "reviewSubmitted": "已提交审核",
+      "cancelWindowClosed": "此预订的取消窗口已关闭。",
+      "cancelledOn": "于⟦日期⟧取消",
+      "cancelConfirmTitle": "取消此预订吗？",
+      "cancelConfirmBody": "您可以在体验开始前的取消期限内取消。此操作无法撤消。",
+      "confirmCancel": "是的，取消预订",
+      "filterPeriod": "按时期过滤",
+      "badge": {
+        "upcoming": "即将推出",
+        "past": "过去的",
+        "cancelled": "取消"
+      },
+      "countdown": {
+        "label": "经验开始于",
+        "daysHours": "⟦天⟧d ⟦小时⟧h",
+        "hoursMinutes": "⟦小时⟧h ⟦分钟⟧m",
+        "detailHint": "倒计时实时更新，直到您的体验开始。"
+      },
+      "review": {
+        "title": "发表评论",
+        "ratingLabel": "您的评价",
+        "commentLabel": "您的评论",
+        "commentPlaceholder": "分享您对这次经历的喜爱之处...",
+        "submit": "提交评论",
+        "dismiss": "关闭审阅对话框"
+      },
+      "detail": {
+        "back": "返回预订",
+        "reference": "预订参考",
+        "yourReview": "您的评论",
+        "notFound": "无法找到此预订。"
+      }
+    },
+    "saved": {
+      "accommodations": "住宿",
+      "empty": "您还没有保存任何内容。",
+      "cars": "汽车",
+      "tours": "旅游"
+    },
+    "reviews": {
+      "title": "评论",
+      "youRated": "您评价",
+      "writeReview": "写评论",
+      "ratingLabel": "您的评价",
+      "commentLabel": "您的评论",
+      "commentPlaceholder": "分享您对这次经历的喜爱之处...",
+      "photosLabel": "照片",
+      "photosCount": "已上传⟦计数⟧/⟦最大⟧",
+      "addPhoto": "添加照片",
+      "removePhoto": "删除照片",
+      "submit": "提交评论",
+      "pendingTitle": "查看已完成的预订",
+      "pendingHint": "只能针对与您的帐户关联的过去预订提交评论。",
+      "selectBooking": "选择上面已完成的预订来撰写您的评论。",
+      "noPending": "您没有已完成的预订等待审核。",
+      "submittedTitle": "您提交的评论",
+      "empty": "您尚未提交任何评论。",
+      "deleteReview": "删除评论",
+      "bookingReference": "预订⟦参考⟧",
+      "listingBadge": "住客点评",
+      "experienceListingTitle": "住客点评"
+    },
+    "notifications": {
+      "title": {
+        "reminder24h": "体验24小时后开始",
+        "reviewRequest": "告诉我们您的经历",
+        "cancellationRefund": "预订已取消",
+        "bookingConfirmation": "预订已确认",
+        "info": "出行提醒"
+      },
+      "empty": "还没有通知。",
+      "period": {
+        "mostRecent": "最近的",
+        "weekEarlier": "一周前",
+        "threeMonthsAgo": "3个月前"
+      },
+      "kind": {
+        "bookingConfirmation": "预订已确认",
+        "reminder24h": "24小时提醒",
+        "reviewRequest": "审核请求",
+        "cancellationRefund": "取消及退款",
+        "info": "旅行小贴士"
+      },
+      "message": {
+        "reminder24h": "您的体验⟦标题⟧将于明天⟦日期⟧⟦时间⟧开始。查看您的预订详细信息并提前 15 分钟到达。",
+        "reviewRequest": "⟦标题⟧怎么样？分享星级评分和书面评论，以帮助 SynkAfrica 上的其他旅行者。",
+        "cancellationRefund": "您对{title}（{reference}）的预订已取消。任何符合条件的退款将在 5 至 7 个工作日内处理。",
+        "bookingConfirmation": "您在 {location} 的 {title} 预订已确认。检查您的电子邮件中是否有收据和二维码凭证。",
+        "passportReminder": "确保您的护照在旅行日期之后至少还有 6 个月的有效期。"
+      }
+    },
+    "support": {
+      "contact": {
+        "whatsapp": "WhatsApp",
+        "email": "电子邮件",
+        "phone": "致电我们"
+      },
+      "createTicket": "创建支持票",
+      "topic": "这是关于什么的？",
+      "relatedOrder": "相关订单（可选）",
+      "relatedOrderNone": "没有任何",
+      "subject": "主题",
+      "subjectPlaceholder": "问题的简短摘要",
+      "message": "信息",
+      "messagePlaceholder": "告诉我们发生了什么事...",
+      "attachFile": "附上照片或屏幕截图",
+      "submitTicket": "提交票证",
+      "ticketSubmitted": "工单#{number}已提交。我们会尽快回复您。",
+      "yourTickets": "您的门票",
+      "commonQuestions": "常见问题",
+      "ticketMeta": "门票#⟦号码⟧·⟦日期⟧",
+      "status": {
+        "open": "打开",
+        "resolved": "已解决"
+      },
+      "category": {
+        "booking": "预订问题",
+        "paymentRefund": "付款/退款",
+        "account": "帐户和个人资料",
+        "other": "其他"
+      },
+      "faq": {
+        "cancelBooking": "我如何取消预订？",
+        "refundTiming": "我什么时候能收到退款？",
+        "changeDate": "如何更改旅行日期？",
+        "paymentSecurity": "我的付款安全吗？",
+        "cancelBookingAnswer": "从 Bookings & Trips 打开您的预订，选择订单，如果仍在取消窗口内，请使用取消选项。对于符合条件的预订，系统会自动处理退款。",
+        "refundTimingAnswer": "符合条件的退款通常会在取消后 5 至 7 个工作日内处理，具体取决于您的银行或支付提供商。",
+        "changeDateAnswer": "请联系支持人员并提供您的预订参考号。如果体验允许更改日期，我们的团队将帮助您重新安排或指导您选择可用的选项。",
+        "paymentSecurityAnswer": "是的。 Synkafrica 上的付款是通过安全、加密的付款合作伙伴处理的。我们绝不会将您的完整银行卡详细信息存储在我们的服务器上。"
+      },
+      "tabs": {
+        "label": "支持部分"
+      },
+      "backToTickets": "返回门票",
+      "typeMessage": "输入消息...",
+      "send": "发送",
+      "supportTeam": "Synka非洲支持",
+      "you": "你",
+      "emptyTickets": "您尚未提交任何支持票证。",
+      "attachedImage": "附图",
+      "removeAttachment": "删除附件"
+    }
+  },
+  "booking": {
+    "step": {
+      "rooms": "选择住宿和房间",
+      "chooseExperience": "选择经验",
+      "chooseCar": "选择汽车",
+      "choosePackage": "选择套餐",
+      "checkout": "查看",
+      "payment": "支付",
+      "confirmation": "确认"
+    },
+    "cta": {
+      "proceedToPay": "继续付款"
+    },
+    "guest": {
+      "title": {
+        "mr": "先生",
+        "mrs": "太太",
+        "ms": "多发性硬化症",
+        "miss": "错过",
+        "dr": "博士"
+      },
+      "adultLabel": "成人（17 岁以上）",
+      "leadGuestLabel": "领衔嘉宾",
+      "addedCount": "⟦已添加⟧/⟦总计⟧已添加",
+      "passportHint": "输入护照上提到的您的姓名。护照有效期自旅行之日起至少有 6 个月。",
+      "idVerificationHint": "在完成任何预订之前，您需要提供政府颁发的有效身份证件。",
+      "idVerificationTitle": "身份验证",
+      "idVerificationSubtitle": "准确输入文档中显示的身份证件详细信息。",
+      "idType": {
+        "passport": "护照",
+        "nationalId": "国民身份证",
+        "driversLicense": "驾照"
+      },
+      "idNumber": "身份证号码",
+      "idNumberPlaceholder": "输入您的身份证号码",
+      "idExpiry": "到期日",
+      "confirmId": "我确认我的身份证件详细信息正确无误，并且我的文件自旅行之日起至少有 6 个月的有效期。",
+      "idTypeRequired": "选择 ID 类型。",
+      "idNumberInvalid": "输入有效的身份证号码。",
+      "idExpiryRequired": "输入 ID 到期日期。",
+      "idExpiryInvalid": "从今天起，身份证件的有效期必须至少为 6 个月。",
+      "idConfirmRequired": "确认您的 ID 详细信息以继续。",
+      "idValidationRequired": "在继续付款之前，请填写并确认您的身份信息。",
+      "adultCheckbox": "成人 - ⟦计数⟧",
+      "titleField": "标题",
+      "lastName": "姓",
+      "firstName": "名",
+      "middleName": "中间名字",
+      "dateOfBirth": "出生日期",
+      "datePlaceholder": "年-月-日",
+      "nationality": "国籍",
+      "gender": "性别",
+      "male": "男性",
+      "female": "女性",
+      "mobileNo": "手机号码",
+      "emailAddress": "电子邮件",
+      "openCalendar": "打开日历",
+      "countLabel": "入住人数",
+      "countHint": "定价根据客人数量自动更新。",
+      "decreaseGuests": "减少客人",
+      "increaseGuests": "增加客人",
+      "specialRequests": "特殊要求",
+      "specialRequestsPlaceholder": "提前入住、饮食需求、无障碍要求等。"
+    },
+    "summary": {
+      "selectRoom": "选择房间",
+      "selectCar": "选择一辆车",
+      "selectExperience": "选择体验",
+      "selectPackage": "选择套餐",
+      "priceDetails": "价格详情",
+      "taxesAndFees": "税费",
+      "night": "夜晚",
+      "nights": "夜晚",
+      "room": "房间",
+      "rooms": "房间",
+      "day": "天",
+      "days": "天",
+      "total": "全部的",
+      "guests": "客人"
+    },
+    "table": {
+      "selectRoom": "选择房间",
+      "guestCount": "宾客人数",
+      "pricePerNight": "每晚价格",
+      "includesTaxes": "包括税费",
+      "packages": "套餐",
+      "hours": "时间",
+      "price": "价格",
+      "experiences": "经验",
+      "duration": "期间"
+    },
+    "dates": {
+      "checkIn": "入住日期",
+      "checkOut": "退房日期",
+      "guests": "嘉宾",
+      "rooms": "客房",
+      "nights": "夜晚",
+      "days": "天",
+      "rentalDays": "租赁天数",
+      "tripDuration": "行程持续时间",
+      "tripDurationHint": "调整您想要停留或探索的天数。",
+      "decreaseNights": "减少夜间",
+      "increaseNights": "增加住宿天数",
+      "decreaseDays": "减少天数",
+      "increaseDays": "增加天数"
+    },
+    "car": {
+      "rentalModeHeading": "您想如何使用这辆车？",
+      "rentalModeHint": "选择自驾或在您的预订中添加专业司机。",
+      "selfDrive": "自驾",
+      "selfDriveHint": "自己开车。从供应商处取货或要求送货需额外付费。",
+      "withDriver": "带司机",
+      "withDriverHint": "为您的旅程提供专业司机。",
+      "noExtraCost": "无需额外费用",
+      "driverAddon": "+ {amount} 驱动程序附加组件",
+      "requestDelivery": "要求送车",
+      "requestDeliveryHint": "支付额外费用即可将汽车送到您所在的位置。",
+      "deliveryFee": "+ ⟦金额⟧ 运费",
+      "deliveryAddress": "送货地址",
+      "deliveryAddressPlaceholder": "输入汽车应交付的地址",
+      "pickupAddress": "取货地址",
+      "pickupAddressHint": "如果您不要求送货，请从该供应商地点取车。",
+      "customerPickupAddress": "您的上车地点",
+      "customerPickupAddressPlaceholder": "输入司机应该接您的地点",
+      "customerPickupAddressHint": "司机将在该地址与您会面。",
+      "driverAddonLabel": "驱动程序附加组件",
+      "deliveryFeeLabel": "送货费",
+      "about": "关于这辆车",
+      "saveCar": "节省汽车"
+    },
+    "property": {
+      "saveProperty": "保存财产",
+      "morePhotos": "+⟦计数⟧照片",
+      "currentOffers": "当前优惠"
+    },
+    "amenity": {
+      "free": "自由的！",
+      "additionalCharge": "额外收费"
+    },
+    "tour": {
+      "about": "关于这次经历",
+      "saveTour": "保存游览"
+    },
+    "package": {
+      "about": "关于此套餐",
+      "savePackage": "保存包",
+      "sharePackage": "分享套餐",
+      "nightsDays": "⟦夜⟧ 夜 / ⟦日⟧ 日",
+      "durationShort": "⟦日⟧D / ⟦夜⟧N",
+      "guestRange": "⟦范围⟧ 嘉宾",
+      "moduleCount": "⟦计数⟧ 模块",
+      "highlight": {
+        "duration": "期间",
+        "groupSize": "团体规模",
+        "included": "包括",
+        "cancellation": "取消+",
+        "free": "自由的",
+        "standard": "标准"
+      },
+      "whatsIncluded": "包含什么",
+      "included": "包括",
+      "priceBreakdown": "价格细目",
+      "packageDiscount": "套餐优惠",
+      "packagePrice": "套餐价格",
+      "whyBook": "为什么预订此套餐",
+      "guestCountLocked": "此套餐的宾客人数是固定的，结帐时无法更改。"
+    },
+    "payment": {
+      "processing": "正在处理付款..."
+    },
+    "confirmation": {
+      "imageAlt": "确认成功",
+      "title": "付款成功",
+      "subtitle": "请检查您的电子邮件以获取收据和二维码凭据",
+      "reloadIn": "此页面将重新加载",
+      "reloadNow": "立即重新加载",
+      "referenceLabel": "预订参考",
+      "copyReference": "复制",
+      "copied": "已复制",
+      "summaryTitle": "预订摘要",
+      "product": "预订项目",
+      "totalPaid": "支付总额",
+      "addToCalendar": "添加到日历",
+      "openGoogleCalendar": "在 Google 日历中打开",
+      "viewBookings": "查看我的预订"
+    },
+    "reviews": {
+      "nextReview": "下一篇评论",
+      "allReviews": "所有评论",
+      "viewAll": "查看所有评论",
+      "close": "关闭评论"
+    },
+    "content": {
+      "property": {
+        "arkHavn": {
+          "desc0": "方舟避风港酒店 (The Ark Haven) 位于马拉喀什市中心，融合了现代舒适设施和传统摩洛哥魅力，为您提供宁静的度假胜地。您可以享受室外游泳池、酒店内的酒吧以及带平面电视的空调客房。",
+          "desc1": "客人可以游览附近的景点、享受班车服务、网球场和汽车租赁服务。无论您来这里是为了休闲还是商务，方舟避风港酒店都能为您提供难忘的住宿体验和卓越的热情款待。"
+        },
+        "fallback": {
+          "desc0": "{name} 位于{location} 的黄金地段，为您提供配有现代化设施的舒适住宿。",
+          "desc1": "享受设备齐全的客房、友好的服务，并轻松前往当地景点和餐饮场所。"
+        }
+      },
+      "review": {
+        "review1": "方舟避风港超出了我的预期。工作人员非常热情，泳池区是探索城市后放松身心的完美场所。",
+        "review2": "漂亮的房间，优越的地理位置，早餐也很棒。我下次去摩洛哥旅行时肯定会再次住在这里。",
+        "review3": "宽敞的套房、干净的设施和乐于助人的礼宾人员。班车服务使游览马拉喀什变得非常容易。"
+      },
+      "offer": {
+        "drinkPromo": "饮料买一送一",
+        "mealsOff": "餐食 10% 折扣",
+        "freeWifi": "免费无线网络"
+      },
+      "room": {
+        "deluxeSuite": "豪华套房",
+        "supremeRoom": "至尊房",
+        "standardRoom": "标准间",
+        "subtitle": {
+          "deluxe": "豪华间（一卧室公寓）",
+          "supreme": "至尊（单间公寓）",
+          "standard": "标准间（双人间）"
+        },
+        "size592": "592 平方英尺",
+        "size420": "420 平方英尺",
+        "size310": "310 平方英尺",
+        "sleeps2Adults": "可供 2 名成人入住"
+      },
+      "package": {
+        "dailyHire": "每日租用",
+        "halfDayHire": "半日租",
+        "extraHours": "加时",
+        "hours24": "24小时",
+        "hours12": "12小时",
+        "hours3": "3小时"
+      },
+      "feature": {
+        "automatic": "自动的",
+        "driverAvailable": "有司机",
+        "selfDrive": "自驾",
+        "available": "可用的",
+        "limitedSlots": "名额有限",
+        "guidedTour": "导览",
+        "selfDriveAvailable": "可自驾",
+        "flightsIncluded": "包含航班",
+        "hotelStay": "酒店住宿",
+        "guidedTours": "导游服务",
+        "nightsDays": "⟦夜⟧夜/⟦日⟧日"
+      },
+      "tourOption": {
+        "standard": "标准票",
+        "premium": "优质体验",
+        "private": "私人团体",
+        "hours5": "5小时",
+        "fullDay": "全天"
+      },
+      "tier": {
+        "standard": "标准套餐",
+        "deluxe": "豪华套餐",
+        "allInclusive": "全包"
+      },
+      "amenityCat": {
+        "greatForStay": "非常适合您的住宿",
+        "outdoors": "户外活动",
+        "pets": "宠物",
+        "internet": "互联网",
+        "onSiteParking": "现场停车",
+        "frontDesk": "前台服务",
+        "familyServices": "娱乐与家庭服务",
+        "cleaningServices": "清洁服务",
+        "general": "一般的",
+        "accessibility": "无障碍",
+        "swimmingPools": "2 个游泳池",
+        "pool1Outdoor": "泳池 1 – 室外"
+      },
+      "amenityDesc": {
+        "petsAllowed": "可应要求允许携带宠物。没有额外费用。",
+        "wifiFree": "所有区域均提供免费无线网络连接。",
+        "parkingFree": "酒店内设有免费公共停车场（无需预订）。"
+      },
+      "amenityItem": {
+        "restaurant": "餐厅",
+        "freeWifi": "免费无线网络",
+        "parking": "停車處",
+        "spa": "温泉",
+        "familyRooms": "家庭房",
+        "roomService": "客房服务",
+        "airportShuttle": "机场班车",
+        "bbqFacilities": "烧烤设施",
+        "petFriendly": "宠物友好",
+        "nonSmokingRooms": "无烟客房",
+        "outdoorFireplace": "户外壁炉",
+        "beachfront": "海滨",
+        "sunDeck": "阳光甲板",
+        "privateBeach": "私人海滩区",
+        "terrace": "阳台",
+        "garden": "花园",
+        "valetParking": "代客泊车",
+        "parkingGarage": "停车库",
+        "accessibleParking": "无障碍停车场",
+        "lockers": "储物柜",
+        "concierge": "门房",
+        "atmOnSite": "现场自动取款机",
+        "baggageStorage": "行李寄存",
+        "currencyExchange": "货币兑换",
+        "frontDesk24h": "24小时前台",
+        "outdoorPlayEquipment": "户外儿童游乐设备",
+        "dailyHousekeeping": "每日客房清洁",
+        "ironingService": "熨烫服务",
+        "shuttleService": "班车服务",
+        "sharedLounge": "共用休息室/电视区",
+        "airConditioning": "空调",
+        "carRental": "汽车租赁",
+        "packedLunches": "盒装午餐",
+        "disabledFacilities": "适合残疾人士使用的设施",
+        "bathroomEmergencyCord": "浴室应急绳",
+        "openAllYear": "全年开放",
+        "adultsOnly": "仅限成人",
+        "poolBeachTowels": "泳池/沙滩毛巾",
+        "poolBar": "池畔酒吧",
+        "beachChairs": "沙滩椅/躺椅"
+      },
+      "tour": {
+        "desc": {
+          "boatAccess": "只能乘船或水上出租车到达。它以其相对平静的水域而闻名。",
+          "lekkiCanopy": "漫步非洲最长的天篷桥，探索茂密的红树林小径。",
+          "nikeArt": "探索西非最大的当代非洲艺术收藏之一。",
+          "badagry": "通过博物馆和地标追溯跨大西洋奴隶贸易的历史。",
+          "desertSafari": "冲沙丘、骑骆驼以及星空下的传统贝都因营地。",
+          "cotonou": "探索贝宁的市场、殖民时期建筑和充满活力的海岸线。",
+          "winelands": "参观斯泰伦博斯葡萄园，品尝美酒并欣赏美丽的山景。",
+          "monacoYacht": "沿着法国里维埃拉海岸线航行，欣赏蒙特卡洛和豪华港口的景色。",
+          "lagosFood": "在这座城市的最佳美食场所品尝苏亚、泡芙和当地美食。",
+          "dubaiKayak": "日落时划船穿过码头，欣赏天际线美景并接受导游指导。"
+        }
+      }
+    },
+    "dateTime": {
+      "title": "选择日期和时间",
+      "rangeHint": "在日历上选择入住和退房日期。",
+      "singleHint": "在日历上选择您的体验日期。",
+      "legendAvailable": "可用的",
+      "legendUnavailable": "不可用",
+      "selectCheckout": "选择结账",
+      "timeSlots": "时段",
+      "experienceDate": "体验日期"
+    }
+  },
+  "breadcrumb": {
+    "synkAfrica": "辛克非洲",
+    "accommodations": "住宿",
+    "flights": "航班",
+    "carForHire": "汽车租赁",
+    "tours": "游览与体验",
+    "tourPackages": "旅游套餐",
+    "dealsAndPackages": "优惠及套餐",
+    "packages": "套餐"
+  },
+  "results": {
+    "accommodations": {
+      "title": "住宿",
+      "staysFound": "{count} 仍被发现",
+      "searchPlaceholder": "搜索住宿",
+      "empty": "没有符合您筛选条件的住宿。"
+    },
+    "carRentals": {
+      "title": "探索可供出租的汽车",
+      "carsFound": "找到{count}辆车",
+      "searchPlaceholder": "搜索汽车",
+      "empty": "没有汽车符合您的过滤条件。"
+    },
+    "tours": {
+      "title": "⟦计数⟧ 搜索结果",
+      "searchPlaceholder": "搜索体验",
+      "empty": "没有任何体验符合您的筛选条件。"
+    },
+    "emptyHint": "尝试调整您的搜索或过滤选项。",
+    "promoSubtitle": "为您提供的促销、优惠和特别优惠"
+  },
+  "filters": {
+    "apply": "应用过滤器",
+    "applyCount": "应用过滤器（{count}）",
+    "location": "地点",
+    "rentalDates": "租赁日期",
+    "startDate": "开始日期",
+    "endDate": "结束日期",
+    "discounts": "折扣",
+    "price": "价格",
+    "category": "类别",
+    "experiences": "经验",
+    "other": "其他过滤器",
+    "budget": "预算",
+    "perNight": "|夜晚",
+    "perDaily": "|日常的",
+    "anyPrice": "任何价格",
+    "apartmentType": "公寓类型",
+    "bedrooms": "卧室数量",
+    "ratings": "评级",
+    "perks": "福利和设施",
+    "priceRange": {
+      "under50k": "5万以下",
+      "50to150k": "50 - 150k",
+      "150kPlus": "150k及以上"
+    },
+    "propertyType": {
+      "hotels": "酒店",
+      "apartments": "公寓",
+      "resorts": "度假村",
+      "bbs": "民宿",
+      "guestHouse": "招待所",
+      "beachHouse": "海滨别墅",
+      "motels": "汽车旅馆"
+    },
+    "bedroom": {
+      "studio": "工作室",
+      "one": "1 间卧室",
+      "two": "2 间卧室",
+      "threePlus": "3间以上卧室"
+    },
+    "perk": {
+      "breakfast": "含早餐",
+      "cancellation": "免费取消",
+      "pool": "使用泳池",
+      "shuttle": "机场班车"
+    },
+    "discount": {
+      "all": "所有折扣",
+      "withDiscount": "有折扣",
+      "noDiscount": "无折扣",
+      "tenPercent": "10% 折扣"
+    },
+    "carType": {
+      "suv": "SUV",
+      "sedan": "轿车",
+      "hatchback": "掀背车",
+      "pickup": "捡起"
+    },
+    "serviceType": {
+      "selfDrive": "自驾",
+      "chauffeur": "司机"
+    },
+    "transmission": {
+      "automatic": "自动的",
+      "manual": "手动的"
+    },
+    "tourCategory": {
+      "all": "所有类别",
+      "outdoor": "户外的",
+      "artsCulture": "艺术与文化",
+      "adventure": "冒险",
+      "foodDrink": "食品和饮料"
+    },
+    "experienceType": {
+      "all": "所有经历",
+      "tours": "旅游",
+      "activities": "活动",
+      "workshops": "工作坊",
+      "dayTrips": "一日游"
+    }
+  },
+  "landing": {
+    "ongoingDeals": {
+      "title": "正在进行的优惠",
+      "title2": "优惠套餐",
+      "description": "为您提供的促销、优惠和特别优惠",
+      "scrollPackages": "滚动包"
+    },
+    "packages": {
+      "title": "套餐"
+    },
+    "fansFavourite": {
+      "title": "粉丝最爱"
+    },
+    "packageOffer": {
+      "inclusion": {
+        "flights": "航班",
+        "stays": "住宿",
+        "carDriver": "车+司机"
+      },
+      "duration": "⟦天⟧ 天• ⟦夜⟧ 夜• ⟦日程⟧",
+      "bookedSeparately": "如果单独预订"
+    },
+    "bestDealsApartments": {
+      "title": "公寓最优惠"
+    },
+    "browsePropertyType": "按房产类型浏览",
+    "favouriteDestinations": "探索最喜爱的目的地",
+    "activitiesCount": "⟦计数⟧活动",
+    "flightPromo": {
+      "headline": "预订航班从未如此简单",
+      "cta": "检查空房情况"
+    },
+    "experiencesPromo": {
+      "headline": "在一个目的地享受无数体验。",
+      "cta": "浏览体验",
+      "imageAlt": "浏览非洲经验"
+    },
+    "tours": {
+      "attractions": {
+        "title": "Synkafrica 的景点"
+      },
+      "events": {
+        "browsingIn": "浏览事件"
+      },
+      "packages": {
+        "title": "旅游套餐",
+        "description": "获得旅游团最优惠的价格并轻松预订。"
+      }
+    },
+    "carRentals": {
+      "feature1": {
+        "title": "专业服务",
+        "description": "我们使用非洲各地信誉良好的机场接送服务提供商。"
+      },
+      "feature2": {
+        "title": "灵活取消",
+        "description": "如果您的计划发生变化，您可以使用灵活的条款取消。"
+      },
+      "feature3": {
+        "title": "有竞争力的价格",
+        "description": "我们的团队每天都会比较机场出租车价格，以便为您提供最优惠的价格。"
+      }
+    }
+  },
+  "tourPackages": {
+    "hero": {
+      "title": "旅游套餐",
+      "subtitle": "精心挑选的旅行套餐，专为难忘的非洲冒险而设计。"
+    },
+    "searchPlaceholder": "搜索目的地",
+    "empty": "没有符合您搜索条件的旅游套餐。"
+  },
+  "admin": {
+    "header": {
+      "role": "平台管理员"
+    },
+    "nav": {
+      "dashboard": "仪表板",
+      "experiences": "经验",
+      "cars": "汽车",
+      "accommodations": "住宿",
+      "vendors": "供应商",
+      "bookings": "预订",
+      "payouts": "支出",
+      "reviews": "评论",
+      "users": "用户",
+      "verifications": "验证",
+      "support": "支持票",
+      "team": "团队",
+      "audit": "审核日志"
+    },
+    "common": {
+      "all": "全部",
+      "enabled": "启用",
+      "disabled": "残疾人",
+      "edit": "编辑",
+      "actions": "行动"
+    },
+    "verifications": {
+      "title": "验证",
+      "subtitle": "由我们的验证提供商标记为手动审核的提交内容 - 大多数 ID/面部检查都会自动批准，并且永远不会到达此队列。",
+      "stats": {
+        "needsManualReview": "需要人工审核",
+        "approvedToday": "今天批准",
+        "deniedToday": "今天被拒绝",
+        "avgReviewTime": "平均。审核时间",
+        "avgReviewTimeValue": "⟦分钟⟧分钟"
+      },
+      "searchPlaceholder": "按名称或帐户 ID 搜索...",
+      "filter": {
+        "users": "用户",
+        "vendors": "供应商"
+      },
+      "status": {
+        "pendingReview": "待审核",
+        "approved": "得到正式认可的",
+        "denied": "被拒绝"
+      },
+      "audience": {
+        "user": "用户",
+        "vendor": "小贩"
+      },
+      "submitted": "提交⟦日期⟧",
+      "pendingElapsed": "待定 ⟦已过⟧",
+      "blocking": {
+        "firstCheckout": "阻止第一次结账"
+      },
+      "empty": "没有验证提交符合您的过滤器。",
+      "accountId": "帐号{id}",
+      "viewAccount": "查看帐户 →",
+      "pendingManualReview": "等待人工审核",
+      "elapsed": "⟦已过去⟧已过去",
+      "documentPreviews": "文档预览",
+      "documentViewLogged": "记录文档视图以确保合规性",
+      "providerResults": "验证提供商结果 (DIDIT)",
+      "approve": "批准",
+      "deny": "否定",
+      "requestResubmission": "请求重新提交",
+      "notifyUser": "通知用户决定",
+      "notifyVendor": "通知供应商决定",
+      "verificationApproved": "验证通过",
+      "verificationDenied": "验证被拒绝",
+      "reviewedInElapsed": "已审核于⟦已过⟧",
+      "approvedBy": "批准人",
+      "approvedByValue": "管理员 — ⟦日期⟧",
+      "reasonForDenial": "拒绝原因",
+      "revokeApproval": "撤销批准",
+      "inviteResubmission": "邀请重新提交",
+      "viewHistory": "查看历史记录",
+      "providerResultsHeading": "提供者结果——DIDIT",
+      "document": {
+        "ninSlip": "宁滑",
+        "passportPhoto": "护照照片页",
+        "selfie": "自拍/动态捕捉",
+        "cac": "CAC证书",
+        "driversLicense": "驾驶执照（正面）"
+      },
+      "check": {
+        "cacRegistrationLookup": "CAC注册查询",
+        "cacRegistrationVerified": "已验证",
+        "faceMatchConfidence": "面部匹配信心",
+        "faceMatchConfidenceDetail": "96%",
+        "documentExpiredDetail": "失败——文档过期",
+        "documentAuthenticity": "文件真实性",
+        "liveness": "活性检查",
+        "faceMatch": "面部匹配信心",
+        "nameMatch": "姓名与账户相符",
+        "businessRegistration": "商业登记",
+        "faceMatchDetail": "78% — 低于自动批准阈值",
+        "nameMatchDetail": "匹配",
+        "documentFailedDetail": "失败 — 文档无法读取",
+        "faceMatchFailedDetail": "42%——低于阈值",
+        "businessRegistrationDetail": "部分匹配——需要人工审核"
+      },
+      "denialReason": {
+        "expiredLicense": "驾照已于 2026 年 3 月过期。请使用有效的、未过期的政府身份证件重新提交。"
+      },
+      "documentType": {
+        "passport": "护照",
+        "cacNin": "CAC+NIN",
+        "driversLicense": "驾照"
+      },
+      "checkResult": {
+        "passed": "通过",
+        "failed": "失败的",
+        "warning": "需要审核"
+      }
+    },
+    "dashboard": {
+      "welcome": "管理控制台，",
+      "addPackages": "添加包",
+      "period": {
+        "label": "指标周期",
+        "today": "今天",
+        "week": "本星期",
+        "month": "本月",
+        "sixMonths": "6个月",
+        "year": "1年",
+        "all": "全部"
+      },
+      "users": "用户",
+      "bookings": "预订",
+      "revenue": "收入",
+      "activeExperiences": "积极的体验",
+      "activeVendors": "活跃供应商",
+      "viewAll": "查看全部",
+      "manage": "管理",
+      "alerts": "警报",
+      "alert": {
+        "pendingPayouts": "3 家供应商付款等待批准",
+        "flaggedReview": "2 条评论被标记为需要审核",
+        "openTicket": "5 张开放供应商支持票",
+        "disabledVendor": "1 个供应商帐户已禁用 — 需要审核"
+      }
+    },
+    "packages": {
+      "createTitle": "创建新套餐/优惠",
+      "createSubtitle": "通过结合航班、住宿、汽车和体验，打造令人难以抗拒的旅行套餐。",
+      "addTitle": "添加包",
+      "backToDashboard": "← 返回仪表板",
+      "progressLabel": "包裹进度",
+      "steps": {
+        "details": "套餐详情",
+        "modules": "添加模块",
+        "pricing": "定价",
+        "review": "审核并发布"
+      },
+      "cancel": "取消",
+      "back": "后退",
+      "saveDraft": "另存为草稿",
+      "draftSaved": "草稿已保存",
+      "saveContinue": "保存并继续",
+      "submit": "提交包裹",
+      "completeRequiredFields": "填写必填字段：⟦字段⟧",
+      "sections": {
+        "basicInfo": "套餐详情",
+        "basicInfoHint": "包裹的基本信息和元数据。",
+        "additionalSettings": "附加设置",
+        "additionalSettingsHint": "政策、膳食和显示选项。"
+      },
+      "fields": {
+        "packageName": "封装名称",
+        "packageSlug": "包 Slug (URL)",
+        "shortDescription": "简短描述",
+        "detailedDescription": "详细说明",
+        "banner": "包装横幅图片",
+        "category": "套餐类别",
+        "bestFor": "最适合",
+        "tags": "包装标签",
+        "includedMeals": "包含餐食",
+        "cancellationPolicy": "取消政策",
+        "refundPolicy": "退款政策",
+        "maxGuests": "最多客人数",
+        "featuredDeal": "套餐亮点",
+        "currency": "货币",
+        "normalPrice": "正常价格",
+        "salesPrice": "销售价格",
+        "showSavingsBadge": "显示储蓄徽章",
+        "savingsBadgePercent": "储蓄徽章百分比",
+        "validFrom": "有效期自",
+        "validUntil": "有效期至",
+        "minimumBookingNotice": "最低预订通知",
+        "packageActive": "包裹状态"
+      },
+      "placeholders": {
+        "packageName": "例如拉各斯和巴黎逍遥游",
+        "packageSlug": "拉各斯巴黎逃亡",
+        "shortDescription": "包装卡上显示的简短摘要。",
+        "detailedDescription": "描述完整的行程、包含的内容和亮点。",
+        "category": "选择类别",
+        "tags": "例如海滩、冒险",
+        "maxGuests": "例如4",
+        "select": "选择"
+      },
+      "hints": {
+        "packageSlug": "这将在包 URL 中使用。",
+        "tags": "添加每个标签并按 Enter。",
+        "featuredDeal": "将此套餐显示为特色优惠。",
+        "showSavingsBadge": "在包裹卡上展示储蓄徽章。",
+        "savingsBadgePercent": "设置储蓄徽章上显示的百分比。根据您的价格自动填写。",
+        "packageActive": "客户可以看到活动的包。"
+      },
+      "uploadBanner": "点击上传或拖放",
+      "uploadBannerHint": "JPG、PNG 或 WEBP（最大 5MB）",
+      "removeBanner": "删除横幅",
+      "tips": {
+        "title": "打造精美套餐的秘诀",
+        "one": "使用清晰、引人注目的包名称。",
+        "two": "结合互补模块以获得更好的价值。",
+        "three": "通过强劲的销售价格突出节省成本。",
+        "four": "添加标签以提高可发现性。"
+      },
+      "moduleType": {
+        "flight": "航班",
+        "accommodation": "住宿",
+        "car": "车",
+        "experience": "经验"
+      },
+      "modules": {
+        "selectHeading": "添加模块",
+        "selectHint": "浏览并添加航班、住宿、汽车和体验来构建您的套餐。",
+        "addedHeading": "封装模块",
+        "countLabel": "模块",
+        "empty": "尚未添加模块。从上面的面板中选择项目。",
+        "add": "添加",
+        "added": "额外",
+        "remove": "移除模块",
+        "dragHandle": "拖动以重新排序",
+        "reorderHint": "拖放模块以按照向客户显示的方式重新排序。",
+        "required": "添加至少一个模块才能继续。",
+        "searchPlaceholder": "搜索模块...",
+        "noResults": "没有模块符合您的搜索。",
+        "availableLabel": "可用的"
+      },
+      "pricing": {
+        "heading": "定价",
+        "hint": "设置您的票价。",
+        "savingsDisplay": "您节省⟦金额⟧ (⟦百分比⟧%)"
+      },
+      "availability": {
+        "heading": "可用性",
+        "hint": "设置此套餐何时可以预订。"
+      },
+      "review": {
+        "heading": "审核并发布",
+        "hint": "提交前查看所有包裹详细信息。"
+      }
+    },
+    "users": {
+      "title": "旅行者",
+      "searchPlaceholder": "按姓名、用户 ID、电子邮件或位置搜索...",
+      "userId": "用户身份",
+      "traveler": "游客",
+      "contact": "接触",
+      "location": "地点",
+      "tier": {
+        "bronze": "青铜",
+        "silver": "银",
+        "gold": "金子",
+        "platinum": "铂"
+      },
+      "bookingsSpend": "预订/消费",
+      "lastTrip": "最后一次旅行",
+      "status": {
+        "active": "积极的",
+        "inactive": "不活跃"
+      },
+      "stats": {
+        "found": "旅客发现",
+        "active": "积极的",
+        "combinedSpend": "综合支出",
+        "page": "页",
+        "pageValue": "⟦当前⟧ / ⟦总计⟧"
+      },
+      "pagination": {
+        "previous": "以前的",
+        "next": "下一个",
+        "showing": "第 ⟦当前⟧ 页，共 ⟦总计⟧"
+      },
+      "details": "细节",
+      "empty": "没有旅客符合您的搜索。",
+      "notFound": "未找到旅行者。",
+      "backToList": "回到旅行者",
+      "accountDetails": "账户详情",
+      "detail": {
+        "totalBookings": "预订总数",
+        "lifetimeSpend": "一生消费",
+        "primaryCorridor": "主要走廊",
+        "openTickets": "开放门票",
+        "idFaceVerified": "身份证+人脸验证",
+        "joined": "加入⟦日期⟧",
+        "lastActive": "最后一次活动⟦已过去⟧",
+        "phoneWhatsApp": "⟦电话⟧（WhatsApp 链接）",
+        "identityVerification": "身份验证",
+        "governmentId": "政府身份证（⟦类型⟧）",
+        "faceMatch": "人脸/活力匹配",
+        "verifiedVia": "验证通过",
+        "verified": "已验证",
+        "notVerified": "未验证",
+        "paymentMethods": "存档的付款方式",
+        "card": "卡片",
+        "defaultCurrency": "默认货币",
+        "recentBookings": "最近的预订",
+        "internalNotes": "内部注释",
+        "noNotes": "还没有内部注释。",
+        "noteAttribution": "— ⟦作者⟧，⟦日期⟧",
+        "bookingStatus": {
+          "confirmed": "确认的",
+          "completed": "完全的",
+          "cancelled": "取消"
+        }
+      },
+      "menu": {
+        "verification": "确认",
+        "rerunIdVerification": "重新进行身份验证",
+        "rerunFaceVerification": "重新运行人脸验证",
+        "financial": "金融的",
+        "issueRefund": "发出退款",
+        "holdBookingPayment": "保留预订付款",
+        "support": "支持",
+        "viewAsReadOnly": "查看方式（只读）",
+        "addInternalNote": "添加内部注释",
+        "dataAccount": "数据及账户",
+        "mergeDuplicateAccount": "合并重复帐户",
+        "exportUserData": "导出用户数据 (GDPR)",
+        "suspendAccount": "暂停账户"
+      }
+    },
+    "experiences": {
+      "title": "管理体验",
+      "searchPlaceholder": "搜索体验",
+      "name": "体验名称",
+      "empty": "没有与您的搜索相符的体验。",
+      "actions": {
+        "disable": "禁用体验",
+        "enable": "启用体验",
+        "goTo": "前往体验",
+        "delete": "删除经验"
+      }
+    },
+    "cars": {
+      "title": "管理汽车",
+      "searchPlaceholder": "搜索汽车",
+      "name": "车名",
+      "empty": "没有符合您搜索条件的汽车。",
+      "actions": {
+        "disable": "禁用汽车",
+        "enable": "启用汽车",
+        "goTo": "去汽车",
+        "delete": "删除汽车"
+      }
+    },
+    "accommodations": {
+      "title": "管理住宿",
+      "searchPlaceholder": "搜索住宿",
+      "name": "住宿名称",
+      "empty": "没有符合您搜索条件的住宿。",
+      "actions": {
+        "disable": "禁用住宿",
+        "enable": "启用住宿",
+        "goTo": "前往住宿处",
+        "delete": "删除住宿"
+      }
+    },
+    "listings": {
+      "location": "挂牌地点",
+      "vendor": "小贩",
+      "bookings": "预订",
+      "ratings": "评级",
+      "reviews": "评论",
+      "activityStatus": "活动状态",
+      "status": {
+        "active": "积极的",
+        "inactive": "不活跃",
+        "deleted": "已删除"
+      },
+      "tab": {
+        "active": "活跃列表",
+        "deleted": "已删除的列表"
+      },
+      "deletedHint": "从市场中删除的列表显示在此处。您可以查看详细信息或永久删除记录。",
+      "viewDetails": "查看列表",
+      "deletedAt": "于⟦日期⟧删除",
+      "detailTitle": "房源详情",
+      "detailHint": "此列表的完整预览，包括媒体、详细信息、定价和文档。",
+      "detailNotFound": "无法找到此列表。",
+      "detail": {
+        "backCars": "回到汽车",
+        "backAccommodations": "返回住宿",
+        "backExperiences": "回到经验"
+      },
+      "detailClose": "关闭"
+    },
+    "vendors": {
+      "title": "管理供应商",
+      "add": "添加供应商",
+      "searchPlaceholder": "按名称、供应商 ID、电子邮件或电话搜索...",
+      "vendorId": "供应商ID",
+      "name": "小贩",
+      "userId": "用户身份",
+      "stats": {
+        "found": "找到供应商",
+        "active": "积极的",
+        "combinedRevenue": "合并收入",
+        "page": "页",
+        "pageValue": "⟦当前⟧ / ⟦总计⟧"
+      },
+      "pagination": {
+        "previous": "以前的",
+        "next": "下一个",
+        "showing": "第 ⟦当前⟧ 页，共 ⟦总计⟧"
+      },
+      "contactInfo": "联系方式",
+      "listings": "房源",
+      "commission": "委员会",
+      "commissionValue": "⟦速度⟧％",
+      "status": {
+        "active": "积极的",
+        "inactive": "不活跃"
+      },
+      "revenue": "收入",
+      "rating": "等级",
+      "reviews": "评论",
+      "details": "细节",
+      "empty": "没有供应商符合您的搜索。",
+      "notFound": "未找到供应商。",
+      "backToList": "返回供应商",
+      "accountDetails": "账户详情",
+      "joined": "已加入",
+      "detail": {
+        "activeListings": "活跃列表",
+        "completedBookings": "已完成预订",
+        "averageRating": "平均评分",
+        "openStrikes": "公开罢工",
+        "category": "类别",
+        "onboarded": "入职⟦日期⟧",
+        "accountDocuments": "账户文件",
+        "listingDocuments": "上市文件 — ⟦类别⟧",
+        "payoutSummary": "付款摘要",
+        "pendingPayout": "待付款",
+        "lastPayout": "最后一次付款",
+        "internalNotes": "内部注释",
+        "noNotes": "还没有内部注释。",
+        "noteAttribution": "— ⟦作者⟧，⟦日期⟧",
+        "viewListings": "查看房源",
+        "suspendVendor": "暂停供应商",
+        "documentStatus": {
+          "verified": "已验证",
+          "pendingReview": "待审核",
+          "signed": "签名",
+          "notVerified": "未验证"
+        }
+      },
+      "menu": {
+        "verification": "确认",
+        "approvePendingListing": "批准待上市",
+        "requestAdditionalDocuments": "索取额外文件",
+        "upgradeToTier": "升级至等级{tier}",
+        "standingTrust": "地位和信任",
+        "grantInstantBook": "授予即时预订权限",
+        "addStrike": "添加罢工/内部标志",
+        "clearStrike": "清除罢工",
+        "financial": "金融的",
+        "holdPendingPayout": "保留待付款",
+        "adjustCommissionRate": "调整佣金比例",
+        "communication": "沟通",
+        "contactVendor": "联系供应商",
+        "addInternalNote": "添加内部注释",
+        "account": "帐户",
+        "suspendAccount": "暂停账户",
+        "banPermanently": "永久封禁"
+      },
+      "requestDocumentsModal": {
+        "title": "索取额外文件",
+        "subtitle": "向⟦供应商⟧发送文件请求。",
+        "documentLabel": "选择文档",
+        "documentPlaceholder": "选择一个文档",
+        "otherOption": "其他（未列出）",
+        "customDocumentLabel": "添加文档名称",
+        "customDocumentPlaceholder": "输入文档名称",
+        "submit": "发送请求",
+        "cancel": "取消"
+      },
+      "confirm": {
+        "cancel": "取消"
+      },
+      "confirmSuspend": {
+        "title": "你确定吗？",
+        "message": "您即将暂停⟦供应商⟧。在重新激活帐户之前，他们将无法访问其帐户。"
+      },
+      "confirmBan": {
+        "title": "你确定吗？",
+        "message": "您即将永久禁止⟦供应商⟧。此操作无法撤消。"
+      },
+      "internalNoteModal": {
+        "title": "添加内部注释",
+        "subtitle": "为⟦供应商⟧添加观察或注释。",
+        "label": "观察",
+        "placeholder": "在这里写下您的观察或注释...",
+        "submit": "保存备注"
+      },
+      "experiences": "经验",
+      "earnings": "总收入"
+    },
+    "bookings": {
+      "title": "预订",
+      "subtitle": "航班、汽车、住宿和体验的所有预订——通过应用程序、网络和手动创建。",
+      "create": "创建预订",
+      "searchPlaceholder": "按客户、供应商或预订 ID 搜索...",
+      "empty": "没有预订符合您的筛选条件。",
+      "guests": "客人",
+      "vendor": "小贩",
+      "contactCustomer": "联系客户",
+      "contactVendor": "联系供应商",
+      "addInternalNote": "添加内部注释",
+      "partialRefund": "部分退款",
+      "cancelRefund": "取消并退款",
+      "flagDispute": "标记为争议",
+      "saveChanges": "保存更改",
+      "stats": {
+        "upcoming": "即将到来（7 天）",
+        "awaiting": "等待确认",
+        "confirmed": "确认的",
+        "disputed": "有争议/标记",
+        "totalMonth": "本月总计"
+      },
+      "product": {
+        "all": "所有产品类型",
+        "flights": "航班",
+        "cars": "汽车",
+        "accommodations": "住宿",
+        "experiences": "经验"
+      },
+      "source": {
+        "all": "所有来源",
+        "website": "网站",
+        "mobileApp": "移动应用程序",
+        "admin": "由管理员创建"
+      },
+      "dateRange": {
+        "label": "日期范围",
+        "day": "1天",
+        "week": "1周",
+        "month": "1个月",
+        "sixMonths": "6个月",
+        "year": "1年",
+        "all": "全部"
+      },
+      "filter": {
+        "all": "全部 (⟦数⟧)",
+        "upcoming": "即将推出 ({count})",
+        "awaiting": "等待确认（{count}）",
+        "confirmed": "已确认 ({count})",
+        "completed": "已完成（⟦计数⟧）",
+        "cancelled": "已取消 ({count})",
+        "disputed": "有争议 (⟦计数⟧)"
+      },
+      "status": {
+        "confirmed": "确认的",
+        "awaiting": "等待确认",
+        "cancelled": "取消",
+        "completed": "完全的",
+        "disputed": "争议"
+      },
+      "sidebar": {
+        "customer": "顾客",
+        "source": "来源：⟦来源⟧",
+        "vendor": "小贩",
+        "bookingDetails": "预订详情",
+        "payment": "支付",
+        "timeline": "时间轴",
+        "name": "姓名",
+        "contact": "接触",
+        "whatsapp": "WhatsApp",
+        "assignedTo": "分配给",
+        "vendorContact": "供应商联系方式",
+        "checkIn": "入住日期",
+        "checkOut": "退房日期",
+        "amount": "数量",
+        "paymentStatus": "地位",
+        "chargedCurrency": "收取的货币"
+      },
+      "createModal": {
+        "title": "创建预订",
+        "subtitle": "代表客户创建预订。",
+        "infoBannerPrefix": "此预订将被标记",
+        "infoBannerSource": "来源：管理员创建",
+        "infoBannerSuffix": "并将像自助预订一样显示在客户的帐户和应用程序中。",
+        "productType": "产品类型",
+        "product": {
+          "accommodations": "住宿",
+          "flights": "航班",
+          "cars": "汽车",
+          "experiences": "经验"
+        },
+        "customer": "顾客",
+        "customerPlaceholder": "按姓名、电子邮件或电话搜索现有客户...",
+        "vendorListing": "供应商/列表",
+        "vendorPlaceholder": "搜索供应商或列表...",
+        "startDate": "开始日期",
+        "endDate": "结束日期",
+        "guestsUnits": "嘉宾/单位",
+        "guestsPlaceholder": "例如2",
+        "totalAmount": "总金额",
+        "amountPlaceholder": "下一代网络",
+        "paymentStatus": "付款状态",
+        "payment": {
+          "sendLink": "向客户发送付款链接",
+          "paidInFull": "标记为已全额付款",
+          "pending": "付款待处理 - 未发送链接"
+        },
+        "internalNote": "内部注释",
+        "internalNotePlaceholder": "例如通过WhatsApp查询预订，客户要求底楼房间",
+        "cancel": "取消",
+        "submit": "创建预订"
+      }
+    },
+    "payouts": {
+      "title": "支出",
+      "subtitle": "按结算周期划分的所有类别的供应商收入。",
+      "searchPlaceholder": "按供应商名称或参考搜索...",
+      "pendingCount": "{count} 待付款",
+      "markComplete": "标记完成",
+      "contactVendor": "联系供应商",
+      "decline": "衰退",
+      "empty": "没有符合您搜索条件的付款。",
+      "requested": "请求的⟦日期⟧",
+      "periodLabel": "期间：⟦期间⟧",
+      "listBookingsBank": "⟦计数⟧预订·⟦银行⟧⟦账户⟧",
+      "netPayoutToVendor": "支付给供应商的净额",
+      "grossEarnings": "预订总收入",
+      "platformCommission": "平台佣金（⟦费率⟧%）",
+      "netPayout": "净支出",
+      "paymentDestination": "付款目的地",
+      "bank": "银行",
+      "accountNumber": "帐号",
+      "accountName": "帐户名称",
+      "payoutMethod": "支付方式",
+      "associatedBookings": "关联预订（{count}）",
+      "internalNote": "内部注释",
+      "noteAttribution": "— ⟦作者⟧，⟦日期⟧",
+      "period": {
+        "thisMonth": "本月 — 2026 年 7 月",
+        "lastMonth": "上个月 — 2026 年 6 月",
+        "quarter": "本季度 — 2026 年第 2 季度"
+      },
+      "stats": {
+        "totalPeriod": "总支出 — 期间",
+        "totalVendors": "跨{count}供应商",
+        "pending": "待办的",
+        "pendingSubtitle": "{count} 等待操作的付款",
+        "completed": "完全的",
+        "completedSubtitle": "{count} 付款已结算",
+        "declinedFailed": "拒绝/失败",
+        "declinedFailedSubtitle": "⟦拒绝⟧拒绝·⟦失败⟧转账失败"
+      },
+      "filter": {
+        "all": "全部 (⟦数⟧)",
+        "pending": "待处理（⟦计数⟧）",
+        "completed": "已完成（⟦计数⟧）",
+        "declined": "拒绝 ({count})",
+        "failed": "失败（⟦计数⟧）"
+      },
+      "status": {
+        "pending": "待办的",
+        "completed": "完全的",
+        "declined": "拒绝",
+        "failed": "失败的",
+        "failedTransfer": "转移失败"
+      }
+    },
+    "reviews": {
+      "title": "审核审核",
+      "category": {
+        "unanswered": "未答复",
+        "responseRequired": "需要回应",
+        "flagged": "已标记",
+        "deleted": "已删除",
+        "published": "已发表"
+      },
+      "selectAll": "选择全部",
+      "deselectAll": "取消全选",
+      "bulkPublish": "发布所选内容",
+      "bulkFlag": "已选择标记",
+      "bulkResponseRequired": "需要回应",
+      "bulkDelete": "删除所选内容",
+      "actionsGuideTitle": "这些动作意味着什么？",
+      "actionsGuide": {
+        "publish": "发布 — 使评论在公开列表页面上可见。",
+        "flag": "标记 — 标记评论以进行后续处理（不适当或可疑的内容）。",
+        "delete": "删除 — 从公共视图中删除评论。已删除的评论显示在“已删除”选项卡中。",
+        "responseRequired": "需要响应 - 表明需要供应商或管理员响应。",
+        "clearResponseRequired": "需要明确的回复 - 在发布正式回复后删除标记。"
+      },
+      "selectReview": "选择⟦标题⟧的评论",
+      "unansweredBadge": "未答复",
+      "responseRequiredBadge": "需要回应",
+      "officialResponse": "官方回应",
+      "empty": "此类别中没有评论。",
+      "flag": "旗帜",
+      "responseRequired": "需要回应",
+      "clearResponseRequired": "需要明确的回应",
+      "delete": "删除",
+      "hide": "隐藏",
+      "publish": "发布",
+      "respondAsSynkAfrica": "以 SynkAfrica 身份回复",
+      "responsePlaceholder": "客人和供应商可以看到官方回应...",
+      "photosLabel": "嘉宾照片",
+      "status": {
+        "published": "已发表",
+        "flagged": "已标记",
+        "deleted": "已删除",
+        "hidden": "隐"
+      }
+    },
+    "reports": {
+      "title": "报告",
+      "totalRevenue": "总收入（月）",
+      "totalBookings": "总预订量（月）",
+      "topExperience": "顶级体验",
+      "activeVendors": "活跃供应商",
+      "popularExperiences": "热门体验",
+      "bookings": "预订",
+      "metric": "公制",
+      "value": "价值",
+      "experience": "经验",
+      "exportRevenue": "出口收入 CSV",
+      "exportBookings": "导出预订 CSV"
+    },
+    "support": {
+      "title": "支持票",
+      "subtitle": "查看用户和供应商支持请求、更新票证状态并发送官方回复。",
+      "tab": {
+        "users": "用户",
+        "vendors": "供应商"
+      },
+      "user": "用户",
+      "vendor": "小贩",
+      "empty": "没有票证与此过滤器匹配。",
+      "adminResponse": "管理员回复",
+      "previousResponse": "之前的回复",
+      "sendResponse": "发送回复"
+    }
+  },
+  "vendor": {
+    "nav": {
+      "workspace": "工作空间",
+      "account": "帐户",
+      "dashboard": "仪表板",
+      "listings": "房源",
+      "bookings": "预订",
+      "earnings": "收益",
+      "notifications": "通知",
+      "businessProfile": "业务简介",
+      "settings": "设置",
+      "support": "支持",
+      "logOut": "退出",
+      "openMenu": "打开菜单",
+      "closeMenu": "关闭菜单"
+    },
+    "header": {
+      "verifiedVendor": "经过验证的供应商",
+      "unverifiedVendor": "未经验证的供应商",
+      "pendingVendor": "待验证"
+    },
+    "signup": {
+      "title": "创建您的供应商帐户",
+      "subtitle": "加入 SynkAfrica，开始向非洲各地的旅行者列出您的汽车、住宿和体验。",
+      "alreadyHaveAccount": "已经有供应商帐户？",
+      "signIn": "登入",
+      "progressLabel": "供应商注册进度",
+      "steps": {
+        "business": "企业和业主信息",
+        "security": "安全与验证",
+        "identity": "身份验证"
+      },
+      "cancel": "取消",
+      "back": "后退",
+      "continue": "继续",
+      "createAccount": "创建账户",
+      "completeRequiredFields": "填写必填字段：⟦字段⟧",
+      "securityRequired": "使用 OTP 验证您的手机并创建有效的密码以继续。",
+      "identityRequired": "上传您的政府身份证件并接受创建帐户的条款。",
+      "sections": {
+        "businessInfo": "商业资讯",
+        "businessInfoHint": "告诉我们您的业务。",
+        "ownerInfo": "业主信息",
+        "ownerInfoHint": "有关企业主或主要联系人的详细信息。",
+        "phoneVerification": "电话验证",
+        "phoneVerificationHint": "我们将向您提供的电话号码发送一次性代码。",
+        "accountSecurity": "账户安全",
+        "accountSecurityHint": "为您的供应商帐户创建一个强密码。",
+        "governmentId": "政府颁发的身份证件",
+        "governmentIdHint": "上传有效的护照、驾驶执照或 NIN 单以进行身份​​验证。"
+      },
+      "fields": {
+        "businessName": "公司名称",
+        "businessType": "业务类型",
+        "cacRegistrationNumber": "CAC 注册号",
+        "companyType": "公司类型",
+        "businessAddress": "营业地址",
+        "ownerFullName": "所有者全名",
+        "ownerEmail": "电子邮件",
+        "phoneNumber": "电话号码",
+        "dateOfBirth": "出生日期",
+        "password": "密码",
+        "confirmPassword": "确认密码"
+      },
+      "placeholders": {
+        "companyType": "选择公司类型",
+        "businessName": "例如NG 海岸步道",
+        "businessType": "选择业务类型",
+        "cacRegistrationNumber": "例如RC1234567",
+        "businessAddress": "街道、城市、州",
+        "ownerFullName": "法定全名",
+        "ownerEmail": "你@business.com",
+        "phoneNumber": "7812345678",
+        "password": "创建密码",
+        "confirmPassword": "重新输入您的密码"
+      },
+      "sendOtp": "发送一次性密码",
+      "resendOtp": "重新发送一次性密码",
+      "enterOtp": "输入一次性密码",
+      "resendIn": "00:⟦秒⟧后重新发送",
+      "otpVerified": "电话号码已验证。",
+      "passwordRules": {
+        "minLength": "至少 8 个字符",
+        "hasNumber": "包括一个号码",
+        "hasUppercase": "包括大写字母"
+      },
+      "passwordMismatch": "密码不匹配。",
+      "togglePasswordVisibility": "切换密码可见性",
+      "uploadId": "将您的 ID 拖放到此处",
+      "uploadIdHint": "JPG、PNG 或 PDF（最大 5MB）",
+      "chooseFile": "选择文件",
+      "idUploaded": "文件已上传",
+      "idUploadFailed": "上传失败 - 请重试。",
+      "removeId": "删除ID",
+      "idPrivacyNote": "您的 ID 会被安全存储，并且仅用于验证目的。我们绝不会与第三方分享您的个人文件。",
+      "securityBanner": {
+        "title": "您的信息对我们来说是安全的",
+        "message": "我们使用行业标准的安全性来保护您的数据并确保您的帐户安全。"
+      },
+      "agreeTermsPrefix": "我同意",
+      "termsOfService": "服务条款",
+      "and": "和",
+      "privacyPolicy": "隐私政策"
+    },
+    "login": {
+      "title": "供应商登录",
+      "intro": "登录您的 SynkAfrica 供应商帐户来管理列表、预订和收入。",
+      "emailPlaceholder": "输入您的供应商电子邮件",
+      "signInGoogle": "使用 Google 登录",
+      "noAccount": "没有供应商帐户？",
+      "signUp": "报名"
+    },
+    "verificationNotice": {
+      "unverified": {
+        "title": "需要验证",
+        "message": "完成您的供应商验证以发布列表并接收付款。"
+      },
+      "pending": {
+        "title": "验证正在进行中",
+        "message": "正在审核您的验证。在获得批准之前，某些功能可能会受到限制。"
+      },
+      "completeVerification": "完成验证"
+    },
+    "notifications": {
+      "filter": {
+        "label": "过滤通知",
+        "all": "全部",
+        "newBooking": "新预订",
+        "bookingReminder": "24小时提醒",
+        "payoutConfirmation": "支出",
+        "adminMessage": "行政"
+      },
+      "type": {
+        "newBooking": "新预订",
+        "bookingReminder": "24小时提醒",
+        "payoutConfirmation": "支出",
+        "adminMessage": "管理员留言"
+      },
+      "unreadCount": "{count} 条未读通知",
+      "allCaughtUp": "你们都被困住了。",
+      "markRead": "标记为已读",
+      "markAllRead": "全部标记为已读",
+      "empty": "此类别中没有通知。",
+      "time": {
+        "justNow": "现在",
+        "hoursAgo": "⟦数⟧小时前"
+      },
+      "sample": {
+        "newBooking": {
+          "title": "收到新预订",
+          "message": "阿马拉预订了 7 月 25 日 · 4 位客人的拉各斯泻湖日落游船。 24小时内确认或拒绝。"
+        },
+        "newBooking2": {
+          "title": "收到新预订",
+          "message": "Chidi 于 8 月 3 日预订了莱基花园套房酒店 · 2 位客人。"
+        },
+        "reminder": {
+          "title": "24小时内预订",
+          "message": "提醒：明天下午 5:30 与法蒂玛一起进行拉各斯泻湖日落巡游 · 6 位客人。"
+        },
+        "reminder2": {
+          "title": "24小时内预订",
+          "message": "提醒：明天上午 9:00 通过 Emeka 租赁 2021 款丰田凯美瑞。"
+        },
+        "payout": {
+          "title": "付款已确认",
+          "message": "200,000 NGN 已发送至您尾号为 4521 的 GTBank 账户。"
+        },
+        "payout2": {
+          "title": "付款已确认",
+          "message": "已成功处理 150,000 NGN 提款至 Access Bank（尾号为 8834）。"
+        },
+        "admin": {
+          "title": "Synkafrica 的政策更新",
+          "message": "更新后的体验列表供应商指南现已推出。请于 8 月 1 日之前审核"
+        },
+        "admin2": {
+          "title": "上市获批",
+          "message": "您的拉各斯泻湖日落游轮列表现已在 Synkafrica 上发布。"
+        }
+      }
+    },
+    "dashboard": {
+      "welcomeBack": "欢迎回来，",
+      "addListing": "添加列表",
+      "period": {
+        "label": "指标周期",
+        "day": "一天",
+        "week": "一周",
+        "month": "一个月",
+        "sixMonths": "六个月",
+        "year": "一年"
+      },
+      "stats": {
+        "liveListings": "实时列表",
+        "newBookings": "新预订",
+        "earnings": "收益",
+        "pendingApproval": "待批准"
+      },
+      "goToBookings": "前往预订",
+      "yourListings": "您的列表",
+      "seeAll": "查看全部",
+      "status": {
+        "live": "实时列表",
+        "pending": "待办的...",
+        "paused": "已暂停",
+        "draft": "草稿"
+      },
+      "editListing": "编辑列表",
+      "deleteListing": "删除列表",
+      "pauseListing": "暂停列表",
+      "playListing": "简历列表",
+      "deleteListingModal": {
+        "title": "删除列表？",
+        "message": "您确定要删除“⟦标题⟧”吗？此操作无法撤消。",
+        "confirm": "删除列表",
+        "cancel": "取消"
+      },
+      "category": {
+        "accommodations": "住宿",
+        "carRentals": "汽车租赁",
+        "tours": "旅游",
+        "toursExperiences": "游览和体验"
+      }
+    },
+    "businessProfile": {
+      "businessName": "企业名称",
+      "businessNameHint": "付款和供应商记录中使用的内部名称。未显示在公开列表中。",
+      "internalNameLabel": "内部企业名称",
+      "contactDetails": "联系方式",
+      "contactDetailsHint": "Synkafrica 和客人如何联系您寻求预订支持。",
+      "phone": "电话号码",
+      "email": "电子邮件",
+      "address": "营业地址",
+      "payoutAccount": "用于付款的银行账户",
+      "payoutAccountHint": "从收入中提取的款项将发送至此帐户。",
+      "bankName": "银行名称",
+      "accountNumber": "帐号",
+      "accountNumberLocked": "帐号只能每⟦个月⟧个月更改一次。下一次更改将于⟦日期⟧提供。",
+      "accountName": "帐户名称",
+      "bank": {
+        "zenith": "真力时银行",
+        "firstBank": "第一银行"
+      },
+      "passwordUpdate": "密码更新",
+      "passwordUpdateHint": "选择一个您不在其他地方使用的强密码。",
+      "currentPassword": "当前密码",
+      "newPassword": "新密码",
+      "confirmPassword": "确认新密码",
+      "passwordMismatch": "新密码不匹配。",
+      "updatePassword": "更新密码",
+      "passwordUpdated": "密码已更新。",
+      "saveChanges": "保存更改",
+      "saved": "已保存。",
+      "rejected": {
+        "title": "申请未获批准",
+        "noReason": "管理员未批准您的申请。更正您的详细信息和下面的文件，然后重新提交。",
+        "resubmit": "重新提交审核",
+        "resubmitting": "正在重新提交...",
+        "resubmitted": "重新提交。管理员将再次审核您的申请。",
+        "resubmitFailed": "无法重新提交。再试一次。"
+      },
+      "cac": {
+        "title": "CAC注册",
+        "hint": "已根据 CAC 注册表进行检查。您可以更正这些详细信息，直到检查通过。",
+        "number": "CAC注册号",
+        "companyType": "公司类型",
+        "companyTypePlaceholder": "选择公司类型",
+        "status": {
+          "verified": "已验证",
+          "failed": "未验证",
+          "unverified": "等待检查"
+        },
+        "verifiedAs": "与 CAC 注册表上的{name} 匹配。",
+        "failedHint": "CAC 注册表与这些详细信息不匹配。更正它们并保存以再次检查。",
+        "pendingHint": "保存后会重新运行 CAC 检查。稍后刷新即可看到结果。",
+        "lockedHint": "已验证的详细信息无法在此处更改。如果出现问题，请联系支持人员。"
+      },
+      "documents": {
+        "title": "文件及验证",
+        "subtitle": "企业级文件适用于您的整个账户。每条车源信息在发布前均需提供相应的车辆文件。",
+        "businessSection": "商务文件",
+        "business": {
+          "cac": "公司注册证书（CAC）"
+        },
+        "uploadedMeta": "上传于 [[[日期]]] · [[[文件名]]]",
+        "view": "查看",
+        "vehicleSection": "车辆文件 · [[[数量]]] 条信息",
+        "vehicleLegend": "保险 · 车辆年检 · 所有权证明",
+        "type": {
+          "insurance": "保险单",
+          "roadworthiness": "车辆年检合格证",
+          "ownership": "所有权证明"
+        },
+        "status": {
+          "verified": "已验证",
+          "rejected": "被拒绝",
+          "pending": "待办的",
+          "notUploaded": "未上传"
+        },
+        "listingStatus": {
+          "allVerified": "全部已验证",
+          "actionNeeded": "需要采取行动",
+          "notStarted": "未开始",
+          "inProgress": "进行中"
+        },
+        "reupload": "重新上传",
+        "upload": "上传",
+        "rejection": {
+          "plateMismatch": "文件名称与注册车牌号不符。请重新上传与 ABJ-771-KD 匹配的车辆牌照。"
+        }
+      }
+    },
+    "support": {
+      "helpBanner": "向 Synkafrica 供应商团队提出投诉或请求帮助。我们通常会在 1-2 个工作日内回复。",
+      "helpBannerEmail": "更新将发送至{email}。",
+      "openTickets": "{count} 开放门票",
+      "tabs": {
+        "label": "支持部分"
+      },
+      "createTicket": "创建支持票",
+      "createTicketHint": "详细描述您的问题，以便我们快速解决。",
+      "subject": "主题",
+      "subjectPlaceholder": "您的问题的简要摘要",
+      "category": {
+        "booking": "预订问题",
+        "payout": "支付与收入",
+        "listing": "列表和可用性",
+        "account": "帐户和个人资料",
+        "complaint": "抱怨",
+        "other": "其他"
+      },
+      "priority": {
+        "low": "低的",
+        "medium": "中等的",
+        "high": "高的",
+        "urgent": "紧迫的"
+      },
+      "priorityHint": "仅针对时间敏感的预订或付款问题使用“紧急”。",
+      "bookingReference": "预订参考",
+      "bookingReferencePlaceholder": "例如VB-3 或订单号（可选）",
+      "description": "描述",
+      "descriptionPlaceholder": "解释发生了什么、发生的时间以及您需要什么结果。",
+      "submitTicket": "提交票证",
+      "ticketSubmitted": "工单⟦号码⟧已提交。我们的团队将尽快跟进。",
+      "responseTime": "必填字段标有 *。",
+      "yourTickets": "您的门票",
+      "yourTicketsHint": "跟踪您提交的投诉和支持请求。",
+      "filter": {
+        "label": "按状态过滤工单",
+        "all": "全部"
+      },
+      "status": {
+        "open": "打开",
+        "inProgress": "进行中",
+        "resolved": "已解决",
+        "closed": "关闭"
+      },
+      "updated": "已更新",
+      "created": "已创建",
+      "emptyTickets": "没有票证与此过滤器匹配。",
+      "loading": "正在加载门票...",
+      "loadFailed": "无法加载您的门票。请再试一次。",
+      "submitFailed": "无法提交您的票证。请再试一次。",
+      "viewConversation": "查看对话",
+      "backToTickets": "返回门票",
+      "conversation": "对话",
+      "you": "你",
+      "supportTeam": "支持团队",
+      "replyPlaceholder": "输入您的回复...",
+      "sendReply": "发送回复",
+      "sending": "正在发送...",
+      "replyFailed": "无法发送您的回复。请再试一次。"
+    },
+    "earnings": {
+      "availableBalance": "可用余额",
+      "lifetimeEarnings": "终身收入",
+      "transactionHistory": "交易记录",
+      "withdrawFunds": "提取资金",
+      "amountToWithdraw": "提取金额",
+      "selectBankAccount": "选择银行账户",
+      "payoutAccount": "支付账户",
+      "noBankAccount": "尚未添加付款帐户。",
+      "addBankAccount": "在商家资料中添加银行账户 →",
+      "availableHint": "可用的：",
+      "processingNote": "提款将在 1-2 个工作日内处理。",
+      "paymentFlowTitle": "付款和提款政策",
+      "paymentFlowInstant": "₦200,000及以下的提款将在确认后自动处理。",
+      "paymentFlowApproval": "₦200,000 以上的提款需要超级管理员批准。",
+      "paymentFlowAuth": "提款时，金额超过₦200,000 时需要提供交易 PIN 码和 OTP。",
+      "withdrawalModal": {
+        "title": "确认提现",
+        "pin": "交易密码",
+        "otp": "一次性密码",
+        "sendOtp": "发送一次性密码",
+        "submit": "确认提现",
+        "pendingApproval": "此撤回需要超级管理员批准。一旦获得批准，您将收到通知。",
+        "cancel": "取消"
+      },
+      "status": {
+        "completed": "完全的",
+        "pending": "待办的",
+        "failed": "失败的"
+      },
+      "transaction": {
+        "bookingPayment": "预订付款",
+        "withdrawal": "提款",
+        "platformFee": "平台费",
+        "refund": "退款"
+      },
+      "bank": {
+        "gtbank": "GT银行",
+        "access": "存取银行"
+      },
+      "duration": {
+        "label": "盈利期",
+        "daily": "日常的",
+        "weekly": "每周",
+        "monthly": "每月",
+        "all": "全部"
+      },
+      "commissionSplit": "佣金分割",
+      "commissionSplitHint": "预订收入将 ⟦供应商⟧% 分配给您，将 ⟦平台⟧% 分配给 Synkafrica。",
+      "vendorShare": "你的分享",
+      "platformShare": "平台费",
+      "grossRevenue": "总收入",
+      "downloadStatements": "下载声明",
+      "emptyTransactions": "此期间无交易。",
+      "statement": {
+        "date": "日期",
+        "title": "标题",
+        "description": "描述",
+        "type": "类型",
+        "amount": "数量",
+        "status": "地位"
+      }
+    },
+    "listings": {
+      "detail": {
+        "back": "返回列表",
+        "backToBookings": "返回预订",
+        "heading": "房源详情",
+        "hint": "此列表的完整预览，包括媒体、详细信息、定价和文档。",
+        "status": "地位",
+        "category": "类别",
+        "rating": "等级",
+        "notFound": "未找到列表。"
+      },
+      "bookingAvailability": "预订可用性",
+      "filter": {
+        "allCategories": "所有类别",
+        "allStatuses": "所有状态",
+        "statusLabel": "地位",
+        "status": {
+          "live": "居住",
+          "pending": "待办的",
+          "draft": "草稿",
+          "paused": "已暂停"
+        },
+        "empty": "没有列表符合您的过滤条件。"
+      },
+      "status": {
+        "pendingApproval": "待批准",
+        "paused": "已暂停"
+      },
+      "availability": {
+        "selectListing": "上市",
+        "modeAvailable": "标记可用",
+        "modeBlock": "阻止日期",
+        "modeAvailableHint": "单击日期即可打开它们进行预订。再次单击可删除可用性。",
+        "modeBlockHint": "单击日期以阻止预订。再次单击即可解除阻止。",
+        "legendAvailable": "可用的",
+        "legendBlocked": "被阻止",
+        "legendSelected": "已选择",
+        "available": "可用的",
+        "blocked": "被阻止",
+        "timeSlots": "时段",
+        "capacity": "容量",
+        "selectDayHint": "在日历上选择一个日期来配置时间段。",
+        "selectAvailableDay": "将此日期标记为可配置时间段。",
+        "blockedDayMessage": "该日期已被阻止。解锁它以配置时隙。",
+        "defaultCapacity": "默认容量",
+        "defaultCapacityHint": "应用于新的可用日期和启用的时间段。",
+        "leadTime": "交货时间",
+        "leadTimeHint": "客人预订前至少需要提前通知。",
+        "leadTimeUnitHours": "时间",
+        "leadTimeUnitDays": "天"
+      },
+      "calendar": {
+        "sun": "太阳",
+        "mon": "周一",
+        "tue": "星期二",
+        "wed": "周三",
+        "thu": "星期四",
+        "fri": "周五",
+        "sat": "星期六",
+        "previousMonth": "上个月",
+        "nextMonth": "下个月"
+      }
+    },
+    "bookings": {
+      "tab": {
+        "upcoming": "即将推出",
+        "past": "过去的",
+        "cancelled": "取消",
+        "declined": "拒绝"
+      },
+      "stats": {
+        "awaitingConfirmation": "等待确认",
+        "upcomingConfirmed": "即将推出（已确认）",
+        "earningsThisMonth": "本月收益",
+        "responseRate": "回复率（30 天）"
+      },
+      "searchPlaceholder": "按客人姓名或预订 ID 搜索...",
+      "allListings": "所有房源",
+      "viewModeLabel": "预订视图",
+      "view": {
+        "list": "列表",
+        "calendar": "日历"
+      },
+      "calendarComingSoon": "日历视图即将推出。",
+      "respondWithin": "在⟦时间⟧内回复",
+      "paymentSecured": "付款有保障",
+      "messageGuest": "留言嘉宾",
+      "viewListing": "查看列表",
+      "cancelBooking": "取消预订",
+      "dateRangeLabel": "按日期范围过滤",
+      "dateRange": {
+        "all": "所有时间",
+        "pastMonth": "过去一个月",
+        "past3Months": "过去 3 个月",
+        "past6Months": "过去 6 个月",
+        "pastYear": "去年"
+      },
+      "empty": {
+        "upcoming": "此期间没有即将进行的预订。",
+        "past": "此期间没有过去的预订。",
+        "cancelled": "此期间没有取消预订。",
+        "declined": "此期间没有拒绝预订。"
+      },
+      "declineModal": {
+        "title": "拒绝预订",
+        "subtitle": "告诉⟦客人⟧为什么预订⟦参考⟧被拒绝。",
+        "reasonLabel": "拒绝原因",
+        "reasonPlaceholder": "解释为什么您不能接受此预订...",
+        "cancel": "取消",
+        "submit": "拒绝预订"
+      },
+      "declineReason": "拒绝原因",
+      "deliveryAddress": "送货地址",
+      "pickupAddress": "取货地址",
+      "carMode": {
+        "selfDrive": "自驾",
+        "withDriver": "带司机"
+      },
+      "calendar": {
+        "selectedDay": "当日{count}预订",
+        "noBookings": "当天没有预约。"
+      },
+      "pendingConfirmation": "{count} 预订等待您的确认。",
+      "specialRequests": "特殊要求",
+      "confirm": "确认",
+      "decline": "衰退",
+      "markComplete": "标记为完成",
+      "status": {
+        "awaitingConfirmation": "等待确认",
+        "confirmed": "确认的",
+        "declined": "拒绝",
+        "completed": "完全的",
+        "cancelled": "取消"
+      }
+    },
+    "addListing": {
+      "title": "添加新列表",
+      "editTitle": "编辑列表",
+      "loadError": "无法加载此列表。请再试一次。",
+      "subtitle": "创建新列表并开始吸引更多客户。",
+      "backToListings": "← 返回列表",
+      "backToListing": "← 返回列表",
+      "progressLabel": "上市进度",
+      "steps": {
+        "carDetails": "汽车详情",
+        "accommodationDetails": "住宿详情",
+        "experienceDetails": "体验详情",
+        "media": "媒体",
+        "pricing": "定价",
+        "documents": "文件",
+        "review": "审核并发布"
+      },
+      "whatAreYouListing": "你列出了什么？",
+      "category": {
+        "car": {
+          "title": "车",
+          "description": "列出可供出租的汽车。"
+        },
+        "accommodation": {
+          "title": "住宿",
+          "description": "列出一个住宿地点。"
+        },
+        "experience": {
+          "title": "经验",
+          "description": "列出一项活动或游览。"
+        }
+      },
+      "carDetailsHeading": "汽车详情",
+      "accommodationDetailsHeading": "住宿详情",
+      "experienceDetailsHeading": "体验详情",
+      "experienceType": "经验类型/类别",
+      "experienceTypeSelect": "选择体验类型",
+      "experienceLocationPlaceholder": "例如莱基, 拉各斯, 尼日利亚",
+      "experienceHighlights": "亮点/简短描述",
+      "experienceHighlightsHint": "对客人将要做的事情和体验的简短而引人入胜的总结。",
+      "experienceHighlightsPlaceholder": "描述这次体验、它的独特之处以及为什么客人会喜欢它。",
+      "experienceAvailabilityHeading": "可用性",
+      "experienceAvailabilityHint": "当您的体验可用时进行设置。",
+      "operatingDays": "营业日",
+      "startTime": "开始时间",
+      "endTime": "结束时间",
+      "experienceScheduleWeekly": "每周重复一次",
+      "experienceScheduleWeeklyHint": "每周在特定日期提供此体验。",
+      "experienceScheduleDateRange": "自定义日期范围",
+      "experienceScheduleDateRangeHint": "为此体验设置特定的日期范围。",
+      "experienceDateRangeHeading": "选择日期范围",
+      "experienceDateRangeHint": "选择提供此体验的开始日期和结束日期。",
+      "experienceDateRangeStart": "开始日期",
+      "experienceDateRangeEnd": "结束日期",
+      "additionalInfoSection": "附加信息",
+      "whatsIncludedHint": "列出体验中包含的内容。",
+      "includesItemsPlaceholder": "例如设备、指南、安全装备、瓶装水",
+      "whatToBring": "携带什么/穿什么",
+      "whatToBringHint": "让客人知道要带什么或穿什么。",
+      "whatToBringPlaceholder": "例如舒适的衣服、封闭的鞋子、防晒霜",
+      "tagInputFooter": "添加每个项目并按 Enter",
+      "additionalInformationHeading": "附加信息",
+      "additionalInformationHint": "为您的客人添加任何其他有用的信息。",
+      "additionalInformationPlaceholder": "例如年龄限制、健康要求、取消政策、集合点详细信息",
+      "weekday": {
+        "mon": "周一",
+        "tue": "星期二",
+        "wed": "周三",
+        "thu": "星期四",
+        "fri": "周五",
+        "sat": "星期六",
+        "sun": "太阳"
+      },
+      "carName": "车名",
+      "carNamePlaceholder": "例如丰田汉兰达 2024",
+      "carModel": "汽车型号/变型",
+      "carModelPlaceholder": "例如2.4L 有限全轮驱动",
+      "transmission": {
+        "automatic": "自动的",
+        "manual": "手动的"
+      },
+      "year": "年",
+      "yearPlaceholder": "例如2024年",
+      "comesWithDriver": "附带驱动程序吗？",
+      "yes": "是的",
+      "no": "不",
+      "shortDescription": "简短描述",
+      "carDescriptionPlaceholder": "描述汽车、状况以及承租人所包含的内容。",
+      "perksFeatures": "福利和特点",
+      "perksPlaceholder": "添加每项福利并按 Enter 键",
+      "propertyName": "物业名称",
+      "accommodationName": "住宿名称",
+      "accommodationNamePlaceholder": "例如莱基海景套房酒店",
+      "propertyNamePlaceholder": "例如莱基花园套房酒店",
+      "propertyType": "物业类型",
+      "propertyTypeSelect": "选择房产类型",
+      "propertyTypePlaceholder": "例如公寓、别墅、酒店",
+      "address": "地址",
+      "addressPlaceholder": "完整的房产地址",
+      "accommodationLocationPlaceholder": "例如莱基一期，拉各斯，尼日利亚",
+      "accommodationMaxGuests": "最大客人数（酒店）",
+      "accommodationMaxGuestsPlaceholder": "例如12",
+      "checkInTime": "入住时间",
+      "checkOutTime": "退房时间",
+      "availability": "可用性",
+      "availabilityAlways": "随时可用",
+      "availabilityDateRange": "设置日期范围",
+      "availabilityHint": "您还可以在发布后管理日历中的特定日期。",
+      "popularPerks": "热门福利",
+      "popularPerksHint": "选择您酒店提供的设施。",
+      "viewAllPerks": "查看所有福利",
+      "showLessPerks": "显示较少",
+      "propertyOwner": "您是业主吗？",
+      "propertyOwnerYes": "是的，我是主人",
+      "propertyOwnerNo": "不，我是授权代理人",
+      "bedrooms": "卧室",
+      "bathrooms": "浴室",
+      "accommodationDescriptionPlaceholder": "简要描述您的住宿、氛围、附近的景点以及它的特别之处。",
+      "amenities": "便利设施",
+      "amenitiesPlaceholder": "添加每项设施并按 Enter",
+      "experienceName": "体验名称",
+      "experienceNamePlaceholder": "例如彩弹射击冒险拉各斯",
+      "location": "地点",
+      "locationPlaceholder": "例如维多利亚岛, 拉各斯",
+      "duration": "期间",
+      "durationPlaceholder": "例如2小时",
+      "maxGuests": "最多入住人数",
+      "experienceDescriptionPlaceholder": "描述活动、行程以及客人应该期待什么。",
+      "whatsIncluded": "包含什么",
+      "includesPlaceholder": "添加每个包含项并按 Enter",
+      "mediaHeading": "列表图片",
+      "mediaHint": "上传清晰的照片或视频。最多 8 个文件。",
+      "uploadImages": "将图像或视频拖放到此处，或单击浏览",
+      "uploadImagesHint": "PNG、JPG、WEBP 或 MP4（最大 10MB）",
+      "removeImage": "删除图像",
+      "mediaSkippedUnsupported": "跳过了{count} 个文件 — 格式不受支持。使用 PNG、JPG、WEBP 或 MP4（尚不支持 iPhone HEIC 照片）。",
+      "mediaSkippedTooLarge": "跳过了{count} 个文件 — 每个文件必须小于 10MB。",
+      "mediaPreviewFailed": "预览不可用",
+      "mediaUploading": "正在上传...",
+      "mediaUploadFailed": "上传失败",
+      "pickupDeliveryHeading": "提货或送货",
+      "pickupDeliveryQuestion": "你们提供哪些移交选项？选择所有适用的选项。",
+      "pickupAddress": "取货地址",
+      "pickupAddressPlaceholder": "输入客人可以取车的地址",
+      "clientPickup": "客户接送",
+      "clientPickupHint": "客户从您所在的位置取车。",
+      "deliveryDropoff": "交付/投递",
+      "deliveryDropoffHint": "您将汽车交付给客户。",
+      "carPricingHeading": "租金定价",
+      "price12hr": "12 小时租赁 (NGN)",
+      "price24hr": "24 小时租赁 (NGN)",
+      "priceMultiDay": "多天（每天，NGN）",
+      "driverAddonPrice": "司机附加价格 (NGN)",
+      "selfDriveNoPrice": "选择自驾 — 无需司机附加价格。",
+      "deliveryFee": "送货/送机费 (NGN)",
+      "clientPickupNoPrice": "选择客户取货——无需运费。",
+      "pricingLocationHint": "您可以在下一步中提供有关取货或送货地点的更多详细信息。",
+      "accommodationPricingHeading": "保持定价",
+      "roomTypesPricing": "房间类型和价格",
+      "roomTypesPricingHint": "添加您提供的不同类型的房间。",
+      "addRoomType": "添加房型",
+      "addRoomTypeModalTitle": "添加房型",
+      "editRoomTypeModalTitle": "编辑房型",
+      "saveRoomType": "保存房型",
+      "roomType": "房型",
+      "roomTypePlaceholder": "例如豪华套房",
+      "roomDescription": "描述",
+      "roomDescriptionPlaceholder": "简单描述一下该房型",
+      "roomMaxGuests": "最多客人数",
+      "roomMaxGuestsPlaceholder": "例如2",
+      "roomPricePerNight": "价格（每晚）",
+      "roomTypesEmptyTitle": "尚未添加房型",
+      "roomTypesEmptyHint": "单击“添加房间类型”即可开始。",
+      "actions": "行动",
+      "edit": "编辑",
+      "delete": "删除",
+      "nightlyRate": "每晚价格 (NGN)",
+      "cleaningFee": "清洁费（NGN）",
+      "experiencePricingHeading": "定价",
+      "experiencePricingHint": "设置您的票价。",
+      "singleTicketPrice": "单程票价",
+      "singleTicketPriceHint": "一人价",
+      "groupTicketPrice": "团体票价（起价）（可选）",
+      "groupTicketPriceHint": "团体每人价格",
+      "minGroupSizeOptional": "最小团体人数（可选）",
+      "maxGroupSizeOptional": "最大团体人数（可选）",
+      "minGroupSizePlaceholder": "例如5",
+      "maxGroupSizePlaceholder": "例如20",
+      "optional": "选修的",
+      "review": {
+        "groupSize": "团体规模",
+        "category": "类别",
+        "title": "标题",
+        "images": "图片",
+        "documents": "文件已上传",
+        "description": "描述",
+        "gpsConfirmed": "GPS追踪装置已确认"
+      },
+      "pricePerPerson": "每人价格 (NGN)",
+      "minGroupSize": "最小团体人数",
+      "documents": {
+        "stepTitle": "文件上传",
+        "pageTitle": "上传所需文件",
+        "pageIntro": "请上传必要的文件以验证您的汽车列表。",
+        "pageSubtitle": "上传清晰、有效的文件以建立信任并更快地让您的列表获得批准。",
+        "intro": {
+          "cars": "在您的汽车列表上线之前，请上传以下文件。",
+          "accommodations": "上传此住宿列表的所有权或代理授权文件。",
+          "experiences": "发布前上传您的业务验证文件。"
+        },
+        "proofOfOwnership": "所有权证明",
+        "proofOfOwnershipHint": "上传车辆所有权文件（例如汽车日志或购买收据）。",
+        "roadworthiness": "适航证书",
+        "roadworthinessHint": "上传车辆的有效道路适航证书。",
+        "insurance": "保险",
+        "insuranceDocument": "保险文件",
+        "insuranceHint": "上传当前车辆保险凭证。",
+        "cac": "CAC注册",
+        "cacRegistration": "CAC注册证书",
+        "cacHint": "上传您的企业名称注册 (CAC) 证书。",
+        "accommodationOwnershipHint": "财产的产权契据、租约或所有权证明",
+        "agentAuthorization": "代理授权书",
+        "agentAuthorizationHint": "业主签署的授权您列出的信件",
+        "agentProofOfAddress": "代理人地址证明",
+        "agentProofOfAddressHint": "显示您地址的公用事业账单或银行对账单",
+        "addressPhotos": "与所列地址相符的照片",
+        "addressPhotosHint": "清楚显示所列地址的房产的照片",
+        "gpsAcknowledgment": "我确认这辆车配备了有效的 GPS 跟踪设备，如果发现这是错误的，我将承担责任。",
+        "requiredBadge": "必需的",
+        "uploadPrompt": "点击上传或拖放",
+        "uploadFormats": "PDF、JPG、PNG，最大 10MB",
+        "safetyTitle": "您的文件是安全的",
+        "safetyText": "所有文件均被安全存储并仅用于验证目的。它们不会与公众分享。",
+        "submitForReview": "提交审核",
+        "submitHint": "您的列表将接受审核，一旦获得批准，您将收到通知。",
+        "untitledListing": "无标题列表",
+        "sidebar": {
+          "listingPreview": "房源预览",
+          "edit": "编辑",
+          "carsListing": "汽车列表",
+          "accommodationsListing": "住宿清单",
+          "experiencesListing": "经验清单",
+          "comesWithDriver": "配有驱动程序",
+          "selfDrive": "自驾",
+          "pricing": "定价",
+          "halfDay": "半天",
+          "fullDay": "全天",
+          "extraHour": "加时赛",
+          "progress": "上市进度"
+        }
+      },
+      "documentsHeading": "所需文件",
+      "uploadDocument": "上传文件",
+      "removeFile": "消除",
+      "reviewHeading": "查看您的列表",
+      "reviewHint": "发布前请检查以下详细信息。",
+      "cancel": "取消",
+      "back": "后退",
+      "saveDraft": "另存为草稿",
+      "draftSaved": "草稿已保存",
+      "draftSaveFailed": "无法保存您的草稿。请再试一次。",
+      "saveContinue": "保存并继续",
+      "completeRequiredFields": "填写必填字段：⟦字段⟧",
+      "publish": "发布清单",
+      "publishWaitForUploads": "请稍候 — 您的文档仍在上传中。",
+      "success": {
+        "title": "清单已提交审核",
+        "message": "您的列表正在接受审核。获得批准后，您将在 2-3 个工作日内收到确认电子邮件。",
+        "addAnother": "添加另一个列表",
+        "backToListings": "返回我的列表"
+      },
+      "categoryChooseHint": "选择您提供的服务类型。该设置在您保存第一个列表时设置一次，以后无法更改。",
+      "categoryLockedHint": "您的供应商帐户仅针对⟦类别⟧注册。请联系支持人员更改您的服务类别。"
+    }
+  }
+}

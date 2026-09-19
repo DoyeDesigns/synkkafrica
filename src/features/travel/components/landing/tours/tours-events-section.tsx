@@ -1,11 +1,15 @@
 "use client";
 
 import { ChevronDown, Search } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 
 import { TourEventCard } from "@/features/travel/components/landing/tours/tour-event-card";
+import { locationsOverlap } from "@/features/travel/data/location-match";
 import {
+  ALL_EVENT_LOCATIONS,
+  BROWSE_EVENTS_SECTION_ID,
   TOUR_EVENT_CATEGORIES,
   TOUR_EVENT_EXPERIENCES,
   TOUR_EVENT_LOCATIONS,
@@ -49,11 +53,20 @@ function FilterPill({
 export function ToursEventsSection() {
   const t = useTranslation();
   const { labelOption } = useFilterOptionLabel();
-  const [location, setLocation] = useState<string>(TOUR_EVENT_LOCATIONS[0]);
+  const searchParams = useSearchParams();
+  const eventLocation = searchParams.get("eventLocation")?.trim() ?? "";
+  const [location, setLocation] = useState(
+    () => eventLocation || ALL_EVENT_LOCATIONS,
+  );
   const [category, setCategory] = useState<string>(TOUR_EVENT_CATEGORIES[0]);
   const [experience, setExperience] = useState<string>(TOUR_EVENT_EXPERIENCES[0]);
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+  const [prevEventLocation, setPrevEventLocation] = useState(eventLocation);
+  if (eventLocation !== prevEventLocation) {
+    setPrevEventLocation(eventLocation);
+    setLocation(eventLocation || ALL_EVENT_LOCATIONS);
+  }
 
   // Live experiences (admin-approved). Shares the ["experiences"] cache.
   const { data } = useQuery({
@@ -69,7 +82,9 @@ export function ToursEventsSection() {
     return events.filter((event) => {
       // Treat the first (default) option of each filter as "all".
       const matchesLocation =
-        location === TOUR_EVENT_LOCATIONS[0] || event.city === location;
+        location === ALL_EVENT_LOCATIONS ||
+        locationsOverlap(location, event.city) ||
+        locationsOverlap(location, event.location);
       const matchesCategory =
         category === TOUR_EVENT_CATEGORIES[0] || event.category === category;
       const matchesExperience =
@@ -95,8 +110,29 @@ export function ToursEventsSection() {
     setVisibleCount(INITIAL_VISIBLE_COUNT);
   }
 
+  const locationOptions = useMemo(() => {
+    const live = events
+      .map((event) => event.city || event.location)
+      .filter((value) => value.trim().length > 0);
+    return Array.from(
+      new Set([
+        ALL_EVENT_LOCATIONS,
+        ...live,
+        ...TOUR_EVENT_LOCATIONS,
+        ...(location && location !== ALL_EVENT_LOCATIONS ? [location] : []),
+      ]),
+    );
+  }, [events, location]);
+
+  useEffect(() => {
+    if (!eventLocation) return;
+    document
+      .getElementById(BROWSE_EVENTS_SECTION_ID)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [eventLocation]);
+
   return (
-    <section className="w-full mt-20">
+    <section id={BROWSE_EVENTS_SECTION_ID} className="w-full mt-20 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 pb-10 sm:px-6 lg:px-8 lg:pb-12">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-wrap items-center gap-2 text-sm font-bold font-satoshi text-foreground">
@@ -108,9 +144,11 @@ export function ToursEventsSection() {
                 onChange={(event) => setLocation(event.target.value)}
                 className="h-11 appearance-none rounded-[25px] border border-[#D0D0D0] bg-[#A2A2A2]/10 px-4 pr-9 text-sm font-medium font-satoshi text-foreground outline-none focus:border-[#D85A30]"
               >
-                {TOUR_EVENT_LOCATIONS.map((option) => (
+                {locationOptions.map((option) => (
                   <option key={option} value={option}>
-                    {option}
+                    {option === ALL_EVENT_LOCATIONS
+                      ? t("landing.tours.events.allLocations")
+                      : option}
                   </option>
                 ))}
               </select>

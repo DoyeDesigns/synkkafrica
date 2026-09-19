@@ -5,10 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-import {
-  getTourAttractionResultsHref,
-  TOUR_ATTRACTIONS,
-} from "@/features/travel/data/tours-landing";
+import { getBrowseEventsHref } from "@/features/travel/data/tours-landing";
+import { useExperienceDestinationCards } from "@/features/travel/hooks/use-experience-destination-cards";
 import { useTranslation } from "@/hooks/use-translation";
 
 const MOBILE_INITIAL_VISIBLE = 6;
@@ -16,8 +14,12 @@ const MOBILE_INITIAL_VISIBLE = 6;
 export function ToursAttractionsSection() {
   const t = useTranslation();
   const [showAll, setShowAll] = useState(false);
-  const attractions = TOUR_ATTRACTIONS;
+  const attractions = useExperienceDestinationCards();
   const hasMoreBelowLg = attractions.length > MOBILE_INITIAL_VISIBLE;
+
+  if (attractions.length === 0) {
+    return null;
+  }
 
   return (
     <section className="w-full">
@@ -29,15 +31,15 @@ export function ToursAttractionsSection() {
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {attractions.map((attraction, index) => (
             <Link
-              key={attraction.id}
-              href={getTourAttractionResultsHref(attraction.id)}
+              key={attraction.location}
+              href={getBrowseEventsHref(attraction.location)}
               className={`group relative aspect-3/4 overflow-hidden rounded-2xl${
                 !showAll && index >= MOBILE_INITIAL_VISIBLE ? " hidden lg:block" : ""
               }`}
             >
               <Image
                 src={attraction.image}
-                alt={attraction.name}
+                alt={attraction.location}
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
@@ -47,10 +49,10 @@ export function ToursAttractionsSection() {
 
               <div className="absolute bottom-4 left-4 right-4">
                 <p className="text-base font-bold font-satoshi text-white underline decoration-white underline-offset-2">
-                  {attraction.name}
+                  {attraction.location}
                 </p>
                 <p className="mt-1 text-sm font-medium font-satoshi text-white/90">
-                  {t("landing.activitiesCount", { count: attraction.activityCount })}
+                  {t("landing.activitiesCount", { count: attraction.count })}
                 </p>
               </div>
             </Link>

@@ -34,7 +34,9 @@ function CarBookingPaymentPageContent({ car }: CarBookingPaymentPageProps) {
     amount: number;
     currency: string;
   } | null>(null);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(
+    () => parseBookingParams(searchParams).email ?? "",
+  );
   const [error, setError] = useState<string | null>(null);
   const [paying, setPaying] = useState<false | "PAYSTACK" | "STRIPE">(false);
 
@@ -53,6 +55,8 @@ function CarBookingPaymentPageContent({ car }: CarBookingPaymentPageProps) {
       dropoffDate,
       driverRequested: p.carRentalMode === "with_driver",
       delivery: p.requestDelivery,
+      guestFirstName: p.guestFirstName,
+      specialRequests: p.specialRequests,
     })
       .then((result) => {
         createBookingConfirmation({

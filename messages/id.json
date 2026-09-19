@@ -1,0 +1,2483 @@
+{
+  "nav": {
+    "downloadApp": "Unduh Aplikasi",
+    "becomeVendor": "Menjadi Mitra Penjual",
+    "chooseCurrency": "Pilih Mata Uang",
+    "signInCreate": "Masuk | Buat Akun",
+    "searchCurrency": "Cari Mata Uang",
+    "signOut": "Keluar",
+    "myAccount": "Akun Saya",
+    "bookingsTrips": "Pemesanan & Perjalanan",
+    "saved": "Tersimpan",
+    "reviews": "Ulasan"
+  },
+  "common": {
+    "bookNow": "Pesan Sekarang",
+    "continue": "Lanjutkan",
+    "loading": "Sedang dimuat…",
+    "startingFrom": "Mulai dari",
+    "perDay": "Per hari",
+    "budget": "Anggaran",
+    "seeMore": "Lihat lebih lanjut",
+    "showMore": "Tampilkan lebih banyak",
+    "reviews": "Ulasan",
+    "available": "Tersedia",
+    "selfDriveAvailable": "Tersedia layanan sewa mobil tanpa sopir",
+    "excludingTaxes": "tidak termasuk pajak dan biaya",
+    "select": "Pilih",
+    "search": "Cari",
+    "edit": "Sunting",
+    "cancel": "Batalkan",
+    "notifications": "Pemberitahuan",
+    "contactSupport": "Hubungi layanan dukungan",
+    "signOut": "Keluar",
+    "noReviewsYet": "Belum ada ulasan",
+    "viewPhoto": "Lihat foto {indeks}",
+    "photoViewer": "Penampil foto",
+    "closePhotoViewer": "Tutup penampil foto",
+    "previousPhoto": "Foto sebelumnya",
+    "nextPhoto": "Foto berikutnya",
+    "photoOfTotal": "[[[saat ini]]] dari {total}",
+    "secured": "Aman"
+  },
+  "hero": {
+    "headline": "Nikmati petualangan di Afrika dengan penuh keyakinan",
+    "tab": {
+      "accommodations": "Akomodasi",
+      "flights": "Penerbangan",
+      "carRentals": "Penyewaan Mobil",
+      "tours": "Tur & Pengalaman"
+    },
+    "search": "Cari",
+    "clearFilter": "Hapus Filter",
+    "accommodations": {
+      "destination": "Tujuan Anda",
+      "destinationStay": "{jumlah} tinggal",
+      "destinationStays": "{jumlah} orang tinggal",
+      "checkIn": "Tanggal Check-in",
+      "checkAvailability": "Periksa Ketersediaan",
+      "propertyType": "Jenis properti",
+      "oneRoom": "1 Kamar",
+      "oneGuest": "1 Tamu",
+      "roomsCount": "{jumlah} Kamar",
+      "guestsCount": "{count} Tamu",
+      "checkOut": "Lihat Tanggal"
+    },
+    "flights": {
+      "roundTrip": "Perjalanan Pulang-Pergi",
+      "oneWay": "Satu arah",
+      "directFlight": "Penerbangan Langsung",
+      "economyClass": "Kelas Ekonomi",
+      "premiumEconomyClass": "Kelas Ekonomi Premium",
+      "businessClass": "Kelas Bisnis",
+      "firstClass": "Kelas Satu",
+      "onePassenger": "1 Penumpang",
+      "passengersCount": "{jumlah} Penumpang",
+      "fromCity": "Dari | Pilih Kota",
+      "toCity": "Ke | Pilih Kota",
+      "departureDate": "Tanggal keberangkatan",
+      "returnDate": "Tanggal pengembalian",
+      "departing": "Berangkat",
+      "returning": "Kembali",
+      "nonstop": "Tanpa henti",
+      "oneStop": "Satu tempat",
+      "multipleStops": "Beberapa pemberhentian"
+    },
+    "common": {
+      "addDate": "Tambahkan tanggal",
+      "selectDateRange": "Pilih tanggal keberangkatan dan kepulangan",
+      "selectDate": "Pilih tanggal",
+      "days": "Hari",
+      "nights": "Malam-malam"
+    },
+    "carRentals": {
+      "searchCarType": "Cari Jenis Mobil",
+      "filterCarType": "Saring berdasarkan jenis mobil",
+      "allCarTypes": "Semua jenis",
+      "selfDrive": "Mengemudi sendiri",
+      "price": "₦ Harga",
+      "pickupDate": "Tanggal pengambilan",
+      "destinationCar": "{jumlah} mobil",
+      "destinationCars": "{jumlah} mobil"
+    },
+    "tours": {
+      "searchPlaceholder": "Cari Lokasi, tempat wisata, & pengalaman",
+      "startDate": "Tanggal mulai",
+      "destinationExperience": "{count} pengalaman",
+      "destinationExperiences": "{jumlah} pengalaman"
+    },
+    "location": "Lokasi"
+  },
+  "footer": {
+    "brandDescription": "SynkAfrica adalah platform perjalanan dan pengalaman premium all-in-one yang sedang berkembang, yang dirancang untuk menghubungkan orang-orang di seluruh dunia dengan inti ekosistem perjalanan dan gaya hidup Afrika.",
+    "explore": {
+      "title": "Jelajahi SynkAfrica",
+      "hotels": "Hotel & Akomodasi",
+      "carRentals": "Penyewaan Mobil",
+      "flights": "Pemesanan penerbangan",
+      "restaurants": "Tempat Makan & Restoran"
+    },
+    "support": {
+      "title": "Dukungan",
+      "contact": "Hubungi layanan dukungan",
+      "changeBooking": "Ubah atau batalkan pemesanan Anda",
+      "paymentOptions": "Pilihan pembayaran",
+      "receipt": "Lihat atau cetak tanda terima pemesanan Anda"
+    },
+    "community": {
+      "title": "Komunitas",
+      "instagram": "Akun Instagram kami",
+      "facebook": "Facebook",
+      "news": "Berita Terkini"
+    },
+    "vendor": {
+      "title": "Menjadi Mitra Penjual",
+      "listCar": "Daftarkan Mobil Anda",
+      "listService": "Daftarkan layanan Anda",
+      "contact": "Hubungi kami"
+    },
+    "appPromo": {
+      "headline": "Nikmati pengalaman SynkAfrica secara lengkap.",
+      "cta": "Unduh aplikasinya hari ini",
+      "getItOn": "AYO MULAI!",
+      "googlePlay": "Google Play",
+      "downloadOn": "Unduh di",
+      "appStore": "App Store"
+    },
+    "legal": {
+      "privacy": "Kebijakan Privasi",
+      "terms": "Ketentuan Penggunaan",
+      "security": "Halaman Keamanan",
+      "faqs": "Pertanyaan yang Sering Diajukan"
+    },
+    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+  },
+  "login": {
+    "intro": "Anda dapat masuk menggunakan akun SynkAfrica Anda untuk mengakses layanan kami.",
+    "backendNotReady": "Variabel lingkungan backend belum diatur. Proses masuk akan berfungsi setelah kredensial dikonfigurasi.",
+    "emailPlaceholder": "Masukkan alamat email Anda",
+    "orUseOptions": "atau gunakan salah satu opsi berikut ini",
+    "signInGoogle": "Masuk dengan Google",
+    "continueApple": "Lanjutkan dengan Apple"
+  },
+  "account": {
+    "nav": {
+      "notifications": "Pemberitahuan"
+    },
+    "contactSupport": "Hubungi layanan dukungan",
+    "profile": {
+      "edit": "Sunting",
+      "fullName": "Nama lengkap",
+      "fullNamePlaceholder": "Masukkan nama lengkap",
+      "location": "Lokasi",
+      "dateOfBirth": "Tanggal lahir",
+      "dobPlaceholder": "MM | DD | YY",
+      "gender": "Jenis Kelamin",
+      "notAdded": "Belum ditambahkan",
+      "contactDetails": "Rincian kontak",
+      "phone": "Nomor telepon",
+      "email": "Alamat email",
+      "passwordSecurity": "Kata sandi & keamanan",
+      "password": "Kata sandi",
+      "changePassword": "Ubah kata sandi"
+    },
+    "deleteAccount": "Hapus akun",
+    "bookings": {
+      "title": "Pesanan Anda",
+      "tab": {
+        "upcoming": "Segera Hadir",
+        "past": "Masa Lalu",
+        "cancelled": "Dibatalkan",
+        "bookings": "Pemesanan"
+      },
+      "empty": {
+        "upcoming": "Tidak ada pemesanan yang akan datang.",
+        "past": "Tidak ada pemesanan sebelumnya untuk periode ini.",
+        "cancelled": "Tidak ada pesanan yang dibatalkan untuk periode ini.",
+        "bookings": "Tidak ada pemesanan untuk periode ini."
+      },
+      "orderDate": "Tanggal pemesanan:",
+      "experienceDate": "Tanggal pengalaman:",
+      "totalAmount": "Jumlah total:",
+      "orderNumber": "Pesanan:",
+      "guestCount": "Tamu",
+      "specialRequests": "Permintaan khusus",
+      "cancel": "Batalkan",
+      "receiptRecipient": "Tanda terima dan penerima QR",
+      "viewDetails": "Lihat detail",
+      "leaveReview": "Berikan ulasan",
+      "reviewSubmitted": "Ulasan telah dikirimkan",
+      "cancelWindowClosed": "Jangka waktu pembatalan untuk pemesanan ini telah berakhir.",
+      "cancelledOn": "Dibatalkan pada {tanggal}",
+      "cancelConfirmTitle": "Mau membatalkan pemesanan ini?",
+      "cancelConfirmBody": "Anda dapat membatalkan pemesanan selama periode pembatalan sebelum pengalaman Anda dimulai. Tindakan ini tidak dapat dibatalkan.",
+      "confirmCancel": "Ya, batalkan pemesanan",
+      "filterPeriod": "Saring berdasarkan periode",
+      "badge": {
+        "upcoming": "Segera Hadir",
+        "past": "Masa Lalu",
+        "cancelled": "Dibatalkan"
+      },
+      "countdown": {
+        "label": "Pengalaman dimulai di",
+        "daysHours": "{hari}d {jam}h",
+        "hoursMinutes": "{jam}h {menit}m",
+        "detailHint": "Pembaruan hitung mundur secara real-time hingga pengalaman Anda dimulai."
+      },
+      "review": {
+        "title": "Berikan ulasan",
+        "ratingLabel": "Penilaian Anda",
+        "commentLabel": "Ulasan Anda",
+        "commentPlaceholder": "Ceritakan apa yang kamu sukai dari pengalaman ini...",
+        "submit": "Kirim ulasan",
+        "dismiss": "Tutup kotak dialog tinjauan"
+      },
+      "detail": {
+        "back": "Kembali ke pemesanan",
+        "reference": "Nomor referensi pemesanan",
+        "yourReview": "Ulasan Anda",
+        "notFound": "Pemesanan ini tidak dapat ditemukan."
+      }
+    },
+    "saved": {
+      "accommodations": "Akomodasi",
+      "empty": "Kamu belum menyimpan apa pun.",
+      "cars": "Mobil",
+      "tours": "Tur"
+    },
+    "reviews": {
+      "title": "Ulasan",
+      "youRated": "Anda telah memberi penilaian",
+      "writeReview": "Tulis ulasan",
+      "ratingLabel": "Penilaian Anda",
+      "commentLabel": "Ulasan Anda",
+      "commentPlaceholder": "Ceritakan apa yang kamu sukai dari pengalaman ini...",
+      "photosLabel": "Foto-foto",
+      "photosCount": "{jumlah}/{maksimum} telah diunggah",
+      "addPhoto": "Tambahkan foto",
+      "removePhoto": "Hapus foto",
+      "submit": "Kirim ulasan",
+      "pendingTitle": "Memeriksa pemesanan yang sudah selesai",
+      "pendingHint": "Ulasan hanya dapat dikirimkan untuk pemesanan sebelumnya yang terhubung dengan akun Anda.",
+      "selectBooking": "Pilih salah satu pemesanan yang sudah selesai di atas untuk menulis ulasan Anda.",
+      "noPending": "Anda tidak memiliki pemesanan yang sudah selesai dan menunggu ulasan.",
+      "submittedTitle": "Ulasan yang Anda kirimkan",
+      "empty": "Anda belum mengirimkan ulasan apa pun.",
+      "deleteReview": "Hapus ulasan",
+      "bookingReference": "Pemesanan {referensi}",
+      "listingBadge": "Ulasan tamu",
+      "experienceListingTitle": "Ulasan tamu"
+    },
+    "notifications": {
+      "title": {
+        "reminder24h": "Pengalaman akan dimulai dalam 24 jam",
+        "reviewRequest": "Ceritakan kepada kami tentang pengalaman Anda",
+        "cancellationRefund": "Pemesanan dibatalkan",
+        "bookingConfirmation": "Pemesanan telah dikonfirmasi",
+        "info": "Pengingat perjalanan"
+      },
+      "empty": "Belum ada pemberitahuan.",
+      "period": {
+        "mostRecent": "Yang terbaru",
+        "weekEarlier": "Seminggu sebelumnya",
+        "threeMonthsAgo": "3 bulan yang lalu"
+      },
+      "kind": {
+        "bookingConfirmation": "Pemesanan telah dikonfirmasi",
+        "reminder24h": "Pengingat 24 jam",
+        "reviewRequest": "Permintaan ulasan",
+        "cancellationRefund": "Pembatalan & pengembalian dana",
+        "info": "Tips perjalanan"
+      },
+      "message": {
+        "reminder24h": "Pengalaman Anda {judul} akan dimulai besok pada pukul {waktu} tanggal {tanggal}. Silakan periksa kembali detail pemesanan Anda dan datanglah 15 menit lebih awal.",
+        "reviewRequest": "Bagaimana kesan Anda tentang {judul}? Berikan penilaian bintang dan ulasan tertulis untuk membantu wisatawan lain di SynkAfrica.",
+        "cancellationRefund": "Pemesanan Anda untuk {judul} ({referensi}) telah dibatalkan. Pengembalian dana yang memenuhi syarat akan diproses dalam waktu 5–7 hari kerja.",
+        "bookingConfirmation": "Pemesanan Anda untuk {judul} di {lokasi} telah dikonfirmasi. Silakan periksa email Anda untuk melihat tanda terima dan kode QR.",
+        "passportReminder": "Pastikan paspor Anda masih berlaku setidaknya 6 bulan setelah tanggal keberangkatan Anda."
+      }
+    },
+    "support": {
+      "contact": {
+        "whatsapp": "WhatsApp",
+        "email": "Email",
+        "phone": "Hubungi kami"
+      },
+      "createTicket": "Buat tiket dukungan",
+      "topic": "Apa sih maksudnya ini?",
+      "relatedOrder": "Pesanan terkait (opsional)",
+      "relatedOrderNone": "Tidak ada",
+      "subject": "Subjek",
+      "subjectPlaceholder": "Ringkasan singkat mengenai masalah tersebut",
+      "message": "Pesan",
+      "messagePlaceholder": "Ceritakan kepada kami apa yang sedang terjadi...",
+      "attachFile": "Lampirkan foto atau tangkapan layar",
+      "submitTicket": "Kirim tiket",
+      "ticketSubmitted": "Tiket #{nomor} telah dikirimkan. Kami akan segera menghubungi Anda.",
+      "yourTickets": "Tiket Anda",
+      "commonQuestions": "Pertanyaan yang Sering Diajukan",
+      "ticketMeta": "Tiket #{nomor} · {tanggal}",
+      "status": {
+        "open": "Buka",
+        "resolved": "Telah diselesaikan"
+      },
+      "category": {
+        "booking": "Masalah pemesanan",
+        "paymentRefund": "Pembayaran / pengembalian dana",
+        "account": "Akun & profil",
+        "other": "Lain-lain"
+      },
+      "faq": {
+        "cancelBooking": "Bagaimana cara membatalkan pemesanan?",
+        "refundTiming": "Kapan saya akan menerima pengembalian dana saya?",
+        "changeDate": "Bagaimana cara mengubah tanggal perjalanan saya?",
+        "paymentSecurity": "Apakah pembayaran saya aman?",
+        "cancelBookingAnswer": "Buka pemesanan Anda dari menu \"Pemesanan & Perjalanan\", pilih pesanan tersebut, lalu gunakan opsi pembatalan jika masih dalam batas waktu pembatalan. Pengembalian dana akan diproses secara otomatis untuk pemesanan yang memenuhi syarat.",
+        "refundTimingAnswer": "Pengembalian dana yang memenuhi syarat biasanya diproses dalam waktu 5–7 hari kerja setelah pembatalan, tergantung pada bank atau penyedia layanan pembayaran Anda.",
+        "changeDateAnswer": "Hubungi layanan dukungan dengan mencantumkan nomor referensi pemesanan Anda. Jika kegiatan tersebut memungkinkan perubahan tanggal, tim kami akan membantu Anda menjadwalkan ulang atau memandu Anda mengenai opsi-opsi yang tersedia.",
+        "paymentSecurityAnswer": "Ya. Pembayaran di Synkafrica diproses melalui mitra pembayaran yang aman dan terenkripsi. Kami tidak pernah menyimpan detail lengkap kartu Anda di server kami."
+      },
+      "tabs": {
+        "label": "Bagian bantuan"
+      },
+      "backToTickets": "Kembali ke tiket",
+      "typeMessage": "Ketik pesan...",
+      "send": "Kirim",
+      "supportTeam": "Dukungan Synkafrica",
+      "you": "Kamu",
+      "emptyTickets": "Anda belum pernah mengirimkan tiket dukungan sama sekali.",
+      "attachedImage": "Gambar terlampir",
+      "removeAttachment": "Hapus lampiran"
+    }
+  },
+  "booking": {
+    "step": {
+      "rooms": "Pilih Akomodasi dan Kamar",
+      "chooseExperience": "Pilih Pengalaman",
+      "chooseCar": "Pilih Mobil",
+      "choosePackage": "Pilih Paket",
+      "checkout": "Pembayaran",
+      "payment": "Pembayaran",
+      "confirmation": "Konfirmasi"
+    },
+    "cta": {
+      "proceedToPay": "LANJUTKAN KE PEMBAYARAN"
+    },
+    "guest": {
+      "title": {
+        "mr": "Tuan",
+        "mrs": "Ibu",
+        "ms": "Nyonya",
+        "miss": "Nona",
+        "dr": "Dr."
+      },
+      "adultLabel": "Dewasa (17 tahun ke atas)",
+      "leadGuestLabel": "Tamu utama",
+      "addedCount": "{ditambahkan}/{total} ditambahkan",
+      "passportHint": "Masukkan nama Anda persis seperti yang tertera di paspor Anda. Paspor harus masih berlaku minimal 6 bulan sejak tanggal keberangkatan.",
+      "idVerificationHint": "Anda wajib menunjukkan kartu identitas resmi yang masih berlaku sebelum dapat menyelesaikan pemesanan apa pun.",
+      "idVerificationTitle": "Verifikasi identitas",
+      "idVerificationSubtitle": "Masukkan detail ID Anda persis seperti yang tertera pada dokumen Anda.",
+      "idType": {
+        "passport": "Paspor",
+        "nationalId": "KTP",
+        "driversLicense": "SIM"
+      },
+      "idNumber": "Nomor identitas",
+      "idNumberPlaceholder": "Masukkan nomor identitas Anda",
+      "idExpiry": "Tanggal kedaluwarsa",
+      "confirmId": "Saya menyatakan bahwa data identitas saya sudah benar dan dokumen saya masih berlaku setidaknya selama 6 bulan terhitung sejak tanggal keberangkatan.",
+      "idTypeRequired": "Pilih jenis ID.",
+      "idNumberInvalid": "Masukkan nomor ID yang valid.",
+      "idExpiryRequired": "Masukkan tanggal kedaluwarsa ID.",
+      "idExpiryInvalid": "Nomor identitas harus masih berlaku setidaknya selama 6 bulan terhitung mulai hari ini.",
+      "idConfirmRequired": "Konfirmasikan detail identitas Anda untuk melanjutkan.",
+      "idValidationRequired": "Lengkapi dan konfirmasikan detail identitas Anda sebelum melanjutkan ke proses pembayaran.",
+      "adultCheckbox": "Dewasa - {jumlah}",
+      "titleField": "Judul",
+      "lastName": "Nama Keluarga",
+      "firstName": "Nama Depan",
+      "middleName": "Nama Tengah",
+      "dateOfBirth": "Tanggal lahir",
+      "datePlaceholder": "yyyy-mm-dd",
+      "nationality": "Kebangsaan",
+      "gender": "Jenis kelamin",
+      "male": "Laki-laki",
+      "female": "Perempuan",
+      "mobileNo": "Nomor Ponsel",
+      "emailAddress": "Alamat Email",
+      "openCalendar": "Buka kalender",
+      "countLabel": "Jumlah tamu",
+      "countHint": "Harga diperbarui secara otomatis berdasarkan jumlah tamu.",
+      "decreaseGuests": "Mengurangi jumlah tamu",
+      "increaseGuests": "Meningkatkan jumlah tamu",
+      "specialRequests": "Permintaan khusus",
+      "specialRequestsPlaceholder": "Check-in lebih awal, kebutuhan diet, persyaratan aksesibilitas, dan sebagainya."
+    },
+    "summary": {
+      "selectRoom": "Pilih sebuah kamar",
+      "selectCar": "Pilih mobil",
+      "selectExperience": "Pilih pengalaman",
+      "selectPackage": "Pilih paket",
+      "priceDetails": "Rincian harga",
+      "taxesAndFees": "Pajak dan Biaya",
+      "night": "malam",
+      "nights": "malam",
+      "room": "ruangan",
+      "rooms": "kamar",
+      "day": "hari",
+      "days": "hari",
+      "total": "Total",
+      "guests": "tamu"
+    },
+    "table": {
+      "selectRoom": "Pilih sebuah kamar",
+      "guestCount": "Jumlah Tamu",
+      "pricePerNight": "Harga per malam",
+      "includesTaxes": "Sudah termasuk pajak dan biaya-biaya",
+      "packages": "Paket",
+      "hours": "Jam Operasional",
+      "price": "Harga",
+      "experiences": "Pengalaman",
+      "duration": "Durasi"
+    },
+    "dates": {
+      "checkIn": "Tanggal Check-in",
+      "checkOut": "Lihat Tanggal",
+      "guests": "Tamu",
+      "rooms": "Kamar",
+      "nights": "Malam-malam",
+      "days": "Hari",
+      "rentalDays": "Jumlah hari sewa",
+      "tripDuration": "Lama perjalanan",
+      "tripDurationHint": "Sesuaikan berapa hari Anda ingin menginap atau menjelajah.",
+      "decreaseNights": "Mengurangi jumlah malam",
+      "increaseNights": "Tambah jumlah malam",
+      "decreaseDays": "Mengurangi jumlah hari",
+      "increaseDays": "Tambah hari"
+    },
+    "car": {
+      "rentalModeHeading": "Untuk apa Anda ingin menggunakan mobil ini?",
+      "rentalModeHint": "Pilih opsi menyetir sendiri atau tambahkan sopir profesional ke pemesanan Anda.",
+      "selfDrive": "Mengemudi sendiri",
+      "selfDriveHint": "Kendarai mobilnya sendiri. Ambil langsung dari penjual atau minta diantarkan dengan biaya tambahan.",
+      "withDriver": "Dengan pengemudi",
+      "withDriverHint": "Seorang sopir profesional sudah termasuk dalam perjalanan Anda.",
+      "noExtraCost": "Tanpa biaya tambahan",
+      "driverAddon": "+ {jumlah} add-on pengemudi",
+      "requestDelivery": "Meminta pengiriman mobil",
+      "requestDeliveryHint": "Minta mobil tersebut dikirimkan ke lokasi Anda dengan biaya tambahan.",
+      "deliveryFee": "+ {jumlah} biaya pengiriman",
+      "deliveryAddress": "Alamat pengiriman",
+      "deliveryAddressPlaceholder": "Masukkan alamat tempat mobil akan dikirim",
+      "pickupAddress": "Alamat pengambilan",
+      "pickupAddressHint": "Ambil mobilnya di lokasi penjual ini jika Anda tidak meminta layanan pengiriman.",
+      "customerPickupAddress": "Lokasi pengambilan Anda",
+      "customerPickupAddressPlaceholder": "Masukkan lokasi tempat pengemudi harus menjemput Anda",
+      "customerPickupAddressHint": "Sopir akan menjemput Anda di alamat ini.",
+      "driverAddonLabel": "Add-on pengemudi",
+      "deliveryFeeLabel": "Biaya pengiriman",
+      "about": "Tentang mobil ini",
+      "saveCar": "Simpan mobil"
+    },
+    "property": {
+      "saveProperty": "Simpan properti",
+      "morePhotos": "+{jumlah} foto",
+      "currentOffers": "Penawaran saat ini"
+    },
+    "amenity": {
+      "free": "Gratis!",
+      "additionalCharge": "Biaya tambahan"
+    },
+    "tour": {
+      "about": "Tentang pengalaman ini",
+      "saveTour": "Simpan tur"
+    },
+    "package": {
+      "about": "Tentang paket ini",
+      "savePackage": "Simpan paket",
+      "sharePackage": "Paket berbagi",
+      "nightsDays": "{malam} Malam / {siang} Siang",
+      "durationShort": "{hari}H / {malam}M",
+      "guestRange": "{rentang} Tamu",
+      "moduleCount": "{jumlah} Modul",
+      "highlight": {
+        "duration": "Durasi",
+        "groupSize": "Jumlah Peserta",
+        "included": "Termasuk",
+        "cancellation": "Pembatalan+",
+        "free": "Gratis",
+        "standard": "Standar"
+      },
+      "whatsIncluded": "Apa Saja yang Termasuk",
+      "included": "Termasuk",
+      "priceBreakdown": "Rincian Harga",
+      "packageDiscount": "Diskon paket",
+      "packagePrice": "Harga Paket",
+      "whyBook": "Mengapa Memilih Paket Ini?",
+      "guestCountLocked": "Jumlah tamu untuk paket ini sudah tetap dan tidak dapat diubah saat melakukan pembayaran."
+    },
+    "payment": {
+      "processing": "Sedang memproses pembayaran..."
+    },
+    "confirmation": {
+      "imageAlt": "Konfirmasi berhasil",
+      "title": "Pembayaran berhasil",
+      "subtitle": "Silakan periksa email Anda untuk melihat tanda terima dan kode QR Anda",
+      "reloadIn": "Halaman ini akan dimuat ulang dalam",
+      "reloadNow": "Muat ulang sekarang",
+      "referenceLabel": "Nomor referensi pemesanan",
+      "copyReference": "Salin",
+      "copied": "Disalin",
+      "summaryTitle": "Ringkasan pemesanan",
+      "product": "Barang yang telah dipesan",
+      "totalPaid": "Total yang telah dibayarkan",
+      "addToCalendar": "Tambahkan ke kalender",
+      "openGoogleCalendar": "Buka di Google Kalender",
+      "viewBookings": "Lihat pemesanan saya"
+    },
+    "reviews": {
+      "nextReview": "Ulasan berikutnya",
+      "allReviews": "Semua ulasan",
+      "viewAll": "Lihat semua ulasan",
+      "close": "Tutup ulasan"
+    },
+    "content": {
+      "property": {
+        "arkHavn": {
+          "desc0": "Terletak di jantung kota Marrakesh, The Ark Haven menawarkan pengalaman berlibur yang tenang dengan perpaduan antara kenyamanan modern dan pesona tradisional Maroko. Nikmati kolam renang outdoor, bar di dalam properti, serta kamar-kamar ber-AC yang dilengkapi dengan TV layar datar.",
+          "desc1": "Para tamu dapat menjelajahi tempat-tempat wisata di sekitar, menikmati layanan antar-jemput, lapangan tenis, dan penyewaan mobil. Baik Anda berkunjung untuk berlibur maupun urusan bisnis, The Ark Haven menawarkan pengalaman menginap yang tak terlupakan dengan keramahan yang luar biasa."
+        },
+        "fallback": {
+          "desc0": "{nama} menawarkan pengalaman menginap yang nyaman dengan fasilitas modern dan lokasi yang strategis di {lokasi}.",
+          "desc1": "Nikmati kamar-kamar yang dilengkapi dengan baik, layanan yang ramah, serta akses mudah ke tempat-tempat wisata dan tempat makan setempat."
+        }
+      },
+      "review": {
+        "review1": "The Ark Haven melampaui ekspektasi saya. Stafnya sangat ramah, dan area kolam renangnya merupakan tempat yang sempurna untuk bersantai setelah menjelajahi kota.",
+        "review2": "Kamar-kamarnya indah, lokasinya strategis, dan sarapannya luar biasa. Saya pasti akan menginap di sini lagi saat berkunjung ke Maroko berikutnya.",
+        "review3": "Suite yang luas, fasilitas yang bersih, dan petugas resepsionis yang ramah. Layanan antar-jemput membuat perjalanan keliling Marrakesh menjadi sangat mudah."
+      },
+      "offer": {
+        "drinkPromo": "Beli 1 minuman, dapatkan 1 gratis",
+        "mealsOff": "Diskon 10% untuk Makanan",
+        "freeWifi": "Wi-Fi Gratis"
+      },
+      "room": {
+        "deluxeSuite": "Suite Deluxe",
+        "supremeRoom": "Kamar Utama",
+        "standardRoom": "Kamar Standar",
+        "subtitle": {
+          "deluxe": "Deluxe (Apartemen 1 Kamar Tidur)",
+          "supreme": "Supreme (Apartemen Studio)",
+          "standard": "Standar (Kamar Double)"
+        },
+        "size592": "592 kaki persegi",
+        "size420": "420 kaki persegi",
+        "size310": "310 kaki persegi",
+        "sleeps2Adults": "Dapat menampung 2 orang dewasa"
+      },
+      "package": {
+        "dailyHire": "Sewa harian",
+        "halfDayHire": "Penyewaan setengah hari",
+        "extraHours": "Jam lembur",
+        "hours24": "24 jam",
+        "hours12": "12 jam",
+        "hours3": "3 jam"
+      },
+      "feature": {
+        "automatic": "Otomatis",
+        "driverAvailable": "Sopir tersedia",
+        "selfDrive": "Mengemudi sendiri",
+        "available": "Tersedia",
+        "limitedSlots": "Jumlah tempat terbatas",
+        "guidedTour": "Tur berpemandu",
+        "selfDriveAvailable": "Tersedia layanan menyetir sendiri",
+        "flightsIncluded": "Tiket pesawat sudah termasuk",
+        "hotelStay": "Menginap di hotel",
+        "guidedTours": "Tur berpemandu",
+        "nightsDays": "{malam} malam / {siang} siang"
+      },
+      "tourOption": {
+        "standard": "Tiket standar",
+        "premium": "Pengalaman premium",
+        "private": "Grup tertutup",
+        "hours5": "5 jam",
+        "fullDay": "Sepanjang hari"
+      },
+      "tier": {
+        "standard": "Paket standar",
+        "deluxe": "Paket Deluxe",
+        "allInclusive": "Semuanya sudah termasuk"
+      },
+      "amenityCat": {
+        "greatForStay": "Pilihan yang tepat untuk masa menginap Anda",
+        "outdoors": "Di luar ruangan",
+        "pets": "Hewan peliharaan",
+        "internet": "Internet",
+        "onSiteParking": "Tempat parkir di lokasi",
+        "frontDesk": "Layanan Resepsionis",
+        "familyServices": "Hiburan & Layanan Keluarga",
+        "cleaningServices": "Layanan Pembersihan",
+        "general": "Umum",
+        "accessibility": "Aksesibilitas",
+        "swimmingPools": "2 kolam renang",
+        "pool1Outdoor": "Grup 1 – luar ruangan"
+      },
+      "amenityDesc": {
+        "petsAllowed": "Hewan peliharaan diperbolehkan atas permintaan. Tidak ada biaya tambahan.",
+        "wifiFree": "Wi-Fi tersedia di seluruh area dan dapat digunakan secara gratis.",
+        "parkingFree": "Tersedia tempat parkir umum gratis di lokasi (tidak perlu melakukan reservasi)."
+      },
+      "amenityItem": {
+        "restaurant": "Restoran",
+        "freeWifi": "Wi-Fi Gratis",
+        "parking": "Tempat Parkir",
+        "spa": "Spa",
+        "familyRooms": "Kamar keluarga",
+        "roomService": "Layanan kamar",
+        "airportShuttle": "Layanan antar-jemput bandara",
+        "bbqFacilities": "Fasilitas barbekyu",
+        "petFriendly": "Ramah hewan peliharaan",
+        "nonSmokingRooms": "Kamar bebas rokok",
+        "outdoorFireplace": "Perapian luar ruangan",
+        "beachfront": "Berada di tepi pantai",
+        "sunDeck": "Teras berjemur",
+        "privateBeach": "Area pantai pribadi",
+        "terrace": "Teras",
+        "garden": "Taman",
+        "valetParking": "Layanan parkir valet",
+        "parkingGarage": "Gudang parkir",
+        "accessibleParking": "Tempat parkir khusus penyandang disabilitas",
+        "lockers": "Loker",
+        "concierge": "Layanan Concierge",
+        "atmOnSite": "ATM di lokasi",
+        "baggageStorage": "Penitipan barang bawaan",
+        "currencyExchange": "Penukaran mata uang",
+        "frontDesk24h": "Resepsionis yang buka 24 jam",
+        "outdoorPlayEquipment": "Peralatan bermain luar ruangan untuk anak-anak",
+        "dailyHousekeeping": "Pembersihan harian",
+        "ironingService": "Layanan penyetrikaan",
+        "shuttleService": "Layanan antar-jemput",
+        "sharedLounge": "Ruang santai/ruang TV bersama",
+        "airConditioning": "Pendingin udara",
+        "carRental": "Penyewaan mobil",
+        "packedLunches": "Makan siang bungkus",
+        "disabledFacilities": "Fasilitas untuk tamu penyandang disabilitas",
+        "bathroomEmergencyCord": "Tali darurat kamar mandi",
+        "openAllYear": "Buka sepanjang tahun",
+        "adultsOnly": "Hanya untuk orang dewasa",
+        "poolBeachTowels": "Handuk kolam renang/pantai",
+        "poolBar": "Bar kolam renang",
+        "beachChairs": "Kursi pantai/kursi berjemur"
+      },
+      "tour": {
+        "desc": {
+          "boatAccess": "Hanya dapat dijangkau dengan perahu atau taksi air. Tempat ini terkenal karena perairannya yang relatif tenang.",
+          "lekkiCanopy": "Jelajahi jembatan kanopi terpanjang di Afrika dan telusuri jalur-jalur hutan mangrove yang rimbun.",
+          "nikeArt": "Temukan salah satu koleksi seni kontemporer Afrika terbesar di Afrika Barat.",
+          "badagry": "Telusuri sejarah perdagangan budak lintas Atlantik melalui museum dan tempat-tempat bersejarah.",
+          "desertSafari": "Berpetualang di gurun, menunggang unta, dan berkemah ala Bedouin tradisional di bawah taburan bintang.",
+          "cotonou": "Jelajahi pasar-pasar, arsitektur kolonial, dan pesisir pantai Benin yang semarak.",
+          "winelands": "Kunjungi kebun anggur Stellenbosch sambil menikmati sesi mencicipi anggur dan pemandangan pegunungan yang menakjubkan.",
+          "monacoYacht": "Berlayarlah menyusuri pesisir Riviera Prancis sambil menikmati pemandangan Monte Carlo dan pelabuhan-pelabuhan mewah.",
+          "lagosFood": "Cicipi suya, puff-puff, dan hidangan khas setempat di berbagai tempat makan terbaik di kota ini.",
+          "dubaiKayak": "Berkayaklah melintasi marina saat matahari terbenam sambil menikmati pemandangan cakrawala kota dan bimbingan dari pemandu."
+        }
+      }
+    },
+    "dateTime": {
+      "title": "Pilih tanggal & waktu",
+      "rangeHint": "Pilih tanggal check-in dan check-out Anda di kalender.",
+      "singleHint": "Pilih tanggal pengalaman Anda di kalender.",
+      "legendAvailable": "Tersedia",
+      "legendUnavailable": "Tidak tersedia",
+      "selectCheckout": "Pilih metode pembayaran",
+      "timeSlots": "Slot waktu",
+      "experienceDate": "Tanggal pengalaman"
+    }
+  },
+  "breadcrumb": {
+    "synkAfrica": "SynkAfrica",
+    "accommodations": "Akomodasi",
+    "flights": "Penerbangan",
+    "carForHire": "Penyewaan Mobil",
+    "tours": "Tur & Pengalaman",
+    "tourPackages": "Paket Wisata",
+    "dealsAndPackages": "Penawaran & Paket",
+    "packages": "Paket"
+  },
+  "results": {
+    "accommodations": {
+      "title": "Menginap",
+      "staysFound": "{jumlah} tempat tinggal yang ditemukan",
+      "searchPlaceholder": "Cari akomodasi",
+      "empty": "Tidak ada akomodasi yang sesuai dengan filter Anda."
+    },
+    "carRentals": {
+      "title": "Telusuri mobil sewaan",
+      "carsFound": "{jumlah} mobil ditemukan",
+      "searchPlaceholder": "Cari Mobil",
+      "empty": "Tidak ada mobil yang sesuai dengan kriteria pencarian Anda."
+    },
+    "tours": {
+      "title": "{count} Hasil pencarian",
+      "searchPlaceholder": "Pengalaman pencarian",
+      "empty": "Tidak ada pengalaman yang sesuai dengan filter Anda."
+    },
+    "emptyHint": "Coba sesuaikan opsi pencarian atau filter Anda.",
+    "promoSubtitle": "Promosi, penawaran, dan penawaran khusus untuk Anda"
+  },
+  "filters": {
+    "apply": "Terapkan filter",
+    "applyCount": "Terapkan filter ({count})",
+    "location": "Lokasi",
+    "rentalDates": "Tanggal sewa",
+    "startDate": "Tanggal mulai",
+    "endDate": "Tanggal berakhir",
+    "discounts": "Diskon",
+    "price": "Harga",
+    "category": "Kategori",
+    "experiences": "Pengalaman",
+    "other": "Filter Lainnya",
+    "budget": "Anggaran",
+    "perNight": "| Malam",
+    "perDaily": "| harian",
+    "anyPrice": "Berapa pun harganya",
+    "apartmentType": "Jenis apartemen",
+    "bedrooms": "Jumlah kamar tidur",
+    "ratings": "Peringkat",
+    "perks": "Fasilitas dan layanan tambahan",
+    "priceRange": {
+      "under50k": "Di bawah 50 ribu",
+      "50to150k": "50–150 ribu",
+      "150kPlus": "150 ribu ke atas"
+    },
+    "propertyType": {
+      "hotels": "Hotel",
+      "apartments": "Apartemen",
+      "resorts": "Resor",
+      "bbs": "Penginapan Keluarga",
+      "guestHouse": "Penginapan",
+      "beachHouse": "Rumah Pantai",
+      "motels": "Motel"
+    },
+    "bedroom": {
+      "studio": "Studio",
+      "one": "1 kamar tidur",
+      "two": "2 kamar tidur",
+      "threePlus": "3+ kamar tidur"
+    },
+    "perk": {
+      "breakfast": "Termasuk sarapan",
+      "cancellation": "Pembatalan gratis",
+      "pool": "Akses ke kolam renang",
+      "shuttle": "Layanan antar-jemput bandara"
+    },
+    "discount": {
+      "all": "Semua diskon",
+      "withDiscount": "Dengan diskon",
+      "noDiscount": "Tidak ada diskon",
+      "tenPercent": "Diskon 10%"
+    },
+    "carType": {
+      "suv": "SUV",
+      "sedan": "Sedan",
+      "hatchback": "Hatchback",
+      "pickup": "Penjemputan"
+    },
+    "serviceType": {
+      "selfDrive": "Mengemudi sendiri",
+      "chauffeur": "Sopir"
+    },
+    "transmission": {
+      "automatic": "Otomatis",
+      "manual": "Panduan"
+    },
+    "tourCategory": {
+      "all": "Semua kategori",
+      "outdoor": "Di luar ruangan",
+      "artsCulture": "Seni & Budaya",
+      "adventure": "Petualangan",
+      "foodDrink": "Makanan & Minuman"
+    },
+    "experienceType": {
+      "all": "Semua pengalaman",
+      "tours": "Tur",
+      "activities": "Kegiatan",
+      "workshops": "Lokakarya",
+      "dayTrips": "Wisata sehari"
+    }
+  },
+  "landing": {
+    "ongoingDeals": {
+      "title": "Penawaran yang Sedang Berlangsung",
+      "title2": "Paket yang ditawarkan",
+      "description": "Promosi, penawaran, dan penawaran khusus untuk Anda",
+      "scrollPackages": "Paket gulungan"
+    },
+    "packages": {
+      "title": "Paket"
+    },
+    "fansFavourite": {
+      "title": "Favorit Para Penggemar"
+    },
+    "packageOffer": {
+      "inclusion": {
+        "flights": "Penerbangan",
+        "stays": "Menginap",
+        "carDriver": "Mobil + Pengemudi"
+      },
+      "duration": "{hari} Hari • {malam} Malam • {jadwal}",
+      "bookedSeparately": "jika dipesan secara terpisah"
+    },
+    "bestDealsApartments": {
+      "title": "Penawaran terbaik untuk apartemen"
+    },
+    "browsePropertyType": "Telusuri berdasarkan jenis properti",
+    "favouriteDestinations": "Jelajahi Destinasi Favorit",
+    "activitiesCount": "{jumlah} kegiatan",
+    "flightPromo": {
+      "headline": "Memesan tiket pesawat belum pernah semudah ini",
+      "cta": "Periksa ketersediaan"
+    },
+    "experiencesPromo": {
+      "headline": "Nikmati beragam pengalaman tak terhitung jumlahnya, semuanya di satu destinasi.",
+      "cta": "Jelajahi Pengalaman",
+      "imageAlt": "Jelajahi pengalaman di Afrika"
+    },
+    "tours": {
+      "attractions": {
+        "title": "Tempat Wisata di Synkafrica"
+      },
+      "events": {
+        "browsingIn": "Menelusuri acara di"
+      },
+      "packages": {
+        "title": "Paket wisata",
+        "description": "Dapatkan penawaran terbaik untuk tur dan lakukan pemesanan dengan mudah."
+      }
+    },
+    "carRentals": {
+      "feature1": {
+        "title": "Layanan profesional",
+        "description": "Kami bekerja sama dengan penyedia layanan antar-jemput bandara yang terpercaya di seluruh Afrika."
+      },
+      "feature2": {
+        "title": "Kebijakan Pembatalan yang Fleksibel",
+        "description": "Jika rencana Anda berubah, Anda bisa membatalkan dengan ketentuan yang fleksibel."
+      },
+      "feature3": {
+        "title": "Harga yang Kompetitif",
+        "description": "Tim kami membandingkan tarif taksi bandara setiap hari untuk memberikan penawaran terbaik bagi Anda."
+      }
+    }
+  },
+  "tourPackages": {
+    "hero": {
+      "title": "Paket wisata",
+      "subtitle": "Paket wisata pilihan yang dirancang khusus untuk petualangan tak terlupakan di Afrika."
+    },
+    "searchPlaceholder": "Cari tujuan",
+    "empty": "Tidak ada paket wisata yang sesuai dengan pencarian Anda."
+  },
+  "admin": {
+    "header": {
+      "role": "Administrator platform"
+    },
+    "nav": {
+      "dashboard": "Dasbor",
+      "experiences": "Pengalaman",
+      "cars": "Mobil",
+      "accommodations": "Akomodasi",
+      "vendors": "Pemasok",
+      "bookings": "Pemesanan",
+      "payouts": "Pembayaran",
+      "reviews": "Ulasan",
+      "users": "Pengguna",
+      "verifications": "Verifikasi",
+      "support": "Tiket dukungan",
+      "team": "Tim",
+      "audit": "Catatan audit"
+    },
+    "common": {
+      "all": "Semua",
+      "enabled": "Diaktifkan",
+      "disabled": "Cacat",
+      "edit": "Sunting",
+      "actions": "Tindakan"
+    },
+    "verifications": {
+      "title": "Verifikasi",
+      "subtitle": "Pengajuan yang ditandai oleh penyedia layanan verifikasi kami untuk ditinjau secara manual — sebagian besar pemeriksaan identitas/wajah disetujui secara otomatis dan tidak pernah masuk ke antrean ini.",
+      "stats": {
+        "needsManualReview": "Perlu ditinjau secara manual",
+        "approvedToday": "Disetujui hari ini",
+        "deniedToday": "Ditolak hari ini",
+        "avgReviewTime": "Waktu rata-rata peninjauan",
+        "avgReviewTimeValue": "{menit} menit"
+      },
+      "searchPlaceholder": "Cari berdasarkan nama atau ID akun...",
+      "filter": {
+        "users": "Pengguna",
+        "vendors": "Pemasok"
+      },
+      "status": {
+        "pendingReview": "Sedang dalam proses peninjauan",
+        "approved": "Disetujui",
+        "denied": "Ditolak"
+      },
+      "audience": {
+        "user": "Pengguna",
+        "vendor": "Pemasok"
+      },
+      "submitted": "Dikirim pada {tanggal}",
+      "pendingElapsed": "Menunggu [[[waktu yang telah berlalu]]]",
+      "blocking": {
+        "firstCheckout": "memblokir proses checkout pertama"
+      },
+      "empty": "Tidak ada pengajuan verifikasi yang sesuai dengan filter Anda.",
+      "accountId": "Akun {id}",
+      "viewAccount": "Lihat akun →",
+      "pendingManualReview": "Sedang menunggu peninjauan manual",
+      "elapsed": "[[[waktu yang telah berlalu]]] waktu yang telah berlalu",
+      "documentPreviews": "Pratinjau dokumen",
+      "documentViewLogged": "Tampilan dokumen dicatat untuk keperluan kepatuhan",
+      "providerResults": "Hasil dari penyedia verifikasi (DIDIT)",
+      "approve": "Setujui",
+      "deny": "Menolak",
+      "requestResubmission": "Minta pengiriman ulang",
+      "notifyUser": "Memberitahukan pengguna mengenai keputusan tersebut",
+      "notifyVendor": "Beri tahu vendor mengenai keputusan tersebut",
+      "verificationApproved": "Verifikasi telah disetujui",
+      "verificationDenied": "Verifikasi ditolak",
+      "reviewedInElapsed": "Diulas pada {elapsed}",
+      "approvedBy": "Disetujui oleh",
+      "approvedByValue": "Admin — {tanggal}",
+      "reasonForDenial": "Alasan penolakan",
+      "revokeApproval": "Mencabut persetujuan",
+      "inviteResubmission": "Undangan untuk mengirimkan kembali",
+      "viewHistory": "Lihat riwayat",
+      "providerResultsHeading": "Hasil penyedia — DIDIT",
+      "document": {
+        "ninSlip": "Slip NIN",
+        "passportPhoto": "Halaman foto paspor",
+        "selfie": "Selfie / verifikasi keaslian",
+        "cac": "Sertifikat CAC",
+        "driversLicense": "SIM (halaman depan)"
+      },
+      "check": {
+        "cacRegistrationLookup": "Pencarian Pendaftaran CAC",
+        "cacRegistrationVerified": "Terverifikasi",
+        "faceMatchConfidence": "Tingkat keyakinan pencocokan wajah",
+        "faceMatchConfidenceDetail": "96%",
+        "documentExpiredDetail": "Gagal — dokumen telah kedaluwarsa",
+        "documentAuthenticity": "Keaslian dokumen",
+        "liveness": "Pemeriksaan keaktifan",
+        "faceMatch": "Tingkat keyakinan pencocokan wajah",
+        "nameMatch": "Nama sesuai dengan akun",
+        "businessRegistration": "Pendaftaran usaha",
+        "faceMatchDetail": "78% — di bawah ambang batas persetujuan otomatis",
+        "nameMatchDetail": "Pertandingan",
+        "documentFailedDetail": "Gagal — dokumen tidak dapat dibaca",
+        "faceMatchFailedDetail": "42% — di bawah ambang batas",
+        "businessRegistrationDetail": "Kecocokan sebagian — perlu ditinjau secara manual"
+      },
+      "denialReason": {
+        "expiredLicense": "SIM Anda akan kedaluwarsa pada Maret 2026. Silakan kirimkan kembali permohonan Anda dengan melampirkan identitas resmi yang masih berlaku."
+      },
+      "documentType": {
+        "passport": "Paspor",
+        "cacNin": "CAC + NIN",
+        "driversLicense": "SIM"
+      },
+      "checkResult": {
+        "passed": "Lulus",
+        "failed": "Gagal",
+        "warning": "Perlu ditinjau"
+      }
+    },
+    "dashboard": {
+      "welcome": "Konsol admin,",
+      "addPackages": "Tambahkan paket",
+      "period": {
+        "label": "Periode pengukuran",
+        "today": "Hari ini",
+        "week": "Minggu ini",
+        "month": "Bulan ini",
+        "sixMonths": "6 bulan",
+        "year": "1 tahun",
+        "all": "Semua"
+      },
+      "users": "Pengguna",
+      "bookings": "Pemesanan",
+      "revenue": "Pendapatan",
+      "activeExperiences": "Pengalaman interaktif",
+      "activeVendors": "Penjual aktif",
+      "viewAll": "Lihat semua",
+      "manage": "Kelola",
+      "alerts": "Pemberitahuan",
+      "alert": {
+        "pendingPayouts": "Ada 3 pembayaran kepada vendor yang sedang menunggu persetujuan",
+        "flaggedReview": "2 ulasan ditandai untuk ditinjau",
+        "openTicket": "5 tiket dukungan vendor yang masih terbuka",
+        "disabledVendor": "1 akun vendor dinonaktifkan — perlu ditinjau"
+      }
+    },
+    "packages": {
+      "createTitle": "Buat Paket / Penawaran Baru",
+      "createSubtitle": "Buatlah paket wisata yang sangat menarik dengan menggabungkan tiket pesawat, akomodasi, penyewaan mobil, dan berbagai pengalaman.",
+      "addTitle": "Tambahkan paket",
+      "backToDashboard": "← Kembali ke dasbor",
+      "progressLabel": "Kemajuan pengiriman paket",
+      "steps": {
+        "details": "Rincian Paket",
+        "modules": "Tambahkan Modul",
+        "pricing": "Harga",
+        "review": "Tinjau & Terbitkan"
+      },
+      "cancel": "Batalkan",
+      "back": "Kembali",
+      "saveDraft": "Simpan sebagai Draf",
+      "draftSaved": "Draf telah disimpan",
+      "saveContinue": "Simpan & Lanjutkan",
+      "submit": "Kirim Paket",
+      "completeRequiredFields": "Isi kolom-kolom yang wajib diisi: {kolom}",
+      "sections": {
+        "basicInfo": "Rincian Paket",
+        "basicInfoHint": "Informasi dasar dan metadata untuk paket Anda.",
+        "additionalSettings": "Pengaturan Tambahan",
+        "additionalSettingsHint": "Kebijakan, pilihan makanan, dan opsi tampilan."
+      },
+      "fields": {
+        "packageName": "Nama Paket",
+        "packageSlug": "Slug Paket (URL)",
+        "shortDescription": "Deskripsi Singkat",
+        "detailedDescription": "Deskripsi Terperinci",
+        "banner": "Gambar Spanduk Paket",
+        "category": "Kategori Paket",
+        "bestFor": "Paling Cocok Untuk",
+        "tags": "Tag Paket",
+        "includedMeals": "Makanan yang Termasuk",
+        "cancellationPolicy": "Kebijakan Pembatalan",
+        "refundPolicy": "Kebijakan Pengembalian Dana",
+        "maxGuests": "Jumlah Tamu Maksimal",
+        "featuredDeal": "Sorotan Paket",
+        "currency": "Mata uang",
+        "normalPrice": "Harga Normal",
+        "salesPrice": "Harga Jual",
+        "showSavingsBadge": "Tampilkan Lencana Penghematan",
+        "savingsBadgePercent": "Persentase Lencana Tabungan",
+        "validFrom": "Berlaku Mulai",
+        "validUntil": "Berlaku hingga",
+        "minimumBookingNotice": "Jangka Waktu Pemberitahuan Pemesanan Minimum",
+        "packageActive": "Status Paket"
+      },
+      "placeholders": {
+        "packageName": "misalnya: Liburan ke Lagos & Paris",
+        "packageSlug": "Lagos-Paris-Liburan Singkat",
+        "shortDescription": "Ringkasan singkat yang tertera pada label kemasan.",
+        "detailedDescription": "Jelaskan rincian rencana perjalanan lengkap, fasilitas yang termasuk, dan daya tarik utamanya.",
+        "category": "Pilih kategori",
+        "tags": "misalnya: Pantai, Petualangan",
+        "maxGuests": "misalnya 4",
+        "select": "Pilih"
+      },
+      "hints": {
+        "packageSlug": "Ini akan digunakan dalam URL paket.",
+        "tags": "Tambahkan setiap tag, lalu tekan Enter.",
+        "featuredDeal": "Tampilkan paket ini sebagai penawaran unggulan.",
+        "showSavingsBadge": "Tampilkan lencana tabungan pada kartu kemasan.",
+        "savingsBadgePercent": "Tentukan persentase yang ditampilkan pada lencana diskon. Nilai ini diisi secara otomatis berdasarkan harga yang Anda tentukan.",
+        "packageActive": "Paket yang aktif dapat dilihat oleh pelanggan."
+      },
+      "uploadBanner": "Klik untuk mengunggah atau seret dan lepas",
+      "uploadBannerHint": "JPG, PNG, atau WEBP (maks. 5 MB)",
+      "removeBanner": "Hapus spanduk",
+      "tips": {
+        "title": "Tips untuk membuat kemasan yang menarik",
+        "one": "Gunakan nama paket yang jelas dan menarik.",
+        "two": "Gabungkan modul-modul yang saling melengkapi untuk mendapatkan nilai yang lebih baik.",
+        "three": "Tonjolkan penawaran hemat dengan harga jual yang menarik.",
+        "four": "Tambahkan tag untuk meningkatkan visibilitas."
+      },
+      "moduleType": {
+        "flight": "Penerbangan",
+        "accommodation": "Akomodasi",
+        "car": "Mobil",
+        "experience": "Pengalaman"
+      },
+      "modules": {
+        "selectHeading": "Tambahkan Modul",
+        "selectHint": "Telusuri dan tambahkan penerbangan, akomodasi, penyewaan mobil, dan aktivitas untuk menyusun paket perjalanan Anda.",
+        "addedHeading": "Modul Paket",
+        "countLabel": "modul",
+        "empty": "Belum ada modul yang ditambahkan. Pilih item dari panel di atas.",
+        "add": "Tambahkan",
+        "added": "Ditambahkan",
+        "remove": "Hapus modul",
+        "dragHandle": "Seret untuk mengatur ulang urutannya",
+        "reorderHint": "Seret dan lepas modul-modul tersebut untuk mengatur ulang urutannya sesuai dengan tampilan yang akan dilihat pelanggan.",
+        "required": "Tambahkan setidaknya satu modul untuk melanjutkan.",
+        "searchPlaceholder": "Modul pencarian…",
+        "noResults": "Tidak ada modul yang sesuai dengan pencarian Anda.",
+        "availableLabel": "tersedia"
+      },
+      "pricing": {
+        "heading": "Harga",
+        "hint": "Tentukan harga tiket Anda.",
+        "savingsDisplay": "Anda menghemat {jumlah} ({persen}%)"
+      },
+      "availability": {
+        "heading": "Ketersediaan",
+        "hint": "Tentukan kapan paket ini dapat dipesan."
+      },
+      "review": {
+        "heading": "Tinjau & Terbitkan",
+        "hint": "Periksa kembali semua detail paket sebelum mengirimkan."
+      }
+    },
+    "users": {
+      "title": "Para Wisatawan",
+      "searchPlaceholder": "Cari berdasarkan nama, ID pengguna, email, atau lokasi...",
+      "userId": "ID Pengguna",
+      "traveler": "Wisatawan",
+      "contact": "Hubungi Kami",
+      "location": "Lokasi",
+      "tier": {
+        "bronze": "Perunggu",
+        "silver": "Perak",
+        "gold": "Emas",
+        "platinum": "Platinum"
+      },
+      "bookingsSpend": "Pemesanan / Pengeluaran",
+      "lastTrip": "Perjalanan terakhir",
+      "status": {
+        "active": "Aktif",
+        "inactive": "Tidak aktif"
+      },
+      "stats": {
+        "found": "Para wisatawan menemukan",
+        "active": "Aktif",
+        "combinedSpend": "Total pengeluaran",
+        "page": "Halaman",
+        "pageValue": "[[[saat ini]]] / {total}"
+      },
+      "pagination": {
+        "previous": "Sebelumnya",
+        "next": "Selanjutnya",
+        "showing": "Halaman [[[saat ini]]] dari {total}"
+      },
+      "details": "Rincian",
+      "empty": "Tidak ada wisatawan yang sesuai dengan kriteria pencarian Anda.",
+      "notFound": "Pelancong tidak ditemukan.",
+      "backToList": "Kembali ke wisatawan",
+      "accountDetails": "Rincian akun",
+      "detail": {
+        "totalBookings": "Jumlah pemesanan",
+        "lifetimeSpend": "Total pengeluaran seumur hidup",
+        "primaryCorridor": "Koridor utama",
+        "openTickets": "Tiket yang masih terbuka",
+        "idFaceVerified": "ID + Verifikasi Wajah",
+        "joined": "Bergabung pada {tanggal}",
+        "lastActive": "Terakhir aktif [[[waktu yang telah berlalu]]]",
+        "phoneWhatsApp": "{telepon} (terhubung ke WhatsApp)",
+        "identityVerification": "Verifikasi Identitas",
+        "governmentId": "Kartu Identitas Resmi ({jenis})",
+        "faceMatch": "Pencocokan wajah / keaslian wajah",
+        "verifiedVia": "Terverifikasi melalui",
+        "verified": "Terverifikasi",
+        "notVerified": "Belum diverifikasi",
+        "paymentMethods": "Metode pembayaran yang terdaftar",
+        "card": "Kartu",
+        "defaultCurrency": "Mata uang default",
+        "recentBookings": "Pemesanan Terbaru",
+        "internalNotes": "Catatan Internal",
+        "noNotes": "Belum ada catatan internal.",
+        "noteAttribution": "— {penulis}, {tanggal}",
+        "bookingStatus": {
+          "confirmed": "Telah dikonfirmasi",
+          "completed": "Selesai",
+          "cancelled": "Dibatalkan"
+        }
+      },
+      "menu": {
+        "verification": "Verifikasi",
+        "rerunIdVerification": "Lakukan kembali verifikasi identitas",
+        "rerunFaceVerification": "Lakukan kembali verifikasi wajah",
+        "financial": "Keuangan",
+        "issueRefund": "Mengembalikan uang",
+        "holdBookingPayment": "Tahan pembayaran pemesanan",
+        "support": "Dukungan",
+        "viewAsReadOnly": "Tampilan Sebagai (hanya baca)",
+        "addInternalNote": "Tambahkan catatan internal",
+        "dataAccount": "Data & akun",
+        "mergeDuplicateAccount": "Gabungkan akun ganda",
+        "exportUserData": "Ekspor data pengguna (GDPR)",
+        "suspendAccount": "Menonaktifkan akun"
+      }
+    },
+    "experiences": {
+      "title": "Kelola pengalaman",
+      "searchPlaceholder": "Pengalaman pencarian",
+      "name": "Nama pengalaman",
+      "empty": "Tidak ada pengalaman yang sesuai dengan pencarian Anda.",
+      "actions": {
+        "disable": "Nonaktifkan pengalaman",
+        "enable": "Aktifkan pengalaman",
+        "goTo": "Lihat pengalamannya",
+        "delete": "Hapus riwayat"
+      }
+    },
+    "cars": {
+      "title": "Mengelola mobil",
+      "searchPlaceholder": "Cari mobil",
+      "name": "Nama mobil",
+      "empty": "Tidak ada mobil yang sesuai dengan kriteria pencarian Anda.",
+      "actions": {
+        "disable": "Nonaktifkan mobil",
+        "enable": "Aktifkan mobil",
+        "goTo": "Pergi ke mobil",
+        "delete": "Hapus mobil"
+      }
+    },
+    "accommodations": {
+      "title": "Kelola akomodasi",
+      "searchPlaceholder": "Cari akomodasi",
+      "name": "Nama akomodasi",
+      "empty": "Tidak ada akomodasi yang sesuai dengan pencarian Anda.",
+      "actions": {
+        "disable": "Nonaktifkan akomodasi",
+        "enable": "Aktifkan akomodasi",
+        "goTo": "Lihat akomodasi",
+        "delete": "Hapus akomodasi"
+      }
+    },
+    "listings": {
+      "location": "Lokasi iklan",
+      "vendor": "Pemasok",
+      "bookings": "Pemesanan",
+      "ratings": "Peringkat",
+      "reviews": "ulasan",
+      "activityStatus": "Status aktivitas",
+      "status": {
+        "active": "Aktif",
+        "inactive": "Tidak aktif",
+        "deleted": "Dihapus"
+      },
+      "tab": {
+        "active": "Iklan yang masih aktif",
+        "deleted": "Iklan yang telah dihapus"
+      },
+      "deletedHint": "Iklan yang telah dihapus dari pasar akan muncul di sini. Anda dapat melihat detailnya atau menghapus catatan tersebut secara permanen.",
+      "viewDetails": "Lihat daftar",
+      "deletedAt": "Dihapus pada {tanggal}",
+      "detailTitle": "Rincian iklan",
+      "detailHint": "Tampilan pratinjau lengkap dari iklan ini, termasuk media, detail, harga, dan dokumen.",
+      "detailNotFound": "Iklan ini tidak dapat ditemukan.",
+      "detail": {
+        "backCars": "Kembali ke mobil",
+        "backAccommodations": "Kembali ke akomodasi",
+        "backExperiences": "Kembali ke pengalaman"
+      },
+      "detailClose": "Tutup"
+    },
+    "vendors": {
+      "title": "Mengelola vendor",
+      "add": "Tambahkan vendor",
+      "searchPlaceholder": "Cari berdasarkan nama, ID vendor, email, atau nomor telepon...",
+      "vendorId": "ID Pemasok",
+      "name": "Pemasok",
+      "userId": "ID Pengguna",
+      "stats": {
+        "found": "Penjual yang ditemukan",
+        "active": "Aktif",
+        "combinedRevenue": "Pendapatan gabungan",
+        "page": "Halaman",
+        "pageValue": "[[[saat ini]]] / {total}"
+      },
+      "pagination": {
+        "previous": "Sebelumnya",
+        "next": "Selanjutnya",
+        "showing": "Halaman [[[saat ini]]] dari {total}"
+      },
+      "contactInfo": "Informasi kontak",
+      "listings": "Daftar",
+      "commission": "Komisi",
+      "commissionValue": "{nilai}%",
+      "status": {
+        "active": "Aktif",
+        "inactive": "Tidak aktif"
+      },
+      "revenue": "Pendapatan",
+      "rating": "Peringkat",
+      "reviews": "ulasan",
+      "details": "Rincian",
+      "empty": "Tidak ada penjual yang sesuai dengan pencarian Anda.",
+      "notFound": "Vendor tidak ditemukan.",
+      "backToList": "Kembali ke daftar penjual",
+      "accountDetails": "Rincian akun",
+      "joined": "Bergabung",
+      "detail": {
+        "activeListings": "Iklan yang masih aktif",
+        "completedBookings": "Pemesanan yang telah diselesaikan",
+        "averageRating": "Peringkat rata-rata",
+        "openStrikes": "Pemogokan terbuka",
+        "category": "Kategori",
+        "onboarded": "Telah bergabung pada {tanggal}",
+        "accountDocuments": "Dokumen akun",
+        "listingDocuments": "Dokumen daftar — {kategori}",
+        "payoutSummary": "Ringkasan Pembayaran",
+        "pendingPayout": "Pembayaran yang masih tertunda",
+        "lastPayout": "Pembayaran terakhir",
+        "internalNotes": "Catatan internal",
+        "noNotes": "Belum ada catatan internal.",
+        "noteAttribution": "— {penulis}, {tanggal}",
+        "viewListings": "Lihat daftar properti",
+        "suspendVendor": "Menangguhkan vendor",
+        "documentStatus": {
+          "verified": "Terverifikasi",
+          "pendingReview": "Sedang dalam proses peninjauan",
+          "signed": "Ditandatangani",
+          "notVerified": "Belum diverifikasi"
+        }
+      },
+      "menu": {
+        "verification": "Verifikasi",
+        "approvePendingListing": "Setujui daftar yang masih menunggu persetujuan",
+        "requestAdditionalDocuments": "Minta dokumen tambahan",
+        "upgradeToTier": "Tingkatkan ke Tingkat {tier}",
+        "standingTrust": "Kredibilitas & kepercayaan",
+        "grantInstantBook": "Berikan hak akses “Instant Book”",
+        "addStrike": "Tambahkan tanda coret / tanda internal",
+        "clearStrike": "Menghapus peringatan",
+        "financial": "Keuangan",
+        "holdPendingPayout": "Tahan pembayaran yang tertunda",
+        "adjustCommissionRate": "Menyesuaikan tingkat komisi",
+        "communication": "Komunikasi",
+        "contactVendor": "Hubungi penjual",
+        "addInternalNote": "Tambahkan catatan internal",
+        "account": "Akun",
+        "suspendAccount": "Menonaktifkan akun",
+        "banPermanently": "Blokir secara permanen"
+      },
+      "requestDocumentsModal": {
+        "title": "Minta dokumen tambahan",
+        "subtitle": "Kirim permintaan dokumen ke {vendor}.",
+        "documentLabel": "Pilih dokumen",
+        "documentPlaceholder": "Pilih sebuah dokumen",
+        "otherOption": "Lainnya (tidak tercantum)",
+        "customDocumentLabel": "Tambahkan nama dokumen",
+        "customDocumentPlaceholder": "Ketik nama dokumen",
+        "submit": "Kirim permintaan",
+        "cancel": "Batal"
+      },
+      "confirm": {
+        "cancel": "Batalkan"
+      },
+      "confirmSuspend": {
+        "title": "Apakah kamu yakin?",
+        "message": "Anda akan menangguhkan {vendor}. Mereka tidak akan dapat mengakses akun mereka sampai akun tersebut diaktifkan kembali."
+      },
+      "confirmBan": {
+        "title": "Apakah kamu yakin?",
+        "message": "Anda akan memblokir {vendor} secara permanen. Tindakan ini tidak dapat dibatalkan."
+      },
+      "internalNoteModal": {
+        "title": "Tambahkan catatan internal",
+        "subtitle": "Tambahkan komentar atau catatan untuk {vendor}.",
+        "label": "Pengamatan",
+        "placeholder": "Tuliskan pengamatan atau catatan Anda di sini...",
+        "submit": "Simpan catatan"
+      },
+      "experiences": "Pengalaman",
+      "earnings": "Total pendapatan"
+    },
+    "bookings": {
+      "title": "Pemesanan",
+      "subtitle": "Semua pemesanan untuk Penerbangan, Sewa Mobil, Akomodasi, dan Aktivitas — baik yang dilakukan melalui aplikasi, situs web, maupun yang dibuat secara manual.",
+      "create": "Buat pemesanan",
+      "searchPlaceholder": "Cari berdasarkan pelanggan, vendor, atau ID pemesanan...",
+      "empty": "Tidak ada pemesanan yang sesuai dengan kriteria Anda.",
+      "guests": "tamu",
+      "vendor": "Pemasok",
+      "contactCustomer": "Hubungi pelanggan",
+      "contactVendor": "Hubungi penjual",
+      "addInternalNote": "Tambahkan catatan internal",
+      "partialRefund": "Pengembalian dana sebagian",
+      "cancelRefund": "Pembatalan & pengembalian dana",
+      "flagDispute": "Laporkan sebagai sengketa",
+      "saveChanges": "Simpan perubahan",
+      "stats": {
+        "upcoming": "Akan datang (7 hari)",
+        "awaiting": "Menunggu konfirmasi",
+        "confirmed": "Telah dikonfirmasi",
+        "disputed": "Dipersengketakan / ditandai",
+        "totalMonth": "Total bulan ini"
+      },
+      "product": {
+        "all": "Semua jenis produk",
+        "flights": "Penerbangan",
+        "cars": "Mobil",
+        "accommodations": "Menginap",
+        "experiences": "Pengalaman"
+      },
+      "source": {
+        "all": "Semua sumber",
+        "website": "Situs Web",
+        "mobileApp": "Aplikasi seluler",
+        "admin": "Dibuat oleh admin"
+      },
+      "dateRange": {
+        "label": "Rentang tanggal",
+        "day": "1 hari",
+        "week": "1 minggu",
+        "month": "1 bulan",
+        "sixMonths": "6 bulan",
+        "year": "1 tahun",
+        "all": "Semua"
+      },
+      "filter": {
+        "all": "Semua ({jumlah})",
+        "upcoming": "Akan datang ({jumlah})",
+        "awaiting": "Menunggu konfirmasi ({jumlah})",
+        "confirmed": "Telah dikonfirmasi ({jumlah})",
+        "completed": "Selesai ({jumlah})",
+        "cancelled": "Dibatalkan ({jumlah})",
+        "disputed": "Dipersengketakan ({jumlah})"
+      },
+      "status": {
+        "confirmed": "Telah dikonfirmasi",
+        "awaiting": "Menunggu konfirmasi",
+        "cancelled": "Dibatalkan",
+        "completed": "Selesai",
+        "disputed": "Dipersengketakan"
+      },
+      "sidebar": {
+        "customer": "Pelanggan",
+        "source": "Sumber: {sumber}",
+        "vendor": "Pemasok",
+        "bookingDetails": "Rincian pemesanan",
+        "payment": "Pembayaran",
+        "timeline": "Garis Waktu",
+        "name": "Nama",
+        "contact": "Hubungi Kami",
+        "whatsapp": "WhatsApp",
+        "assignedTo": "Ditugaskan kepada",
+        "vendorContact": "Kontak vendor",
+        "checkIn": "Tanggal check-in",
+        "checkOut": "Tanggal check-out",
+        "amount": "Jumlah",
+        "paymentStatus": "Status",
+        "chargedCurrency": "Mata uang yang dikenakan"
+      },
+      "createModal": {
+        "title": "Buat pemesanan",
+        "subtitle": "Buat pemesanan atas nama pelanggan.",
+        "infoBannerPrefix": "Pemesanan ini akan diberi label",
+        "infoBannerSource": "Sumber: Dibuat oleh admin",
+        "infoBannerSuffix": "dan akan muncul di akun serta aplikasi pelanggan sama seperti pemesanan mandiri.",
+        "productType": "Jenis produk",
+        "product": {
+          "accommodations": "Akomodasi",
+          "flights": "Penerbangan",
+          "cars": "Mobil",
+          "experiences": "Pengalaman"
+        },
+        "customer": "Pelanggan",
+        "customerPlaceholder": "Cari pelanggan yang sudah terdaftar berdasarkan nama, alamat email, atau nomor telepon...",
+        "vendorListing": "Penjual / daftar produk",
+        "vendorPlaceholder": "Cari penjual atau iklan...",
+        "startDate": "Tanggal mulai",
+        "endDate": "Tanggal berakhir",
+        "guestsUnits": "Tamu / unit",
+        "guestsPlaceholder": "misalnya 2",
+        "totalAmount": "Jumlah total",
+        "amountPlaceholder": "NGN",
+        "paymentStatus": "Status pembayaran",
+        "payment": {
+          "sendLink": "Kirim tautan pembayaran kepada pelanggan",
+          "paidInFull": "Tandai sebagai telah dibayar lunas",
+          "pending": "Pembayaran sedang diproses — tautan belum dikirim"
+        },
+        "internalNote": "Catatan internal",
+        "internalNotePlaceholder": "misalnya: Dipesan melalui pertanyaan via WhatsApp, pelanggan meminta kamar di lantai dasar",
+        "cancel": "Batal",
+        "submit": "Buat pemesanan"
+      }
+    },
+    "payouts": {
+      "title": "Pembayaran",
+      "subtitle": "Pendapatan vendor di seluruh kategori, berdasarkan periode penyelesaian.",
+      "searchPlaceholder": "Cari berdasarkan nama vendor atau nomor referensi...",
+      "pendingCount": "{jumlah} pembayaran yang masih tertunda",
+      "markComplete": "Tandai sebagai selesai",
+      "contactVendor": "Hubungi penjual",
+      "decline": "Penurunan",
+      "empty": "Tidak ada pembayaran yang sesuai dengan pencarian Anda.",
+      "requested": "Diminta pada {tanggal}",
+      "periodLabel": "Periode: {periode}",
+      "listBookingsBank": "{jumlah} pemesanan · {bank} {rekening}",
+      "netPayoutToVendor": "Pembayaran bersih kepada vendor",
+      "grossEarnings": "Pendapatan bruto dari pemesanan",
+      "platformCommission": "Komisi platform ({tarif}%)",
+      "netPayout": "Pembayaran bersih",
+      "paymentDestination": "Tujuan pembayaran",
+      "bank": "Bank",
+      "accountNumber": "Nomor rekening",
+      "accountName": "Nama akun",
+      "payoutMethod": "Metode pembayaran",
+      "associatedBookings": "Pemesanan terkait ({jumlah})",
+      "internalNote": "Catatan internal",
+      "noteAttribution": "— {penulis}, {tanggal}",
+      "period": {
+        "thisMonth": "Bulan ini — Juli 2026",
+        "lastMonth": "Bulan lalu — Juni 2026",
+        "quarter": "Pada kuartal ini — Kuartal II 2026"
+      },
+      "stats": {
+        "totalPeriod": "Total pembayaran — periode",
+        "totalVendors": "Di antara {jumlah} penjual",
+        "pending": "Sedang diproses",
+        "pendingSubtitle": "{jumlah} pembayaran yang menunggu tindakan",
+        "completed": "Selesai",
+        "completedSubtitle": "{jumlah} pembayaran telah diselesaikan",
+        "declinedFailed": "Ditolak / Gagal",
+        "declinedFailedSubtitle": "{ditolak} ditolak · {gagal} transfer gagal"
+      },
+      "filter": {
+        "all": "Semua ({jumlah})",
+        "pending": "Sedang diproses ({jumlah})",
+        "completed": "Selesai ({jumlah})",
+        "declined": "Ditolak ({jumlah})",
+        "failed": "Gagal ({count})"
+      },
+      "status": {
+        "pending": "Sedang diproses",
+        "completed": "Selesai",
+        "declined": "Ditolak",
+        "failed": "Gagal",
+        "failedTransfer": "Transfer gagal"
+      }
+    },
+    "reviews": {
+      "title": "Moderasi ulasan",
+      "category": {
+        "unanswered": "Belum terjawab",
+        "responseRequired": "Diperlukan tanggapan",
+        "flagged": "Ditandai",
+        "deleted": "Dihapus",
+        "published": "Diterbitkan"
+      },
+      "selectAll": "Pilih semua",
+      "deselectAll": "Batalkan pemilihan semua",
+      "bulkPublish": "Publikasikan yang dipilih",
+      "bulkFlag": "Bendera telah dipilih",
+      "bulkResponseRequired": "Diperlukan tanggapan",
+      "bulkDelete": "Hapus yang dipilih",
+      "actionsGuideTitle": "Apa arti tindakan-tindakan ini?",
+      "actionsGuide": {
+        "publish": "Publikasikan — Tampilkan ulasan tersebut di halaman daftar publik.",
+        "flag": "Tandai — Tandai ulasan ini untuk ditindaklanjuti (konten yang tidak pantas atau mencurigakan).",
+        "delete": "Hapus — Menghapus ulasan dari tampilan publik. Ulasan yang dihapus akan muncul di tab \"Telah Dihapus\".",
+        "responseRequired": "Diperlukan tanggapan — Tunjukkan bahwa diperlukan tanggapan dari vendor atau admin.",
+        "clearResponseRequired": "Diperlukan tanggapan yang jelas — Hapus penanda tersebut setelah tanggapan resmi dipublikasikan."
+      },
+      "selectReview": "Pilih ulasan untuk {judul}",
+      "unansweredBadge": "Belum terjawab",
+      "responseRequiredBadge": "Diperlukan tanggapan",
+      "officialResponse": "Tanggapan resmi",
+      "empty": "Belum ada ulasan dalam kategori ini.",
+      "flag": "Bendera",
+      "responseRequired": "Diperlukan tanggapan",
+      "clearResponseRequired": "Diperlukan tanggapan yang jelas",
+      "delete": "Hapus",
+      "hide": "Sembunyikan",
+      "publish": "Terbitkan",
+      "respondAsSynkAfrica": "Balas sebagai SynkAfrica",
+      "responsePlaceholder": "Tanggapan resmi yang dapat dilihat oleh tamu dan vendor...",
+      "photosLabel": "Foto-foto tamu",
+      "status": {
+        "published": "Diterbitkan",
+        "flagged": "Ditandai",
+        "deleted": "Dihapus",
+        "hidden": "Tersembunyi"
+      }
+    },
+    "reports": {
+      "title": "Laporan",
+      "totalRevenue": "Total pendapatan (bulan)",
+      "totalBookings": "Total pemesanan (bulan)",
+      "topExperience": "Pengalaman terbaik",
+      "activeVendors": "Penjual aktif",
+      "popularExperiences": "Pengalaman yang populer",
+      "bookings": "pemesanan",
+      "metric": "Metrik",
+      "value": "Nilai",
+      "experience": "Pengalaman",
+      "exportRevenue": "Ekspor data CSV",
+      "exportBookings": "Ekspor pemesanan dalam format CSV"
+    },
+    "support": {
+      "title": "Tiket dukungan",
+      "subtitle": "Meninjau permintaan dukungan dari pengguna dan vendor, memperbarui status tiket, serta mengirimkan tanggapan resmi.",
+      "tab": {
+        "users": "Pengguna",
+        "vendors": "Pemasok"
+      },
+      "user": "Pengguna",
+      "vendor": "Pemasok",
+      "empty": "Tidak ada tiket yang sesuai dengan filter ini.",
+      "adminResponse": "Tanggapan admin",
+      "previousResponse": "Tanggapan sebelumnya",
+      "sendResponse": "Kirim tanggapan"
+    }
+  },
+  "vendor": {
+    "nav": {
+      "workspace": "Ruang Kerja",
+      "account": "Akun",
+      "dashboard": "Dasbor",
+      "listings": "Daftar",
+      "bookings": "Pemesanan",
+      "earnings": "Laba",
+      "notifications": "Pemberitahuan",
+      "businessProfile": "Profil Perusahaan",
+      "settings": "Pengaturan",
+      "support": "Dukungan",
+      "logOut": "Keluar",
+      "openMenu": "Buka menu",
+      "closeMenu": "Tutup menu"
+    },
+    "header": {
+      "verifiedVendor": "Pemasok terverifikasi",
+      "unverifiedVendor": "Penjual yang belum diverifikasi",
+      "pendingVendor": "Verifikasi sedang dalam proses"
+    },
+    "signup": {
+      "title": "Buat akun vendor Anda",
+      "subtitle": "Bergabunglah dengan SynkAfrica dan mulailah memposting mobil, akomodasi, serta pengalaman wisata Anda kepada para wisatawan di seluruh Afrika.",
+      "alreadyHaveAccount": "Sudah punya akun vendor?",
+      "signIn": "Masuk",
+      "progressLabel": "Kemajuan pendaftaran vendor",
+      "steps": {
+        "business": "Informasi Bisnis & Pemilik",
+        "security": "Keamanan & Verifikasi",
+        "identity": "Verifikasi Identitas"
+      },
+      "cancel": "Batalkan",
+      "back": "Kembali",
+      "continue": "Lanjutkan",
+      "createAccount": "Buat Akun",
+      "completeRequiredFields": "Isi kolom-kolom yang wajib diisi: {kolom}",
+      "securityRequired": "Verifikasi nomor telepon Anda dengan OTP dan buat kata sandi yang valid untuk melanjutkan.",
+      "identityRequired": "Unggah kartu identitas resmi Anda dan setujui persyaratannya untuk membuat akun Anda.",
+      "sections": {
+        "businessInfo": "Informasi Bisnis",
+        "businessInfoHint": "Ceritakan kepada kami tentang bisnis Anda.",
+        "ownerInfo": "Informasi Pemilik",
+        "ownerInfoHint": "Rincian mengenai pemilik usaha atau kontak utama.",
+        "phoneVerification": "Verifikasi Nomor Telepon",
+        "phoneVerificationHint": "Kami akan mengirimkan kode satu kali ke nomor telepon yang Anda berikan.",
+        "accountSecurity": "Keamanan Akun",
+        "accountSecurityHint": "Buat kata sandi yang kuat untuk akun vendor Anda.",
+        "governmentId": "Kartu identitas yang diterbitkan oleh pemerintah",
+        "governmentIdHint": "Unggah salinan Paspor, Surat Izin Mengemudi, atau slip NIN yang masih berlaku untuk verifikasi identitas."
+      },
+      "fields": {
+        "businessName": "Nama Perusahaan",
+        "businessType": "Jenis Usaha",
+        "cacRegistrationNumber": "Nomor Registrasi CAC",
+        "companyType": "Jenis Perusahaan",
+        "businessAddress": "Alamat Perusahaan",
+        "ownerFullName": "Nama Lengkap Pemilik",
+        "ownerEmail": "Alamat Email",
+        "phoneNumber": "Nomor Telepon",
+        "dateOfBirth": "Tanggal Lahir",
+        "password": "Kata sandi",
+        "confirmPassword": "Konfirmasi Kata Sandi"
+      },
+      "placeholders": {
+        "companyType": "Pilih jenis perusahaan",
+        "businessName": "misalnya: Jalur Pesisir NG",
+        "businessType": "Pilih jenis usaha",
+        "cacRegistrationNumber": "misalnya, RC1234567",
+        "businessAddress": "Jalan, kota, negara bagian",
+        "ownerFullName": "Nama lengkap secara hukum",
+        "ownerEmail": "you@business.com",
+        "phoneNumber": "7812345678",
+        "password": "Buat kata sandi",
+        "confirmPassword": "Masukkan kembali kata sandi Anda"
+      },
+      "sendOtp": "Kirim OTP",
+      "resendOtp": "Kirim Ulang OTP",
+      "enterOtp": "Masukkan OTP",
+      "resendIn": "Kirim ulang dalam 00:{detik}",
+      "otpVerified": "Nomor telepon telah diverifikasi.",
+      "passwordRules": {
+        "minLength": "Setidaknya 8 karakter",
+        "hasNumber": "Termasuk sejumlah",
+        "hasUppercase": "Termasuk huruf besar"
+      },
+      "passwordMismatch": "Kata sandi tidak cocok.",
+      "togglePasswordVisibility": "Aktifkan/nonaktifkan tampilan kata sandi",
+      "uploadId": "Seret dan lepaskan kartu identitas Anda di sini",
+      "uploadIdHint": "JPG, PNG, atau PDF (maks. 5 MB)",
+      "chooseFile": "Pilih Berkas",
+      "idUploaded": "Dokumen telah diunggah",
+      "idUploadFailed": "Pengunggahan gagal — silakan coba lagi.",
+      "removeId": "Hapus ID",
+      "idPrivacyNote": "ID Anda disimpan dengan aman dan hanya digunakan untuk keperluan verifikasi. Kami tidak pernah membagikan dokumen pribadi Anda kepada pihak ketiga.",
+      "securityBanner": {
+        "title": "Informasi Anda aman bersama kami",
+        "message": "Kami menggunakan sistem keamanan standar industri untuk melindungi data Anda dan menjaga keamanan akun Anda."
+      },
+      "agreeTermsPrefix": "Saya setuju dengan",
+      "termsOfService": "Ketentuan Layanan",
+      "and": "dan",
+      "privacyPolicy": "Kebijakan Privasi"
+    },
+    "login": {
+      "title": "Masuk untuk vendor",
+      "intro": "Masuk ke akun vendor SynkAfrica Anda untuk mengelola daftar produk, pemesanan, dan penghasilan.",
+      "emailPlaceholder": "Masukkan alamat email vendor Anda",
+      "signInGoogle": "Masuk dengan Google",
+      "noAccount": "Belum punya akun penjual?",
+      "signUp": "Daftar"
+    },
+    "verificationNotice": {
+      "unverified": {
+        "title": "Diperlukan verifikasi",
+        "message": "Selesaikan proses verifikasi penjual Anda untuk mempublikasikan iklan dan menerima pembayaran."
+      },
+      "pending": {
+        "title": "Proses verifikasi sedang berlangsung",
+        "message": "Verifikasi Anda sedang ditinjau. Beberapa fitur mungkin masih terbatas sampai disetujui."
+      },
+      "completeVerification": "Verifikasi lengkap"
+    },
+    "notifications": {
+      "filter": {
+        "label": "Saring pemberitahuan",
+        "all": "Semua",
+        "newBooking": "Pemesanan baru",
+        "bookingReminder": "Pengingat 24 jam",
+        "payoutConfirmation": "Pembayaran",
+        "adminMessage": "Admin"
+      },
+      "type": {
+        "newBooking": "Pemesanan baru",
+        "bookingReminder": "Pengingat 24 jam",
+        "payoutConfirmation": "Pembayaran",
+        "adminMessage": "Pesan dari admin"
+      },
+      "unreadCount": "{jumlah} pemberitahuan yang belum dibaca",
+      "allCaughtUp": "Kamu sudah tidak ketinggalan lagi.",
+      "markRead": "Tandai sebagai sudah dibaca",
+      "markAllRead": "Tandai semua sebagai sudah dibaca",
+      "empty": "Tidak ada pemberitahuan dalam kategori ini.",
+      "time": {
+        "justNow": "Baru saja",
+        "hoursAgo": "{count} jam yang lalu"
+      },
+      "sample": {
+        "newBooking": {
+          "title": "Ada pemesanan baru yang masuk",
+          "message": "Amara telah memesan Lagos Lagoon Sunset Cruise untuk tanggal 25 Juli · 4 tamu. Konfirmasikan atau tolak dalam waktu 24 jam."
+        },
+        "newBooking2": {
+          "title": "Ada pemesanan baru yang masuk",
+          "message": "Chidi memesan Lekki Garden Suites untuk tanggal 3 Agustus · 2 tamu."
+        },
+        "reminder": {
+          "title": "Pemesanan dalam 24 jam",
+          "message": "Pengingat: Pesiar Menikmati Matahari Terbenam di Laguna Lagos bersama Fatima besok pukul 17.30 · 6 tamu."
+        },
+        "reminder2": {
+          "title": "Pemesanan dalam 24 jam",
+          "message": "Pengingat: Penyewaan Toyota Camry 2021 bersama Emeka besok pukul 09.00."
+        },
+        "payout": {
+          "title": "Pembayaran telah dikonfirmasi",
+          "message": "NGN 200.000 telah ditransfer ke rekening GTBank Anda yang berakhir dengan angka 4521."
+        },
+        "payout2": {
+          "title": "Pembayaran telah dikonfirmasi",
+          "message": "Penarikan dana sebesar 150.000 NGN ke Access Bank dengan nomor akhir 8834 telah diproses dengan sukses."
+        },
+        "admin": {
+          "title": "Pembaruan kebijakan dari Synkafrica",
+          "message": "Pedoman terbaru bagi penjual terkait penawaran pengalaman kini telah tersedia. Mohon ditinjau paling lambat tanggal 1 Agustus."
+        },
+        "admin2": {
+          "title": "Iklan telah disetujui",
+          "message": "Iklan \"Lagos Lagoon Sunset Cruise\" Anda kini telah ditayangkan di Synkafrica."
+        }
+      }
+    },
+    "dashboard": {
+      "welcomeBack": "Selamat datang kembali,",
+      "addListing": "Tambahkan iklan",
+      "period": {
+        "label": "Periode pengukuran",
+        "day": "Suatu hari",
+        "week": "Satu minggu",
+        "month": "Satu bulan",
+        "sixMonths": "Enam bulan",
+        "year": "Satu tahun"
+      },
+      "stats": {
+        "liveListings": "Daftar Properti Terbaru",
+        "newBookings": "Pemesanan Baru",
+        "earnings": "Laba",
+        "pendingApproval": "Menunggu persetujuan"
+      },
+      "goToBookings": "Buka halaman pemesanan",
+      "yourListings": "Iklan Anda",
+      "seeAll": "Lihat Semua",
+      "status": {
+        "live": "Daftar Langsung",
+        "pending": "Sedang diproses...",
+        "paused": "Dijeda",
+        "draft": "Draf"
+      },
+      "editListing": "Edit daftar",
+      "deleteListing": "Hapus iklan",
+      "pauseListing": "Jeda daftar",
+      "playListing": "Daftar riwayat hidup",
+      "deleteListingModal": {
+        "title": "Hapus iklan?",
+        "message": "Apakah Anda yakin ingin menghapus \"{judul}\"? Tindakan ini tidak dapat dibatalkan.",
+        "confirm": "Hapus iklan",
+        "cancel": "Batalkan"
+      },
+      "category": {
+        "accommodations": "Akomodasi",
+        "carRentals": "Penyewaan mobil",
+        "tours": "Tur",
+        "toursExperiences": "Tur & pengalaman"
+      }
+    },
+    "businessProfile": {
+      "businessName": "Nama perusahaan",
+      "businessNameHint": "Nama internal yang digunakan pada catatan pembayaran dan vendor. Tidak ditampilkan pada daftar publik.",
+      "internalNameLabel": "Nama internal perusahaan",
+      "contactDetails": "Rincian kontak",
+      "contactDetailsHint": "Bagaimana Synkafrica dan para tamu menghubungi Anda untuk mendapatkan bantuan pemesanan.",
+      "phone": "Nomor telepon",
+      "email": "Alamat email",
+      "address": "Alamat kantor",
+      "payoutAccount": "Rekening bank untuk pembayaran",
+      "payoutAccountHint": "Penarikan dari hasil penghasilan dikirimkan ke rekening ini.",
+      "bankName": "Nama bank",
+      "accountNumber": "Nomor rekening",
+      "accountNumberLocked": "Nomor rekening hanya dapat diubah setiap {bulan} bulan. Perubahan berikutnya dapat dilakukan pada {tanggal}.",
+      "accountName": "Nama akun",
+      "bank": {
+        "zenith": "Bank Zenith",
+        "firstBank": "First Bank"
+      },
+      "passwordUpdate": "Pembaruan kata sandi",
+      "passwordUpdateHint": "Pilihlah kata sandi yang kuat dan tidak pernah Anda gunakan di tempat lain.",
+      "currentPassword": "Kata sandi saat ini",
+      "newPassword": "Kata sandi baru",
+      "confirmPassword": "Konfirmasi kata sandi baru",
+      "passwordMismatch": "Kata sandi baru tidak cocok.",
+      "updatePassword": "Perbarui kata sandi",
+      "passwordUpdated": "Kata sandi telah diperbarui.",
+      "saveChanges": "Simpan perubahan",
+      "saved": "Telah disimpan.",
+      "rejected": {
+        "title": "Permohonan tidak disetujui",
+        "noReason": "Seorang admin belum menyetujui permohonan Anda. Perbaiki detail dan dokumen Anda di bawah ini, lalu kirimkan kembali.",
+        "resubmit": "Kirimkan kembali untuk ditinjau",
+        "resubmitting": "Mengirim ulang…",
+        "resubmitted": "Telah dikirimkan kembali. Seorang admin akan meninjau permohonan Anda sekali lagi.",
+        "resubmitFailed": "Tidak dapat mengirim ulang. Silakan coba lagi."
+      },
+      "cac": {
+        "title": "Pendaftaran CAC",
+        "hint": "Sudah dicocokkan dengan daftar CAC. Anda dapat memperbaiki detail-detail ini sampai hasil verifikasi dinyatakan lulus.",
+        "number": "Nomor registrasi CAC",
+        "companyType": "Jenis perusahaan",
+        "companyTypePlaceholder": "Pilih jenis perusahaan",
+        "status": {
+          "verified": "Terverifikasi",
+          "failed": "Belum diverifikasi",
+          "unverified": "Menunggu pemeriksaan"
+        },
+        "verifiedAs": "Tercatat sebagai {nama} dalam daftar CAC.",
+        "failedHint": "Data di registri CAC tidak sesuai dengan rincian ini. Perbaiki dan simpan, lalu periksa kembali.",
+        "pendingHint": "Menyimpan akan menjalankan kembali pemeriksaan CAC. Silakan segarkan halaman sebentar lagi untuk melihat hasilnya.",
+        "lockedHint": "Rincian yang telah diverifikasi tidak dapat diubah di sini. Silakan hubungi bagian dukungan jika ada yang salah."
+      },
+      "documents": {
+        "title": "Dokumen & Verifikasi",
+        "subtitle": "Dokumen tingkat bisnis berlaku untuk seluruh akun Anda. Dokumen kendaraan wajib dilampirkan untuk setiap iklan sebelum iklan tersebut dapat ditayangkan.",
+        "businessSection": "Dokumen bisnis",
+        "business": {
+          "cac": "Akta Pendirian (CAC)"
+        },
+        "uploadedMeta": "Diunggah pada {tanggal} · [[[nama file]]]",
+        "view": "Lihat",
+        "vehicleSection": "Dokumen kendaraan · {jumlah} iklan",
+        "vehicleLegend": "Asuransi · Kelayakan Jalan · Bukti Kepemilikan",
+        "type": {
+          "insurance": "Sertifikat Asuransi",
+          "roadworthiness": "Sertifikat Kelayakan Jalan",
+          "ownership": "Bukti Kepemilikan"
+        },
+        "status": {
+          "verified": "Terverifikasi",
+          "rejected": "Ditolak",
+          "pending": "Sedang diproses",
+          "notUploaded": "Belum diunggah"
+        },
+        "listingStatus": {
+          "allVerified": "Semua Telah Diverifikasi",
+          "actionNeeded": "Tindakan yang Perlu Dilakukan",
+          "notStarted": "Belum Dimulai",
+          "inProgress": "Sedang Berlangsung"
+        },
+        "reupload": "Unggah ulang",
+        "upload": "Unggah",
+        "rejection": {
+          "plateMismatch": "Nama dokumen tidak sesuai dengan nomor plat yang terdaftar. Silakan unggah kembali surat izin kendaraan yang sesuai dengan nomor ABJ-771-KD."
+        }
+      }
+    },
+    "support": {
+      "helpBanner": "Ajukan keluhan atau minta bantuan kepada tim vendor Synkafrica. Kami biasanya akan merespons dalam waktu 1–2 hari kerja.",
+      "helpBannerEmail": "Pembaruan akan dikirimkan ke {email}.",
+      "openTickets": "{jumlah} tiket yang masih terbuka",
+      "tabs": {
+        "label": "Bagian bantuan"
+      },
+      "createTicket": "Buat tiket dukungan",
+      "createTicketHint": "Jelaskan masalah Anda secara terperinci agar kami dapat menyelesaikannya dengan cepat.",
+      "subject": "Subjek",
+      "subjectPlaceholder": "Ringkasan singkat mengenai masalah Anda",
+      "category": {
+        "booking": "Masalah pemesanan",
+        "payout": "Pembayaran & penghasilan",
+        "listing": "Daftar & ketersediaan",
+        "account": "Akun & profil",
+        "complaint": "Keluhan",
+        "other": "Lain-lain"
+      },
+      "priority": {
+        "low": "Rendah",
+        "medium": "Sedang",
+        "high": "Tinggi",
+        "urgent": "Mendesak"
+      },
+      "priorityHint": "Gunakan opsi \"Urgent\" hanya untuk pemesanan yang mendesak atau masalah pembayaran.",
+      "bookingReference": "Nomor referensi pemesanan",
+      "bookingReferencePlaceholder": "misalnya VB-3 atau nomor pesanan (opsional)",
+      "description": "Deskripsi",
+      "descriptionPlaceholder": "Jelaskan apa yang terjadi, kapan hal itu terjadi, dan hasil seperti apa yang Anda harapkan.",
+      "submitTicket": "Kirim tiket",
+      "ticketSubmitted": "Tiket {nomor} telah dikirimkan. Tim kami akan segera menindaklanjutinya.",
+      "responseTime": "Kolom yang wajib diisi ditandai dengan *.",
+      "yourTickets": "Tiket Anda",
+      "yourTicketsHint": "Lacak keluhan dan permintaan bantuan yang telah Anda ajukan.",
+      "filter": {
+        "label": "Saring tiket berdasarkan status",
+        "all": "Semua"
+      },
+      "status": {
+        "open": "Buka",
+        "inProgress": "Sedang berlangsung",
+        "resolved": "Telah diselesaikan",
+        "closed": "Tutup"
+      },
+      "updated": "Diperbarui",
+      "created": "Dibuat",
+      "emptyTickets": "Tidak ada tiket yang sesuai dengan filter ini.",
+      "loading": "Sedang memuat tiket…",
+      "loadFailed": "Tiket Anda tidak dapat dimuat. Silakan coba lagi.",
+      "submitFailed": "Tidak dapat mengirimkan tiket Anda. Silakan coba lagi.",
+      "viewConversation": "Lihat percakapan",
+      "backToTickets": "Kembali ke tiket",
+      "conversation": "Percakapan",
+      "you": "Kamu",
+      "supportTeam": "Tim dukungan",
+      "replyPlaceholder": "Ketik balasan Anda…",
+      "sendReply": "Kirim balasan",
+      "sending": "Mengirim…",
+      "replyFailed": "Balasan Anda tidak dapat dikirim. Silakan coba lagi."
+    },
+    "earnings": {
+      "availableBalance": "Saldo tersedia",
+      "lifetimeEarnings": "Penghasilan Seumur Hidup",
+      "transactionHistory": "Riwayat transaksi",
+      "withdrawFunds": "Menarik Dana",
+      "amountToWithdraw": "Jumlah yang akan ditarik",
+      "selectBankAccount": "Pilih rekening bank",
+      "payoutAccount": "Rekening pencairan",
+      "noBankAccount": "Belum ada rekening pencairan yang ditambahkan.",
+      "addBankAccount": "Tambahkan rekening bank di Profil Bisnis →",
+      "availableHint": "Tersedia:",
+      "processingNote": "Penarikan dana diproses dalam waktu 1–2 hari kerja.",
+      "paymentFlowTitle": "Kebijakan Pembayaran & Penarikan Dana",
+      "paymentFlowInstant": "Penarikan sebesar ₦200.000 atau kurang akan diproses secara otomatis setelah dikonfirmasi.",
+      "paymentFlowApproval": "Penarikan dana di atas ₦200.000 memerlukan persetujuan dari super-admin.",
+      "paymentFlowAuth": "Saat melakukan penarikan, untuk jumlah di atas ₦200.000 diperlukan PIN transaksi dan OTP.",
+      "withdrawalModal": {
+        "title": "Konfirmasi penarikan",
+        "pin": "PIN Transaksi",
+        "otp": "Kode OTP",
+        "sendOtp": "Kirim OTP",
+        "submit": "Konfirmasi penarikan",
+        "pendingApproval": "Penarikan ini memerlukan persetujuan dari super-admin. Anda akan diberi tahu setelah disetujui.",
+        "cancel": "Batal"
+      },
+      "status": {
+        "completed": "Selesai",
+        "pending": "Sedang diproses",
+        "failed": "Gagal"
+      },
+      "transaction": {
+        "bookingPayment": "Pembayaran pemesanan",
+        "withdrawal": "Penarikan",
+        "platformFee": "Biaya platform",
+        "refund": "Pengembalian Dana"
+      },
+      "bank": {
+        "gtbank": "GTBank",
+        "access": "Access Bank"
+      },
+      "duration": {
+        "label": "Periode pelaporan laba",
+        "daily": "Setiap hari",
+        "weekly": "Mingguan",
+        "monthly": "Bulanan",
+        "all": "Semua"
+      },
+      "commissionSplit": "Pembagian komisi",
+      "commissionSplitHint": "Pendapatan dari pemesanan dibagi menjadi {vendor}% untuk Anda dan {platform}% untuk Synkafrica.",
+      "vendorShare": "Bagian Anda",
+      "platformShare": "Biaya platform",
+      "grossRevenue": "Pendapatan kotor",
+      "downloadStatements": "Unduh laporan",
+      "emptyTransactions": "Tidak ada transaksi untuk periode ini.",
+      "statement": {
+        "date": "Tanggal",
+        "title": "Judul",
+        "description": "Deskripsi",
+        "type": "Jenis",
+        "amount": "Jumlah",
+        "status": "Status"
+      }
+    },
+    "listings": {
+      "detail": {
+        "back": "Kembali ke daftar",
+        "backToBookings": "Kembali ke pemesanan",
+        "heading": "Rincian iklan",
+        "hint": "Tampilan pratinjau lengkap dari iklan ini, termasuk media, detail, harga, dan dokumen.",
+        "status": "Status",
+        "category": "Kategori",
+        "rating": "Peringkat",
+        "notFound": "Iklan tidak ditemukan."
+      },
+      "bookingAvailability": "Ketersediaan pemesanan",
+      "filter": {
+        "allCategories": "Semua kategori",
+        "allStatuses": "Semua status",
+        "statusLabel": "Status",
+        "status": {
+          "live": "Langsung",
+          "pending": "Sedang diproses",
+          "draft": "Draf",
+          "paused": "Dijeda"
+        },
+        "empty": "Tidak ada daftar yang sesuai dengan filter Anda."
+      },
+      "status": {
+        "pendingApproval": "Menunggu persetujuan",
+        "paused": "Dijeda"
+      },
+      "availability": {
+        "selectListing": "Daftar",
+        "modeAvailable": "Tandai sebagai tersedia",
+        "modeBlock": "Tanggal yang diblokir",
+        "modeAvailableHint": "Klik tanggal untuk membuka pilihan pemesanan. Klik lagi untuk menghapus ketersediaan.",
+        "modeBlockHint": "Klik tanggal untuk memblokir pemesanan. Klik lagi untuk membuka blokir.",
+        "legendAvailable": "Tersedia",
+        "legendBlocked": "Diblokir",
+        "legendSelected": "Terpilih",
+        "available": "Tersedia",
+        "blocked": "Diblokir",
+        "timeSlots": "Slot waktu",
+        "capacity": "Kapasitas",
+        "selectDayHint": "Pilih tanggal di kalender untuk mengatur slot waktu.",
+        "selectAvailableDay": "Tandai tanggal ini sebagai tanggal yang tersedia untuk mengatur slot waktu.",
+        "blockedDayMessage": "Tanggal ini telah diblokir. Buka blokirnya untuk mengatur slot waktu.",
+        "defaultCapacity": "Kapasitas standar",
+        "defaultCapacityHint": "Berlaku untuk tanggal-tanggal baru yang tersedia dan slot waktu yang diaktifkan.",
+        "leadTime": "Waktu tunggu",
+        "leadTimeHint": "Jangka waktu pemberitahuan minimum yang diperlukan sebelum tamu dapat melakukan pemesanan.",
+        "leadTimeUnitHours": "Jam Buka",
+        "leadTimeUnitDays": "Hari"
+      },
+      "calendar": {
+        "sun": "Minggu",
+        "mon": "Senin",
+        "tue": "Selasa",
+        "wed": "Rabu",
+        "thu": "Kamis",
+        "fri": "Jumat",
+        "sat": "Sabtu",
+        "previousMonth": "Bulan lalu",
+        "nextMonth": "Bulan depan"
+      }
+    },
+    "bookings": {
+      "tab": {
+        "upcoming": "Segera Hadir",
+        "past": "Masa Lalu",
+        "cancelled": "Dibatalkan",
+        "declined": "Ditolak"
+      },
+      "stats": {
+        "awaitingConfirmation": "Menunggu konfirmasi",
+        "upcomingConfirmed": "Akan datang (telah dikonfirmasi)",
+        "earningsThisMonth": "Pendapatan bulan ini",
+        "responseRate": "Tingkat respons (30 hari)"
+      },
+      "searchPlaceholder": "Cari berdasarkan nama tamu atau ID pemesanan...",
+      "allListings": "Semua daftar",
+      "viewModeLabel": "Tampilan pemesanan",
+      "view": {
+        "list": "Daftar",
+        "calendar": "Kalender"
+      },
+      "calendarComingSoon": "Tampilan kalender akan segera hadir.",
+      "respondWithin": "Tanggapi dalam waktu {waktu}",
+      "paymentSecured": "Pembayaran telah berhasil",
+      "messageGuest": "Pesan tamu",
+      "viewListing": "Lihat daftar",
+      "cancelBooking": "Batalkan pemesanan",
+      "dateRangeLabel": "Saring berdasarkan rentang tanggal",
+      "dateRange": {
+        "all": "Sepanjang masa",
+        "pastMonth": "Bulan lalu",
+        "past3Months": "3 bulan terakhir",
+        "past6Months": "6 bulan terakhir",
+        "pastYear": "Tahun lalu"
+      },
+      "empty": {
+        "upcoming": "Tidak ada pemesanan yang akan datang untuk periode ini.",
+        "past": "Tidak ada pemesanan sebelumnya untuk periode ini.",
+        "cancelled": "Tidak ada pemesanan yang dibatalkan untuk periode ini.",
+        "declined": "Tidak ada pemesanan yang dibatalkan untuk periode ini."
+      },
+      "declineModal": {
+        "title": "Membatalkan pemesanan",
+        "subtitle": "Jelaskan kepada {tamu} mengapa pemesanan {referensi} ditolak.",
+        "reasonLabel": "Alasan penolakan",
+        "reasonPlaceholder": "Jelaskan mengapa Anda tidak dapat menerima pemesanan ini...",
+        "cancel": "Batal",
+        "submit": "Membatalkan pemesanan"
+      },
+      "declineReason": "Alasan penolakan",
+      "deliveryAddress": "Alamat pengiriman",
+      "pickupAddress": "Alamat pengambilan",
+      "carMode": {
+        "selfDrive": "Mengemudi sendiri",
+        "withDriver": "Dengan pengemudi"
+      },
+      "calendar": {
+        "selectedDay": "{jumlah} pemesanan pada hari ini",
+        "noBookings": "Tidak ada pemesanan pada hari ini."
+      },
+      "pendingConfirmation": "{jumlah} pemesanan yang menunggu konfirmasi Anda.",
+      "specialRequests": "Permintaan khusus",
+      "confirm": "Konfirmasi",
+      "decline": "Penurunan",
+      "markComplete": "Tandai sebagai selesai",
+      "status": {
+        "awaitingConfirmation": "Menunggu konfirmasi",
+        "confirmed": "Telah dikonfirmasi",
+        "declined": "Ditolak",
+        "completed": "Selesai",
+        "cancelled": "Dibatalkan"
+      }
+    },
+    "addListing": {
+      "title": "Tambahkan Iklan Baru",
+      "editTitle": "Edit Daftar",
+      "loadError": "Tidak dapat memuat daftar ini. Silakan coba lagi.",
+      "subtitle": "Buat iklan baru dan mulailah menjangkau lebih banyak pelanggan.",
+      "backToListings": "← Kembali ke daftar",
+      "backToListing": "← Kembali ke daftar",
+      "progressLabel": "Kemajuan pencatatan",
+      "steps": {
+        "carDetails": "Detail mobil",
+        "accommodationDetails": "Rincian akomodasi",
+        "experienceDetails": "Rincian pengalaman",
+        "media": "Media",
+        "pricing": "Harga",
+        "documents": "Dokumen",
+        "review": "Tinjau & Terbitkan"
+      },
+      "whatAreYouListing": "Apa yang kamu jual?",
+      "category": {
+        "car": {
+          "title": "Mobil",
+          "description": "Pasang iklan mobil sewaan."
+        },
+        "accommodation": {
+          "title": "Akomodasi",
+          "description": "Sebutkan tempat menginap."
+        },
+        "experience": {
+          "title": "Pengalaman",
+          "description": "Cantumkan sebuah kegiatan atau tur."
+        }
+      },
+      "carDetailsHeading": "Detail Mobil",
+      "accommodationDetailsHeading": "Rincian Akomodasi",
+      "experienceDetailsHeading": "Rincian Pengalaman",
+      "experienceType": "Jenis Pengalaman / Kategori",
+      "experienceTypeSelect": "Pilih jenis pengalaman",
+      "experienceLocationPlaceholder": "misalnya, Lekki, Lagos, Nigeria",
+      "experienceHighlights": "Sorotan / Deskripsi Singkat",
+      "experienceHighlightsHint": "Ringkasan singkat dan menarik tentang apa yang akan dilakukan dan dialami para tamu.",
+      "experienceHighlightsPlaceholder": "Jelaskan pengalaman tersebut, apa yang membuatnya unik, dan mengapa para tamu akan menyukainya.",
+      "experienceAvailabilityHeading": "Ketersediaan",
+      "experienceAvailabilityHint": "Tentukan kapan pengalaman Anda tersedia.",
+      "operatingDays": "Hari Operasional",
+      "startTime": "Waktu Mulai",
+      "endTime": "Akhir Zaman",
+      "experienceScheduleWeekly": "Ditayangkan ulang setiap minggu",
+      "experienceScheduleWeeklyHint": "Pengalaman ini tersedia setiap minggu pada hari-hari tertentu.",
+      "experienceScheduleDateRange": "Rentang tanggal khusus",
+      "experienceScheduleDateRangeHint": "Tentukan rentang tanggal tertentu untuk pengalaman ini.",
+      "experienceDateRangeHeading": "Pilih rentang tanggal",
+      "experienceDateRangeHint": "Pilih tanggal mulai dan berakhirnya periode ketersediaan pengalaman ini.",
+      "experienceDateRangeStart": "Tanggal mulai",
+      "experienceDateRangeEnd": "Tanggal berakhir",
+      "additionalInfoSection": "Info Tambahan",
+      "whatsIncludedHint": "Sebutkan apa saja yang termasuk dalam pengalaman tersebut.",
+      "includesItemsPlaceholder": "misalnya: Peralatan, pemandu, perlengkapan keselamatan, air minum kemasan",
+      "whatToBring": "Apa yang Harus Dibawa / Dipakai",
+      "whatToBringHint": "Beritahukan kepada para tamu apa saja yang perlu mereka bawa atau kenakan.",
+      "whatToBringPlaceholder": "misalnya: Pakaian yang nyaman, Sepatu tertutup, Tabir surya",
+      "tagInputFooter": "Masukkan setiap item, lalu tekan Enter",
+      "additionalInformationHeading": "Informasi Tambahan",
+      "additionalInformationHint": "Tambahkan informasi lain yang berguna bagi para tamu Anda.",
+      "additionalInformationPlaceholder": "misalnya: Batasan usia, Persyaratan kesehatan, Kebijakan pembatalan, Rincian titik pertemuan",
+      "weekday": {
+        "mon": "Senin",
+        "tue": "Selasa",
+        "wed": "Rabu",
+        "thu": "Kamis",
+        "fri": "Jum'at",
+        "sat": "Sabtu",
+        "sun": "Minggu"
+      },
+      "carName": "Nama Mobil",
+      "carNamePlaceholder": "misalnya, Toyota Highlander 2024",
+      "carModel": "Model Mobil / Varian",
+      "carModelPlaceholder": "misalnya 2,4L Limited AWD",
+      "transmission": {
+        "automatic": "Otomatis",
+        "manual": "Panduan"
+      },
+      "year": "Tahun",
+      "yearPlaceholder": "misalnya 2024",
+      "comesWithDriver": "Sudah termasuk driver?",
+      "yes": "Ya",
+      "no": "Tidak",
+      "shortDescription": "Deskripsi Singkat",
+      "carDescriptionPlaceholder": "Jelaskan mengenai mobil, kondisinya, dan apa saja yang disertakan bagi penyewa.",
+      "perksFeatures": "Keuntungan & Fitur",
+      "perksPlaceholder": "Tambahkan setiap manfaat dan tekan Enter",
+      "propertyName": "Nama properti",
+      "accommodationName": "Nama Akomodasi",
+      "accommodationNamePlaceholder": "misalnya: Oceanview Suites Lekki",
+      "propertyNamePlaceholder": "misalnya: Lekki Garden Suites",
+      "propertyType": "Jenis Properti",
+      "propertyTypeSelect": "Pilih jenis properti",
+      "propertyTypePlaceholder": "misalnya: apartemen, vila, hotel",
+      "address": "Alamat",
+      "addressPlaceholder": "Alamat lengkap properti",
+      "accommodationLocationPlaceholder": "misalnya: Lekki Tahap 1, Lagos, Nigeria",
+      "accommodationMaxGuests": "Jumlah Tamu Maksimal (Properti)",
+      "accommodationMaxGuestsPlaceholder": "misalnya 12",
+      "checkInTime": "Waktu Check-in",
+      "checkOutTime": "Waktu Check-out",
+      "availability": "Ketersediaan",
+      "availabilityAlways": "Selalu tersedia",
+      "availabilityDateRange": "Tentukan rentang tanggal",
+      "availabilityHint": "Anda juga bisa mengatur tanggal tertentu dari kalender Anda setelah publikasi.",
+      "popularPerks": "Keuntungan Populer",
+      "popularPerksHint": "Pilih fasilitas yang tersedia di properti Anda.",
+      "viewAllPerks": "Lihat semua keuntungan",
+      "showLessPerks": "Tampilkan lebih sedikit",
+      "propertyOwner": "Apakah Anda pemilik properti?",
+      "propertyOwnerYes": "Ya, saya pemiliknya",
+      "propertyOwnerNo": "Tidak, saya adalah agen resmi",
+      "bedrooms": "Kamar tidur",
+      "bathrooms": "Kamar mandi",
+      "accommodationDescriptionPlaceholder": "Jelaskan secara singkat tentang akomodasi Anda, suasananya, tempat-tempat wisata di sekitarnya, serta apa yang membuatnya istimewa.",
+      "amenities": "Fasilitas",
+      "amenitiesPlaceholder": "Tambahkan setiap fasilitas, lalu tekan Enter",
+      "experienceName": "Nama pengalaman",
+      "experienceNamePlaceholder": "misalnya: Petualangan Paintball di Lagos",
+      "location": "Lokasi",
+      "locationPlaceholder": "misalnya Pulau Victoria, Lagos",
+      "duration": "Durasi",
+      "durationPlaceholder": "misalnya 2 jam",
+      "maxGuests": "Jumlah tamu maksimum",
+      "experienceDescriptionPlaceholder": "Jelaskan kegiatan, jadwal perjalanan, dan apa yang akan dialami para tamu.",
+      "whatsIncluded": "Apa saja yang termasuk",
+      "includesPlaceholder": "Masukkan setiap entri, lalu tekan Enter",
+      "mediaHeading": "Gambar produk",
+      "mediaHint": "Unggah foto atau video yang jelas. Maksimal 8 berkas.",
+      "uploadImages": "Seret dan lepaskan gambar atau video ke sini, atau klik untuk menelusuri",
+      "uploadImagesHint": "PNG, JPG, WEBP, atau MP4 (maks. 10 MB)",
+      "removeImage": "Hapus gambar",
+      "mediaSkippedUnsupported": "{count} berkas dilewati — format tidak didukung. Gunakan PNG, JPG, WEBP, atau MP4 (foto HEIC dari iPhone belum didukung).",
+      "mediaSkippedTooLarge": "{count} berkas dilewati — setiap berkas harus berukuran kurang dari 10 MB.",
+      "mediaPreviewFailed": "Pratinjau tidak tersedia",
+      "mediaUploading": "Sedang mengunggah…",
+      "mediaUploadFailed": "Pengunggahan gagal",
+      "pickupDeliveryHeading": "Pengambilan atau Pengiriman",
+      "pickupDeliveryQuestion": "Opsi serah terima apa saja yang Anda tawarkan? Pilih semua yang sesuai.",
+      "pickupAddress": "Alamat pengambilan",
+      "pickupAddressPlaceholder": "Masukkan alamat tempat para tamu dapat mengambil mobil tersebut",
+      "clientPickup": "Pengambilan oleh Klien",
+      "clientPickupHint": "Pelanggan mengambil mobil tersebut dari lokasi Anda.",
+      "deliveryDropoff": "Pengiriman / Penyerahan",
+      "deliveryDropoffHint": "Anda menyerahkan mobil tersebut kepada pelanggan.",
+      "carPricingHeading": "Harga sewa",
+      "price12hr": "Sewa selama 12 jam (NGN)",
+      "price24hr": "Penyewaan 24 jam (NGN)",
+      "priceMultiDay": "Beberapa hari (per hari, NGN)",
+      "driverAddonPrice": "Biaya tambahan pengemudi (NGN)",
+      "selfDriveNoPrice": "Pilihan menyetir sendiri — tidak diperlukan biaya tambahan untuk sopir.",
+      "deliveryFee": "Biaya pengiriman / pengantaran (NGN)",
+      "clientPickupNoPrice": "Pilihan pengambilan oleh klien — tidak dikenakan biaya pengiriman.",
+      "pricingLocationHint": "Anda dapat memberikan rincian lebih lanjut mengenai lokasi penjemputan atau pengiriman pada langkah berikutnya.",
+      "accommodationPricingHeading": "Harga menginap",
+      "roomTypesPricing": "Jenis Kamar & Tarif",
+      "roomTypesPricingHint": "Tambahkan berbagai jenis kamar yang Anda tawarkan.",
+      "addRoomType": "Tambahkan Jenis Kamar",
+      "addRoomTypeModalTitle": "Tambahkan Jenis Kamar",
+      "editRoomTypeModalTitle": "Edit Jenis Kamar",
+      "saveRoomType": "Simpan Jenis Kamar",
+      "roomType": "Jenis Kamar",
+      "roomTypePlaceholder": "misalnya: Suite Deluxe",
+      "roomDescription": "Deskripsi",
+      "roomDescriptionPlaceholder": "Jelaskan secara singkat tipe kamar ini",
+      "roomMaxGuests": "Jumlah Tamu Maksimal",
+      "roomMaxGuestsPlaceholder": "misalnya 2",
+      "roomPricePerNight": "Harga (per malam)",
+      "roomTypesEmptyTitle": "Belum ada tipe kamar yang ditambahkan",
+      "roomTypesEmptyHint": "Klik \"Tambahkan Jenis Kamar\" untuk memulai.",
+      "actions": "Tindakan",
+      "edit": "Sunting",
+      "delete": "Hapus",
+      "nightlyRate": "Tarif per malam (NGN)",
+      "cleaningFee": "Biaya pembersihan (NGN)",
+      "experiencePricingHeading": "Harga",
+      "experiencePricingHint": "Tentukan harga tiket Anda.",
+      "singleTicketPrice": "Harga Tiket Tunggal",
+      "singleTicketPriceHint": "Harga per orang",
+      "groupTicketPrice": "Harga Tiket Kelompok (mulai dari) (Opsional)",
+      "groupTicketPriceHint": "Harga per orang untuk rombongan",
+      "minGroupSizeOptional": "Jumlah Peserta Minimum (Opsional)",
+      "maxGroupSizeOptional": "Jumlah Peserta Maksimal (Opsional)",
+      "minGroupSizePlaceholder": "misalnya 5",
+      "maxGroupSizePlaceholder": "misalnya 20",
+      "optional": "Opsional",
+      "review": {
+        "groupSize": "Jumlah anggota kelompok",
+        "category": "Kategori",
+        "title": "Judul",
+        "images": "Gambar",
+        "documents": "Dokumen yang telah diunggah",
+        "description": "Deskripsi",
+        "gpsConfirmed": "Perangkat pelacak GPS telah dikonfirmasi"
+      },
+      "pricePerPerson": "Harga per orang (NGN)",
+      "minGroupSize": "Jumlah peserta minimum",
+      "documents": {
+        "stepTitle": "Unggah dokumen",
+        "pageTitle": "Unggah Dokumen yang Diperlukan",
+        "pageIntro": "Silakan unggah dokumen-dokumen yang diperlukan untuk memverifikasi iklan mobil Anda.",
+        "pageSubtitle": "Unggah dokumen yang jelas dan sah untuk membangun kepercayaan dan agar iklan Anda disetujui lebih cepat.",
+        "intro": {
+          "cars": "Unggah dokumen-dokumen di bawah ini sebelum iklan mobil Anda dapat ditayangkan.",
+          "accommodations": "Unggah dokumen kepemilikan atau surat kuasa agen untuk iklan akomodasi ini.",
+          "experiences": "Unggah dokumen verifikasi bisnis Anda sebelum mempublikasikan."
+        },
+        "proofOfOwnership": "Bukti Kepemilikan",
+        "proofOfOwnershipHint": "Unggah dokumen kepemilikan kendaraan (misalnya, buku kendaraan atau bukti pembelian).",
+        "roadworthiness": "Sertifikat Kelayakan Jalan",
+        "roadworthinessHint": "Unggah sertifikat kelayakan jalan yang masih berlaku untuk kendaraan tersebut.",
+        "insurance": "Asuransi",
+        "insuranceDocument": "Dokumen Asuransi",
+        "insuranceHint": "Unggah sertifikat asuransi kendaraan yang masih berlaku.",
+        "cac": "Pendaftaran CAC",
+        "cacRegistration": "Sertifikat Pendaftaran CAC",
+        "cacHint": "Unggah sertifikat pendaftaran nama usaha (CAC) Anda.",
+        "accommodationOwnershipHint": "Akta kepemilikan, perjanjian sewa, atau bukti kepemilikan atas properti tersebut",
+        "agentAuthorization": "Surat Kuasa Agen",
+        "agentAuthorizationHint": "Surat bertanda tangan dari pemilik properti yang memberi wewenang kepada Anda untuk memasukkannya ke dalam daftar",
+        "agentProofOfAddress": "Bukti alamat agen",
+        "agentProofOfAddressHint": "Tagihan utilitas atau laporan rekening bank yang mencantumkan alamat Anda",
+        "addressPhotos": "Foto-foto yang sesuai dengan alamat yang tercantum",
+        "addressPhotosHint": "Foto-foto yang dengan jelas memperlihatkan properti di alamat yang tercantum",
+        "gpsAcknowledgment": "Saya menyatakan bahwa kendaraan ini dilengkapi dengan perangkat pelacak GPS yang berfungsi dengan baik, dan saya akan bertanggung jawab jika pernyataan ini terbukti tidak benar.",
+        "requiredBadge": "Diperlukan",
+        "uploadPrompt": "Klik untuk mengunggah atau seret dan lepas",
+        "uploadFormats": "PDF, JPG, PNG, Maks. 10 MB",
+        "safetyTitle": "Dokumen Anda aman",
+        "safetyText": "Semua dokumen disimpan dengan aman dan hanya digunakan untuk keperluan verifikasi. Dokumen-dokumen tersebut tidak akan dipublikasikan kepada masyarakat.",
+        "submitForReview": "Kirim untuk Ditinjau",
+        "submitHint": "Iklan Anda akan ditinjau dan Anda akan diberi tahu begitu iklan tersebut disetujui.",
+        "untitledListing": "Iklan tanpa judul",
+        "sidebar": {
+          "listingPreview": "Pratinjau Daftar",
+          "edit": "Sunting",
+          "carsListing": "Daftar Mobil",
+          "accommodationsListing": "Daftar Akomodasi",
+          "experiencesListing": "Daftar Pengalaman",
+          "comesWithDriver": "Dilengkapi dengan driver",
+          "selfDrive": "Mengemudi Sendiri",
+          "pricing": "Harga",
+          "halfDay": "Setengah Hari",
+          "fullDay": "Sepanjang Hari",
+          "extraHour": "Jam Tambahan",
+          "progress": "Kemajuan Pencatatan"
+        }
+      },
+      "documentsHeading": "Dokumen yang Diperlukan",
+      "uploadDocument": "Unggah dokumen",
+      "removeFile": "Hapus",
+      "reviewHeading": "Periksa kembali iklan Anda",
+      "reviewHint": "Periksa detail di bawah ini sebelum mempublikasikan.",
+      "cancel": "Batal",
+      "back": "Kembali",
+      "saveDraft": "Simpan sebagai draf",
+      "draftSaved": "Draf telah disimpan",
+      "draftSaveFailed": "Tidak dapat menyimpan draf Anda. Silakan coba lagi.",
+      "saveContinue": "Simpan & Lanjutkan",
+      "completeRequiredFields": "Isi kolom-kolom yang wajib diisi: {kolom}",
+      "publish": "Publikasikan iklan",
+      "publishWaitForUploads": "Mohon tunggu — dokumen Anda masih dalam proses pengunggahan.",
+      "success": {
+        "title": "Daftar telah diajukan untuk ditinjau",
+        "message": "Iklan Anda saat ini sedang dalam proses peninjauan. Anda akan menerima email konfirmasi dalam waktu 2–3 hari kerja setelah iklan tersebut disetujui.",
+        "addAnother": "Tambahkan iklan lain",
+        "backToListings": "Kembali ke daftar produk saya"
+      },
+      "categoryChooseHint": "Pilih jenis layanan yang Anda tawarkan. Pengaturan ini hanya dilakukan sekali saat Anda menyimpan iklan pertama Anda dan tidak dapat diubah lagi di kemudian hari.",
+      "categoryLockedHint": "Akun vendor Anda hanya terdaftar untuk {kategori}. Hubungi tim dukungan untuk mengubah kategori layanan Anda."
+    }
+  }
+}

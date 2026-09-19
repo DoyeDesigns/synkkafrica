@@ -3,6 +3,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+import { isAppLocale } from "@/i18n/config";
+import { isCurrencyCode } from "@/lib/preferences/currencies";
 import {
   preferencesFromCookies,
   readPreferenceCookie,
@@ -27,6 +29,14 @@ function markManualPreferences() {
   writePreferenceCookie(USER_PREFERENCES_COOKIE, "manual");
 }
 
+function sanitizeLanguage(value: string | undefined): LanguageCode {
+  return isAppLocale(value) ? value : "en";
+}
+
+function sanitizeCurrency(value: string | undefined): CurrencyCode {
+  return isCurrencyCode(value) ? value : "USD";
+}
+
 function getInitialPreferences(): Pick<
   PreferencesState,
   "language" | "currency" | "hasUserSetPreferences"
@@ -36,8 +46,8 @@ function getInitialPreferences(): Pick<
     readPreferenceCookie(USER_PREFERENCES_COOKIE) === "manual";
 
   return {
-    language: fromCookies?.language ?? "en",
-    currency: fromCookies?.currency ?? "NGN",
+    language: sanitizeLanguage(fromCookies?.language),
+    currency: sanitizeCurrency(fromCookies?.currency),
     hasUserSetPreferences,
   };
 }
@@ -76,14 +86,80 @@ export const usePreferencesStore = create<PreferencesState>()(
         currency: state.currency,
         hasUserSetPreferences: state.hasUserSetPreferences,
       }),
+      merge: (persisted, current) => {
+        const saved = (persisted ?? {}) as Partial<PreferencesState>;
+
+        // Cookies are the source of truth for manual picks (survives hydration races).
+        if (typeof document !== "undefined") {
+          const manual =
+            readPreferenceCookie(USER_PREFERENCES_COOKIE) === "manual";
+          const cookieLanguage = readPreferenceCookie(LANGUAGE_COOKIE);
+          const cookieCurrency = readPreferenceCookie(CURRENCY_COOKIE);
+
+          if (
+            manual &&
+            isAppLocale(cookieLanguage) &&
+            isCurrencyCode(cookieCurrency)
+          ) {
+            return {
+              ...current,
+              language: cookieLanguage,
+              currency: cookieCurrency,
+              hasUserSetPreferences: true,
+            };
+          }
+        }
+
+        const languageValid = isAppLocale(saved.language);
+        const currencyValid = isCurrencyCode(saved.currency);
+        const hasUserSetPreferences =
+          Boolean(saved.hasUserSetPreferences) && languageValid && currencyValid;
+
+        return {
+          ...current,
+          ...saved,
+          language: sanitizeLanguage(saved.language),
+          currency: sanitizeCurrency(saved.currency),
+          hasUserSetPreferences,
+        };
+      },
       onRehydrateStorage: () => (state) => {
         if (!state) return;
+
+        if (typeof document !== "undefined") {
+          const manual =
+            readPreferenceCookie(USER_PREFERENCES_COOKIE) === "manual";
+          const cookieLanguage = readPreferenceCookie(LANGUAGE_COOKIE);
+          const cookieCurrency = readPreferenceCookie(CURRENCY_COOKIE);
+
+          if (
+            manual &&
+            isAppLocale(cookieLanguage) &&
+            isCurrencyCode(cookieCurrency)
+          ) {
+            state.language = cookieLanguage;
+            state.currency = cookieCurrency;
+            state.hasUserSetPreferences = true;
+            return;
+          }
+        }
+
+        const languageValid = isAppLocale(state.language);
+        const currencyValid = isCurrencyCode(state.currency);
+        state.language = sanitizeLanguage(state.language);
+        state.currency = sanitizeCurrency(state.currency);
+
+        if (!languageValid || !currencyValid) {
+          state.hasUserSetPreferences = false;
+        }
 
         writePreferenceCookie(LANGUAGE_COOKIE, state.language);
         writePreferenceCookie(CURRENCY_COOKIE, state.currency);
 
         if (state.hasUserSetPreferences) {
           markManualPreferences();
+        } else if (typeof document !== "undefined") {
+          document.cookie = `${USER_PREFERENCES_COOKIE}=;path=/;max-age=0;SameSite=Lax`;
         }
       },
     },

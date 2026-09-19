@@ -8,6 +8,7 @@ import {
   calculateNights,
   getDefaultCheckInDate,
   getDefaultCheckOutDate,
+  isValidGuestEmail,
   parseBookingParams,
   serializeBookingParams,
 } from "@/features/travel/booking/booking-params";
@@ -42,11 +43,16 @@ function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
   const [specialRequests, setSpecialRequests] = useState(
     bookingParams.specialRequests ?? "",
   );
+  const [email, setEmail] = useState(bookingParams.email ?? "");
+  const [guestFirstName, setGuestFirstName] = useState(
+    bookingParams.guestFirstName ?? "",
+  );
+  const [emailError, setEmailError] = useState("");
   const {
     identities,
     setIdentityAt,
     identityErrors,
-    hasIdentityErrors,
+    // hasIdentityErrors,
     guardProceed,
   } = useGuestCheckoutGate(guestCount, { leadGuestOnly: true });
 
@@ -61,7 +67,13 @@ function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
   );
 
   const handleProceedToPay = () => {
+    if (!isValidGuestEmail(email)) {
+      setEmailError(t("booking.guest.emailRequired"));
+      return;
+    }
+
     guardProceed(() => {
+      setEmailError("");
       const params = serializeBookingParams({
         room: selectedRoomId,
         checkIn,
@@ -71,6 +83,8 @@ function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
         time: selectedTime,
         days: nights,
         specialRequests,
+        email: email.trim(),
+        guestFirstName: guestFirstName.trim() || undefined,
       });
       router.push(`/accommodations/${property.id}/book/payment?${params.toString()}`);
     });
@@ -94,15 +108,25 @@ function BookingCheckoutPageContent({ property }: BookingCheckoutPageProps) {
             onIdentityChange={setIdentityAt}
             identityErrors={identityErrors}
             leadGuestOnly
+            email={email}
+            onEmailChange={(value) => {
+              setEmail(value);
+              if (emailError) setEmailError("");
+            }}
+            firstName={guestFirstName}
+            onFirstNameChange={setGuestFirstName}
+            emailError={emailError}
           />
 
           <div>
             <div className="xl:sticky xl:top-10">
+              {/* Identity validation error — temporarily hidden
               {hasIdentityErrors ? (
                 <p className="mb-3 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-medium font-inter text-[#D85A30]">
                   {t("booking.guest.idValidationRequired")}
                 </p>
               ) : null}
+              */}
               <BookingSummaryCard
                 property={property}
                 rooms={property.rooms}

@@ -1,5 +1,1 @@
-export {
-  translate,
-  translations,
-  type TranslationKey,
-} from "./translations/index";
+export { translate, type TranslationKey } from "./translations/index";

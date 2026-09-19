@@ -1,6 +1,44 @@
-export type LanguageCode = "en" | "fr" | "es" | "de";
+import type { AppLocale } from "@/i18n/config";
 
-export type CurrencyCode = "NGN" | "USD" | "GBP" | "KES" | "GHS" | "AED" | "GMD";
+export type LanguageCode = AppLocale;
+
+export type CurrencyCode =
+  | "NGN"
+  | "USD"
+  | "EUR"
+  | "GBP"
+  | "CAD"
+  | "AUD"
+  | "ZAR"
+  | "KES"
+  | "GHS"
+  | "AED"
+  | "GMD"
+  | "EGP"
+  | "MAD"
+  | "TZS"
+  | "UGX"
+  | "XOF"
+  | "XAF"
+  | "INR"
+  | "CNY"
+  | "JPY"
+  | "CHF"
+  | "SEK"
+  | "NOK"
+  | "DKK"
+  | "NZD"
+  | "SGD"
+  | "HKD"
+  | "BRL"
+  | "MXN"
+  | "KRW"
+  | "TRY"
+  | "RUB"
+  | "IDR"
+  | "THB"
+  | "VND"
+  | "PLN";
 
 export type PreferencesState = {
   language: LanguageCode;

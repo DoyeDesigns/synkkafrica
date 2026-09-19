@@ -1,0 +1,2483 @@
+{
+  "nav": {
+    "downloadApp": "Download App",
+    "becomeVendor": "Become a Vendor",
+    "chooseCurrency": "Choose Currency",
+    "signInCreate": "Sign in | Create Account",
+    "searchCurrency": "Search Currency",
+    "signOut": "Sign Out",
+    "myAccount": "My Account",
+    "bookingsTrips": "Bookings & Trips",
+    "saved": "Saved",
+    "reviews": "Reviews"
+  },
+  "common": {
+    "bookNow": "Book Now",
+    "continue": "Continue",
+    "loading": "Loading…",
+    "startingFrom": "Starting from",
+    "perDay": "Per day",
+    "budget": "Budget",
+    "seeMore": "See more",
+    "showMore": "Show more",
+    "reviews": "Reviews",
+    "available": "Available",
+    "selfDriveAvailable": "Self-drive available",
+    "excludingTaxes": "excluding taxes and fees",
+    "select": "Select",
+    "search": "Search",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "notifications": "Notifications",
+    "contactSupport": "Contact support",
+    "signOut": "Sign out",
+    "noReviewsYet": "No Reviews yet",
+    "viewPhoto": "View photo {index}",
+    "photoViewer": "Photo viewer",
+    "closePhotoViewer": "Close photo viewer",
+    "previousPhoto": "Previous photo",
+    "nextPhoto": "Next photo",
+    "photoOfTotal": "{current} of {total}",
+    "secured": "Secured"
+  },
+  "hero": {
+    "headline": "Experience Africa with confidence",
+    "tab": {
+      "accommodations": "Accommodations",
+      "flights": "Flights",
+      "carRentals": "Car Rentals",
+      "tours": "Tours & Experiences"
+    },
+    "search": "Search",
+    "clearFilter": "Clear Filter",
+    "accommodations": {
+      "destination": "Your Destination",
+      "destinationStay": "{count} stay",
+      "destinationStays": "{count} stays",
+      "checkIn": "Check In Date",
+      "checkAvailability": "Check Availability",
+      "propertyType": "Property type",
+      "oneRoom": "1 Room",
+      "oneGuest": "1 Guest",
+      "roomsCount": "{count} Rooms",
+      "guestsCount": "{count} Guests",
+      "checkOut": "Check out Date"
+    },
+    "flights": {
+      "roundTrip": "Round Trip",
+      "oneWay": "One-way",
+      "directFlight": "Direct Flight",
+      "economyClass": "Economy Class",
+      "premiumEconomyClass": "Premium Economy",
+      "businessClass": "Business Class",
+      "firstClass": "First Class",
+      "onePassenger": "1 Passenger",
+      "passengersCount": "{count} Passengers",
+      "fromCity": "From | Select City",
+      "toCity": "To | Select City",
+      "departureDate": "Departure date",
+      "returnDate": "Return date",
+      "departing": "Departing",
+      "returning": "Returning",
+      "nonstop": "Nonstop",
+      "oneStop": "One stop",
+      "multipleStops": "Multiple stops"
+    },
+    "common": {
+      "addDate": "Add date",
+      "selectDateRange": "Select departing and returning dates",
+      "selectDate": "Select a date",
+      "days": "Days",
+      "nights": "Nights"
+    },
+    "carRentals": {
+      "searchCarType": "Search Car type",
+      "filterCarType": "Filter by car type",
+      "allCarTypes": "All types",
+      "selfDrive": "Self drive",
+      "price": "₦ Price",
+      "pickupDate": "Pickup date",
+      "destinationCar": "{count} car",
+      "destinationCars": "{count} cars"
+    },
+    "tours": {
+      "searchPlaceholder": "Search Locations, attractions & experiences",
+      "startDate": "Start date",
+      "destinationExperience": "{count} experience",
+      "destinationExperiences": "{count} experiences"
+    },
+    "location": "Location"
+  },
+  "footer": {
+    "brandDescription": "SynkAfrica is an emerging, all-in-one travel and premium experience platform designed to connect people globally to the heart of the African travel and lifestyle ecosystem.",
+    "explore": {
+      "title": "Explore SynkAfrica",
+      "hotels": "Hotels & Accommodations",
+      "carRentals": "Car Rentals",
+      "flights": "Flight bookings",
+      "restaurants": "Dinning & Restaurants"
+    },
+    "support": {
+      "title": "Support",
+      "contact": "Contact support",
+      "changeBooking": "Change or cancel your booking",
+      "paymentOptions": "Payment options",
+      "receipt": "View or print your booking receipt"
+    },
+    "community": {
+      "title": "Community",
+      "instagram": "Our Instagram",
+      "facebook": "Facebook",
+      "news": "In the News"
+    },
+    "vendor": {
+      "title": "Become a Vendor",
+      "listCar": "List your Car",
+      "listService": "List your service",
+      "contact": "Contact us"
+    },
+    "appPromo": {
+      "headline": "Get the full SynkAfrica experience.",
+      "cta": "Download the App today",
+      "getItOn": "GET IT ON",
+      "googlePlay": "Google Play",
+      "downloadOn": "Download on the",
+      "appStore": "App Store"
+    },
+    "legal": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use",
+      "security": "Security Page",
+      "faqs": "FAQs"
+    },
+    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+  },
+  "login": {
+    "intro": "You can sign in using your SynkAfrica account to access our services.",
+    "backendNotReady": "Backend env vars are not set yet. Sign-in will work once credentials are configured.",
+    "emailPlaceholder": "Enter your email",
+    "orUseOptions": "or use one of these options",
+    "signInGoogle": "Sign in with Google",
+    "continueApple": "Continue with Apple"
+  },
+  "account": {
+    "nav": {
+      "notifications": "Notifications"
+    },
+    "contactSupport": "Contact support",
+    "profile": {
+      "edit": "Edit",
+      "fullName": "Full name",
+      "fullNamePlaceholder": "Enter full name",
+      "location": "Location",
+      "dateOfBirth": "Date of birth",
+      "dobPlaceholder": "MM | DD | YY",
+      "gender": "Gender",
+      "notAdded": "Not added",
+      "contactDetails": "Contact details",
+      "phone": "Phone number",
+      "email": "Email address",
+      "passwordSecurity": "Password & security",
+      "password": "Password",
+      "changePassword": "Change password"
+    },
+    "deleteAccount": "Delete account",
+    "bookings": {
+      "title": "Your orders",
+      "tab": {
+        "upcoming": "Upcoming",
+        "past": "Past",
+        "cancelled": "Cancelled",
+        "bookings": "Bookings"
+      },
+      "empty": {
+        "upcoming": "No upcoming bookings.",
+        "past": "No past bookings for this period.",
+        "cancelled": "No cancelled orders for this period.",
+        "bookings": "No bookings for this period."
+      },
+      "orderDate": "Order date:",
+      "experienceDate": "Experience date:",
+      "totalAmount": "Total amount:",
+      "orderNumber": "Order:",
+      "guestCount": "Guests",
+      "specialRequests": "Special requests",
+      "cancel": "Cancel",
+      "receiptRecipient": "Receipt and QR recipient",
+      "viewDetails": "View details",
+      "leaveReview": "Leave a review",
+      "reviewSubmitted": "Review submitted",
+      "cancelWindowClosed": "Cancellation window has closed for this booking.",
+      "cancelledOn": "Cancelled on {date}",
+      "cancelConfirmTitle": "Cancel this booking?",
+      "cancelConfirmBody": "You can cancel within the cancellation window before your experience starts. This action cannot be undone.",
+      "confirmCancel": "Yes, cancel booking",
+      "filterPeriod": "Filter by period",
+      "badge": {
+        "upcoming": "Upcoming",
+        "past": "Past",
+        "cancelled": "Cancelled"
+      },
+      "countdown": {
+        "label": "Experience starts in",
+        "daysHours": "{days}d {hours}h",
+        "hoursMinutes": "{hours}h {minutes}m",
+        "detailHint": "Countdown updates in real time until your experience begins."
+      },
+      "review": {
+        "title": "Leave a review",
+        "ratingLabel": "Your rating",
+        "commentLabel": "Your review",
+        "commentPlaceholder": "Share what you loved about this experience...",
+        "submit": "Submit review",
+        "dismiss": "Close review dialog"
+      },
+      "detail": {
+        "back": "Back to bookings",
+        "reference": "Booking reference",
+        "yourReview": "Your review",
+        "notFound": "This booking could not be found."
+      }
+    },
+    "saved": {
+      "accommodations": "Accommodations",
+      "empty": "You haven't saved anything yet.",
+      "cars": "Cars",
+      "tours": "Tours"
+    },
+    "reviews": {
+      "title": "Reviews",
+      "youRated": "You rated",
+      "writeReview": "Write a review",
+      "ratingLabel": "Your rating",
+      "commentLabel": "Your review",
+      "commentPlaceholder": "Share what you loved about this experience...",
+      "photosLabel": "Photos",
+      "photosCount": "{count}/{max} uploaded",
+      "addPhoto": "Add photo",
+      "removePhoto": "Remove photo",
+      "submit": "Submit review",
+      "pendingTitle": "Review a completed booking",
+      "pendingHint": "Reviews can only be submitted for past bookings tied to your account.",
+      "selectBooking": "Select a completed booking above to write your review.",
+      "noPending": "You have no completed bookings waiting for a review.",
+      "submittedTitle": "Your submitted reviews",
+      "empty": "You have not submitted any reviews yet.",
+      "deleteReview": "Delete review",
+      "bookingReference": "Booking {reference}",
+      "listingBadge": "Guest reviews",
+      "experienceListingTitle": "Guest reviews"
+    },
+    "notifications": {
+      "title": {
+        "reminder24h": "Experience starts in 24 hours",
+        "reviewRequest": "Tell us about your experience",
+        "cancellationRefund": "Booking cancelled",
+        "bookingConfirmation": "Booking confirmed",
+        "info": "Travel reminder"
+      },
+      "empty": "No notifications yet.",
+      "period": {
+        "mostRecent": "Most recent",
+        "weekEarlier": "A week earlier",
+        "threeMonthsAgo": "3 months ago"
+      },
+      "kind": {
+        "bookingConfirmation": "Booking confirmed",
+        "reminder24h": "24h reminder",
+        "reviewRequest": "Review request",
+        "cancellationRefund": "Cancellation & refund",
+        "info": "Travel tip"
+      },
+      "message": {
+        "reminder24h": "Your experience {title} starts tomorrow at {time} on {date}. Review your booking details and arrive 15 minutes early.",
+        "reviewRequest": "How was {title}? Share a star rating and written review to help other travelers on SynkAfrica.",
+        "cancellationRefund": "Your booking for {title} ({reference}) was cancelled. Any eligible refund will be processed within 5–7 business days.",
+        "bookingConfirmation": "Your booking for {title} in {location} is confirmed. Check your email for your receipt and QR credentials.",
+        "passportReminder": "Ensure your passport is valid for at least 6 months beyond your travel date."
+      }
+    },
+    "support": {
+      "contact": {
+        "whatsapp": "WhatsApp",
+        "email": "Email",
+        "phone": "Call us"
+      },
+      "createTicket": "Create a support ticket",
+      "topic": "What's this about?",
+      "relatedOrder": "Related order (optional)",
+      "relatedOrderNone": "None",
+      "subject": "Subject",
+      "subjectPlaceholder": "Short summary of the issue",
+      "message": "Message",
+      "messagePlaceholder": "Tell us what's going on...",
+      "attachFile": "Attach a photo or screenshot",
+      "submitTicket": "Submit ticket",
+      "ticketSubmitted": "Ticket #{number} submitted. We'll get back to you soon.",
+      "yourTickets": "Your tickets",
+      "commonQuestions": "Common questions",
+      "ticketMeta": "Ticket #{number} · {date}",
+      "status": {
+        "open": "Open",
+        "resolved": "Resolved"
+      },
+      "category": {
+        "booking": "Booking issue",
+        "paymentRefund": "Payment / refund",
+        "account": "Account & profile",
+        "other": "Other"
+      },
+      "faq": {
+        "cancelBooking": "How do I cancel a booking?",
+        "refundTiming": "When will I get my refund?",
+        "changeDate": "How do I change my travel date?",
+        "paymentSecurity": "Is my payment secure?",
+        "cancelBookingAnswer": "Open your booking from Bookings & Trips, select the order, and use the cancel option if it is still within the cancellation window. Refunds are processed automatically for eligible bookings.",
+        "refundTimingAnswer": "Eligible refunds are usually processed within 5–7 business days after cancellation, depending on your bank or payment provider.",
+        "changeDateAnswer": "Contact support with your booking reference. If the experience allows date changes, our team will help you reschedule or guide you through the available options.",
+        "paymentSecurityAnswer": "Yes. Payments on Synkafrica are processed through secure, encrypted payment partners. We never store your full card details on our servers."
+      },
+      "tabs": {
+        "label": "Support sections"
+      },
+      "backToTickets": "Back to tickets",
+      "typeMessage": "Type a message...",
+      "send": "Send",
+      "supportTeam": "Synkafrica Support",
+      "you": "You",
+      "emptyTickets": "You have not submitted any support tickets yet.",
+      "attachedImage": "Attached image",
+      "removeAttachment": "Remove attachment"
+    }
+  },
+  "booking": {
+    "step": {
+      "rooms": "Choose Stay and Rooms",
+      "chooseExperience": "Choose Experience",
+      "chooseCar": "Choose Car",
+      "choosePackage": "Choose Package",
+      "checkout": "Checkout",
+      "payment": "Payment",
+      "confirmation": "Confirmation"
+    },
+    "cta": {
+      "proceedToPay": "PROCEED TO PAY"
+    },
+    "guest": {
+      "title": {
+        "mr": "Mr",
+        "mrs": "Mrs",
+        "ms": "Ms",
+        "miss": "Miss",
+        "dr": "Dr"
+      },
+      "adultLabel": "Adult (17 yrs+)",
+      "leadGuestLabel": "Lead guest",
+      "addedCount": "{added}/{total} added",
+      "passportHint": "Enter your name as it is mentioned on your passport. Passport should be valid for a minimum of 6 months from date of travel.",
+      "idVerificationHint": "A valid government-issued ID is required before you can complete any booking.",
+      "idVerificationTitle": "Identity verification",
+      "idVerificationSubtitle": "Enter your ID details exactly as they appear on your document.",
+      "idType": {
+        "passport": "Passport",
+        "nationalId": "National ID",
+        "driversLicense": "Driver's license"
+      },
+      "idNumber": "ID number",
+      "idNumberPlaceholder": "Enter your ID number",
+      "idExpiry": "Expiry date",
+      "confirmId": "I confirm that my ID details are correct and my document is valid for at least 6 months from the travel date.",
+      "idTypeRequired": "Select an ID type.",
+      "idNumberInvalid": "Enter a valid ID number.",
+      "idExpiryRequired": "Enter the ID expiry date.",
+      "idExpiryInvalid": "ID must be valid for at least 6 months from today.",
+      "idConfirmRequired": "Confirm your ID details to continue.",
+      "idValidationRequired": "Complete and confirm your ID details before proceeding to payment.",
+      "adultCheckbox": "Adult - {count}",
+      "titleField": "Title",
+      "lastName": "Last Name",
+      "firstName": "First Name",
+      "middleName": "Middle Name",
+      "dateOfBirth": "Date of birth",
+      "datePlaceholder": "yyyy-mm-dd",
+      "nationality": "Nationality",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "mobileNo": "Mobile No",
+      "emailAddress": "Email Address",
+      "openCalendar": "Open calendar",
+      "countLabel": "Number of guests",
+      "countHint": "Pricing updates automatically based on guest count.",
+      "decreaseGuests": "Decrease guests",
+      "increaseGuests": "Increase guests",
+      "specialRequests": "Special requests",
+      "specialRequestsPlaceholder": "Early check-in, dietary needs, accessibility requirements, etc."
+    },
+    "summary": {
+      "selectRoom": "Select a room",
+      "selectCar": "Select a car",
+      "selectExperience": "Select an experience",
+      "selectPackage": "Select a package",
+      "priceDetails": "Price details",
+      "taxesAndFees": "Taxes and Fees",
+      "night": "night",
+      "nights": "nights",
+      "room": "room",
+      "rooms": "rooms",
+      "day": "day",
+      "days": "days",
+      "total": "Total",
+      "guests": "guests"
+    },
+    "table": {
+      "selectRoom": "Select a room",
+      "guestCount": "No. of Guests",
+      "pricePerNight": "Price per night",
+      "includesTaxes": "Includes taxes and charges",
+      "packages": "Packages",
+      "hours": "Hours",
+      "price": "Price",
+      "experiences": "Experiences",
+      "duration": "Duration"
+    },
+    "dates": {
+      "checkIn": "Check In Date",
+      "checkOut": "Check out Date",
+      "guests": "Guests",
+      "rooms": "Rooms",
+      "nights": "Nights",
+      "days": "Days",
+      "rentalDays": "Rental days",
+      "tripDuration": "Trip duration",
+      "tripDurationHint": "Adjust how many days you want to stay or explore.",
+      "decreaseNights": "Decrease nights",
+      "increaseNights": "Increase nights",
+      "decreaseDays": "Decrease days",
+      "increaseDays": "Increase days"
+    },
+    "car": {
+      "rentalModeHeading": "How would you like to use this car?",
+      "rentalModeHint": "Choose self drive or add a professional driver to your booking.",
+      "selfDrive": "Self drive",
+      "selfDriveHint": "Drive the car yourself. Pick up from the vendor or request delivery for an extra fee.",
+      "withDriver": "With driver",
+      "withDriverHint": "A professional driver is included for your trip.",
+      "noExtraCost": "No additional cost",
+      "driverAddon": "+ {amount} driver add-on",
+      "requestDelivery": "Request car delivery",
+      "requestDeliveryHint": "Have the car delivered to your location for an additional fee.",
+      "deliveryFee": "+ {amount} delivery fee",
+      "deliveryAddress": "Delivery address",
+      "deliveryAddressPlaceholder": "Enter the address where the car should be delivered",
+      "pickupAddress": "Pickup address",
+      "pickupAddressHint": "Collect the car from this vendor location if you do not request delivery.",
+      "customerPickupAddress": "Your pickup location",
+      "customerPickupAddressPlaceholder": "Enter where the driver should pick you up",
+      "customerPickupAddressHint": "The driver will meet you at this address.",
+      "driverAddonLabel": "Driver add-on",
+      "deliveryFeeLabel": "Delivery fee",
+      "about": "About this car",
+      "saveCar": "Save car"
+    },
+    "property": {
+      "saveProperty": "Save property",
+      "morePhotos": "+{count} photos",
+      "currentOffers": "Current offers"
+    },
+    "amenity": {
+      "free": "Free!",
+      "additionalCharge": "Additional charge"
+    },
+    "tour": {
+      "about": "About this experience",
+      "saveTour": "Save tour"
+    },
+    "package": {
+      "about": "About this package",
+      "savePackage": "Save package",
+      "sharePackage": "Share package",
+      "nightsDays": "{nights} Nights / {days} Days",
+      "durationShort": "{days}D / {nights}N",
+      "guestRange": "{range} Guests",
+      "moduleCount": "{count} Modules",
+      "highlight": {
+        "duration": "Duration",
+        "groupSize": "Group Size",
+        "included": "Included",
+        "cancellation": "Cancellation+",
+        "free": "Free",
+        "standard": "Standard"
+      },
+      "whatsIncluded": "What's Included",
+      "included": "Included",
+      "priceBreakdown": "Price Breakdown",
+      "packageDiscount": "Package discount",
+      "packagePrice": "Package Price",
+      "whyBook": "Why Book This Package",
+      "guestCountLocked": "Guest count is fixed for this package and cannot be changed at checkout."
+    },
+    "payment": {
+      "processing": "Processing payment..."
+    },
+    "confirmation": {
+      "imageAlt": "Confirmation success",
+      "title": "Payment successful",
+      "subtitle": "Kindly check your email for your receipt and QR credentials",
+      "reloadIn": "This page will reload in",
+      "reloadNow": "Reload now",
+      "referenceLabel": "Booking reference",
+      "copyReference": "Copy",
+      "copied": "Copied",
+      "summaryTitle": "Booking summary",
+      "product": "Booked item",
+      "totalPaid": "Total paid",
+      "addToCalendar": "Add to calendar",
+      "openGoogleCalendar": "Open in Google Calendar",
+      "viewBookings": "View my bookings"
+    },
+    "reviews": {
+      "nextReview": "Next review",
+      "allReviews": "All reviews",
+      "viewAll": "View all reviews",
+      "close": "Close reviews"
+    },
+    "content": {
+      "property": {
+        "arkHavn": {
+          "desc0": "Located in the heart of Marrakesh, The Ark Haven offers a serene escape with a blend of modern comfort and traditional Moroccan charm. Enjoy the outdoor pool, on-site bar, and air-conditioned rooms with flat-screen TVs.",
+          "desc1": "Guests can explore nearby attractions, enjoy shuttle services, tennis courts, and car hire. Whether you're here for leisure or business, The Ark Haven provides a memorable stay with exceptional hospitality."
+        },
+        "fallback": {
+          "desc0": "{name} offers comfortable stays with modern amenities and a prime location in {location}.",
+          "desc1": "Enjoy well-appointed rooms, friendly service, and easy access to local attractions and dining."
+        }
+      },
+      "review": {
+        "review1": "The Ark Haven exceeded my expectations. The staff was incredibly welcoming, and the pool area was a perfect spot to relax after exploring the city.",
+        "review2": "Beautiful rooms, great location, and the breakfast was outstanding. I would definitely stay here again on my next trip to Morocco.",
+        "review3": "Spacious suite, clean facilities, and helpful concierge. The shuttle service made getting around Marrakesh very easy."
+      },
+      "offer": {
+        "drinkPromo": "Buy 1 drink get one free",
+        "mealsOff": "10% Off Meals",
+        "freeWifi": "Free Wifi"
+      },
+      "room": {
+        "deluxeSuite": "Deluxe Suite",
+        "supremeRoom": "Supreme Room",
+        "standardRoom": "Standard Room",
+        "subtitle": {
+          "deluxe": "Deluxe (1 Bedroom Apartment)",
+          "supreme": "Supreme (Studio Apartment)",
+          "standard": "Standard (Double Room)"
+        },
+        "size592": "592 sq feet",
+        "size420": "420 sq feet",
+        "size310": "310 sq feet",
+        "sleeps2Adults": "Sleeps 2 Adults"
+      },
+      "package": {
+        "dailyHire": "Daily hire",
+        "halfDayHire": "Half-day hire",
+        "extraHours": "Extra hours",
+        "hours24": "24 hours",
+        "hours12": "12 hours",
+        "hours3": "3 hours"
+      },
+      "feature": {
+        "automatic": "Automatic",
+        "driverAvailable": "Driver available",
+        "selfDrive": "Self drive",
+        "available": "Available",
+        "limitedSlots": "Limited slots",
+        "guidedTour": "Guided tour",
+        "selfDriveAvailable": "Self-drive available",
+        "flightsIncluded": "Flights included",
+        "hotelStay": "Hotel stay",
+        "guidedTours": "Guided tours",
+        "nightsDays": "{nights} nights / {days} days"
+      },
+      "tourOption": {
+        "standard": "Standard ticket",
+        "premium": "Premium experience",
+        "private": "Private group",
+        "hours5": "5 hours",
+        "fullDay": "Full day"
+      },
+      "tier": {
+        "standard": "Standard package",
+        "deluxe": "Deluxe package",
+        "allInclusive": "All-inclusive"
+      },
+      "amenityCat": {
+        "greatForStay": "Great for your stay",
+        "outdoors": "Outdoors",
+        "pets": "Pets",
+        "internet": "Internet",
+        "onSiteParking": "On-site parking",
+        "frontDesk": "Front Desk Services",
+        "familyServices": "Entertainment & Family Services",
+        "cleaningServices": "Cleaning Services",
+        "general": "General",
+        "accessibility": "Accessibility",
+        "swimmingPools": "2 swimming pools",
+        "pool1Outdoor": "Pool 1 – outdoor"
+      },
+      "amenityDesc": {
+        "petsAllowed": "Pets are allowed on request. No extra charges.",
+        "wifiFree": "Wifi is available in all areas and is free of charge.",
+        "parkingFree": "Free public parking is available on site (reservation is not needed)."
+      },
+      "amenityItem": {
+        "restaurant": "Restaurant",
+        "freeWifi": "Free Wifi",
+        "parking": "Parking",
+        "spa": "Spa",
+        "familyRooms": "Family rooms",
+        "roomService": "Room service",
+        "airportShuttle": "Airport shuttle",
+        "bbqFacilities": "BBQ facilities",
+        "petFriendly": "Pet friendly",
+        "nonSmokingRooms": "Non-smoking rooms",
+        "outdoorFireplace": "Outdoor fireplace",
+        "beachfront": "Beachfront",
+        "sunDeck": "Sun deck",
+        "privateBeach": "Private beach area",
+        "terrace": "Terrace",
+        "garden": "Garden",
+        "valetParking": "Valet parking",
+        "parkingGarage": "Parking garage",
+        "accessibleParking": "Bãi đậu xe dễ tiếp cận",
+        "lockers": "Tủ khóa",
+        "concierge": "hướng dẫn viên",
+        "atmOnSite": "ATM tại chỗ",
+        "baggageStorage": "Lưu trữ hành lý",
+        "currencyExchange": "Trao đổi tiền tệ",
+        "frontDesk24h": "Quầy lễ tân 24 giờ",
+        "outdoorPlayEquipment": "Thiết bị vui chơi ngoài trời cho trẻ em",
+        "dailyHousekeeping": "Dọn phòng hàng ngày",
+        "ironingService": "Dịch vụ ủi",
+        "shuttleService": "Dịch vụ đưa đón",
+        "sharedLounge": "Khu vực xem TV/sảnh chung",
+        "airConditioning": "Điều hòa không khí",
+        "carRental": "Thuê xe",
+        "packedLunches": "Bữa trưa đóng hộp",
+        "disabledFacilities": "Tiện nghi dành cho khách khuyết tật",
+        "bathroomEmergencyCord": "Dây khẩn cấp phòng tắm",
+        "openAllYear": "Mở cửa cả năm",
+        "adultsOnly": "Chỉ người lớn",
+        "poolBeachTowels": "Khăn hồ bơi/bãi biển",
+        "poolBar": "Quầy bar bên hồ bơi",
+        "beachChairs": "Ghế/ghế nằm bãi biển"
+      },
+      "tour": {
+        "desc": {
+          "boatAccess": "Chỉ có thể đến được bằng thuyền hoặc taxi nước. Nó nổi tiếng với vùng nước tương đối yên tĩnh.",
+          "lekkiCanopy": "Đi bộ trên cây cầu có mái che dài nhất Châu Phi và khám phá những con đường mòn ngập mặn tươi tốt.",
+          "nikeArt": "Khám phá một trong những bộ sưu tập nghệ thuật đương đại châu Phi lớn nhất ở Tây Phi.",
+          "badagry": "Theo dõi lịch sử buôn bán nô lệ xuyên Đại Tây Dương thông qua các bảo tàng và địa danh.",
+          "desertSafari": "Vượt cồn cát, cưỡi lạc đà và cắm trại truyền thống của người Bedouin dưới bầu trời đầy sao.",
+          "cotonou": "Khám phá các khu chợ, kiến ​​trúc thuộc địa và bờ biển sôi động của Bénin.",
+          "winelands": "Ghé thăm vườn nho Stellenbosch để nếm thử và ngắm cảnh núi non tuyệt đẹp.",
+          "monacoYacht": "Đi dọc bờ biển Riviera của Pháp với tầm nhìn ra Monte Carlo và những bến cảng sang trọng.",
+          "lagosFood": "Nếm thử suya, bánh phồng và các món ngon địa phương tại các địa điểm ăn uống ngon nhất thành phố.",
+          "dubaiKayak": "Chèo thuyền qua bến du thuyền vào lúc hoàng hôn với khung cảnh đường chân trời và sự hướng dẫn có hướng dẫn."
+        }
+      }
+    },
+    "dateTime": {
+      "title": "Chọn ngày và giờ",
+      "rangeHint": "Chọn ngày nhận phòng và trả phòng trên lịch.",
+      "singleHint": "Chọn ngày trải nghiệm của bạn trên lịch.",
+      "legendAvailable": "Có sẵn",
+      "legendUnavailable": "Không có sẵn",
+      "selectCheckout": "Chọn thanh toán",
+      "timeSlots": "Khe thời gian",
+      "experienceDate": "Ngày trải nghiệm"
+    }
+  },
+  "breadcrumb": {
+    "synkAfrica": "SynkChâu Phi",
+    "accommodations": "Chỗ ở",
+    "flights": "Chuyến bay",
+    "carForHire": "Thuê xe",
+    "tours": "Chuyến tham quan & trải nghiệm",
+    "tourPackages": "Gói du lịch",
+    "dealsAndPackages": "Ưu đãi & Gói",
+    "packages": "Gói"
+  },
+  "results": {
+    "accommodations": {
+      "title": "Ở lại",
+      "staysFound": "{count} vẫn được tìm thấy",
+      "searchPlaceholder": "Tìm chỗ ở",
+      "empty": "Không có đợt lưu trú nào phù hợp với bộ lọc của bạn."
+    },
+    "carRentals": {
+      "title": "Khám phá xe cho thuê",
+      "carsFound": "{count} ô tô được tìm thấy",
+      "searchPlaceholder": "Tìm kiếm ô tô",
+      "empty": "Không có chiếc xe nào phù hợp với bộ lọc của bạn."
+    },
+    "tours": {
+      "title": "{count} Kết quả tìm kiếm",
+      "searchPlaceholder": "Trải nghiệm tìm kiếm",
+      "empty": "Không có trải nghiệm nào phù hợp với bộ lọc của bạn."
+    },
+    "emptyHint": "Hãy thử điều chỉnh các tùy chọn tìm kiếm hoặc bộ lọc của bạn.",
+    "promoSubtitle": "Khuyến mãi, ưu đãi và ưu đãi đặc biệt dành cho bạn"
+  },
+  "filters": {
+    "apply": "Áp dụng bộ lọc",
+    "applyCount": "Áp dụng bộ lọc ({count})",
+    "location": "Vị trí",
+    "rentalDates": "Ngày thuê",
+    "startDate": "Ngày bắt đầu",
+    "endDate": "Ngày kết thúc",
+    "discounts": "Giảm giá",
+    "price": "Giá",
+    "category": "Loại",
+    "experiences": "Kinh nghiệm",
+    "other": "Bộ lọc khác",
+    "budget": "Ngân sách",
+    "perNight": "| Đêm",
+    "perDaily": "| hằng ngày",
+    "anyPrice": "Bất cứ giá nào",
+    "apartmentType": "Loại căn hộ",
+    "bedrooms": "Số phòng ngủ",
+    "ratings": "Xếp hạng",
+    "perks": "Quyền lợi và tiện nghi",
+    "priceRange": {
+      "under50k": "Dưới 50k",
+      "50to150k": "50 - 150k",
+      "150kPlus": "150k trở lên"
+    },
+    "propertyType": {
+      "hotels": "Khách sạn",
+      "apartments": "Căn hộ",
+      "resorts": "Khu nghỉ dưỡng",
+      "bbs": "B&B",
+      "guestHouse": "Nhà khách",
+      "beachHouse": "Nhà bãi biển",
+      "motels": "Nhà nghỉ"
+    },
+    "bedroom": {
+      "studio": "Phòng thu",
+      "one": "1 phòng ngủ",
+      "two": "2 phòng ngủ",
+      "threePlus": "3+ phòng ngủ"
+    },
+    "perk": {
+      "breakfast": "Bao gồm bữa sáng",
+      "cancellation": "Hủy miễn phí",
+      "pool": "Quyền sử dụng hồ bơi",
+      "shuttle": "Đưa đón sân bay"
+    },
+    "discount": {
+      "all": "Tất cả giảm giá",
+      "withDiscount": "Có giảm giá",
+      "noDiscount": "Không giảm giá",
+      "tenPercent": "Giảm giá 10% Giảm giá"
+    },
+    "carType": {
+      "suv": "SUV",
+      "sedan": "xe sedan",
+      "hatchback": "xe hatchback",
+      "pickup": "Nhặt lên"
+    },
+    "serviceType": {
+      "selfDrive": "Tự lái xe",
+      "chauffeur": "tài xế"
+    },
+    "transmission": {
+      "automatic": "Tự động",
+      "manual": "Thủ công"
+    },
+    "tourCategory": {
+      "all": "Tất cả danh mục",
+      "outdoor": "ngoài trời",
+      "artsCulture": "Nghệ thuật & Văn hóa",
+      "adventure": "Cuộc phiêu lưu",
+      "foodDrink": "Đồ ăn & Đồ uống"
+    },
+    "experienceType": {
+      "all": "Tất cả trải nghiệm",
+      "tours": "Chuyến tham quan",
+      "activities": "Các hoạt động",
+      "workshops": "Hội thảo",
+      "dayTrips": "Chuyến đi trong ngày"
+    }
+  },
+  "landing": {
+    "ongoingDeals": {
+      "title": "Ưu đãi đang diễn ra",
+      "title2": "Các gói ưu đãi",
+      "description": "Khuyến mãi, ưu đãi và ưu đãi đặc biệt dành cho bạn",
+      "scrollPackages": "Gói cuộn"
+    },
+    "packages": {
+      "title": "Gói"
+    },
+    "fansFavourite": {
+      "title": "Người hâm mộ yêu thích"
+    },
+    "packageOffer": {
+      "inclusion": {
+        "flights": "Chuyến bay",
+        "stays": "Ở lại",
+        "carDriver": "Xe + Lái Xe"
+      },
+      "duration": "⟦ngày⟧ Ngày • ⟦đêm⟧ Đêm • ⟦lịch trình⟧",
+      "bookedSeparately": "nếu đặt riêng"
+    },
+    "bestDealsApartments": {
+      "title": "Ưu đãi căn hộ tốt nhất"
+    },
+    "browsePropertyType": "Duyệt theo loại tài sản",
+    "favouriteDestinations": "Khám phá các điểm đến yêu thích",
+    "activitiesCount": "hoạt động {count}",
+    "flightPromo": {
+      "headline": "Đặt vé máy bay chưa bao giờ dễ dàng hơn thế",
+      "cta": "Kiểm tra phòng trống"
+    },
+    "experiencesPromo": {
+      "headline": "Tận hưởng vô số trải nghiệm ở một điểm đến.",
+      "cta": "Duyệt qua trải nghiệm",
+      "imageAlt": "Duyệt qua những trải nghiệm ở Châu Phi"
+    },
+    "tours": {
+      "attractions": {
+        "title": "Các điểm tham quan trên Synkafrica"
+      },
+      "events": {
+        "browsingIn": "Duyệt sự kiện trong"
+      },
+      "packages": {
+        "title": "Gói tour",
+        "description": "Nhận các giao dịch tốt nhất về các chuyến tham quan và đặt chỗ một cách dễ dàng."
+      }
+    },
+    "carRentals": {
+      "feature1": {
+        "title": "Professional service",
+        "description": "We use reputable airport transfer service providers across Africa."
+      },
+      "feature2": {
+        "title": "Flexible cancellations",
+        "description": "If your plans change, you can cancel with flexible terms."
+      },
+      "feature3": {
+        "title": "Competitive Prices",
+        "description": "Our team compares airport taxi prices daily to get you the best deal."
+      }
+    }
+  },
+  "tourPackages": {
+    "hero": {
+      "title": "Tour packages",
+      "subtitle": "Handpicked travel packages designed for unforgettable African adventures."
+    },
+    "searchPlaceholder": "Search destination",
+    "empty": "No tour packages match your search."
+  },
+  "admin": {
+    "header": {
+      "role": "Platform administrator"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "experiences": "Experiences",
+      "cars": "Cars",
+      "accommodations": "Accommodations",
+      "vendors": "Vendors",
+      "bookings": "Bookings",
+      "payouts": "Payouts",
+      "reviews": "Reviews",
+      "users": "Users",
+      "verifications": "Verifications",
+      "support": "Support tickets",
+      "team": "Team",
+      "audit": "Audit log"
+    },
+    "common": {
+      "all": "All",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "edit": "Edit",
+      "actions": "Actions"
+    },
+    "verifications": {
+      "title": "Verifications",
+      "subtitle": "Submissions flagged by our verification provider for manual review — most ID/face checks auto-approve and never reach this queue.",
+      "stats": {
+        "needsManualReview": "Needs manual review",
+        "approvedToday": "Approved today",
+        "deniedToday": "Denied today",
+        "avgReviewTime": "Avg. review time",
+        "avgReviewTimeValue": "{minutes} min"
+      },
+      "searchPlaceholder": "Search by name or account ID...",
+      "filter": {
+        "users": "Users",
+        "vendors": "Vendors"
+      },
+      "status": {
+        "pendingReview": "Pending review",
+        "approved": "Approved",
+        "denied": "Denied"
+      },
+      "audience": {
+        "user": "User",
+        "vendor": "Vendor"
+      },
+      "submitted": "Submitted {date}",
+      "pendingElapsed": "Pending {elapsed}",
+      "blocking": {
+        "firstCheckout": "blocking first checkout"
+      },
+      "empty": "No verification submissions match your filters.",
+      "accountId": "Account {id}",
+      "viewAccount": "View account →",
+      "pendingManualReview": "Pending manual review",
+      "elapsed": "{elapsed} elapsed",
+      "documentPreviews": "Document previews",
+      "documentViewLogged": "Document view is logged for compliance",
+      "providerResults": "Verification provider results (DIDIT)",
+      "approve": "Approve",
+      "deny": "Deny",
+      "requestResubmission": "Request resubmission",
+      "notifyUser": "Notify user of decision",
+      "notifyVendor": "Notify vendor of decision",
+      "verificationApproved": "Verification approved",
+      "verificationDenied": "Verification denied",
+      "reviewedInElapsed": "Được đánh giá trong {elapsed}",
+      "approvedBy": "Được phê duyệt bởi",
+      "approvedByValue": "Quản trị viên — ⟦ngày⟧",
+      "reasonForDenial": "Lý do từ chối",
+      "revokeApproval": "Thu hồi phê duyệt",
+      "inviteResubmission": "Mời gửi lại",
+      "viewHistory": "Xem lịch sử",
+      "providerResultsHeading": "Kết quả của nhà cung cấp — DIDIT",
+      "document": {
+        "ninSlip": "phiếu NIN",
+        "passportPhoto": "Trang ảnh hộ chiếu",
+        "selfie": "Chụp ảnh selfie/sống động",
+        "cac": "chứng chỉ CAC",
+        "driversLicense": "Bằng lái xe (mặt trước)"
+      },
+      "check": {
+        "cacRegistrationLookup": "Tra cứu đăng ký CAC",
+        "cacRegistrationVerified": "Đã xác minh",
+        "faceMatchConfidence": "Sự tự tin khi đối mặt",
+        "faceMatchConfidenceDetail": "96%",
+        "documentExpiredDetail": "Không thành công - tài liệu đã hết hạn",
+        "documentAuthenticity": "Tính xác thực của tài liệu",
+        "liveness": "Kiểm tra độ sống",
+        "faceMatch": "Sự tự tin khi đối mặt",
+        "nameMatch": "Tên khớp với tài khoản",
+        "businessRegistration": "Đăng ký kinh doanh",
+        "faceMatchDetail": "78% — dưới ngưỡng tự động phê duyệt",
+        "nameMatchDetail": "Cuộc thi đấu",
+        "documentFailedDetail": "Không thành công - không thể đọc được tài liệu",
+        "faceMatchFailedDetail": "42% - dưới ngưỡng",
+        "businessRegistrationDetail": "Khớp một phần - cần xem xét thủ công"
+      },
+      "denialReason": {
+        "expiredLicense": "Giấy phép lái xe đã hết hạn vào tháng 3 năm 2026. Vui lòng gửi lại cùng với giấy tờ tùy thân hợp lệ, chưa hết hạn của chính phủ."
+      },
+      "documentType": {
+        "passport": "Hộ chiếu",
+        "cacNin": "CAC + NIN",
+        "driversLicense": "Bằng lái xe"
+      },
+      "checkResult": {
+        "passed": "Đi qua",
+        "failed": "Thất bại",
+        "warning": "Yêu cầu xem xét"
+      }
+    },
+    "dashboard": {
+      "welcome": "Bảng điều khiển dành cho quản trị viên,",
+      "addPackages": "Thêm gói",
+      "period": {
+        "label": "Khoảng thời gian số liệu",
+        "today": "Hôm nay",
+        "week": "Tuần này",
+        "month": "Tháng này",
+        "sixMonths": "6 tháng",
+        "year": "1 năm",
+        "all": "Tất cả"
+      },
+      "users": "Người dùng",
+      "bookings": "Đặt chỗ",
+      "revenue": "Doanh thu",
+      "activeExperiences": "Trải nghiệm tích cực",
+      "activeVendors": "nhà cung cấp đang hoạt động",
+      "viewAll": "Xem tất cả",
+      "manage": "Quản lý",
+      "alerts": "Cảnh báo",
+      "alert": {
+        "pendingPayouts": "3 khoản thanh toán của nhà cung cấp đang chờ phê duyệt",
+        "flaggedReview": "2 đánh giá được gắn cờ để kiểm duyệt",
+        "openTicket": "5 vé hỗ trợ nhà cung cấp mở",
+        "disabledVendor": "1 tài khoản nhà cung cấp bị vô hiệu hóa - yêu cầu xem xét"
+      }
+    },
+    "packages": {
+      "createTitle": "Tạo gói/giao dịch mới",
+      "createSubtitle": "Xây dựng gói du lịch không thể cưỡng lại bằng cách kết hợp các chuyến bay, lưu trú, ô tô và trải nghiệm.",
+      "addTitle": "Thêm gói",
+      "backToDashboard": "← Quay lại trang tổng quan",
+      "progressLabel": "Tiến độ gói",
+      "steps": {
+        "details": "Chi tiết gói",
+        "modules": "Thêm mô-đun",
+        "pricing": "Định giá",
+        "review": "Đánh giá & Xuất bản"
+      },
+      "cancel": "Hủy bỏ",
+      "back": "Mặt sau",
+      "saveDraft": "Lưu dưới dạng bản nháp",
+      "draftSaved": "Đã lưu bản nháp",
+      "saveContinue": "Lưu & Tiếp tục",
+      "submit": "Gửi gói",
+      "completeRequiredFields": "Hoàn thành các trường bắt buộc: {fields}",
+      "sections": {
+        "basicInfo": "Chi tiết gói",
+        "basicInfoHint": "Thông tin cơ bản và siêu dữ liệu cho gói hàng của bạn.",
+        "additionalSettings": "Cài đặt bổ sung",
+        "additionalSettingsHint": "Chính sách, bữa ăn và lựa chọn hiển thị."
+      },
+      "fields": {
+        "packageName": "Tên gói",
+        "packageSlug": "Sên gói (URL)",
+        "shortDescription": "Mô tả ngắn",
+        "detailedDescription": "Mô tả chi tiết",
+        "banner": "Hình ảnh biểu ngữ gói",
+        "category": "Danh mục gói",
+        "bestFor": "Tốt nhất cho",
+        "tags": "Thẻ gói",
+        "includedMeals": "Bao gồm các bữa ăn",
+        "cancellationPolicy": "Chính sách hủy",
+        "refundPolicy": "Chính sách hoàn tiền",
+        "maxGuests": "Khách tối đa",
+        "featuredDeal": "Điểm nổi bật của gói",
+        "currency": "Tiền tệ",
+        "normalPrice": "Giá bình thường",
+        "salesPrice": "Giá bán",
+        "showSavingsBadge": "Hiển thị huy hiệu tiết kiệm",
+        "savingsBadgePercent": "Phần trăm Huy hiệu Tiết kiệm",
+        "validFrom": "Hợp lệ từ",
+        "validUntil": "Có hiệu lực cho đến khi",
+        "minimumBookingNotice": "Thông báo đặt phòng tối thiểu",
+        "packageActive": "Trạng thái gói hàng"
+      },
+      "placeholders": {
+        "packageName": "ví dụ. Cuộc trốn chạy ở Lagos & Paris",
+        "packageSlug": "lagos-paris-thoát",
+        "shortDescription": "Một bản tóm tắt ngắn xuất hiện trên thẻ gói.",
+        "detailedDescription": "Mô tả đầy đủ hành trình, sự bao gồm và những điểm nổi bật.",
+        "category": "Chọn danh mục",
+        "tags": "ví dụ. Bãi biển, Phiêu lưu",
+        "maxGuests": "ví dụ. 4",
+        "select": "Lựa chọn"
+      },
+      "hints": {
+        "packageSlug": "Điều này sẽ được sử dụng trong URL gói.",
+        "tags": "Thêm từng thẻ và nhấn Enter.",
+        "featuredDeal": "Hiển thị gói này như một ưu đãi nổi bật.",
+        "showSavingsBadge": "Hiển thị huy hiệu tiết kiệm trên thẻ gói.",
+        "savingsBadgePercent": "Đặt tỷ lệ phần trăm hiển thị trên huy hiệu tiết kiệm. Tự động điền từ giá của bạn.",
+        "packageActive": "Các gói đang hoạt động được hiển thị cho khách hàng."
+      },
+      "uploadBanner": "Nhấp để tải lên hoặc kéo và thả",
+      "uploadBannerHint": "JPG, PNG hoặc WEBP (Tối đa 5MB)",
+      "removeBanner": "Xóa biểu ngữ",
+      "tips": {
+        "title": "Lời khuyên cho một gói tuyệt vời",
+        "one": "Sử dụng tên gói rõ ràng, hấp dẫn.",
+        "two": "Kết hợp các mô-đun bổ sung để có giá trị tốt hơn.",
+        "three": "Làm nổi bật khoản tiết kiệm với giá bán mạnh.",
+        "four": "Thêm thẻ để cải thiện khả năng khám phá."
+      },
+      "moduleType": {
+        "flight": "Chuyến bay",
+        "accommodation": "Chỗ ở",
+        "car": "Xe hơi",
+        "experience": "Kinh nghiệm"
+      },
+      "modules": {
+        "selectHeading": "Thêm mô-đun",
+        "selectHint": "Duyệt qua và thêm chuyến bay, chỗ ở, ô tô và trải nghiệm để xây dựng gói của bạn.",
+        "addedHeading": "Mô-đun gói",
+        "countLabel": "mô-đun",
+        "empty": "Chưa có mô-đun nào được thêm vào. Chọn các mục từ bảng ở trên.",
+        "add": "Thêm vào",
+        "added": "Đã thêm",
+        "remove": "Xóa mô-đun",
+        "dragHandle": "Kéo để sắp xếp lại",
+        "reorderHint": "Kéo và thả các mô-đun để sắp xếp lại chúng sao cho chúng hiển thị với khách hàng.",
+        "required": "Thêm ít nhất một mô-đun để tiếp tục.",
+        "searchPlaceholder": "Tìm kiếm mô-đun…",
+        "noResults": "Không có mô-đun nào phù hợp với tìm kiếm của bạn.",
+        "availableLabel": "có sẵn"
+      },
+      "pricing": {
+        "heading": "Định giá",
+        "hint": "Đặt giá vé của bạn.",
+        "savingsDisplay": "Bạn tiết kiệm được ⟦số tiền⟧ (⟦phần trăm⟧%)"
+      },
+      "availability": {
+        "heading": "sẵn có",
+        "hint": "Đặt thời điểm có thể đặt gói này."
+      },
+      "review": {
+        "heading": "Đánh giá & Xuất bản",
+        "hint": "Xem lại tất cả các chi tiết gói trước khi gửi."
+      }
+    },
+    "users": {
+      "title": "du khách",
+      "searchPlaceholder": "Tìm kiếm theo tên, ID người dùng, email hoặc vị trí...",
+      "userId": "ID người dùng",
+      "traveler": "du khách",
+      "contact": "Liên hệ",
+      "location": "Vị trí",
+      "tier": {
+        "bronze": "Đồng",
+        "silver": "Bạc",
+        "gold": "Vàng",
+        "platinum": "Bạch kim"
+      },
+      "bookingsSpend": "Đặt chỗ / Chi tiêu",
+      "lastTrip": "Chuyến đi cuối cùng",
+      "status": {
+        "active": "Tích cực",
+        "inactive": "Không hoạt động"
+      },
+      "stats": {
+        "found": "Du khách đã tìm thấy",
+        "active": "Tích cực",
+        "combinedSpend": "Combined spend",
+        "page": "Page",
+        "pageValue": "{current} / {total}"
+      },
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "showing": "Page {current} of {total}"
+      },
+      "details": "Details",
+      "empty": "No travelers match your search.",
+      "notFound": "Traveler not found.",
+      "backToList": "Back to travelers",
+      "accountDetails": "Account details",
+      "detail": {
+        "totalBookings": "Total bookings",
+        "lifetimeSpend": "Lifetime spend",
+        "primaryCorridor": "Primary corridor",
+        "openTickets": "Open tickets",
+        "idFaceVerified": "ID + Face verified",
+        "joined": "Joined {date}",
+        "lastActive": "Last active {elapsed}",
+        "phoneWhatsApp": "{phone} (WhatsApp-linked)",
+        "identityVerification": "Identity Verification",
+        "governmentId": "Government ID ({type})",
+        "faceMatch": "Face / liveness match",
+        "verifiedVia": "Verified via",
+        "verified": "Verified",
+        "notVerified": "Not verified",
+        "paymentMethods": "Payment methods on file",
+        "card": "Card",
+        "defaultCurrency": "Default currency",
+        "recentBookings": "Recent Bookings",
+        "internalNotes": "Internal Notes",
+        "noNotes": "No internal notes yet.",
+        "noteAttribution": "— {author}, {date}",
+        "bookingStatus": {
+          "confirmed": "Confirmed",
+          "completed": "Completed",
+          "cancelled": "Cancelled"
+        }
+      },
+      "menu": {
+        "verification": "Verification",
+        "rerunIdVerification": "Re-run ID verification",
+        "rerunFaceVerification": "Re-run face verification",
+        "financial": "Financial",
+        "issueRefund": "Issue refund",
+        "holdBookingPayment": "Hold booking payment",
+        "support": "Support",
+        "viewAsReadOnly": "View-as (read-only)",
+        "addInternalNote": "Add internal note",
+        "dataAccount": "Data & account",
+        "mergeDuplicateAccount": "Merge duplicate account",
+        "exportUserData": "Export user data (GDPR)",
+        "suspendAccount": "Suspend account"
+      }
+    },
+    "experiences": {
+      "title": "Manage experiences",
+      "searchPlaceholder": "Search experiences",
+      "name": "Experience name",
+      "empty": "No experiences match your search.",
+      "actions": {
+        "disable": "Disable experience",
+        "enable": "Enable experience",
+        "goTo": "Go to experience",
+        "delete": "Delete experience"
+      }
+    },
+    "cars": {
+      "title": "Manage cars",
+      "searchPlaceholder": "Search cars",
+      "name": "Car name",
+      "empty": "No cars match your search.",
+      "actions": {
+        "disable": "Disable car",
+        "enable": "Enable car",
+        "goTo": "Go to car",
+        "delete": "Delete car"
+      }
+    },
+    "accommodations": {
+      "title": "Manage accommodations",
+      "searchPlaceholder": "Search accommodations",
+      "name": "Accommodation name",
+      "empty": "No accommodations match your search.",
+      "actions": {
+        "disable": "Disable accommodation",
+        "enable": "Enable accommodation",
+        "goTo": "Go to accommodation",
+        "delete": "Delete accommodation"
+      }
+    },
+    "listings": {
+      "location": "Listing location",
+      "vendor": "Vendor",
+      "bookings": "Bookings",
+      "ratings": "Ratings",
+      "reviews": "reviews",
+      "activityStatus": "Activity status",
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive",
+        "deleted": "Deleted"
+      },
+      "tab": {
+        "active": "Active listings",
+        "deleted": "Deleted listings"
+      },
+      "deletedHint": "Listings removed from the marketplace appear here. You can view details or permanently delete records.",
+      "viewDetails": "View listing",
+      "deletedAt": "Deleted on {date}",
+      "detailTitle": "Listing details",
+      "detailHint": "Full preview of this listing, including media, details, pricing, and documents.",
+      "detailNotFound": "This listing could not be found.",
+      "detail": {
+        "backCars": "Back to cars",
+        "backAccommodations": "Back to accommodations",
+        "backExperiences": "Back to experiences"
+      },
+      "detailClose": "Close"
+    },
+    "vendors": {
+      "title": "Manage vendors",
+      "add": "Add vendor",
+      "searchPlaceholder": "Search by name, vendor ID, email, or phone...",
+      "vendorId": "Vendor ID",
+      "name": "Vendor",
+      "userId": "User ID",
+      "stats": {
+        "found": "Vendors found",
+        "active": "Active",
+        "combinedRevenue": "Combined revenue",
+        "page": "Page",
+        "pageValue": "⟦hiện tại⟧ / ⟦tổng⟧"
+      },
+      "pagination": {
+        "previous": "Trước",
+        "next": "Kế tiếp",
+        "showing": "Trang {current} của {total}"
+      },
+      "contactInfo": "Thông tin liên hệ",
+      "listings": "Danh sách",
+      "commission": "Nhiệm vụ",
+      "commissionValue": "⟦tỷ lệ⟧%",
+      "status": {
+        "active": "Tích cực",
+        "inactive": "Không hoạt động"
+      },
+      "revenue": "Doanh thu",
+      "rating": "Đánh giá",
+      "reviews": "đánh giá",
+      "details": "Chi tiết",
+      "empty": "Không có nhà cung cấp phù hợp với tìm kiếm của bạn.",
+      "notFound": "Không tìm thấy nhà cung cấp.",
+      "backToList": "Quay lại nhà cung cấp",
+      "accountDetails": "Chi tiết tài khoản",
+      "joined": "Đã tham gia",
+      "detail": {
+        "activeListings": "Danh sách đang hoạt động",
+        "completedBookings": "Đặt chỗ đã hoàn tất",
+        "averageRating": "Đánh giá trung bình",
+        "openStrikes": "Cuộc đình công mở",
+        "category": "Loại",
+        "onboarded": "Đã tham gia {date}",
+        "accountDocuments": "Chứng từ tài khoản",
+        "listingDocuments": "Liệt kê tài liệu — {category}",
+        "payoutSummary": "Tóm tắt thanh toán",
+        "pendingPayout": "Đang chờ thanh toán",
+        "lastPayout": "Khoản thanh toán cuối cùng",
+        "internalNotes": "Ghi chú nội bộ",
+        "noNotes": "Chưa có ghi chú nội bộ.",
+        "noteAttribution": "— ⟦tác giả⟧, ⟦ngày⟧",
+        "viewListings": "Xem danh sách",
+        "suspendVendor": "Đình chỉ nhà cung cấp",
+        "documentStatus": {
+          "verified": "Đã xác minh",
+          "pendingReview": "Đang chờ xem xét",
+          "signed": "Đã ký",
+          "notVerified": "Chưa được xác minh"
+        }
+      },
+      "menu": {
+        "verification": "Xác minh",
+        "approvePendingListing": "Phê duyệt danh sách đang chờ xử lý",
+        "requestAdditionalDocuments": "Yêu cầu tài liệu bổ sung",
+        "upgradeToTier": "Nâng cấp lên Cấp {tier}",
+        "standingTrust": "Đứng vững & tin tưởng",
+        "grantInstantBook": "Cấp đặc quyền Đặt ngay",
+        "addStrike": "Thêm cảnh cáo/cờ nội bộ",
+        "clearStrike": "Xóa cảnh cáo",
+        "financial": "Tài chính",
+        "holdPendingPayout": "Giữ chờ thanh toán",
+        "adjustCommissionRate": "Điều chỉnh tỷ lệ hoa hồng",
+        "communication": "Giao tiếp",
+        "contactVendor": "Liên hệ với nhà cung cấp",
+        "addInternalNote": "Thêm ghi chú nội bộ",
+        "account": "Tài khoản",
+        "suspendAccount": "Đình chỉ tài khoản",
+        "banPermanently": "Cấm vĩnh viễn"
+      },
+      "requestDocumentsModal": {
+        "title": "Yêu cầu tài liệu bổ sung",
+        "subtitle": "Gửi yêu cầu tài liệu tới {vendor}.",
+        "documentLabel": "Chọn tài liệu",
+        "documentPlaceholder": "Chọn một tài liệu",
+        "otherOption": "Khác (không được liệt kê)",
+        "customDocumentLabel": "Thêm tên tài liệu",
+        "customDocumentPlaceholder": "Nhập tên tài liệu",
+        "submit": "Gửi yêu cầu",
+        "cancel": "Hủy bỏ"
+      },
+      "confirm": {
+        "cancel": "Hủy bỏ"
+      },
+      "confirmSuspend": {
+        "title": "Bạn có chắc không?",
+        "message": "Bạn sắp tạm dừng ⟦nhà cung cấp⟧. Họ sẽ mất quyền truy cập vào tài khoản của mình cho đến khi nó được kích hoạt lại."
+      },
+      "confirmBan": {
+        "title": "Bạn có chắc không?",
+        "message": "Bạn sắp cấm vĩnh viễn ⟦nhà cung cấp⟧. Không thể hoàn tác hành động này."
+      },
+      "internalNoteModal": {
+        "title": "Thêm ghi chú nội bộ",
+        "subtitle": "Thêm nhận xét hoặc ghi chú cho {vendor}.",
+        "label": "Quan sát",
+        "placeholder": "Viết quan sát hoặc ghi chú của bạn ở đây...",
+        "submit": "Lưu ghi chú"
+      },
+      "experiences": "Kinh nghiệm",
+      "earnings": "Tổng thu nhập"
+    },
+    "bookings": {
+      "title": "Đặt chỗ",
+      "subtitle": "Tất cả các đặt chỗ trên Chuyến bay, Ô tô, Chỗ ở và Trải nghiệm — từ ứng dụng, web và được tạo thủ công.",
+      "create": "Tạo đặt chỗ",
+      "searchPlaceholder": "Tìm kiếm theo khách hàng, nhà cung cấp hoặc mã đặt chỗ...",
+      "empty": "Không có đặt chỗ nào phù hợp với bộ lọc của bạn.",
+      "guests": "khách",
+      "vendor": "Người bán",
+      "contactCustomer": "Liên hệ khách hàng",
+      "contactVendor": "Liên hệ với nhà cung cấp",
+      "addInternalNote": "Thêm ghi chú nội bộ",
+      "partialRefund": "Hoàn tiền một phần",
+      "cancelRefund": "Hủy và hoàn tiền",
+      "flagDispute": "Gắn cờ là tranh chấp",
+      "saveChanges": "Lưu thay đổi",
+      "stats": {
+        "upcoming": "Sắp tới (7 ngày)",
+        "awaiting": "Đang chờ xác nhận",
+        "confirmed": "Đã xác nhận",
+        "disputed": "Đang tranh chấp/bị gắn cờ",
+        "totalMonth": "Tổng cộng tháng này"
+      },
+      "product": {
+        "all": "Tất cả các loại sản phẩm",
+        "flights": "Chuyến bay",
+        "cars": "Ôtô",
+        "accommodations": "Ở lại",
+        "experiences": "Kinh nghiệm"
+      },
+      "source": {
+        "all": "Tất cả các nguồn",
+        "website": "Trang web",
+        "mobileApp": "Ứng dụng di động",
+        "admin": "Tạo bởi quản trị viên"
+      },
+      "dateRange": {
+        "label": "Phạm vi ngày",
+        "day": "1 ngày",
+        "week": "1 tuần",
+        "month": "1 tháng",
+        "sixMonths": "6 tháng",
+        "year": "1 năm",
+        "all": "Tất cả"
+      },
+      "filter": {
+        "all": "Tất cả ({count})",
+        "upcoming": "Sắp tới ({count})",
+        "awaiting": "Đang chờ xác nhận ({count})",
+        "confirmed": "Đã xác nhận ({count})",
+        "completed": "Đã hoàn thành ({count})",
+        "cancelled": "Đã hủy ({count})",
+        "disputed": "Đang tranh chấp ({count})"
+      },
+      "status": {
+        "confirmed": "Đã xác nhận",
+        "awaiting": "Đang chờ xác nhận",
+        "cancelled": "Đã hủy",
+        "completed": "Hoàn thành",
+        "disputed": "Đang tranh chấp"
+      },
+      "sidebar": {
+        "customer": "Khách hàng",
+        "source": "Nguồn: {source}",
+        "vendor": "Người bán",
+        "bookingDetails": "Chi tiết đặt chỗ",
+        "payment": "Sự chi trả",
+        "timeline": "Dòng thời gian",
+        "name": "Tên",
+        "contact": "Liên hệ",
+        "whatsapp": "WhatsApp",
+        "assignedTo": "Được giao cho",
+        "vendorContact": "Liên hệ nhà cung cấp",
+        "checkIn": "Ngày nhận phòng",
+        "checkOut": "Ngày trả phòng",
+        "amount": "Số lượng",
+        "paymentStatus": "Trạng thái",
+        "chargedCurrency": "Loại tiền tệ được tính phí"
+      },
+      "createModal": {
+        "title": "Tạo đặt chỗ",
+        "subtitle": "Tạo đặt chỗ thay mặt cho khách hàng.",
+        "infoBannerPrefix": "Đặt chỗ này sẽ được gắn thẻ",
+        "infoBannerSource": "Nguồn: Tạo bởi quản trị viên",
+        "infoBannerSuffix": "và sẽ xuất hiện trong tài khoản và ứng dụng của khách hàng giống như lượt đặt chỗ tự phục vụ.",
+        "productType": "Loại sản phẩm",
+        "product": {
+          "accommodations": "Chỗ ở",
+          "flights": "Chuyến bay",
+          "cars": "Ôtô",
+          "experiences": "Kinh nghiệm"
+        },
+        "customer": "Khách hàng",
+        "customerPlaceholder": "Tìm kiếm khách hàng hiện tại theo tên, email hoặc số điện thoại...",
+        "vendorListing": "Nhà cung cấp/danh sách",
+        "vendorPlaceholder": "Tìm kiếm nhà cung cấp hoặc danh sách...",
+        "startDate": "Ngày bắt đầu",
+        "endDate": "Ngày kết thúc",
+        "guestsUnits": "Khách/đơn vị",
+        "guestsPlaceholder": "ví dụ. 2",
+        "totalAmount": "Tổng số tiền",
+        "amountPlaceholder": "NGN",
+        "paymentStatus": "Trạng thái thanh toán",
+        "payment": {
+          "sendLink": "Gửi link thanh toán cho khách hàng",
+          "paidInFull": "Đánh dấu là đã thanh toán đầy đủ",
+          "pending": "Thanh toán đang chờ xử lý - không có liên kết nào được gửi"
+        },
+        "internalNote": "Ghi chú nội bộ",
+        "internalNotePlaceholder": "ví dụ. Đặt qua yêu cầu WhatsApp, khách hàng yêu cầu phòng ở tầng trệt",
+        "cancel": "Hủy bỏ",
+        "submit": "Create booking"
+      }
+    },
+    "payouts": {
+      "title": "Payouts",
+      "subtitle": "Vendor earnings across all categories, by settlement period.",
+      "searchPlaceholder": "Search by vendor name or reference...",
+      "pendingCount": "{count} pending payout(s)",
+      "markComplete": "Mark complete",
+      "contactVendor": "Contact vendor",
+      "decline": "Sự suy sụp",
+      "empty": "Không có khoản thanh toán nào phù hợp với tìm kiếm của bạn.",
+      "requested": "Đã yêu cầu ⟦ngày⟧",
+      "periodLabel": "Thời gian: ⟦thời gian⟧",
+      "listBookingsBank": "{count} đặt chỗ · ⟦ngân hàng⟧ ⟦tài khoản⟧",
+      "netPayoutToVendor": "Khoản thanh toán ròng cho nhà cung cấp",
+      "grossEarnings": "Tổng thu nhập đặt phòng",
+      "platformCommission": "Hoa hồng nền tảng ({rate}%)",
+      "netPayout": "Xuất chi ròng",
+      "paymentDestination": "Điểm đến thanh toán",
+      "bank": "Ngân hàng",
+      "accountNumber": "Số tài khoản",
+      "accountName": "Tên tài khoản",
+      "payoutMethod": "Phương thức thanh toán",
+      "associatedBookings": "Đặt chỗ liên quan ({count})",
+      "internalNote": "Ghi chú nội bộ",
+      "noteAttribution": "— ⟦tác giả⟧, ⟦ngày⟧",
+      "period": {
+        "thisMonth": "Tháng này - tháng 7 năm 2026",
+        "lastMonth": "Tháng trước - tháng 6 năm 2026",
+        "quarter": "Quý này - Quý 2 năm 2026"
+      },
+      "stats": {
+        "totalPeriod": "Tổng số tiền thanh toán - kỳ",
+        "totalVendors": "Trên {count} nhà cung cấp",
+        "pending": "Chưa giải quyết",
+        "pendingSubtitle": "{count} khoản thanh toán đang chờ hành động",
+        "completed": "Hoàn thành",
+        "completedSubtitle": "{count} khoản thanh toán đã được giải quyết",
+        "declinedFailed": "Bị từ chối/Không thành công",
+        "declinedFailedSubtitle": "⟦từ chối⟧ bị từ chối · ⟦không thành công⟧ chuyển khoản không thành công"
+      },
+      "filter": {
+        "all": "Tất cả ({count})",
+        "pending": "Đang chờ xử lý ({count})",
+        "completed": "Đã hoàn thành ({count})",
+        "declined": "Đã từ chối ({count})",
+        "failed": "Không thành công ({count})"
+      },
+      "status": {
+        "pending": "Chưa giải quyết",
+        "completed": "Hoàn thành",
+        "declined": "Bị từ chối",
+        "failed": "Thất bại",
+        "failedTransfer": "Chuyển không thành công"
+      }
+    },
+    "reviews": {
+      "title": "Xem xét kiểm duyệt",
+      "category": {
+        "unanswered": "Chưa được trả lời",
+        "responseRequired": "Yêu cầu phản hồi",
+        "flagged": "Đã gắn cờ",
+        "deleted": "Đã xóa",
+        "published": "Đã xuất bản"
+      },
+      "selectAll": "Chọn tất cả",
+      "deselectAll": "Bỏ chọn tất cả",
+      "bulkPublish": "Xuất bản đã chọn",
+      "bulkFlag": "Đã chọn cờ",
+      "bulkResponseRequired": "Yêu cầu phản hồi",
+      "bulkDelete": "Xóa đã chọn",
+      "actionsGuideTitle": "Những hành động này có ý nghĩa gì?",
+      "actionsGuide": {
+        "publish": "Xuất bản — Hiển thị đánh giá trên trang danh sách công khai.",
+        "flag": "Gắn cờ — Đánh dấu bài đánh giá để theo dõi (nội dung không phù hợp hoặc đáng ngờ).",
+        "delete": "Xóa — Xóa bài đánh giá khỏi chế độ xem công khai. Đánh giá đã xóa xuất hiện trong tab Đã xóa.",
+        "responseRequired": "Yêu cầu phản hồi - Cho biết rằng cần có phản hồi của nhà cung cấp hoặc quản trị viên.",
+        "clearResponseRequired": "Yêu cầu phản hồi rõ ràng - Xóa điểm đánh dấu sau khi phản hồi chính thức được đăng."
+      },
+      "selectReview": "Chọn đánh giá cho {title}",
+      "unansweredBadge": "Chưa được trả lời",
+      "responseRequiredBadge": "Yêu cầu phản hồi",
+      "officialResponse": "Phản hồi chính thức",
+      "empty": "Không có đánh giá trong danh mục này.",
+      "flag": "Lá cờ",
+      "responseRequired": "Yêu cầu phản hồi",
+      "clearResponseRequired": "Cần phản hồi rõ ràng",
+      "delete": "Xóa bỏ",
+      "hide": "Trốn",
+      "publish": "Xuất bản",
+      "respondAsSynkAfrica": "Trả lời dưới dạng SynkAfrica",
+      "responsePlaceholder": "Phản hồi chính thức hiển thị cho khách và nhà cung cấp...",
+      "photosLabel": "Ảnh của khách",
+      "status": {
+        "published": "Đã xuất bản",
+        "flagged": "Đã gắn cờ",
+        "deleted": "Đã xóa",
+        "hidden": "Ẩn giấu"
+      }
+    },
+    "reports": {
+      "title": "Báo cáo",
+      "totalRevenue": "Tổng doanh thu (tháng)",
+      "totalBookings": "Tổng số đặt phòng (tháng)",
+      "topExperience": "Trải nghiệm hàng đầu",
+      "activeVendors": "nhà cung cấp đang hoạt động",
+      "popularExperiences": "Trải nghiệm phổ biến",
+      "bookings": "đặt chỗ",
+      "metric": "Số liệu",
+      "value": "Giá trị",
+      "experience": "Kinh nghiệm",
+      "exportRevenue": "Xuất CSV doanh thu",
+      "exportBookings": "Xuất CSV đặt chỗ"
+    },
+    "support": {
+      "title": "Vé hỗ trợ",
+      "subtitle": "Xem xét các yêu cầu hỗ trợ của người dùng và nhà cung cấp, cập nhật trạng thái yêu cầu và gửi phản hồi chính thức.",
+      "tab": {
+        "users": "Người dùng",
+        "vendors": "Nhà cung cấp"
+      },
+      "user": "người dùng",
+      "vendor": "Người bán",
+      "empty": "Không có vé phù hợp với bộ lọc này.",
+      "adminResponse": "Phản hồi của quản trị viên",
+      "previousResponse": "Phản hồi trước đó",
+      "sendResponse": "Gửi phản hồi"
+    }
+  },
+  "vendor": {
+    "nav": {
+      "workspace": "Không gian làm việc",
+      "account": "Tài khoản",
+      "dashboard": "Trang tổng quan",
+      "listings": "Danh sách",
+      "bookings": "Đặt chỗ",
+      "earnings": "Thu nhập",
+      "notifications": "Thông báo",
+      "businessProfile": "Hồ sơ doanh nghiệp",
+      "settings": "Cài đặt",
+      "support": "Ủng hộ",
+      "logOut": "Đăng xuất",
+      "openMenu": "Mở trình đơn",
+      "closeMenu": "Đóng trình đơn"
+    },
+    "header": {
+      "verifiedVendor": "Nhà cung cấp đã được xác minh",
+      "unverifiedVendor": "Nhà cung cấp chưa được xác minh",
+      "pendingVendor": "Đang chờ xác minh"
+    },
+    "signup": {
+      "title": "Tạo tài khoản nhà cung cấp của bạn",
+      "subtitle": "Tham gia SynkAfrica và bắt đầu đăng danh sách ô tô, chỗ ở và trải nghiệm của bạn cho khách du lịch trên khắp Châu Phi.",
+      "alreadyHaveAccount": "Đã có tài khoản nhà cung cấp?",
+      "signIn": "Đăng nhập",
+      "progressLabel": "Tiến trình đăng ký nhà cung cấp",
+      "steps": {
+        "business": "Thông tin doanh nghiệp và chủ sở hữu",
+        "security": "Bảo mật & Xác minh",
+        "identity": "Xác minh danh tính"
+      },
+      "cancel": "Hủy bỏ",
+      "back": "Mặt sau",
+      "continue": "Tiếp tục",
+      "createAccount": "Tạo tài khoản",
+      "completeRequiredFields": "Hoàn thành các trường bắt buộc: {fields}",
+      "securityRequired": "Xác minh điện thoại của bạn bằng OTP và tạo mật khẩu hợp lệ để tiếp tục.",
+      "identityRequired": "Tải lên ID chính phủ của bạn và chấp nhận các điều khoản để tạo tài khoản của bạn.",
+      "sections": {
+        "businessInfo": "Thông tin doanh nghiệp",
+        "businessInfoHint": "Hãy cho chúng tôi biết về doanh nghiệp của bạn.",
+        "ownerInfo": "Thông tin chủ sở hữu",
+        "ownerInfoHint": "Thông tin chi tiết về chủ doanh nghiệp hoặc người liên hệ chính.",
+        "phoneVerification": "Xác minh điện thoại",
+        "phoneVerificationHint": "Chúng tôi sẽ gửi mã một lần đến số điện thoại bạn đã cung cấp.",
+        "accountSecurity": "Bảo mật tài khoản",
+        "accountSecurityHint": "Tạo mật khẩu mạnh cho tài khoản nhà cung cấp của bạn.",
+        "governmentId": "ID do chính phủ cấp",
+        "governmentIdHint": "Tải lên Hộ chiếu, Giấy phép Lái ​​xe hoặc phiếu NIN hợp lệ để xác minh danh tính."
+      },
+      "fields": {
+        "businessName": "Tên doanh nghiệp",
+        "businessType": "Loại hình kinh doanh",
+        "cacRegistrationNumber": "Số đăng ký CAC",
+        "companyType": "Loại công ty",
+        "businessAddress": "Địa chỉ doanh nghiệp",
+        "ownerFullName": "Tên đầy đủ của chủ sở hữu",
+        "ownerEmail": "Địa chỉ email",
+        "phoneNumber": "Số điện thoại",
+        "dateOfBirth": "Ngày sinh",
+        "password": "Mật khẩu",
+        "confirmPassword": "Xác nhận mật khẩu"
+      },
+      "placeholders": {
+        "companyType": "Chọn loại hình công ty",
+        "businessName": "ví dụ. Đường mòn ven biển NG",
+        "businessType": "Chọn loại hình kinh doanh",
+        "cacRegistrationNumber": "ví dụ. RC1234567",
+        "businessAddress": "Đường phố, thành phố, tiểu bang",
+        "ownerFullName": "Tên pháp lý đầy đủ",
+        "ownerEmail": "bạn@business.com",
+        "phoneNumber": "7812345678",
+        "password": "Tạo mật khẩu",
+        "confirmPassword": "Nhập lại mật khẩu của bạn"
+      },
+      "sendOtp": "Gửi OTP",
+      "resendOtp": "Gửi lại OTP",
+      "enterOtp": "Nhập OTP",
+      "resendIn": "Gửi lại sau 00:⟦giây⟧",
+      "otpVerified": "Số điện thoại đã được xác minh.",
+      "passwordRules": {
+        "minLength": "Ít nhất 8 ký tự",
+        "hasNumber": "Bao gồm một số",
+        "hasUppercase": "Bao gồm chữ in hoa"
+      },
+      "passwordMismatch": "Mật khẩu không khớp.",
+      "togglePasswordVisibility": "Chuyển đổi khả năng hiển thị mật khẩu",
+      "uploadId": "Kéo và thả ID của bạn vào đây",
+      "uploadIdHint": "JPG, PNG hoặc PDF (Tối đa 5MB)",
+      "chooseFile": "Chọn tệp",
+      "idUploaded": "Tài liệu đã được tải lên",
+      "idUploadFailed": "Tải lên không thành công - vui lòng thử lại.",
+      "removeId": "Xóa giấy tờ tùy thân",
+      "idPrivacyNote": "ID của bạn được lưu trữ an toàn và chỉ được sử dụng cho mục đích xác minh. Chúng tôi không bao giờ chia sẻ tài liệu cá nhân của bạn với bên thứ ba.",
+      "securityBanner": {
+        "title": "Thông tin của bạn được an toàn với chúng tôi",
+        "message": "Chúng tôi sử dụng biện pháp bảo mật theo tiêu chuẩn ngành để bảo vệ dữ liệu của bạn và giữ an toàn cho tài khoản của bạn."
+      },
+      "agreeTermsPrefix": "Tôi đồng ý với",
+      "termsOfService": "Điều khoản dịch vụ",
+      "and": "Và",
+      "privacyPolicy": "Chính sách bảo mật"
+    },
+    "login": {
+      "title": "Đăng nhập nhà cung cấp",
+      "intro": "Đăng nhập vào tài khoản nhà cung cấp SynkAfrica của bạn để quản lý danh sách, đặt chỗ và thu nhập.",
+      "emailPlaceholder": "Nhập email nhà cung cấp của bạn",
+      "signInGoogle": "Đăng nhập bằng Google",
+      "noAccount": "Bạn chưa có tài khoản nhà cung cấp?",
+      "signUp": "Đăng ký"
+    },
+    "verificationNotice": {
+      "unverified": {
+        "title": "Yêu cầu xác minh",
+        "message": "Hoàn tất xác minh nhà cung cấp của bạn để xuất bản danh sách và nhận thanh toán."
+      },
+      "pending": {
+        "title": "Đang xác minh",
+        "message": "Xác minh của bạn đang được xem xét. Một số tính năng có thể vẫn bị giới hạn cho đến khi được phê duyệt."
+      },
+      "completeVerification": "Hoàn tất xác minh"
+    },
+    "notifications": {
+      "filter": {
+        "label": "Lọc thông báo",
+        "all": "All",
+        "newBooking": "Đặt chỗ mới",
+        "bookingReminder": "nhắc nhở 24h",
+        "payoutConfirmation": "Xuất chi",
+        "adminMessage": "Quản trị viên"
+      },
+      "type": {
+        "newBooking": "Đặt chỗ mới",
+        "bookingReminder": "nhắc nhở 24h",
+        "payoutConfirmation": "Thanh toán",
+        "adminMessage": "Tin nhắn của quản trị viên"
+      },
+      "unreadCount": "{count} (các) thông báo chưa đọc",
+      "allCaughtUp": "Bạn đã bắt kịp tất cả.",
+      "markRead": "Đánh dấu là đã đọc",
+      "markAllRead": "Đánh dấu tất cả là đã đọc",
+      "empty": "Không có thông báo trong danh mục này.",
+      "time": {
+        "justNow": "Vừa rồi",
+        "hoursAgo": "{count} giờ trước"
+      },
+      "sample": {
+        "newBooking": {
+          "title": "Đã nhận được đặt chỗ mới",
+          "message": "Amara đã đặt Du thuyền ngắm hoàng hôn trên đầm phá Lagos vào ngày 25 tháng 7 · 4 khách. Xác nhận hoặc từ chối trong vòng 24 giờ."
+        },
+        "newBooking2": {
+          "title": "Đã nhận được đặt chỗ mới",
+          "message": "Chidi đã đặt Lekki Garden Suites vào ngày 3 tháng 8 · 2 khách."
+        },
+        "reminder": {
+          "title": "Đặt phòng trong 24 giờ",
+          "message": "Nhắc nhở: Du thuyền ngắm hoàng hôn trên đầm phá Lagos với Fatima vào ngày mai lúc 5:30 chiều · 6 khách."
+        },
+        "reminder2": {
+          "title": "Đặt phòng trong 24 giờ",
+          "message": "Nhắc nhở: Thuê xe Toyota Camry 2021 với Emeka vào lúc 9 giờ sáng ngày mai."
+        },
+        "payout": {
+          "title": "Đã xác nhận thanh toán",
+          "message": "200.000 NGN đã được gửi vào tài khoản GTBank của bạn có số cuối 4521."
+        },
+        "payout2": {
+          "title": "Đã xác nhận thanh toán",
+          "message": "Khoản rút 150.000 NGN về Access Bank có số cuối 8834 đã được xử lý thành công."
+        },
+        "admin": {
+          "title": "Cập nhật chính sách từ Synkafrica",
+          "message": "Hiện đã có hướng dẫn cập nhật của nhà cung cấp cho danh sách trải nghiệm. Vui lòng xem xét trước ngày 1 tháng 8."
+        },
+        "admin2": {
+          "title": "Danh sách đã được phê duyệt",
+          "message": "Danh sách Du thuyền ngắm hoàng hôn ở đầm phá Lagos của bạn hiện có trên Synkafrica."
+        }
+      }
+    },
+    "dashboard": {
+      "welcomeBack": "Chào mừng trở lại,",
+      "addListing": "Thêm danh sách",
+      "period": {
+        "label": "Khoảng thời gian số liệu",
+        "day": "Một ngày",
+        "week": "Một tuần",
+        "month": "Một tháng",
+        "sixMonths": "Sáu tháng",
+        "year": "một năm"
+      },
+      "stats": {
+        "liveListings": "Danh sách trực tiếp",
+        "newBookings": "Đặt chỗ mới",
+        "earnings": "Thu nhập",
+        "pendingApproval": "Đang chờ phê duyệt"
+      },
+      "goToBookings": "Đi đến đặt chỗ",
+      "yourListings": "Danh sách của bạn",
+      "seeAll": "Xem Tất Cả",
+      "status": {
+        "live": "Danh sách trực tiếp",
+        "pending": "Chưa giải quyết...",
+        "paused": "Đã tạm dừng",
+        "draft": "Bản nháp"
+      },
+      "editListing": "Chỉnh sửa danh sách",
+      "deleteListing": "Xóa danh sách",
+      "pauseListing": "Tạm dừng danh sách",
+      "playListing": "Tiếp tục danh sách",
+      "deleteListingModal": {
+        "title": "Xóa danh sách?",
+        "message": "Bạn có chắc chắn muốn xóa \"{title}\" không? Không thể hoàn tác hành động này.",
+        "confirm": "Xóa danh sách",
+        "cancel": "Hủy bỏ"
+      },
+      "category": {
+        "accommodations": "Chỗ ở",
+        "carRentals": "Cho thuê xe",
+        "tours": "Chuyến tham quan",
+        "toursExperiences": "Tour & trải nghiệm"
+      }
+    },
+    "businessProfile": {
+      "businessName": "Tên doanh nghiệp",
+      "businessNameHint": "Tên nội bộ được sử dụng trên các khoản thanh toán và hồ sơ nhà cung cấp. Không được hiển thị trên danh sách công khai.",
+      "internalNameLabel": "Tên doanh nghiệp nội bộ",
+      "contactDetails": "Chi tiết liên hệ",
+      "contactDetailsHint": "Cách Synkafrica và khách liên hệ với bạn để được hỗ trợ đặt phòng.",
+      "phone": "Số điện thoại",
+      "email": "Địa chỉ email",
+      "address": "Địa chỉ doanh nghiệp",
+      "payoutAccount": "Tài khoản ngân hàng để thanh toán",
+      "payoutAccountHint": "Việc rút tiền từ thu nhập sẽ được gửi đến tài khoản này.",
+      "bankName": "Tên ngân hàng",
+      "accountNumber": "Số tài khoản",
+      "accountNumberLocked": "Số tài khoản chỉ có thể được thay đổi mỗi ⟦tháng⟧ tháng. Thay đổi tiếp theo sẽ có vào {date}.",
+      "accountName": "Tên tài khoản",
+      "bank": {
+        "zenith": "Ngân hàng Zenith",
+        "firstBank": "Ngân hàng đầu tiên"
+      },
+      "passwordUpdate": "Cập nhật mật khẩu",
+      "passwordUpdateHint": "Chọn một mật khẩu mạnh mà bạn không sử dụng ở nơi khác.",
+      "currentPassword": "Mật khẩu hiện tại",
+      "newPassword": "Mật khẩu mới",
+      "confirmPassword": "Xác nhận mật khẩu mới",
+      "passwordMismatch": "Mật khẩu mới không khớp.",
+      "updatePassword": "Cập nhật mật khẩu",
+      "passwordUpdated": "Đã cập nhật mật khẩu.",
+      "saveChanges": "Lưu thay đổi",
+      "saved": "Đã lưu.",
+      "rejected": {
+        "title": "Ứng dụng không được phê duyệt",
+        "noReason": "Quản trị viên đã không phê duyệt đơn đăng ký của bạn. Hãy sửa các chi tiết và tài liệu của bạn bên dưới rồi gửi lại.",
+        "resubmit": "Gửi lại để xem xét",
+        "resubmitting": "Đang gửi lại…",
+        "resubmitted": "Đã gửi lại. Quản trị viên sẽ xem xét lại đơn đăng ký của bạn.",
+        "resubmitFailed": "Không thể gửi lại. Hãy thử lại."
+      },
+      "cac": {
+        "title": "đăng ký CAC",
+        "hint": "Đã kiểm tra với cơ quan đăng ký CAC. Bạn có thể sửa các chi tiết này cho đến khi quá trình kiểm tra thành công.",
+        "number": "Số đăng ký CAC",
+        "companyType": "Loại hình công ty",
+        "companyTypePlaceholder": "Chọn loại hình công ty",
+        "status": {
+          "verified": "Đã xác minh",
+          "failed": "Chưa được xác minh",
+          "unverified": "Đang chờ kiểm tra"
+        },
+        "verifiedAs": "Khớp với {name} trên sổ đăng ký CAC.",
+        "failedHint": "Sổ đăng ký CAC không khớp với những chi tiết này. Hãy sửa chúng và lưu lại để kiểm tra lại.",
+        "pendingHint": "Việc lưu sẽ chạy lại kiểm tra CAC. Hãy làm mới trong giây lát để xem kết quả.",
+        "lockedHint": "Thông tin chi tiết đã được xác minh không thể thay đổi ở đây. Liên hệ với bộ phận hỗ trợ nếu có điều gì sai sót."
+      },
+      "documents": {
+        "title": "Tài liệu & Xác minh",
+        "subtitle": "Tài liệu cấp doanh nghiệp áp dụng cho toàn bộ tài khoản của bạn. Mỗi danh sách phải có giấy tờ về xe trước khi nó có thể đi vào hoạt động.",
+        "businessSection": "Tài liệu kinh doanh",
+        "business": {
+          "cac": "Giấy chứng nhận thành lập (CAC)"
+        },
+        "uploadedMeta": "Đã tải lên ⟦ngày⟧ · ⟦tên tệp⟧",
+        "view": "Xem",
+        "vehicleSection": "Giấy tờ xe · danh sách {count}",
+        "vehicleLegend": "Bảo hiểm · Khả năng đi đường · Bằng chứng về quyền sở hữu",
+        "type": {
+          "insurance": "Giấy chứng nhận bảo hiểm",
+          "roadworthiness": "Giấy chứng nhận đủ điều kiện đi đường",
+          "ownership": "Bằng chứng về quyền sở hữu"
+        },
+        "status": {
+          "verified": "Đã xác minh",
+          "rejected": "Vật bị loại bỏ",
+          "pending": "Chưa giải quyết",
+          "notUploaded": "Chưa tải lên"
+        },
+        "listingStatus": {
+          "allVerified": "Tất cả đã được xác minh",
+          "actionNeeded": "Hành động cần thiết",
+          "notStarted": "Chưa bắt đầu",
+          "inProgress": "Đang tiến hành"
+        },
+        "reupload": "Tải lên lại",
+        "upload": "Tải lên",
+        "rejection": {
+          "plateMismatch": "Tên giấy tờ không khớp với biển số đăng ký. Vui lòng tải lên lại giấy phép xe phù hợp với ABJ-771-KD."
+        }
+      }
+    },
+    "support": {
+      "helpBanner": "Gửi khiếu nại hoặc yêu cầu trợ giúp từ nhóm nhà cung cấp Synkafrica. Chúng tôi thường trả lời trong vòng 1–2 ngày làm việc.",
+      "helpBannerEmail": "Thông tin cập nhật sẽ được gửi tới {email}.",
+      "openTickets": "{count} (các) vé mở",
+      "tabs": {
+        "label": "Phần hỗ trợ"
+      },
+      "createTicket": "Tạo phiếu hỗ trợ",
+      "createTicketHint": "Hãy mô tả chi tiết vấn đề của bạn để chúng tôi có thể giải quyết nhanh chóng.",
+      "subject": "Chủ thể",
+      "subjectPlaceholder": "Tóm tắt ngắn gọn vấn đề của bạn",
+      "category": {
+        "booking": "Vấn đề đặt phòng",
+        "payout": "Thanh toán và thu nhập",
+        "listing": "Danh sách & tình trạng sẵn có",
+        "account": "Tài khoản & hồ sơ",
+        "complaint": "Lời phàn nàn",
+        "other": "Khác"
+      },
+      "priority": {
+        "low": "Thấp",
+        "medium": "Trung bình",
+        "high": "Cao",
+        "urgent": "Cấp bách"
+      },
+      "priorityHint": "Chỉ sử dụng Khẩn cấp cho các vấn đề đặt phòng hoặc thanh toán nhạy cảm về thời gian.",
+      "bookingReference": "Tham khảo đặt phòng",
+      "bookingReferencePlaceholder": "ví dụ. VB-3 hoặc số đơn hàng (tùy chọn)",
+      "description": "Sự miêu tả",
+      "descriptionPlaceholder": "Giải thích điều gì đã xảy ra, khi nó xảy ra và kết quả bạn mong muốn.",
+      "submitTicket": "Gửi vé",
+      "ticketSubmitted": "Đã gửi vé ⟦số⟧. Nhóm của chúng tôi sẽ theo dõi sớm.",
+      "responseTime": "Các trường bắt buộc được đánh dấu bằng *.",
+      "yourTickets": "Vé của bạn",
+      "yourTicketsHint": "Theo dõi các khiếu nại và yêu cầu hỗ trợ mà bạn đã gửi.",
+      "filter": {
+        "label": "Lọc vé theo trạng thái",
+        "all": "Tất cả"
+      },
+      "status": {
+        "open": "Mở",
+        "inProgress": "Đang tiến hành",
+        "resolved": "Đã giải quyết",
+        "closed": "Đã đóng"
+      },
+      "updated": "Đã cập nhật",
+      "created": "Tạo",
+      "emptyTickets": "Không có vé phù hợp với bộ lọc này.",
+      "loading": "Đang tải vé…",
+      "loadFailed": "Không thể tải vé của bạn. Vui lòng thử lại.",
+      "submitFailed": "Không thể gửi vé của bạn. Vui lòng thử lại.",
+      "viewConversation": "Xem cuộc trò chuyện",
+      "backToTickets": "Quay lại vé",
+      "conversation": "Cuộc hội thoại",
+      "you": "Bạn",
+      "supportTeam": "Đội ngũ hỗ trợ",
+      "replyPlaceholder": "Nhập câu trả lời của bạn…",
+      "sendReply": "Gửi trả lời",
+      "sending": "Đang gửi…",
+      "replyFailed": "Không thể gửi trả lời của bạn. Vui lòng thử lại."
+    },
+    "earnings": {
+      "availableBalance": "Số dư khả dụng",
+      "lifetimeEarnings": "Thu nhập trọn đời",
+      "transactionHistory": "Lịch sử giao dịch",
+      "withdrawFunds": "Rút tiền",
+      "amountToWithdraw": "Số tiền cần rút",
+      "selectBankAccount": "Chọn tài khoản ngân hàng",
+      "payoutAccount": "Tài khoản thanh toán",
+      "noBankAccount": "Chưa có tài khoản thanh toán nào được thêm vào.",
+      "addBankAccount": "Thêm tài khoản ngân hàng vào Hồ sơ doanh nghiệp →",
+      "availableHint": "Có sẵn:",
+      "processingNote": "Việc rút tiền được xử lý trong vòng 1–2 ngày làm việc.",
+      "paymentFlowTitle": "Chính sách thanh toán và rút tiền",
+      "paymentFlowInstant": "Việc rút tiền từ ₦ 200.000 trở xuống sẽ được xử lý tự động sau khi xác nhận.",
+      "paymentFlowApproval": "Việc rút tiền trên ₦ 200.000 cần có sự chấp thuận của quản trị viên cấp cao.",
+      "paymentFlowAuth": "Khi rút tiền, số tiền trên ₦200.000 yêu cầu phải có mã PIN và OTP giao dịch.",
+      "withdrawalModal": {
+        "title": "Xác nhận rút tiền",
+        "pin": "Mã PIN giao dịch",
+        "otp": "mã OTP",
+        "sendOtp": "Gửi OTP",
+        "submit": "Xác nhận rút tiền",
+        "pendingApproval": "Việc rút tiền này cần có sự chấp thuận của quản trị viên cấp cao. Bạn sẽ được thông báo sau khi được phê duyệt.",
+        "cancel": "Hủy bỏ"
+      },
+      "status": {
+        "completed": "Hoàn thành",
+        "pending": "Chưa giải quyết",
+        "failed": "Thất bại"
+      },
+      "transaction": {
+        "bookingPayment": "Thanh toán đặt phòng",
+        "withdrawal": "Rút tiền",
+        "platformFee": "Phí nền tảng",
+        "refund": "Đền bù"
+      },
+      "bank": {
+        "gtbank": "GTBank",
+        "access": "Ngân hàng truy cập"
+      },
+      "duration": {
+        "label": "Kỳ thu nhập",
+        "daily": "Hằng ngày",
+        "weekly": "hàng tuần",
+        "monthly": "hàng tháng",
+        "all": "Tất cả"
+      },
+      "commissionSplit": "Chia hoa hồng",
+      "commissionSplitHint": "Doanh thu đặt chỗ được chia ⟦nhà cung cấp⟧% cho bạn và ⟦ nền tảng⟧% cho Synkafrica.",
+      "vendorShare": "Chia sẻ của bạn",
+      "platformShare": "Phí nền tảng",
+      "grossRevenue": "Tổng doanh thu",
+      "downloadStatements": "Tải xuống tuyên bố",
+      "emptyTransactions": "Không có giao dịch trong thời gian này.",
+      "statement": {
+        "date": "Ngày",
+        "title": "Tiêu đề",
+        "description": "Sự miêu tả",
+        "type": "Kiểu",
+        "amount": "Số lượng",
+        "status": "Trạng thái"
+      }
+    },
+    "listings": {
+      "detail": {
+        "back": "Quay lại danh sách",
+        "backToBookings": "Quay lại đặt chỗ",
+        "heading": "Chi tiết danh sách",
+        "hint": "Bản xem trước đầy đủ của danh sách này, bao gồm phương tiện, thông tin chi tiết, giá cả và tài liệu.",
+        "status": "Trạng thái",
+        "category": "Loại",
+        "rating": "Đánh giá",
+        "notFound": "Không tìm thấy danh sách."
+      },
+      "bookingAvailability": "Đặt phòng sẵn có",
+      "filter": {
+        "allCategories": "Tất cả danh mục",
+        "allStatuses": "Tất cả trạng thái",
+        "statusLabel": "Trạng thái",
+        "status": {
+          "live": "Sống",
+          "pending": "Chưa giải quyết",
+          "draft": "Bản nháp",
+          "paused": "Đã tạm dừng"
+        },
+        "empty": "Không có danh sách nào phù hợp với bộ lọc của bạn."
+      },
+      "status": {
+        "pendingApproval": "Đang chờ phê duyệt",
+        "paused": "Đã tạm dừng"
+      },
+      "availability": {
+        "selectListing": "Danh sách",
+        "modeAvailable": "Đánh dấu có sẵn",
+        "modeBlock": "Chặn ngày",
+        "modeAvailableHint": "Nhấp vào ngày để mở chúng để đặt chỗ. Nhấp lại để loại bỏ tính khả dụng.",
+        "modeBlockHint": "Nhấp vào ngày để chặn đặt chỗ. Nhấp lại để bỏ chặn.",
+        "legendAvailable": "Có sẵn",
+        "legendBlocked": "Bị chặn",
+        "legendSelected": "Đã chọn",
+        "available": "Có sẵn",
+        "blocked": "Bị chặn",
+        "timeSlots": "Khe thời gian",
+        "capacity": "Dung tích",
+        "selectDayHint": "Chọn một ngày trên lịch để định cấu hình các khe thời gian.",
+        "selectAvailableDay": "Đánh dấu ngày này là có sẵn để định cấu hình các khe thời gian.",
+        "blockedDayMessage": "Ngày này bị chặn. Bỏ chặn nó để định cấu hình các khe thời gian.",
+        "defaultCapacity": "Công suất mặc định",
+        "defaultCapacityHint": "Áp dụng cho các ngày có sẵn mới và các khoảng thời gian được kích hoạt.",
+        "leadTime": "thời gian dẫn",
+        "leadTimeHint": "Yêu cầu thông báo tối thiểu trước khi khách có thể đặt phòng.",
+        "leadTimeUnitHours": "Giờ",
+        "leadTimeUnitDays": "Ngày"
+      },
+      "calendar": {
+        "sun": "Mặt trời",
+        "mon": "Thứ hai",
+        "tue": "thứ ba",
+        "wed": "Thứ tư",
+        "thu": "Thứ năm",
+        "fri": "Thứ Sáu",
+        "sat": "Đã ngồi",
+        "previousMonth": "Tháng trước",
+        "nextMonth": "Tháng tiếp theo"
+      }
+    },
+    "bookings": {
+      "tab": {
+        "upcoming": "Sắp tới",
+        "past": "Quá khứ",
+        "cancelled": "Đã hủy",
+        "declined": "Bị từ chối"
+      },
+      "stats": {
+        "awaitingConfirmation": "Đang chờ xác nhận",
+        "upcomingConfirmed": "Sắp tới (đã xác nhận)",
+        "earningsThisMonth": "Thu nhập tháng này",
+        "responseRate": "Tỷ lệ phản hồi (30 ngày)"
+      },
+      "searchPlaceholder": "Tìm kiếm theo tên khách hoặc mã đặt phòng...",
+      "allListings": "Tất cả danh sách",
+      "viewModeLabel": "Chế độ xem đặt chỗ",
+      "view": {
+        "list": "Danh sách",
+        "calendar": "Lịch"
+      },
+      "calendarComingSoon": "Chế độ xem lịch sắp ra mắt.",
+      "respondWithin": "Trả lời trong vòng {time}",
+      "paymentSecured": "Thanh toán được bảo đảm",
+      "messageGuest": "Nhắn tin cho khách",
+      "viewListing": "Xem danh sách",
+      "cancelBooking": "Hủy đặt chỗ",
+      "dateRangeLabel": "Lọc theo phạm vi ngày",
+      "dateRange": {
+        "all": "Mọi lúc",
+        "pastMonth": "Tháng trước",
+        "past3Months": "3 tháng qua",
+        "past6Months": "6 tháng qua",
+        "pastYear": "Năm qua"
+      },
+      "empty": {
+        "upcoming": "Không có đặt phòng sắp tới cho giai đoạn này.",
+        "past": "Không có đặt phòng trước đây cho giai đoạn này.",
+        "cancelled": "Không có đặt phòng bị hủy trong thời gian này.",
+        "declined": "Không có đặt phòng nào bị từ chối trong thời gian này."
+      },
+      "declineModal": {
+        "title": "Từ chối đặt chỗ",
+        "subtitle": "Cho ⟦khách⟧ biết lý do đặt phòng ⟦tham khảo⟧ bị từ chối.",
+        "reasonLabel": "Lý do từ chối",
+        "reasonPlaceholder": "Giải thích lý do tại sao bạn không thể chấp nhận đặt phòng này...",
+        "cancel": "Hủy bỏ",
+        "submit": "Từ chối đặt chỗ"
+      },
+      "declineReason": "Lý do từ chối",
+      "deliveryAddress": "Địa chỉ giao hàng",
+      "pickupAddress": "Địa chỉ đón",
+      "carMode": {
+        "selfDrive": "Tự lái xe",
+        "withDriver": "Có tài xế"
+      },
+      "calendar": {
+        "selectedDay": "{count} (các) lượt đặt phòng vào ngày này",
+        "noBookings": "Không có đặt phòng vào ngày này."
+      },
+      "pendingConfirmation": "{count} (các) lượt đặt chỗ đang chờ bạn xác nhận.",
+      "specialRequests": "Special requests",
+      "confirm": "Confirm",
+      "decline": "Decline",
+      "markComplete": "Mark as complete",
+      "status": {
+        "awaitingConfirmation": "Awaiting confirmation",
+        "confirmed": "Confirmed",
+        "declined": "Declined",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      }
+    },
+    "addListing": {
+      "title": "Add New Listing",
+      "editTitle": "Edit Listing",
+      "loadError": "Couldn't load this listing. Please try again.",
+      "subtitle": "Create a new listing and start reaching more customers.",
+      "backToListings": "← Back to listings",
+      "backToListing": "← Back to listing",
+      "progressLabel": "Listing progress",
+      "steps": {
+        "carDetails": "Car details",
+        "accommodationDetails": "Chi tiết chỗ ở",
+        "experienceDetails": "Chi tiết trải nghiệm",
+        "media": "Phương tiện truyền thông",
+        "pricing": "Định giá",
+        "documents": "Tài liệu",
+        "review": "Đánh giá & Xuất bản"
+      },
+      "whatAreYouListing": "Bạn đang liệt kê những gì?",
+      "category": {
+        "car": {
+          "title": "Xe hơi",
+          "description": "Danh sách một chiếc xe cho thuê."
+        },
+        "accommodation": {
+          "title": "Chỗ ở",
+          "description": "Liệt kê một nơi để ở."
+        },
+        "experience": {
+          "title": "Kinh nghiệm",
+          "description": "Liệt kê một hoạt động hoặc chuyến tham quan."
+        }
+      },
+      "carDetailsHeading": "Chi tiết xe",
+      "accommodationDetailsHeading": "Chi tiết chỗ ở",
+      "experienceDetailsHeading": "Chi tiết trải nghiệm",
+      "experienceType": "Loại / Danh mục Kinh nghiệm",
+      "experienceTypeSelect": "Chọn loại trải nghiệm",
+      "experienceLocationPlaceholder": "ví dụ. Lekki, Lagos, Nigeria",
+      "experienceHighlights": "Điểm nổi bật / Mô tả ngắn",
+      "experienceHighlightsHint": "Một bản tóm tắt ngắn gọn, hấp dẫn về những gì khách sẽ làm và trải nghiệm.",
+      "experienceHighlightsPlaceholder": "Mô tả trải nghiệm, điều gì khiến trải nghiệm này trở nên độc đáo và tại sao khách sẽ yêu thích trải nghiệm đó.",
+      "experienceAvailabilityHeading": "sẵn có",
+      "experienceAvailabilityHint": "Đặt khi trải nghiệm của bạn có sẵn.",
+      "operatingDays": "Ngày hoạt động",
+      "startTime": "Thời gian bắt đầu",
+      "endTime": "Thời gian kết thúc",
+      "experienceScheduleWeekly": "Lặp lại hàng tuần",
+      "experienceScheduleWeeklyHint": "Trải nghiệm này có sẵn hàng tuần vào những ngày đã chọn.",
+      "experienceScheduleDateRange": "Phạm vi ngày tùy chỉnh",
+      "experienceScheduleDateRangeHint": "Đặt phạm vi ngày cụ thể cho trải nghiệm này.",
+      "experienceDateRangeHeading": "Chọn phạm vi ngày",
+      "experienceDateRangeHint": "Chọn ngày bắt đầu và ngày kết thúc khi trải nghiệm này sẽ có sẵn.",
+      "experienceDateRangeStart": "Ngày bắt đầu",
+      "experienceDateRangeEnd": "Ngày kết thúc",
+      "additionalInfoSection": "Thông tin bổ sung",
+      "whatsIncludedHint": "Liệt kê những gì được bao gồm trong trải nghiệm.",
+      "includesItemsPlaceholder": "ví dụ. Thiết bị, Hướng dẫn, Thiết bị an toàn, Nước đóng chai",
+      "whatToBring": "Mang gì/Mặc gì",
+      "whatToBringHint": "Hãy cho khách biết những gì cần mang theo hoặc mặc.",
+      "whatToBringPlaceholder": "ví dụ. Quần áo thoải mái, Giày kín, Kem chống nắng",
+      "tagInputFooter": "Thêm từng mục và nhấn Enter",
+      "additionalInformationHeading": "Thông tin bổ sung",
+      "additionalInformationHint": "Thêm bất kỳ thông tin hữu ích nào khác cho khách hàng của bạn.",
+      "additionalInformationPlaceholder": "ví dụ. Giới hạn độ tuổi, Yêu cầu về sức khỏe, Chính sách hủy, Chi tiết điểm tập trung",
+      "weekday": {
+        "mon": "Thứ hai",
+        "tue": "thứ ba",
+        "wed": "Thứ tư",
+        "thu": "Thứ năm",
+        "fri": "Thứ sáu",
+        "sat": "Đã ngồi",
+        "sun": "Mặt trời"
+      },
+      "carName": "Tên xe",
+      "carNamePlaceholder": "ví dụ. Toyota Highlander 2024",
+      "carModel": "Mẫu xe / Biến thể",
+      "carModelPlaceholder": "ví dụ. AWD giới hạn 2.4L",
+      "transmission": {
+        "automatic": "Tự động",
+        "manual": "Thủ công"
+      },
+      "year": "Năm",
+      "yearPlaceholder": "ví dụ. 2024",
+      "comesWithDriver": "Đi kèm với Driver?",
+      "yes": "Đúng",
+      "no": "KHÔNG",
+      "shortDescription": "Mô tả ngắn",
+      "carDescriptionPlaceholder": "Mô tả chiếc xe, tình trạng và những gì được bao gồm cho người thuê.",
+      "perksFeatures": "Đặc quyền & Tính năng",
+      "perksPlaceholder": "Thêm từng đặc quyền và nhấn Enter",
+      "propertyName": "Tên tài sản",
+      "accommodationName": "Tên chỗ ở",
+      "accommodationNamePlaceholder": "ví dụ. Oceanview Suites Lekki",
+      "propertyNamePlaceholder": "ví dụ. Căn hộ Lekki Garden",
+      "propertyType": "Loại tài sản",
+      "propertyTypeSelect": "Chọn loại tài sản",
+      "propertyTypePlaceholder": "ví dụ. Căn hộ, biệt thự, khách sạn",
+      "address": "Địa chỉ",
+      "addressPlaceholder": "Địa chỉ tài sản đầy đủ",
+      "accommodationLocationPlaceholder": "ví dụ. Lekki Giai đoạn 1, Lagos, Nigeria",
+      "accommodationMaxGuests": "Số khách tối đa (Chỗ nghỉ)",
+      "accommodationMaxGuestsPlaceholder": "ví dụ. 12",
+      "checkInTime": "Giờ nhận phòng",
+      "checkOutTime": "Thời gian trả phòng",
+      "availability": "sẵn có",
+      "availabilityAlways": "Luôn có sẵn",
+      "availabilityDateRange": "Đặt phạm vi ngày",
+      "availabilityHint": "Bạn cũng có thể quản lý các ngày cụ thể từ lịch của mình sau khi xuất bản.",
+      "popularPerks": "Đặc quyền phổ biến",
+      "popularPerksHint": "Chọn các tiện nghi có sẵn tại nơi lưu trú của bạn.",
+      "viewAllPerks": "Xem tất cả các đặc quyền",
+      "showLessPerks": "Hiển thị ít hơn",
+      "propertyOwner": "Bạn có phải là chủ sở hữu tài sản?",
+      "propertyOwnerYes": "Vâng, tôi là chủ sở hữu",
+      "propertyOwnerNo": "Không, tôi là đại lý được ủy quyền",
+      "bedrooms": "Phòng ngủ",
+      "bathrooms": "Phòng tắm",
+      "accommodationDescriptionPlaceholder": "Mô tả ngắn gọn chỗ ở của bạn, không khí, các điểm tham quan gần đó và điều gì khiến nơi đó trở nên đặc biệt.",
+      "amenities": "Tiện nghi",
+      "amenitiesPlaceholder": "Thêm từng tiện ích rồi nhấn Enter",
+      "experienceName": "Tên trải nghiệm",
+      "experienceNamePlaceholder": "ví dụ. Cuộc phiêu lưu bắn súng sơn ở Lagos",
+      "location": "Vị trí",
+      "locationPlaceholder": "ví dụ. Đảo Victoria, Lagos",
+      "duration": "Khoảng thời gian",
+      "durationPlaceholder": "ví dụ. 2 giờ",
+      "maxGuests": "Khách tối đa",
+      "experienceDescriptionPlaceholder": "Mô tả hoạt động, hành trình và những gì du khách mong đợi.",
+      "whatsIncluded": "Bao gồm những gì",
+      "includesPlaceholder": "Thêm từng phần bao gồm và nhấn Enter",
+      "mediaHeading": "Liệt kê hình ảnh",
+      "mediaHint": "Tải lên hình ảnh hoặc video rõ ràng. Tối đa 8 tập tin.",
+      "uploadImages": "Kéo và thả hình ảnh hoặc video vào đây hoặc nhấp để duyệt",
+      "uploadImagesHint": "PNG, JPG, WEBP hoặc MP4 (Tối đa 10MB)",
+      "removeImage": "Xóa hình ảnh",
+      "mediaSkippedUnsupported": "{count} (các) tệp bị bỏ qua — định dạng không được hỗ trợ. Sử dụng PNG, JPG, WEBP hoặc MP4 (ảnh iPhone HEIC chưa được hỗ trợ).",
+      "mediaSkippedTooLarge": "{count} (các) tệp bị bỏ qua — mỗi tệp phải dưới 10MB.",
+      "mediaPreviewFailed": "Xem trước không có sẵn",
+      "mediaUploading": "Đang tải lên…",
+      "mediaUploadFailed": "Tải lên không thành công",
+      "pickupDeliveryHeading": "Nhận hàng hoặc giao hàng",
+      "pickupDeliveryQuestion": "Bạn cung cấp những lựa chọn chuyển giao nào? Chọn tất cả những gì áp dụng.",
+      "pickupAddress": "Địa chỉ đón",
+      "pickupAddressPlaceholder": "Nhập địa chỉ nơi khách có thể nhận xe",
+      "clientPickup": "Đón khách hàng",
+      "clientPickupHint": "Khách hàng nhận xe từ vị trí của bạn.",
+      "deliveryDropoff": "Giao hàng/Trả hàng",
+      "deliveryDropoffHint": "Bạn giao xe cho khách hàng.",
+      "carPricingHeading": "Giá thuê",
+      "price12hr": "Thuê 12 giờ (NGN)",
+      "price24hr": "Cho thuê 24 giờ (NGN)",
+      "priceMultiDay": "Nhiều ngày (mỗi ngày, NGN)",
+      "driverAddonPrice": "Giá bổ sung cho tài xế (NGN)",
+      "selfDriveNoPrice": "Đã chọn tự lái - không yêu cầu giá bổ sung cho trình điều khiển.",
+      "deliveryFee": "Phí giao/trả hàng (NGN)",
+      "clientPickupNoPrice": "Đã chọn đón khách hàng - không yêu cầu phí giao hàng.",
+      "pricingLocationHint": "Bạn có thể cung cấp thêm thông tin chi tiết về địa điểm nhận hàng hoặc giao hàng trong bước tiếp theo.",
+      "accommodationPricingHeading": "Giữ nguyên giá",
+      "roomTypesPricing": "Loại phòng & Giá cả",
+      "roomTypesPricingHint": "Thêm các loại phòng khác nhau mà bạn cung cấp.",
+      "addRoomType": "Thêm loại phòng",
+      "addRoomTypeModalTitle": "Thêm loại phòng",
+      "editRoomTypeModalTitle": "Chỉnh sửa loại phòng",
+      "saveRoomType": "Lưu loại phòng",
+      "roomType": "Loại phòng",
+      "roomTypePlaceholder": "ví dụ. Suite Deluxe",
+      "roomDescription": "Sự miêu tả",
+      "roomDescriptionPlaceholder": "Mô tả ngắn gọn loại phòng này",
+      "roomMaxGuests": "Khách tối đa",
+      "roomMaxGuestsPlaceholder": "ví dụ. 2",
+      "roomPricePerNight": "Giá (mỗi đêm)",
+      "roomTypesEmptyTitle": "Chưa có loại phòng nào được thêm vào",
+      "roomTypesEmptyHint": "Nhấp vào \"Thêm loại phòng\" để bắt đầu.",
+      "actions": "hành động",
+      "edit": "Biên tập",
+      "delete": "Xóa bỏ",
+      "nightlyRate": "Giá mỗi đêm (NGN)",
+      "cleaningFee": "Phí vệ sinh (NGN)",
+      "experiencePricingHeading": "Định giá",
+      "experiencePricingHint": "Đặt giá vé của bạn.",
+      "singleTicketPrice": "Giá vé đơn",
+      "singleTicketPriceHint": "Giá cho một người",
+      "groupTicketPrice": "Giá vé đoàn (từ) (Tùy chọn)",
+      "groupTicketPriceHint": "Giá mỗi người cho nhóm",
+      "minGroupSizeOptional": "Kích thước nhóm tối thiểu (Tùy chọn)",
+      "maxGroupSizeOptional": "Kích thước nhóm tối đa (Tùy chọn)",
+      "minGroupSizePlaceholder": "ví dụ. 5",
+      "maxGroupSizePlaceholder": "ví dụ. 20",
+      "optional": "Không bắt buộc",
+      "review": {
+        "groupSize": "Quy mô nhóm",
+        "category": "Loại",
+        "title": "Tiêu đề",
+        "images": "Hình ảnh",
+        "documents": "Tài liệu đã tải lên",
+        "description": "Sự miêu tả",
+        "gpsConfirmed": "Thiết bị theo dõi GPS đã được xác nhận"
+      },
+      "pricePerPerson": "Giá mỗi người (NGN)",
+      "minGroupSize": "Quy mô nhóm tối thiểu",
+      "documents": {
+        "stepTitle": "Tải lên tài liệu",
+        "pageTitle": "Tải lên các tài liệu cần thiết",
+        "pageIntro": "Vui lòng tải lên các tài liệu cần thiết để xác minh danh sách xe của bạn.",
+        "pageSubtitle": "Tải lên các tài liệu rõ ràng, hợp lệ để tạo dựng lòng tin và danh sách của bạn được phê duyệt nhanh hơn.",
+        "intro": {
+          "cars": "Tải lên các tài liệu bên dưới trước khi danh sách ô tô của bạn có thể xuất hiện trực tuyến.",
+          "accommodations": "Tải lên tài liệu ủy quyền quyền sở hữu hoặc đại lý cho danh sách lưu trú này.",
+          "experiences": "Tải tài liệu xác minh doanh nghiệp của bạn lên trước khi xuất bản."
+        },
+        "proofOfOwnership": "Bằng chứng về quyền sở hữu",
+        "proofOfOwnershipHint": "Tải lên giấy tờ sở hữu xe (ví dụ: nhật ký xe hoặc biên lai mua hàng).",
+        "roadworthiness": "Giấy chứng nhận đủ điều kiện đi đường",
+        "roadworthinessHint": "Tải lên giấy chứng nhận đủ điều kiện đi đường hợp lệ cho xe.",
+        "insurance": "Bảo hiểm",
+        "insuranceDocument": "Tài liệu bảo hiểm",
+        "insuranceHint": "Tải lên giấy chứng nhận bảo hiểm xe hiện tại.",
+        "cac": "đăng ký CAC",
+        "cacRegistration": "Giấy chứng nhận đăng ký CAC",
+        "cacHint": "Tải lên giấy chứng nhận đăng ký tên doanh nghiệp (CAC) của bạn.",
+        "accommodationOwnershipHint": "Chứng thư sở hữu, hợp đồng thuê hoặc bằng chứng về quyền sở hữu đối với tài sản",
+        "agentAuthorization": "Giấy ủy quyền đại lý",
+        "agentAuthorizationHint": "Thư có chữ ký của chủ sở hữu tài sản cho phép bạn liệt kê",
+        "agentProofOfAddress": "Bằng chứng đại lý về địa chỉ",
+        "agentProofOfAddressHint": "Hóa đơn tiện ích hoặc bảng sao kê ngân hàng hiển thị địa chỉ của bạn",
+        "addressPhotos": "Hình ảnh phù hợp với địa chỉ được liệt kê",
+        "addressPhotosHint": "Hình ảnh thể hiện rõ ràng chỗ nghỉ tại địa chỉ được liệt kê",
+        "gpsAcknowledgment": "Tôi xác nhận chiếc xe này được trang bị thiết bị theo dõi GPS đang hoạt động và tôi chịu trách nhiệm pháp lý nếu điều này bị phát hiện là sai.",
+        "requiredBadge": "Yêu cầu",
+        "uploadPrompt": "Nhấp để tải lên hoặc kéo và thả",
+        "uploadFormats": "PDF, JPG, PNG, Tối đa 10MB",
+        "safetyTitle": "Tài liệu của bạn được an toàn",
+        "safetyText": "Tất cả các tài liệu được lưu trữ an toàn và chỉ được sử dụng cho mục đích xác minh. Chúng sẽ không được chia sẻ với công chúng.",
+        "submitForReview": "Gửi để xem xét",
+        "submitHint": "Danh sách của bạn sẽ được xem xét và bạn sẽ được thông báo sau khi được phê duyệt.",
+        "untitledListing": "Danh sách không có tiêu đề",
+        "sidebar": {
+          "listingPreview": "Xem trước danh sách",
+          "edit": "Biên tập",
+          "carsListing": "Danh sách xe",
+          "accommodationsListing": "Danh sách chỗ ở",
+          "experiencesListing": "Danh sách kinh nghiệm",
+          "comesWithDriver": "Đi kèm với trình điều khiển",
+          "selfDrive": "Tự lái",
+          "pricing": "Định giá",
+          "halfDay": "Nửa ngày",
+          "fullDay": "Cả ngày",
+          "extraHour": "Thêm giờ",
+          "progress": "Tiến độ niêm yết"
+        }
+      },
+      "documentsHeading": "Tài liệu cần thiết",
+      "uploadDocument": "Tải tài liệu lên",
+      "removeFile": "Di dời",
+      "reviewHeading": "Xem lại danh sách của bạn",
+      "reviewHint": "Kiểm tra các chi tiết dưới đây trước khi xuất bản.",
+      "cancel": "Hủy bỏ",
+      "back": "Mặt sau",
+      "saveDraft": "Lưu dưới dạng bản nháp",
+      "draftSaved": "Đã lưu bản nháp",
+      "draftSaveFailed": "Không thể lưu bản nháp của bạn. Vui lòng thử lại.",
+      "saveContinue": "Lưu & Tiếp tục",
+      "completeRequiredFields": "Hoàn thành các trường bắt buộc: {fields}",
+      "publish": "Xuất bản danh sách",
+      "publishWaitForUploads": "Vui lòng đợi — tài liệu của bạn vẫn đang được tải lên.",
+      "success": {
+        "title": "Danh sách được gửi để xem xét",
+        "message": "Danh sách của bạn hiện đang được xem xét. Bạn sẽ nhận được email xác nhận trong vòng 2–3 ngày làm việc sau khi email được phê duyệt.",
+        "addAnother": "Thêm danh sách khác",
+        "backToListings": "Quay lại danh sách của tôi"
+      },
+      "categoryChooseHint": "Chọn loại dịch vụ bạn cung cấp. Điều này được đặt một lần khi bạn lưu danh sách đầu tiên của mình và không thể thay đổi sau này.",
+      "categoryLockedHint": "Tài khoản nhà cung cấp của bạn chỉ được đăng ký cho {category}. Liên hệ với bộ phận hỗ trợ để thay đổi danh mục dịch vụ của bạn."
+    }
+  }
+}

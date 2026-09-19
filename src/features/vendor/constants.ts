@@ -8,6 +8,7 @@ export const DEFAULT_VENDOR_VERIFICATION_STATUS: VendorVerificationStatus =
 export const VENDOR_VERIFICATION_NOTICE_EXCLUDED_PATHS = [
   "/vendor/notifications",
   "/vendor/support",
+  "/vendor/add-listing",
 ] as const;
 
 export function shouldShowVendorVerificationNotice(

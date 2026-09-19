@@ -18,7 +18,7 @@ import { FlightBookingSummary } from "@/features/travel/components/booking/fligh
 import { FlightBookingHeader } from "@/features/travel/components/booking/flight-booking-header";
 import {
   createEmptyGuestIdentity,
-  validateGuestIdentities,
+  // validateGuestIdentities,
   type GuestIdentityErrors,
 } from "@/features/travel/booking/guest-identity";
 import {
@@ -29,13 +29,13 @@ import {
 import { priceOffer } from "@/lib/api/flights";
 import { ApiError } from "@/lib/api/backend";
 import { PriceChangeDialog } from "@/features/travel/components/booking/price-change-dialog";
-import { useTranslation } from "@/hooks/use-translation";
+// import { useTranslation } from "@/hooks/use-translation";
 
 const contactInput =
   "w-full rounded-md border border-[#E5E5E5] bg-white px-3 py-2.5 text-sm font-medium font-satoshi text-foreground outline-none placeholder:text-foreground/40 focus:border-[#004785]";
 
 function BookFlight() {
-  const t = useTranslation();
+  // const t = useTranslation();
   const params = useSearchParams();
   const { data: session } = useSession();
 
@@ -101,14 +101,16 @@ function BookFlight() {
     setError(null);
     setPriceChange(null);
 
-    const validation = validateGuestIdentities(
-      travelers.map((traveler) => traveler.identity ?? createEmptyGuestIdentity()),
-    );
-    setIdentityErrors(validation.errors);
-    if (!validation.isValid) {
-      setError(t("booking.guest.idValidationRequired"));
-      return;
-    }
+    // Identity verification is temporarily disabled.
+    // const validation = validateGuestIdentities(
+    //   travelers.map((traveler) => traveler.identity ?? createEmptyGuestIdentity()),
+    // );
+    // setIdentityErrors(validation.errors);
+    // if (!validation.isValid) {
+    //   setError(t("booking.guest.idValidationRequired"));
+    //   return;
+    // }
+    setIdentityErrors([]);
 
     setSubmitting(true);
     // PhoneInput yields a full E.164 number (with dial code). Ignore a value
@@ -200,9 +202,11 @@ function BookFlight() {
                 </span>
               </div>
 
+              {/* Identity verification hint — temporarily hidden
               <div className="mt-4 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-normal font-inter text-foreground">
                 {t("booking.guest.idVerificationHint")}
               </div>
+              */}
 
               <div className="mt-5 space-y-4">
                 {travelers.map((traveler, i) => (

@@ -9,6 +9,7 @@ import {
   DISCOUNT_FILTER_OPTIONS,
   matchesDiscountFilter,
 } from "@/features/travel/data/discount-filter";
+import { locationsOverlap } from "@/features/travel/data/location-match";
 
 export type TourResult = TourEvent & {
   hasDiscount: boolean;
@@ -109,8 +110,6 @@ export function filterTourResults(
   query: string,
 ): TourResult[] {
   const normalizedQuery = query.trim().toLowerCase();
-  const normalizeLocation = (value: string) =>
-    value.toLowerCase().replace(/,/g, "").replace(/\s+/g, " ").trim();
 
   return results.filter((result) => {
     if (
@@ -122,18 +121,13 @@ export function filterTourResults(
       return false;
     }
 
-    if (filters.location.trim()) {
-      const filterLocation = normalizeLocation(filters.location);
-      const resultCity = normalizeLocation(result.city);
-      const resultLocation = normalizeLocation(result.location);
-
-      if (
-        !resultCity.includes(filterLocation) &&
-        !resultLocation.includes(filterLocation) &&
-        !filterLocation.includes(resultCity)
-      ) {
-        return false;
-      }
+    if (
+      filters.location.trim() &&
+      filters.location !== DEFAULT_TOUR_FILTERS.location &&
+      !locationsOverlap(filters.location, result.city) &&
+      !locationsOverlap(filters.location, result.location)
+    ) {
+      return false;
     }
 
     if (!matchesDiscountFilter(result.hasDiscount, filters.discounts)) {

@@ -1,0 +1,2483 @@
+{
+  "nav": {
+    "downloadApp": "Download appen",
+    "becomeVendor": "Bliv leverandør",
+    "chooseCurrency": "Vælg valuta",
+    "signInCreate": "Log ind | Opret konto",
+    "searchCurrency": "Søg efter valuta",
+    "signOut": "Log ud",
+    "myAccount": "Min konto",
+    "bookingsTrips": "Reservationer og ture",
+    "saved": "Gemt",
+    "reviews": "Anmeldelser"
+  },
+  "common": {
+    "bookNow": "Book nu",
+    "continue": "Fortsæt",
+    "loading": "Indlæser…",
+    "startingFrom": "Fra",
+    "perDay": "Pr. dag",
+    "budget": "Budget",
+    "seeMore": "Se mere",
+    "showMore": "Vis mere",
+    "reviews": "Anmeldelser",
+    "available": "Tilgængelig",
+    "selfDriveAvailable": "Mulighed for selvkørsel",
+    "excludingTaxes": "ekskl. skatter og gebyrer",
+    "select": "Vælg",
+    "search": "Søg",
+    "edit": "Rediger",
+    "cancel": "Annuller",
+    "notifications": "Meddelelser",
+    "contactSupport": "Kontakt supporten",
+    "signOut": "Log ud",
+    "noReviewsYet": "Der er endnu ingen anmeldelser",
+    "viewPhoto": "Se foto {indeks}",
+    "photoViewer": "Fotovisning",
+    "closePhotoViewer": "Luk billedviseren",
+    "previousPhoto": "Forrige billede",
+    "nextPhoto": "Næste billede",
+    "photoOfTotal": "{aktuel} af {samlet}",
+    "secured": "Sikret"
+  },
+  "hero": {
+    "headline": "Oplev Afrika med tryghed",
+    "tab": {
+      "accommodations": "Overnatningsmuligheder",
+      "flights": "Flyrejser",
+      "carRentals": "Biludlejning",
+      "tours": "Ture og oplevelser"
+    },
+    "search": "Søg",
+    "clearFilter": "Ryd filter",
+    "accommodations": {
+      "destination": "Din destination",
+      "destinationStay": "{count} ophold",
+      "destinationStays": "{count} forbliver",
+      "checkIn": "Indtjekningsdato",
+      "checkAvailability": "Tjek ledige pladser",
+      "propertyType": "Ejendomstype",
+      "oneRoom": "1 værelse",
+      "oneGuest": "1 gæst",
+      "roomsCount": "{count} Værelser",
+      "guestsCount": "{count} Gæster",
+      "checkOut": "Se datoen"
+    },
+    "flights": {
+      "roundTrip": "Turen frem og tilbage",
+      "oneWay": "Envejs",
+      "directFlight": "Direkteflyvning",
+      "economyClass": "Økonomiklasse",
+      "premiumEconomyClass": "Premium økonomi",
+      "businessClass": "Business Class",
+      "firstClass": "Første klasse",
+      "onePassenger": "1 passager",
+      "passengersCount": "{count} Passagerer",
+      "fromCity": "Fra | Vælg by",
+      "toCity": "Til | Vælg by",
+      "departureDate": "Afrejsedato",
+      "returnDate": "Returdatum",
+      "departing": "Afgang",
+      "returning": "Tilbage",
+      "nonstop": "Nonstop",
+      "oneStop": "Ét stop",
+      "multipleStops": "Flere stop"
+    },
+    "common": {
+      "addDate": "Tilføj dato",
+      "selectDateRange": "Vælg afrejse- og hjemrejsedatoer",
+      "selectDate": "Vælg en dato",
+      "days": "Dage",
+      "nights": "Nætter"
+    },
+    "carRentals": {
+      "searchCarType": "Søg efter biltype",
+      "filterCarType": "Filtrer efter biltype",
+      "allCarTypes": "Alle typer",
+      "selfDrive": "Selvkørsel",
+      "price": "₦ Pris",
+      "pickupDate": "Afhentningsdato",
+      "destinationCar": "{antal} bil",
+      "destinationCars": "{count} biler"
+    },
+    "tours": {
+      "searchPlaceholder": "Søg efter steder, seværdigheder og oplevelser",
+      "startDate": "Startdato",
+      "destinationExperience": "{count} erfaring",
+      "destinationExperiences": "{count} oplevelser"
+    },
+    "location": "Placering"
+  },
+  "footer": {
+    "brandDescription": "SynkAfrica er en ny, alt-i-én-platform for rejser og eksklusive oplevelser, der er udviklet til at forbinde mennesker over hele verden med hjertet af det afrikanske rejse- og livsstilsøkosystem.",
+    "explore": {
+      "title": "Udforsk SynkAfrica",
+      "hotels": "Hoteller og overnatningssteder",
+      "carRentals": "Biludlejning",
+      "flights": "Flyreservationer",
+      "restaurants": "Spisesteder og restauranter"
+    },
+    "support": {
+      "title": "Støtte",
+      "contact": "Kontakt supporten",
+      "changeBooking": "Ændr eller annuller din reservation",
+      "paymentOptions": "Betalingsmuligheder",
+      "receipt": "Se eller udskriv din reservationskvittering"
+    },
+    "community": {
+      "title": "Fællesskab",
+      "instagram": "Vores Instagram",
+      "facebook": "Facebook",
+      "news": "I nyhederne"
+    },
+    "vendor": {
+      "title": "Bliv leverandør",
+      "listCar": "Opret en annonce for din bil",
+      "listService": "Opret en annonce for din tjeneste",
+      "contact": "Kontakt os"
+    },
+    "appPromo": {
+      "headline": "Få den fulde SynkAfrica-oplevelse.",
+      "cta": "Download appen i dag",
+      "getItOn": "KOM I GANG",
+      "googlePlay": "Google Play",
+      "downloadOn": "Download på",
+      "appStore": "App Store"
+    },
+    "legal": {
+      "privacy": "Fortrolighedspolitik",
+      "terms": "Brugsbetingelser",
+      "security": "Sikkerhedsside",
+      "faqs": "Ofte stillede spørgsmål"
+    },
+    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+  },
+  "login": {
+    "intro": "Du kan logge ind med din SynkAfrica-konto for at få adgang til vores tjenester.",
+    "backendNotReady": "Backend-miljøvariablerne er endnu ikke indstillet. Log-in vil fungere, så snart loginoplysningerne er konfigureret.",
+    "emailPlaceholder": "Indtast din e-mailadresse",
+    "orUseOptions": "eller vælg en af disse muligheder",
+    "signInGoogle": "Log ind med Google",
+    "continueApple": "Fortsæt med Apple"
+  },
+  "account": {
+    "nav": {
+      "notifications": "Meddelelser"
+    },
+    "contactSupport": "Kontakt supporten",
+    "profile": {
+      "edit": "Rediger",
+      "fullName": "Fulde navn",
+      "fullNamePlaceholder": "Indtast fuldt navn",
+      "location": "Placering",
+      "dateOfBirth": "Fødselsdato",
+      "dobPlaceholder": "MM | DD | ÅÅ",
+      "gender": "Køn",
+      "notAdded": "Ikke tilføjet",
+      "contactDetails": "Kontaktoplysninger",
+      "phone": "Telefonnummer",
+      "email": "E-mail-adresse",
+      "passwordSecurity": "Adgangskode og sikkerhed",
+      "password": "Adgangskode",
+      "changePassword": "Skift adgangskode"
+    },
+    "deleteAccount": "Slet konto",
+    "bookings": {
+      "title": "Dine ordrer",
+      "tab": {
+        "upcoming": "Kommende",
+        "past": "Fortid",
+        "cancelled": "Aflyst",
+        "bookings": "Reservationer"
+      },
+      "empty": {
+        "upcoming": "Der er ingen kommende bookinger.",
+        "past": "Der er ingen tidligere bookinger for denne periode.",
+        "cancelled": "Der er ingen annullerede ordrer for denne periode.",
+        "bookings": "Der er ingen bookinger for denne periode."
+      },
+      "orderDate": "Bestillingsdato:",
+      "experienceDate": "Dato for oplevelsen:",
+      "totalAmount": "Samlet beløb:",
+      "orderNumber": "Bestilling:",
+      "guestCount": "Gæster",
+      "specialRequests": "Særlige ønsker",
+      "cancel": "Annuller",
+      "receiptRecipient": "Kvittering og QR-modtager",
+      "viewDetails": "Se detaljer",
+      "leaveReview": "Skriv en anmeldelse",
+      "reviewSubmitted": "Anmeldelse indsendt",
+      "cancelWindowClosed": "Afbestillingsfristen for denne reservation er udløbet.",
+      "cancelledOn": "Aflyst den {dato}",
+      "cancelConfirmTitle": "Vil du annullere denne reservation?",
+      "cancelConfirmBody": "Du kan afbestille inden for afbestillingsfristen, inden din oplevelse begynder. Denne handling kan ikke fortrydes.",
+      "confirmCancel": "Ja, annuller reservationen",
+      "filterPeriod": "Filtrer efter periode",
+      "badge": {
+        "upcoming": "Kommende begivenheder",
+        "past": "Fortid",
+        "cancelled": "Aflyst"
+      },
+      "countdown": {
+        "label": "Oplevelsen begynder i",
+        "daysHours": "{dage}d {timer}h",
+        "hoursMinutes": "{timer}t {minutter}m",
+        "detailHint": "Nedtællingen opdateres i realtid, indtil din oplevelse begynder."
+      },
+      "review": {
+        "title": "Skriv en anmeldelse",
+        "ratingLabel": "Din bedømmelse",
+        "commentLabel": "Din anmeldelse",
+        "commentPlaceholder": "Fortæl os, hvad du syntes var godt ved denne oplevelse...",
+        "submit": "Indsend anmeldelse",
+        "dismiss": "Luk gennemgangsdialogen"
+      },
+      "detail": {
+        "back": "Tilbage til bookinger",
+        "reference": "Reservationsnummer",
+        "yourReview": "Din anmeldelse",
+        "notFound": "Denne reservation kunne ikke findes."
+      }
+    },
+    "saved": {
+      "accommodations": "Overnatningsmuligheder",
+      "empty": "Du har endnu ikke gemt noget.",
+      "cars": "Biler",
+      "tours": "Ture"
+    },
+    "reviews": {
+      "title": "Anmeldelser",
+      "youRated": "Du har bedømt",
+      "writeReview": "Skriv en anmeldelse",
+      "ratingLabel": "Din bedømmelse",
+      "commentLabel": "Din anmeldelse",
+      "commentPlaceholder": "Fortæl os, hvad du syntes var godt ved denne oplevelse...",
+      "photosLabel": "Fotos",
+      "photosCount": "{antal}/[[[maks.]]] er uploadet",
+      "addPhoto": "Tilføj foto",
+      "removePhoto": "Fjern foto",
+      "submit": "Indsend anmeldelse",
+      "pendingTitle": "Gennemse en afsluttet reservation",
+      "pendingHint": "Der kan kun afgives anmeldelser for tidligere bookinger, der er knyttet til din konto.",
+      "selectBooking": "Vælg en afsluttet reservation ovenfor for at skrive din anmeldelse.",
+      "noPending": "Du har ingen afsluttede bookinger, der venter på en anmeldelse.",
+      "submittedTitle": "De anmeldelser, du har indsendt",
+      "empty": "Du har endnu ikke indsendt nogen anmeldelser.",
+      "deleteReview": "Slet anmeldelse",
+      "bookingReference": "Reservation {reference}",
+      "listingBadge": "Gæsteanmeldelser",
+      "experienceListingTitle": "Gæsteanmeldelser"
+    },
+    "notifications": {
+      "title": {
+        "reminder24h": "Oplevelsen starter om 24 timer",
+        "reviewRequest": "Fortæl os om dine oplevelser",
+        "cancellationRefund": "Reservationen er annulleret",
+        "bookingConfirmation": "Reservationen er bekræftet",
+        "info": "Rejsepåmindelse"
+      },
+      "empty": "Der er endnu ingen meddelelser.",
+      "period": {
+        "mostRecent": "Seneste",
+        "weekEarlier": "En uge tidligere",
+        "threeMonthsAgo": "For 3 måneder siden"
+      },
+      "kind": {
+        "bookingConfirmation": "Reservationen er bekræftet",
+        "reminder24h": "24-timers påmindelse",
+        "reviewRequest": "Anmodning om gennemgang",
+        "cancellationRefund": "Afbestilling og refusion",
+        "info": "Rejsetip"
+      },
+      "message": {
+        "reminder24h": "Din oplevelse {titel} begynder i morgen kl. {tidspunkt} den {dato} Gennemgå dine reservationsoplysninger, og mød op 15 minutter før start.",
+        "reviewRequest": "Hvad syntes du om {title}? Giv en stjernebedømmelse og skriv en anmeldelse for at hjælpe andre rejsende på SynkAfrica.",
+        "cancellationRefund": "Din reservation af {titel} ({referencenummer}) er blevet annulleret. Eventuel refusion vil blive behandlet inden for 5–7 hverdage.",
+        "bookingConfirmation": "Din reservation til {title} i {location} er bekræftet. Tjek din e-mail for at se din kvittering og dine QR-oplysninger.",
+        "passportReminder": "Sørg for, at dit pas er gyldigt i mindst 6 måneder efter din rejsedato."
+      }
+    },
+    "support": {
+      "contact": {
+        "whatsapp": "WhatsApp",
+        "email": "E-mail",
+        "phone": "Ring til os"
+      },
+      "createTicket": "Opret en supportanmodning",
+      "topic": "Hvad handler det her om?",
+      "relatedOrder": "Relateret ordre (valgfrit)",
+      "relatedOrderNone": "Ingen",
+      "subject": "Emne",
+      "subjectPlaceholder": "Kort resumé af problemet",
+      "message": "Besked",
+      "messagePlaceholder": "Fortæl os, hvad der foregår...",
+      "attachFile": "Vedhæft et foto eller et skærmbillede",
+      "submitTicket": "Indsend en henvendelse",
+      "ticketSubmitted": "Ticket nr. {nummer} er indsendt. Vi vender tilbage til dig snarest.",
+      "yourTickets": "Dine billetter",
+      "commonQuestions": "Ofte stillede spørgsmål",
+      "ticketMeta": "Billet nr. {nummer} · {dato}",
+      "status": {
+        "open": "Åben",
+        "resolved": "Beslutning"
+      },
+      "category": {
+        "booking": "Problem med reservationen",
+        "paymentRefund": "Betaling / refusion",
+        "account": "Konto og profil",
+        "other": "Andet"
+      },
+      "faq": {
+        "cancelBooking": "Hvordan afbestiller jeg en reservation?",
+        "refundTiming": "Hvornår får jeg min refusion?",
+        "changeDate": "Hvordan ændrer jeg min rejsedato?",
+        "paymentSecurity": "Er min betaling sikker?",
+        "cancelBookingAnswer": "Åbn din reservation under »Reservationer og ture«, vælg den pågældende ordre, og brug afbestillingsfunktionen, hvis den stadig ligger inden for afbestillingsfristen. Refusioner behandles automatisk for reservationer, der opfylder betingelserne.",
+        "refundTimingAnswer": "Berettigede refusioner behandles normalt inden for 5–7 hverdage efter afbestillingen, afhængigt af din bank eller betalingsudbyder.",
+        "changeDateAnswer": "Kontakt kundeservice med dit reservationsnummer. Hvis det er muligt at ændre datoen for oplevelsen, vil vores team hjælpe dig med at ombooke eller vejlede dig om de tilgængelige muligheder.",
+        "paymentSecurityAnswer": "Ja. Betalinger på Synkafrica håndteres via sikre, krypterede betalingspartnere. Vi gemmer aldrig dine fulde kortoplysninger på vores servere."
+      },
+      "tabs": {
+        "label": "Supportsektioner"
+      },
+      "backToTickets": "Tilbage til billetterne",
+      "typeMessage": "Skriv en besked...",
+      "send": "Sende",
+      "supportTeam": "Synkafrica-support",
+      "you": "Du",
+      "emptyTickets": "Du har endnu ikke indsendt nogen supportanmodninger.",
+      "attachedImage": "Vedhæftet billede",
+      "removeAttachment": "Fjern vedhæftet fil"
+    }
+  },
+  "booking": {
+    "step": {
+      "rooms": "Vælg ophold og værelser",
+      "chooseExperience": "Vælg oplevelse",
+      "chooseCar": "Vælg bil",
+      "choosePackage": "Vælg pakke",
+      "checkout": "Kasse",
+      "payment": "Betaling",
+      "confirmation": "Bekræftelse"
+    },
+    "cta": {
+      "proceedToPay": "GÅ VIDERE TIL BETALING"
+    },
+    "guest": {
+      "title": {
+        "mr": "Hr.",
+        "mrs": "Fru",
+        "ms": "Fru",
+        "miss": "Frøken",
+        "dr": "Dr."
+      },
+      "adultLabel": "Voksen (17 år og derover)",
+      "leadGuestLabel": "Hovedgæst",
+      "addedCount": "[[[tilføjet]]]/[[[i alt]]] tilføjet",
+      "passportHint": "Indtast dit navn, som det står angivet i dit pas. Paset skal være gyldigt i mindst 6 måneder fra rejsedatoen.",
+      "idVerificationHint": "Der kræves et gyldigt, officielt udstedt ID, før du kan gennemføre en reservation.",
+      "idVerificationTitle": "Identitetsbekræftelse",
+      "idVerificationSubtitle": "Indtast dine ID-oplysninger nøjagtigt, som de fremgår af dit dokument.",
+      "idType": {
+        "passport": "Pas",
+        "nationalId": "Nationalt ID-nummer",
+        "driversLicense": "Kørekort"
+      },
+      "idNumber": "ID-nummer",
+      "idNumberPlaceholder": "Indtast dit ID-nummer",
+      "idExpiry": "Udløbsdato",
+      "confirmId": "Jeg bekræfter, at mine identitetsoplysninger er korrekte, og at mit dokument er gyldigt i mindst 6 måneder fra rejsedatoen.",
+      "idTypeRequired": "Vælg en ID-type.",
+      "idNumberInvalid": "Indtast et gyldigt ID-nummer.",
+      "idExpiryRequired": "Indtast ID-kortets udløbsdato.",
+      "idExpiryInvalid": "ID’et skal være gyldigt i mindst 6 måneder regnet fra i dag.",
+      "idConfirmRequired": "Bekræft dine identitetsoplysninger for at fortsætte.",
+      "idValidationRequired": "Udfyld og bekræft dine identitetsoplysninger, inden du går videre til betaling.",
+      "adultCheckbox": "Voksen - {antal}",
+      "titleField": "Titel",
+      "lastName": "Efternavn",
+      "firstName": "Fornavn",
+      "middleName": "Mellemnavn",
+      "dateOfBirth": "Fødselsdato",
+      "datePlaceholder": "åååå-mm-dd",
+      "nationality": "Nationalitet",
+      "gender": "Køn",
+      "male": "Mand",
+      "female": "Kvinde",
+      "mobileNo": "Mobilnummer",
+      "emailAddress": "E-mail-adresse",
+      "openCalendar": "Åbn kalender",
+      "countLabel": "Antal gæster",
+      "countHint": "Priserne opdateres automatisk ud fra antallet af gæster.",
+      "decreaseGuests": "Færre gæster",
+      "increaseGuests": "Få flere gæster",
+      "specialRequests": "Særlige ønsker",
+      "specialRequestsPlaceholder": "Tidlig indtjekning, kostønsker, krav til tilgængelighed osv."
+    },
+    "summary": {
+      "selectRoom": "Vælg et værelse",
+      "selectCar": "Vælg en bil",
+      "selectExperience": "Vælg en oplevelse",
+      "selectPackage": "Vælg en pakke",
+      "priceDetails": "Prisoplysninger",
+      "taxesAndFees": "Skatter og afgifter",
+      "night": "nat",
+      "nights": "nætter",
+      "room": "værelse",
+      "rooms": "værelser",
+      "day": "dag",
+      "days": "dage",
+      "total": "I alt",
+      "guests": "gæster"
+    },
+    "table": {
+      "selectRoom": "Vælg et værelse",
+      "guestCount": "Antal gæster",
+      "pricePerNight": "Pris pr. nat",
+      "includesTaxes": "Inkluderer skatter og afgifter",
+      "packages": "Pakker",
+      "hours": "Åbningstider",
+      "price": "Pris",
+      "experiences": "Oplevelser",
+      "duration": "Varighed"
+    },
+    "dates": {
+      "checkIn": "Indtjekningsdato",
+      "checkOut": "Se datoen",
+      "guests": "Gæster",
+      "rooms": "Værelser",
+      "nights": "Nætter",
+      "days": "Dage",
+      "rentalDays": "Lejeperiode",
+      "tripDuration": "Rejsens varighed",
+      "tripDurationHint": "Vælg, hvor mange dage du vil blive eller udforske området.",
+      "decreaseNights": "Færre overnatninger",
+      "increaseNights": "Forøg antallet af overnatninger",
+      "decreaseDays": "Færre dage",
+      "increaseDays": "Forlæng antallet af dage"
+    },
+    "car": {
+      "rentalModeHeading": "Hvordan vil du gerne bruge denne bil?",
+      "rentalModeHint": "Vælg selvkørsel, eller tilføj en professionel chauffør til din reservation.",
+      "selfDrive": "Selvkørsel",
+      "selfDriveHint": "Kør selv i bilen. Afhent den hos forhandleren, eller bestil levering mod et ekstra gebyr.",
+      "withDriver": "Med chauffør",
+      "withDriverHint": "Der er en professionel chauffør inkluderet i din rejse.",
+      "noExtraCost": "Ingen ekstra omkostninger",
+      "driverAddon": "+ [[[beløb]]] tillægsudstyr til bil",
+      "requestDelivery": "Bestil levering af bil",
+      "requestDeliveryHint": "Få bilen leveret til din adresse mod et tillægsgebyr.",
+      "deliveryFee": "+ [[[beløb]]] leveringsgebyr",
+      "deliveryAddress": "Leveringsadresse",
+      "deliveryAddressPlaceholder": "Indtast den adresse, hvor bilen skal leveres",
+      "pickupAddress": "Afhentningsadresse",
+      "pickupAddressHint": "Hent bilen hos denne forhandler, hvis du ikke bestiller levering.",
+      "customerPickupAddress": "Dit afhentningssted",
+      "customerPickupAddressPlaceholder": "Indtast, hvor chaufføren skal hente dig",
+      "customerPickupAddressHint": "Chaufføren vil møde dig på denne adresse.",
+      "driverAddonLabel": "Tilføjelse til Driver",
+      "deliveryFeeLabel": "Leveringsgebyr",
+      "about": "Om denne bil",
+      "saveCar": "Gem bil"
+    },
+    "property": {
+      "saveProperty": "Gem ejendom",
+      "morePhotos": "+{antal} billeder",
+      "currentOffers": "Aktuelle tilbud"
+    },
+    "amenity": {
+      "free": "Gratis!",
+      "additionalCharge": "Tillægsgebyr"
+    },
+    "tour": {
+      "about": "Om denne oplevelse",
+      "saveTour": "Gem tur"
+    },
+    "package": {
+      "about": "Om denne pakke",
+      "savePackage": "Gem pakke",
+      "sharePackage": "Del-pakke",
+      "nightsDays": "[[[nætter]]] Nætter / {dage} Dage",
+      "durationShort": "{dage}D / [[[nætter]]]N",
+      "guestRange": "{interval} Gæster",
+      "moduleCount": "{count} Moduler",
+      "highlight": {
+        "duration": "Varighed",
+        "groupSize": "Gruppestørrelse",
+        "included": "Inkluderet",
+        "cancellation": "Afbestilling+",
+        "free": "Gratis",
+        "standard": "Standard"
+      },
+      "whatsIncluded": "Hvad er inkluderet",
+      "included": "Inkluderet",
+      "priceBreakdown": "Prisoversigt",
+      "packageDiscount": "Pakkerabat",
+      "packagePrice": "Pakkepris",
+      "whyBook": "Hvorfor vælge denne pakke?",
+      "guestCountLocked": "Antallet af gæster er fastsat for denne pakke og kan ikke ændres ved kassen."
+    },
+    "payment": {
+      "processing": "Betalingen behandles..."
+    },
+    "confirmation": {
+      "imageAlt": "Bekræftelse: Det lykkedes",
+      "title": "Betalingen er gennemført",
+      "subtitle": "Tjek venligst din e-mail for at finde din kvittering og dine QR-oplysninger",
+      "reloadIn": "Denne side genindlæses om",
+      "reloadNow": "Opdater nu",
+      "referenceLabel": "Reservationsnummer",
+      "copyReference": "Kopier",
+      "copied": "Kopieret",
+      "summaryTitle": "Reservationsoversigt",
+      "product": "Reserveret vare",
+      "totalPaid": "Samlet udbetalt beløb",
+      "addToCalendar": "Føj til kalenderen",
+      "openGoogleCalendar": "Åbn i Google Kalender",
+      "viewBookings": "Se mine bookinger"
+    },
+    "reviews": {
+      "nextReview": "Næste anmeldelse",
+      "allReviews": "Alle anmeldelser",
+      "viewAll": "Se alle anmeldelser",
+      "close": "Luk anmeldelser"
+    },
+    "content": {
+      "property": {
+        "arkHavn": {
+          "desc0": "The Ark Haven ligger i hjertet af Marrakesh og byder på et fredfyldt fristed, der forener moderne komfort med traditionel marokkansk charme. Nyd den udendørs pool, hotellets bar og værelserne med aircondition og fladskærms-tv.",
+          "desc1": "Gæsterne kan udforske seværdighederne i nærheden, benytte sig af pendulkørsel, tennisbaner og biludlejning. Uanset om du er her på ferie eller i forretningsøjemed, byder The Ark Haven på et mindeværdigt ophold med enestående gæstfrihed."
+        },
+        "fallback": {
+          "desc0": "{navn} tilbyder et behageligt ophold med moderne faciliteter og en førsteklasses beliggenhed i {sted}.",
+          "desc1": "Her kan du nyde velindrettede værelser, venlig betjening og nem adgang til lokale seværdigheder og spisesteder."
+        }
+      },
+      "review": {
+        "review1": "Ark Haven overgik mine forventninger. Personalet var utroligt imødekommende, og poolområdet var det perfekte sted at slappe af efter at have udforsket byen.",
+        "review2": "Smukke værelser, fantastisk beliggenhed, og morgenmaden var fremragende. Jeg vil helt sikkert bo her igen på min næste rejse til Marokko.",
+        "review3": "Rummelig suite, rene faciliteter og en hjælpsom concierge. Shuttle-tjenesten gjorde det meget nemt at komme rundt i Marrakesh."
+      },
+      "offer": {
+        "drinkPromo": "Køb 1 drink, få en gratis",
+        "mealsOff": "10 % rabat på måltider",
+        "freeWifi": "Gratis Wi-Fi"
+      },
+      "room": {
+        "deluxeSuite": "Deluxe-suite",
+        "supremeRoom": "Supreme-værelset",
+        "standardRoom": "Standardværelse",
+        "subtitle": {
+          "deluxe": "Deluxe (lejlighed med 1 soveværelse)",
+          "supreme": "Supreme (studiolejlighed)",
+          "standard": "Standard (dobbeltværelse)"
+        },
+        "size592": "592 kvadratfod",
+        "size420": "420 kvadratfod",
+        "size310": "310 kvadratfod",
+        "sleeps2Adults": "Plads til 2 voksne"
+      },
+      "package": {
+        "dailyHire": "Daglig leje",
+        "halfDayHire": "Leje i en halv dag",
+        "extraHours": "Overtid",
+        "hours24": "24 timer",
+        "hours12": "12 timer",
+        "hours3": "3 timer"
+      },
+      "feature": {
+        "automatic": "Automatisk",
+        "driverAvailable": "Chauffør til rådighed",
+        "selfDrive": "Selvkørsel",
+        "available": "Tilgængelig",
+        "limitedSlots": "Begrænset antal pladser",
+        "guidedTour": "Guidet tur",
+        "selfDriveAvailable": "Mulighed for selvkørsel",
+        "flightsIncluded": "Flyrejser inkluderet",
+        "hotelStay": "Hotelophold",
+        "guidedTours": "Guidede ture",
+        "nightsDays": "[[[nætter]]] nætter / {dage} dage"
+      },
+      "tourOption": {
+        "standard": "Standardbillet",
+        "premium": "Førsteklasses oplevelse",
+        "private": "Privat gruppe",
+        "hours5": "5 timer",
+        "fullDay": "Hele dagen"
+      },
+      "tier": {
+        "standard": "Standardpakke",
+        "deluxe": "Deluxe-pakke",
+        "allInclusive": "Alt inkluderet"
+      },
+      "amenityCat": {
+        "greatForStay": "Perfekt til dit ophold",
+        "outdoors": "Udendørs",
+        "pets": "Kæledyr",
+        "internet": "Internet",
+        "onSiteParking": "Parkering på stedet",
+        "frontDesk": "Receptionstjenester",
+        "familyServices": "Underholdning og familietjenester",
+        "cleaningServices": "Rengøringsservice",
+        "general": "Generelt",
+        "accessibility": "Tilgængelighed",
+        "swimmingPools": "2 svømmebassiner",
+        "pool1Outdoor": "Gruppe 1 – udendørs"
+      },
+      "amenityDesc": {
+        "petsAllowed": "Kæledyr er tilladt efter forudgående anmodning. Der opkræves ikke ekstra gebyr.",
+        "wifiFree": "Der er Wi-Fi overalt, og det er gratis.",
+        "parkingFree": "Der er gratis offentlig parkering på stedet (reservation er ikke nødvendig)."
+      },
+      "amenityItem": {
+        "restaurant": "Restaurant",
+        "freeWifi": "Gratis Wi-Fi",
+        "parking": "Parkering",
+        "spa": "Spa",
+        "familyRooms": "Familieværelser",
+        "roomService": "Roomservice",
+        "airportShuttle": "Lufthavnsbus",
+        "bbqFacilities": "Grillfaciliteter",
+        "petFriendly": "Kæledyr tilladt",
+        "nonSmokingRooms": "Røgfrie værelser",
+        "outdoorFireplace": "Udendørs pejs",
+        "beachfront": "Ved stranden",
+        "sunDeck": "Solterrasse",
+        "privateBeach": "Privat strandområde",
+        "terrace": "Terrasse",
+        "garden": "Have",
+        "valetParking": "Parkering med parkeringsservice",
+        "parkingGarage": "Parkeringshus",
+        "accessibleParking": "Handicapvenlige parkeringspladser",
+        "lockers": "Skabe",
+        "concierge": "Concierge",
+        "atmOnSite": "Hæveautomat på stedet",
+        "baggageStorage": "Bagageopbevaring",
+        "currencyExchange": "Valutaveksling",
+        "frontDesk24h": "Døgnåben reception",
+        "outdoorPlayEquipment": "Udendørs legeredskaber til børn",
+        "dailyHousekeeping": "Daglig rengøring",
+        "ironingService": "Strygeservice",
+        "shuttleService": "Transporttjeneste",
+        "sharedLounge": "Fælles opholdsstue/tv-område",
+        "airConditioning": "Klimaanlæg",
+        "carRental": "Biludlejning",
+        "packedLunches": "Madpakker",
+        "disabledFacilities": "Faciliteter for gæster med handicap",
+        "bathroomEmergencyCord": "Nødtræk til badeværelset",
+        "openAllYear": "Åbent hele året",
+        "adultsOnly": "Kun for voksne",
+        "poolBeachTowels": "Pool- og strandhåndklæder",
+        "poolBar": "Poolbar",
+        "beachChairs": "Strandstole/solsenge"
+      },
+      "tour": {
+        "desc": {
+          "boatAccess": "Der er kun adgang med båd eller vandtaxi. Stedet er kendt for sine relativt rolige farvande.",
+          "lekkiCanopy": "Gå over Afrikas længste hængebro i trætoppene og udforsk de frodige mangrovestier.",
+          "nikeArt": "Oplev en af de største samlinger af moderne afrikansk kunst i Vestafrika.",
+          "badagry": "Følg den transatlantiske slavehandels historie gennem museer og seværdigheder.",
+          "desertSafari": "Kørsel i sanddyner, kamelture og en traditionel beduinlejr under stjernerne.",
+          "cotonou": "Oplev markederne, den koloniale arkitektur og Benins livlige kyststrækning.",
+          "winelands": "Besøg vinmarkerne i Stellenbosch med vinsmagning og smuk udsigt over bjergene.",
+          "monacoYacht": "Sejl langs den franske rivieras kyst med udsigt til Monte Carlo og luksuriøse havne.",
+          "lagosFood": "Smag på suya, puff-puff og lokale delikatesser på byens bedste spisesteder.",
+          "dubaiKayak": "Padl gennem lystbådehavnen ved solnedgang med udsigt over byens silhuet og under vejledning af en instruktør."
+        }
+      }
+    },
+    "dateTime": {
+      "title": "Vælg dato og klokkeslæt",
+      "rangeHint": "Vælg dine ind- og udtjekningsdatoer i kalenderen.",
+      "singleHint": "Vælg datoen for din oplevelse i kalenderen.",
+      "legendAvailable": "Tilgængelig",
+      "legendUnavailable": "Ikke tilgængelig",
+      "selectCheckout": "Vælg kasse",
+      "timeSlots": "Tidsinterval",
+      "experienceDate": "Dato for oplevelsen"
+    }
+  },
+  "breadcrumb": {
+    "synkAfrica": "SynkAfrica",
+    "accommodations": "Overnatningsmuligheder",
+    "flights": "Flyrejser",
+    "carForHire": "Biludlejning",
+    "tours": "Ture og oplevelser",
+    "tourPackages": "Rejsepakker",
+    "dealsAndPackages": "Tilbud og pakker",
+    "packages": "Pakker"
+  },
+  "results": {
+    "accommodations": {
+      "title": "Ophold",
+      "staysFound": "{count} fundne ophold",
+      "searchPlaceholder": "Søg efter overnatningssteder",
+      "empty": "Der er ingen ophold, der matcher dine filtre."
+    },
+    "carRentals": {
+      "title": "Se udvalget af udlejningsbiler",
+      "carsFound": "{count} biler fundet",
+      "searchPlaceholder": "Søg efter bil",
+      "empty": "Der er ingen biler, der matcher dine søgeparametre."
+    },
+    "tours": {
+      "title": "{count} Søgeresultater",
+      "searchPlaceholder": "Søgeoplevelse",
+      "empty": "Der er ingen oplevelser, der matcher dine filtre."
+    },
+    "emptyHint": "Prøv at justere dine søge- eller filterindstillinger.",
+    "promoSubtitle": "Kampagner, tilbud og særtilbud til dig"
+  },
+  "filters": {
+    "apply": "Anvend filter",
+    "applyCount": "Anvend filter ({count})",
+    "location": "Placering",
+    "rentalDates": "Lejeperioder",
+    "startDate": "Startdato",
+    "endDate": "Afslutningsdato",
+    "discounts": "Rabatter",
+    "price": "Pris",
+    "category": "Kategori",
+    "experiences": "Oplevelser",
+    "other": "Andre filtre",
+    "budget": "Budget",
+    "perNight": "| Nat",
+    "perDaily": "| dagligt",
+    "anyPrice": "Enhver pris",
+    "apartmentType": "Lejlighedstype",
+    "bedrooms": "Antal soveværelser",
+    "ratings": "Bedømmelser",
+    "perks": "Fordele og faciliteter",
+    "priceRange": {
+      "under50k": "Under 50.000",
+      "50to150k": "50–150.000",
+      "150kPlus": "150.000 og derover"
+    },
+    "propertyType": {
+      "hotels": "Hoteller",
+      "apartments": "Lejligheder",
+      "resorts": "Feriesteder",
+      "bbs": "Overnatningssteder med morgenmad",
+      "guestHouse": "Gæstehus",
+      "beachHouse": "Strandhus",
+      "motels": "Moteller"
+    },
+    "bedroom": {
+      "studio": "Studie",
+      "one": "1 soveværelse",
+      "two": "2 soveværelser",
+      "threePlus": "3 eller flere soveværelser"
+    },
+    "perk": {
+      "breakfast": "Morgenmad er inkluderet",
+      "cancellation": "Gratis afbestilling",
+      "pool": "Adgang til swimmingpoolen",
+      "shuttle": "Lufthavnsbus"
+    },
+    "discount": {
+      "all": "Alle rabatter",
+      "withDiscount": "Med rabat",
+      "noDiscount": "Ingen rabat",
+      "tenPercent": "10 % rabat"
+    },
+    "carType": {
+      "suv": "SUV",
+      "sedan": "Sedan",
+      "hatchback": "Hatchback",
+      "pickup": "Afhentning"
+    },
+    "serviceType": {
+      "selfDrive": "Selvkørsel",
+      "chauffeur": "Chauffør"
+    },
+    "transmission": {
+      "automatic": "Automatisk",
+      "manual": "Brugsanvisning"
+    },
+    "tourCategory": {
+      "all": "Alle kategorier",
+      "outdoor": "Udendørs",
+      "artsCulture": "Kunst og kultur",
+      "adventure": "Eventyr",
+      "foodDrink": "Mad og drikke"
+    },
+    "experienceType": {
+      "all": "Alle oplevelser",
+      "tours": "Ture",
+      "activities": "Aktiviteter",
+      "workshops": "Værksteder",
+      "dayTrips": "Dagsture"
+    }
+  },
+  "landing": {
+    "ongoingDeals": {
+      "title": "Aktuelle tilbud",
+      "title2": "Tilbudte pakker",
+      "description": "Kampagner, tilbud og særtilbud til dig",
+      "scrollPackages": "Rullepakker"
+    },
+    "packages": {
+      "title": "Pakker"
+    },
+    "fansFavourite": {
+      "title": "Fans’ favorit"
+    },
+    "packageOffer": {
+      "inclusion": {
+        "flights": "Flyrejser",
+        "stays": "Ophold",
+        "carDriver": "Bil + chauffør"
+      },
+      "duration": "{dage} Dage • [[[nætter]]] Nætter • {tidsplan}",
+      "bookedSeparately": "hvis det bestilles separat"
+    },
+    "bestDealsApartments": {
+      "title": "De bedste tilbud på lejligheder"
+    },
+    "browsePropertyType": "Søg efter boligtype",
+    "favouriteDestinations": "Udforsk yndlingsrejsemål",
+    "activitiesCount": "{count} aktiviteter",
+    "flightPromo": {
+      "headline": "Det har aldrig været nemmere at bestille flyrejser",
+      "cta": "Tjek ledige pladser"
+    },
+    "experiencesPromo": {
+      "headline": "Nyd de utallige oplevelser – alt sammen på ét og samme rejsemål.",
+      "cta": "Se oplevelser",
+      "imageAlt": "Se afrikanske oplevelser"
+    },
+    "tours": {
+      "attractions": {
+        "title": "Seværdigheder på Synkafrica"
+      },
+      "events": {
+        "browsingIn": "Gennemse begivenheder i"
+      },
+      "packages": {
+        "title": "Rejsepakker",
+        "description": "Få de bedste tilbud på ture, og book nemt."
+      }
+    },
+    "carRentals": {
+      "feature1": {
+        "title": "Professionel service",
+        "description": "Vi benytter os af velrenommerede udbydere af lufthavnstransport i hele Afrika."
+      },
+      "feature2": {
+        "title": "Fleksible afbestillingsbetingelser",
+        "description": "Hvis dine planer ændrer sig, kan du afbestille på fleksible vilkår."
+      },
+      "feature3": {
+        "title": "Konkurrencedygtige priser",
+        "description": "Vores team sammenligner dagligt priserne på lufthavnstaxier for at finde det bedste tilbud til dig."
+      }
+    }
+  },
+  "tourPackages": {
+    "hero": {
+      "title": "Rejsepakker",
+      "subtitle": "Nøje udvalgte rejsepakker, der er skræddersyet til uforglemmelige afrikanske eventyr."
+    },
+    "searchPlaceholder": "Søg efter rejsemål",
+    "empty": "Der er ingen rejsepakker, der matcher din søgning."
+  },
+  "admin": {
+    "header": {
+      "role": "Platformadministrator"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "experiences": "Oplevelser",
+      "cars": "Biler",
+      "accommodations": "Overnatningsmuligheder",
+      "vendors": "Leverandører",
+      "bookings": "Reservationer",
+      "payouts": "Udbetalinger",
+      "reviews": "Anmeldelser",
+      "users": "Brugere",
+      "verifications": "Kontroller",
+      "support": "Supportanmodninger",
+      "team": "Hold",
+      "audit": "Revisionslog"
+    },
+    "common": {
+      "all": "Alle",
+      "enabled": "Aktiveret",
+      "disabled": "De handicappede",
+      "edit": "Rediger",
+      "actions": "Handlinger"
+    },
+    "verifications": {
+      "title": "Kontroller",
+      "subtitle": "Indsendelser, der er markeret af vores verifikationsudbyder til manuel gennemgang — de fleste ID- og ansigtskontroller godkendes automatisk og ender aldrig i denne kø.",
+      "stats": {
+        "needsManualReview": "Skal gennemgås manuelt",
+        "approvedToday": "Godkendt i dag",
+        "deniedToday": "Afvist i dag",
+        "avgReviewTime": "Gennemsnitlig gennemgangstid",
+        "avgReviewTimeValue": "{minutter} min"
+      },
+      "searchPlaceholder": "Søg efter navn eller konto-ID...",
+      "filter": {
+        "users": "Brugere",
+        "vendors": "Leverandører"
+      },
+      "status": {
+        "pendingReview": "Afventer gennemgang",
+        "approved": "Godkendt",
+        "denied": "Afvist"
+      },
+      "audience": {
+        "user": "Bruger",
+        "vendor": "Leverandør"
+      },
+      "submitted": "Indsendt {dato}",
+      "pendingElapsed": "Afventer [[[forløbet]]]",
+      "blocking": {
+        "firstCheckout": "Blokering af første kassegang"
+      },
+      "empty": "Der er ingen indsendte verifikationsoplysninger, der matcher dine filtre.",
+      "accountId": "Konto {id}",
+      "viewAccount": "Vis konto →",
+      "pendingManualReview": "Afventer manuel gennemgang",
+      "elapsed": "[[[forløbet]]] forløbet",
+      "documentPreviews": "Dokumentforhåndsvisninger",
+      "documentViewLogged": "Dokumentvisningen registreres med henblik på overholdelse af reglerne",
+      "providerResults": "Resultater fra verifikationsudbyderen (DIDIT)",
+      "approve": "Godkend",
+      "deny": "Afvise",
+      "requestResubmission": "Anmodning om genindsendelse",
+      "notifyUser": "Underret brugeren om afgørelsen",
+      "notifyVendor": "Underret leverandøren om beslutningen",
+      "verificationApproved": "Verifikation godkendt",
+      "verificationDenied": "Bekræftelse afvist",
+      "reviewedInElapsed": "Anmeldt i [[[forløbet]]]",
+      "approvedBy": "Godkendt af",
+      "approvedByValue": "Admin — {dato}",
+      "reasonForDenial": "Årsag til afslag",
+      "revokeApproval": "Tilbagekalde godkendelse",
+      "inviteResubmission": "Anmodning om genindsendelse",
+      "viewHistory": "Vis historik",
+      "providerResultsHeading": "Udbyderresultat — DIDIT",
+      "document": {
+        "ninSlip": "NIN-fejl",
+        "passportPhoto": "Siden med pasfotoet",
+        "selfie": "Selfie / levende billedregistrering",
+        "cac": "CAC-certifikat",
+        "driversLicense": "Kørekort (forside)"
+      },
+      "check": {
+        "cacRegistrationLookup": "Søgning i CAC-registret",
+        "cacRegistrationVerified": "Bekræftet",
+        "faceMatchConfidence": "Sikkerhedsniveau for ansigtsmatchning",
+        "faceMatchConfidenceDetail": "96 %",
+        "documentExpiredDetail": "Mislykket — dokumentet er udløbet",
+        "documentAuthenticity": "Dokumentets ægthed",
+        "liveness": "Livsførlighedskontrol",
+        "faceMatch": "Sikkerhedsniveau for ansigtsmatchning",
+        "nameMatch": "Navnet stemmer overens med kontoen",
+        "businessRegistration": "Virksomhedsregistrering",
+        "faceMatchDetail": "78 % — under tærsklen for automatisk godkendelse",
+        "nameMatchDetail": "Kamp",
+        "documentFailedDetail": "Mislykket — dokumentet kan ikke læses",
+        "faceMatchFailedDetail": "42 % — under tærsklen",
+        "businessRegistrationDetail": "Delvis match — kræver manuel gennemgang"
+      },
+      "denialReason": {
+        "expiredLicense": "Kørekortet udløb i marts 2026. Indsend venligst ansøgningen på ny sammen med et gyldigt, ikke-udløbet officielt ID-kort."
+      },
+      "documentType": {
+        "passport": "Pas",
+        "cacNin": "CAC + NIN",
+        "driversLicense": "Kørekort"
+      },
+      "checkResult": {
+        "passed": "Bestået",
+        "failed": "Mislykket",
+        "warning": "Gennemgang påkrævet"
+      }
+    },
+    "dashboard": {
+      "welcome": "Administrationskonsollen,",
+      "addPackages": "Tilføj pakker",
+      "period": {
+        "label": "Måleperiode",
+        "today": "I dag",
+        "week": "I denne uge",
+        "month": "Denne måned",
+        "sixMonths": "6 måneder",
+        "year": "1 år",
+        "all": "Alle"
+      },
+      "users": "Brugere",
+      "bookings": "Reservationer",
+      "revenue": "Omsætning",
+      "activeExperiences": "Aktive oplevelser",
+      "activeVendors": "Aktive leverandører",
+      "viewAll": "Se alle",
+      "manage": "Administrer",
+      "alerts": "Advarsler",
+      "alert": {
+        "pendingPayouts": "3 udbetalinger til leverandører, der afventer godkendelse",
+        "flaggedReview": "2 anmeldelser, der er markeret til moderering",
+        "openTicket": "5 åbne supportanmodninger til leverandører",
+        "disabledVendor": "1 leverandørkonto er deaktiveret — skal gennemgås"
+      }
+    },
+    "packages": {
+      "createTitle": "Opret ny pakke / aftale",
+      "createSubtitle": "Sammensæt en uimodståelig rejsepakke ved at kombinere flyrejser, overnatninger, biludlejning og oplevelser.",
+      "addTitle": "Tilføj pakke",
+      "backToDashboard": "← Tilbage til oversigtssiden",
+      "progressLabel": "Status for pakken",
+      "steps": {
+        "details": "Pakkeoplysninger",
+        "modules": "Tilføj moduler",
+        "pricing": "Priser",
+        "review": "Gennemgang og offentliggørelse"
+      },
+      "cancel": "Annuller",
+      "back": "Tilbage",
+      "saveDraft": "Gem som udkast",
+      "draftSaved": "Udkast gemt",
+      "saveContinue": "Gem og fortsæt",
+      "submit": "Send pakke",
+      "completeRequiredFields": "Udfyld de obligatoriske felter: {felter}",
+      "sections": {
+        "basicInfo": "Pakkeoplysninger",
+        "basicInfoHint": "Grundlæggende oplysninger og metadata om din pakke.",
+        "additionalSettings": "Yderligere indstillinger",
+        "additionalSettingsHint": "Retningslinjer, måltider og visningsindstillinger."
+      },
+      "fields": {
+        "packageName": "Pakkenavn",
+        "packageSlug": "Pakke-slug (URL)",
+        "shortDescription": "Kort beskrivelse",
+        "detailedDescription": "Detaljeret beskrivelse",
+        "banner": "Billedet på emballagen",
+        "category": "Produktkategori",
+        "bestFor": "Bedst egnet til",
+        "tags": "Pakketags",
+        "includedMeals": "Inkluderede måltider",
+        "cancellationPolicy": "Afbestillingsbetingelser",
+        "refundPolicy": "Returpolitik",
+        "maxGuests": "Maks. antal gæster",
+        "featuredDeal": "Højdepunkter i pakken",
+        "currency": "Valuta",
+        "normalPrice": "Normalpris",
+        "salesPrice": "Salgspris",
+        "showSavingsBadge": "Vis besparelsesmærke",
+        "savingsBadgePercent": "Procentvis besparelse – badge",
+        "validFrom": "Gældende fra",
+        "validUntil": "Gyldig indtil",
+        "minimumBookingNotice": "Minimumsfrist for reservation",
+        "packageActive": "Pakkens status"
+      },
+      "placeholders": {
+        "packageName": "f.eks. Lagos & Paris-ferie",
+        "packageSlug": "Lagos-Paris-udflugt",
+        "shortDescription": "Et kort resumé, der fremgår af emballagekortene.",
+        "detailedDescription": "Beskriv den fulde rejseplan, hvad der er inkluderet, og de vigtigste seværdigheder.",
+        "category": "Vælg kategori",
+        "tags": "f.eks. Strand, Eventyr",
+        "maxGuests": "f.eks. 4",
+        "select": "Vælg"
+      },
+      "hints": {
+        "packageSlug": "Dette vil blive brugt i pakkens URL.",
+        "tags": "Indsæt hvert tag, og tryk på Enter.",
+        "featuredDeal": "Vis denne pakke som et fremhævet tilbud.",
+        "showSavingsBadge": "Vis et rabatmærke på emballagekortet.",
+        "savingsBadgePercent": "Indstil den procentdel, der vises på besparelsesmærket. Udfyldes automatisk ud fra dine priser.",
+        "packageActive": "Aktive pakker er synlige for kunderne."
+      },
+      "uploadBanner": "Klik for at uploade, eller træk og slip",
+      "uploadBannerHint": "JPG, PNG eller WEBP (maks. 5 MB)",
+      "removeBanner": "Fjern banneret",
+      "tips": {
+        "title": "Tips til en god pakke",
+        "one": "Brug et klart og fængende navn på pakken.",
+        "two": "Kombiner supplerende moduler for at få mere for pengene.",
+        "three": "Fremhæv besparelserne med en konkurrencedygtig salgspris.",
+        "four": "Tilføj tags for at gøre indholdet lettere at finde."
+      },
+      "moduleType": {
+        "flight": "Flyvning",
+        "accommodation": "Indkvartering",
+        "car": "Bil",
+        "experience": "Erfaring"
+      },
+      "modules": {
+        "selectHeading": "Tilføj moduler",
+        "selectHint": "Gennemse og tilføj flyrejser, overnatninger, lejebiler og oplevelser for at sammensætte din rejsepakke.",
+        "addedHeading": "Pakkemoduler",
+        "countLabel": "moduler",
+        "empty": "Der er endnu ikke tilføjet nogen moduler. Vælg elementer fra panelerne ovenfor.",
+        "add": "Tilføj",
+        "added": "Tilføjet",
+        "remove": "Fjern modul",
+        "dragHandle": "Træk for at ændre rækkefølgen",
+        "reorderHint": "Træk og slip modulerne for at omarrangere dem, så de vises i den rækkefølge, de skal vises for kunderne.",
+        "required": "Tilføj mindst ét modul for at fortsætte.",
+        "searchPlaceholder": "Søg i moduler…",
+        "noResults": "Der er ingen moduler, der matcher din søgning.",
+        "availableLabel": "tilgængelig"
+      },
+      "pricing": {
+        "heading": "Priser",
+        "hint": "Fastlæg dine billetpriser.",
+        "savingsDisplay": "Du sparer [[[beløb]]] ({procent} %)"
+      },
+      "availability": {
+        "heading": "Tilgængelighed",
+        "hint": "Angiv, hvornår denne pakke kan bookes."
+      },
+      "review": {
+        "heading": "Gennemgang og offentliggørelse",
+        "hint": "Gennemgå alle oplysninger om pakken, inden du sender den afsted."
+      }
+    },
+    "users": {
+      "title": "Rejsende",
+      "searchPlaceholder": "Søg efter navn, bruger-ID, e-mail eller placering...",
+      "userId": "Bruger-ID",
+      "traveler": "Rejsende",
+      "contact": "Kontakt",
+      "location": "Placering",
+      "tier": {
+        "bronze": "Bronze",
+        "silver": "Sølv",
+        "gold": "Guld",
+        "platinum": "Platin"
+      },
+      "bookingsSpend": "Reservationer / Forbrug",
+      "lastTrip": "Sidste rejse",
+      "status": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
+      },
+      "stats": {
+        "found": "Rejsende fundet",
+        "active": "Aktiv",
+        "combinedSpend": "Samlede udgifter",
+        "page": "Side",
+        "pageValue": "{aktuel} / {samlet}"
+      },
+      "pagination": {
+        "previous": "Forrige",
+        "next": "Næste",
+        "showing": "Side [[[nuværende]]] af [[[i alt]]]"
+      },
+      "details": "Detaljer",
+      "empty": "Der er ingen rejsende, der matcher din søgning.",
+      "notFound": "Rejsende ikke fundet.",
+      "backToList": "Tilbage til rejsende",
+      "accountDetails": "Kontooplysninger",
+      "detail": {
+        "totalBookings": "Samlede bookinger",
+        "lifetimeSpend": "Samlede udgifter i løbet af livet",
+        "primaryCorridor": "Hovedkorridor",
+        "openTickets": "Åbne billetter",
+        "idFaceVerified": "ID + ansigtsverifikation",
+        "joined": "Tilmeldt {dato}",
+        "lastActive": "Sidste aktivitet [[[for løbet tid]]]",
+        "phoneWhatsApp": "{telefon} (forbundet med WhatsApp)",
+        "identityVerification": "Identitetsbekræftelse",
+        "governmentId": "Officielt identitetsbevis ({type})",
+        "faceMatch": "Ansigtsgenkendelse / levende-person-kontrol",
+        "verifiedVia": "Bekræftet via",
+        "verified": "Bekræftet",
+        "notVerified": "Ikke bekræftet",
+        "paymentMethods": "Registrerede betalingsmetoder",
+        "card": "Kort",
+        "defaultCurrency": "Standardvaluta",
+        "recentBookings": "Seneste reservationer",
+        "internalNotes": "Interne noter",
+        "noNotes": "Der er endnu ingen interne noter.",
+        "noteAttribution": "— {forfatter}, {dato}",
+        "bookingStatus": {
+          "confirmed": "Bekræftet",
+          "completed": "Afsluttet",
+          "cancelled": "Aflyst"
+        }
+      },
+      "menu": {
+        "verification": "Verifikation",
+        "rerunIdVerification": "Udfør ID-verifikation igen",
+        "rerunFaceVerification": "Udfør ansigtsverifikation igen",
+        "financial": "Finansielt",
+        "issueRefund": "Udbetale refusion",
+        "holdBookingPayment": "Indbetaling for reservation",
+        "support": "Støtte",
+        "viewAsReadOnly": "Vis som (skrivebeskyttet)",
+        "addInternalNote": "Tilføj intern note",
+        "dataAccount": "Data og konto",
+        "mergeDuplicateAccount": "Sammenlægning af dublerede konti",
+        "exportUserData": "Eksport af brugerdata (GDPR)",
+        "suspendAccount": "Deaktiver konto"
+      }
+    },
+    "experiences": {
+      "title": "Administrer oplevelser",
+      "searchPlaceholder": "Søgeoplevelser",
+      "name": "Navn på oplevelsen",
+      "empty": "Der er ingen oplevelser, der matcher din søgning.",
+      "actions": {
+        "disable": "Deaktiver oplevelse",
+        "enable": "Aktiver oplevelsen",
+        "goTo": "Gå til oplevelsen",
+        "delete": "Slet oplevelse"
+      }
+    },
+    "cars": {
+      "title": "Administrer biler",
+      "searchPlaceholder": "Søg efter biler",
+      "name": "Bilnavn",
+      "empty": "Der er ingen biler, der matcher din søgning.",
+      "actions": {
+        "disable": "Deaktiver bil",
+        "enable": "Aktivér bil",
+        "goTo": "Gå til bilen",
+        "delete": "Slet bil"
+      }
+    },
+    "accommodations": {
+      "title": "Administrer indkvartering",
+      "searchPlaceholder": "Søg efter overnatningssteder",
+      "name": "Navn på overnatningsstedet",
+      "empty": "Der er ingen overnatningssteder, der matcher din søgning.",
+      "actions": {
+        "disable": "Deaktiver tilpasninger",
+        "enable": "Aktiver tilpasning",
+        "goTo": "Gå til overnatningsmuligheder",
+        "delete": "Slet overnatningssted"
+      }
+    },
+    "listings": {
+      "location": "Placering af udbuddet",
+      "vendor": "Leverandør",
+      "bookings": "Reservationer",
+      "ratings": "Bedømmelser",
+      "reviews": "anmeldelser",
+      "activityStatus": "Aktivitetsstatus",
+      "status": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv",
+        "deleted": "Slettet"
+      },
+      "tab": {
+        "active": "Aktive udbud",
+        "deleted": "Slettede annoncer"
+      },
+      "deletedHint": "Her vises de annoncer, der er fjernet fra markedspladsen. Du kan se detaljer eller slette posterne permanent.",
+      "viewDetails": "Se annoncen",
+      "deletedAt": "Sletet den {dato}",
+      "detailTitle": "Oplysninger om udbuddet",
+      "detailHint": "Fuld oversigt over denne annonce, herunder billeder, detaljer, priser og dokumenter.",
+      "detailNotFound": "Denne annonce kunne ikke findes.",
+      "detail": {
+        "backCars": "Tilbage til biler",
+        "backAccommodations": "Tilbage til overnatningsmuligheder",
+        "backExperiences": "Tilbage til oplevelserne"
+      },
+      "detailClose": "Luk"
+    },
+    "vendors": {
+      "title": "Administrer leverandører",
+      "add": "Tilføj leverandør",
+      "searchPlaceholder": "Søg efter navn, leverandør-ID, e-mail eller telefonnummer...",
+      "vendorId": "Leverandør-ID",
+      "name": "Leverandør",
+      "userId": "Bruger-ID",
+      "stats": {
+        "found": "Leverandører fundet",
+        "active": "Aktiv",
+        "combinedRevenue": "Samlet omsætning",
+        "page": "Side",
+        "pageValue": "{aktuel} / {samlet}"
+      },
+      "pagination": {
+        "previous": "Forrige",
+        "next": "Næste",
+        "showing": "Side {aktuel} af [[[i alt]]]"
+      },
+      "contactInfo": "Kontaktoplysninger",
+      "listings": "Annoncer",
+      "commission": "Kommissionen",
+      "commissionValue": "{vurdering}%",
+      "status": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
+      },
+      "revenue": "Omsætning",
+      "rating": "Bedømmelse",
+      "reviews": "anmeldelser",
+      "details": "Detaljer",
+      "empty": "Der er ingen leverandører, der matcher din søgning.",
+      "notFound": "Leverandøren blev ikke fundet.",
+      "backToList": "Tilbage til leverandører",
+      "accountDetails": "Kontooplysninger",
+      "joined": "Tilmeldt",
+      "detail": {
+        "activeListings": "Aktive udbud",
+        "completedBookings": "Afsluttede reservationer",
+        "averageRating": "Gennemsnitlig vurdering",
+        "openStrikes": "Åbne strejker",
+        "category": "Kategori",
+        "onboarded": "Ansat {dato}",
+        "accountDocuments": "Kontooplysninger",
+        "listingDocuments": "Dokumenter i listen — {kategori}",
+        "payoutSummary": "Oversigt over udbetalinger",
+        "pendingPayout": "Udbetaling afventer",
+        "lastPayout": "Sidste udbetaling",
+        "internalNotes": "Interne noter",
+        "noNotes": "Der er endnu ingen interne noter.",
+        "noteAttribution": "— {forfatter}, {dato}",
+        "viewListings": "Se annoncer",
+        "suspendVendor": "Suspender leverandør",
+        "documentStatus": {
+          "verified": "Bekræftet",
+          "pendingReview": "Afventer gennemgang",
+          "signed": "Underskrevet",
+          "notVerified": "Ikke bekræftet"
+        }
+      },
+      "menu": {
+        "verification": "Verifikation",
+        "approvePendingListing": "Godkend ventende opslag",
+        "requestAdditionalDocuments": "Anmod om yderligere dokumenter",
+        "upgradeToTier": "Opgrader til niveau {tier}",
+        "standingTrust": "Stående & tillid",
+        "grantInstantBook": "Tildel »Instant Book«-rettighed",
+        "addStrike": "Tilføj markering / internt flag",
+        "clearStrike": "Annullere en strejke",
+        "financial": "Finansielt",
+        "holdPendingPayout": "Udsæt udbetaling",
+        "adjustCommissionRate": "Juster provisionssatsen",
+        "communication": "Kommunikation",
+        "contactVendor": "Kontakt leverandøren",
+        "addInternalNote": "Tilføj intern note",
+        "account": "Konto",
+        "suspendAccount": "Deaktiver konto",
+        "banPermanently": "Permanent udelukkelse"
+      },
+      "requestDocumentsModal": {
+        "title": "Anmod om yderligere dokumenter",
+        "subtitle": "Send en anmodning om et dokument til [[[leverandør]]].",
+        "documentLabel": "Vælg dokument",
+        "documentPlaceholder": "Vælg et dokument",
+        "otherOption": "Andet (ikke anført)",
+        "customDocumentLabel": "Indtast dokumentets navn",
+        "customDocumentPlaceholder": "Indtast dokumentets navn",
+        "submit": "Send anmodning",
+        "cancel": "Annuller"
+      },
+      "confirm": {
+        "cancel": "Annuller"
+      },
+      "confirmSuspend": {
+        "title": "Er du sikker?",
+        "message": "Du er ved at suspendere [[[leverandør]]]. De vil miste adgangen til deres konto, indtil den genaktiveres."
+      },
+      "confirmBan": {
+        "title": "Er du sikker?",
+        "message": "Du er ved at udelukke {vendor} permanent. Denne handling kan ikke fortrydes."
+      },
+      "internalNoteModal": {
+        "title": "Tilføj intern note",
+        "subtitle": "Tilføj en bemærkning eller en note til [[[leverandør]]].",
+        "label": "Observation",
+        "placeholder": "Skriv din observation eller bemærkning her...",
+        "submit": "Gem note"
+      },
+      "experiences": "Oplevelser",
+      "earnings": "Samlet indtjening"
+    },
+    "bookings": {
+      "title": "Reservationer",
+      "subtitle": "Alle bookinger inden for flyrejser, biler, overnatninger og oplevelser — uanset om de er foretaget via appen, på nettet eller manuelt.",
+      "create": "Opret reservation",
+      "searchPlaceholder": "Søg efter kunde, leverandør eller reservations-ID...",
+      "empty": "Der er ingen bookinger, der matcher dine filtre.",
+      "guests": "gæster",
+      "vendor": "Leverandør",
+      "contactCustomer": "Kontakt kundeservice",
+      "contactVendor": "Kontakt leverandøren",
+      "addInternalNote": "Tilføj intern note",
+      "partialRefund": "Delvis refusion",
+      "cancelRefund": "Annullering og refusion",
+      "flagDispute": "Marker som tvist",
+      "saveChanges": "Gem ændringer",
+      "stats": {
+        "upcoming": "Kommende (7 dage)",
+        "awaiting": "Afventer bekræftelse",
+        "confirmed": "Bekræftet",
+        "disputed": "Omstridt / markeret",
+        "totalMonth": "I alt denne måned"
+      },
+      "product": {
+        "all": "Alle produkttyper",
+        "flights": "Flyrejser",
+        "cars": "Biler",
+        "accommodations": "Ophold",
+        "experiences": "Oplevelser"
+      },
+      "source": {
+        "all": "Alle kilder",
+        "website": "Hjemmeside",
+        "mobileApp": "Mobilapp",
+        "admin": "Oprettet af admin"
+      },
+      "dateRange": {
+        "label": "Datointerval",
+        "day": "1 dag",
+        "week": "1 uge",
+        "month": "1 måned",
+        "sixMonths": "6 måneder",
+        "year": "1 år",
+        "all": "Alle"
+      },
+      "filter": {
+        "all": "Alle ({antal})",
+        "upcoming": "Kommende ({antal})",
+        "awaiting": "Afventer bekræftelse ({antal})",
+        "confirmed": "Bekræftet ({antal})",
+        "completed": "Afsluttet ({antal})",
+        "cancelled": "Annulleret ({antal})",
+        "disputed": "Omstridt ({antal})"
+      },
+      "status": {
+        "confirmed": "Bekræftet",
+        "awaiting": "Afventer bekræftelse",
+        "cancelled": "Aflyst",
+        "completed": "Afsluttet",
+        "disputed": "Omstridt"
+      },
+      "sidebar": {
+        "customer": "Kunde",
+        "source": "Kilde: {kilde}",
+        "vendor": "Leverandør",
+        "bookingDetails": "Oplysninger om reservationen",
+        "payment": "Betaling",
+        "timeline": "Tidslinje",
+        "name": "Navn",
+        "contact": "Kontakt",
+        "whatsapp": "WhatsApp",
+        "assignedTo": "Tildelt til",
+        "vendorContact": "Kontaktoplysninger for leverandøren",
+        "checkIn": "Indtjekningsdato",
+        "checkOut": "Afrejsedato",
+        "amount": "Beløb",
+        "paymentStatus": "Status",
+        "chargedCurrency": "Valuta, der opkræves"
+      },
+      "createModal": {
+        "title": "Opret reservation",
+        "subtitle": "Opret en reservation på vegne af en kunde.",
+        "infoBannerPrefix": "Denne reservation vil blive mærket",
+        "infoBannerSource": "Kilde: Oprettet af admin",
+        "infoBannerSuffix": "og vil fremgå på kundens konto og i appen på samme måde som en selvbetjeningsreservation.",
+        "productType": "Produkttype",
+        "product": {
+          "accommodations": "Indkvartering",
+          "flights": "Flyrejser",
+          "cars": "Biler",
+          "experiences": "Oplevelser"
+        },
+        "customer": "Kunde",
+        "customerPlaceholder": "Søg efter eksisterende kunder efter navn, e-mail eller telefonnummer...",
+        "vendorListing": "Leverandør / annonce",
+        "vendorPlaceholder": "Søg efter leverandør eller annonce...",
+        "startDate": "Startdato",
+        "endDate": "Afslutningsdato",
+        "guestsUnits": "Gæster / boliger",
+        "guestsPlaceholder": "f.eks. 2",
+        "totalAmount": "Samlet beløb",
+        "amountPlaceholder": "NGN",
+        "paymentStatus": "Betalingsstatus",
+        "payment": {
+          "sendLink": "Send betalingslink til kunden",
+          "paidInFull": "Markér som fuldt betalt",
+          "pending": "Betaling afventer — der er ikke sendt noget link"
+        },
+        "internalNote": "Intern bemærkning",
+        "internalNotePlaceholder": "f.eks. reserveret via en forespørgsel på WhatsApp, hvor kunden bad om et værelse i stueetagen",
+        "cancel": "Annuller",
+        "submit": "Opret reservation"
+      }
+    },
+    "payouts": {
+      "title": "Udbetalinger",
+      "subtitle": "Leverandørernes indtægter på tværs af alle kategorier, opdelt efter afregningsperiode.",
+      "searchPlaceholder": "Søg efter leverandørnavn eller referencenummer...",
+      "pendingCount": "{count} udestående udbetalinger",
+      "markComplete": "Markér som færdig",
+      "contactVendor": "Kontakt leverandøren",
+      "decline": "Fald",
+      "empty": "Der er ingen resultater, der matcher din søgning.",
+      "requested": "Anmodet {dato}",
+      "periodLabel": "Periode: {periode}",
+      "listBookingsBank": "{antal} reservationer · {bank} {konto}",
+      "netPayoutToVendor": "Nettobetaling til leverandøren",
+      "grossEarnings": "Bruttoindtægter fra bookinger",
+      "platformCommission": "Platformsprovision ({sats} %)",
+      "netPayout": "Nettoudbetaling",
+      "paymentDestination": "Betalingsmodtager",
+      "bank": "Bank",
+      "accountNumber": "Kontonummer",
+      "accountName": "Kontonavn",
+      "payoutMethod": "Udbetalingsmetode",
+      "associatedBookings": "Relaterede bookinger ({antal})",
+      "internalNote": "Intern bemærkning",
+      "noteAttribution": "— {forfatter}, {dato}",
+      "period": {
+        "thisMonth": "Denne måned — juli 2026",
+        "lastMonth": "Sidste måned — juni 2026",
+        "quarter": "Dette kvartal — 2. kvartal 2026"
+      },
+      "stats": {
+        "totalPeriod": "Samlet udbetaling — periode",
+        "totalVendors": "Hos {count} leverandører",
+        "pending": "Afventer",
+        "pendingSubtitle": "{count} udbetalinger, der afventer behandling",
+        "completed": "Afsluttet",
+        "completedSubtitle": "{count} udbetalinger er afregnet",
+        "declinedFailed": "Afvist / Mislykket",
+        "declinedFailedSubtitle": "{afvist} afvist · {mislykket} mislykket overførsel"
+      },
+      "filter": {
+        "all": "Alle ({antal})",
+        "pending": "Afventer ({antal})",
+        "completed": "Afsluttet ({antal})",
+        "declined": "Afvist ({antal})",
+        "failed": "Mislykkedes ({count})"
+      },
+      "status": {
+        "pending": "Afventer",
+        "completed": "Afsluttet",
+        "declined": "Afvist",
+        "failed": "Mislykket",
+        "failedTransfer": "Overførslen mislykkedes"
+      }
+    },
+    "reviews": {
+      "title": "Moderering af anmeldelser",
+      "category": {
+        "unanswered": "Ubesvaret",
+        "responseRequired": "Svar påkrævet",
+        "flagged": "Markeret",
+        "deleted": "Slettet",
+        "published": "Udgivet"
+      },
+      "selectAll": "Vælg alt",
+      "deselectAll": "Fjern markeringen af alle",
+      "bulkPublish": "Udgiv det valgte",
+      "bulkFlag": "Flag valgt",
+      "bulkResponseRequired": "Svar ønskes",
+      "bulkDelete": "Slet det markerede",
+      "actionsGuideTitle": "Hvad betyder disse handlinger?",
+      "actionsGuide": {
+        "publish": "Udgiv — Gør anmeldelsen synlig på den offentlige oversigtsside.",
+        "flag": "Marker — Markér anmeldelsen til opfølgning (upassende eller mistænkeligt indhold).",
+        "delete": "Slet — Fjern anmeldelsen fra det offentlige område. Slettede anmeldelser vises under fanen »Slettet«.",
+        "responseRequired": "Svar påkrævet — Angiv, at der kræves et svar fra en leverandør eller administrator.",
+        "clearResponseRequired": "Der kræves et klart svar — Fjern markeringen, når der er blevet offentliggjort et officielt svar."
+      },
+      "selectReview": "Vælg anmeldelse af {titel}",
+      "unansweredBadge": "Ubesvaret",
+      "responseRequiredBadge": "Svar påkrævet",
+      "officialResponse": "Officielt svar",
+      "empty": "Der er ingen anmeldelser i denne kategori.",
+      "flag": "Flag",
+      "responseRequired": "Svar påkrævet",
+      "clearResponseRequired": "Der kræves et klart svar",
+      "delete": "Slet",
+      "hide": "Skjul",
+      "publish": "Udgiv",
+      "respondAsSynkAfrica": "Svar som SynkAfrica",
+      "responsePlaceholder": "Officielt svar, der kan ses af gæster og leverandører...",
+      "photosLabel": "Gæstebilleder",
+      "status": {
+        "published": "Udgivet",
+        "flagged": "Markeret",
+        "deleted": "Slettet",
+        "hidden": "Skjult"
+      }
+    },
+    "reports": {
+      "title": "Rapporter",
+      "totalRevenue": "Samlet omsætning (måned)",
+      "totalBookings": "Samlede bookinger (måned)",
+      "topExperience": "En fantastisk oplevelse",
+      "activeVendors": "Aktive leverandører",
+      "popularExperiences": "Populære oplevelser",
+      "bookings": "reservationer",
+      "metric": "Metrisk",
+      "value": "Værdi",
+      "experience": "Erfaring",
+      "exportRevenue": "Eksportindtægter (CSV)",
+      "exportBookings": "Eksporter bookinger som CSV-fil"
+    },
+    "support": {
+      "title": "Supportanmodninger",
+      "subtitle": "Gennemgå supportanmodninger fra brugere og leverandører, opdatere status på supportanmodningerne og sende officielle svar.",
+      "tab": {
+        "users": "Brugere",
+        "vendors": "Leverandører"
+      },
+      "user": "Bruger",
+      "vendor": "Leverandør",
+      "empty": "Der er ingen billetter, der matcher dette filter.",
+      "adminResponse": "Svar fra administratoren",
+      "previousResponse": "Forrige svar",
+      "sendResponse": "Send svar"
+    }
+  },
+  "vendor": {
+    "nav": {
+      "workspace": "Arbejdsområde",
+      "account": "Konto",
+      "dashboard": "Dashboard",
+      "listings": "Annoncer",
+      "bookings": "Reservationer",
+      "earnings": "Indtjening",
+      "notifications": "Meddelelser",
+      "businessProfile": "Virksomhedsprofil",
+      "settings": "Indstillinger",
+      "support": "Støtte",
+      "logOut": "Log ud",
+      "openMenu": "Åbn menu",
+      "closeMenu": "Luk menu"
+    },
+    "header": {
+      "verifiedVendor": "Godkendt leverandør",
+      "unverifiedVendor": "Ikke-verificeret leverandør",
+      "pendingVendor": "Bekræftelse afventes"
+    },
+    "signup": {
+      "title": "Opret din leverandørkonto",
+      "subtitle": "Bliv en del af SynkAfrica, og begynd at udbyde dine biler, overnatningssteder og oplevelser til rejsende i hele Afrika.",
+      "alreadyHaveAccount": "Har du allerede en leverandørkonto?",
+      "signIn": "Log ind",
+      "progressLabel": "Status for leverandørregistrering",
+      "steps": {
+        "business": "Virksomheds- og ejeroplysninger",
+        "security": "Sikkerhed og verifikation",
+        "identity": "Identitetsbekræftelse"
+      },
+      "cancel": "Annuller",
+      "back": "Tilbage",
+      "continue": "Fortsæt",
+      "createAccount": "Opret konto",
+      "completeRequiredFields": "Udfyld de obligatoriske felter: {felter}",
+      "securityRequired": "Bekræft din telefon med en engangskode (OTP), og opret en gyldig adgangskode for at fortsætte.",
+      "identityRequired": "Upload dit officielle ID-kort, og accepter vilkårene for at oprette din konto.",
+      "sections": {
+        "businessInfo": "Virksomhedsoplysninger",
+        "businessInfoHint": "Fortæl os om din virksomhed.",
+        "ownerInfo": "Oplysninger om ejeren",
+        "ownerInfoHint": "Oplysninger om virksomhedsejeren eller den primære kontaktperson.",
+        "phoneVerification": "Telefonverifikation",
+        "phoneVerificationHint": "Vi sender en engangskode til det telefonnummer, du har angivet.",
+        "accountSecurity": "Konto-sikkerhed",
+        "accountSecurityHint": "Opret en stærk adgangskode til din leverandørkonto.",
+        "governmentId": "Officielt udstedt identitetsbevis",
+        "governmentIdHint": "Upload et gyldigt pas, kørekort eller NIN-bevis til identitetsbekræftelse."
+      },
+      "fields": {
+        "businessName": "Virksomhedens navn",
+        "businessType": "Virksomhedstype",
+        "cacRegistrationNumber": "CAC-registreringsnummer",
+        "companyType": "Virksomhedstype",
+        "businessAddress": "Virksomhedsadresse",
+        "ownerFullName": "Ejers fulde navn",
+        "ownerEmail": "E-mail-adresse",
+        "phoneNumber": "Telefonnummer",
+        "dateOfBirth": "Fødselsdato",
+        "password": "Adgangskode",
+        "confirmPassword": "Bekræft adgangskode"
+      },
+      "placeholders": {
+        "companyType": "Vælg virksomhedstype",
+        "businessName": "f.eks. Coastal Trails NG",
+        "businessType": "Vælg virksomhedstype",
+        "cacRegistrationNumber": "f.eks. RC1234567",
+        "businessAddress": "Gade, by, delstat",
+        "ownerFullName": "Fuldt juridisk navn",
+        "ownerEmail": "dig@business.com",
+        "phoneNumber": "7812345678",
+        "password": "Opret en adgangskode",
+        "confirmPassword": "Indtast din adgangskode igen"
+      },
+      "sendOtp": "Send engangskode",
+      "resendOtp": "Send OTP igen",
+      "enterOtp": "Indtast engangskode",
+      "resendIn": "Send igen om 00:{sekunder}",
+      "otpVerified": "Telefonnummeret er bekræftet.",
+      "passwordRules": {
+        "minLength": "Mindst 8 tegn",
+        "hasNumber": "Omfatter et antal",
+        "hasUppercase": "Indeholder et stort bogstav"
+      },
+      "passwordMismatch": "Adgangskoderne stemmer ikke overens.",
+      "togglePasswordVisibility": "Skift mellem at vise og skjule adgangskoden",
+      "uploadId": "Træk og slip dit ID her",
+      "uploadIdHint": "JPG, PNG eller PDF (maks. 5 MB)",
+      "chooseFile": "Vælg fil",
+      "idUploaded": "Dokumentet er uploadet",
+      "idUploadFailed": "Uploaden mislykkedes — prøv venligst igen.",
+      "removeId": "Fjern ID",
+      "idPrivacyNote": "Dit ID opbevares sikkert og bruges udelukkende til identifikationsformål. Vi videregiver aldrig dine personlige dokumenter til tredjeparter.",
+      "securityBanner": {
+        "title": "Dine oplysninger er i sikre hænder hos os",
+        "message": "Vi anvender sikkerhedsforanstaltninger, der overholder branchestandarden, for at beskytte dine data og sikre din konto."
+      },
+      "agreeTermsPrefix": "Jeg accepterer",
+      "termsOfService": "Brugsbetingelser",
+      "and": "og",
+      "privacyPolicy": "Fortrolighedspolitik"
+    },
+    "login": {
+      "title": "Log ind som forhandler",
+      "intro": "Log ind på din SynkAfrica-leverandørkonto for at administrere annoncer, bookinger og indtægter.",
+      "emailPlaceholder": "Indtast din leverandørs e-mailadresse",
+      "signInGoogle": "Log ind med Google",
+      "noAccount": "Har du ikke en leverandørkonto?",
+      "signUp": "Tilmeld dig"
+    },
+    "verificationNotice": {
+      "unverified": {
+        "title": "Bekræftelse påkrævet",
+        "message": "Gennemfør din leverandørverifikation for at kunne offentliggøre annoncer og modtage udbetalinger."
+      },
+      "pending": {
+        "title": "Verificering i gang",
+        "message": "Din verifikation er under behandling. Visse funktioner kan forblive begrænsede, indtil den er godkendt."
+      },
+      "completeVerification": "Fuldstændig verifikation"
+    },
+    "notifications": {
+      "filter": {
+        "label": "Filtrer meddelelser",
+        "all": "Alle",
+        "newBooking": "Nye bookinger",
+        "bookingReminder": "24-timers påmindelser",
+        "payoutConfirmation": "Udbetalinger",
+        "adminMessage": "Admin"
+      },
+      "type": {
+        "newBooking": "Ny reservation",
+        "bookingReminder": "24-timers påmindelse",
+        "payoutConfirmation": "Udbetaling",
+        "adminMessage": "Meddelelse fra administratoren"
+      },
+      "unreadCount": "{count} ulæste meddelelser",
+      "allCaughtUp": "Nu er du helt ajour.",
+      "markRead": "Marker som læst",
+      "markAllRead": "Marker alle som læst",
+      "empty": "Der er ingen meddelelser i denne kategori.",
+      "time": {
+        "justNow": "Lige nu",
+        "hoursAgo": "{count} timer siden"
+      },
+      "sample": {
+        "newBooking": {
+          "title": "Der er modtaget en ny reservation",
+          "message": "Amara har reserveret en solnedgangskrydstogt på Lagos-lagunen den 25. juli · 4 gæster. Bekræft eller afvis inden for 24 timer."
+        },
+        "newBooking2": {
+          "title": "Der er modtaget en ny reservation",
+          "message": "Chidi har reserveret Lekki Garden Suites til den 3. august · 2 gæster."
+        },
+        "reminder": {
+          "title": "Reservation inden for 24 timer",
+          "message": "Påmindelse: Solnedgangstur på Lagos-lagunen med Fatima i morgen kl. 17.30 · 6 gæster."
+        },
+        "reminder2": {
+          "title": "Reservation inden for 24 timer",
+          "message": "Påmindelse: Udlejning af en Toyota Camry 2021 hos Emeka i morgen kl. 9.00."
+        },
+        "payout": {
+          "title": "Udbetaling bekræftet",
+          "message": "Der er overført 200.000 NGN til din GTBank-konto, der slutter på 4521."
+        },
+        "payout2": {
+          "title": "Udbetaling bekræftet",
+          "message": "En udbetaling på 150.000 NGN til Access Bank med slutnummer 8834 er blevet gennemført uden problemer."
+        },
+        "admin": {
+          "title": "Opdatering af retningslinjer fra Synkafrica",
+          "message": "De opdaterede retningslinjer for udbydere vedrørende oplevelsesannoncer er nu tilgængelige. Gennemgå dem venligst senest den 1. august."
+        },
+        "admin2": {
+          "title": "Oplysningerne er godkendt",
+          "message": "Din annonce for »Lagos Lagoon Sunset Cruise« er nu online på Synkafrica."
+        }
+      }
+    },
+    "dashboard": {
+      "welcomeBack": "Velkommen tilbage,",
+      "addListing": "Tilføj annonce",
+      "period": {
+        "label": "Måleperiode",
+        "day": "En dag",
+        "week": "En uge",
+        "month": "En måned",
+        "sixMonths": "Seks måneder",
+        "year": "Et år"
+      },
+      "stats": {
+        "liveListings": "Aktuelle udbud",
+        "newBookings": "Nye bookinger",
+        "earnings": "Indtjening",
+        "pendingApproval": "Afventer godkendelse"
+      },
+      "goToBookings": "Gå til bookinger",
+      "yourListings": "Dine annoncer",
+      "seeAll": "Se alt",
+      "status": {
+        "live": "Live-oversigt",
+        "pending": "Afventer...",
+        "paused": "Sat på pause",
+        "draft": "Udkast"
+      },
+      "editListing": "Rediger opslag",
+      "deleteListing": "Slet annoncen",
+      "pauseListing": "Sæt visningen på pause",
+      "playListing": "Oversigt over CV’er",
+      "deleteListingModal": {
+        "title": "Skal annoncen slettes?",
+        "message": "Er du sikker på, at du vil slette \"{title}\"? Denne handling kan ikke fortrydes.",
+        "confirm": "Slet annonce",
+        "cancel": "Annuller"
+      },
+      "category": {
+        "accommodations": "Overnatningsmuligheder",
+        "carRentals": "Biludlejning",
+        "tours": "Ture",
+        "toursExperiences": "Ture og oplevelser"
+      }
+    },
+    "businessProfile": {
+      "businessName": "Virksomhedsnavn",
+      "businessNameHint": "Internt navn, der anvendes i udbetalinger og leverandørregistreringer. Vises ikke i offentlige oversigter.",
+      "internalNameLabel": "Internt firmanavn",
+      "contactDetails": "Kontaktoplysninger",
+      "contactDetailsHint": "Sådan kontakter Synkafrica og gæsterne dig for at få hjælp til bookingen.",
+      "phone": "Telefonnummer",
+      "email": "E-mail-adresse",
+      "address": "Virksomhedsadresse",
+      "payoutAccount": "Bankkonto til udbetalinger",
+      "payoutAccountHint": "Udbetalinger fra indtægterne overføres til denne konto.",
+      "bankName": "Bankens navn",
+      "accountNumber": "Kontonummer",
+      "accountNumberLocked": "Kontonummeret kan kun ændres hver [[[måneder]]] måneder. Næste ændring er mulig den {dato}.",
+      "accountName": "Kontonavn",
+      "bank": {
+        "zenith": "Zenith Bank",
+        "firstBank": "Første bank"
+      },
+      "passwordUpdate": "Opdatering af adgangskode",
+      "passwordUpdateHint": "Vælg en stærk adgangskode, som du ikke bruger andre steder.",
+      "currentPassword": "Nuværende adgangskode",
+      "newPassword": "Ny adgangskode",
+      "confirmPassword": "Bekræft den nye adgangskode",
+      "passwordMismatch": "De nye adgangskoder stemmer ikke overens.",
+      "updatePassword": "Opdater adgangskode",
+      "passwordUpdated": "Adgangskoden er blevet opdateret.",
+      "saveChanges": "Gem ændringer",
+      "saved": "Gemt.",
+      "rejected": {
+        "title": "Ansøgningen er ikke godkendt",
+        "noReason": "En administrator har ikke godkendt din ansøgning. Ret dine oplysninger og dokumenter nedenfor, og indsend dem derefter igen.",
+        "resubmit": "Indsend igen til gennemgang",
+        "resubmitting": "Indsender igen…",
+        "resubmitted": "Indsendt på ny. En administrator vil gennemgå din ansøgning igen.",
+        "resubmitFailed": "Det var ikke muligt at indsende igen. Prøv igen."
+      },
+      "cac": {
+        "title": "CAC-registrering",
+        "hint": "Oplysningerne er blevet sammenlignet med CAC-registret. Du kan rette disse oplysninger, indtil kontrollen er godkendt.",
+        "number": "CAC-registreringsnummer",
+        "companyType": "Virksomhedstype",
+        "companyTypePlaceholder": "Vælg virksomhedstype",
+        "status": {
+          "verified": "Bekræftet",
+          "failed": "Ikke bekræftet",
+          "unverified": "Afventer kontrol"
+        },
+        "verifiedAs": "Findes i CAC-registret under navnet {name}.",
+        "failedHint": "CAC-registret fandt ingen match med disse oplysninger. Ret dem, og gem for at prøve igen.",
+        "pendingHint": "Når du gemmer, udføres CAC-kontrollen igen. Opdater siden om et øjeblik for at se resultatet.",
+        "lockedHint": "Bekræftede oplysninger kan ikke ændres her. Kontakt support, hvis der er noget galt."
+      },
+      "documents": {
+        "title": "Dokumenter og verifikation",
+        "subtitle": "Dokumenter på virksomhedsniveau gælder for hele din konto. Der kræves køretøjsdokumenter for hver annonce, før den kan offentliggøres.",
+        "businessSection": "Forretningsdokument",
+        "business": {
+          "cac": "Stiftelsesattest (CAC)"
+        },
+        "uploadedMeta": "Uploadet {dato} · {filnavn}",
+        "view": "Vis",
+        "vehicleSection": "Køretøjsdokumenter · {antal} annoncer",
+        "vehicleLegend": "Forsikring · Teknisk syn · Ejerskabsbevis",
+        "type": {
+          "insurance": "Forsikringsbevis",
+          "roadworthiness": "Trafiksikkerhedscertifikat",
+          "ownership": "Ejerskabsbevis"
+        },
+        "status": {
+          "verified": "Bekræftet",
+          "rejected": "Afvist",
+          "pending": "Afventer",
+          "notUploaded": "Ikke uploadet"
+        },
+        "listingStatus": {
+          "allVerified": "Alle er verificeret",
+          "actionNeeded": "Der skal handles",
+          "notStarted": "Ikke påbegyndt",
+          "inProgress": "I gang"
+        },
+        "reupload": "Upload igen",
+        "upload": "Upload",
+        "rejection": {
+          "plateMismatch": "Dokumentnavnet stemmer ikke overens med det registrerede nummerpladenummer. Upload venligst igen køretøjsregistreringsbeviset, der svarer til ABJ-771-KD."
+        }
+      }
+    },
+    "support": {
+      "helpBanner": "Indsend en klage eller anmod om hjælp fra Synkafricas kundeserviceteam. Vi svarer normalt inden for 1–2 arbejdsdage.",
+      "helpBannerEmail": "Opdateringer vil blive sendt til {email}.",
+      "openTickets": "{count} åbne sager",
+      "tabs": {
+        "label": "Supportsektioner"
+      },
+      "createTicket": "Opret en supportanmodning",
+      "createTicketHint": "Beskriv dit problem så detaljeret som muligt, så vi kan løse det hurtigt.",
+      "subject": "Emne",
+      "subjectPlaceholder": "Kort beskrivelse af dit problem",
+      "category": {
+        "booking": "Problem med reservationen",
+        "payout": "Udbetaling og indtjening",
+        "listing": "Oversigt og tilgængelighed",
+        "account": "Konto og profil",
+        "complaint": "Klage",
+        "other": "Andet"
+      },
+      "priority": {
+        "low": "Lav",
+        "medium": "Mellem",
+        "high": "Høj",
+        "urgent": "Haster"
+      },
+      "priorityHint": "Brug kun »Urgent« i forbindelse med tidsfølsomme problemer vedrørende bookinger eller udbetalinger.",
+      "bookingReference": "Reservationsnummer",
+      "bookingReferencePlaceholder": "f.eks. VB-3 eller ordrenummer (valgfrit)",
+      "description": "Beskrivelse",
+      "descriptionPlaceholder": "Forklar, hvad der skete, hvornår det skete, og hvilket resultat du ønsker.",
+      "submitTicket": "Indsend en henvendelse",
+      "ticketSubmitted": "Ticket {nummer} er indsendt. Vores team vil snart tage kontakt.",
+      "responseTime": "Obligatoriske felter er markeret med *.",
+      "yourTickets": "Dine billetter",
+      "yourTicketsHint": "Hold styr på de klager og supportanmodninger, du har indsendt.",
+      "filter": {
+        "label": "Filtrer billetter efter status",
+        "all": "Alle"
+      },
+      "status": {
+        "open": "Åben",
+        "inProgress": "I gang",
+        "resolved": "Beslutning",
+        "closed": "Lukket"
+      },
+      "updated": "Opdateret",
+      "created": "Oprettet",
+      "emptyTickets": "Der er ingen billetter, der matcher dette filter.",
+      "loading": "Indlæser billetter…",
+      "loadFailed": "Det var ikke muligt at indlæse dine billetter. Prøv venligst igen.",
+      "submitFailed": "Det var ikke muligt at indsende din henvendelse. Prøv venligst igen.",
+      "viewConversation": "Vis samtale",
+      "backToTickets": "Tilbage til billetterne",
+      "conversation": "Samtale",
+      "you": "Du",
+      "supportTeam": "Supportteamet",
+      "replyPlaceholder": "Skriv dit svar…",
+      "sendReply": "Send svar",
+      "sending": "Sender…",
+      "replyFailed": "Det var ikke muligt at sende dit svar. Prøv venligst igen."
+    },
+    "earnings": {
+      "availableBalance": "Tilgængelig saldo",
+      "lifetimeEarnings": "Samlet indtjening i løbet af arbejdslivet",
+      "transactionHistory": "Transaktionshistorik",
+      "withdrawFunds": "Hæv penge",
+      "amountToWithdraw": "Beløb, der skal hæves",
+      "selectBankAccount": "Vælg bankkonto",
+      "payoutAccount": "Udbetalingskonto",
+      "noBankAccount": "Der er endnu ikke tilføjet nogen udbetalingskonto.",
+      "addBankAccount": "Tilføj en bankkonto under Virksomhedsprofil →",
+      "availableHint": "Tilgængelig:",
+      "processingNote": "Udbetalinger behandles inden for 1–2 hverdage.",
+      "paymentFlowTitle": "Betalings- og udbetalingspolitik",
+      "paymentFlowInstant": "Udbetalinger på ₦200.000 eller derunder behandles automatisk efter bekræftelse.",
+      "paymentFlowApproval": "Udbetalinger på over ₦200.000 kræver godkendelse fra superadministratoren.",
+      "paymentFlowAuth": "Ved udbetaling kræves der en transaktions-PIN og en OTP for beløb over ₦200.000.",
+      "withdrawalModal": {
+        "title": "Bekræft udbetaling",
+        "pin": "Transaktions-PIN-kode",
+        "otp": "OTP-kode",
+        "sendOtp": "Send engangskode",
+        "submit": "Bekræft udbetaling",
+        "pendingApproval": "Denne udbetaling kræver godkendelse fra superadministratoren. Du vil blive underrettet, så snart den er godkendt.",
+        "cancel": "Annuller"
+      },
+      "status": {
+        "completed": "Afsluttet",
+        "pending": "Afventer",
+        "failed": "Mislykket"
+      },
+      "transaction": {
+        "bookingPayment": "Betaling for reservationen",
+        "withdrawal": "Tilbagetrækning",
+        "platformFee": "Platformsgebyr",
+        "refund": "Refusion"
+      },
+      "bank": {
+        "gtbank": "GTBank",
+        "access": "Access Bank"
+      },
+      "duration": {
+        "label": "Regnskabsperiode",
+        "daily": "Dagligt",
+        "weekly": "Ugentligt",
+        "monthly": "Månedligt",
+        "all": "Alle"
+      },
+      "commissionSplit": "Fordeling af provision",
+      "commissionSplitHint": "Indtægterne fra bookinger fordeles med [[[leverandør]]] % til dig og {platform} % til Synkafrica.",
+      "vendorShare": "Din andel",
+      "platformShare": "Platformsgebyr",
+      "grossRevenue": "Bruttoomsætning",
+      "downloadStatements": "Download redegørelse",
+      "emptyTransactions": "Der er ingen transaktioner for denne periode.",
+      "statement": {
+        "date": "Dato",
+        "title": "Titel",
+        "description": "Beskrivelse",
+        "type": "Type",
+        "amount": "Beløb",
+        "status": "Status"
+      }
+    },
+    "listings": {
+      "detail": {
+        "back": "Tilbage til oversigten",
+        "backToBookings": "Tilbage til bookinger",
+        "heading": "Oplysninger om udbuddet",
+        "hint": "Fuld oversigt over denne annonce, herunder medier, detaljer, priser og dokumenter.",
+        "status": "Status",
+        "category": "Kategori",
+        "rating": "Bedømmelse",
+        "notFound": "Oplysningerne blev ikke fundet."
+      },
+      "bookingAvailability": "Ledige pladser",
+      "filter": {
+        "allCategories": "Alle kategorier",
+        "allStatuses": "Alle statusser",
+        "statusLabel": "Status",
+        "status": {
+          "live": "Levende",
+          "pending": "Afventer",
+          "draft": "Udkast",
+          "paused": "Pauset"
+        },
+        "empty": "Der er ingen resultater, der matcher dine filtre."
+      },
+      "status": {
+        "pendingApproval": "Afventer godkendelse",
+        "paused": "Pauset"
+      },
+      "availability": {
+        "selectListing": "Oversigt",
+        "modeAvailable": "Markér som ledig",
+        "modeBlock": "Blokdatoer",
+        "modeAvailableHint": "Klik på datoerne for at åbne dem for bookinger. Klik igen for at fjerne ledige pladser.",
+        "modeBlockHint": "Klik på datoerne for at blokere bookinger. Klik igen for at ophæve blokeringen.",
+        "legendAvailable": "Tilgængelig",
+        "legendBlocked": "Blokeret",
+        "legendSelected": "Udvalgt",
+        "available": "Tilgængelig",
+        "blocked": "Blokeret",
+        "timeSlots": "Tidsintervaller",
+        "capacity": "Kapacitet",
+        "selectDayHint": "Vælg en dato i kalenderen for at indstille tidsintervaller.",
+        "selectAvailableDay": "Markér denne dato som ledig for at kunne planlægge tidsintervaller.",
+        "blockedDayMessage": "Denne dato er blokeret. Fjern blokeringen for at konfigurere tidsintervaller.",
+        "defaultCapacity": "Standardkapacitet",
+        "defaultCapacityHint": "Gælder for nye ledige datoer og aktiverede tidsintervaller.",
+        "leadTime": "Leveringstid",
+        "leadTimeHint": "Minimumsvarsel, der kræves, før en gæst kan foretage en reservation.",
+        "leadTimeUnitHours": "Åbningstider",
+        "leadTimeUnitDays": "Dage"
+      },
+      "calendar": {
+        "sun": "Søn",
+        "mon": "Man",
+        "tue": "Tir",
+        "wed": "Ons",
+        "thu": "Torsdag",
+        "fri": "Fre",
+        "sat": "Lør",
+        "previousMonth": "Forrige måned",
+        "nextMonth": "Næste måned"
+      }
+    },
+    "bookings": {
+      "tab": {
+        "upcoming": "Kommende begivenheder",
+        "past": "Fortid",
+        "cancelled": "Aflyst",
+        "declined": "Afvist"
+      },
+      "stats": {
+        "awaitingConfirmation": "Afventer bekræftelse",
+        "upcomingConfirmed": "Kommende (bekræftet)",
+        "earningsThisMonth": "Indtægter i denne måned",
+        "responseRate": "Svarprocent (30 dage)"
+      },
+      "searchPlaceholder": "Søg efter gæstens navn eller reservationsnummer...",
+      "allListings": "Alle opslag",
+      "viewModeLabel": "Oversigt over bookinger",
+      "view": {
+        "list": "Liste",
+        "calendar": "Kalender"
+      },
+      "calendarComingSoon": "Kalendervisningen kommer snart.",
+      "respondWithin": "Svar inden for {tid}",
+      "paymentSecured": "Betalingen er gennemført",
+      "messageGuest": "Besked til gæst",
+      "viewListing": "Se annonce",
+      "cancelBooking": "Annuller reservation",
+      "dateRangeLabel": "Filtrer efter datointerval",
+      "dateRange": {
+        "all": "Gennem tiderne",
+        "pastMonth": "Den seneste måned",
+        "past3Months": "De seneste 3 måneder",
+        "past6Months": "De seneste 6 måneder",
+        "pastYear": "Det forløbne år"
+      },
+      "empty": {
+        "upcoming": "Der er ingen kommende bookinger i denne periode.",
+        "past": "Der er ingen tidligere bookinger for denne periode.",
+        "cancelled": "Der er ingen aflyste bookinger for denne periode.",
+        "declined": "Der er ingen aflyste bookinger for denne periode."
+      },
+      "declineModal": {
+        "title": "Afbestil reservation",
+        "subtitle": "Fortæl [[[gæst]]] hvorfor reservationen {reference} afvises.",
+        "reasonLabel": "Årsag til afslaget",
+        "reasonPlaceholder": "Forklar, hvorfor du ikke kan acceptere denne reservation...",
+        "cancel": "Annuller",
+        "submit": "Afvis reservation"
+      },
+      "declineReason": "Årsag til afslag",
+      "deliveryAddress": "Leveringsadresse",
+      "pickupAddress": "Afhentningsadresse",
+      "carMode": {
+        "selfDrive": "Selvkørsel",
+        "withDriver": "Med chauffør"
+      },
+      "calendar": {
+        "selectedDay": "{count} reservation(er) på denne dag",
+        "noBookings": "Der er ingen bookinger denne dag."
+      },
+      "pendingConfirmation": "{count} reservation(er), der afventer din bekræftelse.",
+      "specialRequests": "Særlige ønsker",
+      "confirm": "Bekræft",
+      "decline": "Fald",
+      "markComplete": "Markér som afsluttet",
+      "status": {
+        "awaitingConfirmation": "Afventer bekræftelse",
+        "confirmed": "Bekræftet",
+        "declined": "Afvist",
+        "completed": "Afsluttet",
+        "cancelled": "Aflyst"
+      }
+    },
+    "addListing": {
+      "title": "Tilføj ny annonce",
+      "editTitle": "Rediger oplysningerne",
+      "loadError": "Det var ikke muligt at indlæse denne annonce. Prøv venligst igen.",
+      "subtitle": "Opret en ny annonce, og begynd at nå ud til flere kunder.",
+      "backToListings": "← Tilbage til oversigten",
+      "backToListing": "← Tilbage til oversigten",
+      "progressLabel": "Status for noteringen",
+      "steps": {
+        "carDetails": "Biloplysninger",
+        "accommodationDetails": "Oplysninger om indkvartering",
+        "experienceDetails": "Oplysninger om oplevelsen",
+        "media": "Medier",
+        "pricing": "Priser",
+        "documents": "Dokumenter",
+        "review": "Gennemgang og offentliggørelse"
+      },
+      "whatAreYouListing": "Hvad sælger du?",
+      "category": {
+        "car": {
+          "title": "Bil",
+          "description": "Opret en annonce for en bil til udlejning."
+        },
+        "accommodation": {
+          "title": "Indkvartering",
+          "description": "Angiv et sted at overnatte."
+        },
+        "experience": {
+          "title": "Erfaring",
+          "description": "Opret en aktivitet eller en tur."
+        }
+      },
+      "carDetailsHeading": "Biloplysninger",
+      "accommodationDetailsHeading": "Oplysninger om indkvartering",
+      "experienceDetailsHeading": "Oplysninger om oplevelsen",
+      "experienceType": "Oplevelsestype / Kategori",
+      "experienceTypeSelect": "Vælg type oplevelse",
+      "experienceLocationPlaceholder": "f.eks. Lekki, Lagos, Nigeria",
+      "experienceHighlights": "Højdepunkter / Kort beskrivelse",
+      "experienceHighlightsHint": "En kort og fængende oversigt over, hvad gæsterne kommer til at lave og opleve.",
+      "experienceHighlightsPlaceholder": "Beskriv oplevelsen, hvad der gør den unik, og hvorfor gæsterne vil elske den.",
+      "experienceAvailabilityHeading": "Tilgængelighed",
+      "experienceAvailabilityHint": "Angiv, hvornår din oplevelse er tilgængelig.",
+      "operatingDays": "Åbningsdage",
+      "startTime": "Starttidspunkt",
+      "endTime": "Sluttidspunkt",
+      "experienceScheduleWeekly": "Gentas hver uge",
+      "experienceScheduleWeeklyHint": "Denne oplevelse tilbydes hver uge på udvalgte dage.",
+      "experienceScheduleDateRange": "Brugerdefineret datointerval",
+      "experienceScheduleDateRangeHint": "Angiv et bestemt datointerval for denne oplevelse.",
+      "experienceDateRangeHeading": "Vælg datointerval",
+      "experienceDateRangeHint": "Vælg start- og slutdatoerne for, hvornår denne oplevelse vil være tilgængelig.",
+      "experienceDateRangeStart": "Startdato",
+      "experienceDateRangeEnd": "Afslutningsdato",
+      "additionalInfoSection": "Yderligere oplysninger",
+      "whatsIncludedHint": "Angiv, hvad oplevelsen omfatter.",
+      "includesItemsPlaceholder": "f.eks. udstyr, guide, sikkerhedsudstyr, flaskevand",
+      "whatToBring": "Hvad man skal medbringe / have på",
+      "whatToBringHint": "Fortæl gæsterne, hvad de skal medbringe eller tage på.",
+      "whatToBringPlaceholder": "f.eks. behageligt tøj, lukkede sko, solcreme",
+      "tagInputFooter": "Indtast hvert element, og tryk på Enter",
+      "additionalInformationHeading": "Yderligere oplysninger",
+      "additionalInformationHint": "Tilføj eventuelle andre nyttige oplysninger til dine gæster.",
+      "additionalInformationPlaceholder": "f.eks. aldersbegrænsninger, helbredskrav, afbestillingsbetingelser, oplysninger om mødestedet",
+      "weekday": {
+        "mon": "Man",
+        "tue": "Tir",
+        "wed": "Ons",
+        "thu": "Torsdag",
+        "fri": "Fre",
+        "sat": "Lør",
+        "sun": "Søn"
+      },
+      "carName": "Bilnavn",
+      "carNamePlaceholder": "f.eks. Toyota Highlander 2024",
+      "carModel": "Bilmodel / variant",
+      "carModelPlaceholder": "f.eks. 2,4 L Limited AWD",
+      "transmission": {
+        "automatic": "Automatisk",
+        "manual": "Brugsanvisning"
+      },
+      "year": "År",
+      "yearPlaceholder": "f.eks. 2024",
+      "comesWithDriver": "Leveres der en driver med?",
+      "yes": "Ja",
+      "no": "Nej",
+      "shortDescription": "Kort beskrivelse",
+      "carDescriptionPlaceholder": "Beskriv bilen, dens stand og hvad der er inkluderet for lejeren.",
+      "perksFeatures": "Fordele og funktioner",
+      "perksPlaceholder": "Tilføj hver enkelt fordel, og tryk på Enter",
+      "propertyName": "Ejendomsnavn",
+      "accommodationName": "Navn på overnatningsstedet",
+      "accommodationNamePlaceholder": "f.eks. Oceanview Suites Lekki",
+      "propertyNamePlaceholder": "f.eks. Lekki Garden Suites",
+      "propertyType": "Ejendomstype",
+      "propertyTypeSelect": "Vælg ejendomstype",
+      "propertyTypePlaceholder": "f.eks. lejlighed, villa, hotel",
+      "address": "Adresse",
+      "addressPlaceholder": "Ejendommens fulde adresse",
+      "accommodationLocationPlaceholder": "f.eks. Lekki fase 1, Lagos, Nigeria",
+      "accommodationMaxGuests": "Maks. antal gæster (bolig)",
+      "accommodationMaxGuestsPlaceholder": "f.eks. 12",
+      "checkInTime": "Indtjekningstidspunkt",
+      "checkOutTime": "Udtjekningstidspunkt",
+      "availability": "Tilgængelighed",
+      "availabilityAlways": "Altid tilgængelig",
+      "availabilityDateRange": "Angiv datointerval",
+      "availabilityHint": "Du kan også administrere bestemte datoer i din kalender efter offentliggørelsen.",
+      "popularPerks": "Populære fordele",
+      "popularPerksHint": "Vælg de faciliteter, der findes på din bolig.",
+      "viewAllPerks": "Se alle fordele",
+      "showLessPerks": "Vis mindre",
+      "propertyOwner": "Er du ejeren af ejendommen?",
+      "propertyOwnerYes": "Ja, jeg er ejeren",
+      "propertyOwnerNo": "Nej, jeg er en autoriseret repræsentant",
+      "bedrooms": "Soveværelser",
+      "bathrooms": "Badeværelser",
+      "accommodationDescriptionPlaceholder": "Beskriv kort din bolig, atmosfæren, seværdighederne i nærheden og hvad der gør den til noget særligt.",
+      "amenities": "Faciliteter",
+      "amenitiesPlaceholder": "Tilføj hver enkelt facilitet, og tryk på Enter",
+      "experienceName": "Navn på oplevelsen",
+      "experienceNamePlaceholder": "f.eks. Paintball Adventure Lagos",
+      "location": "Placering",
+      "locationPlaceholder": "f.eks. Victoria Island, Lagos",
+      "duration": "Varighed",
+      "durationPlaceholder": "f.eks. 2 timer",
+      "maxGuests": "Maksimalt antal gæster",
+      "experienceDescriptionPlaceholder": "Beskriv aktiviteten, programmet og hvad gæsterne kan forvente.",
+      "whatsIncluded": "Hvad er inkluderet",
+      "includesPlaceholder": "Indtast hver enkelt post, og tryk på Enter",
+      "mediaHeading": "Billeder i annoncen",
+      "mediaHint": "Upload skarpe billeder eller videoer. Op til 8 filer.",
+      "uploadImages": "Træk og slip billeder eller videoer her, eller klik for at vælge",
+      "uploadImagesHint": "PNG, JPG, WEBP eller MP4 (maks. 10 MB)",
+      "removeImage": "Fjern billede",
+      "mediaSkippedUnsupported": "{count} fil(er) blev sprunget over — formatet understøttes ikke. Brug PNG, JPG, WEBP eller MP4 (HEIC-fotos fra iPhone understøttes endnu ikke).",
+      "mediaSkippedTooLarge": "{count} fil(er) blev sprunget over — hver fil skal være under 10 MB.",
+      "mediaPreviewFailed": "Forhåndsvisning er ikke tilgængelig",
+      "mediaUploading": "Uploader…",
+      "mediaUploadFailed": "Upload mislykkedes",
+      "pickupDeliveryHeading": "Afhentning eller levering",
+      "pickupDeliveryQuestion": "Hvilke overdragelsesmuligheder tilbyder I? Vælg alle relevante muligheder.",
+      "pickupAddress": "Afhentningsadresse",
+      "pickupAddressPlaceholder": "Indtast den adresse, hvor gæsterne kan hente bilen",
+      "clientPickup": "Afhentning hos kunden",
+      "clientPickupHint": "Kunden henter bilen hos dig.",
+      "deliveryDropoff": "Levering / Aflevering",
+      "deliveryDropoffHint": "Du leverer bilen til kunden.",
+      "carPricingHeading": "Lejepriser",
+      "price12hr": "12-timers leje (NGN)",
+      "price24hr": "24-timers leje (NGN)",
+      "priceMultiDay": "Flere dage (pr. dag, NGN)",
+      "driverAddonPrice": "Pris for ekstra chauffør (NGN)",
+      "selfDriveNoPrice": "Selvkørsel valgt — der kræves ingen tillægspris for chauffør.",
+      "deliveryFee": "Leverings-/afleveringsgebyr (NGN)",
+      "clientPickupNoPrice": "Afhentning valgt — der opkræves ikke leveringsgebyr.",
+      "pricingLocationHint": "Du kan angive flere oplysninger om afhentnings- eller leveringsstedet i det næste trin.",
+      "accommodationPricingHeading": "Priser på ophold",
+      "roomTypesPricing": "Værelsestyper og priser",
+      "roomTypesPricingHint": "Angiv de forskellige typer værelser, I tilbyder.",
+      "addRoomType": "Tilføj værelsestype",
+      "addRoomTypeModalTitle": "Tilføj værelsestype",
+      "editRoomTypeModalTitle": "Rediger værelsestype",
+      "saveRoomType": "Gem værelsestype",
+      "roomType": "Værelsestype",
+      "roomTypePlaceholder": "f.eks. Deluxe-suite",
+      "roomDescription": "Beskrivelse",
+      "roomDescriptionPlaceholder": "Beskriv kort denne værelsestype",
+      "roomMaxGuests": "Maks. antal gæster",
+      "roomMaxGuestsPlaceholder": "f.eks. 2",
+      "roomPricePerNight": "Pris (pr. nat)",
+      "roomTypesEmptyTitle": "Der er endnu ikke tilføjet nogen værelsestyper",
+      "roomTypesEmptyHint": "Klik på »Tilføj værelsestype« for at komme i gang.",
+      "actions": "Handlinger",
+      "edit": "Rediger",
+      "delete": "Slet",
+      "nightlyRate": "Pris pr. overnatning (NGN)",
+      "cleaningFee": "Rengøringsgebyr (NGN)",
+      "experiencePricingHeading": "Priser",
+      "experiencePricingHint": "Fastlæg dine billetpriser.",
+      "singleTicketPrice": "Pris for enkeltbillet",
+      "singleTicketPriceHint": "Pris pr. person",
+      "groupTicketPrice": "Pris for gruppebilletter (fra) (valgfrit)",
+      "groupTicketPriceHint": "Pris pr. person for grupper",
+      "minGroupSizeOptional": "Mindste gruppestørrelse (valgfrit)",
+      "maxGroupSizeOptional": "Maksimal gruppestørrelse (valgfrit)",
+      "minGroupSizePlaceholder": "f.eks. 5",
+      "maxGroupSizePlaceholder": "f.eks. 20",
+      "optional": "Valgfrit",
+      "review": {
+        "groupSize": "Gruppestørrelse",
+        "category": "Kategori",
+        "title": "Titel",
+        "images": "Billeder",
+        "documents": "Uploaded dokumenter",
+        "description": "Beskrivelse",
+        "gpsConfirmed": "GPS-sporingsenhed bekræftet"
+      },
+      "pricePerPerson": "Pris pr. person (NGN)",
+      "minGroupSize": "Mindste gruppestørrelse",
+      "documents": {
+        "stepTitle": "Upload af dokumenter",
+        "pageTitle": "Upload de krævede dokumenter",
+        "pageIntro": "Upload venligst de nødvendige dokumenter til bekræftelse af din bilannonce.",
+        "pageSubtitle": "Upload tydelige, gyldige dokumenter for at skabe tillid og få din annonce godkendt hurtigere.",
+        "intro": {
+          "cars": "Upload nedenstående dokumenter, før din bilannonce kan blive offentliggjort.",
+          "accommodations": "Upload dokumenter, der beviser ejerskab eller fuldmagt fra en ejendomsmægler, for denne boligannonce.",
+          "experiences": "Upload dit dokument til virksomhedsverifikation, inden du offentliggør indlægget."
+        },
+        "proofOfOwnership": "Ejerskabsbevis",
+        "proofOfOwnershipHint": "Upload dokumentet, der beviser ejerskabet af køretøjet (f.eks. køretøjets registreringsbevis eller købskvittering).",
+        "roadworthiness": "Trafiksikkerhedscertifikat",
+        "roadworthinessHint": "Upload et gyldigt synsbevis for køretøjet.",
+        "insurance": "Forsikring",
+        "insuranceDocument": "Forsikringsdokument",
+        "insuranceHint": "Upload det aktuelle forsikringsbevis for køretøjet.",
+        "cac": "CAC-registrering",
+        "cacRegistration": "CAC-registreringsbevis",
+        "cacHint": "Upload dit certifikat for registrering af firmanavn (CAC).",
+        "accommodationOwnershipHint": "Ejendomsskrift, lejekontrakt eller bevis for ejerskab af ejendommen",
+        "agentAuthorization": "Fuldmagt til agent",
+        "agentAuthorizationHint": "Underskrevet brev fra ejeren, der giver dig tilladelse til at udbyde ejendommen til salg",
+        "agentProofOfAddress": "Bevis for agentens bopæl",
+        "agentProofOfAddressHint": "En regning for forsyningsudgifter eller et kontoudtog, hvor din adresse fremgår",
+        "addressPhotos": "Billeder, der svarer til den angivne adresse",
+        "addressPhotosHint": "Fotos, der tydeligt viser ejendommen på den angivne adresse",
+        "gpsAcknowledgment": "Jeg bekræfter, at dette køretøj er udstyret med en funktionsdygtig GPS-sporingsenhed, og jeg påtager mig ansvaret, hvis dette viser sig at være usandt.",
+        "requiredBadge": "Påkrævet",
+        "uploadPrompt": "Klik for at uploade, eller træk og slip",
+        "uploadFormats": "PDF, JPG, PNG, maks. 10 MB",
+        "safetyTitle": "Dine dokumenter er i sikre hænder",
+        "safetyText": "Alle dokumenter opbevares sikkert og anvendes udelukkende til kontrolformål. De vil ikke blive offentliggjort.",
+        "submitForReview": "Indsend til gennemgang",
+        "submitHint": "Din annonce vil blive gennemgået, og du får besked, så snart den er godkendt.",
+        "untitledListing": "Annonce uden titel",
+        "sidebar": {
+          "listingPreview": "Forhåndsvisning af annonce",
+          "edit": "Rediger",
+          "carsListing": "Biloversigt",
+          "accommodationsListing": "Oversigt over overnatningssteder",
+          "experiencesListing": "Erfaringsoversigt",
+          "comesWithDriver": "Leveres med driver",
+          "selfDrive": "Selvkørsel",
+          "pricing": "Priser",
+          "halfDay": "En halv dag",
+          "fullDay": "Heldag",
+          "extraHour": "Ekstra time",
+          "progress": "Status for noteringen"
+        }
+      },
+      "documentsHeading": "Nødvendige dokumenter",
+      "uploadDocument": "Upload dokument",
+      "removeFile": "Fjern",
+      "reviewHeading": "Gennemgå din annonce",
+      "reviewHint": "Tjek oplysningerne nedenfor, inden du offentliggør indlægget.",
+      "cancel": "Annuller",
+      "back": "Tilbage",
+      "saveDraft": "Gem som udkast",
+      "draftSaved": "Udkast gemt",
+      "draftSaveFailed": "Det var ikke muligt at gemme dit udkast. Prøv venligst igen.",
+      "saveContinue": "Gem og fortsæt",
+      "completeRequiredFields": "Udfyld de obligatoriske felter: {felter}",
+      "publish": "Offentliggør annonce",
+      "publishWaitForUploads": "Vent venligst — dine dokumenter er stadig ved at blive uploadet.",
+      "success": {
+        "title": "Indsendt til gennemgang",
+        "message": "Din annonce er nu under behandling. Du vil modtage en bekræftelsesmail inden for 2–3 hverdage, når den er blevet godkendt.",
+        "addAnother": "Tilføj endnu en annonce",
+        "backToListings": "Tilbage til mine annoncer"
+      },
+      "categoryChooseHint": "Vælg den type tjeneste, du tilbyder. Dette indstilles én gang, når du gemmer din første annonce, og kan ikke ændres senere.",
+      "categoryLockedHint": "Din leverandørkonto er kun registreret til {kategori} . Kontakt support for at ændre din servicekategori."
+    }
+  }
+}

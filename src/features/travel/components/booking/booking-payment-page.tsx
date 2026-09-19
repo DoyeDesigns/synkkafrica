@@ -40,7 +40,9 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
     amount: number;
     currency: string;
   } | null>(null);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(
+    () => parseBookingParams(searchParams).email ?? "",
+  );
   const [error, setError] = useState<string | null>(null);
   const [paying, setPaying] = useState<false | "PAYSTACK" | "STRIPE">(false);
 
@@ -76,6 +78,8 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
       checkOut,
       guests: bookingParams.guests,
       roomCount: bookingParams.rooms,
+      guestFirstName: bookingParams.guestFirstName,
+      specialRequests: bookingParams.specialRequests,
     })
       .then((result) => {
         createBookingConfirmation({

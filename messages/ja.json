@@ -1,0 +1,2483 @@
+{
+  "nav": {
+    "downloadApp": "アプリをダウンロード",
+    "becomeVendor": "ベンダーになる",
+    "chooseCurrency": "通貨を選択してください",
+    "signInCreate": "サインイン |アカウントを作成する",
+    "searchCurrency": "検索通貨",
+    "signOut": "サインアウト",
+    "myAccount": "私のアカウント",
+    "bookingsTrips": "予約と旅行",
+    "saved": "保存されました",
+    "reviews": "レビュー"
+  },
+  "common": {
+    "bookNow": "今すぐ予約する",
+    "continue": "続く",
+    "loading": "読み込み中…",
+    "startingFrom": "から始まる",
+    "perDay": "1日あたり",
+    "budget": "予算",
+    "seeMore": "もっと見る",
+    "showMore": "もっと見る",
+    "reviews": "レビュー",
+    "available": "利用可能",
+    "selfDriveAvailable": "セルフドライブも可能",
+    "excludingTaxes": "税金と手数料を除く",
+    "select": "選択",
+    "search": "検索",
+    "edit": "編集",
+    "cancel": "キャンセル",
+    "notifications": "通知",
+    "contactSupport": "サポートに連絡する",
+    "signOut": "サインアウト",
+    "noReviewsYet": "まだレビューはありません",
+    "viewPhoto": "写真を見る ⟦インデックス⟧",
+    "photoViewer": "写真ビューア",
+    "closePhotoViewer": "写真ビューアを閉じる",
+    "previousPhoto": "前の写真",
+    "nextPhoto": "次の写真",
+    "photoOfTotal": "⟦合計⟧中⟦現在⟧",
+    "secured": "安全な"
+  },
+  "hero": {
+    "headline": "自信を持ってアフリカを体験してください",
+    "tab": {
+      "accommodations": "宿泊施設",
+      "flights": "フライト",
+      "carRentals": "レンタカー",
+      "tours": "ツアー＆体験"
+    },
+    "search": "検索",
+    "clearFilter": "クリアフィルター",
+    "accommodations": {
+      "destination": "あなたの目的地",
+      "destinationStay": "⟦カウント⟧ 滞在",
+      "destinationStays": "⟦カウント⟧は残ります",
+      "checkIn": "チェックイン日",
+      "checkAvailability": "空き状況を確認する",
+      "propertyType": "プロパティの種類",
+      "oneRoom": "1部屋",
+      "oneGuest": "ゲスト1名",
+      "roomsCount": "⟦数⟧ 部屋",
+      "guestsCount": "⟦数⟧ ゲスト",
+      "checkOut": "チェックアウト日"
+    },
+    "flights": {
+      "roundTrip": "往復",
+      "oneWay": "一方通行",
+      "directFlight": "直行便",
+      "economyClass": "エコノミークラス",
+      "premiumEconomyClass": "プレミアムエコノミー",
+      "businessClass": "ビジネスクラス",
+      "firstClass": "ファーストクラス",
+      "onePassenger": "乗客1名",
+      "passengersCount": "⟦数⟧ 乗客",
+      "fromCity": "から |都市を選択してください",
+      "toCity": "へ |都市を選択してください",
+      "departureDate": "出発日",
+      "returnDate": "返却日",
+      "departing": "出発",
+      "returning": "戻る",
+      "nonstop": "ノンストップ",
+      "oneStop": "1回乗り継ぎ",
+      "multipleStops": "複数の停車地"
+    },
+    "common": {
+      "addDate": "日付を追加",
+      "selectDateRange": "出発日と帰国日を選択してください",
+      "selectDate": "日付を選択してください",
+      "days": "日数",
+      "nights": "夜"
+    },
+    "carRentals": {
+      "searchCarType": "車種検索",
+      "filterCarType": "車種で絞り込む",
+      "allCarTypes": "全種類",
+      "selfDrive": "セルフドライブ",
+      "price": "₦ 価格",
+      "pickupDate": "受け取り日",
+      "destinationCar": "⟦数えます⟧ 車",
+      "destinationCars": "車を⟦数えます⟧"
+    },
+    "tours": {
+      "searchPlaceholder": "場所、アトラクション、体験を検索",
+      "startDate": "開始日",
+      "destinationExperience": "⟦カウント⟧ 経験",
+      "destinationExperiences": "⟦数えてください⟧ 経験"
+    },
+    "location": "位置"
+  },
+  "footer": {
+    "brandDescription": "SynkAfrica は、世界中の人々をアフリカの旅行とライフスタイルのエコシステムの中心に結び付けるために設計された、新興のオールインワン旅行およびプレミアム体験プラットフォームです。",
+    "explore": {
+      "title": "シンクアフリカを探索する",
+      "hotels": "ホテルと宿泊施設",
+      "carRentals": "レンタカー",
+      "flights": "航空券の予約",
+      "restaurants": "ダイニング&レストラン"
+    },
+    "support": {
+      "title": "サポート",
+      "contact": "サポートに連絡する",
+      "changeBooking": "予約の変更またはキャンセル",
+      "paymentOptions": "支払いオプション",
+      "receipt": "予約領収書を表示または印刷する"
+    },
+    "community": {
+      "title": "コミュニティ",
+      "instagram": "私たちのインスタグラム",
+      "facebook": "フェイスブック",
+      "news": "ニュースで"
+    },
+    "vendor": {
+      "title": "ベンダーになる",
+      "listCar": "車を出品する",
+      "listService": "サービスをリストアップする",
+      "contact": "お問い合わせ"
+    },
+    "appPromo": {
+      "headline": "SynkAfrica を完全に体験してください。",
+      "cta": "今すぐアプリをダウンロードしてください",
+      "getItOn": "さあ始めましょう",
+      "googlePlay": "Googleプレイ",
+      "downloadOn": "でダウンロードしてください",
+      "appStore": "アプリストア"
+    },
+    "legal": {
+      "privacy": "プライバシーポリシー",
+      "terms": "利用規約",
+      "security": "セキュリティページ",
+      "faqs": "よくある質問"
+    },
+    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+  },
+  "login": {
+    "intro": "SynkAfrica アカウントを使用してサインインして、当社のサービスにアクセスできます。",
+    "backendNotReady": "バックエンド環境変数はまだ設定されていません。資格情報が構成されると、サインインが機能します。",
+    "emailPlaceholder": "メールアドレスを入力してください",
+    "orUseOptions": "または、次のオプションのいずれかを使用します",
+    "signInGoogle": "Googleでサインイン",
+    "continueApple": "アップルを使い続ける"
+  },
+  "account": {
+    "nav": {
+      "notifications": "通知"
+    },
+    "contactSupport": "サポートに連絡する",
+    "profile": {
+      "edit": "編集",
+      "fullName": "フルネーム",
+      "fullNamePlaceholder": "フルネームを入力してください",
+      "location": "位置",
+      "dateOfBirth": "生年月日",
+      "dobPlaceholder": "MM | DD | YY",
+      "gender": "性別",
+      "notAdded": "追加されていません",
+      "contactDetails": "連絡先詳細",
+      "phone": "電話番号",
+      "email": "電子メールアドレス",
+      "passwordSecurity": "パスワードとセキュリティ",
+      "password": "パスワード",
+      "changePassword": "パスワードを変更する"
+    },
+    "deleteAccount": "アカウントを削除する",
+    "bookings": {
+      "title": "ご注文",
+      "tab": {
+        "upcoming": "今後の予定",
+        "past": "過去",
+        "cancelled": "キャンセル",
+        "bookings": "予約"
+      },
+      "empty": {
+        "upcoming": "今後の予約はありません。",
+        "past": "この期間の過去の予約はありません。",
+        "cancelled": "この期間中のキャンセルされた注文はありません。",
+        "bookings": "この期間のご予約は承っておりません。"
+      },
+      "orderDate": "注文日:",
+      "experienceDate": "体験日：",
+      "totalAmount": "合計金額：",
+      "orderNumber": "注文：",
+      "guestCount": "ゲスト",
+      "specialRequests": "特別なリクエスト",
+      "cancel": "キャンセル",
+      "receiptRecipient": "レシートとQR受信者",
+      "viewDetails": "詳細を見る",
+      "leaveReview": "レビューを残す",
+      "reviewSubmitted": "レビューが送信されました",
+      "cancelWindowClosed": "この予約のキャンセル受付期間は終了しました。",
+      "cancelledOn": "⟦日付⟧にキャンセルされました",
+      "cancelConfirmTitle": "この予約をキャンセルしますか?",
+      "cancelConfirmBody": "体験開始前であればキャンセル期間内であればキャンセル可能です。この操作は元に戻すことができません。",
+      "confirmCancel": "はい、予約をキャンセルします",
+      "filterPeriod": "期間でフィルタリングする",
+      "badge": {
+        "upcoming": "今後の予定",
+        "past": "過去",
+        "cancelled": "キャンセル"
+      },
+      "countdown": {
+        "label": "体験はから始まります",
+        "daysHours": "⟦日⟧d ⟦時間⟧h",
+        "hoursMinutes": "⟦時間⟧h ⟦分⟧m",
+        "detailHint": "体験が始まるまでのカウントダウンはリアルタイムで更新されます。"
+      },
+      "review": {
+        "title": "レビューを残す",
+        "ratingLabel": "あなたの評価",
+        "commentLabel": "あなたのレビュー",
+        "commentPlaceholder": "この経験で気に入ったことを共有してください...",
+        "submit": "レビューを送信する",
+        "dismiss": "レビューダイアログを閉じる"
+      },
+      "detail": {
+        "back": "予約に戻る",
+        "reference": "予約番号",
+        "yourReview": "あなたのレビュー",
+        "notFound": "この予約は見つかりませんでした。"
+      }
+    },
+    "saved": {
+      "accommodations": "宿泊施設",
+      "empty": "まだ何も保存していません。",
+      "cars": "車",
+      "tours": "ツアー"
+    },
+    "reviews": {
+      "title": "レビュー",
+      "youRated": "あなたが評価しました",
+      "writeReview": "レビューを書く",
+      "ratingLabel": "あなたの評価",
+      "commentLabel": "あなたのレビュー",
+      "commentPlaceholder": "この経験で気に入ったことを共有してください...",
+      "photosLabel": "写真",
+      "photosCount": "⟦カウント⟧/⟦最大⟧ アップロードされました",
+      "addPhoto": "写真を追加",
+      "removePhoto": "写真を削除",
+      "submit": "レビューを送信する",
+      "pendingTitle": "完了した予約を確認する",
+      "pendingHint": "レビューは、アカウントに関連付けられた過去の予約に対してのみ送信できます。",
+      "selectBooking": "上で完了した予約を選択してレビューを書いてください。",
+      "noPending": "レビューを待っている完了した予約はありません。",
+      "submittedTitle": "送信されたレビュー",
+      "empty": "まだレビューを送信していません。",
+      "deleteReview": "レビューの削除",
+      "bookingReference": "ご予約⟦参考⟧",
+      "listingBadge": "ゲストのレビュー",
+      "experienceListingTitle": "ゲストのレビュー"
+    },
+    "notifications": {
+      "title": {
+        "reminder24h": "体験は24時間後に始まります",
+        "reviewRequest": "あなたの経験について教えてください",
+        "cancellationRefund": "予約がキャンセルされました",
+        "bookingConfirmation": "予約確認済み",
+        "info": "旅行リマインダー"
+      },
+      "empty": "まだ通知はありません。",
+      "period": {
+        "mostRecent": "最新の",
+        "weekEarlier": "1週間前",
+        "threeMonthsAgo": "3ヶ月前"
+      },
+      "kind": {
+        "bookingConfirmation": "予約確認済み",
+        "reminder24h": "24時間リマインダー",
+        "reviewRequest": "レビューリクエスト",
+        "cancellationRefund": "キャンセルと返金",
+        "info": "旅行のヒント"
+      },
+      "message": {
+        "reminder24h": "あなたの体験 {title} は、明日の {date} の {time} に始まります。予約の詳細を確認し、15 分前に到着してください。",
+        "reviewRequest": "⟦タイトル⟧はいかがでしたか？ SynkAfrica で他の旅行者を助けるために、星評価と書面によるレビューを共有してください。",
+        "cancellationRefund": "{title} ({reference}) のご予約はキャンセルされました。対象となる返金は 5 ～ 7 営業日以内に処理されます。",
+        "bookingConfirmation": "{location} の {title} の予約が確認されました。メールで領収書と QR 認証情報を確認してください。",
+        "passportReminder": "パスポートの有効期限が旅行日から少なくとも 6 か月間あることを確認してください。"
+      }
+    },
+    "support": {
+      "contact": {
+        "whatsapp": "ワッツアップ",
+        "email": "電子メール",
+        "phone": "お電話ください"
+      },
+      "createTicket": "サポートチケットを作成する",
+      "topic": "これは何についてですか?",
+      "relatedOrder": "関連する注文 (オプション)",
+      "relatedOrderNone": "なし",
+      "subject": "主題",
+      "subjectPlaceholder": "問題の簡単な概要",
+      "message": "メッセージ",
+      "messagePlaceholder": "何が起こっているのか教えてください...",
+      "attachFile": "写真またはスクリーンショットを添付してください",
+      "submitTicket": "チケットを送信する",
+      "ticketSubmitted": "チケット #⟦番号⟧ が送信されました。すぐにご連絡いたします。",
+      "yourTickets": "あなたのチケット",
+      "commonQuestions": "よくある質問",
+      "ticketMeta": "チケット番号⟦番号⟧ · ⟦日付⟧",
+      "status": {
+        "open": "開ける",
+        "resolved": "解決済み"
+      },
+      "category": {
+        "booking": "予約の問題",
+        "paymentRefund": "お支払い・返金",
+        "account": "アカウントとプロフィール",
+        "other": "他の"
+      },
+      "faq": {
+        "cancelBooking": "予約をキャンセルするにはどうすればよいですか?",
+        "refundTiming": "返金はいつ受け取れますか？",
+        "changeDate": "旅行日を変更するにはどうすればよいですか?",
+        "paymentSecurity": "私の支払いは安全ですか?",
+        "cancelBookingAnswer": "「予約と旅行」から予約を開き、注文を選択し、まだキャンセル期間内の場合はキャンセル オプションを使用します。対象となる予約については、払い戻しが自動的に処理されます。",
+        "refundTimingAnswer": "対象となる返金は、銀行または決済プロバイダーによって異なりますが、通常、キャンセル後 5 ～ 7 営業日以内に処理されます。",
+        "changeDateAnswer": "予約番号を添えてサポートにお問い合わせください。エクスペリエンスによって日付の変更が許可される場合は、私たちのチームがスケジュールの変更をお手伝いするか、利用可能なオプションについてご案内します。",
+        "paymentSecurityAnswer": "はい。 Synkafrica での支払いは、安全で暗号化された支払いパートナーを通じて処理されます。当社がカードの詳細情報をすべて当社のサーバーに保存することはありません。"
+      },
+      "tabs": {
+        "label": "サポートセクション"
+      },
+      "backToTickets": "チケットに戻る",
+      "typeMessage": "メッセージを入力してください...",
+      "send": "送信",
+      "supportTeam": "シンカアフリカのサポート",
+      "you": "あなた",
+      "emptyTickets": "まだサポート チケットを送信していません。",
+      "attachedImage": "添付画像",
+      "removeAttachment": "添付ファイルを削除する"
+    }
+  },
+  "booking": {
+    "step": {
+      "rooms": "滞在と部屋を選択してください",
+      "chooseExperience": "経験を選択してください",
+      "chooseCar": "車を選ぶ",
+      "choosePackage": "パッケージの選択",
+      "checkout": "チェックアウト",
+      "payment": "支払い",
+      "confirmation": "確認"
+    },
+    "cta": {
+      "proceedToPay": "支払いに進む"
+    },
+    "guest": {
+      "title": {
+        "mr": "氏",
+        "mrs": "夫人",
+        "ms": "MS",
+        "miss": "逃す",
+        "dr": "博士"
+      },
+      "adultLabel": "大人（17歳以上）",
+      "leadGuestLabel": "リードゲスト",
+      "addedCount": "⟦追加しました⟧/⟦合計⟧追加しました",
+      "passportHint": "パスポートに記載されている名前を入力します。パスポートは旅行日から少なくとも 6 か月有効である必要があります。",
+      "idVerificationHint": "予約を完了するには、政府発行の有効な身分証明書が必要です。",
+      "idVerificationTitle": "本人確認",
+      "idVerificationSubtitle": "ID の詳細を書類に記載されているとおりに正確に入力します。",
+      "idType": {
+        "passport": "パスポート",
+        "nationalId": "国民ID",
+        "driversLicense": "運転免許証"
+      },
+      "idNumber": "ID番号",
+      "idNumberPlaceholder": "ID番号を入力してください",
+      "idExpiry": "有効期限",
+      "confirmId": "私の身分証明書の詳細が正しく、私の書類が旅行日から少なくとも 6 か月間有効であることを確認します。",
+      "idTypeRequired": "IDの種類を選択します。",
+      "idNumberInvalid": "有効な ID 番号を入力してください。",
+      "idExpiryRequired": "IDの有効期限を入力します。",
+      "idExpiryInvalid": "ID は今日から少なくとも 6 か月間有効である必要があります。",
+      "idConfirmRequired": "ID の詳細を確認して続行してください。",
+      "idValidationRequired": "支払いに進む前に、ID の詳細を入力して確認します。",
+      "adultCheckbox": "大人 - ⟦カウント⟧",
+      "titleField": "タイトル",
+      "lastName": "苗字",
+      "firstName": "ファーストネーム",
+      "middleName": "ミドルネーム",
+      "dateOfBirth": "生年月日",
+      "datePlaceholder": "yyyy-mm-dd",
+      "nationality": "国籍",
+      "gender": "性別",
+      "male": "男",
+      "female": "女性",
+      "mobileNo": "携帯番号",
+      "emailAddress": "電子メールアドレス",
+      "openCalendar": "カレンダーを開く",
+      "countLabel": "宿泊人数",
+      "countHint": "料金はゲスト数に基づいて自動的に更新されます。",
+      "decreaseGuests": "ゲストを減らす",
+      "increaseGuests": "ゲストを増やす",
+      "specialRequests": "特別なリクエスト",
+      "specialRequestsPlaceholder": "アーリーチェックイン、食事のニーズ、アクセシビリティ要件など。"
+    },
+    "summary": {
+      "selectRoom": "部屋を選択してください",
+      "selectCar": "車を選択してください",
+      "selectExperience": "体験を選択してください",
+      "selectPackage": "パッケージを選択してください",
+      "priceDetails": "価格詳細",
+      "taxesAndFees": "税金と手数料",
+      "night": "夜",
+      "nights": "夜",
+      "room": "部屋",
+      "rooms": "部屋",
+      "day": "日",
+      "days": "日",
+      "total": "合計",
+      "guests": "ゲスト"
+    },
+    "table": {
+      "selectRoom": "部屋を選択してください",
+      "guestCount": "宿泊者数",
+      "pricePerNight": "1泊あたりの料金",
+      "includesTaxes": "税金と手数料が含まれます",
+      "packages": "パッケージ",
+      "hours": "営業時間",
+      "price": "価格",
+      "experiences": "体験談",
+      "duration": "間隔"
+    },
+    "dates": {
+      "checkIn": "チェックイン日",
+      "checkOut": "チェックアウト日",
+      "guests": "ゲスト",
+      "rooms": "客室",
+      "nights": "夜",
+      "days": "日数",
+      "rentalDays": "レンタル日数",
+      "tripDuration": "旅行期間",
+      "tripDurationHint": "滞在または探索する日数を調整します。",
+      "decreaseNights": "夜を減らす",
+      "increaseNights": "夜を増やす",
+      "decreaseDays": "日数を減らす",
+      "increaseDays": "日数を増やす"
+    },
+    "car": {
+      "rentalModeHeading": "この車をどのように使いたいですか？",
+      "rentalModeHint": "セルフドライブを選択するか、プロのドライバーを予約に追加してください。",
+      "selfDrive": "セルフドライブ",
+      "selfDriveHint": "自分で車を運転してください。ベンダーから引き取りに行くか、追加料金で配送を依頼してください。",
+      "withDriver": "ドライバー付き",
+      "withDriverHint": "あなたの旅行にはプロのドライバーが同行します。",
+      "noExtraCost": "追加費用なし",
+      "driverAddon": "+ ⟦量⟧ ドライバー アドオン",
+      "requestDelivery": "車の納車を依頼する",
+      "requestDeliveryHint": "追加料金で車をあなたの場所まで配達してもらいます。",
+      "deliveryFee": "+ ⟦金額⟧ 送料",
+      "deliveryAddress": "配送先住所",
+      "deliveryAddressPlaceholder": "車の配送先の住所を入力してください",
+      "pickupAddress": "受取住所",
+      "pickupAddressHint": "配送を希望しない場合は、この販売店の場所から車を引き取ります。",
+      "customerPickupAddress": "乗車場所",
+      "customerPickupAddressPlaceholder": "ドライバーがお迎えに来る場所を入力してください",
+      "customerPickupAddressHint": "ドライバーがこの住所までお迎えに上がります。",
+      "driverAddonLabel": "ドライバーアドオン",
+      "deliveryFeeLabel": "配送料",
+      "about": "この車について",
+      "saveCar": "車を保存する"
+    },
+    "property": {
+      "saveProperty": "プロパティを保存する",
+      "morePhotos": "+⟦数⟧写真",
+      "currentOffers": "現在の特典"
+    },
+    "amenity": {
+      "free": "無料！",
+      "additionalCharge": "追加料金"
+    },
+    "tour": {
+      "about": "この体験について",
+      "saveTour": "ツアーを保存"
+    },
+    "package": {
+      "about": "このパッケージについて",
+      "savePackage": "パッケージの保存",
+      "sharePackage": "パッケージを共有する",
+      "nightsDays": "⟦夜⟧ 夜 / ⟦日⟧ 日",
+      "durationShort": "⟦日⟧D / ⟦夜⟧N",
+      "guestRange": "⟦範囲⟧ ゲスト",
+      "moduleCount": "⟦カウント⟧ モジュール",
+      "highlight": {
+        "duration": "間隔",
+        "groupSize": "グループの規模",
+        "included": "付属",
+        "cancellation": "キャンセル+",
+        "free": "無料",
+        "standard": "標準"
+      },
+      "whatsIncluded": "含まれるもの",
+      "included": "付属",
+      "priceBreakdown": "価格の内訳",
+      "packageDiscount": "パッケージ割引",
+      "packagePrice": "パッケージ価格",
+      "whyBook": "このパッケージを予約する理由",
+      "guestCountLocked": "このパッケージのゲスト数は固定されており、チェックアウト時に変更することはできません。"
+    },
+    "payment": {
+      "processing": "支払いを処理しています..."
+    },
+    "confirmation": {
+      "imageAlt": "確認成功",
+      "title": "支払いが成功しました",
+      "subtitle": "領収書と QR 認証情報についてはメールをご確認ください。",
+      "reloadIn": "このページは次でリロードされます",
+      "reloadNow": "今すぐリロード",
+      "referenceLabel": "予約番号",
+      "copyReference": "コピー",
+      "copied": "コピーされました",
+      "summaryTitle": "予約概要",
+      "product": "予約商品",
+      "totalPaid": "支払総額",
+      "addToCalendar": "カレンダーに追加",
+      "openGoogleCalendar": "Googleカレンダーで開く",
+      "viewBookings": "私の予約を見る"
+    },
+    "reviews": {
+      "nextReview": "次のレビュー",
+      "allReviews": "すべてのレビュー",
+      "viewAll": "すべてのレビューを見る",
+      "close": "レビューを閉じる"
+    },
+    "content": {
+      "property": {
+        "arkHavn": {
+          "desc0": "マラケシュの中心部に位置するThe Ark Havenは、モダンな快適さと伝統的なモロッコの魅力が融合した静かな休暇を提供します。屋外プール、敷地内バー、エアコンと薄型テレビ付きの客室をお楽しみください。",
+          "desc1": "近くの観光スポットの探索、シャトルサービス、テニスコート、レンタカーを利用できます。レジャーでもビジネスでも、The Ark Haven では格別なおもてなしで思い出に残るご滞在をご提供いたします。"
+        },
+        "fallback": {
+          "desc0": "{name}は、{location}の一等地にあるモダンな設備を備えた快適な滞在を提供します。",
+          "desc1": "設備の整った客室、フレンドリーなサービス、地元の観光スポットやレストランへの簡単なアクセスをお楽しみください。"
+        }
+      },
+      "review": {
+        "review1": "アークヘブンは私の期待を上回りました。スタッフは信じられないほど歓迎してくれ、プールエリアは街を探索した後にリラックスするのに最適な場所でした。",
+        "review2": "美しい部屋、最高のロケーション、そして朝食は最高でした。次回のモロッコ旅行でも必ずここに泊まりたいと思います。",
+        "review3": "広々としたスイート、清潔な設備、親切なコンシェルジュ。シャトルサービスのおかげでマラケシュの移動がとても簡単になりました。"
+      },
+      "offer": {
+        "drinkPromo": "ドリンク1杯買うともう1杯無料",
+        "mealsOff": "食事10％オフ",
+        "freeWifi": "無料Wi-Fi"
+      },
+      "room": {
+        "deluxeSuite": "デラックススイート",
+        "supremeRoom": "至高の部屋",
+        "standardRoom": "スタンダードルーム",
+        "subtitle": {
+          "deluxe": "デラックス（1ベッドルームアパートメント）",
+          "supreme": "シュプリーム (スタジオ アパートメント)",
+          "standard": "スタンダード（ダブルルーム）"
+        },
+        "size592": "592平方フィート",
+        "size420": "420平方フィート",
+        "size310": "310平方フィート",
+        "sleeps2Adults": "大人2名まで宿泊可能"
+      },
+      "package": {
+        "dailyHire": "日雇い",
+        "halfDayHire": "半日レンタル",
+        "extraHours": "追加時間",
+        "hours24": "24時間",
+        "hours12": "12時間",
+        "hours3": "3時間"
+      },
+      "feature": {
+        "automatic": "自動",
+        "driverAvailable": "ドライバーが利用可能",
+        "selfDrive": "セルフドライブ",
+        "available": "利用可能",
+        "limitedSlots": "限られたスロット",
+        "guidedTour": "ガイド付きツアー",
+        "selfDriveAvailable": "セルフドライブも可能",
+        "flightsIncluded": "含まれる航空券",
+        "hotelStay": "ホテル滞在",
+        "guidedTours": "ガイド付きツアー",
+        "nightsDays": "⟦夜⟧ 夜 / ⟦日⟧ 日"
+      },
+      "tourOption": {
+        "standard": "通常チケット",
+        "premium": "プレミアムな体験",
+        "private": "プライベートグループ",
+        "hours5": "5時間",
+        "fullDay": "丸一日"
+      },
+      "tier": {
+        "standard": "標準パッケージ",
+        "deluxe": "デラックスパッケージ",
+        "allInclusive": "オールインクルーシブ"
+      },
+      "amenityCat": {
+        "greatForStay": "ご滞在に最適",
+        "outdoors": "屋外",
+        "pets": "ペット",
+        "internet": "インターネット",
+        "onSiteParking": "敷地内駐車場あり",
+        "frontDesk": "フロントデスクサービス",
+        "familyServices": "エンターテイメントとファミリーサービス",
+        "cleaningServices": "清掃サービス",
+        "general": "一般的な",
+        "accessibility": "アクセシビリティ",
+        "swimmingPools": "2つのスイミングプール",
+        "pool1Outdoor": "プール 1 – 屋外"
+      },
+      "amenityDesc": {
+        "petsAllowed": "リクエストに応じてペットの同伴も可能です。追加料金はかかりません。",
+        "wifiFree": "Wi-Fiは館内全域で無料で利用できます。",
+        "parkingFree": "敷地内に無料の公共駐車場があります（予約不要）。"
+      },
+      "amenityItem": {
+        "restaurant": "レストラン",
+        "freeWifi": "無料Wi-Fi",
+        "parking": "駐車場",
+        "spa": "スパ",
+        "familyRooms": "ファミリールーム",
+        "roomService": "ルームサービス",
+        "airportShuttle": "空港シャトル",
+        "bbqFacilities": "バーベキュー施設",
+        "petFriendly": "ペット可",
+        "nonSmokingRooms": "禁煙ルーム",
+        "outdoorFireplace": "屋外暖炉",
+        "beachfront": "ビーチフロント",
+        "sunDeck": "サンデッキ",
+        "privateBeach": "プライベートビーチエリア",
+        "terrace": "テラス",
+        "garden": "庭",
+        "valetParking": "バレーパーキング",
+        "parkingGarage": "駐車場",
+        "accessibleParking": "バリアフリー駐車場",
+        "lockers": "ロッカー",
+        "concierge": "コンシェルジュ",
+        "atmOnSite": "敷地内のATM",
+        "baggageStorage": "手荷物預かり所",
+        "currencyExchange": "両替",
+        "frontDesk24h": "24時間対応のフロントデスク",
+        "outdoorPlayEquipment": "子供向けの屋外遊具",
+        "dailyHousekeeping": "毎日のハウスキーピング",
+        "ironingService": "アイロンサービス",
+        "shuttleService": "シャトルサービス",
+        "sharedLounge": "共用ラウンジ/テレビエリア",
+        "airConditioning": "空調",
+        "carRental": "レンタカー",
+        "packedLunches": "お弁当",
+        "disabledFacilities": "バリアフリー設備",
+        "bathroomEmergencyCord": "浴室の緊急コード",
+        "openAllYear": "年中無休",
+        "adultsOnly": "大人のみ",
+        "poolBeachTowels": "プール/ビーチタオル",
+        "poolBar": "プールバー",
+        "beachChairs": "ビーチチェア/ラウンジャー"
+      },
+      "tour": {
+        "desc": {
+          "boatAccess": "ボートまたは水上タクシーでのみアクセス可能です。比較的海が穏やかなことで有名です。",
+          "lekkiCanopy": "アフリカ最長の天蓋橋を歩き、緑豊かなマングローブの小道を探索しましょう。",
+          "nikeArt": "西アフリカ最大の現代アフリカ美術コレクションを発見してください。",
+          "badagry": "博物館やランドマークを通じて、大西洋横断奴隷貿易の歴史をたどってみましょう。",
+          "desertSafari": "砂丘走行、ラクダ乗り、星空の下での伝統的なベドウィンのキャンプ。",
+          "cotonou": "ベナンの市場、植民地時代の建築物、活気に満ちた海岸線を探索してください。",
+          "winelands": "ステレンボッシュのブドウ園を訪れ、テイスティングと美しい山の景色を楽しみましょう。",
+          "monacoYacht": "モンテ カルロと豪華な港の景色を眺めながら、コート ダジュールの海岸線を航海しましょう。",
+          "lagosFood": "市内最高のグルメスポットで、スヤ、パフパフ、地元の名物料理を味わってみましょう。",
+          "dubaiKayak": "スカイラインの景色を眺めながら、ガイド付きの説明を受けながら、日没時にマリーナをパドルしてみましょう。"
+        }
+      }
+    },
+    "dateTime": {
+      "title": "日付と時刻を選択してください",
+      "rangeHint": "カレンダーでチェックイン日とチェックアウト日を選択します。",
+      "singleHint": "カレンダーから体験日を選択してください。",
+      "legendAvailable": "利用可能",
+      "legendUnavailable": "利用不可",
+      "selectCheckout": "チェックアウトを選択",
+      "timeSlots": "時間帯",
+      "experienceDate": "体験日"
+    }
+  },
+  "breadcrumb": {
+    "synkAfrica": "シンクアフリカ",
+    "accommodations": "宿泊施設",
+    "flights": "フライト",
+    "carForHire": "レンタカー",
+    "tours": "ツアー＆体験",
+    "tourPackages": "ツアーパッケージ",
+    "dealsAndPackages": "セールとパッケージ",
+    "packages": "パッケージ"
+  },
+  "results": {
+    "accommodations": {
+      "title": "宿泊",
+      "staysFound": "{count} が見つかりました",
+      "searchPlaceholder": "宿泊施設を探す",
+      "empty": "フィルターに一致する滞在はありません。"
+    },
+    "carRentals": {
+      "title": "レンタカーを探す",
+      "carsFound": "{count} 台の車が見つかりました",
+      "searchPlaceholder": "車を探す",
+      "empty": "フィルターに一致する車はありません。"
+    },
+    "tours": {
+      "title": "⟦カウント⟧ 検索結果",
+      "searchPlaceholder": "検索体験",
+      "empty": "フィルターに一致する経験はありません。"
+    },
+    "emptyHint": "検索またはフィルターのオプションを調整してみてください。",
+    "promoSubtitle": "あなたのためのプロモーション、セール、特別オファー"
+  },
+  "filters": {
+    "apply": "フィルターを適用する",
+    "applyCount": "フィルターを適用します (⟦カウント⟧)",
+    "location": "位置",
+    "rentalDates": "レンタル日",
+    "startDate": "開始日",
+    "endDate": "終了日",
+    "discounts": "割引",
+    "price": "価格",
+    "category": "カテゴリ",
+    "experiences": "体験談",
+    "other": "その他のフィルター",
+    "budget": "予算",
+    "perNight": "|夜",
+    "perDaily": "|毎日",
+    "anyPrice": "任意の価格",
+    "apartmentType": "アパートタイプ",
+    "bedrooms": "寝室の数",
+    "ratings": "評価",
+    "perks": "特典とアメニティ",
+    "priceRange": {
+      "under50k": "50,000未満",
+      "50to150k": "5万～15万",
+      "150kPlus": "150k以上"
+    },
+    "propertyType": {
+      "hotels": "ホテル",
+      "apartments": "アパート",
+      "resorts": "リゾート",
+      "bbs": "B&B",
+      "guestHouse": "ゲストハウス",
+      "beachHouse": "ビーチハウス",
+      "motels": "モーテル"
+    },
+    "bedroom": {
+      "studio": "スタジオ",
+      "one": "ベッドルーム1室",
+      "two": "ベッドルーム2室",
+      "threePlus": "ベッドルーム3室以上"
+    },
+    "perk": {
+      "breakfast": "朝食付き",
+      "cancellation": "無料キャンセル",
+      "pool": "プールへのアクセス",
+      "shuttle": "空港シャトル"
+    },
+    "discount": {
+      "all": "すべての割引",
+      "withDiscount": "割引あり",
+      "noDiscount": "割引なし",
+      "tenPercent": "10%オフの割引"
+    },
+    "carType": {
+      "suv": "SUV",
+      "sedan": "セダン",
+      "hatchback": "ハッチバック",
+      "pickup": "選び出す"
+    },
+    "serviceType": {
+      "selfDrive": "セルフドライブ",
+      "chauffeur": "運転手"
+    },
+    "transmission": {
+      "automatic": "自動",
+      "manual": "マニュアル"
+    },
+    "tourCategory": {
+      "all": "すべてのカテゴリー",
+      "outdoor": "アウトドア",
+      "artsCulture": "芸術と文化",
+      "adventure": "アドベンチャー",
+      "foodDrink": "食べ物と飲み物"
+    },
+    "experienceType": {
+      "all": "すべての経験",
+      "tours": "ツアー",
+      "activities": "活動内容",
+      "workshops": "ワークショップ",
+      "dayTrips": "日帰り旅行"
+    }
+  },
+  "landing": {
+    "ongoingDeals": {
+      "title": "進行中のセール",
+      "title2": "提供中のパッケージ",
+      "description": "あなたのためのプロモーション、セール、特別オファー",
+      "scrollPackages": "スクロールパッケージ"
+    },
+    "packages": {
+      "title": "パッケージ"
+    },
+    "fansFavourite": {
+      "title": "ファンのお気に入り"
+    },
+    "packageOffer": {
+      "inclusion": {
+        "flights": "フライト",
+        "stays": "宿泊",
+        "carDriver": "車 + ドライバー"
+      },
+      "duration": "⟦日⟧ 日中 • ⟦夜⟧ 夜 • ⟦スケジュール⟧",
+      "bookedSeparately": "別途ご予約の場合"
+    },
+    "bestDealsApartments": {
+      "title": "アパートメントのお得な情報"
+    },
+    "browsePropertyType": "プロパティのタイプ別に参照する",
+    "favouriteDestinations": "お気に入りの目的地を探索する",
+    "activitiesCount": "⟦カウント⟧ アクティビティ",
+    "flightPromo": {
+      "headline": "航空券の予約がかつてないほど簡単になりました",
+      "cta": "空き状況を確認する"
+    },
+    "experiencesPromo": {
+      "headline": "数え切れないほどの体験を 1 つの目的地でお楽しみください。",
+      "cta": "体験を閲覧する",
+      "imageAlt": "アフリカの体験を閲覧する"
+    },
+    "tours": {
+      "attractions": {
+        "title": "シンカアフリカの観光スポット"
+      },
+      "events": {
+        "browsingIn": "イベントの閲覧"
+      },
+      "packages": {
+        "title": "パッケージツアー",
+        "description": "ツアーのお得な情報を入手して簡単に予約してください。"
+      }
+    },
+    "carRentals": {
+      "feature1": {
+        "title": "プロフェッショナルなサービス",
+        "description": "当社では、アフリカ全土で信頼できる空港送迎サービスプロバイダーを利用しています。"
+      },
+      "feature2": {
+        "title": "柔軟なキャンセル",
+        "description": "計画が変更になった場合は、柔軟な条件でキャンセルできます。"
+      },
+      "feature3": {
+        "title": "競争力のある価格",
+        "description": "私たちのチームは毎日空港タクシーの料金を比較し、最もお得な料金をご提供します。"
+      }
+    }
+  },
+  "tourPackages": {
+    "hero": {
+      "title": "パッケージツアー",
+      "subtitle": "忘れられないアフリカの冒険のためにデザインされた厳選された旅行パッケージ。"
+    },
+    "searchPlaceholder": "検索先",
+    "empty": "検索に一致するツアー パッケージはありません。"
+  },
+  "admin": {
+    "header": {
+      "role": "プラットフォーム管理者"
+    },
+    "nav": {
+      "dashboard": "ダッシュボード",
+      "experiences": "体験談",
+      "cars": "車",
+      "accommodations": "宿泊施設",
+      "vendors": "ベンダー",
+      "bookings": "予約",
+      "payouts": "支払い",
+      "reviews": "レビュー",
+      "users": "ユーザー",
+      "verifications": "検証",
+      "support": "サポートチケット",
+      "team": "チーム",
+      "audit": "監査ログ"
+    },
+    "common": {
+      "all": "全て",
+      "enabled": "有効",
+      "disabled": "無効",
+      "edit": "編集",
+      "actions": "アクション"
+    },
+    "verifications": {
+      "title": "検証",
+      "subtitle": "検証プロバイダーによって手動審査のフラグが付けられた提出物 — ほとんどの ID/顔チェックは自動承認され、このキューに到達することはありません。",
+      "stats": {
+        "needsManualReview": "手動レビューが必要",
+        "approvedToday": "本日承認されました",
+        "deniedToday": "今日は拒否されました",
+        "avgReviewTime": "平均レビュー時間",
+        "avgReviewTimeValue": "⟦分⟧分"
+      },
+      "searchPlaceholder": "名前またはアカウント ID で検索...",
+      "filter": {
+        "users": "ユーザー",
+        "vendors": "ベンダー"
+      },
+      "status": {
+        "pendingReview": "審査待ち",
+        "approved": "承認された",
+        "denied": "拒否されました"
+      },
+      "audience": {
+        "user": "ユーザー",
+        "vendor": "ベンダー"
+      },
+      "submitted": "提出済み ⟦日付⟧",
+      "pendingElapsed": "保留中 ⟦経過しました⟧",
+      "blocking": {
+        "firstCheckout": "最初のチェックアウトをブロックする"
+      },
+      "empty": "フィルタに一致する検証送信はありません。",
+      "accountId": "アカウント{ID}",
+      "viewAccount": "アカウントを見る→",
+      "pendingManualReview": "手動レビュー保留中",
+      "elapsed": "⟦経過⟧ 経過",
+      "documentPreviews": "ドキュメントのプレビュー",
+      "documentViewLogged": "ドキュメントビューはコンプライアンスのためにログに記録されます",
+      "providerResults": "検証プロバイダーの結果 (DIDIT)",
+      "approve": "承認する",
+      "deny": "拒否",
+      "requestResubmission": "再送信のリクエスト",
+      "notifyUser": "ユーザーに決定を通知する",
+      "notifyVendor": "ベンダーに決定を通知する",
+      "verificationApproved": "検証が承認されました",
+      "verificationDenied": "検証が拒否されました",
+      "reviewedInElapsed": "⟦経過⟧でレビューしました",
+      "approvedBy": "承認者",
+      "approvedByValue": "管理者 — ⟦日付⟧",
+      "reasonForDenial": "拒否の理由",
+      "revokeApproval": "承認を取り消す",
+      "inviteResubmission": "再送信を招待する",
+      "viewHistory": "履歴を見る",
+      "providerResultsHeading": "プロバイダーの結果 — DIDIT",
+      "document": {
+        "ninSlip": "NIN伝票",
+        "passportPhoto": "パスポートの写真ページ",
+        "selfie": "セルフィー/ライブネスキャプチャ",
+        "cac": "CAC証明書",
+        "driversLicense": "運転免許証（表面）"
+      },
+      "check": {
+        "cacRegistrationLookup": "CAC 登録ルックアップ",
+        "cacRegistrationVerified": "確認済み",
+        "faceMatchConfidence": "顔一致の信頼性",
+        "faceMatchConfidenceDetail": "96％",
+        "documentExpiredDetail": "失敗 — 期限切れのドキュメント",
+        "documentAuthenticity": "文書の信頼性",
+        "liveness": "生存チェック",
+        "faceMatch": "顔一致の信頼性",
+        "nameMatch": "名前がアカウントと一致する",
+        "businessRegistration": "事業者登録",
+        "faceMatchDetail": "78% — 自動承認のしきい値を下回っています",
+        "nameMatchDetail": "マッチ",
+        "documentFailedDetail": "失敗 — ドキュメントを読み取ることができません",
+        "faceMatchFailedDetail": "42% — しきい値を下回る",
+        "businessRegistrationDetail": "部分一致 - 手動レビューが必要"
+      },
+      "denialReason": {
+        "expiredLicense": "運転免許証の有効期限は 2026 年 3 月に切れています。有効で有効期限が切れていない政府 ID を使用して再提出してください。"
+      },
+      "documentType": {
+        "passport": "パスポート",
+        "cacNin": "CAC + NIN",
+        "driversLicense": "運転免許証"
+      },
+      "checkResult": {
+        "passed": "合格した",
+        "failed": "失敗した",
+        "warning": "要レビュー"
+      }
+    },
+    "dashboard": {
+      "welcome": "管理コンソール、",
+      "addPackages": "パッケージの追加",
+      "period": {
+        "label": "メトリクス期間",
+        "today": "今日",
+        "week": "今週",
+        "month": "今月",
+        "sixMonths": "6ヶ月",
+        "year": "1年",
+        "all": "全て"
+      },
+      "users": "ユーザー",
+      "bookings": "予約",
+      "revenue": "収益",
+      "activeExperiences": "アクティブな体験",
+      "activeVendors": "アクティブなベンダー",
+      "viewAll": "すべて見る",
+      "manage": "管理",
+      "alerts": "アラート",
+      "alert": {
+        "pendingPayouts": "承認待ちのベンダー 3 件の支払い",
+        "flaggedReview": "2 件のレビューにモデレートのフラグが設定されています",
+        "openTicket": "オープンベンダーサポートチケット5枚",
+        "disabledVendor": "1 つのベンダー アカウントが無効になっています - 確認が必要です"
+      }
+    },
+    "packages": {
+      "createTitle": "新しいパッケージ/取引の作成",
+      "createSubtitle": "航空券、滞在、車、体験を組み合わせて、魅力的な旅行パッケージを構築しましょう。",
+      "addTitle": "パッケージの追加",
+      "backToDashboard": "← ダッシュボードに戻る",
+      "progressLabel": "パッケージの進行状況",
+      "steps": {
+        "details": "パッケージの詳細",
+        "modules": "モジュールの追加",
+        "pricing": "価格設定",
+        "review": "レビューと公開"
+      },
+      "cancel": "キャンセル",
+      "back": "戻る",
+      "saveDraft": "ドラフトとして保存",
+      "draftSaved": "下書きが保存されました",
+      "saveContinue": "保存して続行",
+      "submit": "パッケージを送信する",
+      "completeRequiredFields": "必須フィールドに入力します: ⟦フィールド⟧",
+      "sections": {
+        "basicInfo": "パッケージの詳細",
+        "basicInfoHint": "パッケージの基本情報とメタデータ。",
+        "additionalSettings": "追加設定",
+        "additionalSettingsHint": "ポリシー、食事、表示オプション。"
+      },
+      "fields": {
+        "packageName": "パッケージ名",
+        "packageSlug": "パッケージスラッグ(URL)",
+        "shortDescription": "簡単な説明",
+        "detailedDescription": "詳細な説明",
+        "banner": "パッケージバナー画像",
+        "category": "パッケージカテゴリ",
+        "bestFor": "最適な用途",
+        "tags": "パッケージタグ",
+        "includedMeals": "含まれている食事",
+        "cancellationPolicy": "キャンセルポリシー",
+        "refundPolicy": "返金ポリシー",
+        "maxGuests": "最大ゲスト数",
+        "featuredDeal": "パッケージのハイライト",
+        "currency": "通貨",
+        "normalPrice": "通常価格",
+        "salesPrice": "販売価格",
+        "showSavingsBadge": "貯蓄バッジを表示",
+        "savingsBadgePercent": "節約バッジの割合",
+        "validFrom": "有効開始日",
+        "validUntil": "有効期限",
+        "minimumBookingNotice": "最低予約数に関するお知らせ",
+        "packageActive": "パッケージのステータス"
+      },
+      "placeholders": {
+        "packageName": "例えばラゴスとパリのエスケープ",
+        "packageSlug": "ラゴス-パリ-エスケープ",
+        "shortDescription": "パッケージカードに記載されている短い概要。",
+        "detailedDescription": "旅程全体、含まれるもの、ハイライトを説明します。",
+        "category": "カテゴリを選択してください",
+        "tags": "例えばビーチ、アドベンチャー",
+        "maxGuests": "例えば4",
+        "select": "選択"
+      },
+      "hints": {
+        "packageSlug": "これはパッケージ URL で使用されます。",
+        "tags": "各タグを追加して Enter キーを押します。",
+        "featuredDeal": "このパッケージを注目の取引として表示します。",
+        "showSavingsBadge": "パッケージカードに貯蓄バッジを表示します。",
+        "savingsBadgePercent": "貯蓄バッジに表示される割合を設定します。価格から自動入力されます。",
+        "packageActive": "アクティブなパッケージは顧客に表示されます。"
+      },
+      "uploadBanner": "クリックしてアップロードするか、ドラッグ アンド ドロップします",
+      "uploadBannerHint": "JPG、PNG、WEBP（最大5MB）",
+      "removeBanner": "バナーを削除する",
+      "tips": {
+        "title": "優れたパッケージのヒント",
+        "one": "明確で説得力のあるパッケージ名を使用してください。",
+        "two": "補完的なモジュールを組み合わせて、さらに価値を高めます。",
+        "three": "強力な販売価格で節約を強調します。",
+        "four": "タグを追加して見つけやすさを向上させます。"
+      },
+      "moduleType": {
+        "flight": "フライト",
+        "accommodation": "宿泊施設",
+        "car": "車",
+        "experience": "経験"
+      },
+      "modules": {
+        "selectHeading": "モジュールの追加",
+        "selectHint": "フライト、滞在、車、体験を参照して追加して、パッケージを作成します。",
+        "addedHeading": "パッケージモジュール",
+        "countLabel": "モジュール",
+        "empty": "まだモジュールは追加されていません。上のパネルから項目を選択します。",
+        "add": "追加",
+        "added": "追加した",
+        "remove": "モジュールの削除",
+        "dragHandle": "ドラッグして並べ替えます",
+        "reorderHint": "モジュールをドラッグ アンド ドロップして、顧客に表示される順序を変更します。",
+        "required": "続行するには少なくとも 1 つのモジュールを追加してください。",
+        "searchPlaceholder": "モジュールを検索…",
+        "noResults": "検索に一致するモジュールはありません。",
+        "availableLabel": "利用可能"
+      },
+      "pricing": {
+        "heading": "価格設定",
+        "hint": "チケットの価格を設定します。",
+        "savingsDisplay": "⟦金額⟧ (⟦パーセント⟧%) を節約できます"
+      },
+      "availability": {
+        "heading": "可用性",
+        "hint": "このパッケージが予約できる時期を設定します。"
+      },
+      "review": {
+        "heading": "レビューと公開",
+        "hint": "送信する前に、すべてのパッケージの詳細を確認してください。"
+      }
+    },
+    "users": {
+      "title": "旅行者",
+      "searchPlaceholder": "名前、ユーザー ID、電子メール、または場所で検索します...",
+      "userId": "ユーザーID",
+      "traveler": "旅行者",
+      "contact": "接触",
+      "location": "位置",
+      "tier": {
+        "bronze": "ブロンズ",
+        "silver": "銀",
+        "gold": "金",
+        "platinum": "白金"
+      },
+      "bookingsSpend": "予約/支出",
+      "lastTrip": "最後の旅行",
+      "status": {
+        "active": "アクティブ",
+        "inactive": "非アクティブ"
+      },
+      "stats": {
+        "found": "旅行者が見つかりました",
+        "active": "アクティブ",
+        "combinedSpend": "合計支出額",
+        "page": "ページ",
+        "pageValue": "⟦現在⟧ / ⟦合計⟧"
+      },
+      "pagination": {
+        "previous": "前の",
+        "next": "次",
+        "showing": "ページ ⟦現在⟧/⟦合計⟧"
+      },
+      "details": "詳細",
+      "empty": "検索に一致する旅行者はいません。",
+      "notFound": "旅行者が見つかりません。",
+      "backToList": "旅行者に戻る",
+      "accountDetails": "アカウントの詳細",
+      "detail": {
+        "totalBookings": "総予約数",
+        "lifetimeSpend": "生涯支出",
+        "primaryCorridor": "一次廊下",
+        "openTickets": "オープンチケット",
+        "idFaceVerified": "ID + 顔認証済み",
+        "joined": "⟦日付⟧に参加しました",
+        "lastActive": "最後にアクティブでした ⟦経過時間⟧",
+        "phoneWhatsApp": "⟦電話⟧ (WhatsApp にリンク)",
+        "identityVerification": "本人確認",
+        "governmentId": "政府 ID (⟦タイプ⟧)",
+        "faceMatch": "顔/活力の一致",
+        "verifiedVia": "経由で検証",
+        "verified": "確認済み",
+        "notVerified": "未検証",
+        "paymentMethods": "登録されている支払い方法",
+        "card": "カード",
+        "defaultCurrency": "デフォルトの通貨",
+        "recentBookings": "最近の予約",
+        "internalNotes": "内部メモ",
+        "noNotes": "内部メモはまだありません。",
+        "noteAttribution": "— ⟦著者⟧、⟦日付⟧",
+        "bookingStatus": {
+          "confirmed": "確認済み",
+          "completed": "完了",
+          "cancelled": "キャンセル"
+        }
+      },
+      "menu": {
+        "verification": "検証",
+        "rerunIdVerification": "ID認証を再実行する",
+        "rerunFaceVerification": "顔認証を再実行する",
+        "financial": "金融",
+        "issueRefund": "払い戻しを発行する",
+        "holdBookingPayment": "予約の支払いを保留する",
+        "support": "サポート",
+        "viewAsReadOnly": "表示形式 (読み取り専用)",
+        "addInternalNote": "内部メモを追加",
+        "dataAccount": "データとアカウント",
+        "mergeDuplicateAccount": "重複したアカウントを統合する",
+        "exportUserData": "ユーザーデータのエクスポート (GDPR)",
+        "suspendAccount": "アカウントを一時停止する"
+      }
+    },
+    "experiences": {
+      "title": "エクスペリエンスを管理する",
+      "searchPlaceholder": "検索エクスペリエンス",
+      "name": "体験名",
+      "empty": "検索に一致する経験はありません。",
+      "actions": {
+        "disable": "エクスペリエンスを無効にする",
+        "enable": "エクスペリエンスを有効にする",
+        "goTo": "体験へ行く",
+        "delete": "エクスペリエンスの削除"
+      }
+    },
+    "cars": {
+      "title": "車を管理する",
+      "searchPlaceholder": "車を検索する",
+      "name": "車名",
+      "empty": "検索に一致する車はありません。",
+      "actions": {
+        "disable": "車を無効にする",
+        "enable": "車を有効にする",
+        "goTo": "車に行く",
+        "delete": "車を削除する"
+      }
+    },
+    "accommodations": {
+      "title": "宿泊施設の管理",
+      "searchPlaceholder": "宿泊施設を探す",
+      "name": "宿泊施設名",
+      "empty": "検索に一致する宿泊施設はありません。",
+      "actions": {
+        "disable": "宿泊施設を無効にする",
+        "enable": "宿泊施設を有効にする",
+        "goTo": "宿泊施設へ行く",
+        "delete": "宿泊施設の削除"
+      }
+    },
+    "listings": {
+      "location": "掲載場所",
+      "vendor": "ベンダー",
+      "bookings": "予約",
+      "ratings": "評価",
+      "reviews": "レビュー",
+      "activityStatus": "活動状況",
+      "status": {
+        "active": "アクティブ",
+        "inactive": "非アクティブ",
+        "deleted": "削除されました"
+      },
+      "tab": {
+        "active": "アクティブなリスト",
+        "deleted": "削除されたリスト"
+      },
+      "deletedHint": "マーケットプレイスから削除された商品はここに表示されます。詳細を表示したり、レコードを完全に削除したりできます。",
+      "viewDetails": "リストを見る",
+      "deletedAt": "⟦日付⟧に削除されました",
+      "detailTitle": "出品詳細",
+      "detailHint": "メディア、詳細、価格、ドキュメントを含む、このリストの完全なプレビュー。",
+      "detailNotFound": "このリストは見つかりませんでした。",
+      "detail": {
+        "backCars": "車の話に戻る",
+        "backAccommodations": "宿泊施設に戻る",
+        "backExperiences": "体験談に戻る"
+      },
+      "detailClose": "近い"
+    },
+    "vendors": {
+      "title": "ベンダーの管理",
+      "add": "ベンダーの追加",
+      "searchPlaceholder": "名前、ベンダー ID、電子メール、電話番号で検索します...",
+      "vendorId": "ベンダーID",
+      "name": "ベンダー",
+      "userId": "ユーザーID",
+      "stats": {
+        "found": "ベンダーが見つかりました",
+        "active": "アクティブ",
+        "combinedRevenue": "合計収益",
+        "page": "ページ",
+        "pageValue": "⟦現在⟧ / ⟦合計⟧"
+      },
+      "pagination": {
+        "previous": "前の",
+        "next": "次",
+        "showing": "ページ ⟦現在⟧/⟦合計⟧"
+      },
+      "contactInfo": "連絡先情報",
+      "listings": "リスト",
+      "commission": "手数料",
+      "commissionValue": "⟦レート⟧％",
+      "status": {
+        "active": "アクティブ",
+        "inactive": "非アクティブ"
+      },
+      "revenue": "収益",
+      "rating": "評価",
+      "reviews": "レビュー",
+      "details": "詳細",
+      "empty": "検索に一致するベンダーはありません。",
+      "notFound": "ベンダーが見つかりません。",
+      "backToList": "ベンダーに戻る",
+      "accountDetails": "アカウントの詳細",
+      "joined": "参加しました",
+      "detail": {
+        "activeListings": "アクティブなリスト",
+        "completedBookings": "予約完了",
+        "averageRating": "平均評価",
+        "openStrikes": "オープンストライキ",
+        "category": "カテゴリ",
+        "onboarded": "オンボーディング ⟦日付⟧",
+        "accountDocuments": "口座書類",
+        "listingDocuments": "ドキュメントのリスト — ⟦カテゴリー⟧",
+        "payoutSummary": "支払いの概要",
+        "pendingPayout": "保留中の支払い",
+        "lastPayout": "最後の支払い",
+        "internalNotes": "内部メモ",
+        "noNotes": "内部メモはまだありません。",
+        "noteAttribution": "— ⟦著者⟧、⟦日付⟧",
+        "viewListings": "リストを見る",
+        "suspendVendor": "ベンダーの一時停止",
+        "documentStatus": {
+          "verified": "確認済み",
+          "pendingReview": "審査待ち",
+          "signed": "署名済み",
+          "notVerified": "未検証"
+        }
+      },
+      "menu": {
+        "verification": "検証",
+        "approvePendingListing": "保留中のリストを承認する",
+        "requestAdditionalDocuments": "追加の書類をリクエストする",
+        "upgradeToTier": "ティア ⟦ティア⟧ にアップグレード",
+        "standingTrust": "地位と信頼",
+        "grantInstantBook": "インスタント予約権限を付与する",
+        "addStrike": "ストライク/内部フラグを追加",
+        "clearStrike": "ストライクをクリアする",
+        "financial": "金融",
+        "holdPendingPayout": "支払いを保留する",
+        "adjustCommissionRate": "手数料率を調整する",
+        "communication": "コミュニケーション",
+        "contactVendor": "ベンダーに問い合わせる",
+        "addInternalNote": "内部メモを追加",
+        "account": "アカウント",
+        "suspendAccount": "アカウントを一時停止する",
+        "banPermanently": "永久禁止"
+      },
+      "requestDocumentsModal": {
+        "title": "追加の書類をリクエストする",
+        "subtitle": "⟦ベンダー⟧ に文書リクエストを送信します。",
+        "documentLabel": "ドキュメントの選択",
+        "documentPlaceholder": "ドキュメントを選択してください",
+        "otherOption": "その他（記載のないもの）",
+        "customDocumentLabel": "ドキュメントの名前を追加",
+        "customDocumentPlaceholder": "ドキュメント名を入力します",
+        "submit": "リクエストの送信",
+        "cancel": "キャンセル"
+      },
+      "confirm": {
+        "cancel": "キャンセル"
+      },
+      "confirmSuspend": {
+        "title": "本気ですか？",
+        "message": "⟦ベンダー⟧ を停止しようとしています。アカウントが再アクティブ化されるまで、アカウントにアクセスできなくなります。"
+      },
+      "confirmBan": {
+        "title": "本気ですか？",
+        "message": "⟦ベンダー⟧ を永久に禁止しようとしています。この操作は元に戻すことができません。"
+      },
+      "internalNoteModal": {
+        "title": "内部メモを追加",
+        "subtitle": "{vendor} に関する観察またはメモを追加します。",
+        "label": "観察",
+        "placeholder": "ここに観察やメモを書いてください...",
+        "submit": "メモを保存する"
+      },
+      "experiences": "体験談",
+      "earnings": "総収益"
+    },
+    "bookings": {
+      "title": "予約",
+      "subtitle": "フライト、車、宿泊施設、体験のすべての予約は、アプリ、ウェブ、手動で作成されます。",
+      "create": "予約の作成",
+      "searchPlaceholder": "顧客、ベンダー、または予約 ID で検索...",
+      "empty": "フィルターに一致する予約はありません。",
+      "guests": "ゲスト",
+      "vendor": "ベンダー",
+      "contactCustomer": "お客様に連絡する",
+      "contactVendor": "ベンダーに問い合わせる",
+      "addInternalNote": "内部メモを追加",
+      "partialRefund": "一部返金",
+      "cancelRefund": "キャンセルと返金",
+      "flagDispute": "異議申し立てとしてフラグを立てる",
+      "saveChanges": "変更を保存する",
+      "stats": {
+        "upcoming": "今後（7日間）",
+        "awaiting": "確認待ち",
+        "confirmed": "確認済み",
+        "disputed": "異議申し立てあり/フラグあり",
+        "totalMonth": "今月の合計"
+      },
+      "product": {
+        "all": "すべての製品タイプ",
+        "flights": "フライト",
+        "cars": "車",
+        "accommodations": "宿泊",
+        "experiences": "体験談"
+      },
+      "source": {
+        "all": "すべてのソース",
+        "website": "Webサイト",
+        "mobileApp": "モバイルアプリ",
+        "admin": "管理者によって作成されました"
+      },
+      "dateRange": {
+        "label": "日付範囲",
+        "day": "1日",
+        "week": "1週間",
+        "month": "1ヶ月",
+        "sixMonths": "6ヶ月",
+        "year": "1年",
+        "all": "全て"
+      },
+      "filter": {
+        "all": "すべて (⟦数⟧)",
+        "upcoming": "今後の予定 (⟦カウント⟧)",
+        "awaiting": "確認待ち ({count})",
+        "confirmed": "確認済み (⟦カウント⟧)",
+        "completed": "完了しました (⟦カウント⟧)",
+        "cancelled": "キャンセルされました (⟦カウント⟧)",
+        "disputed": "論争中 (⟦カウント⟧)"
+      },
+      "status": {
+        "confirmed": "確認済み",
+        "awaiting": "確認待ち",
+        "cancelled": "キャンセル",
+        "completed": "完了",
+        "disputed": "論争中"
+      },
+      "sidebar": {
+        "customer": "お客様",
+        "source": "出典: ⟦出典⟧",
+        "vendor": "ベンダー",
+        "bookingDetails": "予約の詳細",
+        "payment": "支払い",
+        "timeline": "タイムライン",
+        "name": "名前",
+        "contact": "接触",
+        "whatsapp": "ワッツアップ",
+        "assignedTo": "担当者",
+        "vendorContact": "ベンダーの連絡先",
+        "checkIn": "チェックイン日",
+        "checkOut": "チェックアウト日",
+        "amount": "額",
+        "paymentStatus": "状態",
+        "chargedCurrency": "請求通貨"
+      },
+      "createModal": {
+        "title": "予約の作成",
+        "subtitle": "顧客に代わって予約を作成します。",
+        "infoBannerPrefix": "この予約にはタグが付けられます",
+        "infoBannerSource": "出典: 管理者作成",
+        "infoBannerSuffix": "セルフサービス予約と同じように、顧客のアカウントとアプリに表示されます。",
+        "productType": "製品タイプ",
+        "product": {
+          "accommodations": "宿泊施設",
+          "flights": "フライト",
+          "cars": "車",
+          "experiences": "体験談"
+        },
+        "customer": "お客様",
+        "customerPlaceholder": "既存の顧客を名前、メールアドレス、電話番号で検索します...",
+        "vendorListing": "ベンダー/リスト",
+        "vendorPlaceholder": "ベンダーまたはリストを検索...",
+        "startDate": "開始日",
+        "endDate": "終了日",
+        "guestsUnits": "ゲスト/ユニット",
+        "guestsPlaceholder": "例えば2",
+        "totalAmount": "合計金額",
+        "amountPlaceholder": "NGN",
+        "paymentStatus": "支払い状況",
+        "payment": {
+          "sendLink": "支払いリンクを顧客に送信する",
+          "paidInFull": "全額支払い済みとしてマークする",
+          "pending": "支払い保留中 — リンクが送信されていません"
+        },
+        "internalNote": "社内メモ",
+        "internalNotePlaceholder": "例えばWhatsApp の問い合わせを通じて予約、顧客は 1 階の部屋をリクエストしました",
+        "cancel": "キャンセル",
+        "submit": "予約の作成"
+      }
+    },
+    "payouts": {
+      "title": "支払い",
+      "subtitle": "決済期間ごとの、すべてのカテゴリにわたるベンダーの収益。",
+      "searchPlaceholder": "ベンダー名またはリファレンスで検索...",
+      "pendingCount": "{count} 保留中の支払い",
+      "markComplete": "完了としてマークを付ける",
+      "contactVendor": "ベンダーに問い合わせる",
+      "decline": "衰退",
+      "empty": "検索に一致する支払いはありません。",
+      "requested": "リクエストされた⟦日付⟧",
+      "periodLabel": "期間: ⟦期間⟧",
+      "listBookingsBank": "⟦カウント⟧ 予約 · ⟦銀行⟧ ⟦アカウント⟧",
+      "netPayoutToVendor": "ベンダーへの純支払額",
+      "grossEarnings": "総予約収益",
+      "platformCommission": "プラットフォーム手数料 (⟦率⟧%)",
+      "netPayout": "純支払額",
+      "paymentDestination": "支払い先",
+      "bank": "銀行",
+      "accountNumber": "口座番号",
+      "accountName": "アカウント名",
+      "payoutMethod": "支払い方法",
+      "associatedBookings": "関連する予約 ({count})",
+      "internalNote": "社内メモ",
+      "noteAttribution": "— ⟦著者⟧、⟦日付⟧",
+      "period": {
+        "thisMonth": "今月 — 2026 年 7 月",
+        "lastMonth": "先月 — 2026 年 6 月",
+        "quarter": "今四半期 — 2026 年第 2 四半期"
+      },
+      "stats": {
+        "totalPeriod": "総支払額 — 期間",
+        "totalVendors": "⟦数⟧ のベンダー間で",
+        "pending": "保留中",
+        "pendingSubtitle": "{count} アクション待ちの支払い",
+        "completed": "完了",
+        "completedSubtitle": "⟦カウント⟧ 支払いが完了しました",
+        "declinedFailed": "拒否/不合格",
+        "declinedFailedSubtitle": "{declined} 拒否 · {failed} 転送に失敗しました"
+      },
+      "filter": {
+        "all": "すべて (⟦数⟧)",
+        "pending": "保留中 ({count})",
+        "completed": "完了しました (⟦カウント⟧)",
+        "declined": "拒否されました (⟦数⟧)",
+        "failed": "失敗しました (⟦カウント⟧)"
+      },
+      "status": {
+        "pending": "保留中",
+        "completed": "完了",
+        "declined": "拒否されました",
+        "failed": "失敗した",
+        "failedTransfer": "転送の失敗"
+      }
+    },
+    "reviews": {
+      "title": "レビューモデレーション",
+      "category": {
+        "unanswered": "未回答",
+        "responseRequired": "要対応",
+        "flagged": "フラグ付き",
+        "deleted": "削除されました",
+        "published": "発行済み"
+      },
+      "selectAll": "すべて選択",
+      "deselectAll": "すべての選択を解除します",
+      "bulkPublish": "選択したものを公開",
+      "bulkFlag": "フラグが選択されました",
+      "bulkResponseRequired": "要対応",
+      "bulkDelete": "選択したものを削除",
+      "actionsGuideTitle": "これらの行動は何を意味するのでしょうか？",
+      "actionsGuide": {
+        "publish": "公開 — レビューを公開リスト ページに表示します。",
+        "flag": "フラグ — レビューにフォローアップのマークを付けます (不適切または疑わしいコンテンツ)。",
+        "delete": "削除 — レビューをパブリックビューから削除します。削除されたレビューは [削除済み] タブに表示されます。",
+        "responseRequired": "応答が必要 — ベンダーまたは管理者の応答が必要であることを示します。",
+        "clearResponseRequired": "明確な応答が必要 — 公式な応答が投稿された後、マーカーを削除します。"
+      },
+      "selectReview": "⟦タイトル⟧ のレビューを選択してください",
+      "unansweredBadge": "未回答",
+      "responseRequiredBadge": "要対応",
+      "officialResponse": "公式回答",
+      "empty": "このカテゴリにはレビューがありません。",
+      "flag": "フラグ",
+      "responseRequired": "要対応",
+      "clearResponseRequired": "明確な応答が必要です",
+      "delete": "消去",
+      "hide": "隠れる",
+      "publish": "公開",
+      "respondAsSynkAfrica": "SynkAfrica として応答します",
+      "responsePlaceholder": "正式な返答はゲストとベンダーに表示されます...",
+      "photosLabel": "ゲストの写真",
+      "status": {
+        "published": "発行済み",
+        "flagged": "フラグ付き",
+        "deleted": "削除されました",
+        "hidden": "隠れた"
+      }
+    },
+    "reports": {
+      "title": "レポート",
+      "totalRevenue": "総収益 (月)",
+      "totalBookings": "総予約数（月）",
+      "topExperience": "最高の体験",
+      "activeVendors": "アクティブなベンダー",
+      "popularExperiences": "人気の体験",
+      "bookings": "予約",
+      "metric": "メトリック",
+      "value": "価値",
+      "experience": "経験",
+      "exportRevenue": "収益CSVのエクスポート",
+      "exportBookings": "予約をCSVでエクスポート"
+    },
+    "support": {
+      "title": "サポートチケット",
+      "subtitle": "ユーザーとベンダーのサポート リクエストを確認し、チケットのステータスを更新し、正式な応答を送信します。",
+      "tab": {
+        "users": "ユーザー",
+        "vendors": "ベンダー"
+      },
+      "user": "ユーザー",
+      "vendor": "ベンダー",
+      "empty": "このフィルターに一致するチケットはありません。",
+      "adminResponse": "管理者の応答",
+      "previousResponse": "以前の回答",
+      "sendResponse": "応答を送信する"
+    }
+  },
+  "vendor": {
+    "nav": {
+      "workspace": "ワークスペース",
+      "account": "アカウント",
+      "dashboard": "ダッシュボード",
+      "listings": "リスト",
+      "bookings": "予約",
+      "earnings": "収益",
+      "notifications": "通知",
+      "businessProfile": "事業概要",
+      "settings": "設定",
+      "support": "サポート",
+      "logOut": "ログアウト",
+      "openMenu": "メニューを開く",
+      "closeMenu": "メニューを閉じる"
+    },
+    "header": {
+      "verifiedVendor": "検証済みベンダー",
+      "unverifiedVendor": "未確認のベンダー",
+      "pendingVendor": "検証保留中"
+    },
+    "signup": {
+      "title": "ベンダーアカウントを作成する",
+      "subtitle": "SynkAfrica に参加して、アフリカ全土の旅行者にあなたの車、宿泊施設、体験を掲載しましょう。",
+      "alreadyHaveAccount": "すでにベンダーアカウントをお持ちですか?",
+      "signIn": "サインイン",
+      "progressLabel": "ベンダーサインアップの進行状況",
+      "steps": {
+        "business": "ビジネスとオーナー情報",
+        "security": "セキュリティと検証",
+        "identity": "本人確認"
+      },
+      "cancel": "キャンセル",
+      "back": "戻る",
+      "continue": "続く",
+      "createAccount": "アカウントを作成する",
+      "completeRequiredFields": "必須フィールドに入力します: ⟦フィールド⟧",
+      "securityRequired": "OTP で電話を確認し、有効なパスワードを作成して続行します。",
+      "identityRequired": "政府 ID をアップロードし、アカウントを作成するための条件に同意します。",
+      "sections": {
+        "businessInfo": "事業案内",
+        "businessInfoHint": "あなたのビジネスについて教えてください。",
+        "ownerInfo": "所有者情報",
+        "ownerInfoHint": "ビジネスオーナーまたは主な連絡先に関する詳細。",
+        "phoneVerification": "電話認証",
+        "phoneVerificationHint": "ご入力いただいた電話番号にワンタイムコードを送信いたします。",
+        "accountSecurity": "アカウントのセキュリティ",
+        "accountSecurityHint": "ベンダー アカウントに強力なパスワードを作成します。",
+        "governmentId": "政府発行の身分証明書",
+        "governmentIdHint": "本人確認のために有効なパスポート、運転免許証、または NIN 票をアップロードします。"
+      },
+      "fields": {
+        "businessName": "事業所名",
+        "businessType": "業種",
+        "cacRegistrationNumber": "CAC登録番号",
+        "companyType": "会社の種類",
+        "businessAddress": "勤務先の住所",
+        "ownerFullName": "所有者のフルネーム",
+        "ownerEmail": "電子メールアドレス",
+        "phoneNumber": "電話番号",
+        "dateOfBirth": "生年月日",
+        "password": "パスワード",
+        "confirmPassword": "パスワードを認証する"
+      },
+      "placeholders": {
+        "companyType": "会社タイプを選択してください",
+        "businessName": "例えば海岸沿いの小道 NG",
+        "businessType": "業種を選択してください",
+        "cacRegistrationNumber": "例えばRC1234567",
+        "businessAddress": "通り、都市、州",
+        "ownerFullName": "正式な正式名",
+        "ownerEmail": "you@business.com",
+        "phoneNumber": "7812345678",
+        "password": "パスワードを作成",
+        "confirmPassword": "パスワードを再入力してください"
+      },
+      "sendOtp": "OTPを送信する",
+      "resendOtp": "OTPを再送信する",
+      "enterOtp": "OTPを入力してください",
+      "resendIn": "00:⟦秒⟧後に再送信します",
+      "otpVerified": "電話番号が確認されました。",
+      "passwordRules": {
+        "minLength": "少なくとも 8 文字",
+        "hasNumber": "数字が含まれています",
+        "hasUppercase": "大文字が含まれます"
+      },
+      "passwordMismatch": "パスワードが一致しません。",
+      "togglePasswordVisibility": "パスワードの表示を切り替えます",
+      "uploadId": "ここにIDをドラッグ＆ドロップします",
+      "uploadIdHint": "JPG、PNG、PDF（最大5MB）",
+      "chooseFile": "ファイルを選択",
+      "idUploaded": "ドキュメントがアップロードされました",
+      "idUploadFailed": "アップロードに失敗しました - もう一度試してください。",
+      "removeId": "IDを削除する",
+      "idPrivacyNote": "ID は安全に保管され、検証目的のみに使用されます。当社はお客様の個人文書を第三者と共有することはありません。",
+      "securityBanner": {
+        "title": "あなたの情報は私たちにとって安全です",
+        "message": "当社は業界標準のセキュリティを使用してデータを保護し、アカウントを安全に保ちます。"
+      },
+      "agreeTermsPrefix": "に同意します",
+      "termsOfService": "利用規約",
+      "and": "そして",
+      "privacyPolicy": "プライバシーポリシー"
+    },
+    "login": {
+      "title": "ベンダーのサインイン",
+      "intro": "SynkAfrica ベンダー アカウントにサインインして、出品、予約、収益を管理します。",
+      "emailPlaceholder": "ベンダーのメールアドレスを入力してください",
+      "signInGoogle": "Googleでサインイン",
+      "noAccount": "ベンダーアカウントをお持ちでない場合は、",
+      "signUp": "サインアップ"
+    },
+    "verificationNotice": {
+      "unverified": {
+        "title": "要検証",
+        "message": "ベンダー認証を完了してリストを公開し、支払いを受け取ります。"
+      },
+      "pending": {
+        "title": "検証中です",
+        "message": "あなたの認証は審査中です。一部の機能は承認されるまで制限される場合があります。"
+      },
+      "completeVerification": "完全な検証"
+    },
+    "notifications": {
+      "filter": {
+        "label": "通知をフィルタリングする",
+        "all": "全て",
+        "newBooking": "新規予約",
+        "bookingReminder": "24時間リマインダー",
+        "payoutConfirmation": "支払い",
+        "adminMessage": "管理者"
+      },
+      "type": {
+        "newBooking": "新規予約",
+        "bookingReminder": "24時間リマインダー",
+        "payoutConfirmation": "支払い",
+        "adminMessage": "管理者メッセージ"
+      },
+      "unreadCount": "{count} 未読通知",
+      "allCaughtUp": "皆さんも追い込まれていますね。",
+      "markRead": "既読としてマークする",
+      "markAllRead": "すべて既読としてマークする",
+      "empty": "このカテゴリには通知がありません。",
+      "time": {
+        "justNow": "ちょうど今",
+        "hoursAgo": "⟦数えて⟧時間前"
+      },
+      "sample": {
+        "newBooking": {
+          "title": "新規予約受付中",
+          "message": "アマラは、7 月 25 日 · 4 名分のラゴス ラグーン サンセット クルーズを予約しました。 24 時間以内に確認または拒否してください。"
+        },
+        "newBooking2": {
+          "title": "新規予約受付中",
+          "message": "Chidi は 8 月 3 日に Lekki Garden Suites を 2 名様で予約しました。"
+        },
+        "reminder": {
+          "title": "24時間以内にご予約ください",
+          "message": "リマインダー: 明日のファティマとのラゴス ラグーン サンセット クルーズは午後 5 時 30 分、ゲストは 6 人です。"
+        },
+        "reminder2": {
+          "title": "24時間以内にご予約ください",
+          "message": "リマインダー: トヨタ カムリ 2021 レンタルは明日午前 9 時に Emeka で開始されます。"
+        },
+        "payout": {
+          "title": "支払いが確認されました",
+          "message": "NGN 200,000 があなたの GTBank アカウント (末尾 4521) に送金されました。"
+        },
+        "payout2": {
+          "title": "支払いが確認されました",
+          "message": "アクセス銀行末尾 8834 への 150,000 ナイラの出金が正常に処理されました。"
+        },
+        "admin": {
+          "title": "Synkafrica からのポリシー更新",
+          "message": "エクスペリエンスリストに関する最新のベンダーガイドラインが利用可能になりました。 8月1日までにご確認ください。"
+        },
+        "admin2": {
+          "title": "上場承認",
+          "message": "ラゴス ラグーン サンセット クルーズのリストが Synkafrica に掲載されました。"
+        }
+      }
+    },
+    "dashboard": {
+      "welcomeBack": "おかえり、",
+      "addListing": "リストを追加",
+      "period": {
+        "label": "メトリクス期間",
+        "day": "ある日",
+        "week": "1週間",
+        "month": "1ヶ月",
+        "sixMonths": "6ヶ月",
+        "year": "1年"
+      },
+      "stats": {
+        "liveListings": "ライブリスト",
+        "newBookings": "新規予約",
+        "earnings": "収益",
+        "pendingApproval": "承認待ち"
+      },
+      "goToBookings": "予約に移動",
+      "yourListings": "あなたのリスト",
+      "seeAll": "すべて見る",
+      "status": {
+        "live": "ライブリスト",
+        "pending": "保留中...",
+        "paused": "一時停止中",
+        "draft": "下書き"
+      },
+      "editListing": "リストの編集",
+      "deleteListing": "リストの削除",
+      "pauseListing": "出品を一時停止する",
+      "playListing": "リストの再開",
+      "deleteListingModal": {
+        "title": "リストを削除しますか?",
+        "message": "「⟦タイトル⟧」を削除してもよろしいですか?この操作は元に戻すことができません。",
+        "confirm": "リストの削除",
+        "cancel": "キャンセル"
+      },
+      "category": {
+        "accommodations": "宿泊施設",
+        "carRentals": "レンタカー",
+        "tours": "ツアー",
+        "toursExperiences": "ツアー＆体験"
+      }
+    },
+    "businessProfile": {
+      "businessName": "商号",
+      "businessNameHint": "支払いおよびベンダー記録に使用される内部名。公開リストには掲載されていません。",
+      "internalNameLabel": "社内の商号",
+      "contactDetails": "連絡先詳細",
+      "contactDetailsHint": "Synkafrica とゲストが予約サポートを受ける方法。",
+      "phone": "電話番号",
+      "email": "電子メールアドレス",
+      "address": "勤務先の住所",
+      "payoutAccount": "支払い用の銀行口座",
+      "payoutAccountHint": "収益からの出金はこの口座に送金されます。",
+      "bankName": "銀行名",
+      "accountNumber": "口座番号",
+      "accountNumberLocked": "アカウント番号は {months} か月ごとにのみ変更できます。次回の変更は {date} に可能です。",
+      "accountName": "アカウント名",
+      "bank": {
+        "zenith": "ゼニス銀行",
+        "firstBank": "第一銀行"
+      },
+      "passwordUpdate": "パスワードの更新",
+      "passwordUpdateHint": "他の場所では使用していない強力なパスワードを選択してください。",
+      "currentPassword": "現在のパスワード",
+      "newPassword": "新しいパスワード",
+      "confirmPassword": "新しいパスワードを確認します",
+      "passwordMismatch": "新しいパスワードが一致しません。",
+      "updatePassword": "パスワードを更新する",
+      "passwordUpdated": "パスワードが更新されました。",
+      "saveChanges": "変更を保存する",
+      "saved": "保存されました。",
+      "rejected": {
+        "title": "申請は承認されませんでした",
+        "noReason": "管理者があなたの申請を承認しませんでした。以下の詳細と書類を修正して、再送信してください。",
+        "resubmit": "審査のために再送信する",
+        "resubmitting": "再送信中…",
+        "resubmitted": "再提出されました。管理者があなたの申請を再度審査します。",
+        "resubmitFailed": "再送信できませんでした。もう一度やり直してください。"
+      },
+      "cac": {
+        "title": "CAC登録",
+        "hint": "CAC レジストリと照合してチェックされました。チェックに合格するまで、これらの詳細を修正できます。",
+        "number": "CAC登録番号",
+        "companyType": "会社の種類",
+        "companyTypePlaceholder": "会社タイプを選択してください",
+        "status": {
+          "verified": "確認済み",
+          "failed": "未検証",
+          "unverified": "小切手待ち"
+        },
+        "verifiedAs": "CAC レジストリの {name} と一致しました。",
+        "failedHint": "CAC レジストリはこれらの詳細と一致しませんでした。修正して保存し、再度確認してください。",
+        "pendingHint": "保存すると、CAC チェックが再実行されます。すぐに更新して結果を確認してください。",
+        "lockedHint": "確認済みの詳細はここでは変更できません。何か問題がある場合はサポートにお問い合わせください。"
+      },
+      "documents": {
+        "title": "書類と検証",
+        "subtitle": "ビジネスレベルのドキュメントはアカウント全体に適用されます。公開する前に、リスティングごとに車両書類が必要です。",
+        "businessSection": "ビジネス文書",
+        "business": {
+          "cac": "法人設立証明書（CAC）"
+        },
+        "uploadedMeta": "アップロードされた ⟦日付⟧ · ⟦ファイル名⟧",
+        "view": "ビュー",
+        "vehicleSection": "車両書類 · {count} リスト",
+        "vehicleLegend": "保険・走行適格性・所有権の証明",
+        "type": {
+          "insurance": "保険証",
+          "roadworthiness": "耐道路性証明書",
+          "ownership": "所有権の証明"
+        },
+        "status": {
+          "verified": "確認済み",
+          "rejected": "拒否されました",
+          "pending": "保留中",
+          "notUploaded": "アップロードされていません"
+        },
+        "listingStatus": {
+          "allVerified": "すべて検証済み",
+          "actionNeeded": "必要なアクション",
+          "notStarted": "未開始",
+          "inProgress": "進行中"
+        },
+        "reupload": "再アップロード",
+        "upload": "アップロード",
+        "rejection": {
+          "plateMismatch": "書類名が登録プレート番号と一致しません。 ABJ-771-KD と一致する車両免許証を再アップロードしてください。"
+        }
+      }
+    },
+    "support": {
+      "helpBanner": "苦情を提出するか、Synkafrica ベンダー チームに支援を依頼してください。通常、1 ～ 2 営業日以内に返信させていただきます。",
+      "helpBannerEmail": "更新情報は⟦メール⟧に送信されます。",
+      "openTickets": "⟦カウント⟧ オープンチケット",
+      "tabs": {
+        "label": "サポートセクション"
+      },
+      "createTicket": "サポートチケットを作成する",
+      "createTicketHint": "問題を迅速に解決できるよう、問題を詳しく説明してください。",
+      "subject": "主題",
+      "subjectPlaceholder": "問題の簡単な概要",
+      "category": {
+        "booking": "予約の問題",
+        "payout": "支払いと収益",
+        "listing": "リストと在庫状況",
+        "account": "アカウントとプロフィール",
+        "complaint": "苦情",
+        "other": "他の"
+      },
+      "priority": {
+        "low": "低い",
+        "medium": "中くらい",
+        "high": "高い",
+        "urgent": "緊急"
+      },
+      "priorityHint": "「緊急」は、時間に制約のある予約または支払いの問題にのみ使用してください。",
+      "bookingReference": "予約番号",
+      "bookingReferencePlaceholder": "例えばVB-3 または注文番号 (オプション)",
+      "description": "説明",
+      "descriptionPlaceholder": "何が起こったのか、いつ起こったのか、そしてどのような結果が必要なのかを説明します。",
+      "submitTicket": "チケットを送信する",
+      "ticketSubmitted": "チケット⟦番号⟧が送信されました。私たちのチームがすぐにフォローアップします。",
+      "responseTime": "必須フィールドには * が付いています。",
+      "yourTickets": "あなたのチケット",
+      "yourTicketsHint": "送信した苦情やサポート リクエストを追跡します。",
+      "filter": {
+        "label": "チケットをステータスでフィルタリングする",
+        "all": "全て"
+      },
+      "status": {
+        "open": "開ける",
+        "inProgress": "進行中",
+        "resolved": "解決済み",
+        "closed": "閉店"
+      },
+      "updated": "更新されました",
+      "created": "作成されました",
+      "emptyTickets": "このフィルターに一致するチケットはありません。",
+      "loading": "チケットを読み込み中…",
+      "loadFailed": "チケットを読み込めませんでした。もう一度試してください。",
+      "submitFailed": "チケットを送信できませんでした。もう一度試してください。",
+      "viewConversation": "会話を見る",
+      "backToTickets": "チケットに戻る",
+      "conversation": "会話",
+      "you": "あなた",
+      "supportTeam": "サポートチーム",
+      "replyPlaceholder": "返信を入力してください…",
+      "sendReply": "返信を送信",
+      "sending": "送信中…",
+      "replyFailed": "返信を送信できませんでした。もう一度試してください。"
+    },
+    "earnings": {
+      "availableBalance": "利用可能残高",
+      "lifetimeEarnings": "生涯収入",
+      "transactionHistory": "取引履歴",
+      "withdrawFunds": "資金を引き出す",
+      "amountToWithdraw": "出金金額",
+      "selectBankAccount": "銀行口座を選択してください",
+      "payoutAccount": "支払い口座",
+      "noBankAccount": "支払いアカウントはまだ追加されていません。",
+      "addBankAccount": "ビジネス プロフィールに銀行口座を追加 →",
+      "availableHint": "利用可能：",
+      "processingNote": "出金は 1 ～ 2 営業日以内に処理されます。",
+      "paymentFlowTitle": "支払いと引き出しのポリシー",
+      "paymentFlowInstant": "₦200,000 以下の出金は確認後に自動的に処理されます。",
+      "paymentFlowApproval": "₦200,000 を超える出金には、スーパー管理者の承認が必要です。",
+      "paymentFlowAuth": "出金の際、₦200,000 を超える金額には取引 PIN と OTP が必要です。",
+      "withdrawalModal": {
+        "title": "出金の確認",
+        "pin": "取引暗証番号",
+        "otp": "OTPコード",
+        "sendOtp": "OTPを送信する",
+        "submit": "出金の確認",
+        "pendingApproval": "この取り消しにはスーパー管理者の承認が必要です。承認され次第通知されます。",
+        "cancel": "キャンセル"
+      },
+      "status": {
+        "completed": "完了",
+        "pending": "保留中",
+        "failed": "失敗した"
+      },
+      "transaction": {
+        "bookingPayment": "予約支払い",
+        "withdrawal": "出金",
+        "platformFee": "プラットフォーム料金",
+        "refund": "返金"
+      },
+      "bank": {
+        "gtbank": "GTバンク",
+        "access": "アクセスバンク"
+      },
+      "duration": {
+        "label": "収益期間",
+        "daily": "毎日",
+        "weekly": "毎週",
+        "monthly": "毎月",
+        "all": "全て"
+      },
+      "commissionSplit": "手数料分割",
+      "commissionSplitHint": "予約収益は、⟦ベンダー⟧% がお客様に、⟦プラットフォーム⟧% が Synkafrica に分配されます。",
+      "vendorShare": "あなたのシェア",
+      "platformShare": "プラットフォーム料金",
+      "grossRevenue": "総収益",
+      "downloadStatements": "明細書をダウンロードする",
+      "emptyTransactions": "この期間の取引はありません。",
+      "statement": {
+        "date": "日付",
+        "title": "タイトル",
+        "description": "説明",
+        "type": "タイプ",
+        "amount": "額",
+        "status": "状態"
+      }
+    },
+    "listings": {
+      "detail": {
+        "back": "リストに戻る",
+        "backToBookings": "予約に戻る",
+        "heading": "出品詳細",
+        "hint": "メディア、詳細、価格、ドキュメントを含む、このリストの完全なプレビュー。",
+        "status": "状態",
+        "category": "カテゴリ",
+        "rating": "評価",
+        "notFound": "リストが見つかりません。"
+      },
+      "bookingAvailability": "予約可能状況",
+      "filter": {
+        "allCategories": "すべてのカテゴリー",
+        "allStatuses": "すべてのステータス",
+        "statusLabel": "状態",
+        "status": {
+          "live": "ライブ",
+          "pending": "保留中",
+          "draft": "下書き",
+          "paused": "一時停止中"
+        },
+        "empty": "フィルターに一致するリストはありません。"
+      },
+      "status": {
+        "pendingApproval": "承認待ち",
+        "paused": "一時停止中"
+      },
+      "availability": {
+        "selectListing": "リスト",
+        "modeAvailable": "利用可能なマークを付ける",
+        "modeBlock": "ブロック日付",
+        "modeAvailableHint": "日付をクリックして予約用の日付を開きます。もう一度クリックすると、空き状況が削除されます。",
+        "modeBlockHint": "予約をブロックするには日付をクリックしてください。ブロックを解除するには、もう一度クリックします。",
+        "legendAvailable": "利用可能",
+        "legendBlocked": "ブロックされました",
+        "legendSelected": "選択済み",
+        "available": "利用可能",
+        "blocked": "ブロックされました",
+        "timeSlots": "時間帯",
+        "capacity": "容量",
+        "selectDayHint": "カレンダーから日付を選択して、時間帯を設定してください。",
+        "selectAvailableDay": "この日付を「空き」としてマークし、時間枠を設定できるようにしてください。",
+        "blockedDayMessage": "この日付は予約不可になっています。時間枠を設定するには、予約不可の制限を解除してください。",
+        "defaultCapacity": "デフォルトの容量",
+        "defaultCapacityHint": "新しい利用可能日および有効な時間帯に適用されます。",
+        "leadTime": "リードタイム",
+        "leadTimeHint": "お客様が予約を行う前に必要な最短の事前通知期間。",
+        "leadTimeUnitHours": "営業時間",
+        "leadTimeUnitDays": "日"
+      },
+      "calendar": {
+        "sun": "日",
+        "mon": "月",
+        "tue": "火",
+        "wed": "水",
+        "thu": "木",
+        "fri": "金",
+        "sat": "土",
+        "previousMonth": "前月",
+        "nextMonth": "来月"
+      }
+    },
+    "bookings": {
+      "tab": {
+        "upcoming": "今後の予定",
+        "past": "過去",
+        "cancelled": "キャンセル",
+        "declined": "拒否されました"
+      },
+      "stats": {
+        "awaitingConfirmation": "確認待ち",
+        "upcomingConfirmed": "今後の予定（確認済み）",
+        "earningsThisMonth": "今月の収益",
+        "responseRate": "応答率 (30 日)"
+      },
+      "searchPlaceholder": "ゲスト名または予約IDで検索...",
+      "allListings": "すべてのリスト",
+      "viewModeLabel": "予約ビュー",
+      "view": {
+        "list": "リスト",
+        "calendar": "カレンダー"
+      },
+      "calendarComingSoon": "カレンダービューは近日公開予定です。",
+      "respondWithin": "⟦時間⟧以内に返信してください",
+      "paymentSecured": "安全な支払い",
+      "messageGuest": "メッセージゲスト",
+      "viewListing": "リストを見る",
+      "cancelBooking": "予約をキャンセルする",
+      "dateRangeLabel": "日付範囲でフィルタリングする",
+      "dateRange": {
+        "all": "ずっと",
+        "pastMonth": "先月",
+        "past3Months": "過去 3 か月",
+        "past6Months": "過去6ヶ月",
+        "pastYear": "過去1年"
+      },
+      "empty": {
+        "upcoming": "この期間の今後の予約はありません。",
+        "past": "この期間の過去の予約はありません。",
+        "cancelled": "この期間のキャンセル予約はありません。",
+        "declined": "この期間中に拒否された予約はありません。"
+      },
+      "declineModal": {
+        "title": "予約を拒否する",
+        "subtitle": "予約 {reference} が拒否された理由を ⟦ゲスト⟧ に伝えてください。",
+        "reasonLabel": "辞退理由",
+        "reasonPlaceholder": "この予約を受け付けられない理由を説明してください...",
+        "cancel": "キャンセル",
+        "submit": "予約を拒否する"
+      },
+      "declineReason": "辞退理由",
+      "deliveryAddress": "配送先住所",
+      "pickupAddress": "受取住所",
+      "carMode": {
+        "selfDrive": "セルフドライブ",
+        "withDriver": "ドライバー付き"
+      },
+      "calendar": {
+        "selectedDay": "この日の予約は{count}件です",
+        "noBookings": "この日は予約はありません。"
+      },
+      "pendingConfirmation": "{count} 件の予約があなたの確認を待っています。",
+      "specialRequests": "特別なリクエスト",
+      "confirm": "確認する",
+      "decline": "衰退",
+      "markComplete": "完了としてマークする",
+      "status": {
+        "awaitingConfirmation": "確認待ち",
+        "confirmed": "確認済み",
+        "declined": "拒否されました",
+        "completed": "完了",
+        "cancelled": "キャンセル"
+      }
+    },
+    "addListing": {
+      "title": "新しいリストを追加",
+      "editTitle": "リストの編集",
+      "loadError": "このリストを読み込めませんでした。もう一度試してください。",
+      "subtitle": "新しいリスティングを作成して、より多くの顧客へのアプローチを開始します。",
+      "backToListings": "← 一覧に戻る",
+      "backToListing": "← 一覧に戻る",
+      "progressLabel": "リストの進捗状況",
+      "steps": {
+        "carDetails": "車の詳細",
+        "accommodationDetails": "宿泊施設詳細",
+        "experienceDetails": "体験詳細",
+        "media": "メディア",
+        "pricing": "価格設定",
+        "documents": "書類",
+        "review": "レビューと公開"
+      },
+      "whatAreYouListing": "何をリストアップしているのですか？",
+      "category": {
+        "car": {
+          "title": "車",
+          "description": "レンタカーをリストします。"
+        },
+        "accommodation": {
+          "title": "宿泊施設",
+          "description": "滞在先をリストアップします。"
+        },
+        "experience": {
+          "title": "経験",
+          "description": "アクティビティやツアーをリストします。"
+        }
+      },
+      "carDetailsHeading": "車の詳細",
+      "accommodationDetailsHeading": "宿泊施設の詳細",
+      "experienceDetailsHeading": "体験詳細",
+      "experienceType": "体験タイプ・カテゴリー",
+      "experienceTypeSelect": "体験タイプを選択してください",
+      "experienceLocationPlaceholder": "例えばナイジェリア、ラゴス、レッキ",
+      "experienceHighlights": "ハイライト / 簡単な説明",
+      "experienceHighlightsHint": "ゲストが行うことや体験することの短くてわかりやすい要約。",
+      "experienceHighlightsPlaceholder": "その体験、そのユニークな点、そしてゲストがその体験を気に入る理由を説明してください。",
+      "experienceAvailabilityHeading": "可用性",
+      "experienceAvailabilityHint": "エクスペリエンスが利用可能なときに設定します。",
+      "operatingDays": "営業日",
+      "startTime": "開始時間",
+      "endTime": "終了時間",
+      "experienceScheduleWeekly": "毎週繰り返す",
+      "experienceScheduleWeeklyHint": "この体験は、毎週指定された曜日にご利用いただけます。",
+      "experienceScheduleDateRange": "カスタムの日付範囲",
+      "experienceScheduleDateRangeHint": "このエクスペリエンスに対して特定の日付範囲を設定します。",
+      "experienceDateRangeHeading": "日付範囲を選択してください",
+      "experienceDateRangeHint": "このエクスペリエンスが利用可能になる開始日と終了日を選択してください。",
+      "experienceDateRangeStart": "開始日",
+      "experienceDateRangeEnd": "終了日",
+      "additionalInfoSection": "追加情報",
+      "whatsIncludedHint": "体験に含まれるものを列挙します。",
+      "includesItemsPlaceholder": "例えば装備、ガイド、安全装備、ボトル入り飲料水",
+      "whatToBring": "持っていくもの・着るもの",
+      "whatToBringHint": "ゲストに何を持っていくか、何を着ていくかを伝えてください。",
+      "whatToBringPlaceholder": "例えば動きやすい服装、閉じた靴、日焼け止め",
+      "tagInputFooter": "各項目を追加して Enter キーを押します",
+      "additionalInformationHeading": "追加情報",
+      "additionalInformationHint": "ゲストに役立つその他の情報があれば追加します。",
+      "additionalInformationPlaceholder": "例えば年齢制限、健康要件、キャンセルポリシー、集合場所の詳細",
+      "weekday": {
+        "mon": "月",
+        "tue": "火",
+        "wed": "水",
+        "thu": "木",
+        "fri": "金",
+        "sat": "土",
+        "sun": "太陽"
+      },
+      "carName": "車名",
+      "carNamePlaceholder": "例えばトヨタ ハイランダー 2024",
+      "carModel": "車種/バリエーション",
+      "carModelPlaceholder": "例えば2.4LリミテッドAWD",
+      "transmission": {
+        "automatic": "自動",
+        "manual": "マニュアル"
+      },
+      "year": "年",
+      "yearPlaceholder": "例えば2024年",
+      "comesWithDriver": "ドライバーは付属しますか？",
+      "yes": "はい",
+      "no": "いいえ",
+      "shortDescription": "簡単な説明",
+      "carDescriptionPlaceholder": "車、状態、レンタルに含まれるものについて説明します。",
+      "perksFeatures": "特典と機能",
+      "perksPlaceholder": "各特典を追加して Enter キーを押します",
+      "propertyName": "プロパティ名",
+      "accommodationName": "宿泊施設名",
+      "accommodationNamePlaceholder": "例えばOceanview Suites Lekki",
+      "propertyNamePlaceholder": "例えばLekki Garden Suites",
+      "propertyType": "プロパティの種類",
+      "propertyTypeSelect": "物件タイプの選択",
+      "propertyTypePlaceholder": "例えばアパート、ヴィラ、ホテル",
+      "address": "住所",
+      "addressPlaceholder": "物件の完全な住所",
+      "accommodationLocationPlaceholder": "例えばLekki Phase 1、ラゴス、ナイジェリア",
+      "accommodationMaxGuests": "最大宿泊者数 (施設)",
+      "accommodationMaxGuestsPlaceholder": "例えば12",
+      "checkInTime": "チェックイン時間",
+      "checkOutTime": "チェックアウト時間",
+      "availability": "可用性",
+      "availabilityAlways": "いつでも利用可能",
+      "availabilityDateRange": "日付範囲を設定する",
+      "availabilityHint": "公開後にカレンダーから特定の日付を管理することもできます。",
+      "popularPerks": "人気の特典",
+      "popularPerksHint": "あなたの施設で利用できるアメニティを選択してください。",
+      "viewAllPerks": "すべての特典を見る",
+      "showLessPerks": "表示を少なくする",
+      "propertyOwner": "あなたは不動産の所有者ですか？",
+      "propertyOwnerYes": "はい、私がオーナーです",
+      "propertyOwnerNo": "いいえ、私は正規代理店です",
+      "bedrooms": "寝室",
+      "bathrooms": "バスルーム",
+      "accommodationDescriptionPlaceholder": "宿泊施設、雰囲気、近くの観光スポット、そしてその特別な点について簡単に説明してください。",
+      "amenities": "アメニティ",
+      "amenitiesPlaceholder": "各アメニティを追加して Enter キーを押します",
+      "experienceName": "体験名",
+      "experienceNamePlaceholder": "例えばペイントボール アドベンチャー ラゴス",
+      "location": "位置",
+      "locationPlaceholder": "例えばビクトリア島、ラゴス",
+      "duration": "間隔",
+      "durationPlaceholder": "例えば2時間",
+      "maxGuests": "最大ゲスト数",
+      "experienceDescriptionPlaceholder": "アクティビティ、旅程、ゲストが期待するものについて説明します。",
+      "whatsIncluded": "含まれるもの",
+      "includesPlaceholder": "各インクルードを追加して Enter キーを押します",
+      "mediaHeading": "画像の一覧表示",
+      "mediaHint": "鮮明な写真やビデオをアップロードします。最大8ファイルまで。",
+      "uploadImages": "ここに画像やビデオをドラッグ アンド ドロップするか、クリックして参照します",
+      "uploadImagesHint": "PNG、JPG、WEBP または MP4 (最大 10MB)",
+      "removeImage": "画像を削除",
+      "mediaSkippedUnsupported": "{count} ファイルがスキップされました — サポートされていない形式です。 PNG、JPG、WEBP、または MP4 を使用してください (iPhone HEIC 写真はまだサポートされていません)。",
+      "mediaSkippedTooLarge": "{count} 個のファイルがスキップされました — 各ファイルは 10MB 未満である必要があります。",
+      "mediaPreviewFailed": "プレビューは利用できません",
+      "mediaUploading": "アップロード中…",
+      "mediaUploadFailed": "アップロードに失敗しました",
+      "pickupDeliveryHeading": "引き取りまたは配達",
+      "pickupDeliveryQuestion": "どのような引き継ぎオプションを提供していますか?該当するものをすべて選択してください。",
+      "pickupAddress": "受取住所",
+      "pickupAddressPlaceholder": "ゲストが車を受け取ることができる住所を入力してください",
+      "clientPickup": "クライアントのピックアップ",
+      "clientPickupHint": "お客様はあなたの所在地まで車を引き取ります。",
+      "deliveryDropoff": "配送・返却",
+      "deliveryDropoffHint": "お客様に車を納車させていただきます。",
+      "carPricingHeading": "レンタル料金",
+      "price12hr": "12時間レンタル（NGN）",
+      "price24hr": "24時間レンタル（NGN）",
+      "priceMultiDay": "複数日（1日あたり、NGN）",
+      "driverAddonPrice": "ドライバー追加価格（NGN）",
+      "selfDriveNoPrice": "セルフドライブが選択されました - ドライバーの追加価格は必要ありません。",
+      "deliveryFee": "配達/返却料金（NGN）",
+      "clientPickupNoPrice": "顧客の引き取りが選択されました — 配送料は必要ありません。",
+      "pricingLocationHint": "次のステップで、集荷場所または配達場所に関する詳細を指定できます。",
+      "accommodationPricingHeading": "宿泊料金",
+      "roomTypesPricing": "部屋のタイプと料金",
+      "roomTypesPricingHint": "提供するさまざまなタイプの部屋を追加します。",
+      "addRoomType": "部屋タイプを追加",
+      "addRoomTypeModalTitle": "部屋タイプを追加",
+      "editRoomTypeModalTitle": "部屋タイプの編集",
+      "saveRoomType": "部屋タイプを保存",
+      "roomType": "部屋タイプ",
+      "roomTypePlaceholder": "例えばデラックススイート",
+      "roomDescription": "説明",
+      "roomDescriptionPlaceholder": "この部屋タイプを簡単に説明します",
+      "roomMaxGuests": "最大ゲスト数",
+      "roomMaxGuestsPlaceholder": "例えば2",
+      "roomPricePerNight": "料金（1泊あたり）",
+      "roomTypesEmptyTitle": "部屋タイプはまだ追加されていません",
+      "roomTypesEmptyHint": "「部屋タイプを追加」をクリックして開始します。",
+      "actions": "アクション",
+      "edit": "編集",
+      "delete": "消去",
+      "nightlyRate": "1 泊料金 (NGN)",
+      "cleaningFee": "清掃料金（NGN）",
+      "experiencePricingHeading": "価格設定",
+      "experiencePricingHint": "チケットの価格を設定します。",
+      "singleTicketPrice": "シングルチケット料金",
+      "singleTicketPriceHint": "1人あたりの料金",
+      "groupTicketPrice": "団体チケット料金（から）（オプション）",
+      "groupTicketPriceHint": "団体の場合お一人様あたりの料金",
+      "minGroupSizeOptional": "最小グループサイズ (オプション)",
+      "maxGroupSizeOptional": "最大グループ サイズ (オプション)",
+      "minGroupSizePlaceholder": "例えば5",
+      "maxGroupSizePlaceholder": "例えば20",
+      "optional": "オプション",
+      "review": {
+        "groupSize": "グループの規模",
+        "category": "カテゴリ",
+        "title": "タイトル",
+        "images": "画像",
+        "documents": "アップロードされた文書",
+        "description": "説明",
+        "gpsConfirmed": "GPS追跡装置が確認されました"
+      },
+      "pricePerPerson": "1人あたりの料金（NGN）",
+      "minGroupSize": "最小グループサイズ",
+      "documents": {
+        "stepTitle": "書類のアップロード",
+        "pageTitle": "必要書類のアップロード",
+        "pageIntro": "車のリストを確認するために必要な書類をアップロードしてください。",
+        "pageSubtitle": "明確で有効な文書をアップロードして信頼を築き、リスティングの承認を迅速に取得します。",
+        "intro": {
+          "cars": "車のリスティングが公開される前に、以下の書類をアップロードしてください。",
+          "accommodations": "この宿泊リストの所有権または代理人の承認書類をアップロードします。",
+          "experiences": "公開する前にビジネス確認書類をアップロードしてください。"
+        },
+        "proofOfOwnership": "所有権の証明",
+        "proofOfOwnershipHint": "車両の所有権に関する書類 (車の日誌や購入レシートなど) をアップロードします。",
+        "roadworthiness": "耐道路性証明書",
+        "roadworthinessHint": "車両の有効な耐道路性証明書をアップロードします。",
+        "insurance": "保険",
+        "insuranceDocument": "保険書類",
+        "insuranceHint": "現在の車両保険証明書をアップロードします。",
+        "cac": "CAC登録",
+        "cacRegistration": "CAC登録証明書",
+        "cacHint": "商号登録 (CAC) 証明書をアップロードします。",
+        "accommodationOwnershipHint": "不動産の権利書、リース、または所有権の証明",
+        "agentAuthorization": "代理人の承認レター",
+        "agentAuthorizationHint": "物件の所有者からの、リストへの掲載を許可する署名入りの手紙",
+        "agentProofOfAddress": "代理人の住所証明",
+        "agentProofOfAddressHint": "住所が記載された公共料金の請求書または銀行取引明細書",
+        "addressPhotos": "記載されている住所と一致する写真",
+        "addressPhotosHint": "記載されている住所にある宿泊施設がはっきりとわかる写真",
+        "gpsAcknowledgment": "私はこの車両に機能する GPS 追跡装置が取り付けられていることを確認しますが、これが虚偽であることが判明した場合、私は責任を負います。",
+        "requiredBadge": "必須",
+        "uploadPrompt": "クリックしてアップロードするか、ドラッグ アンド ドロップします",
+        "uploadFormats": "PDF、JPG、PNG、最大10MB",
+        "safetyTitle": "あなたの書類は安全です",
+        "safetyText": "すべての文書は安全に保管され、検証目的のみに使用されます。それらは一般に共有されることはありません。",
+        "submitForReview": "レビューのために送信する",
+        "submitHint": "あなたのリストが審査され、承認されたら通知されます。",
+        "untitledListing": "無題のリスト",
+        "sidebar": {
+          "listingPreview": "リストのプレビュー",
+          "edit": "編集",
+          "carsListing": "車のリスト",
+          "accommodationsListing": "宿泊施設一覧",
+          "experiencesListing": "体験リスト",
+          "comesWithDriver": "ドライバー付属",
+          "selfDrive": "セルフドライブ",
+          "pricing": "価格設定",
+          "halfDay": "半日",
+          "fullDay": "終日",
+          "extraHour": "延長時間",
+          "progress": "上場の進捗状況"
+        }
+      },
+      "documentsHeading": "必要書類",
+      "uploadDocument": "ドキュメントをアップロードする",
+      "removeFile": "取り除く",
+      "reviewHeading": "出品内容を確認する",
+      "reviewHint": "公開する前に、以下の詳細を確認してください。",
+      "cancel": "キャンセル",
+      "back": "戻る",
+      "saveDraft": "下書きとして保存",
+      "draftSaved": "下書きが保存されました",
+      "draftSaveFailed": "下書きを保存できませんでした。もう一度試してください。",
+      "saveContinue": "保存して続行",
+      "completeRequiredFields": "必須フィールドに入力します: ⟦フィールド⟧",
+      "publish": "リストを公開する",
+      "publishWaitForUploads": "お待ちください。ドキュメントはまだアップロード中です。",
+      "success": {
+        "title": "レビューのために送信されたリスト",
+        "message": "あなたのリストは現在審査中です。承認後、2 ～ 3 営業日以内に確認メールが届きます。",
+        "addAnother": "別のリストを追加する",
+        "backToListings": "私のリストに戻る"
+      },
+      "categoryChooseHint": "提供するサービスの種類を選択してください。これは、最初のリストを保存するときに一度設定され、後で変更することはできません。",
+      "categoryLockedHint": "あなたのベンダーアカウントは{category}のみに登録されています。サービス カテゴリを変更するには、サポートにお問い合わせください。"
+    }
+  }
+}

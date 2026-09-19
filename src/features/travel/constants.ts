@@ -24,7 +24,7 @@ export const TRAVEL_SECTIONS: TravelSectionConfig[] = [
   {
     id: "accommodations",
     label: "Accommodations",
-    headline: "All you need in one place",
+    headline: "Experience Africa with confidence",
     heroImage: "/hero/accommodations.png",
     landingBlurb:
       "Accommodations landing — browse curated stays across Africa.",
@@ -34,7 +34,7 @@ export const TRAVEL_SECTIONS: TravelSectionConfig[] = [
   {
     id: "flights",
     label: "Flights",
-    headline: "All you need in one place",
+    headline: "Experience Africa with confidence",
     heroImage: "/hero/flights.png",
     landingBlurb: "Flights landing — compare routes and fares in one search.",
     resultsBlurb: "Flights results — showing matching itineraries for your trip.",
@@ -42,7 +42,7 @@ export const TRAVEL_SECTIONS: TravelSectionConfig[] = [
   {
     id: "car-rentals",
     label: "Car Rentals",
-    headline: "All you need in one place",
+    headline: "Experience Africa with confidence",
     heroImage: "/hero/car-rentals.png",
     landingBlurb:
       "Car rentals landing — self-drive and chauffeur options near you.",
@@ -52,7 +52,7 @@ export const TRAVEL_SECTIONS: TravelSectionConfig[] = [
   {
     id: "tours",
     label: "Tours & Experiences",
-    headline: "All you need in one place",
+    headline: "Experience Africa with confidence",
     heroImage: "/hero/tours.png",
     landingBlurb:
       "Tours landing — discover cultural experiences and attractions.",
