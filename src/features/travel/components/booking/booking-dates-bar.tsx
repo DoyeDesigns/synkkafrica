@@ -1,8 +1,9 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { BedDouble, CalendarDays, Users } from "lucide-react";
+import { BedDouble, Users } from "lucide-react";
 
+import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
 import { useTranslation } from "@/hooks/use-translation";
 
 type BookingDatesBarProps = {
@@ -64,20 +65,18 @@ export function BookingDatesBar({
 
   return (
     <div className="grid gap-3 rounded-[25px] border border-[#E5E5E5] bg-[#B4B4B4]/35 p-3 sm:grid-cols-2 xl:grid-cols-4">
-      <Field
-        icon={<CalendarDays className="h-4 w-4" />}
-        label={t("booking.dates.checkIn")}
-        value={checkIn}
-        onChange={onCheckInChange}
-        type="date"
-      />
-      <Field
-        icon={<CalendarDays className="h-4 w-4" />}
-        label={t("booking.dates.checkOut")}
-        value={checkOut}
-        onChange={onCheckOutChange}
-        type="date"
-      />
+      <div className="sm:col-span-2">
+        <HeroDateRangeField
+          variant="form"
+          fromLabel={t("booking.dates.checkIn")}
+          toLabel={t("booking.dates.checkOut")}
+          addDateLabel={t("hero.common.addDate")}
+          fromDate={checkIn}
+          toDate={checkOut}
+          onFromDateChange={onCheckInChange}
+          onToDateChange={onCheckOutChange}
+        />
+      </div>
       <Field
         icon={<Users className="h-4 w-4" />}
         label={t("booking.dates.guests")}

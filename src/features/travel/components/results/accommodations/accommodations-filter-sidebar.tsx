@@ -3,7 +3,6 @@
 import {
   Building2,
   ChevronDown,
-  MapPin,
 } from "lucide-react";
 
 import {
@@ -18,6 +17,7 @@ import { FilterPanel } from "./filter-panel";
 import { OtherFiltersPanel } from "./other-filters-panel";
 import { ClearFilterButton } from "../shared/clear-filter-button";
 import { DiscountFilterPanel } from "../shared/discount-filter-panel";
+import { FilterAddressField } from "../shared/filter-address-field";
 
 type AccommodationsFilterSidebarProps = {
   filters: AccommodationFilterState;
@@ -64,17 +64,12 @@ export function AccommodationsFilterSidebar({
         <label className="text-sm font-bold font-montserrat text-foreground">
           {t("filters.location")}
         </label>
-        <div className="mt-3 flex items-center gap-2 rounded-lg border border-[#C9C9C9] px-3 py-2.5">
-          <MapPin className="h-4 w-4 shrink-0 text-[#676565]" />
-          <input
-            type="text"
-            value={filters.location}
-            onChange={(event) =>
-              onFilterChange("location", event.target.value)
-            }
-            className="w-full bg-transparent text-sm font-satoshi text-foreground outline-none"
-          />
-        </div>
+        <FilterAddressField
+          value={filters.location}
+          onChange={(value) => onFilterChange("location", value)}
+          placeholder={t("filters.searchAddress")}
+          listboxId="accommodations-filter-address"
+        />
       </FilterPanel>
 
       <DiscountFilterPanel
@@ -94,9 +89,17 @@ export function AccommodationsFilterSidebar({
               type="text"
               inputMode="numeric"
               value={filters.priceBudget}
-              onChange={(event) =>
-                onFilterChange("priceBudget", event.target.value)
-              }
+              onChange={(event) => {
+                const raw = event.target.value;
+                onFilterChange("priceBudget", raw);
+                const parsed = Number.parseInt(raw.replace(/[^\d]/g, ""), 10);
+                if (!Number.isNaN(parsed)) {
+                  onFilterChange(
+                    "priceMax",
+                    Math.min(300000, Math.max(10000, parsed)),
+                  );
+                }
+              }}
               placeholder={t("filters.budget")}
               className="min-w-0 flex-1 bg-transparent px-1.5 text-sm font-satoshi text-foreground outline-none placeholder:font-medium placeholder:text-foreground/60"
             />
@@ -113,9 +116,11 @@ export function AccommodationsFilterSidebar({
               max={300000}
               step={5000}
               value={filters.priceMax}
-              onChange={(event) =>
-                onFilterChange("priceMax", Number(event.target.value))
-              }
+              onChange={(event) => {
+                const value = Number(event.target.value);
+                onFilterChange("priceMax", value);
+                onFilterChange("priceBudget", value.toLocaleString("en-NG"));
+              }}
               className="w-full cursor-pointer accent-[#D85A30]"
             />
             </div>

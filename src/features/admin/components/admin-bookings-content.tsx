@@ -30,6 +30,7 @@ import {
   type AdminBookingStatusFilter,
 } from "@/features/admin/data/admin-bookings";
 import { AdminCreateBookingModal } from "@/features/admin/components/admin-create-booking-modal";
+import { FormDate } from "@/features/travel/components/booking/form-controls";
 import { useFormatPrice } from "@/hooks/use-format-price";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
@@ -677,12 +678,21 @@ function SidebarInput({
   return (
     <label className="flex items-center justify-between gap-4">
       <span className="shrink-0 text-xs font-medium font-satoshi text-[#676565]">{label}</span>
-      <input
-        type={type}
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className="h-9 w-full max-w-[160px] rounded-lg border border-[#E5E5E5] px-3 text-right text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]"
-      />
+      {type === "date" ? (
+        <FormDate
+          value={value}
+          onChange={onChange}
+          placeholder="Select date"
+          className="flex h-9 w-full max-w-[160px] items-center justify-between rounded-lg border border-[#E5E5E5] px-3 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]"
+        />
+      ) : (
+        <input
+          type={type}
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          className="h-9 w-full max-w-[160px] rounded-lg border border-[#E5E5E5] px-3 text-right text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]"
+        />
+      )}
     </label>
   );
 }

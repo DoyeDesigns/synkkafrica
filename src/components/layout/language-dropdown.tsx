@@ -30,7 +30,7 @@ export function LanguageDropdown() {
 
       {open ? (
         <NavbarDropdownPanel className="min-w-[220px] py-3">
-          <ul className="space-y-1 px-2">
+          <ul className="max-h-[min(24rem,calc(100vh-6rem))] space-y-1 overflow-y-auto overscroll-contain px-2">
             {LANGUAGES.map((item) => {
               const isSelected = item.code === language;
 

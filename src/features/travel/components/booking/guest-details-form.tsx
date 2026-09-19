@@ -1,12 +1,14 @@
 "use client";
 
-import { CalendarDays, ChevronDown, Minus, Plus, User } from "lucide-react";
+import { useState } from "react";
+import { ChevronDown, Minus, Plus, User } from "lucide-react";
 
 import type {
   GuestIdentity,
   GuestIdentityErrors,
   GuestIdentityField,
 } from "@/features/travel/booking/guest-identity";
+import { FormDate } from "@/features/travel/components/booking/form-controls";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -18,13 +20,14 @@ const TITLE_KEYS: { value: string; key: TranslationKey }[] = [
   { value: "Dr", key: "booking.guest.title.dr" },
 ];
 
-const ID_TYPE_KEYS: { value: GuestIdentity["idType"]; key: TranslationKey }[] = [
-  { value: "passport", key: "booking.guest.idType.passport" },
-  { value: "national-id", key: "booking.guest.idType.nationalId" },
-  { value: "drivers-license", key: "booking.guest.idType.driversLicense" },
-];
-
-const NATIONALITIES = ["Nigeria", "Ghana", "Kenya", "South Africa", "Morocco"];
+// Identity verification + nationality are temporarily hidden.
+// const ID_TYPE_KEYS: { value: GuestIdentity["idType"]; key: TranslationKey }[] = [
+//   { value: "passport", key: "booking.guest.idType.passport" },
+//   { value: "national-id", key: "booking.guest.idType.nationalId" },
+//   { value: "drivers-license", key: "booking.guest.idType.driversLicense" },
+// ];
+//
+// const NATIONALITIES = ["Nigeria", "Ghana", "Kenya", "South Africa", "Morocco"];
 
 const inputClassName =
   "w-full rounded-md border border-[#E5E5E5] bg-white px-3 py-2.5 text-sm font-medium font-satoshi text-foreground outline-none placeholder:text-foreground/40 focus:border-[#004785]";
@@ -66,6 +69,11 @@ type AdultGuestSectionProps = {
   identityErrors?: GuestIdentityErrors;
   onIdentityChange: (identity: GuestIdentity) => void;
   title?: string;
+  firstName?: string;
+  onFirstNameChange?: (value: string) => void;
+  email?: string;
+  onEmailChange?: (value: string) => void;
+  emailError?: string;
 };
 
 function AdultGuestSection({
@@ -74,9 +82,17 @@ function AdultGuestSection({
   identityErrors = {},
   onIdentityChange,
   title,
+  firstName,
+  onFirstNameChange,
+  email,
+  onEmailChange,
+  emailError,
 }: AdultGuestSectionProps) {
   const t = useTranslation();
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const today = new Date().toISOString().split("T")[0];
 
+  // Identity verification is temporarily disabled — keep helpers for restore.
   const updateIdentity = (patch: Partial<GuestIdentity>) => {
     onIdentityChange({ ...identity, ...patch });
   };
@@ -85,6 +101,8 @@ function AdultGuestSection({
     identityErrors[field]
       ? t(identityErrors[field] as TranslationKey)
       : undefined;
+  void updateIdentity;
+  void fieldError;
 
   return (
     <div className="overflow-hidden rounded-md border border-[#E5E5E5]">
@@ -119,23 +137,33 @@ function AdultGuestSection({
             <input type="text" className={inputClassName} />
           </FormField>
           <FormField label={t("booking.guest.firstName")} required>
-            <input type="text" className={inputClassName} />
+            <input
+              type="text"
+              className={inputClassName}
+              value={index === 0 ? (firstName ?? "") : undefined}
+              onChange={
+                index === 0 && onFirstNameChange
+                  ? (event) => onFirstNameChange(event.target.value)
+                  : undefined
+              }
+            />
           </FormField>
           <FormField label={t("booking.guest.middleName")}>
             <input type="text" className={inputClassName} />
           </FormField>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-2">
-          <FormField label={t("booking.guest.dateOfBirth")} required>
-            <div className="relative">
-              <input type="date" className={`${inputClassName} pr-10`} />
-              <span className="pointer-events-none absolute right-0 top-0 flex h-full items-center border-l border-[#E5E5E5] px-3 text-[#676565]">
-                <CalendarDays className="h-4 w-4" />
-              </span>
-            </div>
-          </FormField>
+        <FormField label={t("booking.guest.dateOfBirth")} required className="max-w-xs">
+          <FormDate
+            value={dateOfBirth}
+            onChange={setDateOfBirth}
+            max={today}
+            placeholder={t("hero.common.selectDate")}
+          />
+        </FormField>
 
+        {/* Nationality — temporarily hidden
+        <div className="grid gap-4 lg:grid-cols-2">
           <FormField label={t("booking.guest.nationality")} required>
             <div className="relative">
               <select className={selectClassName} defaultValue="Nigeria">
@@ -149,7 +177,9 @@ function AdultGuestSection({
             </div>
           </FormField>
         </div>
+        */}
 
+        {/* Identity verification — temporarily hidden
         <div className="rounded-md border border-[#E5E5E5] bg-[#F8F8F8] p-4">
           <h3 className="text-sm font-semibold font-inter text-foreground">
             {t("booking.guest.idVerificationTitle")}
@@ -239,6 +269,7 @@ function AdultGuestSection({
             </p>
           ) : null}
         </div>
+        */}
 
         {index === 0 ? (
           <div className="grid gap-4 lg:grid-cols-2">
@@ -262,9 +293,16 @@ function AdultGuestSection({
                 />
               </div>
             </FormField>
-            <FormField label={t("booking.guest.emailAddress")}>
+            <FormField
+              label={t("booking.guest.emailAddress")}
+              required
+              error={emailError}
+            >
               <input
                 type="email"
+                required
+                value={email ?? ""}
+                onChange={(event) => onEmailChange?.(event.target.value)}
                 placeholder="user@mail.com"
                 className={inputClassName}
               />
@@ -288,6 +326,11 @@ type GuestDetailsFormProps = {
   allowGuestCountChange?: boolean;
   hideSpecialRequests?: boolean;
   leadGuestOnly?: boolean;
+  email?: string;
+  onEmailChange?: (value: string) => void;
+  firstName?: string;
+  onFirstNameChange?: (value: string) => void;
+  emailError?: string;
 };
 
 export function GuestDetailsForm({
@@ -302,6 +345,11 @@ export function GuestDetailsForm({
   allowGuestCountChange = true,
   hideSpecialRequests = false,
   leadGuestOnly = false,
+  email,
+  onEmailChange,
+  firstName,
+  onFirstNameChange,
+  emailError,
 }: GuestDetailsFormProps) {
   const t = useTranslation();
 
@@ -383,9 +431,11 @@ export function GuestDetailsForm({
         ) : null}
       </div>
 
+      {/* Identity verification hint — temporarily hidden
       <div className="mt-4 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-normal font-inter text-foreground">
         {t("booking.guest.idVerificationHint")}
       </div>
+      */}
 
       <div className="mt-5 space-y-4">
         {Array.from({ length: formCount }, (_, index) => (
@@ -396,6 +446,11 @@ export function GuestDetailsForm({
             identityErrors={identityErrors[index]}
             onIdentityChange={(identity) => onIdentityChange(index, identity)}
             title={leadGuestOnly ? t("booking.guest.leadGuestLabel") : undefined}
+            firstName={firstName}
+            onFirstNameChange={onFirstNameChange}
+            email={email}
+            onEmailChange={onEmailChange}
+            emailError={emailError}
           />
         ))}
       </div>

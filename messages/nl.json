@@ -1,0 +1,2483 @@
+{
+  "nav": {
+    "downloadApp": "App downloaden",
+    "becomeVendor": "Word een leverancier",
+    "chooseCurrency": "Kies Valuta",
+    "signInCreate": "Aanmelden | Account aanmaken",
+    "searchCurrency": "Zoek valuta",
+    "signOut": "Uitloggen",
+    "myAccount": "Mijn account",
+    "bookingsTrips": "Boekingen & Reizen",
+    "saved": "Opgeslagen",
+    "reviews": "Recensies"
+  },
+  "common": {
+    "bookNow": "Boek nu",
+    "continue": "Doorgaan",
+    "loading": "Laden…",
+    "startingFrom": "Vanaf",
+    "perDay": "Per dag",
+    "budget": "Begroting",
+    "seeMore": "Zie meer",
+    "showMore": "Laat meer zien",
+    "reviews": "Recensies",
+    "available": "Beschikbaar",
+    "selfDriveAvailable": "Zelf rijden mogelijk",
+    "excludingTaxes": "exclusief belastingen en toeslagen",
+    "select": "Selecteer",
+    "search": "Zoekopdracht",
+    "edit": "Bewerking",
+    "cancel": "Annuleren",
+    "notifications": "Meldingen",
+    "contactSupport": "Neem contact op met ondersteuning",
+    "signOut": "Meld u af",
+    "noReviewsYet": "Nog geen beoordelingen",
+    "viewPhoto": "Bekijk foto {index}",
+    "photoViewer": "Foto-viewer",
+    "closePhotoViewer": "Sluit de fotoviewer",
+    "previousPhoto": "Vorige foto",
+    "nextPhoto": "Volgende foto",
+    "photoOfTotal": "{huidig} van {totaal}",
+    "secured": "Beveiligd"
+  },
+  "hero": {
+    "headline": "Ervaar Afrika met vertrouwen",
+    "tab": {
+      "accommodations": "Accommodaties",
+      "flights": "Vluchten",
+      "carRentals": "Autoverhuur",
+      "tours": "Rondleidingen en ervaringen"
+    },
+    "search": "Zoekopdracht",
+    "clearFilter": "Filter wissen",
+    "accommodations": {
+      "destination": "Uw bestemming",
+      "destinationStay": "{tel} verblijf",
+      "destinationStays": "{tel} verblijven",
+      "checkIn": "Incheckdatum",
+      "checkAvailability": "Controleer beschikbaarheid",
+      "propertyType": "Type eigendom",
+      "oneRoom": "1 kamer",
+      "oneGuest": "1 gast",
+      "roomsCount": "{tel} Kamers",
+      "guestsCount": "{tel} Gasten",
+      "checkOut": "Bekijk Datum"
+    },
+    "flights": {
+      "roundTrip": "Rondreis",
+      "oneWay": "Enkele reis",
+      "directFlight": "Directe vlucht",
+      "economyClass": "Economy klasse",
+      "premiumEconomyClass": "Premium-economie",
+      "businessClass": "Businessklasse",
+      "firstClass": "Eerste klasse",
+      "onePassenger": "1 passagier",
+      "passengersCount": "{tel} Passagiers",
+      "fromCity": "Van | Selecteer Stad",
+      "toCity": "Naar | Selecteer Stad",
+      "departureDate": "Vertrekdatum",
+      "returnDate": "Datum van terugkomst",
+      "departing": "Vertrekkend",
+      "returning": "Terugkerend",
+      "nonstop": "Non-stop",
+      "oneStop": "Eén halte",
+      "multipleStops": "Meerdere haltes"
+    },
+    "common": {
+      "addDate": "Datum toevoegen",
+      "selectDateRange": "Selecteer vertrek- en terugkeerdata",
+      "selectDate": "Selecteer een datum",
+      "days": "Dagen",
+      "nights": "Nachten"
+    },
+    "carRentals": {
+      "searchCarType": "Zoek autotype",
+      "filterCarType": "Filter op autotype",
+      "allCarTypes": "Alle soorten",
+      "selfDrive": "Zelf rijden",
+      "price": "₦ Prijs",
+      "pickupDate": "Ophaaldatum",
+      "destinationCar": "{tel} auto",
+      "destinationCars": "{tel} auto's"
+    },
+    "tours": {
+      "searchPlaceholder": "Zoek locaties, attracties en ervaringen",
+      "startDate": "Startdatum",
+      "destinationExperience": "{tel} ervaring",
+      "destinationExperiences": "{tel} ervaringen"
+    },
+    "location": "Locatie"
+  },
+  "footer": {
+    "brandDescription": "SynkAfrica is een opkomend, alles-in-één reis- en premiumervaringsplatform dat is ontworpen om mensen wereldwijd te verbinden met het hart van het Afrikaanse reis- en lifestyle-ecosysteem.",
+    "explore": {
+      "title": "Ontdek SynkAfrica",
+      "hotels": "Hotels & Accommodaties",
+      "carRentals": "Autoverhuur",
+      "flights": "Vluchtboekingen",
+      "restaurants": "Dineren en restaurants"
+    },
+    "support": {
+      "title": "Steun",
+      "contact": "Neem contact op met ondersteuning",
+      "changeBooking": "Wijzig of annuleer uw boeking",
+      "paymentOptions": "Betalingsmogelijkheden",
+      "receipt": "Bekijk of print uw boekingsbewijs"
+    },
+    "community": {
+      "title": "Gemeenschap",
+      "instagram": "Onze Instagram",
+      "facebook": "Facebook",
+      "news": "In het nieuws"
+    },
+    "vendor": {
+      "title": "Word een leverancier",
+      "listCar": "Vermeld uw auto",
+      "listService": "Vermeld uw dienst",
+      "contact": "Neem contact met ons op"
+    },
+    "appPromo": {
+      "headline": "Krijg de volledige SynkAfrica-ervaring.",
+      "cta": "Download de app vandaag nog",
+      "getItOn": "KRIJG HET AAN",
+      "googlePlay": "Google Spelen",
+      "downloadOn": "Downloaden op de",
+      "appStore": "App Store"
+    },
+    "legal": {
+      "privacy": "Privacybeleid",
+      "terms": "Gebruiksvoorwaarden",
+      "security": "Beveiligingspagina",
+      "faqs": "Veelgestelde vragen"
+    },
+    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+  },
+  "login": {
+    "intro": "U kunt inloggen met uw SynkAfrica-account om toegang te krijgen tot onze diensten.",
+    "backendNotReady": "Backend-env-vars zijn nog niet ingesteld. Aanmelden werkt zodra de inloggegevens zijn geconfigureerd.",
+    "emailPlaceholder": "Voer uw e-mailadres in",
+    "orUseOptions": "of gebruik een van deze opties",
+    "signInGoogle": "Log in met Google",
+    "continueApple": "Ga verder met Apple"
+  },
+  "account": {
+    "nav": {
+      "notifications": "Meldingen"
+    },
+    "contactSupport": "Neem contact op met ondersteuning",
+    "profile": {
+      "edit": "Bewerking",
+      "fullName": "Volledige naam",
+      "fullNamePlaceholder": "Voer de volledige naam in",
+      "location": "Locatie",
+      "dateOfBirth": "Geboortedatum",
+      "dobPlaceholder": "MM | DD | JJ",
+      "gender": "Geslacht",
+      "notAdded": "Niet toegevoegd",
+      "contactDetails": "Contactgegevens",
+      "phone": "Telefoonnummer",
+      "email": "E-mailadres",
+      "passwordSecurity": "Wachtwoord en beveiliging",
+      "password": "Wachtwoord",
+      "changePassword": "Wachtwoord wijzigen"
+    },
+    "deleteAccount": "Account verwijderen",
+    "bookings": {
+      "title": "Jouw bestellingen",
+      "tab": {
+        "upcoming": "Aankomend",
+        "past": "Verleden",
+        "cancelled": "Geannuleerd",
+        "bookings": "Boekingen"
+      },
+      "empty": {
+        "upcoming": "Geen aankomende boekingen.",
+        "past": "Geen eerdere boekingen voor deze periode.",
+        "cancelled": "Geen geannuleerde bestellingen voor deze periode.",
+        "bookings": "Geen boekingen voor deze periode."
+      },
+      "orderDate": "Besteldatum:",
+      "experienceDate": "Datum ervaring:",
+      "totalAmount": "Totaal bedrag:",
+      "orderNumber": "Volgorde:",
+      "guestCount": "Gasten",
+      "specialRequests": "Speciale verzoeken",
+      "cancel": "Annuleren",
+      "receiptRecipient": "Ontvangstbewijs en QR-ontvanger",
+      "viewDetails": "Bekijk details",
+      "leaveReview": "Laat een recensie achter",
+      "reviewSubmitted": "Beoordeling ingediend",
+      "cancelWindowClosed": "De annuleringsperiode voor deze boeking is gesloten.",
+      "cancelledOn": "Geannuleerd op {date}",
+      "cancelConfirmTitle": "Deze boeking annuleren?",
+      "cancelConfirmBody": "Je kunt annuleren binnen de annuleringstermijn voordat je ervaring begint. Deze actie kan niet ongedaan worden gemaakt.",
+      "confirmCancel": "Ja, boeking annuleren",
+      "filterPeriod": "Filter op periode",
+      "badge": {
+        "upcoming": "Aankomend",
+        "past": "Verleden",
+        "cancelled": "Geannuleerd"
+      },
+      "countdown": {
+        "label": "Ervaring begint binnen",
+        "daysHours": "{dagen}d {uur}u",
+        "hoursMinutes": "{uur}u {minuten}m",
+        "detailHint": "Countdown-updates in realtime totdat uw ervaring begint."
+      },
+      "review": {
+        "title": "Laat een recensie achter",
+        "ratingLabel": "Jouw beoordeling",
+        "commentLabel": "Jouw recensie",
+        "commentPlaceholder": "Deel wat je leuk vond aan deze ervaring...",
+        "submit": "Beoordeling indienen",
+        "dismiss": "Sluit het beoordelingsdialoogvenster"
+      },
+      "detail": {
+        "back": "Terug naar boekingen",
+        "reference": "Boekingsreferentie",
+        "yourReview": "Jouw recensie",
+        "notFound": "Deze boeking kon niet worden gevonden."
+      }
+    },
+    "saved": {
+      "accommodations": "Accommodaties",
+      "empty": "Je hebt nog niets opgeslagen.",
+      "cars": "Auto's",
+      "tours": "Rondleidingen"
+    },
+    "reviews": {
+      "title": "Recensies",
+      "youRated": "Jij beoordeeld",
+      "writeReview": "Schrijf een recensie",
+      "ratingLabel": "Jouw beoordeling",
+      "commentLabel": "Jouw recensie",
+      "commentPlaceholder": "Deel wat je leuk vond aan deze ervaring...",
+      "photosLabel": "Foto's",
+      "photosCount": "{count}/{max} geüpload",
+      "addPhoto": "Foto toevoegen",
+      "removePhoto": "Foto verwijderen",
+      "submit": "Beoordeling indienen",
+      "pendingTitle": "Een voltooide boeking bekijken",
+      "pendingHint": "Beoordelingen kunnen alleen worden ingediend voor eerdere boekingen die aan uw account zijn gekoppeld.",
+      "selectBooking": "Selecteer hierboven een voltooide boeking om uw recensie te schrijven.",
+      "noPending": "U heeft geen voltooide boekingen die wachten op een beoordeling.",
+      "submittedTitle": "Uw ingediende beoordelingen",
+      "empty": "U heeft nog geen beoordelingen ingediend.",
+      "deleteReview": "Beoordeling verwijderen",
+      "bookingReference": "Boeking {referentie}",
+      "listingBadge": "Gast beoordelingen",
+      "experienceListingTitle": "Gast beoordelingen"
+    },
+    "notifications": {
+      "title": {
+        "reminder24h": "De ervaring begint over 24 uur",
+        "reviewRequest": "Vertel ons over uw ervaring",
+        "cancellationRefund": "Boeking geannuleerd",
+        "bookingConfirmation": "Boeking bevestigd",
+        "info": "Reisherinnering"
+      },
+      "empty": "Nog geen meldingen.",
+      "period": {
+        "mostRecent": "Meest recente",
+        "weekEarlier": "Een week eerder",
+        "threeMonthsAgo": "3 maanden geleden"
+      },
+      "kind": {
+        "bookingConfirmation": "Boeking bevestigd",
+        "reminder24h": "24-uurs herinnering",
+        "reviewRequest": "Beoordelingsverzoek",
+        "cancellationRefund": "Annulering en terugbetaling",
+        "info": "Reistip"
+      },
+      "message": {
+        "reminder24h": "Je ervaring {titel} begint morgen om {tijd} op {datum}. Controleer uw boekingsgegevens en arriveer 15 minuten eerder.",
+        "reviewRequest": "Hoe was {titel}? Deel een sterbeoordeling en een geschreven recensie om andere reizigers op SynkAfrica te helpen.",
+        "cancellationRefund": "Uw boeking voor {titel} ({referentie}) is geannuleerd. Elke in aanmerking komende terugbetaling wordt binnen 5 tot 7 werkdagen verwerkt.",
+        "bookingConfirmation": "Uw boeking voor {titel} in {locatie} is bevestigd. Controleer uw e-mail voor uw betalingsbewijs en QR-gegevens.",
+        "passportReminder": "Zorg ervoor dat uw paspoort nog minimaal 6 maanden geldig is na uw reisdatum."
+      }
+    },
+    "support": {
+      "contact": {
+        "whatsapp": "WhatsAppen",
+        "email": "E-mail",
+        "phone": "Bel ons"
+      },
+      "createTicket": "Maak een supportticket aan",
+      "topic": "Waar gaat dit over?",
+      "relatedOrder": "Gerelateerde bestelling (optioneel)",
+      "relatedOrderNone": "Geen",
+      "subject": "Onderwerp",
+      "subjectPlaceholder": "Korte samenvatting van de kwestie",
+      "message": "Bericht",
+      "messagePlaceholder": "Vertel ons wat er aan de hand is...",
+      "attachFile": "Voeg een foto of screenshot toe",
+      "submitTicket": "Ticket indienen",
+      "ticketSubmitted": "Ticket #{nummer} ingediend. We nemen snel contact met u op.",
+      "yourTickets": "Jouw kaartjes",
+      "commonQuestions": "Veelgestelde vragen",
+      "ticketMeta": "Ticket #{nummer} · {datum}",
+      "status": {
+        "open": "Openen",
+        "resolved": "Opgelost"
+      },
+      "category": {
+        "booking": "Boekingsprobleem",
+        "paymentRefund": "Betaling / terugbetaling",
+        "account": "Account & profiel",
+        "other": "Ander"
+      },
+      "faq": {
+        "cancelBooking": "Hoe annuleer ik een boeking?",
+        "refundTiming": "Wanneer krijg ik mijn geld terug?",
+        "changeDate": "Hoe wijzig ik mijn reisdatum?",
+        "paymentSecurity": "Is mijn betaling veilig?",
+        "cancelBookingAnswer": "Open uw boeking vanuit Bookings & Trips, selecteer de bestelling en gebruik de annuleringsoptie als deze zich nog binnen de annuleringstermijn bevindt. Restituties worden automatisch verwerkt voor in aanmerking komende boekingen.",
+        "refundTimingAnswer": "In aanmerking komende terugbetalingen worden doorgaans binnen 5 tot 7 werkdagen na annulering verwerkt, afhankelijk van uw bank of betalingsprovider.",
+        "changeDateAnswer": "Neem contact op met de ondersteuning met uw boekingsreferentie. Als de ervaring datumwijzigingen toestaat, zal ons team u helpen bij het opnieuw plannen of u door de beschikbare opties leiden.",
+        "paymentSecurityAnswer": "Ja. Betalingen op Synkafrica worden verwerkt via veilige, gecodeerde betalingspartners. Wij slaan nooit uw volledige kaartgegevens op onze servers op."
+      },
+      "tabs": {
+        "label": "Ondersteunende secties"
+      },
+      "backToTickets": "Terug naar kaartjes",
+      "typeMessage": "Typ een bericht...",
+      "send": "Versturen",
+      "supportTeam": "Synkafrica-ondersteuning",
+      "you": "Jij",
+      "emptyTickets": "U heeft nog geen supporttickets ingediend.",
+      "attachedImage": "Bijgevoegde afbeelding",
+      "removeAttachment": "Bijlage verwijderen"
+    }
+  },
+  "booking": {
+    "step": {
+      "rooms": "Kies Verblijf en Kamers",
+      "chooseExperience": "Kies Ervaring",
+      "chooseCar": "Kies Auto",
+      "choosePackage": "Kies Pakket",
+      "checkout": "Afrekenen",
+      "payment": "Betaling",
+      "confirmation": "Bevestiging"
+    },
+    "cta": {
+      "proceedToPay": "GA DOOR MET BETALEN"
+    },
+    "guest": {
+      "title": {
+        "mr": "Dhr",
+        "mrs": "Mevrouw",
+        "ms": "Mevrouw",
+        "miss": "Missen",
+        "dr": "dr"
+      },
+      "adultLabel": "Volwassene (17 jaar+)",
+      "leadGuestLabel": "Hoofdgast",
+      "addedCount": "{toegevoegd}/{totaal} toegevoegd",
+      "passportHint": "Vul uw naam in zoals deze vermeld staat op uw paspoort. Het paspoort moet minimaal 6 maanden geldig zijn vanaf de reisdatum.",
+      "idVerificationHint": "Voordat u een boeking kunt voltooien, is een geldig, door de overheid uitgegeven identiteitsbewijs vereist.",
+      "idVerificationTitle": "Identiteitsverificatie",
+      "idVerificationSubtitle": "Voer uw ID-gegevens precies in zoals ze op uw document staan.",
+      "idType": {
+        "passport": "Paspoort",
+        "nationalId": "Nationaal identiteitsbewijs",
+        "driversLicense": "Rijbewijs"
+      },
+      "idNumber": "ID-nummer",
+      "idNumberPlaceholder": "Voer uw ID-nummer in",
+      "idExpiry": "Vervaldatum",
+      "confirmId": "Ik bevestig dat mijn identiteitsgegevens correct zijn en dat mijn document minimaal 6 maanden geldig is vanaf de reisdatum.",
+      "idTypeRequired": "Selecteer een ID-type.",
+      "idNumberInvalid": "Voer een geldig ID-nummer in.",
+      "idExpiryRequired": "Voer de vervaldatum van de ID in.",
+      "idExpiryInvalid": "ID moet vanaf vandaag minimaal 6 maanden geldig zijn.",
+      "idConfirmRequired": "Bevestig uw ID-gegevens om door te gaan.",
+      "idValidationRequired": "Vul uw identiteitsgegevens in en bevestig deze voordat u tot betaling overgaat.",
+      "adultCheckbox": "Volwassene - {telling}",
+      "titleField": "Titel",
+      "lastName": "Achternaam",
+      "firstName": "Voornaam",
+      "middleName": "Middelste naam",
+      "dateOfBirth": "Geboortedatum",
+      "datePlaceholder": "jjjj-mm-dd",
+      "nationality": "Nationaliteit",
+      "gender": "Geslacht",
+      "male": "Mannelijk",
+      "female": "Vrouwelijk",
+      "mobileNo": "Mobiel nummer",
+      "emailAddress": "E-mailadres",
+      "openCalendar": "Agenda openen",
+      "countLabel": "Aantal gasten",
+      "countHint": "Prijsupdates worden automatisch bijgewerkt op basis van het aantal gasten.",
+      "decreaseGuests": "Gasten verminderen",
+      "increaseGuests": "Verhoog het aantal gasten",
+      "specialRequests": "Speciale verzoeken",
+      "specialRequestsPlaceholder": "Vroeg inchecken, dieetwensen, toegankelijkheidseisen, etc."
+    },
+    "summary": {
+      "selectRoom": "Selecteer een kamer",
+      "selectCar": "Selecteer een auto",
+      "selectExperience": "Selecteer een ervaring",
+      "selectPackage": "Selecteer een pakket",
+      "priceDetails": "Prijsdetails",
+      "taxesAndFees": "Belastingen en toeslagen",
+      "night": "nacht",
+      "nights": "nachten",
+      "room": "kamer",
+      "rooms": "kamers",
+      "day": "dag",
+      "days": "dagen",
+      "total": "Totaal",
+      "guests": "gasten"
+    },
+    "table": {
+      "selectRoom": "Selecteer een kamer",
+      "guestCount": "Aantal gasten",
+      "pricePerNight": "Prijs per nacht",
+      "includesTaxes": "Inclusief belastingen en toeslagen",
+      "packages": "Pakketten",
+      "hours": "Uur",
+      "price": "Prijs",
+      "experiences": "Ervaringen",
+      "duration": "Duur"
+    },
+    "dates": {
+      "checkIn": "Incheckdatum",
+      "checkOut": "Bekijk Datum",
+      "guests": "Gasten",
+      "rooms": "Kamers",
+      "nights": "Nachten",
+      "days": "Dagen",
+      "rentalDays": "Huurdagen",
+      "tripDuration": "Reisduur",
+      "tripDurationHint": "Pas aan hoeveel dagen u wilt blijven of verkennen.",
+      "decreaseNights": "Nachten verminderen",
+      "increaseNights": "Nachten verhogen",
+      "decreaseDays": "Dagen verminderen",
+      "increaseDays": "Dagen verhogen"
+    },
+    "car": {
+      "rentalModeHeading": "Hoe wilt u deze auto gebruiken?",
+      "rentalModeHint": "Kies voor zelfrijden of voeg een professionele chauffeur toe aan uw boeking.",
+      "selfDrive": "Zelf rijden",
+      "selfDriveHint": "Bestuur de auto zelf. Ophalen bij de verkoper of bezorging aanvragen tegen een extra vergoeding.",
+      "withDriver": "Met chauffeur",
+      "withDriverHint": "Een professionele chauffeur is inbegrepen voor uw reis.",
+      "noExtraCost": "Geen extra kosten",
+      "driverAddon": "+ {bedrag} stuurprogramma-add-on",
+      "requestDelivery": "Vraag autolevering aan",
+      "requestDeliveryHint": "Laat de auto tegen een meerprijs op uw locatie afleveren.",
+      "deliveryFee": "+ {bedrag} bezorgkosten",
+      "deliveryAddress": "Afleveradres",
+      "deliveryAddressPlaceholder": "Vul het adres in waar de auto afgeleverd moet worden",
+      "pickupAddress": "Ophaaladres",
+      "pickupAddressHint": "Haal de auto op bij deze leverancierslocatie als u niet om bezorging vraagt.",
+      "customerPickupAddress": "Uw ophaallocatie",
+      "customerPickupAddressPlaceholder": "Vul in waar de chauffeur u moet ophalen",
+      "customerPickupAddressHint": "De chauffeur zal u op dit adres ontmoeten.",
+      "driverAddonLabel": "Stuurprogramma-add-on",
+      "deliveryFeeLabel": "Bezorgkosten",
+      "about": "Over deze auto",
+      "saveCar": "Auto opslaan"
+    },
+    "property": {
+      "saveProperty": "Eigendom opslaan",
+      "morePhotos": "+{tel} foto's",
+      "currentOffers": "Actuele aanbiedingen"
+    },
+    "amenity": {
+      "free": "Vrij!",
+      "additionalCharge": "Extra kosten"
+    },
+    "tour": {
+      "about": "Over deze ervaring",
+      "saveTour": "Rondleiding opslaan"
+    },
+    "package": {
+      "about": "Over dit pakket",
+      "savePackage": "Pakket opslaan",
+      "sharePackage": "Pakket delen",
+      "nightsDays": "{nachten} Nachten / {dagen} Dagen",
+      "durationShort": "{dagen}D / {nachten}N",
+      "guestRange": "{bereik} Gasten",
+      "moduleCount": "{tel} Modules",
+      "highlight": {
+        "duration": "Duur",
+        "groupSize": "Groepsgrootte",
+        "included": "Inbegrepen",
+        "cancellation": "Annulering+",
+        "free": "Vrij",
+        "standard": "Standaard"
+      },
+      "whatsIncluded": "Wat is inbegrepen",
+      "included": "Inbegrepen",
+      "priceBreakdown": "Prijsverdeling",
+      "packageDiscount": "Pakketkorting",
+      "packagePrice": "Pakketprijs",
+      "whyBook": "Waarom dit pakket boeken",
+      "guestCountLocked": "Het aantal gasten staat vast voor dit pakket en kan niet worden gewijzigd bij het afrekenen."
+    },
+    "payment": {
+      "processing": "Betaling verwerken..."
+    },
+    "confirmation": {
+      "imageAlt": "Bevestiging succes",
+      "title": "Betaling succesvol",
+      "subtitle": "Controleer uw e-mail op uw betalingsbewijs en QR-gegevens",
+      "reloadIn": "Deze pagina wordt opnieuw geladen",
+      "reloadNow": "Herlaad nu",
+      "referenceLabel": "Boekingsreferentie",
+      "copyReference": "Kopiëren",
+      "copied": "Gekopieerd",
+      "summaryTitle": "Boekingsoverzicht",
+      "product": "Geboekt artikel",
+      "totalPaid": "Totaal betaald",
+      "addToCalendar": "Voeg toe aan kalender",
+      "openGoogleCalendar": "Openen in Google Agenda",
+      "viewBookings": "Bekijk mijn boekingen"
+    },
+    "reviews": {
+      "nextReview": "Volgende recensie",
+      "allReviews": "Alle beoordelingen",
+      "viewAll": "Bekijk alle beoordelingen",
+      "close": "Beoordelingen sluiten"
+    },
+    "content": {
+      "property": {
+        "arkHavn": {
+          "desc0": "The Ark Haven ligt in het hart van Marrakesh en biedt een serene ontsnapping met een mix van modern comfort en traditionele Marokkaanse charme. Geniet van het buitenzwembad, de eigen bar en de kamers met airconditioning en flatscreen-tv's.",
+          "desc1": "U kunt nabijgelegen bezienswaardigheden verkennen, gebruikmaken van pendeldiensten, tennisbanen en autoverhuur. Of u hier nu bent voor vakantie of zaken, The Ark Haven biedt een onvergetelijk verblijf met uitzonderlijke gastvrijheid."
+        },
+        "fallback": {
+          "desc0": "{name} biedt comfortabele verblijven met moderne voorzieningen en een toplocatie in {location}.",
+          "desc1": "Geniet van goed ingerichte kamers, vriendelijke service en gemakkelijke toegang tot lokale bezienswaardigheden en restaurants."
+        }
+      },
+      "review": {
+        "review1": "De Ark Haven overtrof mijn verwachtingen. Het personeel was ongelooflijk gastvrij en het zwembad was een perfecte plek om te ontspannen na het verkennen van de stad.",
+        "review2": "Mooie kamers, geweldige locatie en het ontbijt was uitstekend. Ik zou hier zeker weer verblijven tijdens mijn volgende reis naar Marokko.",
+        "review3": "Ruime suite, schone faciliteiten en behulpzame conciërge. De pendeldienst maakte het heel gemakkelijk om door Marrakech te reizen."
+      },
+      "offer": {
+        "drinkPromo": "Koop 1 drankje en krijg er één gratis",
+        "mealsOff": "10% korting op maaltijden",
+        "freeWifi": "Gratis wifi"
+      },
+      "room": {
+        "deluxeSuite": "Deluxe suite",
+        "supremeRoom": "Supreme Kamer",
+        "standardRoom": "Standaard Kamer",
+        "subtitle": {
+          "deluxe": "Deluxe (Appartement met 1 Slaapkamer)",
+          "supreme": "Supreme (studio-appartement)",
+          "standard": "Standaard (tweepersoonskamer)"
+        },
+        "size592": "592 vierkante meter",
+        "size420": "420 vierkante meter",
+        "size310": "310 vierkante meter",
+        "sleeps2Adults": "Geschikt voor 2 volwassenen"
+      },
+      "package": {
+        "dailyHire": "Dagelijkse huur",
+        "halfDayHire": "Huur van een halve dag",
+        "extraHours": "Extra uren",
+        "hours24": "24 uur",
+        "hours12": "12 uur",
+        "hours3": "3 uur"
+      },
+      "feature": {
+        "automatic": "Automatisch",
+        "driverAvailable": "Chauffeur beschikbaar",
+        "selfDrive": "Zelf rijden",
+        "available": "Beschikbaar",
+        "limitedSlots": "Beperkte slots",
+        "guidedTour": "Rondleiding",
+        "selfDriveAvailable": "Zelf rijden mogelijk",
+        "flightsIncluded": "Vluchten inbegrepen",
+        "hotelStay": "Hotelverblijf",
+        "guidedTours": "Rondleidingen",
+        "nightsDays": "{nachten} nachten / {dagen} dagen"
+      },
+      "tourOption": {
+        "standard": "Standaard kaartje",
+        "premium": "Premium-ervaring",
+        "private": "Privé groep",
+        "hours5": "5 uur",
+        "fullDay": "Volledige dag"
+      },
+      "tier": {
+        "standard": "Standaard pakket",
+        "deluxe": "Luxe pakket",
+        "allInclusive": "All-inclusive"
+      },
+      "amenityCat": {
+        "greatForStay": "Geweldig voor uw verblijf",
+        "outdoors": "Buiten",
+        "pets": "Huisdieren",
+        "internet": "Internet",
+        "onSiteParking": "Parkeren op het terrein",
+        "frontDesk": "Receptiediensten",
+        "familyServices": "Entertainment- en gezinsdiensten",
+        "cleaningServices": "Schoonmaakdiensten",
+        "general": "Algemeen",
+        "accessibility": "Toegankelijkheid",
+        "swimmingPools": "2 zwembaden",
+        "pool1Outdoor": "Zwembad 1 – buiten"
+      },
+      "amenityDesc": {
+        "petsAllowed": "Huisdieren zijn op aanvraag toegestaan. Geen extra kosten.",
+        "wifiFree": "Wifi is in alle ruimtes beschikbaar en is gratis.",
+        "parkingFree": "Er is gratis openbare parkeergelegenheid bij de accommodatie (reserveren is niet nodig)."
+      },
+      "amenityItem": {
+        "restaurant": "Restaurant",
+        "freeWifi": "Gratis wifi",
+        "parking": "Parkeren",
+        "spa": "Spa",
+        "familyRooms": "Familie kamers",
+        "roomService": "Roomservice",
+        "airportShuttle": "Luchthavenshuttle",
+        "bbqFacilities": "Barbecuefaciliteiten",
+        "petFriendly": "Huisdiervriendelijk",
+        "nonSmokingRooms": "Niet-roken kamers",
+        "outdoorFireplace": "Buitenhaard",
+        "beachfront": "Aan het strand",
+        "sunDeck": "Zonnedek",
+        "privateBeach": "Privéstrand",
+        "terrace": "Terras",
+        "garden": "Tuin",
+        "valetParking": "Valetparking",
+        "parkingGarage": "Parkeergarage",
+        "accessibleParking": "Toegankelijke parkeergelegenheid",
+        "lockers": "Kluisjes",
+        "concierge": "Conciërge",
+        "atmOnSite": "Geldautomaat ter plaatse",
+        "baggageStorage": "Bagageopslag",
+        "currencyExchange": "Wisselkantoor",
+        "frontDesk24h": "24-uursreceptie",
+        "outdoorPlayEquipment": "Buitenspeeltoestellen voor kinderen",
+        "dailyHousekeeping": "Dagelijkse schoonmaak",
+        "ironingService": "Strijkservice",
+        "shuttleService": "Pendeldienst",
+        "sharedLounge": "Gedeelde lounge/tv-ruimte",
+        "airConditioning": "Airconditioning",
+        "carRental": "Autoverhuur",
+        "packedLunches": "Lunchpakketten",
+        "disabledFacilities": "Voorzieningen voor gehandicapten",
+        "bathroomEmergencyCord": "Noodkoord voor de badkamer",
+        "openAllYear": "Het hele jaar geopend",
+        "adultsOnly": "Alleen volwassenen",
+        "poolBeachTowels": "Zwembad-/strandlakens",
+        "poolBar": "Poolbar",
+        "beachChairs": "Strandstoelen/ligstoelen"
+      },
+      "tour": {
+        "desc": {
+          "boatAccess": "Alleen bereikbaar per boot of watertaxi. Het staat bekend om zijn relatief kalme wateren.",
+          "lekkiCanopy": "Loop over de langste luifelbrug van Afrika en verken weelderige mangrovepaden.",
+          "nikeArt": "Ontdek een van de grootste collecties hedendaagse Afrikaanse kunst in West-Afrika.",
+          "badagry": "Volg de geschiedenis van de transatlantische slavenhandel via musea en monumenten.",
+          "desertSafari": "Dune bashing, kameelrijden en een traditioneel bedoeïenenkamp onder de sterrenhemel.",
+          "cotonou": "Verken markten, koloniale architectuur en de levendige kustlijn van Benin.",
+          "winelands": "Bezoek de wijngaarden van Stellenbosch met proeverijen en een schilderachtig uitzicht op de bergen.",
+          "monacoYacht": "Vaar langs de kustlijn van de Franse Rivièra met uitzicht op Monte Carlo en luxe havens.",
+          "lagosFood": "Proef suya, puff-puff en lokale delicatessen op de beste eetgelegenheden van de stad.",
+          "dubaiKayak": "Peddel bij zonsondergang door de jachthaven met uitzicht op de skyline en begeleide instructies."
+        }
+      }
+    },
+    "dateTime": {
+      "title": "Selecteer datum en tijd",
+      "rangeHint": "Kies uw in- en uitcheckdata op de kalender.",
+      "singleHint": "Kies uw ervaringsdatum op de kalender.",
+      "legendAvailable": "Beschikbaar",
+      "legendUnavailable": "Niet beschikbaar",
+      "selectCheckout": "Selecteer afrekenen",
+      "timeSlots": "Tijdslot",
+      "experienceDate": "Ervaring datum"
+    }
+  },
+  "breadcrumb": {
+    "synkAfrica": "SynkAfrika",
+    "accommodations": "Accommodaties",
+    "flights": "Vluchten",
+    "carForHire": "Autoverhuur",
+    "tours": "Rondleidingen en ervaringen",
+    "tourPackages": "Tourpakketten",
+    "dealsAndPackages": "Aanbiedingen & Pakketten",
+    "packages": "Pakketten"
+  },
+  "results": {
+    "accommodations": {
+      "title": "Verblijven",
+      "staysFound": "{count} blijft gevonden",
+      "searchPlaceholder": "Zoek accommodaties",
+      "empty": "Er zijn geen verblijven die overeenkomen met uw filters."
+    },
+    "carRentals": {
+      "title": "Ontdek auto's die te huur zijn",
+      "carsFound": "{tel} gevonden auto's",
+      "searchPlaceholder": "Zoek auto",
+      "empty": "Er zijn geen auto's die overeenkomen met uw filters."
+    },
+    "tours": {
+      "title": "{tel} Zoekresultaten",
+      "searchPlaceholder": "Zoekervaring",
+      "empty": "Er zijn geen ervaringen die overeenkomen met uw filters."
+    },
+    "emptyHint": "Probeer uw zoek- of filteropties aan te passen.",
+    "promoSubtitle": "Promoties, aanbiedingen en speciale aanbiedingen voor u"
+  },
+  "filters": {
+    "apply": "Filter toepassen",
+    "applyCount": "Filter toepassen ({telling})",
+    "location": "Locatie",
+    "rentalDates": "Huurdata",
+    "startDate": "Startdatum",
+    "endDate": "Einddatum",
+    "discounts": "Kortingen",
+    "price": "Prijs",
+    "category": "Categorie",
+    "experiences": "Ervaringen",
+    "other": "Andere filters",
+    "budget": "Begroting",
+    "perNight": "| Nacht",
+    "perDaily": "| dagelijks",
+    "anyPrice": "Elke prijs",
+    "apartmentType": "Type appartement",
+    "bedrooms": "Aantal slaapkamers",
+    "ratings": "Beoordelingen",
+    "perks": "Extraatjes en voorzieningen",
+    "priceRange": {
+      "under50k": "Onder de 50k",
+      "50to150k": "50 - 150.000",
+      "150kPlus": "150k en hoger"
+    },
+    "propertyType": {
+      "hotels": "Hotels",
+      "apartments": "Appartementen",
+      "resorts": "Resorts",
+      "bbs": "B&B's",
+      "guestHouse": "Gastenhuis",
+      "beachHouse": "Strandhuis",
+      "motels": "Motels"
+    },
+    "bedroom": {
+      "studio": "Studio",
+      "one": "1 slaapkamer",
+      "two": "2 slaapkamers",
+      "threePlus": "3+ slaapkamers"
+    },
+    "perk": {
+      "breakfast": "Ontbijt inbegrepen",
+      "cancellation": "Gratis annuleren",
+      "pool": "Toegang tot het zwembad",
+      "shuttle": "Luchthavenshuttle"
+    },
+    "discount": {
+      "all": "Alle kortingen",
+      "withDiscount": "Met korting",
+      "noDiscount": "Geen korting",
+      "tenPercent": "10% korting op kortingen"
+    },
+    "carType": {
+      "suv": "SUV",
+      "sedan": "Sedan",
+      "hatchback": "Hatchback",
+      "pickup": "Ophalen"
+    },
+    "serviceType": {
+      "selfDrive": "Zelf rijden",
+      "chauffeur": "Chauffeur"
+    },
+    "transmission": {
+      "automatic": "Automatisch",
+      "manual": "Handmatig"
+    },
+    "tourCategory": {
+      "all": "Alle categorieën",
+      "outdoor": "Openlucht",
+      "artsCulture": "Kunst & Cultuur",
+      "adventure": "Avontuur",
+      "foodDrink": "Eten en drinken"
+    },
+    "experienceType": {
+      "all": "Alle ervaringen",
+      "tours": "Rondleidingen",
+      "activities": "Activiteiten",
+      "workshops": "Workshops",
+      "dayTrips": "Dagtochten"
+    }
+  },
+  "landing": {
+    "ongoingDeals": {
+      "title": "Doorlopende aanbiedingen",
+      "title2": "Pakketten aangeboden",
+      "description": "Promoties, aanbiedingen en speciale aanbiedingen voor u",
+      "scrollPackages": "Blader door pakketten"
+    },
+    "packages": {
+      "title": "Pakketten"
+    },
+    "fansFavourite": {
+      "title": "Fans favoriet"
+    },
+    "packageOffer": {
+      "inclusion": {
+        "flights": "Vluchten",
+        "stays": "Verblijven",
+        "carDriver": "Auto + chauffeur"
+      },
+      "duration": "{dagen} Dagen • {nachten} Nachten • {schema}",
+      "bookedSeparately": "indien afzonderlijk geboekt"
+    },
+    "bestDealsApartments": {
+      "title": "Beste aanbiedingen voor appartementen"
+    },
+    "browsePropertyType": "Blader op vastgoedtype",
+    "favouriteDestinations": "Ontdek favoriete bestemmingen",
+    "activitiesCount": "{tel} activiteiten",
+    "flightPromo": {
+      "headline": "Vluchten boeken was nog nooit zo eenvoudig",
+      "cta": "Controleer beschikbaarheid"
+    },
+    "experiencesPromo": {
+      "headline": "Geniet van de talloze ervaringen allemaal op één bestemming.",
+      "cta": "Blader door ervaringen",
+      "imageAlt": "Blader door Afrikaanse ervaringen"
+    },
+    "tours": {
+      "attractions": {
+        "title": "Attracties op Synkafrica"
+      },
+      "events": {
+        "browsingIn": "Bladeren door evenementen in"
+      },
+      "packages": {
+        "title": "Tourpakketten",
+        "description": "Ontvang de beste deals voor Tours en reserveer eenvoudig."
+      }
+    },
+    "carRentals": {
+      "feature1": {
+        "title": "Professionele dienstverlening",
+        "description": "We maken gebruik van gerenommeerde dienstverleners op het gebied van luchthaventransfers in heel Afrika."
+      },
+      "feature2": {
+        "title": "Flexibele annuleringen",
+        "description": "Als uw plannen veranderen, kunt u met flexibele voorwaarden opzeggen."
+      },
+      "feature3": {
+        "title": "Concurrerende prijzen",
+        "description": "Ons team vergelijkt dagelijks de prijzen van luchthaventaxi's om u de beste deal te bieden."
+      }
+    }
+  },
+  "tourPackages": {
+    "hero": {
+      "title": "Tourpakketten",
+      "subtitle": "Zorgvuldig geselecteerde reispakketten ontworpen voor onvergetelijke Afrikaanse avonturen."
+    },
+    "searchPlaceholder": "Zoek bestemming",
+    "empty": "Er zijn geen tourpakketten die overeenkomen met uw zoekopdracht."
+  },
+  "admin": {
+    "header": {
+      "role": "Platformbeheerder"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "experiences": "Ervaringen",
+      "cars": "Auto's",
+      "accommodations": "Accommodaties",
+      "vendors": "Verkopers",
+      "bookings": "Boekingen",
+      "payouts": "Uitbetalingen",
+      "reviews": "Recensies",
+      "users": "Gebruikers",
+      "verifications": "Verificaties",
+      "support": "Ondersteuningstickets",
+      "team": "Team",
+      "audit": "Auditlogboek"
+    },
+    "common": {
+      "all": "Alle",
+      "enabled": "Ingeschakeld",
+      "disabled": "Gehandicapt",
+      "edit": "Bewerking",
+      "actions": "Acties"
+    },
+    "verifications": {
+      "title": "Verificaties",
+      "subtitle": "Inzendingen die door onze verificatieprovider zijn gemarkeerd voor handmatige beoordeling: de meeste identiteits-/gezichtscontroles worden automatisch goedgekeurd en komen nooit in deze wachtrij terecht.",
+      "stats": {
+        "needsManualReview": "Handmatige beoordeling vereist",
+        "approvedToday": "Vandaag goedgekeurd",
+        "deniedToday": "Vandaag geweigerd",
+        "avgReviewTime": "Gem. beoordelingstijd",
+        "avgReviewTimeValue": "{minuten} min"
+      },
+      "searchPlaceholder": "Zoeken op naam of account-ID...",
+      "filter": {
+        "users": "Gebruikers",
+        "vendors": "Verkopers"
+      },
+      "status": {
+        "pendingReview": "In afwachting van beoordeling",
+        "approved": "Goedgekeurd",
+        "denied": "Geweigerd"
+      },
+      "audience": {
+        "user": "Gebruiker",
+        "vendor": "Leverancier"
+      },
+      "submitted": "Ingediend {datum}",
+      "pendingElapsed": "In behandeling {verstreken}",
+      "blocking": {
+        "firstCheckout": "eerste kassa blokkeren"
+      },
+      "empty": "Er zijn geen verificatie-inzendingen die overeenkomen met uw filters.",
+      "accountId": "Account {id}",
+      "viewAccount": "Bekijk rekening →",
+      "pendingManualReview": "In afwachting van handmatige beoordeling",
+      "elapsed": "{verstreken} verstreken",
+      "documentPreviews": "Documentvoorbeelden",
+      "documentViewLogged": "De documentweergave wordt geregistreerd voor naleving",
+      "providerResults": "Resultaten van verificatieprovider (DIDIT)",
+      "approve": "Goedkeuren",
+      "deny": "Ontkennen",
+      "requestResubmission": "Verzoek om herindiening",
+      "notifyUser": "Breng de gebruiker op de hoogte van de beslissing",
+      "notifyVendor": "Verkoper op de hoogte stellen van besluit",
+      "verificationApproved": "Verificatie goedgekeurd",
+      "verificationDenied": "Verificatie geweigerd",
+      "reviewedInElapsed": "Beoordeeld in {verstreken}",
+      "approvedBy": "Goedgekeurd door",
+      "approvedByValue": "Beheerder — {datum}",
+      "reasonForDenial": "Reden voor ontkenning",
+      "revokeApproval": "Goedkeuring intrekken",
+      "inviteResubmission": "Nodig herinzending uit",
+      "viewHistory": "Geschiedenis bekijken",
+      "providerResultsHeading": "Resultaat van de aanbieder — DIDIT",
+      "document": {
+        "ninSlip": "NIN-slip",
+        "passportPhoto": "Pasfoto pagina",
+        "selfie": "Selfie / levendigheid vastleggen",
+        "cac": "CAC-certificaat",
+        "driversLicense": "Rijbewijs (voorkant)"
+      },
+      "check": {
+        "cacRegistrationLookup": "CAC-registratie opzoeken",
+        "cacRegistrationVerified": "Geverifieerd",
+        "faceMatchConfidence": "Confronteer het vertrouwen in de wedstrijd",
+        "faceMatchConfidenceDetail": "96%",
+        "documentExpiredDetail": "Mislukt — verlopen document",
+        "documentAuthenticity": "Authenticiteit van documenten",
+        "liveness": "Controle van de levendigheid",
+        "faceMatch": "Confronteer het vertrouwen in de wedstrijd",
+        "nameMatch": "Naam komt overeen met account",
+        "businessRegistration": "Bedrijfsregistratie",
+        "faceMatchDetail": "78% — onder de drempel voor automatische goedkeuring",
+        "nameMatchDetail": "Overeenkomst",
+        "documentFailedDetail": "Mislukt: document onleesbaar",
+        "faceMatchFailedDetail": "42% — onder de drempel",
+        "businessRegistrationDetail": "Gedeeltelijke overeenkomst: handmatige beoordeling vereist"
+      },
+      "denialReason": {
+        "expiredLicense": "Het rijbewijs is in maart 2026 verlopen. Dien het rijbewijs opnieuw in met een geldig, nog niet verlopen identiteitsbewijs."
+      },
+      "documentType": {
+        "passport": "Paspoort",
+        "cacNin": "CAC + NIN",
+        "driversLicense": "Rijbewijs"
+      },
+      "checkResult": {
+        "passed": "Geslaagd",
+        "failed": "Mislukt",
+        "warning": "Beoordeling vereist"
+      }
+    },
+    "dashboard": {
+      "welcome": "Beheerdersconsole,",
+      "addPackages": "Pakketten toevoegen",
+      "period": {
+        "label": "Statistieken periode",
+        "today": "Vandaag",
+        "week": "Deze week",
+        "month": "Deze maand",
+        "sixMonths": "6 maanden",
+        "year": "1 jaar",
+        "all": "Alle"
+      },
+      "users": "Gebruikers",
+      "bookings": "Boekingen",
+      "revenue": "Winst",
+      "activeExperiences": "Actieve ervaringen",
+      "activeVendors": "Actieve verkopers",
+      "viewAll": "Bekijk alles",
+      "manage": "Beheren",
+      "alerts": "Waarschuwingen",
+      "alert": {
+        "pendingPayouts": "Drie leveranciersuitbetalingen wachten op goedkeuring",
+        "flaggedReview": "2 beoordelingen gemarkeerd ter moderatie",
+        "openTicket": "5 openstaande supporttickets voor leveranciers",
+        "disabledVendor": "1 leveranciersaccount uitgeschakeld — beoordeling vereist"
+      }
+    },
+    "packages": {
+      "createTitle": "Nieuw pakket/deal aanmaken",
+      "createSubtitle": "Stel een onweerstaanbaar reispakket samen door vluchten, verblijven, auto's en ervaringen te combineren.",
+      "addTitle": "Pakket toevoegen",
+      "backToDashboard": "← Terug naar dashboard",
+      "progressLabel": "Pakketvoortgang",
+      "steps": {
+        "details": "Pakketdetails",
+        "modules": "Modules toevoegen",
+        "pricing": "Prijzen",
+        "review": "Beoordelen en publiceren"
+      },
+      "cancel": "Annuleren",
+      "back": "Rug",
+      "saveDraft": "Opslaan als concept",
+      "draftSaved": "Concept opgeslagen",
+      "saveContinue": "Opslaan en doorgaan",
+      "submit": "Pakket indienen",
+      "completeRequiredFields": "Vul de verplichte velden in: {fields}",
+      "sections": {
+        "basicInfo": "Pakketdetails",
+        "basicInfoHint": "Basisinformatie en metadata voor uw pakket.",
+        "additionalSettings": "Aanvullende instellingen",
+        "additionalSettingsHint": "Beleid, maaltijden en weergaveopties."
+      },
+      "fields": {
+        "packageName": "Pakketnaam",
+        "packageSlug": "Pakketslak (URL)",
+        "shortDescription": "Korte beschrijving",
+        "detailedDescription": "Gedetailleerde beschrijving",
+        "banner": "Pakketbannerafbeelding",
+        "category": "Pakketcategorie",
+        "bestFor": "Beste voor",
+        "tags": "Pakketlabels",
+        "includedMeals": "Inclusief maaltijden",
+        "cancellationPolicy": "Annuleringsbeleid",
+        "refundPolicy": "Terugbetalingsbeleid",
+        "maxGuests": "Maximaal aantal gasten",
+        "featuredDeal": "Pakket hoogtepunt",
+        "currency": "Munteenheid",
+        "normalPrice": "Normale prijs",
+        "salesPrice": "Verkoopprijs",
+        "showSavingsBadge": "Spaarbadge tonen",
+        "savingsBadgePercent": "Spaarbadgepercentage",
+        "validFrom": "Geldig vanaf",
+        "validUntil": "Geldig tot",
+        "minimumBookingNotice": "Minimale boekingsaankondiging",
+        "packageActive": "Pakketstatus"
+      },
+      "placeholders": {
+        "packageName": "bijv. Lagos en Parijs Ontsnapping",
+        "packageSlug": "lagos-parijs-ontsnapping",
+        "shortDescription": "Een korte samenvatting die op pakketkaarten verschijnt.",
+        "detailedDescription": "Beschrijf het volledige reisschema, de insluitsels en hoogtepunten.",
+        "category": "Selecteer categorie",
+        "tags": "bijv. Strand, avontuur",
+        "maxGuests": "bijv. 4",
+        "select": "Selecteer"
+      },
+      "hints": {
+        "packageSlug": "Dit wordt gebruikt in de pakket-URL.",
+        "tags": "Voeg elke tag toe en druk op Enter.",
+        "featuredDeal": "Toon dit pakket als een uitgelichte deal.",
+        "showSavingsBadge": "Toon een spaarbadge op de pakketkaart.",
+        "savingsBadgePercent": "Stel het percentage in dat op de spaarbadge wordt weergegeven. Automatisch ingevuld op basis van uw prijzen.",
+        "packageActive": "Actieve pakketten zijn zichtbaar voor klanten."
+      },
+      "uploadBanner": "Klik om te uploaden of te slepen en neer te zetten",
+      "uploadBannerHint": "JPG, PNG of WEBP (max. 5 MB)",
+      "removeBanner": "Banier verwijderen",
+      "tips": {
+        "title": "Tips voor een geweldig pakket",
+        "one": "Gebruik een duidelijke, aantrekkelijke pakketnaam.",
+        "two": "Combineer aanvullende modules voor een betere prijs.",
+        "three": "Benadruk besparingen met een sterke verkoopprijs.",
+        "four": "Voeg tags toe om de vindbaarheid te verbeteren."
+      },
+      "moduleType": {
+        "flight": "Vlucht",
+        "accommodation": "Accommodatie",
+        "car": "Auto",
+        "experience": "Ervaring"
+      },
+      "modules": {
+        "selectHeading": "Modules toevoegen",
+        "selectHint": "Blader door vluchten, verblijven, auto's en ervaringen en voeg deze toe om uw pakket samen te stellen.",
+        "addedHeading": "Pakketmodules",
+        "countLabel": "modules",
+        "empty": "Nog geen modules toegevoegd. Selecteer items uit de bovenstaande panelen.",
+        "add": "Toevoegen",
+        "added": "Toegevoegd",
+        "remove": "Module verwijderen",
+        "dragHandle": "Sleep om de volgorde te wijzigen",
+        "reorderHint": "Versleep modules om ze opnieuw te ordenen zoals ze voor klanten verschijnen.",
+        "required": "Voeg ten minste één module toe om door te gaan.",
+        "searchPlaceholder": "Zoekmodules…",
+        "noResults": "Er zijn geen modules die overeenkomen met uw zoekopdracht.",
+        "availableLabel": "beschikbaar"
+      },
+      "pricing": {
+        "heading": "Prijzen",
+        "hint": "Bepaal uw ticketprijzen.",
+        "savingsDisplay": "U bespaart {bedrag} ({procent}%)"
+      },
+      "availability": {
+        "heading": "Beschikbaarheid",
+        "hint": "Stel in wanneer dit arrangement geboekt kan worden."
+      },
+      "review": {
+        "heading": "Beoordelen en publiceren",
+        "hint": "Controleer alle pakketgegevens voordat u deze verzendt."
+      }
+    },
+    "users": {
+      "title": "Reizigers",
+      "searchPlaceholder": "Zoeken op naam, gebruikers-ID, e-mailadres of locatie...",
+      "userId": "Gebruikers-ID",
+      "traveler": "Reiziger",
+      "contact": "Contact",
+      "location": "Locatie",
+      "tier": {
+        "bronze": "Bronzen",
+        "silver": "Zilver",
+        "gold": "Goud",
+        "platinum": "Platina"
+      },
+      "bookingsSpend": "Boekingen / Bestedingen",
+      "lastTrip": "Laatste reis",
+      "status": {
+        "active": "Actief",
+        "inactive": "Inactief"
+      },
+      "stats": {
+        "found": "Reizigers gevonden",
+        "active": "Actief",
+        "combinedSpend": "Gecombineerde uitgaven",
+        "page": "Pagina",
+        "pageValue": "{huidig} / {totaal}"
+      },
+      "pagination": {
+        "previous": "Vorig",
+        "next": "Volgende",
+        "showing": "Pagina {huidige} van {totaal}"
+      },
+      "details": "Details",
+      "empty": "Er komen geen reizigers overeen met uw zoekopdracht.",
+      "notFound": "Reiziger niet gevonden.",
+      "backToList": "Terug naar reizigers",
+      "accountDetails": "Accountgegevens",
+      "detail": {
+        "totalBookings": "Totaal aantal boekingen",
+        "lifetimeSpend": "Levenslange uitgaven",
+        "primaryCorridor": "Primaire gang",
+        "openTickets": "Kaartjes openen",
+        "idFaceVerified": "ID + gezicht geverifieerd",
+        "joined": "Aangesloten op {datum}",
+        "lastActive": "Laatst actief {verstreken}",
+        "phoneWhatsApp": "{telefoon} (WhatsApp-gekoppeld)",
+        "identityVerification": "Identiteitsverificatie",
+        "governmentId": "Overheids-ID ({type})",
+        "faceMatch": "Match gezicht / levendigheid",
+        "verifiedVia": "Geverifieerd via",
+        "verified": "Geverifieerd",
+        "notVerified": "Niet geverifieerd",
+        "paymentMethods": "Betaalmethoden geregistreerd",
+        "card": "Kaart",
+        "defaultCurrency": "Standaardvaluta",
+        "recentBookings": "Recente boekingen",
+        "internalNotes": "Interne opmerkingen",
+        "noNotes": "Nog geen interne aantekeningen.",
+        "noteAttribution": "— {auteur}, {datum}",
+        "bookingStatus": {
+          "confirmed": "Bevestigd",
+          "completed": "Voltooid",
+          "cancelled": "Geannuleerd"
+        }
+      },
+      "menu": {
+        "verification": "Verificatie",
+        "rerunIdVerification": "Voer de ID-verificatie opnieuw uit",
+        "rerunFaceVerification": "Voer de gezichtsverificatie opnieuw uit",
+        "financial": "Financieel",
+        "issueRefund": "Terugbetaling uitvoeren",
+        "holdBookingPayment": "Boekingsbetaling vasthouden",
+        "support": "Steun",
+        "viewAsReadOnly": "Weergeven als (alleen-lezen)",
+        "addInternalNote": "Voeg interne notitie toe",
+        "dataAccount": "Gegevens & account",
+        "mergeDuplicateAccount": "Dubbele account samenvoegen",
+        "exportUserData": "Gebruikersgegevens exporteren (AVG)",
+        "suspendAccount": "Account opschorten"
+      }
+    },
+    "experiences": {
+      "title": "Beheer ervaringen",
+      "searchPlaceholder": "Zoek ervaringen",
+      "name": "Naam van ervaring",
+      "empty": "Er zijn geen ervaringen die overeenkomen met uw zoekopdracht.",
+      "actions": {
+        "disable": "Ervaring uitschakelen",
+        "enable": "Maak ervaring mogelijk",
+        "goTo": "Ga naar ervaring",
+        "delete": "Ervaring verwijderen"
+      }
+    },
+    "cars": {
+      "title": "Beheer auto's",
+      "searchPlaceholder": "Zoek auto's",
+      "name": "Naam auto",
+      "empty": "Er zijn geen auto's die overeenkomen met uw zoekopdracht.",
+      "actions": {
+        "disable": "Auto uitschakelen",
+        "enable": "Auto inschakelen",
+        "goTo": "Ga naar auto",
+        "delete": "Auto verwijderen"
+      }
+    },
+    "accommodations": {
+      "title": "Beheer accommodaties",
+      "searchPlaceholder": "Zoek accommodaties",
+      "name": "Naam accommodatie",
+      "empty": "Er zijn geen accommodaties die overeenkomen met uw zoekopdracht.",
+      "actions": {
+        "disable": "Schakel accommodatie uit",
+        "enable": "Accommodatie inschakelen",
+        "goTo": "Ga naar accommodatie",
+        "delete": "Accommodatie verwijderen"
+      }
+    },
+    "listings": {
+      "location": "Locatie van vermelding",
+      "vendor": "Leverancier",
+      "bookings": "Boekingen",
+      "ratings": "Beoordelingen",
+      "reviews": "beoordelingen",
+      "activityStatus": "Activiteitsstatus",
+      "status": {
+        "active": "Actief",
+        "inactive": "Inactief",
+        "deleted": "Verwijderd"
+      },
+      "tab": {
+        "active": "Actieve vermeldingen",
+        "deleted": "Verwijderde vermeldingen"
+      },
+      "deletedHint": "Advertenties die van de marktplaats zijn verwijderd, worden hier weergegeven. U kunt details bekijken of records permanent verwijderen.",
+      "viewDetails": "Bekijk vermelding",
+      "deletedAt": "Verwijderd op {date}",
+      "detailTitle": "Lijstdetails",
+      "detailHint": "Volledig voorbeeld van deze aanbieding, inclusief media, details, prijzen en documenten.",
+      "detailNotFound": "Deze vermelding kan niet worden gevonden.",
+      "detail": {
+        "backCars": "Terug naar auto's",
+        "backAccommodations": "Terug naar accommodaties",
+        "backExperiences": "Terug naar ervaringen"
+      },
+      "detailClose": "Dichtbij"
+    },
+    "vendors": {
+      "title": "Beheer leveranciers",
+      "add": "Leverancier toevoegen",
+      "searchPlaceholder": "Zoeken op naam, leverancier-ID, e-mailadres of telefoon...",
+      "vendorId": "Leverancier-ID",
+      "name": "Leverancier",
+      "userId": "Gebruikers-ID",
+      "stats": {
+        "found": "Verkopers gevonden",
+        "active": "Actief",
+        "combinedRevenue": "Gecombineerde inkomsten",
+        "page": "Pagina",
+        "pageValue": "{huidig} / {totaal}"
+      },
+      "pagination": {
+        "previous": "Vorig",
+        "next": "Volgende",
+        "showing": "Pagina {huidige} van {totaal}"
+      },
+      "contactInfo": "Contactgegevens",
+      "listings": "Advertenties",
+      "commission": "Commissie",
+      "commissionValue": "{tarief}%",
+      "status": {
+        "active": "Actief",
+        "inactive": "Inactief"
+      },
+      "revenue": "Winst",
+      "rating": "Beoordeling",
+      "reviews": "beoordelingen",
+      "details": "Details",
+      "empty": "Er zijn geen leveranciers die overeenkomen met uw zoekopdracht.",
+      "notFound": "Leverancier niet gevonden.",
+      "backToList": "Terug naar leveranciers",
+      "accountDetails": "Accountgegevens",
+      "joined": "Aangesloten",
+      "detail": {
+        "activeListings": "Actieve vermeldingen",
+        "completedBookings": "Voltooide boekingen",
+        "averageRating": "Gemiddelde beoordeling",
+        "openStrikes": "Openlijke stakingen",
+        "category": "Categorie",
+        "onboarded": "Aan boord {datum}",
+        "accountDocuments": "Rekeningdocumenten",
+        "listingDocuments": "Documenten weergeven — {categorie}",
+        "payoutSummary": "Uitbetalingsoverzicht",
+        "pendingPayout": "In afwachting van uitbetaling",
+        "lastPayout": "Laatste uitbetaling",
+        "internalNotes": "Interne opmerkingen",
+        "noNotes": "Nog geen interne aantekeningen.",
+        "noteAttribution": "— {auteur}, {datum}",
+        "viewListings": "Bekijk vermeldingen",
+        "suspendVendor": "Leverancier opschorten",
+        "documentStatus": {
+          "verified": "Geverifieerd",
+          "pendingReview": "In afwachting van beoordeling",
+          "signed": "Ondertekend",
+          "notVerified": "Niet geverifieerd"
+        }
+      },
+      "menu": {
+        "verification": "Verificatie",
+        "approvePendingListing": "In behandeling zijnde vermelding goedkeuren",
+        "requestAdditionalDocuments": "Vraag aanvullende documenten aan",
+        "upgradeToTier": "Upgrade naar niveau {tier}",
+        "standingTrust": "Staan & vertrouwen",
+        "grantInstantBook": "Verleen het recht Direct Reserveren",
+        "addStrike": "Strike/interne vlag toevoegen",
+        "clearStrike": "Wis een staking",
+        "financial": "Financieel",
+        "holdPendingPayout": "Vasthouden in afwachting van uitbetaling",
+        "adjustCommissionRate": "Pas het commissietarief aan",
+        "communication": "Mededeling",
+        "contactVendor": "Neem contact op met de leverancier",
+        "addInternalNote": "Voeg interne notitie toe",
+        "account": "Rekening",
+        "suspendAccount": "Account opschorten",
+        "banPermanently": "Permanent verbieden"
+      },
+      "requestDocumentsModal": {
+        "title": "Vraag aanvullende documenten aan",
+        "subtitle": "Stuur een documentverzoek naar {leverancier}.",
+        "documentLabel": "Selecteer document",
+        "documentPlaceholder": "Kies een document",
+        "otherOption": "Anders (niet vermeld)",
+        "customDocumentLabel": "Voeg de naam van het document toe",
+        "customDocumentPlaceholder": "Typ de documentnaam",
+        "submit": "Verzoek verzenden",
+        "cancel": "Annuleren"
+      },
+      "confirm": {
+        "cancel": "Annuleren"
+      },
+      "confirmSuspend": {
+        "title": "Weet je het zeker?",
+        "message": "U staat op het punt {leverancier} op te schorten. Ze verliezen de toegang tot hun account totdat deze opnieuw wordt geactiveerd."
+      },
+      "confirmBan": {
+        "title": "Weet je het zeker?",
+        "message": "U staat op het punt om {leverancier} permanent te verbannen. Deze actie kan niet ongedaan worden gemaakt."
+      },
+      "internalNoteModal": {
+        "title": "Voeg interne notitie toe",
+        "subtitle": "Voeg een opmerking of opmerking toe voor {leverancier}.",
+        "label": "Observatie",
+        "placeholder": "Schrijf hier uw opmerking of opmerking...",
+        "submit": "Bewaar notitie"
+      },
+      "experiences": "Ervaringen",
+      "earnings": "Totale inkomsten"
+    },
+    "bookings": {
+      "title": "Boekingen",
+      "subtitle": "Alle boekingen voor vluchten, auto's, accommodaties en ervaringen – vanuit de app, internet en handmatig gemaakt.",
+      "create": "Boeking maken",
+      "searchPlaceholder": "Zoeken op klant, leverancier of boekings-ID...",
+      "empty": "Er zijn geen boekingen die overeenkomen met uw filters.",
+      "guests": "gasten",
+      "vendor": "Leverancier",
+      "contactCustomer": "Neem contact op met de klant",
+      "contactVendor": "Neem contact op met de leverancier",
+      "addInternalNote": "Voeg interne notitie toe",
+      "partialRefund": "Gedeeltelijke terugbetaling",
+      "cancelRefund": "Annuleren en terugbetalen",
+      "flagDispute": "Markeer als geschil",
+      "saveChanges": "Wijzigingen opslaan",
+      "stats": {
+        "upcoming": "Aankomend (7 dagen)",
+        "awaiting": "In afwachting van bevestiging",
+        "confirmed": "Bevestigd",
+        "disputed": "Betwist/gemarkeerd",
+        "totalMonth": "Totaal deze maand"
+      },
+      "product": {
+        "all": "Alle productsoorten",
+        "flights": "Vluchten",
+        "cars": "Auto's",
+        "accommodations": "Verblijven",
+        "experiences": "Ervaringen"
+      },
+      "source": {
+        "all": "Alle bronnen",
+        "website": "Website",
+        "mobileApp": "Mobiele app",
+        "admin": "Gemaakt door beheerder"
+      },
+      "dateRange": {
+        "label": "Datumbereik",
+        "day": "1 dag",
+        "week": "1 week",
+        "month": "1 maand",
+        "sixMonths": "6 maanden",
+        "year": "1 jaar",
+        "all": "Alle"
+      },
+      "filter": {
+        "all": "Alles ({tel})",
+        "upcoming": "Aankomend ({count})",
+        "awaiting": "In afwachting van bevestiging ({count})",
+        "confirmed": "Bevestigd ({count})",
+        "completed": "Voltooid ({telling})",
+        "cancelled": "Geannuleerd ({count})",
+        "disputed": "Betwist ({telling})"
+      },
+      "status": {
+        "confirmed": "Bevestigd",
+        "awaiting": "In afwachting van bevestiging",
+        "cancelled": "Geannuleerd",
+        "completed": "Voltooid",
+        "disputed": "Twijfelachtig"
+      },
+      "sidebar": {
+        "customer": "Klant",
+        "source": "Bron: {bron}",
+        "vendor": "Leverancier",
+        "bookingDetails": "Boekingsgegevens",
+        "payment": "Betaling",
+        "timeline": "Tijdlijn",
+        "name": "Naam",
+        "contact": "Contact",
+        "whatsapp": "WhatsAppen",
+        "assignedTo": "Toegewezen aan",
+        "vendorContact": "Contactpersoon leverancier",
+        "checkIn": "Datum van inchecken",
+        "checkOut": "Uitcheckdatum",
+        "amount": "Hoeveelheid",
+        "paymentStatus": "Status",
+        "chargedCurrency": "Valuta in rekening gebracht"
+      },
+      "createModal": {
+        "title": "Boeking maken",
+        "subtitle": "Maak een boeking namens een klant.",
+        "infoBannerPrefix": "Deze boeking wordt getagd",
+        "infoBannerSource": "Bron: Gemaakt door beheerder",
+        "infoBannerSuffix": "en verschijnt in het account en de app van de klant op dezelfde manier als een zelfbedieningsboeking.",
+        "productType": "Producttype",
+        "product": {
+          "accommodations": "Accommodatie",
+          "flights": "Vluchten",
+          "cars": "Auto's",
+          "experiences": "Ervaringen"
+        },
+        "customer": "Klant",
+        "customerPlaceholder": "Zoek bestaande klanten op naam, e-mailadres of telefoon...",
+        "vendorListing": "Verkoper / aanbieding",
+        "vendorPlaceholder": "Zoek leverancier of vermelding...",
+        "startDate": "Startdatum",
+        "endDate": "Einddatum",
+        "guestsUnits": "Gasten / eenheden",
+        "guestsPlaceholder": "bijv. 2",
+        "totalAmount": "Totaal bedrag",
+        "amountPlaceholder": "NGN",
+        "paymentStatus": "Betalingsstatus",
+        "payment": {
+          "sendLink": "Betaallink naar klant sturen",
+          "paidInFull": "Markeer als volledig betaald",
+          "pending": "Betaling in behandeling - geen link verzonden"
+        },
+        "internalNote": "Interne opmerking",
+        "internalNotePlaceholder": "bijv. Geboekt via WhatsApp-aanvraag, klant vroeg kamer op de begane grond",
+        "cancel": "Annuleren",
+        "submit": "Boeking maken"
+      }
+    },
+    "payouts": {
+      "title": "Uitbetalingen",
+      "subtitle": "Leveranciersinkomsten in alle categorieën, per vereffeningsperiode.",
+      "searchPlaceholder": "Zoek op naam van de leverancier of referentie...",
+      "pendingCount": "{count} openstaande uitbetaling(en)",
+      "markComplete": "Markeer voltooid",
+      "contactVendor": "Neem contact op met de leverancier",
+      "decline": "Afwijzen",
+      "empty": "Er zijn geen uitbetalingen die overeenkomen met uw zoekopdracht.",
+      "requested": "Gevraagde {datum}",
+      "periodLabel": "Periode: {periode}",
+      "listBookingsBank": "{tel} boekingen · {bank} {rekening}",
+      "netPayoutToVendor": "Netto uitbetaling aan leverancier",
+      "grossEarnings": "Bruto boekingsinkomsten",
+      "platformCommission": "Platformcommissie ({tarief}%)",
+      "netPayout": "Netto uitbetaling",
+      "paymentDestination": "Betaalbestemming",
+      "bank": "Bank",
+      "accountNumber": "Rekeningnummer",
+      "accountName": "Accountnaam",
+      "payoutMethod": "Uitbetalingsmethode",
+      "associatedBookings": "Bijbehorende boekingen ({count})",
+      "internalNote": "Interne opmerking",
+      "noteAttribution": "— {auteur}, {datum}",
+      "period": {
+        "thisMonth": "Deze maand — juli 2026",
+        "lastMonth": "Vorige maand — juni 2026",
+        "quarter": "Dit kwartaal — Q2 2026"
+      },
+      "stats": {
+        "totalPeriod": "Totale uitbetaling — periode",
+        "totalVendors": "Bij {tel} leveranciers",
+        "pending": "In behandeling",
+        "pendingSubtitle": "{tel} uitbetalingen die wachten op actie",
+        "completed": "Voltooid",
+        "completedSubtitle": "{count} uitbetalingen verrekend",
+        "declinedFailed": "Geweigerd/mislukt",
+        "declinedFailedSubtitle": "{geweigerd} geweigerd · {mislukt} mislukte overdracht"
+      },
+      "filter": {
+        "all": "Alles ({tel})",
+        "pending": "In behandeling ({count})",
+        "completed": "Voltooid ({telling})",
+        "declined": "Geweigerd ({count})",
+        "failed": "Mislukt ({count})"
+      },
+      "status": {
+        "pending": "In behandeling",
+        "completed": "Voltooid",
+        "declined": "Afgewezen",
+        "failed": "Mislukt",
+        "failedTransfer": "Mislukte overdracht"
+      }
+    },
+    "reviews": {
+      "title": "Review-moderatie",
+      "category": {
+        "unanswered": "Onbeantwoord",
+        "responseRequired": "Reactie vereist",
+        "flagged": "Gemarkeerd",
+        "deleted": "Verwijderd",
+        "published": "Gepubliceerd"
+      },
+      "selectAll": "Selecteer alles",
+      "deselectAll": "Deselecteer alles",
+      "bulkPublish": "Publiceren geselecteerd",
+      "bulkFlag": "Vlag geselecteerd",
+      "bulkResponseRequired": "Reactie vereist",
+      "bulkDelete": "Geselecteerde verwijderen",
+      "actionsGuideTitle": "Wat betekenen deze acties?",
+      "actionsGuide": {
+        "publish": "Publiceren — Maak de recensie zichtbaar op de openbare vermeldingspagina.",
+        "flag": "Markeren: markeer de recensie voor vervolgonderzoek (ongepaste of verdachte inhoud).",
+        "delete": "Verwijderen — Verwijder de recensie uit de openbare weergave. Verwijderde recensies verschijnen op het tabblad Verwijderd.",
+        "responseRequired": "Reactie vereist: geef aan dat er een reactie van de leverancier of beheerder nodig is.",
+        "clearResponseRequired": "Duidelijk antwoord vereist — Verwijder de markering nadat een officieel antwoord is gepost."
+      },
+      "selectReview": "Selecteer recensie voor {titel}",
+      "unansweredBadge": "Onbeantwoord",
+      "responseRequiredBadge": "Reactie vereist",
+      "officialResponse": "Officiële reactie",
+      "empty": "Geen beoordelingen in deze categorie.",
+      "flag": "Vlag",
+      "responseRequired": "Reactie vereist",
+      "clearResponseRequired": "Duidelijk antwoord vereist",
+      "delete": "Verwijderen",
+      "hide": "Verbergen",
+      "publish": "Publiceren",
+      "respondAsSynkAfrica": "Reageer als SynkAfrica",
+      "responsePlaceholder": "Officieel antwoord zichtbaar voor gast en leverancier...",
+      "photosLabel": "Foto's van gasten",
+      "status": {
+        "published": "Gepubliceerd",
+        "flagged": "Gemarkeerd",
+        "deleted": "Verwijderd",
+        "hidden": "Verborgen"
+      }
+    },
+    "reports": {
+      "title": "Rapporten",
+      "totalRevenue": "Totale omzet (maand)",
+      "totalBookings": "Totaal boekingen (maand)",
+      "topExperience": "Topervaring",
+      "activeVendors": "Actieve verkopers",
+      "popularExperiences": "Populaire ervaringen",
+      "bookings": "boekingen",
+      "metric": "Metrisch",
+      "value": "Waarde",
+      "experience": "Ervaring",
+      "exportRevenue": "Exporteer inkomsten CSV",
+      "exportBookings": "Boekingen CSV exporteren"
+    },
+    "support": {
+      "title": "Ondersteuningstickets",
+      "subtitle": "Beoordeel ondersteuningsverzoeken van gebruikers en leveranciers, werk de ticketstatus bij en stuur officiële antwoorden.",
+      "tab": {
+        "users": "Gebruikers",
+        "vendors": "Verkopers"
+      },
+      "user": "Gebruiker",
+      "vendor": "Leverancier",
+      "empty": "Er zijn geen tickets die overeenkomen met dit filter.",
+      "adminResponse": "Reactie van beheerder",
+      "previousResponse": "Vorige reactie",
+      "sendResponse": "Reactie verzenden"
+    }
+  },
+  "vendor": {
+    "nav": {
+      "workspace": "Werkruimte",
+      "account": "Rekening",
+      "dashboard": "Dashboard",
+      "listings": "Advertenties",
+      "bookings": "Boekingen",
+      "earnings": "Inkomsten",
+      "notifications": "Meldingen",
+      "businessProfile": "Bedrijfsprofiel",
+      "settings": "Instellingen",
+      "support": "Steun",
+      "logOut": "Uitloggen",
+      "openMenu": "Menu openen",
+      "closeMenu": "Menu sluiten"
+    },
+    "header": {
+      "verifiedVendor": "Geverifieerde leverancier",
+      "unverifiedVendor": "Niet-geverifieerde leverancier",
+      "pendingVendor": "Verificatie in behandeling"
+    },
+    "signup": {
+      "title": "Maak uw leveranciersaccount aan",
+      "subtitle": "Sluit u aan bij SynkAfrica en begin met het aanbieden van uw auto's, accommodaties en ervaringen aan reizigers in heel Afrika.",
+      "alreadyHaveAccount": "Heeft u al een leveranciersaccount?",
+      "signIn": "Log in",
+      "progressLabel": "Voortgang aanmelding leverancier",
+      "steps": {
+        "business": "Bedrijfs- en eigenaarinformatie",
+        "security": "Beveiliging en verificatie",
+        "identity": "Identiteitsverificatie"
+      },
+      "cancel": "Annuleren",
+      "back": "Rug",
+      "continue": "Doorgaan",
+      "createAccount": "Account aanmaken",
+      "completeRequiredFields": "Vul de verplichte velden in: {fields}",
+      "securityRequired": "Verifieer uw telefoon met OTP en maak een geldig wachtwoord aan om door te gaan.",
+      "identityRequired": "Upload uw overheids-ID en accepteer de voorwaarden om uw account aan te maken.",
+      "sections": {
+        "businessInfo": "Bedrijfsinformatie",
+        "businessInfoHint": "Vertel ons over uw bedrijf.",
+        "ownerInfo": "Eigenaar Informatie",
+        "ownerInfoHint": "Details over de bedrijfseigenaar of primaire contactpersoon.",
+        "phoneVerification": "Telefonische verificatie",
+        "phoneVerificationHint": "Wij sturen een eenmalige code naar het door u opgegeven telefoonnummer.",
+        "accountSecurity": "Accountbeveiliging",
+        "accountSecurityHint": "Maak een sterk wachtwoord voor uw leveranciersaccount.",
+        "governmentId": "Door de overheid uitgegeven identiteitsbewijs",
+        "governmentIdHint": "Upload een geldig paspoort, rijbewijs of NIN-strookje voor identiteitsverificatie."
+      },
+      "fields": {
+        "businessName": "Naam van bedrijf",
+        "businessType": "Bedrijfstype",
+        "cacRegistrationNumber": "CAC-registratienummer",
+        "companyType": "Bedrijfstype",
+        "businessAddress": "Zakelijk adres",
+        "ownerFullName": "Volledige naam van de eigenaar",
+        "ownerEmail": "E-mailadres",
+        "phoneNumber": "Telefoonnummer",
+        "dateOfBirth": "Geboortedatum",
+        "password": "Wachtwoord",
+        "confirmPassword": "Bevestig wachtwoord"
+      },
+      "placeholders": {
+        "companyType": "Selecteer bedrijfstype",
+        "businessName": "bijv. Kustpaden NG",
+        "businessType": "Selecteer bedrijfstype",
+        "cacRegistrationNumber": "bijv. RC1234567",
+        "businessAddress": "Straat, stad, staat",
+        "ownerFullName": "Volledige wettelijke naam",
+        "ownerEmail": "jij@business.com",
+        "phoneNumber": "7812345678",
+        "password": "Maak een wachtwoord aan",
+        "confirmPassword": "Voer uw wachtwoord opnieuw in"
+      },
+      "sendOtp": "OTP verzenden",
+      "resendOtp": "OTP opnieuw verzenden",
+      "enterOtp": "Voer OTP in",
+      "resendIn": "Opnieuw verzenden over 00:{seconden}",
+      "otpVerified": "Telefoonnummer geverifieerd.",
+      "passwordRules": {
+        "minLength": "Minimaal 8 tekens",
+        "hasNumber": "Inclusief een nummer",
+        "hasUppercase": "Inclusief hoofdletter"
+      },
+      "passwordMismatch": "Wachtwoorden komen niet overeen.",
+      "togglePasswordVisibility": "Schakel de zichtbaarheid van wachtwoorden in",
+      "uploadId": "Sleep uw ID hierheen",
+      "uploadIdHint": "JPG, PNG of PDF (max. 5 MB)",
+      "chooseFile": "Kies Bestand",
+      "idUploaded": "Document geüpload",
+      "idUploadFailed": "Uploaden mislukt. Probeer het opnieuw.",
+      "removeId": "ID verwijderen",
+      "idPrivacyNote": "Uw identiteitsbewijs wordt veilig opgeslagen en alleen gebruikt voor verificatiedoeleinden. Wij delen uw persoonlijke documenten nooit met derden.",
+      "securityBanner": {
+        "title": "Uw gegevens zijn veilig bij ons",
+        "message": "We gebruiken industriestandaard beveiliging om uw gegevens te beschermen en uw account veilig te houden."
+      },
+      "agreeTermsPrefix": "Ik ga akkoord met de",
+      "termsOfService": "Servicevoorwaarden",
+      "and": "En",
+      "privacyPolicy": "Privacybeleid"
+    },
+    "login": {
+      "title": "Verkoper aanmelden",
+      "intro": "Meld u aan bij uw SynkAfrica-leveranciersaccount om vermeldingen, boekingen en inkomsten te beheren.",
+      "emailPlaceholder": "Voer het e-mailadres van uw leverancier in",
+      "signInGoogle": "Log in met Google",
+      "noAccount": "Heeft u geen leveranciersaccount?",
+      "signUp": "Schrijf je in"
+    },
+    "verificationNotice": {
+      "unverified": {
+        "title": "Verificatie vereist",
+        "message": "Voltooi uw leveranciersverificatie om vermeldingen te publiceren en uitbetalingen te ontvangen."
+      },
+      "pending": {
+        "title": "Verificatie wordt uitgevoerd",
+        "message": "Uw verificatie wordt beoordeeld. Sommige functies blijven mogelijk beperkt tot goedkeuring."
+      },
+      "completeVerification": "Volledige verificatie"
+    },
+    "notifications": {
+      "filter": {
+        "label": "Filter meldingen",
+        "all": "Alle",
+        "newBooking": "Nieuwe boekingen",
+        "bookingReminder": "24-uurs herinneringen",
+        "payoutConfirmation": "Uitbetalingen",
+        "adminMessage": "Beheerder"
+      },
+      "type": {
+        "newBooking": "Nieuwe boeking",
+        "bookingReminder": "24-uurs herinnering",
+        "payoutConfirmation": "Uitbetaling",
+        "adminMessage": "Beheerder bericht"
+      },
+      "unreadCount": "{tel} ongelezen melding(en)",
+      "allCaughtUp": "Jullie zijn allemaal in beslag genomen.",
+      "markRead": "Markeer als gelezen",
+      "markAllRead": "Markeer alles als gelezen",
+      "empty": "Geen meldingen in deze categorie.",
+      "time": {
+        "justNow": "Zojuist",
+        "hoursAgo": "{tel}h geleden"
+      },
+      "sample": {
+        "newBooking": {
+          "title": "Nieuwe boeking ontvangen",
+          "message": "Amara boekte Lagos Lagoon Sunset Cruise voor 25 juli · 4 gasten. Bevestig of weiger binnen 24 uur."
+        },
+        "newBooking2": {
+          "title": "Nieuwe boeking ontvangen",
+          "message": "Chidi heeft Lekki Garden Suites geboekt voor 3 augustus · 2 gasten."
+        },
+        "reminder": {
+          "title": "Boeking binnen 24 uur",
+          "message": "Herinnering: Lagos Lagoon Sunset Cruise met Fatima morgen om 17.30 uur · 6 gasten."
+        },
+        "reminder2": {
+          "title": "Boeking binnen 24 uur",
+          "message": "Herinnering: Toyota Camry 2021 verhuur bij Emeka morgen om 9.00 uur."
+        },
+        "payout": {
+          "title": "Uitbetaling bevestigd",
+          "message": "NGN 200.000 is verzonden naar uw GTBank-rekening eindigend op 4521."
+        },
+        "payout2": {
+          "title": "Uitbetaling bevestigd",
+          "message": "De opname van NGN 150.000 naar Access Bank eindigend op 8834 is met succes verwerkt."
+        },
+        "admin": {
+          "title": "Beleidsupdate van Synkafrica",
+          "message": "Er zijn nu bijgewerkte leveranciersrichtlijnen voor ervaringsaanbiedingen beschikbaar. Graag vóór 1 augustus beoordelen."
+        },
+        "admin2": {
+          "title": "Vermelding goedgekeurd",
+          "message": "Uw vermelding voor Lagos Lagoon Sunset Cruise is nu live op Synkafrica."
+        }
+      }
+    },
+    "dashboard": {
+      "welcomeBack": "Welkom terug,",
+      "addListing": "Voeg vermelding toe",
+      "period": {
+        "label": "Statistieken periode",
+        "day": "Op een dag",
+        "week": "Een week",
+        "month": "Eén maand",
+        "sixMonths": "Zes maanden",
+        "year": "Eén jaar"
+      },
+      "stats": {
+        "liveListings": "Live vermeldingen",
+        "newBookings": "Nieuwe boekingen",
+        "earnings": "Inkomsten",
+        "pendingApproval": "In afwachting van goedkeuring"
+      },
+      "goToBookings": "Ga naar boekingen",
+      "yourListings": "Uw vermeldingen",
+      "seeAll": "Bekijk alles",
+      "status": {
+        "live": "Live vermelding",
+        "pending": "In behandeling...",
+        "paused": "Gepauzeerd",
+        "draft": "Voorlopige versie"
+      },
+      "editListing": "Bewerk vermelding",
+      "deleteListing": "Lijst verwijderen",
+      "pauseListing": "Pauzeer de vermelding",
+      "playListing": "CV-lijst",
+      "deleteListingModal": {
+        "title": "Advertentie verwijderen?",
+        "message": "Weet je zeker dat je \"{titel}\" wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+        "confirm": "Lijst verwijderen",
+        "cancel": "Annuleren"
+      },
+      "category": {
+        "accommodations": "Accommodaties",
+        "carRentals": "Autoverhuur",
+        "tours": "Rondleidingen",
+        "toursExperiences": "Rondleidingen & ervaringen"
+      }
+    },
+    "businessProfile": {
+      "businessName": "Bedrijfsnaam",
+      "businessNameHint": "Interne naam die wordt gebruikt in uitbetalingen en leveranciersrecords. Niet weergegeven op openbare vermeldingen.",
+      "internalNameLabel": "Interne bedrijfsnaam",
+      "contactDetails": "Contactgegevens",
+      "contactDetailsHint": "Hoe Synkafrica en gasten u bereiken voor boekingsondersteuning.",
+      "phone": "Telefoonnummer",
+      "email": "E-mailadres",
+      "address": "Zakelijk adres",
+      "payoutAccount": "Bankrekening voor uitbetalingen",
+      "payoutAccountHint": "Opnames van inkomsten worden naar deze rekening verzonden.",
+      "bankName": "Banknaam",
+      "accountNumber": "Rekeningnummer",
+      "accountNumberLocked": "Rekeningnummer kan alleen elke {maanden} maanden worden gewijzigd. Volgende wijziging beschikbaar op {datum}.",
+      "accountName": "Accountnaam",
+      "bank": {
+        "zenith": "Zenith-bank",
+        "firstBank": "Eerste bank"
+      },
+      "passwordUpdate": "Wachtwoord bijwerken",
+      "passwordUpdateHint": "Kies een sterk wachtwoord dat u nergens anders gebruikt.",
+      "currentPassword": "Huidig ​​wachtwoord",
+      "newPassword": "Nieuw wachtwoord",
+      "confirmPassword": "Bevestig nieuw wachtwoord",
+      "passwordMismatch": "Nieuwe wachtwoorden komen niet overeen.",
+      "updatePassword": "Wachtwoord bijwerken",
+      "passwordUpdated": "Wachtwoord bijgewerkt.",
+      "saveChanges": "Wijzigingen opslaan",
+      "saved": "Opgeslagen.",
+      "rejected": {
+        "title": "Aanvraag niet goedgekeurd",
+        "noReason": "Een beheerder heeft uw aanvraag niet goedgekeurd. Corrigeer hieronder uw gegevens en documenten en dien uw aanvraag opnieuw in.",
+        "resubmit": "Opnieuw ter beoordeling indienen",
+        "resubmitting": "Opnieuw indienen…",
+        "resubmitted": "Opnieuw ingediend. Een beheerder zal uw aanvraag opnieuw beoordelen.",
+        "resubmitFailed": "Kan niet opnieuw indienen. Probeer het opnieuw."
+      },
+      "cac": {
+        "title": "CAC-registratie",
+        "hint": "Gecontroleerd tegen het CAC-register. U kunt deze gegevens corrigeren totdat de controle is geslaagd.",
+        "number": "CAC-registratienummer",
+        "companyType": "Bedrijfstype",
+        "companyTypePlaceholder": "Selecteer bedrijfstype",
+        "status": {
+          "verified": "Geverifieerd",
+          "failed": "Niet geverifieerd",
+          "unverified": "In afwachting van controle"
+        },
+        "verifiedAs": "Komt overeen met {naam} in het CAC-register.",
+        "failedHint": "Het CAC-register kwam niet overeen met deze gegevens. Corrigeer ze en sla ze op om ze opnieuw te controleren.",
+        "pendingHint": "Bij het opslaan wordt de CAC-controle opnieuw uitgevoerd. Refresh even om het resultaat te zien.",
+        "lockedHint": "Geverifieerde gegevens kunnen hier niet worden gewijzigd. Neem contact op met de ondersteuning als er iets mis is."
+      },
+      "documents": {
+        "title": "Documenten & Verificatie",
+        "subtitle": "Documenten op bedrijfsniveau zijn van toepassing op uw hele account. Per advertentie zijn voertuigdocumenten vereist voordat deze live kan gaan.",
+        "businessSection": "Zakelijk document",
+        "business": {
+          "cac": "Certificaat van oprichting (CAC)"
+        },
+        "uploadedMeta": "Geüpload {datum} · {bestandsnaam}",
+        "view": "Weergave",
+        "vehicleSection": "Voertuigdocumenten · {tel} vermeldingen",
+        "vehicleLegend": "Verzekering · Rijklaarheid · Eigendomsbewijs",
+        "type": {
+          "insurance": "Verzekeringscertificaat",
+          "roadworthiness": "Certificaat van technische keuring",
+          "ownership": "Bewijs van eigendom"
+        },
+        "status": {
+          "verified": "Geverifieerd",
+          "rejected": "Afgewezen",
+          "pending": "In behandeling",
+          "notUploaded": "Niet geüpload"
+        },
+        "listingStatus": {
+          "allVerified": "Allemaal geverifieerd",
+          "actionNeeded": "Actie nodig",
+          "notStarted": "Niet gestart",
+          "inProgress": "In uitvoering"
+        },
+        "reupload": "Opnieuw uploaden",
+        "upload": "Uploaden",
+        "rejection": {
+          "plateMismatch": "De documentnaam komt niet overeen met het geregistreerde kenteken. Upload het voertuiglicentienummer dat overeenkomt met ABJ-771-KD opnieuw."
+        }
+      }
+    },
+    "support": {
+      "helpBanner": "Dien een klacht in of vraag om hulp bij het Synkafrica-leveranciersteam. Wij reageren doorgaans binnen 1 à 2 werkdagen.",
+      "helpBannerEmail": "Updates worden verzonden naar {email}.",
+      "openTickets": "{tel} open ticket(s)",
+      "tabs": {
+        "label": "Ondersteunende secties"
+      },
+      "createTicket": "Ondersteuningsticket maken",
+      "createTicketHint": "Beschrijf uw probleem gedetailleerd, zodat we het snel kunnen oplossen.",
+      "subject": "Onderwerp",
+      "subjectPlaceholder": "Korte samenvatting van uw probleem",
+      "category": {
+        "booking": "Boekingsprobleem",
+        "payout": "Uitbetaling en inkomsten",
+        "listing": "Lijst en beschikbaarheid",
+        "account": "Account & profiel",
+        "complaint": "Klacht",
+        "other": "Ander"
+      },
+      "priority": {
+        "low": "Laag",
+        "medium": "Medium",
+        "high": "Hoog",
+        "urgent": "Dringend"
+      },
+      "priorityHint": "Gebruik Urgent alleen voor tijdgevoelige boekings- of uitbetalingsproblemen.",
+      "bookingReference": "Boekingsreferentie",
+      "bookingReferencePlaceholder": "bijv. VB-3 of bestelnummer (optioneel)",
+      "description": "Beschrijving",
+      "descriptionPlaceholder": "Leg uit wat er is gebeurd, wanneer het heeft plaatsgevonden en welke uitkomst je nodig hebt.",
+      "submitTicket": "Ticket indienen",
+      "ticketSubmitted": "Ticket {nummer} ingediend. Ons team volgt binnenkort.",
+      "responseTime": "Verplichte velden zijn gemarkeerd met *.",
+      "yourTickets": "Jouw kaartjes",
+      "yourTicketsHint": "Houd klachten en ondersteuningsverzoeken bij die u heeft ingediend.",
+      "filter": {
+        "label": "Filter tickets op status",
+        "all": "Alle"
+      },
+      "status": {
+        "open": "Openen",
+        "inProgress": "In uitvoering",
+        "resolved": "Opgelost",
+        "closed": "Gesloten"
+      },
+      "updated": "Bijgewerkt",
+      "created": "Gemaakt",
+      "emptyTickets": "Er zijn geen tickets die overeenkomen met dit filter.",
+      "loading": "Kaartjes laden…",
+      "loadFailed": "Kan uw tickets niet laden. Probeer het opnieuw.",
+      "submitFailed": "Kan uw ticket niet indienen. Probeer het opnieuw.",
+      "viewConversation": "Gesprek bekijken",
+      "backToTickets": "Terug naar kaartjes",
+      "conversation": "Gesprek",
+      "you": "Jij",
+      "supportTeam": "Ondersteuningsteam",
+      "replyPlaceholder": "Typ uw antwoord…",
+      "sendReply": "Antwoord verzenden",
+      "sending": "Verzenden…",
+      "replyFailed": "Kan uw antwoord niet verzenden. Probeer het opnieuw."
+    },
+    "earnings": {
+      "availableBalance": "Beschikbaar saldo",
+      "lifetimeEarnings": "Levenslange inkomsten",
+      "transactionHistory": "Transactiegeschiedenis",
+      "withdrawFunds": "Geld opnemen",
+      "amountToWithdraw": "Op te nemen bedrag",
+      "selectBankAccount": "Selecteer bankrekening",
+      "payoutAccount": "Uitbetalingsrekening",
+      "noBankAccount": "Er is nog geen uitbetalingsaccount toegevoegd.",
+      "addBankAccount": "Voeg een bankrekening toe in Bedrijfsprofiel →",
+      "availableHint": "Beschikbaar:",
+      "processingNote": "Opnames worden binnen 1 à 2 werkdagen verwerkt.",
+      "paymentFlowTitle": "Betalings- en opnamebeleid",
+      "paymentFlowInstant": "Opnames van ₦ 200.000 en minder worden na bevestiging automatisch verwerkt.",
+      "paymentFlowApproval": "Voor opnames boven ₦ 200.000 is goedkeuring van de superbeheerder vereist.",
+      "paymentFlowAuth": "Bij opname zijn voor bedragen boven ₦ 200.000 een transactiepincode en OTP vereist.",
+      "withdrawalModal": {
+        "title": "Bevestig de opname",
+        "pin": "Transactiepincode",
+        "otp": "OTP-code",
+        "sendOtp": "OTP verzenden",
+        "submit": "Bevestig de opname",
+        "pendingApproval": "Voor deze intrekking is goedkeuring van de superbeheerder vereist. Zodra het is goedgekeurd, ontvangt u bericht.",
+        "cancel": "Annuleren"
+      },
+      "status": {
+        "completed": "Voltooid",
+        "pending": "In behandeling",
+        "failed": "Mislukt"
+      },
+      "transaction": {
+        "bookingPayment": "Betaling van de boeking",
+        "withdrawal": "Opname",
+        "platformFee": "Platformkosten",
+        "refund": "Terugbetaling"
+      },
+      "bank": {
+        "gtbank": "GTBank",
+        "access": "Toegangsbank"
+      },
+      "duration": {
+        "label": "Verdienperiode",
+        "daily": "Dagelijks",
+        "weekly": "Wekelijks",
+        "monthly": "Maandelijks",
+        "all": "Alle"
+      },
+      "commissionSplit": "Commissie gesplitst",
+      "commissionSplitHint": "De opbrengsten uit boekingen worden {vendor}% aan u en {platform}% aan Synkafrica gesplitst.",
+      "vendorShare": "Jouw aandeel",
+      "platformShare": "Platformkosten",
+      "grossRevenue": "Bruto omzet",
+      "downloadStatements": "Verklaring downloaden",
+      "emptyTransactions": "Geen transacties voor deze periode.",
+      "statement": {
+        "date": "Datum",
+        "title": "Titel",
+        "description": "Beschrijving",
+        "type": "Type",
+        "amount": "Hoeveelheid",
+        "status": "Status"
+      }
+    },
+    "listings": {
+      "detail": {
+        "back": "Terug naar aanbiedingen",
+        "backToBookings": "Terug naar boekingen",
+        "heading": "Lijstdetails",
+        "hint": "Volledig voorbeeld van deze aanbieding, inclusief media, details, prijzen en documenten.",
+        "status": "Status",
+        "category": "Categorie",
+        "rating": "Beoordeling",
+        "notFound": "Advertentie niet gevonden."
+      },
+      "bookingAvailability": "Beschikbaarheid van boekingen",
+      "filter": {
+        "allCategories": "Alle categorieën",
+        "allStatuses": "Alle statussen",
+        "statusLabel": "Status",
+        "status": {
+          "live": "Live",
+          "pending": "In behandeling",
+          "draft": "Concepten",
+          "paused": "Gepauzeerd"
+        },
+        "empty": "Er zijn geen vermeldingen die overeenkomen met uw filters."
+      },
+      "status": {
+        "pendingApproval": "In afwachting van goedkeuring",
+        "paused": "Gepauzeerd"
+      },
+      "availability": {
+        "selectListing": "Lijst",
+        "modeAvailable": "Markeer beschikbaar",
+        "modeBlock": "Datums blokkeren",
+        "modeAvailableHint": "Klik op datums om ze te openen voor boekingen. Klik nogmaals om de beschikbaarheid te verwijderen.",
+        "modeBlockHint": "Klik op datums om boekingen te blokkeren. Klik nogmaals om de blokkering op te heffen.",
+        "legendAvailable": "Beschikbaar",
+        "legendBlocked": "Geblokkeerd",
+        "legendSelected": "Gekozen",
+        "available": "Beschikbaar",
+        "blocked": "Geblokkeerd",
+        "timeSlots": "Tijdslots",
+        "capacity": "Capaciteit",
+        "selectDayHint": "Selecteer een datum op de kalender om tijdvakken te configureren.",
+        "selectAvailableDay": "Markeer deze datum als beschikbaar om tijdvakken te configureren.",
+        "blockedDayMessage": "Deze datum is geblokkeerd. Deblokkeer het om tijdslots te configureren.",
+        "defaultCapacity": "Standaard capaciteit",
+        "defaultCapacityHint": "Toegepast op nieuwe beschikbare datums en ingeschakelde tijdvakken.",
+        "leadTime": "Doorlooptijd",
+        "leadTimeHint": "Er is een minimale kennisgeving vereist voordat een gast kan boeken.",
+        "leadTimeUnitHours": "Uur",
+        "leadTimeUnitDays": "Dagen"
+      },
+      "calendar": {
+        "sun": "Zon",
+        "mon": "ma",
+        "tue": "di",
+        "wed": "wo",
+        "thu": "Do",
+        "fri": "Vr",
+        "sat": "Zat",
+        "previousMonth": "Vorige maand",
+        "nextMonth": "Volgende maand"
+      }
+    },
+    "bookings": {
+      "tab": {
+        "upcoming": "Aankomend",
+        "past": "Verleden",
+        "cancelled": "Geannuleerd",
+        "declined": "Afgewezen"
+      },
+      "stats": {
+        "awaitingConfirmation": "In afwachting van bevestiging",
+        "upcomingConfirmed": "Aankomend (bevestigd)",
+        "earningsThisMonth": "Inkomsten deze maand",
+        "responseRate": "Responspercentage (30 dagen)"
+      },
+      "searchPlaceholder": "Zoeken op gastnaam of boekings-ID...",
+      "allListings": "Alle vermeldingen",
+      "viewModeLabel": "Boekingen bekijken",
+      "view": {
+        "list": "Lijst",
+        "calendar": "Kalender"
+      },
+      "calendarComingSoon": "De kalenderweergave komt binnenkort.",
+      "respondWithin": "Reageer binnen {time}",
+      "paymentSecured": "Betaling beveiligd",
+      "messageGuest": "Bericht gast",
+      "viewListing": "Bekijk vermelding",
+      "cancelBooking": "Boeking annuleren",
+      "dateRangeLabel": "Filter op datumbereik",
+      "dateRange": {
+        "all": "Altijd",
+        "pastMonth": "Afgelopen maand",
+        "past3Months": "Afgelopen 3 maanden",
+        "past6Months": "Afgelopen 6 maanden",
+        "pastYear": "Afgelopen jaar"
+      },
+      "empty": {
+        "upcoming": "Geen aankomende boekingen voor deze periode.",
+        "past": "Geen eerdere boekingen voor deze periode.",
+        "cancelled": "Geen geannuleerde boekingen voor deze periode.",
+        "declined": "Geen geweigerde boekingen voor deze periode."
+      },
+      "declineModal": {
+        "title": "Boeking weigeren",
+        "subtitle": "Vertel {gast} waarom boeking {referentie} wordt geweigerd.",
+        "reasonLabel": "Reden van afname",
+        "reasonPlaceholder": "Leg uit waarom u deze boeking niet kunt accepteren...",
+        "cancel": "Annuleren",
+        "submit": "Boeking weigeren"
+      },
+      "declineReason": "Reden afwijzen",
+      "deliveryAddress": "Afleveradres",
+      "pickupAddress": "Ophaaladres",
+      "carMode": {
+        "selfDrive": "Zelf rijden",
+        "withDriver": "Met chauffeur"
+      },
+      "calendar": {
+        "selectedDay": "{tel} boeking(en) op deze dag",
+        "noBookings": "Geen boekingen op deze dag."
+      },
+      "pendingConfirmation": "{tel} boeking(en) die wachten op uw bevestiging.",
+      "specialRequests": "Speciale verzoeken",
+      "confirm": "Bevestigen",
+      "decline": "Afwijzen",
+      "markComplete": "Markeer als voltooid",
+      "status": {
+        "awaitingConfirmation": "In afwachting van bevestiging",
+        "confirmed": "Bevestigd",
+        "declined": "Afgewezen",
+        "completed": "Voltooid",
+        "cancelled": "Geannuleerd"
+      }
+    },
+    "addListing": {
+      "title": "Nieuwe vermelding toevoegen",
+      "editTitle": "Bewerk vermelding",
+      "loadError": "Kan deze vermelding niet laden. Probeer het opnieuw.",
+      "subtitle": "Maak een nieuwe vermelding en bereik meer klanten.",
+      "backToListings": "← Terug naar aanbiedingen",
+      "backToListing": "← Terug naar overzicht",
+      "progressLabel": "Voortgang notering",
+      "steps": {
+        "carDetails": "Autogegevens",
+        "accommodationDetails": "Accommodatiegegevens",
+        "experienceDetails": "Ervaringsdetails",
+        "media": "Media",
+        "pricing": "Prijzen",
+        "documents": "Documenten",
+        "review": "Beoordelen en publiceren"
+      },
+      "whatAreYouListing": "Wat vermeld je?",
+      "category": {
+        "car": {
+          "title": "Auto",
+          "description": "Geef een huurauto op."
+        },
+        "accommodation": {
+          "title": "Accommodatie",
+          "description": "Lijst een plek om te verblijven."
+        },
+        "experience": {
+          "title": "Ervaring",
+          "description": "Vermeld een activiteit of rondleiding."
+        }
+      },
+      "carDetailsHeading": "Autogegevens",
+      "accommodationDetailsHeading": "Accommodatiedetails",
+      "experienceDetailsHeading": "Ervaringsdetails",
+      "experienceType": "Ervaringstype/categorie",
+      "experienceTypeSelect": "Selecteer ervaringstype",
+      "experienceLocationPlaceholder": "bijv. Lekki, Lagos, Nigeria",
+      "experienceHighlights": "Hoogtepunten / korte beschrijving",
+      "experienceHighlightsHint": "Een korte, pakkende samenvatting van wat gasten gaan doen en beleven.",
+      "experienceHighlightsPlaceholder": "Beschrijf de ervaring, wat deze uniek maakt en waarom gasten er dol op zullen zijn.",
+      "experienceAvailabilityHeading": "Beschikbaarheid",
+      "experienceAvailabilityHint": "Stel in wanneer uw ervaring beschikbaar is.",
+      "operatingDays": "Bedrijfsdagen",
+      "startTime": "Begintijd",
+      "endTime": "Eindtijd",
+      "experienceScheduleWeekly": "Wordt wekelijks herhaald",
+      "experienceScheduleWeeklyHint": "Deze ervaring is elke week op geselecteerde dagen beschikbaar.",
+      "experienceScheduleDateRange": "Aangepast datumbereik",
+      "experienceScheduleDateRangeHint": "Stel een specifiek datumbereik in voor deze ervaring.",
+      "experienceDateRangeHeading": "Selecteer een datumbereik",
+      "experienceDateRangeHint": "Kies de begin- en einddatum waarop deze ervaring beschikbaar zal zijn.",
+      "experienceDateRangeStart": "Startdatum",
+      "experienceDateRangeEnd": "Einddatum",
+      "additionalInfoSection": "Aanvullende informatie",
+      "whatsIncludedHint": "Vermeld wat bij de ervaring is inbegrepen.",
+      "includesItemsPlaceholder": "bijv. Uitrusting, gids, veiligheidsuitrusting, flessenwater",
+      "whatToBring": "Wat mee te nemen / te dragen",
+      "whatToBringHint": "Laat gasten weten wat ze moeten meenemen of dragen.",
+      "whatToBringPlaceholder": "bijv. Comfortabele kleding, gesloten schoenen, zonnebrandcrème",
+      "tagInputFooter": "Voeg elk item toe en druk op Enter",
+      "additionalInformationHeading": "Aanvullende informatie",
+      "additionalInformationHint": "Voeg eventuele andere nuttige informatie voor uw gasten toe.",
+      "additionalInformationPlaceholder": "bijv. Leeftijdsbeperkingen, gezondheidsvereisten, annuleringsvoorwaarden, details van ontmoetingspunt",
+      "weekday": {
+        "mon": "ma",
+        "tue": "di",
+        "wed": "wo",
+        "thu": "Do",
+        "fri": "Vr",
+        "sat": "Zat",
+        "sun": "Zon"
+      },
+      "carName": "Auto naam",
+      "carNamePlaceholder": "bijv. Toyota Hooglander 2024",
+      "carModel": "Automodel/variant",
+      "carModelPlaceholder": "bijv. 2,4 liter beperkte AWD",
+      "transmission": {
+        "automatic": "Automatisch",
+        "manual": "Handmatig"
+      },
+      "year": "Jaar",
+      "yearPlaceholder": "bijv. 2024",
+      "comesWithDriver": "Wordt geleverd met chauffeur?",
+      "yes": "Ja",
+      "no": "Nee",
+      "shortDescription": "Korte beschrijving",
+      "carDescriptionPlaceholder": "Beschrijf de auto, de staat ervan en wat er voor de huurder is inbegrepen.",
+      "perksFeatures": "Voordelen en functies",
+      "perksPlaceholder": "Voeg elk voordeel toe en druk op Enter",
+      "propertyName": "Eigendomsnaam",
+      "accommodationName": "Naam accommodatie",
+      "accommodationNamePlaceholder": "bijv. Suites met zeezicht Lekki",
+      "propertyNamePlaceholder": "bijv. Lekki Tuinsuites",
+      "propertyType": "Eigendomstype",
+      "propertyTypeSelect": "Selecteer vastgoedtype",
+      "propertyTypePlaceholder": "bijv. Appartement, villa, hotel",
+      "address": "Adres",
+      "addressPlaceholder": "Volledig adres van de accommodatie",
+      "accommodationLocationPlaceholder": "bijv. Lekki Fase 1, Lagos, Nigeria",
+      "accommodationMaxGuests": "Max. aantal gasten (onroerend goed)",
+      "accommodationMaxGuestsPlaceholder": "bijv. 12",
+      "checkInTime": "Inchecken tijd",
+      "checkOutTime": "Uitchecktijd",
+      "availability": "Beschikbaarheid",
+      "availabilityAlways": "Altijd beschikbaar",
+      "availabilityDateRange": "Datumbereik instellen",
+      "availabilityHint": "U kunt na publicatie ook specifieke datums vanuit uw agenda beheren.",
+      "popularPerks": "Populaire voordelen",
+      "popularPerksHint": "Selecteer de voorzieningen die beschikbaar zijn in uw accommodatie.",
+      "viewAllPerks": "Bekijk alle voordelen",
+      "showLessPerks": "Laat minder zien",
+      "propertyOwner": "Bent u de vastgoedeigenaar?",
+      "propertyOwnerYes": "Ja, ik ben de eigenaar",
+      "propertyOwnerNo": "Nee, ik ben een gevolmachtigd agent",
+      "bedrooms": "Slaapkamers",
+      "bathrooms": "Badkamers",
+      "accommodationDescriptionPlaceholder": "Beschrijf kort uw accommodatie, de sfeer, bezienswaardigheden in de buurt en wat deze bijzonder maakt.",
+      "amenities": "Voorzieningen",
+      "amenitiesPlaceholder": "Voeg elke voorziening toe en druk op Enter",
+      "experienceName": "Naam van ervaring",
+      "experienceNamePlaceholder": "bijv. Paintballavontuur Lagos",
+      "location": "Locatie",
+      "locationPlaceholder": "bijv. Victoria-eiland, Lagos",
+      "duration": "Duur",
+      "durationPlaceholder": "bijv. 2 uur",
+      "maxGuests": "Maximale gasten",
+      "experienceDescriptionPlaceholder": "Beschrijf de activiteit, het reisschema en wat gasten kunnen verwachten.",
+      "whatsIncluded": "Wat is inbegrepen",
+      "includesPlaceholder": "Voeg elke opname toe en druk op Enter",
+      "mediaHeading": "Afbeeldingen vermelden",
+      "mediaHint": "Upload duidelijke foto's of video's. Maximaal 8 bestanden.",
+      "uploadImages": "Sleep hier afbeeldingen of video's, of klik om te bladeren",
+      "uploadImagesHint": "PNG, JPG, WEBP of MP4 (max. 10 MB)",
+      "removeImage": "Afbeelding verwijderen",
+      "mediaSkippedUnsupported": "{count} bestand(en) overgeslagen — niet-ondersteunde indeling. Gebruik PNG, JPG, WEBP of MP4 (iPhone HEIC-foto's worden nog niet ondersteund).",
+      "mediaSkippedTooLarge": "{count} bestand(en) overgeslagen — elk bestand moet kleiner zijn dan 10 MB.",
+      "mediaPreviewFailed": "Voorbeeld niet beschikbaar",
+      "mediaUploading": "Uploaden…",
+      "mediaUploadFailed": "Uploaden mislukt",
+      "pickupDeliveryHeading": "Afhalen of bezorgen",
+      "pickupDeliveryQuestion": "Welke overdrachtsmogelijkheden bieden jullie? Selecteer alles wat van toepassing is.",
+      "pickupAddress": "Ophaaladres",
+      "pickupAddressPlaceholder": "Vul het adres in waar gasten de auto kunnen ophalen",
+      "clientPickup": "Klant ophalen",
+      "clientPickupHint": "Klant haalt de auto op bij u op locatie.",
+      "deliveryDropoff": "Bezorging / afleveren",
+      "deliveryDropoffHint": "Jij levert de auto af bij de klant.",
+      "carPricingHeading": "Huurprijzen",
+      "price12hr": "12-uurs huur (NGN)",
+      "price24hr": "24-uurs verhuur (NGN)",
+      "priceMultiDay": "Meerdere dagen (per dag, NGN)",
+      "driverAddonPrice": "Meerprijs chauffeur (NGN)",
+      "selfDriveNoPrice": "Zelfrijdend geselecteerd - geen extra prijs voor chauffeur vereist.",
+      "deliveryFee": "Bezorg-/afleverkosten (NGN)",
+      "clientPickupNoPrice": "Ophalen door klant geselecteerd - geen bezorgkosten vereist.",
+      "pricingLocationHint": "In de volgende stap kunt u meer details doorgeven over de ophaal- of bezorglocatie.",
+      "accommodationPricingHeading": "Blijf prijzen",
+      "roomTypesPricing": "Kamertypes en prijzen",
+      "roomTypesPricingHint": "Voeg de verschillende soorten kamers toe die u aanbiedt.",
+      "addRoomType": "Kamertype toevoegen",
+      "addRoomTypeModalTitle": "Kamertype toevoegen",
+      "editRoomTypeModalTitle": "Kamertype bewerken",
+      "saveRoomType": "Bewaar kamertype",
+      "roomType": "Kamertype",
+      "roomTypePlaceholder": "bijv. Deluxe suite",
+      "roomDescription": "Beschrijving",
+      "roomDescriptionPlaceholder": "Beschrijf dit kamertype kort",
+      "roomMaxGuests": "Maximaal aantal gasten",
+      "roomMaxGuestsPlaceholder": "bijv. 2",
+      "roomPricePerNight": "Prijs (per nacht)",
+      "roomTypesEmptyTitle": "Nog geen kamertypes toegevoegd",
+      "roomTypesEmptyHint": "Klik op 'Kamertype toevoegen' om aan de slag te gaan.",
+      "actions": "Acties",
+      "edit": "Bewerking",
+      "delete": "Verwijderen",
+      "nightlyRate": "Nachttarief (NGN)",
+      "cleaningFee": "Schoonmaakkosten (NGN)",
+      "experiencePricingHeading": "Prijzen",
+      "experiencePricingHint": "Bepaal uw ticketprijzen.",
+      "singleTicketPrice": "Prijs voor een enkel ticket",
+      "singleTicketPriceHint": "Prijs voor één persoon",
+      "groupTicketPrice": "Groepsticketprijs (vanaf) (optioneel)",
+      "groupTicketPriceHint": "Prijs per persoon voor groepen",
+      "minGroupSizeOptional": "Minimale groepsgrootte (optioneel)",
+      "maxGroupSizeOptional": "Maximale groepsgrootte (optioneel)",
+      "minGroupSizePlaceholder": "bijv. 5",
+      "maxGroupSizePlaceholder": "bijv. 20",
+      "optional": "Optioneel",
+      "review": {
+        "groupSize": "Groepsgrootte",
+        "category": "Categorie",
+        "title": "Titel",
+        "images": "Afbeeldingen",
+        "documents": "Documenten geüpload",
+        "description": "Beschrijving",
+        "gpsConfirmed": "GPS-trackingapparaat bevestigd"
+      },
+      "pricePerPerson": "Prijs per persoon (NGN)",
+      "minGroupSize": "Minimale groepsgrootte",
+      "documents": {
+        "stepTitle": "Document uploaden",
+        "pageTitle": "Vereiste documenten uploaden",
+        "pageIntro": "Upload alstublieft de benodigde documenten om uw autoadvertentie te verifiëren.",
+        "pageSubtitle": "Upload duidelijke, geldige documenten om vertrouwen op te bouwen en je advertentie sneller goedgekeurd te krijgen.",
+        "intro": {
+          "cars": "Upload de onderstaande documenten voordat uw autoadvertentie online kan worden geplaatst.",
+          "accommodations": "Upload documenten waaruit blijkt dat u de eigenaar bent of dat u door de eigenaar bent gemachtigd voor deze accommodatieadvertentie.",
+          "experiences": "Upload je bedrijfsverificatiedocument voordat je de advertentie publiceert."
+        },
+        "proofOfOwnership": "Bewijs van eigendom",
+        "proofOfOwnershipHint": "Upload het eigendomsbewijs van het voertuig (bijvoorbeeld het kentekenbewijs of de aankoopbon).",
+        "roadworthiness": "Keuringsbewijs",
+        "roadworthinessHint": "Upload een geldig keuringsbewijs voor het voertuig.",
+        "insurance": "Verzekering",
+        "insuranceDocument": "Verzekeringsdocument",
+        "insuranceHint": "Upload het huidige verzekeringsbewijs van het voertuig.",
+        "cac": "CAC-registratie",
+        "cacRegistration": "CAC-registratiecertificaat",
+        "cacHint": "Upload het certificaat van registratie van uw bedrijfsnaam (CAC).",
+        "accommodationOwnershipHint": "Eigendomsakte, huurovereenkomst of bewijs van eigendom van het onroerend goed",
+        "agentAuthorization": "Volmachtbrief voor een makelaar",
+        "agentAuthorizationHint": "Ondertekende brief van de eigenaar waarin hij u toestemming geeft om het pand te koop aan te bieden",
+        "agentProofOfAddress": "Bewijs van woonplaats van de makelaar",
+        "agentProofOfAddressHint": "Een energierekening of bankafschrift waarop uw adres staat vermeld",
+        "addressPhotos": "Foto’s die overeenkomen met het opgegeven adres",
+        "addressPhotosHint": "Foto’s waarop het pand op het vermelde adres duidelijk te zien is",
+        "gpsAcknowledgment": "Ik bevestig dat dit voertuig is uitgerust met een werkend GPS-volgsysteem en ik ben aansprakelijk indien blijkt dat dit niet het geval is.",
+        "requiredBadge": "Verplicht",
+        "uploadPrompt": "Klik om te uploaden of sleep en zet neer",
+        "uploadFormats": "PDF, JPG, PNG, max. 10 MB",
+        "safetyTitle": "Uw documenten zijn veilig",
+        "safetyText": "Alle documenten worden veilig bewaard en uitsluitend gebruikt voor verificatiedoeleinden. Ze worden niet openbaar gemaakt.",
+        "submitForReview": "Ter beoordeling indienen",
+        "submitHint": "Je advertentie wordt beoordeeld en je krijgt bericht zodra deze is goedgekeurd.",
+        "untitledListing": "Advertentie zonder titel",
+        "sidebar": {
+          "listingPreview": "Voorbeeld van de advertentie",
+          "edit": "Bewerken",
+          "carsListing": "Auto-advertenties",
+          "accommodationsListing": "Overzicht van accommodaties",
+          "experiencesListing": "Ervaringsoverzicht",
+          "comesWithDriver": "Wordt geleverd met stuurprogramma",
+          "selfDrive": "Zelf rijden",
+          "pricing": "Prijzen",
+          "halfDay": "Een halve dag",
+          "fullDay": "Hele dag",
+          "extraHour": "Extra uur",
+          "progress": "Voortgang van de notering"
+        }
+      },
+      "documentsHeading": "Vereiste documenten",
+      "uploadDocument": "Document uploaden",
+      "removeFile": "Verwijderen",
+      "reviewHeading": "Controleer je advertentie",
+      "reviewHint": "Controleer de onderstaande gegevens voordat je het publiceert.",
+      "cancel": "Annuleren",
+      "back": "Terug",
+      "saveDraft": "Als concept opslaan",
+      "draftSaved": "Concept opgeslagen",
+      "draftSaveFailed": "Je concept kon niet worden opgeslagen. Probeer het nog eens.",
+      "saveContinue": "Opslaan en doorgaan",
+      "completeRequiredFields": "Vul de verplichte velden in: {velden}",
+      "publish": "Advertentie plaatsen",
+      "publishWaitForUploads": "Even geduld a.u.b. — uw documenten worden nog geüpload.",
+      "success": {
+        "title": "Inzending ter beoordeling ingediend",
+        "message": "Je advertentie wordt momenteel beoordeeld. Zodra deze is goedgekeurd, ontvang je binnen 2 tot 3 werkdagen een bevestigingsmail.",
+        "addAnother": "Nog een advertentie toevoegen",
+        "backToListings": "Terug naar mijn advertenties"
+      },
+      "categoryChooseHint": "Kies het type dienst dat u aanbiedt. Dit wordt eenmalig ingesteld wanneer u uw eerste advertentie opslaat en kan later niet meer worden gewijzigd.",
+      "categoryLockedHint": "Uw leveranciersaccount is uitsluitend geregistreerd voor {categorie} . Neem contact op met de klantenservice om uw servicecategorie te wijzigen."
+    }
+  }
+}

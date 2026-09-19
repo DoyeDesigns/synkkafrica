@@ -2,6 +2,7 @@ import {
   DEFAULT_DISCOUNT_FILTER,
   matchesDiscountFilter,
 } from "@/features/travel/data/discount-filter";
+import { locationsOverlap } from "@/features/travel/data/location-match";
 
 export type AccommodationResultFeature = {
   icon: "bed" | "wifi" | "coffee" | "car";
@@ -311,6 +312,14 @@ export function filterAccommodationResults(
     if (
       normalizedQuery &&
       !`${result.name} ${result.location}`.toLowerCase().includes(normalizedQuery)
+    ) {
+      return false;
+    }
+
+    if (
+      filters.location !== DEFAULT_ACCOMMODATION_FILTERS.location &&
+      filters.location.trim() &&
+      !locationsOverlap(filters.location, result.location)
     ) {
       return false;
     }

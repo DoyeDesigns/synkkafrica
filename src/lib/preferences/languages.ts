@@ -1,19 +1,21 @@
-import type { LanguageCode } from "@/lib/preferences/types";
+import {
+  localeLabels,
+  locales,
+  type AppLocale,
+} from "@/i18n/config";
 
 export type LanguageOption = {
-  code: LanguageCode;
+  code: AppLocale;
   label: string;
   flag: string;
   htmlLang: string;
 };
 
-export const LANGUAGES: LanguageOption[] = [
-  { code: "en", label: "English", flag: "🇬🇧", htmlLang: "en" },
-  { code: "fr", label: "French", flag: "🇫🇷", htmlLang: "fr" },
-  { code: "es", label: "Espanyól", flag: "🇪🇸", htmlLang: "es" },
-  { code: "de", label: "German", flag: "🇩🇪", htmlLang: "de" },
-];
+export const LANGUAGES: LanguageOption[] = locales.map((code) => ({
+  code,
+  ...localeLabels[code],
+}));
 
-export function getLanguageOption(code: LanguageCode) {
+export function getLanguageOption(code: string) {
   return LANGUAGES.find((item) => item.code === code) ?? LANGUAGES[0];
 }

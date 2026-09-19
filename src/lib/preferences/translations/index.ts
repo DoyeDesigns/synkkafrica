@@ -1,27 +1,17 @@
-import type { LanguageCode } from "@/lib/preferences/types";
-import { en, type TranslationKey } from "./en";
-import { fr } from "./fr";
-import { es } from "./es";
-import { de } from "./de";
+export type { TranslationKey, Messages } from "@/i18n/types";
 
-export type { TranslationKey };
-export { en, fr, es, de };
-
-export const translations: Record<LanguageCode, Record<TranslationKey, string>> = {
-  en,
-  fr,
-  es,
-  de,
-};
-
+/**
+ * Legacy imperative helper for rare non-hook call sites.
+ * Prefer `useTranslation()` in React components.
+ */
 export function translate(
-  language: LanguageCode,
-  key: TranslationKey,
+  _language: string,
+  key: string,
   params?: Record<string, string | number>,
 ): string {
-  let text = translations[language][key] ?? translations.en[key] ?? key;
+  let text = key;
 
-  if (params && text) {
+  if (params) {
     for (const [paramKey, value] of Object.entries(params)) {
       text = text.replace(new RegExp(`\\{${paramKey}\\}`, "g"), String(value));
     }

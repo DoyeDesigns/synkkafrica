@@ -2,18 +2,13 @@
 
 import { useEffect, type ReactNode } from "react";
 
+import { detectBrowserLocationPreferences } from "@/lib/preferences/detect-browser-location";
 import {
   detectClientPreferences,
   type DetectedPreferences,
 } from "@/lib/preferences/location-preferences";
 import { getLanguageOption } from "@/lib/preferences/languages";
 import { usePreferencesStore } from "@/stores/preferences-store";
-
-function LanguageGate({ children }: { children: ReactNode }) {
-  usePreferencesStore((state) => state.language);
-
-  return children;
-}
 
 type PreferencesProviderProps = {
   children: ReactNode;
@@ -30,9 +25,7 @@ function applyDetectedPreferences(
     return;
   }
 
-  applyLocationPreferences(
-    detectedPreferences ?? detectClientPreferences(),
-  );
+  applyLocationPreferences(detectedPreferences ?? detectClientPreferences());
 }
 
 export function PreferencesProvider({
@@ -42,21 +35,41 @@ export function PreferencesProvider({
   const language = usePreferencesStore((state) => state.language);
 
   useEffect(() => {
+    let cancelled = false;
+
     const syncDetectedPreferences = () => {
       applyDetectedPreferences(detectedPreferences);
+
+      if (usePreferencesStore.getState().hasUserSetPreferences) {
+        return;
+      }
+
+      void detectBrowserLocationPreferences().then((fromGeo) => {
+        if (cancelled || !fromGeo) return;
+        if (usePreferencesStore.getState().hasUserSetPreferences) return;
+        usePreferencesStore.getState().applyLocationPreferences(fromGeo);
+      });
     };
 
     if (usePreferencesStore.persist.hasHydrated()) {
       syncDetectedPreferences();
-      return;
+      return () => {
+        cancelled = true;
+      };
     }
 
-    return usePreferencesStore.persist.onFinishHydration(syncDetectedPreferences);
+    const unsubscribe = usePreferencesStore.persist.onFinishHydration(
+      syncDetectedPreferences,
+    );
+    return () => {
+      cancelled = true;
+      unsubscribe();
+    };
   }, [detectedPreferences]);
 
   useEffect(() => {
     document.documentElement.lang = getLanguageOption(language).htmlLang;
   }, [language]);
 
-  return <LanguageGate>{children}</LanguageGate>;
+  return children;
 }

@@ -1,9 +1,11 @@
 "use client";
 
+import { calculateTourPackageBookingTotal } from "@/features/tour-packages/booking/calculate-tour-package-booking-total";
 import type {
   TourPackageDetail,
   TourPackageTier,
 } from "@/features/tour-packages/data/tour-package-booking";
+import { SyncAfricaFeeLine } from "@/features/travel/components/booking/sync-africa-fee-line";
 import { useFormatPrice } from "@/hooks/use-format-price";
 import { useBookingContent } from "@/hooks/use-booking-content";
 import { useTranslation } from "@/hooks/use-translation";
@@ -23,6 +25,7 @@ export function TourPackageBookingSummaryCard({
   tourPackage,
   tiers,
   selectedTierId,
+  days,
   onSelectTier,
   onBookNow,
   ctaKey = "common.bookNow",
@@ -35,6 +38,15 @@ export function TourPackageBookingSummaryCard({
   const isSinglePackage = tiers.length === 1;
 
   if (!selectedTier) return null;
+
+  const pricing = calculateTourPackageBookingTotal({
+    tierPrice: isSinglePackage ? tourPackage.packagePrice : selectedTier.price,
+    days: days ?? tourPackage.days,
+    baseDays: tourPackage.days,
+    taxesAndFees: tourPackage.taxesAndFees,
+    currency: tourPackage.currency,
+    tierName: selectedTier.name,
+  });
 
   const isProceedCta = ctaKey === "booking.cta.proceedToPay";
 
@@ -108,19 +120,28 @@ export function TourPackageBookingSummaryCard({
               {labelContent(selectedTier.name)}
             </span>
             <span className="shrink-0 font-medium text-foreground">
-              {formatPrice(tourPackage.currency, tourPackage.packagePrice)}
+              {formatPrice(tourPackage.currency, pricing.subtotal)}
             </span>
           </div>
-          {tourPackage.taxesAndFees > 0 ? (
+          {pricing.taxesAndFees > 0 ? (
             <div className="flex items-center justify-between gap-3">
               <span className="text-foreground/80">
                 {t("booking.summary.taxesAndFees")}
               </span>
               <span className="font-medium text-foreground">
-                {formatPrice(tourPackage.currency, tourPackage.taxesAndFees)}
+                {formatPrice(tourPackage.currency, pricing.taxesAndFees)}
               </span>
             </div>
           ) : null}
+          <SyncAfricaFeeLine
+            formattedAmount={formatPrice(tourPackage.currency, pricing.syncAfricaFee)}
+          />
+          <div className="flex items-center justify-between gap-3 border-t border-[#F0D4C4] pt-2">
+            <span className="font-semibold text-foreground">{t("booking.summary.total")}</span>
+            <span className="font-bold text-foreground">
+              {formatPrice(tourPackage.currency, pricing.total)}
+            </span>
+          </div>
         </div>
       </div>
 

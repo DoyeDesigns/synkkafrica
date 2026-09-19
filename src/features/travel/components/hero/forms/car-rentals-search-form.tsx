@@ -1,71 +1,59 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
-import { Calendar, ChevronDown, Search } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Car, MapPin } from "lucide-react";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
 import { getDefaultCheckInDate } from "@/features/travel/booking/booking-params";
+import { HeroAddressField } from "@/features/travel/components/hero/hero-address-field";
+import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
 import {
-  HeroField,
+  HeroGlassSelect,
   HeroInputShell,
   HeroSearchButton,
 } from "@/features/travel/components/hero/hero-form-primitives";
-import { HeroDestinationField } from "@/features/travel/components/hero/hero-destination-field";
-import { listCarDestinations } from "@/lib/api/cars";
-import { useClickOutside } from "@/hooks/use-click-outside";
 import { useTranslation } from "@/hooks/use-translation";
+import { reverseGeocode } from "@/lib/api/places";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
 type CarRentalsSearchFormProps = {
   onSubmit: (fields: Record<string, string>) => void;
 };
 
-// The top of the slider means "no maximum", not "1,000,000" — dragging it fully
-// right omits `maxPrice` from the search entirely. The ceiling only has to sit
-// above real inventory; the old 100,000 cap sat below it, so a listing priced
-// higher could not be surfaced by any combination of controls.
-const MAX_PRICE = 1000000;
-const DEFAULT_MAX_PRICE = MAX_PRICE;
-const SERVICE_TYPES = ["self-drive", "chauffeur"] as const;
+const RENTAL_MODES = ["pickup-dropoff", "daily-rental"] as const;
+const LOCATION_KINDS = ["pickup", "dropoff"] as const;
+const SERVICE_TYPES = ["chauffeur", "self-drive"] as const;
 
-const SERVICE_TYPE_LABEL_KEYS: Record<
-  (typeof SERVICE_TYPES)[number],
-  TranslationKey
-> = {
-  "self-drive": "hero.carRentals.selfDrive",
-  chauffeur: "filters.serviceType.chauffeur",
+type RentalMode = (typeof RENTAL_MODES)[number];
+type LocationKind = (typeof LOCATION_KINDS)[number];
+type ServiceType = (typeof SERVICE_TYPES)[number];
+
+const RENTAL_MODE_LABEL_KEYS: Record<RentalMode, TranslationKey> = {
+  "pickup-dropoff": "hero.carRentals.pickupAndDropoff",
+  "daily-rental": "hero.carRentals.dailyRental",
 };
 
-function formatHeroPrice(value: number) {
-  return `NGN ${value.toLocaleString("en-NG", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })}`;
-}
+const LOCATION_KIND_LABEL_KEYS: Record<LocationKind, TranslationKey> = {
+  pickup: "hero.carRentals.pickup",
+  dropoff: "hero.carRentals.dropoff",
+};
 
-function parseMaxPrice(value: string | null) {
-  if (!value) {
-    return DEFAULT_MAX_PRICE;
+const SERVICE_TYPE_LABEL_KEYS: Record<ServiceType, TranslationKey> = {
+  chauffeur: "filters.serviceType.chauffeur",
+  "self-drive": "hero.carRentals.selfDrive",
+};
+
+function pickParam<T extends string>(
+  value: string | null,
+  allowed: readonly T[],
+  fallback: T,
+): T {
+  if (value && allowed.includes(value as T)) {
+    return value as T;
   }
 
-  const parsed = Number.parseInt(value, 10);
-
-  if (Number.isNaN(parsed)) {
-    return DEFAULT_MAX_PRICE;
-  }
-
-  return Math.min(Math.max(parsed, 0), MAX_PRICE);
-}
-
-function getInitialServiceType(searchParams: URLSearchParams) {
-  const serviceType = searchParams.get("serviceType");
-
-  if (serviceType && SERVICE_TYPES.includes(serviceType as (typeof SERVICE_TYPES)[number])) {
-    return serviceType as (typeof SERVICE_TYPES)[number];
-  }
-
-  return "self-drive" as const;
+  return fallback;
 }
 
 export function CarRentalsSearchForm({
@@ -73,24 +61,45 @@ export function CarRentalsSearchForm({
 }: CarRentalsSearchFormProps) {
   const t = useTranslation();
   const searchParams = useSearchParams();
-  const [maxPrice, setMaxPrice] = useState(() =>
-    parseMaxPrice(searchParams.get("maxPrice")),
+  const [rentalMode, setRentalMode] = useState<RentalMode>(() =>
+    pickParam(searchParams.get("rentalMode"), RENTAL_MODES, "pickup-dropoff"),
   );
-  const [carType, setCarType] = useState(
-    () => searchParams.get("carType") ?? "",
+  const [locationKind, setLocationKind] = useState<LocationKind>(() =>
+    pickParam(searchParams.get("locationKind"), LOCATION_KINDS, "pickup"),
   );
-  const [location, setLocation] = useState(
+  const [pickupAddress, setPickupAddress] = useState(
     () => searchParams.get("location") ?? "",
+  );
+  const [dropoffAddress, setDropoffAddress] = useState(
+    () => searchParams.get("dropoffLocation") ?? "",
   );
   const [pickupDate, setPickupDate] = useState(
     () => searchParams.get("date") ?? getDefaultCheckInDate(),
   );
-  const [serviceType, setServiceType] = useState(() =>
-    getInitialServiceType(searchParams),
+  const [serviceType, setServiceType] = useState<ServiceType>(() =>
+    pickParam(searchParams.get("serviceType"), SERVICE_TYPES, "chauffeur"),
   );
-  const [serviceMenuOpen, setServiceMenuOpen] = useState(false);
-  const serviceMenuRef = useRef<HTMLDivElement>(null);
-  const sliderPercent = (maxPrice / MAX_PRICE) * 100;
+  const [detectingLocation, setDetectingLocation] = useState(false);
+  const locatingRef = useRef(false);
+  const didAutoFillOnMount = useRef(false);
+
+  const rentalModeOptions = useMemo(
+    () =>
+      RENTAL_MODES.map((value) => ({
+        value,
+        label: t(RENTAL_MODE_LABEL_KEYS[value]),
+      })),
+    [t],
+  );
+
+  const locationKindOptions = useMemo(
+    () =>
+      LOCATION_KINDS.map((value) => ({
+        value,
+        label: t(LOCATION_KIND_LABEL_KEYS[value]),
+      })),
+    [t],
+  );
 
   const serviceTypeOptions = useMemo(
     () =>
@@ -101,139 +110,164 @@ export function CarRentalsSearchForm({
     [t],
   );
 
-  const selectedServiceLabel =
-    serviceTypeOptions.find((option) => option.value === serviceType)?.label ??
-    t("hero.carRentals.selfDrive");
+  const addressValue =
+    locationKind === "dropoff" ? dropoffAddress : pickupAddress;
+  const addressPlaceholder =
+    detectingLocation && locationKind === "pickup"
+      ? t("hero.carRentals.detectingLocation")
+      : locationKind === "dropoff"
+        ? t("hero.carRentals.dropoffAddress")
+        : t("hero.carRentals.pickupAddress");
 
-  useClickOutside(serviceMenuRef, () => setServiceMenuOpen(false), serviceMenuOpen);
+  const fillPickupFromCurrentLocation = useCallback(() => {
+    if (typeof navigator === "undefined" || !navigator.geolocation) {
+      return;
+    }
+    if (locatingRef.current) {
+      return;
+    }
+
+    locatingRef.current = true;
+    setDetectingLocation(true);
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        void reverseGeocode(position.coords.latitude, position.coords.longitude)
+          .then((place) => {
+            if (!place?.label) return;
+            setPickupAddress(place.label);
+            if (rentalMode === "daily-rental") {
+              setDropoffAddress(place.label);
+            }
+          })
+          .catch(() => undefined)
+          .finally(() => {
+            locatingRef.current = false;
+            setDetectingLocation(false);
+          });
+      },
+      () => {
+        locatingRef.current = false;
+        setDetectingLocation(false);
+      },
+      { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 },
+    );
+  }, [rentalMode]);
+
+  useEffect(() => {
+    if (didAutoFillOnMount.current) return;
+    if (locationKind !== "pickup") return;
+    if (searchParams.get("location")) return;
+    didAutoFillOnMount.current = true;
+    fillPickupFromCurrentLocation();
+  }, [fillPickupFromCurrentLocation, locationKind, searchParams]);
+
+  const handleAddressChange = (value: string) => {
+    if (locationKind === "dropoff") {
+      setDropoffAddress(value);
+      if (rentalMode === "daily-rental") {
+        setPickupAddress(value);
+      }
+      return;
+    }
+
+    setPickupAddress(value);
+    if (rentalMode === "daily-rental") {
+      setDropoffAddress(value);
+    }
+  };
+
+  const handleRentalModeChange = (value: string) => {
+    const next = pickParam(value, RENTAL_MODES, "pickup-dropoff");
+    setRentalMode(next);
+
+    if (next === "daily-rental") {
+      setLocationKind("pickup");
+      const shared = pickupAddress.trim() || dropoffAddress.trim();
+      if (shared) {
+        setPickupAddress(shared);
+        setDropoffAddress(shared);
+      } else {
+        fillPickupFromCurrentLocation();
+      }
+    }
+  };
 
   return (
     <form
       className="space-y-4"
       onSubmit={(event) => {
         event.preventDefault();
+        const pickup = pickupAddress.trim();
+        const dropoff = dropoffAddress.trim();
+
         onSubmit({
-          carType: carType.trim(),
-          location: location.trim(),
+          rentalMode,
+          locationKind,
+          location: pickup || dropoff,
+          dropoffLocation:
+            rentalMode === "pickup-dropoff" && dropoff && dropoff !== pickup
+              ? dropoff
+              : "",
           serviceType,
-          // Empty drops the param (see submitSearch), leaving the search
-          // uncapped rather than pinned to the slider's ceiling.
-          maxPrice: maxPrice >= MAX_PRICE ? "" : String(maxPrice),
           date: pickupDate,
         });
       }}
     >
       <HeroInputShell>
-        <HeroField
-          icon={<Search className="h-4 w-4 shrink-0" />}
-          placeholder={t("hero.carRentals.searchCarType")}
-          value={carType}
-          onChange={setCarType}
+        <HeroGlassSelect
+          label={t("hero.carRentals.pickupAndDropoff")}
+          value={rentalMode}
+          options={rentalModeOptions}
+          onChange={handleRentalModeChange}
+          icon={<Car className="h-4 w-4 shrink-0" />}
         />
-        <HeroDestinationField
-          placeholder={t("hero.location")}
-          value={location}
-          onChange={setLocation}
-          queryKey="car-destinations"
-          fetchDestinations={listCarDestinations}
-          countLabel={(count) =>
-            t(
-              count === 1
-                ? "hero.carRentals.destinationCar"
-                : "hero.carRentals.destinationCars",
-              { count },
-            )
-          }
+        <HeroGlassSelect
+          label={t("hero.carRentals.pickupAndDropoff")}
+          value={locationKind}
+          options={locationKindOptions}
+          onChange={(value) => {
+            const next = pickParam(value, LOCATION_KINDS, "pickup");
+            setLocationKind(next);
+            if (next === "pickup") {
+              fillPickupFromCurrentLocation();
+            }
+          }}
+          icon={<MapPin className="h-4 w-4 shrink-0" />}
         />
-        <HeroField
-          icon={<Calendar className="h-4 w-4 shrink-0" />}
-          placeholder={t("hero.carRentals.pickupDate")}
-          value={pickupDate}
-          onChange={setPickupDate}
-          type="date"
-          min={new Date().toISOString().split("T")[0]}
+        <HeroAddressField
+          placeholder={addressPlaceholder}
+          value={addressValue}
+          onChange={handleAddressChange}
+          listboxId="car-rental-address-listbox"
         />
       </HeroInputShell>
 
       <HeroInputShell>
         <div className="flex w-full min-w-0 flex-1 flex-col gap-3 lg:flex-row lg:items-center">
-          <div ref={serviceMenuRef} className="relative min-w-0 flex-3">
-            <button
-              type="button"
-              aria-expanded={serviceMenuOpen}
-              aria-haspopup="listbox"
-              onClick={() => setServiceMenuOpen((current) => !current)}
-              className="inline-flex min-h-12 w-full min-w-0 items-center justify-between gap-2 rounded-xl bg-[#0000003D] px-4 text-sm font-medium text-white"
-            >
-              <span className="flex items-center gap-2">
-                <Image src="/wheel.png" alt="Car" width={20} height={20} />
-                <span>{selectedServiceLabel}</span>
-              </span>
-              <ChevronDown
-                className={`h-4 w-4 shrink-0 text-white/80 transition-transform ${
-                  serviceMenuOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-
-            {serviceMenuOpen ? (
-              <ul
-                role="listbox"
-                aria-label={t("hero.carRentals.selfDrive")}
-                className="absolute left-0 top-[calc(100%+0.5rem)] z-50 min-w-full overflow-hidden rounded-xl border border-[#E5E5E5] bg-white py-1 shadow-lg"
-              >
-                {serviceTypeOptions.map((option) => {
-                  const isSelected = option.value === serviceType;
-
-                  return (
-                    <li key={option.value} role="presentation">
-                      <button
-                        type="button"
-                        role="option"
-                        aria-selected={isSelected}
-                        onClick={() => {
-                          setServiceType(option.value);
-                          setServiceMenuOpen(false);
-                        }}
-                        className={`flex w-full px-4 py-2.5 text-left text-sm font-medium font-satoshi transition-colors ${
-                          isSelected
-                            ? "bg-[#E8F4FD] text-[#2F2F2F]"
-                            : "text-[#2F2F2F] hover:bg-zinc-50"
-                        }`}
-                      >
-                        {option.label}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : null}
-          </div>
-
-          <div className="flex min-h-12 min-w-0 flex-2 items-center gap-3 rounded-xl bg-[#0000003D] px-4 text-sm text-white">
-            <span className="shrink-0 font-medium">{t("hero.carRentals.price")}</span>
-            <input
-              type="range"
-              min={0}
-              max={MAX_PRICE}
-              step={1000}
-              value={maxPrice}
-              onChange={(event) => setMaxPrice(Number(event.target.value))}
-              style={{
-                background: `linear-gradient(to right, #e45d25 0%, #e45d25 ${sliderPercent}%, #ffffff ${sliderPercent}%, #ffffff 100%)`,
-              }}
-              className="hero-price-range h-1.5 w-full min-w-0 flex-1 cursor-pointer appearance-none rounded-full"
-            />
-          </div>
-
-          <div className="flex min-h-12 shrink-0 items-center rounded-xl bg-[#0000003D] px-4 text-sm text-white/70">
-            <span className="whitespace-nowrap font-medium">
-              {maxPrice >= MAX_PRICE
-                ? t("filters.anyPrice")
-                : formatHeroPrice(maxPrice)}
-            </span>
-          </div>
-
+          <HeroGlassSelect
+            label={t("filters.serviceType.chauffeur")}
+            value={serviceType}
+            options={serviceTypeOptions}
+            onChange={(value) =>
+              setServiceType(pickParam(value, SERVICE_TYPES, "chauffeur"))
+            }
+            icon={
+              <Image src="/wheel.png" alt="" width={20} height={20} aria-hidden />
+            }
+            className="flex-3"
+          />
+          <HeroDateRangeField
+            fromLabel={t("hero.carRentals.pickupDate")}
+            toLabel=""
+            addDateLabel={t("hero.common.addDate")}
+            fromDate={pickupDate}
+            toDate=""
+            onFromDateChange={setPickupDate}
+            onToDateChange={() => undefined}
+            showToDate={false}
+            className="flex-2"
+          />
           <HeroSearchButton
             label={t("hero.search")}
             variant="blue"

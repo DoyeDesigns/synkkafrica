@@ -35,11 +35,14 @@ export type FlightsSearchParams = {
 };
 
 export type CarRentalsSearchParams = {
-  carType?: string;
+  rentalMode?: "pickup-dropoff" | "daily-rental";
+  locationKind?: "pickup" | "dropoff";
   location?: string;
+  dropoffLocation?: string;
   serviceType?: string;
-  maxPrice?: string;
   date?: string;
+  carType?: string;
+  maxPrice?: string;
 };
 
 export type ToursSearchParams = {

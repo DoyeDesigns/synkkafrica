@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarDays, Check, Clock, MapPin, X } from "lucide-react";
+import { Check, Clock, MapPin, X } from "lucide-react";
 import { useState, type KeyboardEvent, type ReactNode } from "react";
 
 import {
@@ -13,6 +13,7 @@ import {
   EXPERIENCE_WEEKDAYS,
 } from "@/features/vendor/data/experience-listing";
 import type { AddListingFormState } from "@/features/vendor/data/vendor-add-listing";
+import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
 import { useTranslation } from "@/hooks/use-translation";
 
 const inputClassName =
@@ -331,35 +332,16 @@ function ScheduleModeGroup({
             {t("vendor.addListing.experienceDateRangeHint")}
           </p>
 
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            <FormField label={t("vendor.addListing.experienceDateRangeStart")} required>
-              <div className="relative">
-                <input
-                  type="date"
-                  value={form.experienceDateRangeStart}
-                  max={form.experienceDateRangeEnd || undefined}
-                  onChange={(event) =>
-                    onChange({ experienceDateRangeStart: event.target.value })
-                  }
-                  className={`${inputClassName} pr-10`}
-                />
-                <CalendarDays className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
-              </div>
-            </FormField>
-
-            <FormField label={t("vendor.addListing.experienceDateRangeEnd")} required>
-              <div className="relative">
-                <input
-                  type="date"
-                  value={form.experienceDateRangeEnd}
-                  min={form.experienceDateRangeStart || undefined}
-                  onChange={(event) => onChange({ experienceDateRangeEnd: event.target.value })}
-                  className={`${inputClassName} pr-10`}
-                />
-                <CalendarDays className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
-              </div>
-            </FormField>
-          </div>
+          <HeroDateRangeField
+            variant="form"
+            fromLabel={t("vendor.addListing.experienceDateRangeStart")}
+            toLabel={t("vendor.addListing.experienceDateRangeEnd")}
+            addDateLabel={t("hero.common.addDate")}
+            fromDate={form.experienceDateRangeStart}
+            toDate={form.experienceDateRangeEnd}
+            onFromDateChange={(value) => onChange({ experienceDateRangeStart: value })}
+            onToDateChange={(value) => onChange({ experienceDateRangeEnd: value })}
+          />
         </div>
       ) : null}
     </div>

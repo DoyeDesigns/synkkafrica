@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { VendorDashboardSideNavBar } from "@/components/layout/vendor-dashboard-side-nav-bar";
 import { VendorDashboardHeader } from "@/features/vendor/components/vendor-dashboard-header";
 import { VendorVerificationNotice } from "@/features/vendor/components/vendor-verification-notice";
+import { VendorVerificationProvider } from "@/features/vendor/components/vendor-verification-context";
 import {
   shouldShowVendorVerificationNotice,
   type VendorVerificationStatus,
@@ -37,6 +38,7 @@ export function VendorDashboardLayoutClient({
   );
 
   return (
+    <VendorVerificationProvider status={verificationStatus ?? "verified"}>
     <div className="flex h-screen overflow-hidden">
       {isMobileOpen ? (
         <button
@@ -77,5 +79,6 @@ export function VendorDashboardLayoutClient({
         </main>
       </div>
     </div>
+    </VendorVerificationProvider>
   );
 }

@@ -20,6 +20,8 @@ import {
 import { useSession } from "next-auth/react";
 
 import { VendorAddListingStepper } from "@/features/vendor/components/vendor-add-listing-stepper";
+import { useVendorVerificationStatus } from "@/features/vendor/components/vendor-verification-context";
+import { VendorVerificationNotice } from "@/features/vendor/components/vendor-verification-notice";
 import {
   EMPTY_ADD_LISTING_FORM,
   getDetailsStepMissingFields,
@@ -167,6 +169,7 @@ export function VendorAddListingContent({
   editListingId?: string;
 }) {
   const t = useTranslation();
+  const verificationStatus = useVendorVerificationStatus();
   const router = useRouter();
   const { data: session } = useSession();
   const token = session?.accessToken;
@@ -455,6 +458,13 @@ export function VendorAddListingContent({
       </div>
 
       <div className="space-y-6">
+      {verificationStatus === "unverified" ||
+      verificationStatus === "pending" ? (
+        <div className="flex justify-center">
+          <VendorVerificationNotice status={verificationStatus} />
+        </div>
+      ) : null}
+
       {isDocumentsStep ? (
         <button
           type="button"
@@ -865,10 +875,12 @@ function MediaStep({
     }
     newPairs.forEach(({ item, file }) => {
       uploadVendorFile(token, "listing-media", file)
-        .then(({ url }) =>
+        .then(({ url, objectPath }) =>
           onUpdateItem(item.id, {
-            url: url ?? undefined,
-            status: url ? "uploaded" : "error",
+            // Prefer the public CDN URL; fall back to objectPath so a successful
+            // PUT is not marked failed when the backend returns publicUrl: null.
+            url: url ?? objectPath,
+            status: objectPath ? "uploaded" : "error",
           }),
         )
         .catch(() => onUpdateItem(item.id, { status: "error" }));

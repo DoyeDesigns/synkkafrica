@@ -1,3 +1,5 @@
+import { calculateSyncAfricaFee } from "@/features/travel/booking/sync-africa-fee";
+
 export type CarBookingPricingInput = {
   packagePrice: number;
   days?: number;
@@ -15,6 +17,7 @@ export type CarBookingPricingBreakdown = {
   driverAddon: number;
   deliveryFee: number;
   taxesAndFees: number;
+  syncAfricaFee: number;
   total: number;
   currency: string;
   packageName: string;
@@ -37,13 +40,17 @@ export function calculateCarBookingTotal({
     carRentalMode === "with_driver" ? Math.max(0, driverAddonPrice) : 0;
   const appliedDeliveryFee =
     carRentalMode === "self_drive" && requestDelivery ? Math.max(0, deliveryFee) : 0;
-  const total = subtotal + driverAddon + appliedDeliveryFee + taxesAndFees;
+  const syncAfricaFee = calculateSyncAfricaFee(
+    subtotal + driverAddon + appliedDeliveryFee + taxesAndFees,
+  );
+  const total = subtotal + driverAddon + appliedDeliveryFee + taxesAndFees + syncAfricaFee;
 
   return {
     subtotal,
     driverAddon,
     deliveryFee: appliedDeliveryFee,
     taxesAndFees,
+    syncAfricaFee,
     total,
     currency,
     packageName,

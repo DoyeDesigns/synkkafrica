@@ -1,16 +1,16 @@
 "use client";
 
-import { Building2, Calendar } from "lucide-react";
+import { Building2 } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import {
-  HeroField,
   HeroFormRow,
   HeroInputShell,
   HeroPillSelect,
   HeroSearchButton,
 } from "@/features/travel/components/hero/hero-form-primitives";
+import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
 import { HeroDestinationField } from "@/features/travel/components/hero/hero-destination-field";
 import { listAccommodationDestinations } from "@/lib/api/accommodations";
 import {
@@ -199,21 +199,15 @@ export function AccommodationsSearchForm({
             )
           }
         />
-        <HeroField
-          icon={<Calendar className="h-4 w-4 shrink-0" />}
-          placeholder={t("hero.accommodations.checkIn")}
-          value={checkIn}
-          onChange={handleCheckInChange}
-          type="date"
-          min={new Date().toISOString().split("T")[0]}
-        />
-        <HeroField
-          icon={<Calendar className="h-4 w-4 shrink-0" />}
-          placeholder={t("hero.accommodations.checkOut")}
-          value={checkOut}
-          onChange={setCheckOut}
-          type="date"
-          min={checkIn || new Date().toISOString().split("T")[0]}
+        <HeroDateRangeField
+          fromLabel={t("hero.accommodations.checkIn")}
+          toLabel={t("hero.accommodations.checkOut")}
+          addDateLabel={t("hero.common.addDate")}
+          fromDate={checkIn}
+          toDate={checkOut}
+          onFromDateChange={handleCheckInChange}
+          onToDateChange={setCheckOut}
+          className="w-full min-w-0 lg:!flex-[1.9]"
         />
         <HeroSearchButton
           label={t("hero.accommodations.checkAvailability")}

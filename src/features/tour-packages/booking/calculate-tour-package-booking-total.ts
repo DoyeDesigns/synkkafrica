@@ -1,3 +1,5 @@
+import { calculateSyncAfricaFee } from "@/features/travel/booking/sync-africa-fee";
+
 export type TourPackageBookingPricingInput = {
   tierPrice: number;
   days?: number;
@@ -10,6 +12,7 @@ export type TourPackageBookingPricingInput = {
 export type TourPackageBookingPricingBreakdown = {
   subtotal: number;
   taxesAndFees: number;
+  syncAfricaFee: number;
   total: number;
   currency: string;
   tierName: string;
@@ -27,11 +30,13 @@ export function calculateTourPackageBookingTotal({
   const safeBaseDays = Math.max(1, baseDays);
   const dailyRate = tierPrice / safeBaseDays;
   const subtotal = Math.round(dailyRate * safeDays);
-  const total = subtotal + taxesAndFees;
+  const syncAfricaFee = calculateSyncAfricaFee(subtotal + taxesAndFees);
+  const total = subtotal + taxesAndFees + syncAfricaFee;
 
   return {
     subtotal,
     taxesAndFees,
+    syncAfricaFee,
     total,
     currency,
     tierName,

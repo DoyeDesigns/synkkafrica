@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarDays, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 
 import {
@@ -15,6 +15,7 @@ import {
   type AdminCreateBookingPaymentStatus,
   type CreateAdminBookingInput,
 } from "@/features/admin/data/admin-bookings";
+import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -274,20 +275,20 @@ export function AdminCreateBookingModal({
             />
           </FormField>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            <FormField label={t("admin.bookings.createModal.startDate")}>
-              <DateInput
-                value={form.startDate}
-                onChange={(value) => setForm((current) => ({ ...current, startDate: value }))}
-              />
-            </FormField>
-            <FormField label={t("admin.bookings.createModal.endDate")}>
-              <DateInput
-                value={form.endDate}
-                onChange={(value) => setForm((current) => ({ ...current, endDate: value }))}
-              />
-            </FormField>
-          </div>
+          <HeroDateRangeField
+            variant="form"
+            fromLabel={t("admin.bookings.createModal.startDate")}
+            toLabel={t("admin.bookings.createModal.endDate")}
+            addDateLabel={t("hero.common.addDate")}
+            fromDate={form.startDate}
+            toDate={form.endDate}
+            onFromDateChange={(value) =>
+              setForm((current) => ({ ...current, startDate: value }))
+            }
+            onToDateChange={(value) =>
+              setForm((current) => ({ ...current, endDate: value }))
+            }
+          />
 
           <div className="grid gap-5 sm:grid-cols-2">
             <FormField label={t("admin.bookings.createModal.guestsUnits")}>
@@ -438,25 +439,5 @@ function SuggestionList({
         </li>
       ))}
     </ul>
-  );
-}
-
-function DateInput({
-  value,
-  onChange,
-}: {
-  value: string;
-  onChange: (value: string) => void;
-}) {
-  return (
-    <div className="relative">
-      <input
-        type="date"
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className="h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-4 pr-10 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391] [&::-webkit-calendar-picker-indicator]:opacity-0"
-      />
-      <CalendarDays className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
-    </div>
   );
 }

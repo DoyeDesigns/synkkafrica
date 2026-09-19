@@ -1,7 +1,5 @@
 "use client";
 
-import { CalendarDays } from "lucide-react";
-
 import {
   calculatePackageSavings,
   getPackageDisplaySavingsPercent,
@@ -9,6 +7,7 @@ import {
   PACKAGE_CURRENCIES,
   type AddPackageFormState,
 } from "@/features/admin/data/admin-add-package";
+import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
 import { useFormatPrice } from "@/hooks/use-format-price";
 import { useTranslation } from "@/hooks/use-translation";
 
@@ -142,33 +141,17 @@ export function PackagePricingStep({ form, onChange }: PackagePricingStepProps) 
           hint={t("admin.packages.availability.hint")}
         />
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          <FormField label={t("admin.packages.fields.validFrom")} required>
-            <div className="relative">
-              <input
-                type="date"
-                value={form.validFrom}
-                max={form.validUntil || undefined}
-                onChange={(event) => onChange({ validFrom: event.target.value })}
-                className={`${inputClassName} pr-10`}
-              />
-              <CalendarDays className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
-            </div>
-          </FormField>
-
-          <FormField label={t("admin.packages.fields.validUntil")} required>
-            <div className="relative">
-              <input
-                type="date"
-                value={form.validUntil}
-                min={form.validFrom || undefined}
-                onChange={(event) => onChange({ validUntil: event.target.value })}
-                className={`${inputClassName} pr-10`}
-              />
-              <CalendarDays className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
-            </div>
-          </FormField>
-        </div>
+        <HeroDateRangeField
+          variant="form"
+          fromLabel={t("admin.packages.fields.validFrom")}
+          toLabel={t("admin.packages.fields.validUntil")}
+          addDateLabel={t("hero.common.addDate")}
+          fromDate={form.validFrom}
+          toDate={form.validUntil}
+          onFromDateChange={(value) => onChange({ validFrom: value })}
+          onToDateChange={(value) => onChange({ validUntil: value })}
+          disablePast={false}
+        />
 
         <FormField label={t("admin.packages.fields.minimumBookingNotice")}>
           <select

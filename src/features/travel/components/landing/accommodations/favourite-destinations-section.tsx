@@ -2,29 +2,38 @@
 
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 
-import { FAVOURITE_DESTINATIONS } from "@/features/travel/data/accommodations-landing";
+import { getBrowseEventsHref } from "@/features/travel/data/tours-landing";
 import { TRAVEL_CAROUSEL_SCROLL_CLASS } from "@/features/travel/constants";
+import { useExperienceDestinationCards } from "@/features/travel/hooks/use-experience-destination-cards";
+import { useTranslation } from "@/hooks/use-translation";
 
 export function FavouriteDestinationsSection() {
+  const t = useTranslation();
   const scrollRef = useRef<HTMLDivElement>(null);
+  const cards = useExperienceDestinationCards();
 
   const scrollNext = () => {
     const container = scrollRef.current;
     if (!container) return;
 
-    const card = container.querySelector("article");
+    const card = container.querySelector("a");
     const gap = 16;
     const scrollAmount = card ? card.clientWidth + gap : 216;
 
     container.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
 
+  if (cards.length === 0) {
+    return null;
+  }
+
   return (
     <section className="mt-20 mb-25 rounded-2xl bg-[#F3F3F3] px-11 pt-9.5 pb-6.5">
       <h2 className="text-[22px] font-bold font-montserrat text-[#1E1E1E]">
-        Explore Favourite Destinations
+        {t("landing.favouriteDestinations")}
       </h2>
 
       <div className="relative mt-6">
@@ -32,14 +41,15 @@ export function FavouriteDestinationsSection() {
           ref={scrollRef}
           className={`flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-14 ${TRAVEL_CAROUSEL_SCROLL_CLASS}`}
         >
-          {FAVOURITE_DESTINATIONS.map((destination) => (
-            <article
-              key={destination.id}
+          {cards.map((destination) => (
+            <Link
+              key={destination.location}
+              href={getBrowseEventsHref(destination.location)}
               className="group relative h-[286px] min-w-[217px] shrink-0 overflow-hidden rounded-2xl border-2 border-transparent transition-colors hover:border-[#3B82F6] sm:min-w-[200px]"
             >
               <Image
                 src={destination.image}
-                alt={destination.name}
+                alt={destination.location}
                 fill
                 className="object-cover"
               />
@@ -48,13 +58,13 @@ export function FavouriteDestinationsSection() {
 
               <div className="absolute bottom-4 left-4 right-4">
                 <p className="text-base font-bold font-satoshi text-white">
-                  {destination.name}
+                  {destination.location}
                 </p>
                 <p className="mt-0.5 text-sm font-medium font-satoshi text-white/90">
-                  {destination.activityCount} activities
+                  {t("landing.activitiesCount", { count: destination.count })}
                 </p>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 

@@ -32,7 +32,7 @@ export function PropertyMapInner({ coordinates, label }: PropertyMapInnerProps) 
   return (
     <MapContainer
       center={coordinates}
-      zoom={13}
+      zoom={15}
       scrollWheelZoom={false}
       className="h-full w-full rounded-2xl"
       aria-label={`Map showing ${label}`}

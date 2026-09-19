@@ -6,7 +6,11 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { CarRentalOptionsSection } from "@/features/travel/components/car-booking/car-rental-options-section";
 import type { CarRentalMode } from "@/features/travel/booking/booking-params";
 import type { CarBookingStepId } from "@/features/travel/booking/car-constants";
-import { parseBookingParams, serializeBookingParams } from "@/features/travel/booking/booking-params";
+import {
+  isValidGuestEmail,
+  parseBookingParams,
+  serializeBookingParams,
+} from "@/features/travel/booking/booking-params";
 import { CarBookingBreadcrumbs } from "@/features/travel/components/car-booking/car-booking-breadcrumbs";
 import { CarBookingStepper } from "@/features/travel/components/car-booking/car-booking-stepper";
 import { CarBookingSummaryCard } from "@/features/travel/components/car-booking/car-booking-summary-card";
@@ -51,10 +55,15 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
     identities,
     setIdentityAt,
     identityErrors,
-    hasIdentityErrors,
+    // hasIdentityErrors,
     guardProceed,
   } = useGuestCheckoutGate(guestCount);
   const days = bookingParams.days ?? 1;
+  const [email, setEmail] = useState(bookingParams.email ?? "");
+  const [guestFirstName, setGuestFirstName] = useState(
+    bookingParams.guestFirstName ?? "",
+  );
+  const [emailError, setEmailError] = useState("");
 
   const handleRentalModeChange = (mode: CarRentalMode) => {
     setCarRentalMode(mode);
@@ -67,7 +76,13 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
   };
 
   const handleProceedToPay = () => {
+    if (!isValidGuestEmail(email)) {
+      setEmailError(t("booking.guest.emailRequired"));
+      return;
+    }
+
     guardProceed(() => {
+      setEmailError("");
       const params = serializeBookingParams({
         package: selectedPackageId,
         date: bookingParams.date,
@@ -85,6 +100,8 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
           carRentalMode === "with_driver"
             ? customerPickupAddress.trim() || undefined
             : undefined,
+        email: email.trim(),
+        guestFirstName: guestFirstName.trim() || undefined,
       });
       router.push(`/car-rentals/${car.id}/book/payment?${params.toString()}`);
     });
@@ -122,16 +139,26 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
               onIdentityChange={setIdentityAt}
               identityErrors={identityErrors}
               hideSpecialRequests
+              email={email}
+              onEmailChange={(value) => {
+                setEmail(value);
+                if (emailError) setEmailError("");
+              }}
+              firstName={guestFirstName}
+              onFirstNameChange={setGuestFirstName}
+              emailError={emailError}
             />
           </div>
 
           <div>
             <div className="xl:sticky xl:top-10">
+              {/* Identity validation error — temporarily hidden
               {hasIdentityErrors ? (
                 <p className="mb-3 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-medium font-inter text-[#D85A30]">
                   {t("booking.guest.idValidationRequired")}
                 </p>
               ) : null}
+              */}
               <CarBookingSummaryCard
                 car={car}
                 packages={car.packages}

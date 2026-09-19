@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarDays, ChevronDown, MapPin } from "lucide-react";
+import { ChevronDown, MapPin } from "lucide-react";
 
 import {
   VENDOR_BUSINESS_TYPES,
@@ -8,6 +8,7 @@ import {
   VENDOR_PHONE_COUNTRY_CODES,
   type VendorSignupFormState,
 } from "@/features/vendor/data/vendor-signup";
+import { FormDate } from "@/features/travel/components/booking/form-controls";
 import { useTranslation } from "@/hooks/use-translation";
 
 const inputClassName =
@@ -153,15 +154,13 @@ export function VendorSignupBusinessStep({ form, onChange }: VendorSignupBusines
           </FormField>
 
           <FormField label={t("vendor.signup.fields.dateOfBirth")} required>
-            <div className="relative">
-              <input
-                type="date"
-                value={form.dateOfBirth}
-                onChange={(event) => onChange({ dateOfBirth: event.target.value })}
-                className={`${inputClassName} pr-10`}
-              />
-              <CalendarDays className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
-            </div>
+            <FormDate
+              value={form.dateOfBirth}
+              onChange={(value) => onChange({ dateOfBirth: value })}
+              max={new Date().toISOString().split("T")[0]}
+              placeholder={t("hero.common.selectDate")}
+              className={`${inputClassName} flex items-center justify-between`}
+            />
           </FormField>
         </div>
       </section>

@@ -8,7 +8,11 @@ import { TourPackageBookingBreadcrumbs } from "@/features/tour-packages/componen
 import { TourPackageBookingStepper } from "@/features/tour-packages/components/tour-package-booking/tour-package-booking-stepper";
 import { TourPackageBookingSummaryCard } from "@/features/tour-packages/components/tour-package-booking/tour-package-booking-summary-card";
 import type { TourPackageDetail } from "@/features/tour-packages/data/tour-package-booking";
-import { parseBookingParams, serializeBookingParams } from "@/features/travel/booking/booking-params";
+import {
+  isValidGuestEmail,
+  parseBookingParams,
+  serializeBookingParams,
+} from "@/features/travel/booking/booking-params";
 import { GuestDetailsForm } from "@/features/travel/components/booking/guest-details-form";
 import { useGuestCheckoutGate } from "@/features/travel/hooks/use-guest-checkout-gate";
 import { useTranslation } from "@/hooks/use-translation";
@@ -46,19 +50,32 @@ function TourPackageBookingCheckoutPageContent({
     identities,
     setIdentityAt,
     identityErrors,
-    hasIdentityErrors,
+    // hasIdentityErrors,
     guardProceed,
   } = useGuestCheckoutGate(guestCount);
   const days = bookingParams.days ?? tourPackage.days;
+  const [email, setEmail] = useState(bookingParams.email ?? "");
+  const [guestFirstName, setGuestFirstName] = useState(
+    bookingParams.guestFirstName ?? "",
+  );
+  const [emailError, setEmailError] = useState("");
 
   const handleProceedToPay = () => {
+    if (!isValidGuestEmail(email)) {
+      setEmailError(t("booking.guest.emailRequired"));
+      return;
+    }
+
     guardProceed(() => {
+      setEmailError("");
       const params = serializeBookingParams({
         tier: selectedTierId,
         days,
         guests: guestCount,
         rooms: 1,
         specialRequests,
+        email: email.trim(),
+        guestFirstName: guestFirstName.trim() || undefined,
       });
       router.push(
         `/tour-packages/${tourPackage.id}/book/payment?${params.toString()}`,
@@ -88,15 +105,25 @@ function TourPackageBookingCheckoutPageContent({
             identities={identities}
             onIdentityChange={setIdentityAt}
             identityErrors={identityErrors}
+            email={email}
+            onEmailChange={(value) => {
+              setEmail(value);
+              if (emailError) setEmailError("");
+            }}
+            firstName={guestFirstName}
+            onFirstNameChange={setGuestFirstName}
+            emailError={emailError}
           />
 
           <div>
             <div className="xl:sticky xl:top-10">
+              {/* Identity validation error — temporarily hidden
               {hasIdentityErrors ? (
                 <p className="mb-3 rounded-md bg-[#FFF1EA] px-4 py-3 text-sm font-medium font-inter text-[#D85A30]">
                   {t("booking.guest.idValidationRequired")}
                 </p>
               ) : null}
+              */}
               <TourPackageBookingSummaryCard
                 tourPackage={tourPackage}
                 tiers={tourPackage.tiers}

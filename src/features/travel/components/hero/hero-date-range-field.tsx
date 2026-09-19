@@ -37,6 +37,11 @@ type HeroDateRangeFieldProps = {
   onToDateChange: (value: string) => void;
   showToDate?: boolean;
   className?: string;
+  variant?: "hero" | "form";
+  minDate?: string | null;
+  maxDate?: string | null;
+  disablePast?: boolean;
+  showCaptionDropdown?: boolean;
 };
 
 export function HeroDateRangeField({
@@ -49,9 +54,13 @@ export function HeroDateRangeField({
   onToDateChange,
   showToDate = true,
   className = "",
+  variant = "hero",
+  minDate,
+  maxDate,
+  disablePast = true,
+  showCaptionDropdown = false,
 }: HeroDateRangeFieldProps) {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [popoverPosition, setPopoverPosition] = useState<PopoverPosition | null>(
     null,
   );
@@ -59,16 +68,14 @@ export function HeroDateRangeField({
   const popoverRef = useRef<HTMLDivElement>(null);
   const fromSelected = parseISO(fromDate);
   const toSelected = parseISO(toDate);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const isHero = variant === "hero";
 
   const updatePopoverPosition = () => {
     if (!containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
-    const width = Math.min(560, window.innerWidth - 16);
+    const preferredWidth = showToDate ? 560 : 340;
+    const width = Math.min(preferredWidth, window.innerWidth - 16);
     const maxLeft = window.innerWidth - width - 8;
     const left = Math.max(8, Math.min(rect.left, maxLeft));
 
@@ -92,13 +99,7 @@ export function HeroDateRangeField({
       window.removeEventListener("resize", handleReposition);
       window.removeEventListener("scroll", handleReposition, true);
     };
-  }, [open]);
-
-  useEffect(() => {
-    if (showToDate && fromDate && toDate) {
-      setOpen(false);
-    }
-  }, [fromDate, showToDate, toDate]);
+  }, [open, showToDate]);
 
   const openCalendar = () => {
     updatePopoverPosition();
@@ -114,10 +115,13 @@ export function HeroDateRangeField({
 
   const handleToChange = (value: string) => {
     onToDateChange(value);
+    if (value) {
+      setOpen(false);
+    }
   };
 
   const calendarPopover =
-    open && popoverPosition && mounted
+    open && popoverPosition
       ? createPortal(
           <>
             <button
@@ -142,6 +146,10 @@ export function HeroDateRangeField({
                 toDate={toDate || null}
                 onFromChange={handleFromChange}
                 onToChange={handleToChange}
+                minDate={minDate}
+                maxDate={maxDate}
+                disablePast={disablePast}
+                showCaptionDropdown={showCaptionDropdown}
               />
             </div>
           </>,
@@ -149,29 +157,46 @@ export function HeroDateRangeField({
         )
       : null;
 
+  const labelClass = isHero
+    ? "block text-[10px] font-medium text-white/65"
+    : "block text-[10px] font-medium text-foreground/60";
+  const valueClass = (hasValue: boolean) =>
+    isHero
+      ? `mt-0.5 block truncate text-sm font-semibold leading-4 ${
+          hasValue ? "text-white" : "text-white/75"
+        }`
+      : `mt-0.5 block truncate text-sm font-semibold leading-4 ${
+          hasValue ? "text-foreground" : "text-foreground/50"
+        }`;
+
   return (
     <>
       <div
         ref={containerRef}
-        className={`relative flex min-h-12 w-full min-w-0 flex-1 items-stretch rounded-xl bg-[#0000003D] text-sm text-white/90 ${className}`}
+        className={
+          isHero
+            ? `relative flex min-h-12 w-full min-w-0 flex-1 items-stretch rounded-xl bg-[#0000003D] text-sm text-white/90 ${className}`
+            : `relative flex min-h-11 w-full min-w-0 items-stretch rounded-md border border-[#E5E5E5] bg-white text-sm text-foreground ${className}`
+        }
       >
         <button
           type="button"
           onClick={openCalendar}
-          className={`flex min-h-12 min-w-0 flex-1 items-center gap-2 px-4 text-left transition-opacity hover:opacity-90 ${
-            showToDate ? "border-r border-white/20" : ""
+          className={`flex min-h-full min-w-0 flex-1 items-center gap-2 px-4 text-left transition-opacity hover:opacity-90 ${
+            showToDate
+              ? isHero
+                ? "border-r border-white/20"
+                : "border-r border-[#E5E5E5]"
+              : ""
           }`}
         >
-          <Calendar className="h-4 w-4 shrink-0" strokeWidth={1.75} />
+          <Calendar
+            className={`h-4 w-4 shrink-0 ${isHero ? "" : "text-[#676565]"}`}
+            strokeWidth={1.75}
+          />
           <span className="min-w-0 leading-none">
-            <span className="block text-[10px] font-medium text-white/65">
-              {fromLabel}
-            </span>
-            <span
-              className={`mt-0.5 block truncate text-sm font-semibold leading-4 ${
-                fromSelected ? "text-white" : "text-white/75"
-              }`}
-            >
+            <span className={labelClass}>{fromLabel}</span>
+            <span className={valueClass(Boolean(fromSelected))}>
               {fromSelected ? displayDate(fromSelected) : addDateLabel}
             </span>
           </span>
@@ -179,25 +204,22 @@ export function HeroDateRangeField({
 
         {showToDate ? (
           <>
-            <div className="flex shrink-0 items-center px-1.5 text-white/70">
+            <div
+              className={`flex shrink-0 items-center px-1.5 ${
+                isHero ? "text-white/70" : "text-foreground/50"
+              }`}
+            >
               <MoveRight className="h-4.5 w-8" strokeWidth={2} />
             </div>
 
             <button
               type="button"
               onClick={openCalendar}
-              className="flex min-h-12 min-w-0 flex-1 items-center gap-2 px-4 text-left transition-opacity hover:opacity-90"
+              className="flex min-h-full min-w-0 flex-1 items-center gap-2 px-4 text-left transition-opacity hover:opacity-90"
             >
-              <Calendar className="h-4 w-4 shrink-0" strokeWidth={1.75} />
               <span className="min-w-0 leading-none">
-                <span className="block text-[10px] font-medium text-white/65">
-                  {toLabel}
-                </span>
-                <span
-                  className={`mt-0.5 block truncate text-sm font-semibold leading-4 ${
-                    toSelected ? "text-white" : "text-white/75"
-                  }`}
-                >
+                <span className={labelClass}>{toLabel}</span>
+                <span className={valueClass(Boolean(toSelected))}>
                   {toSelected ? displayDate(toSelected) : addDateLabel}
                 </span>
               </span>

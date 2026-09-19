@@ -1,0 +1,2483 @@
+{
+  "nav": {
+    "downloadApp": "ऐप डाउनलोड करें",
+    "becomeVendor": "एक विक्रेता बनें",
+    "chooseCurrency": "मुद्रा चुनिये",
+    "signInCreate": "साइन इन करें | खाता बनाएं",
+    "searchCurrency": "मुद्रा खोजें",
+    "signOut": "साइन आउट",
+    "myAccount": "मेरा खाता",
+    "bookingsTrips": "बुकिंग एवं यात्राएँ",
+    "saved": "सहेजा गया",
+    "reviews": "समीक्षा"
+  },
+  "common": {
+    "bookNow": "अभी बुक करें",
+    "continue": "जारी रखना",
+    "loading": "लोड हो रहा है...",
+    "startingFrom": "से शुरू",
+    "perDay": "प्रति दिन",
+    "budget": "बजट",
+    "seeMore": "और देखें",
+    "showMore": "और दिखाएँ",
+    "reviews": "समीक्षा",
+    "available": "उपलब्ध",
+    "selfDriveAvailable": "सेल्फ-ड्राइव उपलब्ध है",
+    "excludingTaxes": "करों और शुल्कों को छोड़कर",
+    "select": "चुनना",
+    "search": "खोज",
+    "edit": "संपादन करना",
+    "cancel": "रद्द करना",
+    "notifications": "सूचनाएं",
+    "contactSupport": "समर्थन से संपर्क करें",
+    "signOut": "साइन आउट",
+    "noReviewsYet": "अभी तक कोई समीक्षा नहीं",
+    "viewPhoto": "फोटो देखें ⟦सूचकांक⟧",
+    "photoViewer": "फोटो देखने वाला",
+    "closePhotoViewer": "फ़ोटो व्यूअर बंद करें",
+    "previousPhoto": "पिछला फ़ोटो",
+    "nextPhoto": "अगली फोटो",
+    "photoOfTotal": "⟦कुल⟧ का ⟦वर्तमान⟧",
+    "secured": "सुरक्षित"
+  },
+  "hero": {
+    "headline": "आत्मविश्वास के साथ अफ्रीका का अनुभव करें",
+    "tab": {
+      "accommodations": "आवास",
+      "flights": "टिकट",
+      "carRentals": "कार का किराया",
+      "tours": "भ्रमण एवं अनुभव"
+    },
+    "search": "खोज",
+    "clearFilter": "फ़िल्टर साफ़ करें",
+    "accommodations": {
+      "destination": "आपका गंतव्य",
+      "destinationStay": "⟦गिनती⟧ रहना",
+      "destinationStays": "⟦गिनती⟧ रहती है",
+      "checkIn": "चेक इन तिथि",
+      "checkAvailability": "उपलब्धता जांचें",
+      "propertyType": "सम्पत्ती के प्रकार",
+      "oneRoom": "1 कमरा",
+      "oneGuest": "1 अतिथि",
+      "roomsCount": "⟦गिनती⟧ कमरे",
+      "guestsCount": "⟦गिनती⟧ मेहमान",
+      "checkOut": "दिनांक जांचें"
+    },
+    "flights": {
+      "roundTrip": "राउंड ट्रिप",
+      "oneWay": "एक तरफ़ा रास्ता",
+      "directFlight": "सीधी उड़ान",
+      "economyClass": "किफायती वर्ग",
+      "premiumEconomyClass": "लाभांश अर्थव्यवस्था",
+      "businessClass": "बिजनेस क्लास",
+      "firstClass": "प्रथम श्रेणी",
+      "onePassenger": "1 यात्री",
+      "passengersCount": "⟦गिनती⟧ यात्री",
+      "fromCity": "से | शहर चुनें",
+      "toCity": "को | शहर चुनें",
+      "departureDate": "प्रस्थान की तारीख",
+      "returnDate": "वापसी दिनांक",
+      "departing": "प्रस्थान",
+      "returning": "रिटर्निंग",
+      "nonstop": "Nonstop",
+      "oneStop": "One stop",
+      "multipleStops": "Multiple stops"
+    },
+    "common": {
+      "addDate": "दिनांक जोड़ें",
+      "selectDateRange": "प्रस्थान और वापसी की तारीखें चुनें",
+      "selectDate": "एक तारीख चुनें",
+      "days": "दिन",
+      "nights": "नाइट्स"
+    },
+    "carRentals": {
+      "searchCarType": "कार का प्रकार खोजें",
+      "filterCarType": "कार के प्रकार के अनुसार फ़िल्टर करें",
+      "allCarTypes": "सभी प्रकार के",
+      "selfDrive": "स्वयं ड्राइव",
+      "price": "₦ कीमत",
+      "pickupDate": "पिक करने की तिथि",
+      "destinationCar": "⟦गिनती⟧ कार",
+      "destinationCars": "⟦गिनती⟧ कारें"
+    },
+    "tours": {
+      "searchPlaceholder": "स्थान, आकर्षण और अनुभव खोजें",
+      "startDate": "आरंभ करने की तिथि",
+      "destinationExperience": "⟦गिनती⟧ अनुभव",
+      "destinationExperiences": "⟦गिनती⟧ अनुभव"
+    },
+    "location": "जगह"
+  },
+  "footer": {
+    "brandDescription": "SynkAfrica एक उभरता हुआ, ऑल-इन-वन यात्रा और प्रीमियम अनुभव मंच है जिसे विश्व स्तर पर लोगों को अफ्रीकी यात्रा और जीवन शैली पारिस्थितिकी तंत्र से जोड़ने के लिए डिज़ाइन किया गया है।",
+    "explore": {
+      "title": "सिंकअफ्रीका का अन्वेषण करें",
+      "hotels": "होटल एवं आवास",
+      "carRentals": "कार का किराया",
+      "flights": "उड़ान बुकिंग",
+      "restaurants": "भोजन एवं रेस्तरां"
+    },
+    "support": {
+      "title": "सहायता",
+      "contact": "समर्थन से संपर्क करें",
+      "changeBooking": "अपनी बुकिंग बदलें या रद्द करें",
+      "paymentOptions": "भुगतान विकल्प",
+      "receipt": "अपनी बुकिंग रसीद देखें या प्रिंट करें"
+    },
+    "community": {
+      "title": "समुदाय",
+      "instagram": "हमारा इंस्टाग्राम",
+      "facebook": "फेसबुक",
+      "news": "समाचार में"
+    },
+    "vendor": {
+      "title": "एक विक्रेता बनें",
+      "listCar": "अपनी कार की सूची बनाएं",
+      "listService": "अपनी सेवा सूचीबद्ध करें",
+      "contact": "हमसे संपर्क करें"
+    },
+    "appPromo": {
+      "headline": "पूर्ण SynkAfrica अनुभव प्राप्त करें।",
+      "cta": "आज ही ऐप डाउनलोड करें",
+      "getItOn": "इसे चालू करें",
+      "googlePlay": "गूगल प्ले",
+      "downloadOn": "पर डाउनलोड करें",
+      "appStore": "ऐप स्टोर"
+    },
+    "legal": {
+      "privacy": "गोपनीयता नीति",
+      "terms": "उपयोग की शर्तें",
+      "security": "सुरक्षा पृष्ठ",
+      "faqs": "पूछे जाने वाले प्रश्न"
+    },
+    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+  },
+  "login": {
+    "intro": "आप हमारी सेवाओं तक पहुँचने के लिए अपने SynkAfrica खाते का उपयोग करके साइन इन कर सकते हैं।",
+    "backendNotReady": "बैकएंड एनवी संस्करण अभी तक सेट नहीं हैं। क्रेडेंशियल कॉन्फ़िगर हो जाने के बाद साइन-इन काम करेगा।",
+    "emailPlaceholder": "अपना ईमेल दर्ज करें",
+    "orUseOptions": "या इनमें से किसी एक विकल्प का उपयोग करें",
+    "signInGoogle": "Google से साइन इन करें",
+    "continueApple": "एप्पल के साथ जारी रखें"
+  },
+  "account": {
+    "nav": {
+      "notifications": "सूचनाएं"
+    },
+    "contactSupport": "समर्थन से संपर्क करें",
+    "profile": {
+      "edit": "संपादन करना",
+      "fullName": "पूरा नाम",
+      "fullNamePlaceholder": "पूरा नाम दर्ज करें",
+      "location": "जगह",
+      "dateOfBirth": "जन्मतिथि",
+      "dobPlaceholder": "एमएम | डीडी | हाँ",
+      "gender": "लिंग",
+      "notAdded": "नहीं जोड़ा गया",
+      "contactDetails": "सम्पर्क करने का विवरण",
+      "phone": "फ़ोन नंबर",
+      "email": "मेल पता",
+      "passwordSecurity": "पासवर्ड और सुरक्षा",
+      "password": "पासवर्ड",
+      "changePassword": "पासवर्ड बदलें"
+    },
+    "deleteAccount": "खाता हटा दो",
+    "bookings": {
+      "title": "तुम्हारे ऑर्डर",
+      "tab": {
+        "upcoming": "आगामी",
+        "past": "अतीत",
+        "cancelled": "रद्द कर दिया गया",
+        "bookings": "बुकिंग के"
+      },
+      "empty": {
+        "upcoming": "कोई आगामी बुकिंग नहीं.",
+        "past": "इस अवधि के लिए कोई पिछली बुकिंग नहीं.",
+        "cancelled": "इस अवधि के लिए कोई भी आदेश रद्द नहीं किया गया.",
+        "bookings": "इस अवधि के लिए कोई बुकिंग नहीं."
+      },
+      "orderDate": "आर्डर की तारीख:",
+      "experienceDate": "अनुभव दिनांक:",
+      "totalAmount": "कुल राशि:",
+      "orderNumber": "आदेश देना:",
+      "guestCount": "अतिथियों",
+      "specialRequests": "विशेष आग्रह",
+      "cancel": "रद्द करना",
+      "receiptRecipient": "रसीद और क्यूआर प्राप्तकर्ता",
+      "viewDetails": "विवरण देखें",
+      "leaveReview": "समीक्षा लिखें",
+      "reviewSubmitted": "समीक्षा प्रस्तुत की गई",
+      "cancelWindowClosed": "इस बुकिंग के लिए रद्दीकरण विंडो बंद हो गई है.",
+      "cancelledOn": "⟦दिनांक⟧ को रद्द किया गया",
+      "cancelConfirmTitle": "यह बुकिंग रद्द करें?",
+      "cancelConfirmBody": "आप अपना अनुभव शुरू होने से पहले रद्दीकरण विंडो के भीतर रद्द कर सकते हैं। इस एक्शन को वापस नहीं किया जा सकता।",
+      "confirmCancel": "हां, बुकिंग रद्द करें",
+      "filterPeriod": "अवधि के अनुसार फ़िल्टर करें",
+      "badge": {
+        "upcoming": "आगामी",
+        "past": "अतीत",
+        "cancelled": "रद्द कर दिया गया"
+      },
+      "countdown": {
+        "label": "अनुभव शुरू होता है",
+        "daysHours": "⟦दिन⟧d ⟦घंटे⟧h",
+        "hoursMinutes": "⟦घंटे⟧एच ⟦मिनट⟧एम",
+        "detailHint": "आपका अनुभव शुरू होने तक वास्तविक समय में उलटी गिनती अपडेट होती है।"
+      },
+      "review": {
+        "title": "समीक्षा लिखें",
+        "ratingLabel": "आपकी रेटिंग",
+        "commentLabel": "आपकी समीक्षा",
+        "commentPlaceholder": "इस अनुभव के बारे में आपको जो पसंद आया उसे साझा करें...",
+        "submit": "समीक्षा सबमिट करें",
+        "dismiss": "समीक्षा संवाद बंद करें"
+      },
+      "detail": {
+        "back": "बुकिंग पर वापस जाएँ",
+        "reference": "आरक्षण संदर्भ",
+        "yourReview": "आपकी समीक्षा",
+        "notFound": "यह बुकिंग नहीं मिल सकी."
+      }
+    },
+    "saved": {
+      "accommodations": "आवास",
+      "empty": "आपने अभी तक कुछ भी सहेजा नहीं है.",
+      "cars": "कारें",
+      "tours": "टूर्स"
+    },
+    "reviews": {
+      "title": "समीक्षा",
+      "youRated": "आपने मूल्यांकन किया",
+      "writeReview": "एक समीक्षा लिखे",
+      "ratingLabel": "आपकी रेटिंग",
+      "commentLabel": "आपकी समीक्षा",
+      "commentPlaceholder": "इस अनुभव के बारे में आपको जो पसंद आया उसे साझा करें...",
+      "photosLabel": "तस्वीरें",
+      "photosCount": "⟦गिनती⟧/⟦अधिकतम⟧ अपलोड किया गया",
+      "addPhoto": "तस्वीर जोड़ो",
+      "removePhoto": "फ़ोटो हटाएँ",
+      "submit": "समीक्षा सबमिट करें",
+      "pendingTitle": "पूरी हो चुकी बुकिंग की समीक्षा करें",
+      "pendingHint": "समीक्षाएँ केवल आपके खाते से जुड़ी पिछली बुकिंग के लिए ही सबमिट की जा सकती हैं।",
+      "selectBooking": "अपनी समीक्षा लिखने के लिए ऊपर पूर्ण की गई बुकिंग का चयन करें।",
+      "noPending": "आपके पास समीक्षा की प्रतीक्षा में कोई पूर्ण बुकिंग नहीं है।",
+      "submittedTitle": "आपकी सबमिट की गई समीक्षाएँ",
+      "empty": "आपने अभी तक कोई समीक्षा सबमिट नहीं की है.",
+      "deleteReview": "समीक्षा हटाएँ",
+      "bookingReference": "आरक्षण संदर्भ⟧",
+      "listingBadge": "अतिथि समीक्षाएँ",
+      "experienceListingTitle": "अतिथि समीक्षाएँ"
+    },
+    "notifications": {
+      "title": {
+        "reminder24h": "अनुभव 24 घंटे में शुरू होता है",
+        "reviewRequest": "अपने अनुभव के बारे में बताएं",
+        "cancellationRefund": "बुकिंग रद्द",
+        "bookingConfirmation": "बुकिंग संपुष्ट",
+        "info": "यात्रा अनुस्मारक"
+      },
+      "empty": "अभी तक कोई सूचना नहीं.",
+      "period": {
+        "mostRecent": "सबसे हाल का",
+        "weekEarlier": "एक सप्ताह पहले",
+        "threeMonthsAgo": "3 महीने पहले"
+      },
+      "kind": {
+        "bookingConfirmation": "बुकिंग संपुष्ट",
+        "reminder24h": "24 घंटे अनुस्मारक",
+        "reviewRequest": "समीक्षा अनुरोध",
+        "cancellationRefund": "रद्दीकरण एवं धनवापसी",
+        "info": "यात्रा टिप"
+      },
+      "message": {
+        "reminder24h": "आपका अनुभव ⟦शीर्षक⟧ कल ⟦समय⟧ ⟦तारीख⟧ पर शुरू होगा। अपने बुकिंग विवरण की समीक्षा करें और 15 मिनट पहले पहुंचें।",
+        "reviewRequest": "{title} कैसा था? SynkAfrica पर अन्य यात्रियों की सहायता के लिए स्टार रेटिंग और लिखित समीक्षा साझा करें।",
+        "cancellationRefund": "{title} ({reference}) के लिए आपकी बुकिंग रद्द कर दी गई थी। किसी भी योग्य रिफंड को 5-7 व्यावसायिक दिनों के भीतर संसाधित किया जाएगा।",
+        "bookingConfirmation": "⟦स्थान⟧ में {title} के लिए आपकी बुकिंग की पुष्टि हो गई है। अपनी रसीद और क्यूआर क्रेडेंशियल के लिए अपना ईमेल जांचें।",
+        "passportReminder": "सुनिश्चित करें कि आपका पासपोर्ट आपकी यात्रा की तारीख से कम से कम 6 महीने के लिए वैध है।"
+      }
+    },
+    "support": {
+      "contact": {
+        "whatsapp": "WhatsApp",
+        "email": "ईमेल",
+        "phone": "हमें कॉल करें"
+      },
+      "createTicket": "एक समर्थन टिकट बनाएं",
+      "topic": "यह किस बारे में है?",
+      "relatedOrder": "संबंधित आदेश (वैकल्पिक)",
+      "relatedOrderNone": "कोई नहीं",
+      "subject": "विषय",
+      "subjectPlaceholder": "मुद्दे का संक्षिप्त सारांश",
+      "message": "संदेश",
+      "messagePlaceholder": "हमें बताओ क्या हो रहा है...",
+      "attachFile": "एक फोटो या स्क्रीनशॉट संलग्न करें",
+      "submitTicket": "टिकट जमा करें",
+      "ticketSubmitted": "टिकट #⟦नंबर⟧ सबमिट किया गया। हम जल्द ही आपसे संपर्क करेंगे.",
+      "yourTickets": "आपके टिकट",
+      "commonQuestions": "सामान्य प्रश्न",
+      "ticketMeta": "टिकट #⟦संख्या⟧ · ⟦तारीख⟧",
+      "status": {
+        "open": "खुला",
+        "resolved": "हल किया"
+      },
+      "category": {
+        "booking": "बुकिंग का मुद्दा",
+        "paymentRefund": "भुगतान/धनवापसी",
+        "account": "खाता एवं प्रोफ़ाइल",
+        "other": "अन्य"
+      },
+      "faq": {
+        "cancelBooking": "मैं बुकिंग कैसे रद्द करूँ?",
+        "refundTiming": "मुझे अपना रिफंड कब मिलेगा?",
+        "changeDate": "मैं अपनी यात्रा की तारीख कैसे बदलूं?",
+        "paymentSecurity": "क्या मेरा भुगतान सुरक्षित है?",
+        "cancelBookingAnswer": "बुकिंग और ट्रिप से अपनी बुकिंग खोलें, ऑर्डर चुनें, और यदि यह अभी भी रद्दीकरण विंडो के भीतर है तो रद्द विकल्प का उपयोग करें। पात्र बुकिंग के लिए रिफंड स्वचालित रूप से संसाधित किया जाता है।",
+        "refundTimingAnswer": "आपके बैंक या भुगतान प्रदाता के आधार पर, योग्य रिफंड आमतौर पर रद्दीकरण के बाद 5-7 व्यावसायिक दिनों के भीतर संसाधित किए जाते हैं।",
+        "changeDateAnswer": "अपने बुकिंग संदर्भ के साथ सहायता से संपर्क करें। यदि अनुभव तिथि परिवर्तन की अनुमति देता है, तो हमारी टीम आपको पुनर्निर्धारित करने में मदद करेगी या उपलब्ध विकल्पों के माध्यम से आपका मार्गदर्शन करेगी।",
+        "paymentSecurityAnswer": "हाँ। Synkafrica पर भुगतान सुरक्षित, एन्क्रिप्टेड भुगतान भागीदारों के माध्यम से संसाधित किया जाता है। हम आपके कार्ड का पूरा विवरण कभी भी अपने सर्वर पर संग्रहीत नहीं करते हैं।"
+      },
+      "tabs": {
+        "label": "सहायता अनुभाग"
+      },
+      "backToTickets": "टिकट पर वापस जाएँ",
+      "typeMessage": "एक संदेश टाइप करें...",
+      "send": "भेजना",
+      "supportTeam": "सिन्काअफ्रीका समर्थन",
+      "you": "आप",
+      "emptyTickets": "आपने अभी तक कोई समर्थन टिकट जमा नहीं किया है.",
+      "attachedImage": "संलग्न छवि",
+      "removeAttachment": "अनुलग्नक हटाएँ"
+    }
+  },
+  "booking": {
+    "step": {
+      "rooms": "ठहरने और कमरे चुनें",
+      "chooseExperience": "अनुभव चुनें",
+      "chooseCar": "कार चुनें",
+      "choosePackage": "पैकेज चुनें",
+      "checkout": "चेक आउट",
+      "payment": "भुगतान",
+      "confirmation": "पुष्टीकरण"
+    },
+    "cta": {
+      "proceedToPay": "चुकाने के लिए कार्रवाई शुरू करो"
+    },
+    "guest": {
+      "title": {
+        "mr": "श्री",
+        "mrs": "श्रीमती",
+        "ms": "एमएस",
+        "miss": "याद",
+        "dr": "डॉ"
+      },
+      "adultLabel": "वयस्क (17 वर्ष+)",
+      "leadGuestLabel": "मुख्य अतिथि",
+      "addedCount": "⟦जोड़ा गया⟧/⟦कुल⟧ जोड़ा गया",
+      "passportHint": "अपना नाम दर्ज करें जैसा कि आपके पासपोर्ट पर उल्लिखित है। पासपोर्ट यात्रा की तारीख से कम से कम 6 महीने के लिए वैध होना चाहिए।",
+      "idVerificationHint": "किसी भी बुकिंग को पूरा करने से पहले एक वैध सरकार द्वारा जारी आईडी आवश्यक है।",
+      "idVerificationTitle": "पहचान सत्यापन",
+      "idVerificationSubtitle": "अपना आईडी विवरण ठीक वैसे ही दर्ज करें जैसे वे आपके दस्तावेज़ पर दिखाई देते हैं।",
+      "idType": {
+        "passport": "पासपोर्ट",
+        "nationalId": "राष्ट्रीय पहचान",
+        "driversLicense": "ड्राइवर का लाइसेंस"
+      },
+      "idNumber": "आईडी नंबर",
+      "idNumberPlaceholder": "अपना आईडी नंबर दर्ज करें",
+      "idExpiry": "समाप्ति तिथि",
+      "confirmId": "मैं पुष्टि करता हूं कि मेरी आईडी विवरण सही हैं और मेरा दस्तावेज़ यात्रा की तारीख से कम से कम 6 महीने के लिए वैध है।",
+      "idTypeRequired": "एक आईडी प्रकार चुनें.",
+      "idNumberInvalid": "एक वैध आईडी नंबर दर्ज करें.",
+      "idExpiryRequired": "आईडी की समाप्ति तिथि दर्ज करें।",
+      "idExpiryInvalid": "आईडी आज से कम से कम 6 महीने के लिए वैध होनी चाहिए।",
+      "idConfirmRequired": "जारी रखने के लिए अपने आईडी विवरण की पुष्टि करें।",
+      "idValidationRequired": "भुगतान के लिए आगे बढ़ने से पहले अपना आईडी विवरण पूरा करें और पुष्टि करें।",
+      "adultCheckbox": "वयस्क - ⟦गिनती⟧",
+      "titleField": "शीर्षक",
+      "lastName": "उपनाम",
+      "firstName": "पहला नाम",
+      "middleName": "मध्य नाम",
+      "dateOfBirth": "जन्मतिथि",
+      "datePlaceholder": "yyyy-mm-dd",
+      "nationality": "राष्ट्रीयता",
+      "gender": "लिंग",
+      "male": "पुरुष",
+      "female": "महिला",
+      "mobileNo": "मोबाइल नहीं है",
+      "emailAddress": "मेल पता",
+      "openCalendar": "कैलेंडर खोलें",
+      "countLabel": "मेहमानों की संख्या",
+      "countHint": "मेहमानों की संख्या के आधार पर मूल्य निर्धारण स्वचालित रूप से अपडेट होता है।",
+      "decreaseGuests": "मेहमान कम करें",
+      "increaseGuests": "मेहमान बढ़ाएँ",
+      "specialRequests": "विशेष आग्रह",
+      "specialRequestsPlaceholder": "शीघ्र जांच, आहार संबंधी आवश्यकताएं, पहुंच संबंधी आवश्यकताएं, आदि।"
+    },
+    "summary": {
+      "selectRoom": "एक कमरा चुनें",
+      "selectCar": "एक कार चुनें",
+      "selectExperience": "एक अनुभव चुनें",
+      "selectPackage": "एक पैकेज चुनें",
+      "priceDetails": "मूल्य विवरण",
+      "taxesAndFees": "कर और शुल्क",
+      "night": "रात",
+      "nights": "नाइट्स",
+      "room": "कमरा",
+      "rooms": "कमरा",
+      "day": "दिन",
+      "days": "दिन",
+      "total": "कुल",
+      "guests": "अतिथियों"
+    },
+    "table": {
+      "selectRoom": "एक कमरा चुनें",
+      "guestCount": "अतिथियों की संख्या",
+      "pricePerNight": "प्रति रात कीमत",
+      "includesTaxes": "कर और शुल्क शामिल हैं",
+      "packages": "संकुल",
+      "hours": "घंटे",
+      "price": "कीमत",
+      "experiences": "अनुभव",
+      "duration": "अवधि"
+    },
+    "dates": {
+      "checkIn": "चेक इन तिथि",
+      "checkOut": "दिनांक जांचें",
+      "guests": "अतिथियों",
+      "rooms": "कमरा",
+      "nights": "नाइट्स",
+      "days": "दिन",
+      "rentalDays": "किराये के दिन",
+      "tripDuration": "यात्रा की अवधि",
+      "tripDurationHint": "समायोजित करें कि आप कितने दिन रुकना या घूमना चाहते हैं।",
+      "decreaseNights": "रातें कम करें",
+      "increaseNights": "रातें बढ़ाओ",
+      "decreaseDays": "दिन कम करें",
+      "increaseDays": "दिन बढ़ाएँ"
+    },
+    "car": {
+      "rentalModeHeading": "आप इस कार का उपयोग कैसे करना चाहेंगे?",
+      "rentalModeHint": "सेल्फ ड्राइव चुनें या अपनी बुकिंग में एक पेशेवर ड्राइवर जोड़ें।",
+      "selfDrive": "स्वयं ड्राइव",
+      "selfDriveHint": "कार खुद चलाओ. विक्रेता से खरीदें या अतिरिक्त शुल्क पर डिलीवरी का अनुरोध करें।",
+      "withDriver": "ड्राइवर के साथ",
+      "withDriverHint": "आपकी यात्रा के लिए एक पेशेवर ड्राइवर शामिल है।",
+      "noExtraCost": "कोई अतिरिक्त लागत नहीं",
+      "driverAddon": "+ ⟦राशि⟧ ड्राइवर ऐड-ऑन",
+      "requestDelivery": "कार डिलीवरी का अनुरोध करें",
+      "requestDeliveryHint": "अतिरिक्त शुल्क लेकर कार को अपने स्थान पर डिलीवर करवाएं।",
+      "deliveryFee": "+ ⟦राशि⟧ डिलीवरी शुल्क",
+      "deliveryAddress": "डिलिवरी का पता",
+      "deliveryAddressPlaceholder": "वह पता दर्ज करें जहां कार पहुंचाई जानी चाहिए",
+      "pickupAddress": "पता चुनें",
+      "pickupAddressHint": "यदि आप डिलीवरी का अनुरोध नहीं करते हैं तो इस विक्रेता स्थान से कार ले लें।",
+      "customerPickupAddress": "आपका पिकअप स्थान",
+      "customerPickupAddressPlaceholder": "वह स्थान दर्ज करें जहाँ ड्राइवर आपको ले जाए",
+      "customerPickupAddressHint": "ड्राइवर आपसे इस पते पर मिलेगा.",
+      "driverAddonLabel": "ड्राइवर ऐड-ऑन",
+      "deliveryFeeLabel": "वितरण शुल्क",
+      "about": "इस कार के बारे में",
+      "saveCar": "कार बचाओ"
+    },
+    "property": {
+      "saveProperty": "संपत्ति बचाएं",
+      "morePhotos": "+⟦गिनती⟧ तस्वीरें",
+      "currentOffers": "वर्तमान ऑफर"
+    },
+    "amenity": {
+      "free": "मुक्त!",
+      "additionalCharge": "अतिरिक्त प्रभार"
+    },
+    "tour": {
+      "about": "इस अनुभव के बारे में",
+      "saveTour": "भ्रमण सहेजें"
+    },
+    "package": {
+      "about": "इस पैकेज के बारे में",
+      "savePackage": "पैकेज सहेजें",
+      "sharePackage": "पैकेज साझा करें",
+      "nightsDays": "⟦रातें⟧ रातें / ⟦दिन⟧ दिन",
+      "durationShort": "⟦दिन⟧D / ⟦रात⟧N",
+      "guestRange": "⟦रेंज⟧ मेहमान",
+      "moduleCount": "⟦गिनती⟧ मॉड्यूल",
+      "highlight": {
+        "duration": "अवधि",
+        "groupSize": "समूह का आकार",
+        "included": "शामिल",
+        "cancellation": "रद्दीकरण+",
+        "free": "मुक्त",
+        "standard": "मानक"
+      },
+      "whatsIncluded": "क्या शामिल है",
+      "included": "शामिल",
+      "priceBreakdown": "मूल्य विभाजन",
+      "packageDiscount": "पैकेज छूट",
+      "packagePrice": "पैकेज मूल्य",
+      "whyBook": "यह पैकेज क्यों बुक करें",
+      "guestCountLocked": "इस पैकेज के लिए मेहमानों की संख्या तय है और चेकआउट के समय इसे बदला नहीं जा सकता।"
+    },
+    "payment": {
+      "processing": "संसाधन संबंधी भुगतान..."
+    },
+    "confirmation": {
+      "imageAlt": "पुष्टि सफलता",
+      "title": "भुगतान सफल",
+      "subtitle": "कृपया अपनी रसीद और क्यूआर क्रेडेंशियल के लिए अपना ईमेल जांचें",
+      "reloadIn": "यह पृष्ठ पुनः लोड होगा",
+      "reloadNow": "अभी पुनः लोड करें",
+      "referenceLabel": "आरक्षण संदर्भ",
+      "copyReference": "प्रतिलिपि",
+      "copied": "कॉपी किया गया",
+      "summaryTitle": "बुकिंग सारांश",
+      "product": "बुक किया गया आइटम",
+      "totalPaid": "पूर्ण भुगतान",
+      "addToCalendar": "कैलेंडर में जोड़ें",
+      "openGoogleCalendar": "Google कैलेंडर में खोलें",
+      "viewBookings": "मेरी बुकिंग देखें"
+    },
+    "reviews": {
+      "nextReview": "अगली समीक्षा",
+      "allReviews": "सभी समीक्षाएँ",
+      "viewAll": "सभी समीक्षाएँ देखें",
+      "close": "समीक्षाएँ बंद करें"
+    },
+    "content": {
+      "property": {
+        "arkHavn": {
+          "desc0": "मराकेश के केंद्र में स्थित, द आर्क हेवन आधुनिक आराम और पारंपरिक मोरक्कन आकर्षण के मिश्रण के साथ एक शांत स्थान प्रदान करता है। आउटडोर पूल, ऑन-साइट बार और फ्लैट-स्क्रीन टीवी वाले वातानुकूलित कमरों का आनंद लें।",
+          "desc1": "मेहमान आस-पास के आकर्षणों का पता लगा सकते हैं, शटल सेवाओं, टेनिस कोर्ट और किराए पर कार का आनंद ले सकते हैं। चाहे आप यहां अवकाश या व्यवसाय के लिए आए हों, द आर्क हेवन असाधारण आतिथ्य के साथ एक यादगार प्रवास प्रदान करता है।"
+        },
+        "fallback": {
+          "desc0": "⟦नाम⟧ आधुनिक सुविधाओं और ⟦स्थान⟧ में एक प्रमुख स्थान के साथ आरामदायक आवास प्रदान करता है।",
+          "desc1": "अच्छी तरह सुसज्जित कमरों, मित्रवत सेवा और स्थानीय आकर्षणों और भोजन तक आसान पहुंच का आनंद लें।"
+        }
+      },
+      "review": {
+        "review1": "आर्क हेवन मेरी अपेक्षाओं से बढ़कर है। स्टाफ अविश्वसनीय रूप से स्वागत करने वाला था, और पूल क्षेत्र शहर की खोज के बाद आराम करने के लिए एक आदर्श स्थान था।",
+        "review2": "सुंदर कमरे, बढ़िया स्थान और नाश्ता उत्कृष्ट था। मैं मोरक्को की अपनी अगली यात्रा पर निश्चित रूप से फिर से यहां रुकूंगा।",
+        "review3": "विशाल सुइट, स्वच्छ सुविधाएं और मददगार दरबान। शटल सेवा ने मराकेश के चारों ओर घूमना बहुत आसान बना दिया।"
+      },
+      "offer": {
+        "drinkPromo": "1 पेय खरीदें और एक मुफ़्त पाएं",
+        "mealsOff": "भोजन पर 10% की छूट",
+        "freeWifi": "नि: शुल्क वाई - फाई"
+      },
+      "room": {
+        "deluxeSuite": "डीलक्स सुइट",
+        "supremeRoom": "सर्वोच्च कक्ष",
+        "standardRoom": "मानक कक्ष",
+        "subtitle": {
+          "deluxe": "डीलक्स (1 बेडरूम अपार्टमेंट)",
+          "supreme": "सुप्रीम (स्टूडियो अपार्टमेंट)",
+          "standard": "स्टैंडर्ड डबल रूम)"
+        },
+        "size592": "592 वर्ग फुट",
+        "size420": "420 वर्ग फुट",
+        "size310": "310 वर्ग फुट",
+        "sleeps2Adults": "2 वयस्क सोते हैं"
+      },
+      "package": {
+        "dailyHire": "दैनिक किराया",
+        "halfDayHire": "आधे दिन का किराया",
+        "extraHours": "अतिरिक्त घंटे",
+        "hours24": "24 घंटे",
+        "hours12": "12 घंटे",
+        "hours3": "3 घंटे"
+      },
+      "feature": {
+        "automatic": "स्वचालित",
+        "driverAvailable": "ड्राइवर उपलब्ध",
+        "selfDrive": "स्वयं ड्राइव",
+        "available": "उपलब्ध",
+        "limitedSlots": "सीमित स्लॉट",
+        "guidedTour": "निर्देशित दौरा",
+        "selfDriveAvailable": "सेल्फ-ड्राइव उपलब्ध है",
+        "flightsIncluded": "उड़ानें शामिल हैं",
+        "hotelStay": "होटल में ठहरना",
+        "guidedTours": "निर्देशित पर्यटन",
+        "nightsDays": "⟦रातें⟧ रातें / ⟦दिन⟧ दिन"
+      },
+      "tourOption": {
+        "standard": "मानक टिकट",
+        "premium": "प्रीमियम अनुभव",
+        "private": "निजी समूह",
+        "hours5": "5 घंटे",
+        "fullDay": "पूरा दिन"
+      },
+      "tier": {
+        "standard": "मानक पैकेज",
+        "deluxe": "डीलक्स पैकेज",
+        "allInclusive": "सभी समावेशी"
+      },
+      "amenityCat": {
+        "greatForStay": "आपके प्रवास के लिए बढ़िया",
+        "outdoors": "सड़क पर",
+        "pets": "पालतू जानवर",
+        "internet": "इंटरनेट",
+        "onSiteParking": "ऑन-साइट पार्किंग",
+        "frontDesk": "फ्रंट डेस्क सेवाएँ",
+        "familyServices": "मनोरंजन एवं पारिवारिक सेवाएँ",
+        "cleaningServices": "सफ़ाई सेवाएँ",
+        "general": "सामान्य",
+        "accessibility": "सरल उपयोग",
+        "swimmingPools": "2 स्विमिंग पूल",
+        "pool1Outdoor": "पूल 1 - आउटडोर"
+      },
+      "amenityDesc": {
+        "petsAllowed": "पालतू जानवर आग्रह करने पर अनुमत हैं। कोई अतिरिक्त शुल्क नहीं.",
+        "wifiFree": "वाईफ़ाई सभी क्षेत्रों में उपलब्ध है और निःशुल्क है।",
+        "parkingFree": "साइट पर निःशुल्क सार्वजनिक पार्किंग उपलब्ध है (आरक्षण की आवश्यकता नहीं है)।"
+      },
+      "amenityItem": {
+        "restaurant": "रेस्टोरेंट",
+        "freeWifi": "नि: शुल्क वाई - फाई",
+        "parking": "पार्किंग",
+        "spa": "स्पा",
+        "familyRooms": "परिवार के कमरे",
+        "roomService": "रूम सर्विस",
+        "airportShuttle": "हवाई अड्डे के शटल",
+        "bbqFacilities": "बारबेक्यू सुविधाएं",
+        "petFriendly": "पालतू पशु का ख्याल रखना",
+        "nonSmokingRooms": "धूम्रपान रहित कमरे",
+        "outdoorFireplace": "बाहरी चिमनी",
+        "beachfront": "समुद्र तट",
+        "sunDeck": "सन डेक",
+        "privateBeach": "निजी समुद्र तट क्षेत्र",
+        "terrace": "छत",
+        "garden": "बगीचा",
+        "valetParking": "वैले पार्किंग",
+        "parkingGarage": "पार्किंग गैरेज",
+        "accessibleParking": "सुलभ पार्किंग",
+        "lockers": "लाकर्स",
+        "concierge": "दरबान",
+        "atmOnSite": "साइट पर एटीएम",
+        "baggageStorage": "सामान का भंडारण",
+        "currencyExchange": "मुद्रा विनिमय",
+        "frontDesk24h": "24 घंटे का फ्रंट डेस्क",
+        "outdoorPlayEquipment": "बच्चों के लिए आउटडोर खेल उपकरण",
+        "dailyHousekeeping": "दैनिक गृह व्यवस्था",
+        "ironingService": "इस्त्री सेवा",
+        "shuttleService": "शटल सेवा",
+        "sharedLounge": "साझा लाउंज/टीवी क्षेत्र",
+        "airConditioning": "एयर कंडीशनिंग",
+        "carRental": "किराए पर कार लेना",
+        "packedLunches": "लंच पैक किया",
+        "disabledFacilities": "विकलांग मेहमानों के लिए सुविधाएं",
+        "bathroomEmergencyCord": "बाथरूम आपातकालीन कॉर्ड",
+        "openAllYear": "पूरे साल खुला",
+        "adultsOnly": "केवल वयस्क",
+        "poolBeachTowels": "पूल/समुद्रतट तौलिये",
+        "poolBar": "पूल बार",
+        "beachChairs": "समुद्रतट कुर्सियाँ/लाउन्जर्स"
+      },
+      "tour": {
+        "desc": {
+          "boatAccess": "केवल नाव या जल टैक्सी द्वारा ही पहुंचा जा सकता है। यह अपने अपेक्षाकृत शांत जल के लिए प्रसिद्ध है।",
+          "lekkiCanopy": "अफ़्रीका के सबसे लंबे छतरी वाले पुल पर चलें और हरे-भरे मैंग्रोव पथों का पता लगाएं।",
+          "nikeArt": "पश्चिम अफ़्रीका में समकालीन अफ़्रीकी कला के सबसे बड़े संग्रहों में से एक की खोज करें।",
+          "badagry": "संग्रहालयों और स्थलों के माध्यम से ट्रान्साटलांटिक दास व्यापार के इतिहास का पता लगाएं।",
+          "desertSafari": "टीलों की सैर, ऊँट की सवारी, और तारों के नीचे एक पारंपरिक बेडौइन शिविर।",
+          "cotonou": "बाज़ारों, औपनिवेशिक वास्तुकला और बेनिन की जीवंत तटरेखा का अन्वेषण करें।",
+          "winelands": "चखने और सुंदर पहाड़ी दृश्यों के साथ स्टेलनबोश अंगूर के बागों की यात्रा करें।",
+          "monacoYacht": "मोंटे कार्लो और लक्जरी बंदरगाहों के दृश्यों के साथ फ्रेंच रिवेरा तट पर नौकायन करें।",
+          "lagosFood": "शहर के सर्वोत्तम भोजन स्थलों पर सूया, पफ-पफ और स्थानीय व्यंजनों का नमूना लें।",
+          "dubaiKayak": "क्षितिज दृश्यों और निर्देशित निर्देशों के साथ सूर्यास्त के समय मरीना में नौकायन करें।"
+        }
+      }
+    },
+    "dateTime": {
+      "title": "दिनांक और समय चुनें",
+      "rangeHint": "कैलेंडर पर अपनी चेक-इन और चेक-आउट तिथियां चुनें।",
+      "singleHint": "कैलेंडर पर अपनी अनुभव तिथि चुनें।",
+      "legendAvailable": "उपलब्ध",
+      "legendUnavailable": "अनुपलब्ध",
+      "selectCheckout": "चेकआउट का चयन करें",
+      "timeSlots": "टाइम स्लॉट",
+      "experienceDate": "अनुभव दिनांक"
+    }
+  },
+  "breadcrumb": {
+    "synkAfrica": "सिंकअफ्रीका",
+    "accommodations": "आवास",
+    "flights": "टिकट",
+    "carForHire": "कार का किराया",
+    "tours": "भ्रमण एवं अनुभव",
+    "tourPackages": "यात्रा पैकेज",
+    "dealsAndPackages": "सौदे और पैकेज",
+    "packages": "संकुल"
+  },
+  "results": {
+    "accommodations": {
+      "title": "रिहाइश",
+      "staysFound": "⟦गिनती⟧ पाई जाती है",
+      "searchPlaceholder": "आवास खोजें",
+      "empty": "कोई भी स्टे आपके फ़िल्टर से मेल नहीं खाता।"
+    },
+    "carRentals": {
+      "title": "किराये के लिए कारों का अन्वेषण करें",
+      "carsFound": "⟦गिनती⟧ कारें मिलीं",
+      "searchPlaceholder": "कार खोजें",
+      "empty": "कोई भी कार आपके फ़िल्टर से मेल नहीं खाती."
+    },
+    "tours": {
+      "title": "⟦गिनती⟧ खोज परिणाम",
+      "searchPlaceholder": "खोज अनुभव",
+      "empty": "कोई भी अनुभव आपके फ़िल्टर से मेल नहीं खाता."
+    },
+    "emptyHint": "अपने खोज या फ़िल्टर विकल्पों को समायोजित करने का प्रयास करें।",
+    "promoSubtitle": "आपके लिए प्रमोशन, सौदे और विशेष ऑफर"
+  },
+  "filters": {
+    "apply": "फ़िल्टर लागू करें",
+    "applyCount": "फ़िल्टर लागू करें (⟦गिनती⟧)",
+    "location": "जगह",
+    "rentalDates": "किराये की तारीखें",
+    "startDate": "आरंभ करने की तिथि",
+    "endDate": "अंतिम तिथि",
+    "discounts": "छूट",
+    "price": "कीमत",
+    "category": "वर्ग",
+    "experiences": "अनुभव",
+    "other": "अन्य फ़िल्टर",
+    "budget": "बजट",
+    "perNight": "| रात",
+    "perDaily": "| दैनिक",
+    "anyPrice": "कोई भी कीमत",
+    "apartmentType": "अपार्टमेंट का प्रकार",
+    "bedrooms": "बेडरूम की संख्या",
+    "ratings": "रेटिंग",
+    "perks": "भत्ते और सुविधाएं",
+    "priceRange": {
+      "under50k": "50 हजार से कम",
+      "50to150k": "50 - 150k",
+      "150kPlus": "150k और उससे अधिक"
+    },
+    "propertyType": {
+      "hotels": "होटल",
+      "apartments": "अपार्टमेंट",
+      "resorts": "रिसॉर्ट्स",
+      "bbs": "B&Bs",
+      "guestHouse": "गेस्ट हाउस",
+      "beachHouse": "बीच हाउस",
+      "motels": "मोटेल"
+    },
+    "bedroom": {
+      "studio": "STUDIO",
+      "one": "1 शयनकक्ष",
+      "two": "2 शयनकक्ष",
+      "threePlus": "3+ शयनकक्ष"
+    },
+    "perk": {
+      "breakfast": "नाश्ता शामिल है",
+      "cancellation": "मुफ़्त निराकरण",
+      "pool": "पूल तक पहुंच",
+      "shuttle": "हवाई अड्डे के शटल"
+    },
+    "discount": {
+      "all": "सभी छूट",
+      "withDiscount": "छूट के साथ",
+      "noDiscount": "कोई छूट नहीं",
+      "tenPercent": "10% की छूट"
+    },
+    "carType": {
+      "suv": "एसयूवी",
+      "sedan": "पालकी",
+      "hatchback": "हैचबैक",
+      "pickup": "उठाना"
+    },
+    "serviceType": {
+      "selfDrive": "स्वयं ड्राइव",
+      "chauffeur": "ड्राइवर"
+    },
+    "transmission": {
+      "automatic": "स्वचालित",
+      "manual": "नियमावली"
+    },
+    "tourCategory": {
+      "all": "सभी श्रेणियां",
+      "outdoor": "आउटडोर",
+      "artsCulture": "कला एवं संस्कृति",
+      "adventure": "साहसिक काम",
+      "foodDrink": "भोजन पेय"
+    },
+    "experienceType": {
+      "all": "सारे अनुभव",
+      "tours": "टूर्स",
+      "activities": "गतिविधियाँ",
+      "workshops": "कार्यशालाएं",
+      "dayTrips": "दिन की यात्राएँ"
+    }
+  },
+  "landing": {
+    "ongoingDeals": {
+      "title": "चल रहे सौदे",
+      "title2": "ऑफर पर पैकेज",
+      "description": "आपके लिए प्रमोशन, सौदे और विशेष ऑफर",
+      "scrollPackages": "पैकेज स्क्रॉल करें"
+    },
+    "packages": {
+      "title": "संकुल"
+    },
+    "fansFavourite": {
+      "title": "प्रशंसकों का पसंदीदा"
+    },
+    "packageOffer": {
+      "inclusion": {
+        "flights": "टिकट",
+        "stays": "रिहाइश",
+        "carDriver": "कार + ड्राइवर"
+      },
+      "duration": "⟦दिन⟧ दिन • ⟦रात⟧ रातें • ⟦शेड्यूल⟧",
+      "bookedSeparately": "यदि अलग से बुक किया गया हो"
+    },
+    "bestDealsApartments": {
+      "title": "अपार्टमेंट पर सर्वोत्तम डील"
+    },
+    "browsePropertyType": "संपत्ति प्रकार के आधार पर ब्राउज़ करें",
+    "favouriteDestinations": "पसंदीदा स्थलों का अन्वेषण करें",
+    "activitiesCount": "⟦गिनती⟧ गतिविधियाँ",
+    "flightPromo": {
+      "headline": "उड़ानें बुक करना इतना आसान कभी नहीं रहा",
+      "cta": "उपलब्धता जांचें"
+    },
+    "experiencesPromo": {
+      "headline": "एक ही गंतव्य में अनगिनत अनुभवों का आनंद लें।",
+      "cta": "अनुभव ब्राउज़ करें",
+      "imageAlt": "अफ़्रीकी अनुभव ब्राउज़ करें"
+    },
+    "tours": {
+      "attractions": {
+        "title": "Synkafrica पर आकर्षण"
+      },
+      "events": {
+        "browsingIn": "में इवेंट ब्राउज़ करना"
+      },
+      "packages": {
+        "title": "यात्रा पैकेज",
+        "description": "पर्यटन पर सर्वोत्तम सौदे प्राप्त करें और आसानी से आरक्षण करें।"
+      }
+    },
+    "carRentals": {
+      "feature1": {
+        "title": "व्यावसायिक सेवा",
+        "description": "हम पूरे अफ़्रीका में प्रतिष्ठित हवाईअड्डा स्थानांतरण सेवा प्रदाताओं का उपयोग करते हैं।"
+      },
+      "feature2": {
+        "title": "लचीला रद्दीकरण",
+        "description": "यदि आपकी योजनाएँ बदलती हैं, तो आप लचीली शर्तों के साथ रद्द कर सकते हैं।"
+      },
+      "feature3": {
+        "title": "प्रतिस्पर्धी कीमतें",
+        "description": "हमारी टीम आपको सर्वोत्तम डील दिलाने के लिए प्रतिदिन हवाई अड्डे की टैक्सी की कीमतों की तुलना करती है।"
+      }
+    }
+  },
+  "tourPackages": {
+    "hero": {
+      "title": "यात्रा पैकेज",
+      "subtitle": "अविस्मरणीय अफ़्रीकी रोमांचों के लिए डिज़ाइन किए गए चुनिंदा यात्रा पैकेज।"
+    },
+    "searchPlaceholder": "गंतव्य खोजें",
+    "empty": "कोई टूर पैकेज आपकी खोज से मेल नहीं खाता."
+  },
+  "admin": {
+    "header": {
+      "role": "प्लेटफार्म प्रशासक"
+    },
+    "nav": {
+      "dashboard": "डैशबोर्ड",
+      "experiences": "अनुभव",
+      "cars": "कारें",
+      "accommodations": "आवास",
+      "vendors": "विक्रेता",
+      "bookings": "बुकिंग के",
+      "payouts": "भुगतान",
+      "reviews": "समीक्षा",
+      "users": "उपयोगकर्ताओं",
+      "verifications": "सत्यापन",
+      "support": "समर्थन टिकट",
+      "team": "टीम",
+      "audit": "ऑडिट लॉग"
+    },
+    "common": {
+      "all": "सभी",
+      "enabled": "सक्रिय",
+      "disabled": "अक्षम",
+      "edit": "संपादन करना",
+      "actions": "कार्रवाई"
+    },
+    "verifications": {
+      "title": "सत्यापन",
+      "subtitle": "सबमिशन हमारे सत्यापन प्रदाता द्वारा मैन्युअल समीक्षा के लिए चिह्नित किए गए हैं - अधिकांश आईडी/चेहरे की जांच स्वतः स्वीकृत हो जाती है और कभी भी इस कतार तक नहीं पहुंचती है।",
+      "stats": {
+        "needsManualReview": "मैन्युअल समीक्षा की आवश्यकता है",
+        "approvedToday": "आज मंजूरी दे दी गई",
+        "deniedToday": "आज इनकार कर दिया",
+        "avgReviewTime": "औसत समीक्षा का समय",
+        "avgReviewTimeValue": "⟦मिनट⟧ मिनट"
+      },
+      "searchPlaceholder": "नाम या खाता आईडी से खोजें...",
+      "filter": {
+        "users": "उपयोगकर्ताओं",
+        "vendors": "विक्रेता"
+      },
+      "status": {
+        "pendingReview": "समीक्षा लंबित है",
+        "approved": "अनुमत",
+        "denied": "अस्वीकृत"
+      },
+      "audience": {
+        "user": "उपयोगकर्ता",
+        "vendor": "विक्रेता"
+      },
+      "submitted": "सबमिट करने की तिथि⟧",
+      "pendingElapsed": "लंबित ⟦बीता हुआ⟧",
+      "blocking": {
+        "firstCheckout": "पहले चेकआउट को अवरुद्ध करना"
+      },
+      "empty": "कोई भी सत्यापन सबमिशन आपके फ़िल्टर से मेल नहीं खाता।",
+      "accountId": "खाता आईडी⟧",
+      "viewAccount": "खाता देखें →",
+      "pendingManualReview": "मैन्युअल समीक्षा लंबित है",
+      "elapsed": "⟦बीत गया⟧ बीत गया",
+      "documentPreviews": "दस्तावेज़ पूर्वावलोकन",
+      "documentViewLogged": "अनुपालन के लिए दस्तावेज़ दृश्य लॉग किया गया है",
+      "providerResults": "सत्यापन प्रदाता परिणाम (DIDIT)",
+      "approve": "मंज़ूरी देना",
+      "deny": "अस्वीकार करना",
+      "requestResubmission": "पुनः सबमिशन का अनुरोध करें",
+      "notifyUser": "उपयोगकर्ता को निर्णय के बारे में सूचित करें",
+      "notifyVendor": "विक्रेता को निर्णय के बारे में सूचित करें",
+      "verificationApproved": "सत्यापन स्वीकृत",
+      "verificationDenied": "सत्यापन अस्वीकृत",
+      "reviewedInElapsed": "⟦बीता हुआ⟧ में समीक्षा की गई",
+      "approvedBy": "के द्वारा अनुमोदित",
+      "approvedByValue": "व्यवस्थापक - ⟦दिनांक⟧",
+      "reasonForDenial": "इनकार का कारण",
+      "revokeApproval": "अनुमोदन रद्द करें",
+      "inviteResubmission": "पुनः सबमिशन आमंत्रित करें",
+      "viewHistory": "इतिहास देखें",
+      "providerResultsHeading": "प्रदाता परिणाम - DIDIT",
+      "document": {
+        "ninSlip": "एनआईएन पर्ची",
+        "passportPhoto": "पासपोर्ट फोटो पेज",
+        "selfie": "सेल्फी/लिवनेस कैप्चर",
+        "cac": "सीएसी प्रमाणपत्र",
+        "driversLicense": "ड्राइवर का लाइसेंस (सामने)"
+      },
+      "check": {
+        "cacRegistrationLookup": "सीएसी पंजीकरण लुकअप",
+        "cacRegistrationVerified": "सत्यापित",
+        "faceMatchConfidence": "चेहरे पर आत्मविश्वास का मेल",
+        "faceMatchConfidenceDetail": "96%",
+        "documentExpiredDetail": "विफल - दस्तावेज़ समाप्त हो गया",
+        "documentAuthenticity": "दस्तावेज़ प्रामाणिकता",
+        "liveness": "जीवंतता की जांच",
+        "faceMatch": "चेहरे पर आत्मविश्वास का मेल",
+        "nameMatch": "नाम खाते से मेल खाता है",
+        "businessRegistration": "व्यापार पंजीकरण",
+        "faceMatchDetail": "78% - स्वतः-अनुमोदन सीमा से नीचे",
+        "nameMatchDetail": "मिलान",
+        "documentFailedDetail": "विफल - दस्तावेज़ अपठनीय",
+        "faceMatchFailedDetail": "42% - सीमा से नीचे",
+        "businessRegistrationDetail": "आंशिक मिलान - मैन्युअल समीक्षा आवश्यक है"
+      },
+      "denialReason": {
+        "expiredLicense": "ड्राइवर का लाइसेंस मार्च 2026 को समाप्त हो गया। कृपया एक वैध, अप्रयुक्त सरकारी आईडी के साथ पुनः सबमिट करें।"
+      },
+      "documentType": {
+        "passport": "पासपोर्ट",
+        "cacNin": "सीएसी + एनआईएन",
+        "driversLicense": "ड्राइवर का लाइसेंस"
+      },
+      "checkResult": {
+        "passed": "उत्तीर्ण",
+        "failed": "असफल",
+        "warning": "समीक्षा आवश्यक है"
+      }
+    },
+    "dashboard": {
+      "welcome": "एडमिन कंसोल,",
+      "addPackages": "पैकेज जोड़ें",
+      "period": {
+        "label": "मेट्रिक्स अवधि",
+        "today": "आज",
+        "week": "इस सप्ताह",
+        "month": "इस महीने",
+        "sixMonths": "6 महीने",
+        "year": "1 वर्ष",
+        "all": "सभी"
+      },
+      "users": "उपयोगकर्ताओं",
+      "bookings": "बुकिंग के",
+      "revenue": "आय",
+      "activeExperiences": "सक्रिय अनुभव",
+      "activeVendors": "सक्रिय विक्रेता",
+      "viewAll": "सभी को देखें",
+      "manage": "प्रबंधित करना",
+      "alerts": "अलर्ट",
+      "alert": {
+        "pendingPayouts": "3 विक्रेता भुगतान अनुमोदन की प्रतीक्षा में हैं",
+        "flaggedReview": "2 समीक्षाओं को मॉडरेशन के लिए चिह्नित किया गया",
+        "openTicket": "5 खुले विक्रेता समर्थन टिकट",
+        "disabledVendor": "1 विक्रेता खाता अक्षम किया गया - समीक्षा आवश्यक है"
+      }
+    },
+    "packages": {
+      "createTitle": "नया पैकेज/डील बनाएं",
+      "createSubtitle": "उड़ानों, ठहरने, कारों और अनुभवों को मिलाकर एक अनूठा यात्रा पैकेज बनाएं।",
+      "addTitle": "पैकेज जोड़ें",
+      "backToDashboard": "← डैशबोर्ड पर वापस जाएँ",
+      "progressLabel": "पैकेज की प्रगति",
+      "steps": {
+        "details": "पैकेज विवरण",
+        "modules": "मॉड्यूल जोड़ें",
+        "pricing": "मूल्य निर्धारण",
+        "review": "समीक्षा करें और प्रकाशित करें"
+      },
+      "cancel": "रद्द करना",
+      "back": "पीछे",
+      "saveDraft": "ड्राफ्ट के रूप में सेव करें",
+      "draftSaved": "ड्राफ्ट सहेजा गया",
+      "saveContinue": "सहेजें जारी रखें",
+      "submit": "पैकेज जमा करें",
+      "completeRequiredFields": "आवश्यक फ़ील्ड पूर्ण करें: ⟦फ़ील्ड⟧",
+      "sections": {
+        "basicInfo": "पैकेज विवरण",
+        "basicInfoHint": "आपके पैकेज के लिए बुनियादी जानकारी और मेटाडेटा।",
+        "additionalSettings": "अतिरिक्त सेटिंग्स",
+        "additionalSettingsHint": "नीतियां, भोजन और प्रदर्शन विकल्प।"
+      },
+      "fields": {
+        "packageName": "पैकेज का नाम",
+        "packageSlug": "पैकेज स्लग (यूआरएल)",
+        "shortDescription": "संक्षिप्त वर्णन",
+        "detailedDescription": "विस्तृत विवरण",
+        "banner": "पैकेज बैनर छवि",
+        "category": "पैकेज श्रेणी",
+        "bestFor": "के लिए सर्वोत्तम",
+        "tags": "पैकेज टैग",
+        "includedMeals": "भोजन शामिल",
+        "cancellationPolicy": "रद्दीकरण नीति",
+        "refundPolicy": "भुगतान वापसी की नीति",
+        "maxGuests": "अधिकतम अतिथि",
+        "featuredDeal": "पैकेज हाइलाइट",
+        "currency": "मुद्रा",
+        "normalPrice": "सामान्य कीमत",
+        "salesPrice": "बिक्री मूल्य",
+        "showSavingsBadge": "बचत बैज दिखाएँ",
+        "savingsBadgePercent": "बचत बैज प्रतिशत",
+        "validFrom": "से मान्य",
+        "validUntil": "तब तक वैध",
+        "minimumBookingNotice": "न्यूनतम बुकिंग सूचना",
+        "packageActive": "पैकेज की स्थिति"
+      },
+      "placeholders": {
+        "packageName": "जैसे लागोस और पेरिस पलायन",
+        "packageSlug": "लागोस-पेरिस-एस्केप",
+        "shortDescription": "एक संक्षिप्त सारांश जो पैकेज कार्डों पर दिखाई देता है।",
+        "detailedDescription": "संपूर्ण यात्रा कार्यक्रम, समावेशन और मुख्य आकर्षण का वर्णन करें।",
+        "category": "श्रेणी चुनना",
+        "tags": "जैसे समुद्रतट, साहसिक कार्य",
+        "maxGuests": "जैसे 4",
+        "select": "चुनना"
+      },
+      "hints": {
+        "packageSlug": "इसका उपयोग पैकेज यूआरएल में किया जाएगा.",
+        "tags": "प्रत्येक टैग जोड़ें और Enter दबाएँ।",
+        "featuredDeal": "इस पैकेज को विशेष सौदे के रूप में दिखाएँ।",
+        "showSavingsBadge": "पैकेज कार्ड पर बचत बैज प्रदर्शित करें।",
+        "savingsBadgePercent": "बचत बैज पर दिखाया गया प्रतिशत निर्धारित करें। आपकी कीमतों से स्वतः भरा हुआ।",
+        "packageActive": "सक्रिय पैकेज ग्राहकों को दिखाई देते हैं."
+      },
+      "uploadBanner": "अपलोड करने या खींचने और छोड़ने के लिए क्लिक करें",
+      "uploadBannerHint": "JPG, PNG या WEBP (अधिकतम 5MB)",
+      "removeBanner": "बैनर हटाओ",
+      "tips": {
+        "title": "एक बेहतरीन पैकेज के लिए युक्तियाँ",
+        "one": "एक स्पष्ट, आकर्षक पैकेज नाम का उपयोग करें।",
+        "two": "बेहतर मूल्य के लिए पूरक मॉड्यूल को संयोजित करें।",
+        "three": "मजबूत बिक्री मूल्य के साथ बचत को हाइलाइट करें।",
+        "four": "खोज योग्यता में सुधार के लिए टैग जोड़ें।"
+      },
+      "moduleType": {
+        "flight": "उड़ान",
+        "accommodation": "आवास",
+        "car": "कार",
+        "experience": "अनुभव"
+      },
+      "modules": {
+        "selectHeading": "मॉड्यूल जोड़ें",
+        "selectHint": "अपना पैकेज बनाने के लिए उड़ानें, ठहरने की जगहें, कारें और अनुभव ब्राउज़ करें और जोड़ें।",
+        "addedHeading": "पैकेज मॉड्यूल",
+        "countLabel": "मॉड्यूल",
+        "empty": "अभी तक कोई मॉड्यूल नहीं जोड़ा गया. उपरोक्त पैनल से आइटम चुनें.",
+        "add": "जोड़ना",
+        "added": "जोड़ा",
+        "remove": "मॉड्यूल निकालें",
+        "dragHandle": "पुन: व्यवस्थित करने के लिए खींचें",
+        "reorderHint": "जैसे ही वे ग्राहकों को दिखाई देंगे, उन्हें पुनः व्यवस्थित करने के लिए मॉड्यूल को खींचें और छोड़ें।",
+        "required": "जारी रखने के लिए कम से कम एक मॉड्यूल जोड़ें।",
+        "searchPlaceholder": "मॉड्यूल खोजें…",
+        "noResults": "कोई भी मॉड्यूल आपकी खोज से मेल नहीं खाता.",
+        "availableLabel": "उपलब्ध"
+      },
+      "pricing": {
+        "heading": "मूल्य निर्धारण",
+        "hint": "अपने टिकट की कीमतें निर्धारित करें.",
+        "savingsDisplay": "आप ⟦राशि⟧ बचाएं (⟦प्रतिशत⟧%)"
+      },
+      "availability": {
+        "heading": "उपलब्धता",
+        "hint": "सेट करें कि यह पैकेज कब बुक किया जा सकता है।"
+      },
+      "review": {
+        "heading": "समीक्षा करें और प्रकाशित करें",
+        "hint": "सबमिट करने से पहले सभी पैकेज विवरणों की समीक्षा करें।"
+      }
+    },
+    "users": {
+      "title": "यात्री",
+      "searchPlaceholder": "नाम, उपयोगकर्ता आईडी, ईमेल या स्थान के आधार पर खोजें...",
+      "userId": "उपयोगकर्ता पहचान",
+      "traveler": "यात्री",
+      "contact": "संपर्क",
+      "location": "जगह",
+      "tier": {
+        "bronze": "पीतल",
+        "silver": "चाँदी",
+        "gold": "सोना",
+        "platinum": "प्लैटिनम"
+      },
+      "bookingsSpend": "बुकिंग/खर्च",
+      "lastTrip": "अंतिम यात्रा",
+      "status": {
+        "active": "सक्रिय",
+        "inactive": "निष्क्रिय"
+      },
+      "stats": {
+        "found": "यात्रियों को मिला",
+        "active": "सक्रिय",
+        "combinedSpend": "संयुक्त व्यय",
+        "page": "पेज",
+        "pageValue": "⟦वर्तमान⟧ / ⟦कुल⟧"
+      },
+      "pagination": {
+        "previous": "पहले का",
+        "next": "अगला",
+        "showing": "⟦कुल⟧ का पेज ⟦वर्तमान⟧"
+      },
+      "details": "विवरण",
+      "empty": "कोई भी यात्री आपकी खोज से मेल नहीं खाता।",
+      "notFound": "यात्री नहीं मिला.",
+      "backToList": "यात्रियों के पास वापस जाएँ",
+      "accountDetails": "खाता विवरण",
+      "detail": {
+        "totalBookings": "कुल बुकिंग",
+        "lifetimeSpend": "जीवन भर का खर्च",
+        "primaryCorridor": "प्राथमिक गलियारा",
+        "openTickets": "खुले टिकट",
+        "idFaceVerified": "आईडी + चेहरा सत्यापित",
+        "joined": "शामिल हुए ⟦दिनांक⟧",
+        "lastActive": "अंतिम सक्रिय ⟦बीता हुआ⟧",
+        "phoneWhatsApp": "⟦फ़ोन⟧ (व्हाट्सएप-लिंक्ड)",
+        "identityVerification": "पहचान सत्यापन",
+        "governmentId": "सरकारी आईडी (⟦प्रकार⟧)",
+        "faceMatch": "चेहरा/लाइवनेस मैच",
+        "verifiedVia": "के माध्यम से सत्यापित किया गया",
+        "verified": "सत्यापित",
+        "notVerified": "सत्यापित नहीं है",
+        "paymentMethods": "फ़ाइल पर भुगतान विधियाँ",
+        "card": "कार्ड",
+        "defaultCurrency": "डिफ़ॉल्ट मुद्रा",
+        "recentBookings": "हाल की बुकिंग",
+        "internalNotes": "आंतरिक नोट्स",
+        "noNotes": "अभी तक कोई आंतरिक नोट नहीं.",
+        "noteAttribution": "— ⟦लेखक⟧, ⟦तारीख⟧",
+        "bookingStatus": {
+          "confirmed": "की पुष्टि",
+          "completed": "पुरा होना।",
+          "cancelled": "रद्द कर दिया गया"
+        }
+      },
+      "menu": {
+        "verification": "सत्यापन",
+        "rerunIdVerification": "आईडी सत्यापन पुनः चलाएँ",
+        "rerunFaceVerification": "चेहरा सत्यापन पुनः चलाएँ",
+        "financial": "वित्तीय",
+        "issueRefund": "धनवापसी",
+        "holdBookingPayment": "बुकिंग भुगतान रोकें",
+        "support": "सहायता",
+        "viewAsReadOnly": "इस रूप में देखें (केवल पढ़ने के लिए)",
+        "addInternalNote": "आंतरिक नोट जोड़ें",
+        "dataAccount": "डेटा और खाता",
+        "mergeDuplicateAccount": "डुप्लिकेट खाता मर्ज करें",
+        "exportUserData": "उपयोगकर्ता डेटा निर्यात करें (जीडीपीआर)",
+        "suspendAccount": "खाता निलंबित करें"
+      }
+    },
+    "experiences": {
+      "title": "अनुभवों को प्रबंधित करें",
+      "searchPlaceholder": "अनुभव खोजें",
+      "name": "अनुभव का नाम",
+      "empty": "कोई भी अनुभव आपकी खोज से मेल नहीं खाता.",
+      "actions": {
+        "disable": "अनुभव अक्षम करें",
+        "enable": "अनुभव सक्षम करें",
+        "goTo": "अनुभव पर जाएँ",
+        "delete": "अनुभव हटाएँ"
+      }
+    },
+    "cars": {
+      "title": "कारों का प्रबंधन करें",
+      "searchPlaceholder": "कारें खोजें",
+      "name": "कार का नाम",
+      "empty": "आपकी खोज से मेल खाती कोई कार नहीं.",
+      "actions": {
+        "disable": "कार अक्षम करें",
+        "enable": "कार सक्षम करें",
+        "goTo": "कार में जाओ",
+        "delete": "कार हटाएं"
+      }
+    },
+    "accommodations": {
+      "title": "आवास की व्यवस्था करें",
+      "searchPlaceholder": "आवास खोजें",
+      "name": "आवास का नाम",
+      "empty": "कोई भी आवास आपकी खोज से मेल नहीं खाता.",
+      "actions": {
+        "disable": "आवास अक्षम करें",
+        "enable": "आवास सक्षम करें",
+        "goTo": "आवास पर जाएँ",
+        "delete": "आवास हटाएँ"
+      }
+    },
+    "listings": {
+      "location": "लिस्टिंग स्थान",
+      "vendor": "विक्रेता",
+      "bookings": "बुकिंग के",
+      "ratings": "रेटिंग",
+      "reviews": "समीक्षा",
+      "activityStatus": "गतिविधि स्थिति",
+      "status": {
+        "active": "सक्रिय",
+        "inactive": "निष्क्रिय",
+        "deleted": "हटाए गए"
+      },
+      "tab": {
+        "active": "सक्रिय सूचियाँ",
+        "deleted": "हटाई गई सूचियाँ"
+      },
+      "deletedHint": "बाज़ार से हटाई गई सूचियाँ यहाँ दिखाई देती हैं। आप विवरण देख सकते हैं या रिकॉर्ड को स्थायी रूप से हटा सकते हैं।",
+      "viewDetails": "सूची देखें",
+      "deletedAt": "⟦तारीख⟧ को हटा दिया गया",
+      "detailTitle": "सूची विवरण",
+      "detailHint": "मीडिया, विवरण, मूल्य निर्धारण और दस्तावेज़ों सहित इस सूची का पूर्ण पूर्वावलोकन।",
+      "detailNotFound": "यह सूची नहीं मिल सकी.",
+      "detail": {
+        "backCars": "कारों पर वापस",
+        "backAccommodations": "आवास पर वापस जाएँ",
+        "backExperiences": "अनुभवों पर वापस जाएँ"
+      },
+      "detailClose": "बंद करना"
+    },
+    "vendors": {
+      "title": "विक्रेताओं को प्रबंधित करें",
+      "add": "विक्रेता जोड़ें",
+      "searchPlaceholder": "नाम, विक्रेता आईडी, ईमेल या फ़ोन द्वारा खोजें...",
+      "vendorId": "विक्रेता आईडी",
+      "name": "विक्रेता",
+      "userId": "उपयोगकर्ता पहचान",
+      "stats": {
+        "found": "विक्रेता मिल गए",
+        "active": "सक्रिय",
+        "combinedRevenue": "संयुक्त राजस्व",
+        "page": "पेज",
+        "pageValue": "⟦वर्तमान⟧ / ⟦कुल⟧"
+      },
+      "pagination": {
+        "previous": "पहले का",
+        "next": "अगला",
+        "showing": "⟦कुल⟧ का पेज ⟦वर्तमान⟧"
+      },
+      "contactInfo": "संपर्क सूचना",
+      "listings": "लिस्टिंग",
+      "commission": "आयोग",
+      "commissionValue": "⟦दर⟧%",
+      "status": {
+        "active": "सक्रिय",
+        "inactive": "निष्क्रिय"
+      },
+      "revenue": "आय",
+      "rating": "रेटिंग",
+      "reviews": "समीक्षा",
+      "details": "विवरण",
+      "empty": "कोई भी विक्रेता आपकी खोज से मेल नहीं खाता।",
+      "notFound": "विक्रेता नहीं मिला.",
+      "backToList": "विक्रेताओं के पास वापस जाएँ",
+      "accountDetails": "खाता विवरण",
+      "joined": "सम्मिलित हुए",
+      "detail": {
+        "activeListings": "सक्रिय सूचियाँ",
+        "completedBookings": "बुकिंग पूरी हो गई",
+        "averageRating": "औसत श्रेणी",
+        "openStrikes": "खुला प्रहार",
+        "category": "वर्ग",
+        "onboarded": "ऑनबोर्ड किया गया ⟦दिनांक⟧",
+        "accountDocuments": "खाते के दस्तावेज़",
+        "listingDocuments": "लिस्टिंग दस्तावेज़ - ⟦श्रेणी⟧",
+        "payoutSummary": "भुगतान सारांश",
+        "pendingPayout": "लंबित भुगतान",
+        "lastPayout": "अंतिम भुगतान",
+        "internalNotes": "आंतरिक नोट्स",
+        "noNotes": "अभी तक कोई आंतरिक नोट नहीं.",
+        "noteAttribution": "— ⟦लेखक⟧, ⟦तारीख⟧",
+        "viewListings": "सूचियाँ देखें",
+        "suspendVendor": "विक्रेता को निलंबित करें",
+        "documentStatus": {
+          "verified": "सत्यापित",
+          "pendingReview": "समीक्षा लंबित है",
+          "signed": "पर हस्ताक्षर किए",
+          "notVerified": "असत्यापित"
+        }
+      },
+      "menu": {
+        "verification": "सत्यापन",
+        "approvePendingListing": "लंबित सूची को मंजूरी दें",
+        "requestAdditionalDocuments": "अतिरिक्त दस्तावेज़ों का अनुरोध करें",
+        "upgradeToTier": "टियर {tier} पर अपग्रेड करें",
+        "standingTrust": "खड़ा होना और भरोसा करना",
+        "grantInstantBook": "तत्काल पुस्तक विशेषाधिकार प्रदान करें",
+        "addStrike": "स्ट्राइक/आंतरिक ध्वज जोड़ें",
+        "clearStrike": "एक हड़ताल साफ़ करें",
+        "financial": "वित्तीय",
+        "holdPendingPayout": "लंबित भुगतान रोकें",
+        "adjustCommissionRate": "कमीशन दर समायोजित करें",
+        "communication": "संचार",
+        "contactVendor": "विक्रेता से संपर्क करें",
+        "addInternalNote": "आंतरिक नोट जोड़ें",
+        "account": "खाता",
+        "suspendAccount": "खाता निलंबित करें",
+        "banPermanently": "स्थायी रूप से प्रतिबंध लगाएं"
+      },
+      "requestDocumentsModal": {
+        "title": "अतिरिक्त दस्तावेज़ों का अनुरोध करें",
+        "subtitle": "⟦विक्रेता⟧ को एक दस्तावेज़ अनुरोध भेजें।",
+        "documentLabel": "दस्तावेज़ चुनें",
+        "documentPlaceholder": "एक दस्तावेज़ चुनें",
+        "otherOption": "अन्य (सूचीबद्ध नहीं)",
+        "customDocumentLabel": "दस्तावेज़ का नाम जोड़ें",
+        "customDocumentPlaceholder": "दस्तावेज़ का नाम टाइप करें",
+        "submit": "अनुरोध भेजा",
+        "cancel": "रद्द करना"
+      },
+      "confirm": {
+        "cancel": "रद्द करना"
+      },
+      "confirmSuspend": {
+        "title": "क्या आपको यकीन है?",
+        "message": "आप ⟦विक्रेता⟧ को निलंबित करने वाले हैं। जब तक यह पुनः सक्रिय नहीं हो जाता, वे अपने खाते तक पहुंच खो देंगे।"
+      },
+      "confirmBan": {
+        "title": "क्या आपको यकीन है?",
+        "message": "आप ⟦विक्रेता⟧ पर स्थायी रूप से प्रतिबंध लगाने वाले हैं। इस एक्शन को वापस नहीं किया जा सकता।"
+      },
+      "internalNoteModal": {
+        "title": "आंतरिक नोट जोड़ें",
+        "subtitle": "⟦विक्रेता⟧ के लिए एक अवलोकन या नोट जोड़ें।",
+        "label": "अवलोकन",
+        "placeholder": "अपना अवलोकन या नोट यहां लिखें...",
+        "submit": "नोट सहेजें"
+      },
+      "experiences": "अनुभव",
+      "earnings": "कुल कमाई"
+    },
+    "bookings": {
+      "title": "बुकिंग के",
+      "subtitle": "उड़ानों, कारों, आवासों और अनुभवों की सभी बुकिंग - ऐप, वेब और मैन्युअल रूप से बनाई गई।",
+      "create": "बुकिंग बनाएँ",
+      "searchPlaceholder": "ग्राहक, विक्रेता, या बुकिंग आईडी के आधार पर खोजें...",
+      "empty": "कोई भी बुकिंग आपके फ़िल्टर से मेल नहीं खाती.",
+      "guests": "अतिथियों",
+      "vendor": "विक्रेता",
+      "contactCustomer": "ग्राहक से संपर्क करें",
+      "contactVendor": "विक्रेता से संपर्क करें",
+      "addInternalNote": "आंतरिक नोट जोड़ें",
+      "partialRefund": "आंशिक वापसी",
+      "cancelRefund": "रद्द करें और धनवापसी करें",
+      "flagDispute": "विवाद के रूप में चिह्नित करें",
+      "saveChanges": "परिवर्तनों को सुरक्षित करें",
+      "stats": {
+        "upcoming": "आगामी (7 दिन)",
+        "awaiting": "पुष्टिकरण की प्रतीक्षा",
+        "confirmed": "की पुष्टि",
+        "disputed": "विवादित/चिह्नित",
+        "totalMonth": "इस माह कुल"
+      },
+      "product": {
+        "all": "सभी उत्पाद प्रकार",
+        "flights": "टिकट",
+        "cars": "कारें",
+        "accommodations": "रिहाइश",
+        "experiences": "अनुभव"
+      },
+      "source": {
+        "all": "सभी स्रोत",
+        "website": "वेबसाइट",
+        "mobileApp": "मोबाइल एप्लिकेशन",
+        "admin": "व्यवस्थापक द्वारा बनाया गया"
+      },
+      "dateRange": {
+        "label": "तिथि सीमा",
+        "day": "1 दिन",
+        "week": "1 सप्ताह",
+        "month": "1 महीना",
+        "sixMonths": "6 महीने",
+        "year": "1 वर्ष",
+        "all": "सभी"
+      },
+      "filter": {
+        "all": "सभी (⟦गिनती⟧)",
+        "upcoming": "आगामी (⟦गिनती⟧)",
+        "awaiting": "पुष्टि की प्रतीक्षा में (⟦गिनती⟧)",
+        "confirmed": "पुष्टि की गई (⟦गिनती⟧)",
+        "completed": "पूर्ण (⟦गिनती⟧)",
+        "cancelled": "रद्द किया गया (⟦गिनती⟧)",
+        "disputed": "विवादित (⟦गिनती⟧)"
+      },
+      "status": {
+        "confirmed": "की पुष्टि",
+        "awaiting": "पुष्टिकरण की प्रतीक्षा",
+        "cancelled": "रद्द कर दिया गया",
+        "completed": "पुरा होना।",
+        "disputed": "विवादित"
+      },
+      "sidebar": {
+        "customer": "ग्राहक",
+        "source": "स्रोत: ⟦स्रोत⟧",
+        "vendor": "विक्रेता",
+        "bookingDetails": "बुकिंग विवरण",
+        "payment": "भुगतान",
+        "timeline": "समय",
+        "name": "नाम",
+        "contact": "संपर्क",
+        "whatsapp": "WhatsApp",
+        "assignedTo": "को सौंपना",
+        "vendorContact": "विक्रेता संपर्क",
+        "checkIn": "चेक-इन तिथि",
+        "checkOut": "चेक-आउट तिथि",
+        "amount": "मात्रा",
+        "paymentStatus": "स्थिति",
+        "chargedCurrency": "मुद्रा शुल्क लिया गया"
+      },
+      "createModal": {
+        "title": "बुकिंग बनाएँ",
+        "subtitle": "ग्राहक की ओर से एक बुकिंग बनाएं.",
+        "infoBannerPrefix": "इस बुकिंग को टैग किया जाएगा",
+        "infoBannerSource": "स्रोत: व्यवस्थापक द्वारा बनाया गया",
+        "infoBannerSuffix": "और ग्राहक के खाते और ऐप में स्वयं-सेवा बुकिंग के समान दिखाई देगा।",
+        "productType": "उत्पाद का प्रकार",
+        "product": {
+          "accommodations": "आवास",
+          "flights": "टिकट",
+          "cars": "कारें",
+          "experiences": "अनुभव"
+        },
+        "customer": "ग्राहक",
+        "customerPlaceholder": "मौजूदा ग्राहक को नाम, ईमेल या फ़ोन द्वारा खोजें...",
+        "vendorListing": "विक्रेता/सूचीकरण",
+        "vendorPlaceholder": "विक्रेता या सूची खोजें...",
+        "startDate": "आरंभ करने की तिथि",
+        "endDate": "अंतिम तिथि",
+        "guestsUnits": "अतिथि/इकाइयां",
+        "guestsPlaceholder": "जैसे 2",
+        "totalAmount": "कुल राशि",
+        "amountPlaceholder": "एनजीएन",
+        "paymentStatus": "भुगतान की स्थिति",
+        "payment": {
+          "sendLink": "ग्राहक को भुगतान लिंक भेजें",
+          "paidInFull": "पूर्ण भुगतान के रूप में चिह्नित करें",
+          "pending": "भुगतान लंबित - कोई लिंक नहीं भेजा गया"
+        },
+        "internalNote": "आंतरिक नोट",
+        "internalNotePlaceholder": "जैसे व्हाट्सएप पूछताछ के माध्यम से बुक किया गया, ग्राहक ने भूतल पर कमरे का अनुरोध किया",
+        "cancel": "रद्द करना",
+        "submit": "बुकिंग बनाएँ"
+      }
+    },
+    "payouts": {
+      "title": "भुगतान",
+      "subtitle": "निपटान अवधि के अनुसार, सभी श्रेणियों में विक्रेता की आय।",
+      "searchPlaceholder": "विक्रेता के नाम या संदर्भ के आधार पर खोजें...",
+      "pendingCount": "⟦गिनती⟧ लंबित भुगतान",
+      "markComplete": "पूर्ण चिह्नित करें",
+      "contactVendor": "विक्रेता से संपर्क करें",
+      "decline": "गिरावट",
+      "empty": "कोई भुगतान आपकी खोज से मेल नहीं खाता.",
+      "requested": "अनुरोधित दिनांक⟧",
+      "periodLabel": "अवधि: ⟦अवधि⟧",
+      "listBookingsBank": "⟦गिनती⟧ बुकिंग · ⟦बैंक⟧ ⟦खाता⟧",
+      "netPayoutToVendor": "विक्रेता को शुद्ध भुगतान",
+      "grossEarnings": "सकल बुकिंग आय",
+      "platformCommission": "प्लेटफ़ॉर्म कमीशन (⟦रेट⟧%)",
+      "netPayout": "शुद्ध भुगतान",
+      "paymentDestination": "भुगतान गंतव्य",
+      "bank": "किनारा",
+      "accountNumber": "खाता संख्या",
+      "accountName": "खाता नाम",
+      "payoutMethod": "भुगतान विधि",
+      "associatedBookings": "संबद्ध बुकिंग (⟦गिनती⟧)",
+      "internalNote": "आंतरिक नोट",
+      "noteAttribution": "— ⟦लेखक⟧, ⟦तारीख⟧",
+      "period": {
+        "thisMonth": "इस महीने - जुलाई 2026",
+        "lastMonth": "पिछला महीना - जून 2026",
+        "quarter": "यह तिमाही - Q2 2026"
+      },
+      "stats": {
+        "totalPeriod": "कुल भुगतान - अवधि",
+        "totalVendors": "सभी ⟦गिनती⟧ विक्रेता",
+        "pending": "लंबित",
+        "pendingSubtitle": "⟦गिनती⟧ भुगतान कार्रवाई की प्रतीक्षा में है",
+        "completed": "पुरा होना।",
+        "completedSubtitle": "⟦गिनती⟧ भुगतान तय हो गया",
+        "declinedFailed": "अस्वीकृत/विफल",
+        "declinedFailedSubtitle": "⟦अस्वीकृत⟧अस्वीकृत · ⟦असफल⟧ विफल स्थानांतरण"
+      },
+      "filter": {
+        "all": "सभी (⟦गिनती⟧)",
+        "pending": "लंबित (⟦गिनती⟧)",
+        "completed": "पूर्ण (⟦गिनती⟧)",
+        "declined": "अस्वीकृत (⟦गिनती⟧)",
+        "failed": "विफल (⟦गिनती⟧)"
+      },
+      "status": {
+        "pending": "लंबित",
+        "completed": "पुरा होना।",
+        "declined": "अस्वीकृत",
+        "failed": "असफल",
+        "failedTransfer": "विफल स्थानांतरण"
+      }
+    },
+    "reviews": {
+      "title": "संयम की समीक्षा करें",
+      "category": {
+        "unanswered": "अनुत्तरित",
+        "responseRequired": "उत्तर अपेक्षित",
+        "flagged": "चिह्नित किए गए",
+        "deleted": "हटाए गए",
+        "published": "प्रकाशित"
+      },
+      "selectAll": "सबका चयन करें",
+      "deselectAll": "सबको अचयनित करो",
+      "bulkPublish": "चयनित प्रकाशित करें",
+      "bulkFlag": "ध्वज चयनित",
+      "bulkResponseRequired": "उत्तर अपेक्षित",
+      "bulkDelete": "चयनित को हटाओ",
+      "actionsGuideTitle": "इन क्रियाओं का क्या अर्थ है?",
+      "actionsGuide": {
+        "publish": "प्रकाशित करें - समीक्षा को सार्वजनिक सूची पृष्ठ पर दृश्यमान बनाएं।",
+        "flag": "फ़्लैग - अनुवर्ती (अनुचित या संदिग्ध सामग्री) के लिए समीक्षा को चिह्नित करें।",
+        "delete": "हटाएँ - समीक्षा को सार्वजनिक दृश्य से हटाएँ। हटाई गई समीक्षाएं हटाए गए टैब में दिखाई देती हैं.",
+        "responseRequired": "प्रतिक्रिया आवश्यक - इंगित करें कि विक्रेता या व्यवस्थापक प्रतिक्रिया की आवश्यकता है।",
+        "clearResponseRequired": "स्पष्ट प्रतिक्रिया आवश्यक - आधिकारिक प्रतिक्रिया पोस्ट होने के बाद मार्कर हटा दें।"
+      },
+      "selectReview": "⟦शीर्षक⟧ के लिए समीक्षा का चयन करें",
+      "unansweredBadge": "अनुत्तरित",
+      "responseRequiredBadge": "उत्तर अपेक्षित",
+      "officialResponse": "आधिकारिक प्रतिक्रिया",
+      "empty": "इस श्रेणी में कोई समीक्षा नहीं.",
+      "flag": "झंडा",
+      "responseRequired": "उत्तर अपेक्षित",
+      "clearResponseRequired": "स्पष्ट प्रतिक्रिया आवश्यक है",
+      "delete": "मिटाना",
+      "hide": "छिपाना",
+      "publish": "प्रकाशित करना",
+      "respondAsSynkAfrica": "SynkAfrica के रूप में उत्तर दें",
+      "responsePlaceholder": "अतिथि और विक्रेता को दिखाई देने वाली आधिकारिक प्रतिक्रिया...",
+      "photosLabel": "अतिथि तस्वीरें",
+      "status": {
+        "published": "प्रकाशित",
+        "flagged": "चिह्नित किए गए",
+        "deleted": "हटाए गए",
+        "hidden": "छिपा हुआ"
+      }
+    },
+    "reports": {
+      "title": "रिपोर्टों",
+      "totalRevenue": "कुल राजस्व (महीना)",
+      "totalBookings": "कुल बुकिंग (माह)",
+      "topExperience": "शीर्ष अनुभव",
+      "activeVendors": "सक्रिय विक्रेता",
+      "popularExperiences": "लोकप्रिय अनुभव",
+      "bookings": "बुकिंग के",
+      "metric": "मीट्रिक",
+      "value": "कीमत",
+      "experience": "अनुभव",
+      "exportRevenue": "निर्यात राजस्व सीएसवी",
+      "exportBookings": "निर्यात बुकिंग सीएसवी"
+    },
+    "support": {
+      "title": "समर्थन टिकट",
+      "subtitle": "उपयोगकर्ता और विक्रेता समर्थन अनुरोधों की समीक्षा करें, टिकट की स्थिति अपडेट करें और आधिकारिक प्रतिक्रियाएँ भेजें।",
+      "tab": {
+        "users": "उपयोगकर्ताओं",
+        "vendors": "विक्रेता"
+      },
+      "user": "उपयोगकर्ता",
+      "vendor": "विक्रेता",
+      "empty": "कोई भी टिकट इस फ़िल्टर से मेल नहीं खाता.",
+      "adminResponse": "व्यवस्थापक प्रतिक्रिया",
+      "previousResponse": "पिछली प्रतिक्रिया",
+      "sendResponse": "प्रतिक्रिया भेजो"
+    }
+  },
+  "vendor": {
+    "nav": {
+      "workspace": "कार्यस्थान",
+      "account": "खाता",
+      "dashboard": "डैशबोर्ड",
+      "listings": "लिस्टिंग",
+      "bookings": "बुकिंग के",
+      "earnings": "आय",
+      "notifications": "सूचनाएं",
+      "businessProfile": "व्यवसाय प्रोफ़ाइल",
+      "settings": "सेटिंग्स",
+      "support": "सहायता",
+      "logOut": "लॉग आउट",
+      "openMenu": "मेनू खोलें",
+      "closeMenu": "मेनू बंद करें"
+    },
+    "header": {
+      "verifiedVendor": "सत्यापित विक्रेता",
+      "unverifiedVendor": "असत्यापित विक्रेता",
+      "pendingVendor": "सत्यापन लंबित है"
+    },
+    "signup": {
+      "title": "अपना विक्रेता खाता बनाएं",
+      "subtitle": "SynkAfrica से जुड़ें और पूरे अफ्रीका में यात्रियों के लिए अपनी कारों, आवासों और अनुभवों को सूचीबद्ध करना शुरू करें।",
+      "alreadyHaveAccount": "क्या आपके पास पहले से ही एक विक्रेता खाता है?",
+      "signIn": "दाखिल करना",
+      "progressLabel": "विक्रेता साइनअप प्रगति",
+      "steps": {
+        "business": "व्यवसाय एवं मालिक की जानकारी",
+        "security": "सुरक्षा एवं सत्यापन",
+        "identity": "पहचान सत्यापन"
+      },
+      "cancel": "रद्द करना",
+      "back": "पीछे",
+      "continue": "जारी रखना",
+      "createAccount": "खाता बनाएं",
+      "completeRequiredFields": "आवश्यक फ़ील्ड पूर्ण करें: ⟦फ़ील्ड⟧",
+      "securityRequired": "अपने फोन को ओटीपी से सत्यापित करें और जारी रखने के लिए एक वैध पासवर्ड बनाएं।",
+      "identityRequired": "अपना सरकारी आईडी अपलोड करें और अपना खाता बनाने के लिए शर्तों को स्वीकार करें।",
+      "sections": {
+        "businessInfo": "व्यवसाय संबंधी जानकारी",
+        "businessInfoHint": "हमें अपने व्यवसाय के बारे में बताएं.",
+        "ownerInfo": "मालिक के बारे में जानकारी",
+        "ownerInfoHint": "व्यवसाय स्वामी या प्राथमिक संपर्क के बारे में विवरण।",
+        "phoneVerification": "फ़ोन सत्यापन",
+        "phoneVerificationHint": "हम आपके द्वारा दिए गए फ़ोन नंबर पर एक बार का कोड भेजेंगे।",
+        "accountSecurity": "खाता सुरक्षा",
+        "accountSecurityHint": "अपने विक्रेता खाते के लिए एक मजबूत पासवर्ड बनाएं।",
+        "governmentId": "सरकार द्वारा जारी पहचान पत्र",
+        "governmentIdHint": "पहचान सत्यापन के लिए वैध पासपोर्ट, ड्राइवर लाइसेंस या एनआईएन स्लिप अपलोड करें।"
+      },
+      "fields": {
+        "businessName": "कौन सा व्यवसाय",
+        "businessType": "व्यापार के प्रकार",
+        "cacRegistrationNumber": "सीएसी पंजीकरण संख्या",
+        "companyType": "कंपनी प्रकार",
+        "businessAddress": "व्यावसायिक पता",
+        "ownerFullName": "मालिक का पूरा नाम",
+        "ownerEmail": "मेल पता",
+        "phoneNumber": "फ़ोन नंबर",
+        "dateOfBirth": "जन्मतिथि",
+        "password": "पासवर्ड",
+        "confirmPassword": "पासवर्ड की पुष्टि कीजिये"
+      },
+      "placeholders": {
+        "companyType": "कंपनी का प्रकार चुनें",
+        "businessName": "जैसे तटीय ट्रेल्स एनजी",
+        "businessType": "व्यवसाय का प्रकार चुनें",
+        "cacRegistrationNumber": "जैसे आरसी1234567",
+        "businessAddress": "सड़क, शहर, राज्य",
+        "ownerFullName": "पूर्ण कानूनी नाम",
+        "ownerEmail": "you@business.com",
+        "phoneNumber": "7812345678",
+        "password": "एक पासवर्ड बनाएं",
+        "confirmPassword": "अपना पासवर्ड पुनः दर्ज करें"
+      },
+      "sendOtp": "ओटीपी भेजें",
+      "resendOtp": "ओटीपी दोबारा भेजें",
+      "enterOtp": "ओटीपी दर्ज करें",
+      "resendIn": "00:⟦सेकंड⟧ में पुनः भेजें",
+      "otpVerified": "फ़ोन नंबर सत्यापित.",
+      "passwordRules": {
+        "minLength": "कम से कम 8 अक्षर",
+        "hasNumber": "एक संख्या शामिल है",
+        "hasUppercase": "अपरकेस अक्षर शामिल है"
+      },
+      "passwordMismatch": "सांकेतिक शब्द मेल नहीं खाते।",
+      "togglePasswordVisibility": "पासवर्ड दृश्यता टॉगल करें",
+      "uploadId": "अपनी आईडी यहां खींचें और छोड़ें",
+      "uploadIdHint": "जेपीजी, पीएनजी या पीडीएफ (अधिकतम 5एमबी)",
+      "chooseFile": "फाइलें चुनें",
+      "idUploaded": "दस्तावेज़ अपलोड किया गया",
+      "idUploadFailed": "अपलोड विफल - कृपया पुनः प्रयास करें।",
+      "removeId": "आईडी हटाएं",
+      "idPrivacyNote": "आपकी आईडी सुरक्षित रूप से संग्रहीत है और केवल सत्यापन उद्देश्यों के लिए उपयोग की जाती है। हम आपके व्यक्तिगत दस्तावेज़ कभी भी तीसरे पक्ष के साथ साझा नहीं करते हैं।",
+      "securityBanner": {
+        "title": "आपकी जानकारी हमारे पास सुरक्षित है",
+        "message": "हम आपके डेटा की सुरक्षा और आपके खाते को सुरक्षित रखने के लिए उद्योग-मानक सुरक्षा का उपयोग करते हैं।"
+      },
+      "agreeTermsPrefix": "मैं करने के लिए सहमत हूं",
+      "termsOfService": "सेवा की शर्तें",
+      "and": "और",
+      "privacyPolicy": "गोपनीयता नीति"
+    },
+    "login": {
+      "title": "विक्रेता साइन इन करें",
+      "intro": "लिस्टिंग, बुकिंग और कमाई प्रबंधित करने के लिए अपने SynkAfrica विक्रेता खाते में साइन इन करें।",
+      "emailPlaceholder": "अपना विक्रेता ईमेल दर्ज करें",
+      "signInGoogle": "Google से साइन इन करें",
+      "noAccount": "क्या आपके पास विक्रेता खाता नहीं है?",
+      "signUp": "साइन अप करें"
+    },
+    "verificationNotice": {
+      "unverified": {
+        "title": "सत्यापन आवश्यक है",
+        "message": "लिस्टिंग प्रकाशित करने और भुगतान प्राप्त करने के लिए अपना विक्रेता सत्यापन पूरा करें।"
+      },
+      "pending": {
+        "title": "सत्यापन प्रगति पर है",
+        "message": "आपके सत्यापन की समीक्षा की जा रही है. कुछ सुविधाएँ अनुमोदन तक सीमित रह सकती हैं।"
+      },
+      "completeVerification": "पूर्ण सत्यापन"
+    },
+    "notifications": {
+      "filter": {
+        "label": "सूचनाएं फ़िल्टर करें",
+        "all": "सभी",
+        "newBooking": "नई बुकिंग",
+        "bookingReminder": "24 घंटे अनुस्मारक",
+        "payoutConfirmation": "भुगतान",
+        "adminMessage": "व्यवस्थापक"
+      },
+      "type": {
+        "newBooking": "नई बुकिंग",
+        "bookingReminder": "24 घंटे अनुस्मारक",
+        "payoutConfirmation": "भुगतान",
+        "adminMessage": "व्यवस्थापक संदेश"
+      },
+      "unreadCount": "⟦गिनती⟧ अपठित अधिसूचना(सूचनाएं)",
+      "allCaughtUp": "आप सब फंस गए हैं।",
+      "markRead": "पढ़े हुए का चिह्न",
+      "markAllRead": "सभी को पढ़ा हुआ मार्क करें",
+      "empty": "इस श्रेणी में कोई अधिसूचना नहीं.",
+      "time": {
+        "justNow": "बस अब ",
+        "hoursAgo": "⟦गिनती⟧h पहले"
+      },
+      "sample": {
+        "newBooking": {
+          "title": "नई बुकिंग प्राप्त हुई",
+          "message": "अमारा ने 25 जुलाई · 4 मेहमानों के लिए लागोस लैगून सनसेट क्रूज़ बुक किया। 24 घंटे के भीतर पुष्टि करें या अस्वीकार करें।"
+        },
+        "newBooking2": {
+          "title": "नई बुकिंग प्राप्त हुई",
+          "message": "चिडी ने 3 अगस्त · 2 मेहमानों के लिए लेक्की गार्डन सुइट्स बुक किया।"
+        },
+        "reminder": {
+          "title": "24 घंटे में बुकिंग",
+          "message": "अनुस्मारक: फातिमा के साथ लागोस लैगून सनसेट क्रूज़ कल शाम 5:30 बजे · 6 अतिथि।"
+        },
+        "reminder2": {
+          "title": "24 घंटे में बुकिंग",
+          "message": "रिमाइंडर: टोयोटा कैमरी 2021 किराये पर एमेका के साथ कल सुबह 9:00 बजे।"
+        },
+        "payout": {
+          "title": "भुगतान की पुष्टि हो गई",
+          "message": "4521 पर समाप्त होने वाले आपके जीटीबैंक खाते में एनजीएन 200,000 भेज दिया गया है।"
+        },
+        "payout2": {
+          "title": "भुगतान की पुष्टि हो गई",
+          "message": "8834 को समाप्त होने वाले एक्सेस बैंक से एनजीएन 150,000 निकासी सफलतापूर्वक संसाधित की गई।"
+        },
+        "admin": {
+          "title": "Synkafrica से नीति अद्यतन",
+          "message": "अनुभव सूची के लिए अद्यतन विक्रेता दिशानिर्देश अब उपलब्ध हैं। कृपया 1 अगस्त तक समीक्षा करें।"
+        },
+        "admin2": {
+          "title": "सूची स्वीकृत",
+          "message": "आपकी लागोस लैगून सनसेट क्रूज़ सूची अब Synkafrica पर लाइव है।"
+        }
+      }
+    },
+    "dashboard": {
+      "welcomeBack": "वापसी पर स्वागत है,",
+      "addListing": "सूची जोड़ें",
+      "period": {
+        "label": "मेट्रिक्स अवधि",
+        "day": "एक दिन",
+        "week": "एक सप्ताह",
+        "month": "एक माह",
+        "sixMonths": "छह महीने",
+        "year": "एक वर्ष"
+      },
+      "stats": {
+        "liveListings": "लाइव लिस्टिंग",
+        "newBookings": "नई बुकिंग",
+        "earnings": "आय",
+        "pendingApproval": "लंबित अनुमोदन"
+      },
+      "goToBookings": "बुकिंग पर जाएं",
+      "yourListings": "आपकी लिस्टिंग",
+      "seeAll": "सभी देखें",
+      "status": {
+        "live": "लाइव लिस्टिंग",
+        "pending": "लंबित...",
+        "paused": "रुका हुआ",
+        "draft": "मसौदा"
+      },
+      "editListing": "एडिट लिस्टिंग",
+      "deleteListing": "सूची हटाएँ",
+      "pauseListing": "सूचीकरण रोकें",
+      "playListing": "सूची फिर से शुरू करें",
+      "deleteListingModal": {
+        "title": "सूची हटाएं?",
+        "message": "क्या आप वाकई \"{title}\" को हटाना चाहते हैं? इस एक्शन को वापस नहीं किया जा सकता।",
+        "confirm": "सूची हटाएँ",
+        "cancel": "रद्द करना"
+      },
+      "category": {
+        "accommodations": "आवास",
+        "carRentals": "कार का किराया",
+        "tours": "टूर्स",
+        "toursExperiences": "भ्रमण और अनुभव"
+      }
+    },
+    "businessProfile": {
+      "businessName": "व्यवसाय का नाम",
+      "businessNameHint": "भुगतान और विक्रेता रिकॉर्ड पर आंतरिक नाम का उपयोग किया जाता है। सार्वजनिक सूची में नहीं दिखाया गया.",
+      "internalNameLabel": "आंतरिक व्यवसाय का नाम",
+      "contactDetails": "सम्पर्क करने का विवरण",
+      "contactDetailsHint": "बुकिंग सहायता के लिए Synkafrica और मेहमान आप तक कैसे पहुंचते हैं।",
+      "phone": "फ़ोन नंबर",
+      "email": "मेल पता",
+      "address": "व्यावसायिक पता",
+      "payoutAccount": "भुगतान के लिए बैंक खाता",
+      "payoutAccountHint": "कमाई से निकासी इसी खाते में भेजी जाती है।",
+      "bankName": "बैंक का नाम",
+      "accountNumber": "खाता संख्या",
+      "accountNumberLocked": "अकाउंट नंबर केवल हर ⟦महीनों⟧ महीनों में बदला जा सकता है। अगला परिवर्तन ⟦दिनांक⟧ पर उपलब्ध है।",
+      "accountName": "खाता नाम",
+      "bank": {
+        "zenith": "जेनिथ बैंक",
+        "firstBank": "पहला बैंक"
+      },
+      "passwordUpdate": "पासवर्ड अद्यतन",
+      "passwordUpdateHint": "ऐसा मजबूत पासवर्ड चुनें जिसका उपयोग आप कहीं और न करते हों।",
+      "currentPassword": "वर्तमान पासवर्ड",
+      "newPassword": "नया पासवर्ड",
+      "confirmPassword": "नए पासवर्ड की पुष्टि करें",
+      "passwordMismatch": "नये पासवर्ड मेल नहीं खाते.",
+      "updatePassword": "पासवर्ड अपडेट करें",
+      "passwordUpdated": "पासवर्ड अपडेट किया गया.",
+      "saveChanges": "परिवर्तनों को सुरक्षित करें",
+      "saved": "सहेजा गया.",
+      "rejected": {
+        "title": "आवेदन स्वीकृत नहीं",
+        "noReason": "किसी व्यवस्थापक ने आपका आवेदन स्वीकृत नहीं किया. नीचे अपना विवरण और दस्तावेज़ सही करें, फिर पुनः सबमिट करें।",
+        "resubmit": "समीक्षा के लिए पुनः सबमिट करें",
+        "resubmitting": "पुनः सबमिट किया जा रहा है...",
+        "resubmitted": "पुनः सबमिट किया गया. एक व्यवस्थापक आपके आवेदन की दोबारा समीक्षा करेगा.",
+        "resubmitFailed": "पुनः सबमिट नहीं किया जा सका. पुनः प्रयास करें।"
+      },
+      "cac": {
+        "title": "सीएसी पंजीकरण",
+        "hint": "सीएसी रजिस्ट्री के विरुद्ध जाँच की गई। चेक पास होने तक आप इन विवरणों को सही कर सकते हैं।",
+        "number": "सीएसी पंजीकरण संख्या",
+        "companyType": "कंपनी प्रकार",
+        "companyTypePlaceholder": "कंपनी का प्रकार चुनें",
+        "status": {
+          "verified": "सत्यापित",
+          "failed": "सत्यापित नहीं है",
+          "unverified": "जांच का इंतजार है"
+        },
+        "verifiedAs": "CAC रजिस्ट्री पर {name} से मिलान किया गया।",
+        "failedHint": "सीएसी रजिस्ट्री इन विवरणों से मेल नहीं खाती। उन्हें ठीक करें और दोबारा जांचने के लिए सहेजें।",
+        "pendingHint": "सहेजने से CAC जाँच पुनः चलती है। परिणाम देखने के लिए एक क्षण में ताज़ा करें।",
+        "lockedHint": "सत्यापित विवरण यहां नहीं बदला जा सकता. यदि कुछ गलत हो तो सहायता से संपर्क करें."
+      },
+      "documents": {
+        "title": "दस्तावेज़ एवं सत्यापन",
+        "subtitle": "व्यवसाय-स्तरीय दस्तावेज़ आपके पूरे खाते पर लागू होते हैं। लाइव होने से पहले प्रति लिस्टिंग वाहन दस्तावेज़ आवश्यक हैं।",
+        "businessSection": "व्यवसाय दस्तावेज़",
+        "business": {
+          "cac": "निगमन प्रमाणपत्र (सीएसी)"
+        },
+        "uploadedMeta": "अपलोड किया गया ⟦दिनांक⟧ · ⟦फ़ाइलनाम⟧",
+        "view": "देखना",
+        "vehicleSection": "वाहन दस्तावेज़ · ⟦गिनती⟧ सूची",
+        "vehicleLegend": "बीमा · सड़क योग्यता · स्वामित्व का प्रमाण",
+        "type": {
+          "insurance": "बीमा प्रमाणपत्र",
+          "roadworthiness": "सड़क योग्यता प्रमाण पत्र",
+          "ownership": "स्वामित्व का प्रमाण"
+        },
+        "status": {
+          "verified": "सत्यापित",
+          "rejected": "अस्वीकार कर दिया",
+          "pending": "लंबित",
+          "notUploaded": "अपलोड नहीं किया गया"
+        },
+        "listingStatus": {
+          "allVerified": "सभी सत्यापित",
+          "actionNeeded": "कार्रवाई आवश्यक",
+          "notStarted": "शुरू नहीं",
+          "inProgress": "प्रगति पर है"
+        },
+        "reupload": "पुन: अपलोड",
+        "upload": "अपलोड करें",
+        "rejection": {
+          "plateMismatch": "दस्तावेज़ का नाम पंजीकृत प्लेट नंबर से मेल नहीं खाता. कृपया ABJ-771-KD से मेल खाने वाला वाहन लाइसेंस पुनः अपलोड करें।"
+        }
+      }
+    },
+    "support": {
+      "helpBanner": "शिकायत दर्ज करें या Synkafrica विक्रेता टीम से मदद का अनुरोध करें। हम आम तौर पर 1-2 व्यावसायिक दिनों के भीतर जवाब देते हैं।",
+      "helpBannerEmail": "अपडेट {email} पर भेजे जाएंगे।",
+      "openTickets": "⟦गिनती⟧ खुले टिकट",
+      "tabs": {
+        "label": "सहायता अनुभाग"
+      },
+      "createTicket": "समर्थन टिकट बनाएं",
+      "createTicketHint": "अपनी समस्या का विस्तार से वर्णन करें ताकि हम इसका शीघ्र समाधान कर सकें।",
+      "subject": "विषय",
+      "subjectPlaceholder": "आपके मुद्दे का संक्षिप्त सारांश",
+      "category": {
+        "booking": "बुकिंग का मुद्दा",
+        "payout": "भुगतान और कमाई",
+        "listing": "सूचीकरण एवं उपलब्धता",
+        "account": "खाता एवं प्रोफ़ाइल",
+        "complaint": "शिकायत",
+        "other": "अन्य"
+      },
+      "priority": {
+        "low": "कम",
+        "medium": "मध्यम",
+        "high": "उच्च",
+        "urgent": "अति आवश्यक"
+      },
+      "priorityHint": "केवल समय-संवेदनशील बुकिंग या भुगतान संबंधी समस्याओं के लिए अर्जेंट का उपयोग करें।",
+      "bookingReference": "आरक्षण संदर्भ",
+      "bookingReferencePlaceholder": "जैसे VB-3 या ऑर्डर नंबर (वैकल्पिक)",
+      "description": "विवरण",
+      "descriptionPlaceholder": "बताएं कि क्या हुआ, कब हुआ और आपको क्या परिणाम चाहिए।",
+      "submitTicket": "टिकट जमा करें",
+      "ticketSubmitted": "टिकट ⟦नंबर⟧ सबमिट किया गया। हमारी टीम जल्द ही फॉलोअप करेगी।",
+      "responseTime": "आवश्यक फील्ड के साथ चिह्नित हैं *।",
+      "yourTickets": "आपके टिकट",
+      "yourTicketsHint": "आपके द्वारा सबमिट की गई शिकायतों और समर्थन अनुरोधों को ट्रैक करें।",
+      "filter": {
+        "label": "स्थिति के अनुसार टिकट फ़िल्टर करें",
+        "all": "सभी"
+      },
+      "status": {
+        "open": "खुला",
+        "inProgress": "प्रगति पर है",
+        "resolved": "हल किया",
+        "closed": "बंद किया हुआ"
+      },
+      "updated": "अद्यतन",
+      "created": "बनाया था",
+      "emptyTickets": "कोई भी टिकट इस फ़िल्टर से मेल नहीं खाता.",
+      "loading": "टिकट लोड हो रहे हैं...",
+      "loadFailed": "आपके टिकट लोड नहीं किये जा सके. कृपया पुन: प्रयास करें।",
+      "submitFailed": "आपका टिकट जमा नहीं किया जा सका. कृपया पुन: प्रयास करें।",
+      "viewConversation": "बातचीत देखें",
+      "backToTickets": "टिकट पर वापस जाएँ",
+      "conversation": "बातचीत",
+      "you": "आप",
+      "supportTeam": "सहायता दल",
+      "replyPlaceholder": "अपना उत्तर लिखें...",
+      "sendReply": "उत्तर भेजें",
+      "sending": "भेजा जा रहा है...",
+      "replyFailed": "आपका उत्तर नहीं भेजा जा सका. कृपया पुन: प्रयास करें।"
+    },
+    "earnings": {
+      "availableBalance": "उपलब्ध शेष राशि",
+      "lifetimeEarnings": "जीवन भर की कमाई",
+      "transactionHistory": "ट्रांजेक्शन इतिहास",
+      "withdrawFunds": "पैसे निकालने",
+      "amountToWithdraw": "निकाली जाने वाली राशि",
+      "selectBankAccount": "बैंक खाता चुनें",
+      "payoutAccount": "भुगतान खाता",
+      "noBankAccount": "अभी तक कोई भुगतान खाता नहीं जोड़ा गया.",
+      "addBankAccount": "बिज़नेस प्रोफ़ाइल में एक बैंक खाता जोड़ें →",
+      "availableHint": "उपलब्ध:",
+      "processingNote": "निकासी 1-2 व्यावसायिक दिनों के भीतर संसाधित की जाती है।",
+      "paymentFlowTitle": "भुगतान एवं निकासी नीति",
+      "paymentFlowInstant": "पुष्टि के बाद ₦200,000 और उससे कम की निकासी स्वचालित रूप से संसाधित की जाती है।",
+      "paymentFlowApproval": "₦200,000 से अधिक की निकासी के लिए सुपर-एडमिन अनुमोदन की आवश्यकता होती है।",
+      "paymentFlowAuth": "₦200,000 से अधिक राशि निकालते समय लेनदेन पिन और ओटीपी की आवश्यकता होती है।",
+      "withdrawalModal": {
+        "title": "वापसी की पुष्टि करें",
+        "pin": "ट्रांज़ेक्शन पिन",
+        "otp": "ओटीपी कोड",
+        "sendOtp": "ओटीपी भेजें",
+        "submit": "वापसी की पुष्टि करें",
+        "pendingApproval": "इस निकासी के लिए सुपर-एडमिन अनुमोदन की आवश्यकता है। स्वीकृत होते ही आपको सूचित कर दिया जाएगा.",
+        "cancel": "रद्द करना"
+      },
+      "status": {
+        "completed": "पुरा होना।",
+        "pending": "लंबित",
+        "failed": "असफल"
+      },
+      "transaction": {
+        "bookingPayment": "बुकिंग भुगतान",
+        "withdrawal": "निकासी",
+        "platformFee": "प्लेटफार्म शुल्क",
+        "refund": "धनवापसी"
+      },
+      "bank": {
+        "gtbank": "जीटीबैंक",
+        "access": "एक्सेस बैंक"
+      },
+      "duration": {
+        "label": "कमाई की अवधि",
+        "daily": "दैनिक",
+        "weekly": "साप्ताहिक",
+        "monthly": "महीने के",
+        "all": "सभी"
+      },
+      "commissionSplit": "कमीशन बंटवारा",
+      "commissionSplitHint": "बुकिंग राजस्व को ⟦विक्रेता⟧% आपको और ⟦प्लेटफ़ॉर्म⟧% Synkafrica को विभाजित किया जाता है।",
+      "vendorShare": "आपका हिस्सा",
+      "platformShare": "प्लेटफार्म शुल्क",
+      "grossRevenue": "कुल राजस्व",
+      "downloadStatements": "विवरण डाउनलोड करें",
+      "emptyTransactions": "इस अवधि के लिए कोई लेन-देन नहीं.",
+      "statement": {
+        "date": "तारीख",
+        "title": "शीर्षक",
+        "description": "विवरण",
+        "type": "प्रकार",
+        "amount": "मात्रा",
+        "status": "स्थिति"
+      }
+    },
+    "listings": {
+      "detail": {
+        "back": "लिस्टिंग पर वापस जाएँ",
+        "backToBookings": "बुकिंग पर वापस जाएँ",
+        "heading": "सूची विवरण",
+        "hint": "मीडिया, विवरण, मूल्य निर्धारण और दस्तावेज़ों सहित इस सूची का पूर्ण पूर्वावलोकन।",
+        "status": "स्थिति",
+        "category": "वर्ग",
+        "rating": "रेटिंग",
+        "notFound": "सूची नहीं मिली."
+      },
+      "bookingAvailability": "बुकिंग की उपलब्धता",
+      "filter": {
+        "allCategories": "सभी श्रेणियां",
+        "allStatuses": "सभी स्थितियाँ",
+        "statusLabel": "स्थिति",
+        "status": {
+          "live": "रहना",
+          "pending": "लंबित",
+          "draft": "ड्राफ्ट",
+          "paused": "रुका हुआ"
+        },
+        "empty": "कोई भी सूची आपके फ़िल्टर से मेल नहीं खाती."
+      },
+      "status": {
+        "pendingApproval": "लंबित अनुमोदन",
+        "paused": "रुका हुआ"
+      },
+      "availability": {
+        "selectListing": "लिस्टिंग",
+        "modeAvailable": "उपलब्ध चिह्नित करें",
+        "modeBlock": "तारीखें ब्लॉक करें",
+        "modeAvailableHint": "बुकिंग के लिए तारीखें खोलने के लिए उन पर क्लिक करें। उपलब्धता हटाने के लिए दोबारा क्लिक करें.",
+        "modeBlockHint": "बुकिंग ब्लॉक करने के लिए तिथियों पर क्लिक करें। अनब्लॉक करने के लिए फिर से क्लिक करें.",
+        "legendAvailable": "उपलब्ध",
+        "legendBlocked": "अवरोधित",
+        "legendSelected": "चयनित",
+        "available": "उपलब्ध",
+        "blocked": "अवरोधित",
+        "timeSlots": "समय स्थान",
+        "capacity": "क्षमता",
+        "selectDayHint": "समय स्लॉट कॉन्फ़िगर करने के लिए कैलेंडर पर एक तारीख चुनें।",
+        "selectAvailableDay": "समय स्लॉट कॉन्फ़िगर करने के लिए इस तिथि को उपलब्ध के रूप में चिह्नित करें।",
+        "blockedDayMessage": "यह तिथि अवरुद्ध है. टाइम स्लॉट कॉन्फ़िगर करने के लिए इसे अनब्लॉक करें।",
+        "defaultCapacity": "डिफ़ॉल्ट क्षमता",
+        "defaultCapacityHint": "नई उपलब्ध तिथियों और सक्षम समय स्लॉट पर लागू।",
+        "leadTime": "समय सीमा",
+        "leadTimeHint": "किसी अतिथि को बुक करने से पहले न्यूनतम सूचना आवश्यक है।",
+        "leadTimeUnitHours": "घंटे",
+        "leadTimeUnitDays": "दिन"
+      },
+      "calendar": {
+        "sun": "सूरज",
+        "mon": "सोम",
+        "tue": "मंगल",
+        "wed": "बुध",
+        "thu": "गुरु",
+        "fri": "शुक्र",
+        "sat": "बैठा",
+        "previousMonth": "पिछला महीना",
+        "nextMonth": "अगले महीने"
+      }
+    },
+    "bookings": {
+      "tab": {
+        "upcoming": "आगामी",
+        "past": "अतीत",
+        "cancelled": "रद्द कर दिया गया",
+        "declined": "अस्वीकृत"
+      },
+      "stats": {
+        "awaitingConfirmation": "पुष्टिकरण की प्रतीक्षा",
+        "upcomingConfirmed": "आगामी (पुष्टि)",
+        "earningsThisMonth": "इस महीने की कमाई",
+        "responseRate": "प्रतिक्रिया दर (30 दिन)"
+      },
+      "searchPlaceholder": "अतिथि नाम या बुकिंग आईडी के आधार पर खोजें...",
+      "allListings": "सारी सूचियां",
+      "viewModeLabel": "बुकिंग दृश्य",
+      "view": {
+        "list": "सूची",
+        "calendar": "कैलेंडर"
+      },
+      "calendarComingSoon": "कैलेंडर दृश्य जल्द ही आ रहा है.",
+      "respondWithin": "⟦समय⟧ के भीतर जवाब दें",
+      "paymentSecured": "भुगतान सुरक्षित",
+      "messageGuest": "अतिथि को संदेश भेजें",
+      "viewListing": "सूची देखें",
+      "cancelBooking": "बुकिंग रद्द करें",
+      "dateRangeLabel": "दिनांक सीमा के अनुसार फ़िल्टर करें",
+      "dateRange": {
+        "all": "पूरे समय",
+        "pastMonth": "बीते हुए महीने में",
+        "past3Months": "पिछले 3 महीने",
+        "past6Months": "पिछले 6 महीने",
+        "pastYear": "पिछले एक साल"
+      },
+      "empty": {
+        "upcoming": "इस अवधि के लिए कोई आगामी बुकिंग नहीं.",
+        "past": "इस अवधि के लिए कोई पिछली बुकिंग नहीं.",
+        "cancelled": "इस अवधि के लिए कोई बुकिंग रद्द नहीं हुई।",
+        "declined": "इस अवधि के लिए कोई भी अस्वीकृत बुकिंग नहीं हुई।"
+      },
+      "declineModal": {
+        "title": "बुकिंग अस्वीकार करें",
+        "subtitle": "⟦अतिथि⟧ को बताएं कि बुकिंग ⟦संदर्भ⟧ को क्यों अस्वीकार किया जा रहा है।",
+        "reasonLabel": "गिरावट का कारण",
+        "reasonPlaceholder": "बताएं कि आप यह बुकिंग स्वीकार क्यों नहीं कर सकते...",
+        "cancel": "रद्द करना",
+        "submit": "बुकिंग अस्वीकार करें"
+      },
+      "declineReason": "अस्वीकार करने का कारण",
+      "deliveryAddress": "डिलिवरी का पता",
+      "pickupAddress": "पता चुनें",
+      "carMode": {
+        "selfDrive": "स्वयं ड्राइव",
+        "withDriver": "ड्राइवर के साथ"
+      },
+      "calendar": {
+        "selectedDay": "⟦इस दिन की बुकिंग की गिनती करें",
+        "noBookings": "इस दिन कोई बुकिंग नहीं."
+      },
+      "pendingConfirmation": "⟦गिनती⟧ बुकिंग आपकी पुष्टि की प्रतीक्षा कर रही है।",
+      "specialRequests": "विशेष आग्रह",
+      "confirm": "पुष्टि करना",
+      "decline": "गिरावट",
+      "markComplete": "पूर्ण के रूप में चिह्नित करें",
+      "status": {
+        "awaitingConfirmation": "पुष्टिकरण की प्रतीक्षा",
+        "confirmed": "की पुष्टि",
+        "declined": "अस्वीकृत",
+        "completed": "पुरा होना।",
+        "cancelled": "रद्द कर दिया गया"
+      }
+    },
+    "addListing": {
+      "title": "नई सूची जोड़ें",
+      "editTitle": "एडिट लिस्टिंग",
+      "loadError": "यह सूची लोड नहीं की जा सकी. कृपया पुन: प्रयास करें।",
+      "subtitle": "एक नई सूची बनाएं और अधिक ग्राहकों तक पहुंचना शुरू करें।",
+      "backToListings": "← लिस्टिंग पर वापस जाएँ",
+      "backToListing": "← सूची पर वापस जाएँ",
+      "progressLabel": "सूची प्रगति",
+      "steps": {
+        "carDetails": "कार विवरण",
+        "accommodationDetails": "आवास विवरण",
+        "experienceDetails": "अनुभव विवरण",
+        "media": "मिडिया",
+        "pricing": "मूल्य निर्धारण",
+        "documents": "दस्तावेज़",
+        "review": "समीक्षा करें और प्रकाशित करें"
+      },
+      "whatAreYouListing": "आप क्या सूचीबद्ध कर रहे हैं?",
+      "category": {
+        "car": {
+          "title": "कार",
+          "description": "किराये के लिए एक कार की सूची बनाएं।"
+        },
+        "accommodation": {
+          "title": "आवास",
+          "description": "रहने के लिए जगह की सूची बनाएं."
+        },
+        "experience": {
+          "title": "अनुभव",
+          "description": "किसी गतिविधि या दौरे की सूची बनाएं."
+        }
+      },
+      "carDetailsHeading": "कार विवरण",
+      "accommodationDetailsHeading": "आवास विवरण",
+      "experienceDetailsHeading": "अनुभव विवरण",
+      "experienceType": "अनुभव प्रकार / श्रेणी",
+      "experienceTypeSelect": "अनुभव का प्रकार चुनें",
+      "experienceLocationPlaceholder": "जैसे लेक्की, लागोस, नाइजीरिया",
+      "experienceHighlights": "मुख्य अंश/संक्षिप्त विवरण",
+      "experienceHighlightsHint": "मेहमान क्या करेंगे और क्या अनुभव करेंगे इसका एक संक्षिप्त, आकर्षक सारांश।",
+      "experienceHighlightsPlaceholder": "अनुभव का वर्णन करें, क्या चीज़ इसे अद्वितीय बनाती है और मेहमान इसे क्यों पसंद करेंगे।",
+      "experienceAvailabilityHeading": "उपलब्धता",
+      "experienceAvailabilityHint": "सेट करें कि आपका अनुभव कब उपलब्ध हो.",
+      "operatingDays": "परिचालन दिवस",
+      "startTime": "समय शुरू",
+      "endTime": "अंत समय",
+      "experienceScheduleWeekly": "साप्ताहिक दोहराया जाता है",
+      "experienceScheduleWeeklyHint": "यह अनुभव हर सप्ताह चयनित दिनों में उपलब्ध है।",
+      "experienceScheduleDateRange": "कस्टम तिथि सीमा",
+      "experienceScheduleDateRangeHint": "इस अनुभव के लिए एक विशिष्ट तिथि सीमा निर्धारित करें।",
+      "experienceDateRangeHeading": "दिनांक सीमा चुनें",
+      "experienceDateRangeHint": "प्रारंभ और समाप्ति तिथियां चुनें जब यह अनुभव उपलब्ध होगा।",
+      "experienceDateRangeStart": "आरंभ करने की तिथि",
+      "experienceDateRangeEnd": "अंतिम तिथि",
+      "additionalInfoSection": "अतिरिक्त जानकारी",
+      "whatsIncludedHint": "अनुभव में क्या शामिल है उसकी सूची बनाएं।",
+      "includesItemsPlaceholder": "जैसे उपकरण, गाइड, सुरक्षा गियर, बोतलबंद पानी",
+      "whatToBring": "क्या लाना/पहनना है",
+      "whatToBringHint": "मेहमानों को बताएं कि क्या लाना है या क्या पहनना है।",
+      "whatToBringPlaceholder": "जैसे आरामदायक कपड़े, बंद जूते, सनस्क्रीन",
+      "tagInputFooter": "प्रत्येक आइटम जोड़ें और Enter दबाएँ",
+      "additionalInformationHeading": "अतिरिक्त जानकारी",
+      "additionalInformationHint": "अपने मेहमानों के लिए कोई अन्य उपयोगी जानकारी जोड़ें।",
+      "additionalInformationPlaceholder": "जैसे आयु प्रतिबंध, स्वास्थ्य आवश्यकताएँ, रद्दीकरण नीति, बैठक स्थल विवरण",
+      "weekday": {
+        "mon": "सोम",
+        "tue": "मंगल",
+        "wed": "बुध",
+        "thu": "गुरु",
+        "fri": "शुक्र",
+        "sat": "बैठा",
+        "sun": "सूरज"
+      },
+      "carName": "कार का नाम",
+      "carNamePlaceholder": "जैसे टोयोटा हाईलैंडर 2024",
+      "carModel": "कार मॉडल/वेरिएंट",
+      "carModelPlaceholder": "जैसे 2.4L लिमिटेड AWD",
+      "transmission": {
+        "automatic": "स्वचालित",
+        "manual": "नियमावली"
+      },
+      "year": "वर्ष",
+      "yearPlaceholder": "जैसे 2024",
+      "comesWithDriver": "ड्राइवर के साथ आता है?",
+      "yes": "हाँ",
+      "no": "नहीं",
+      "shortDescription": "संक्षिप्त वर्णन",
+      "carDescriptionPlaceholder": "कार, ​​स्थिति और किराएदार के लिए इसमें क्या शामिल है, इसका वर्णन करें।",
+      "perksFeatures": "अनुलाभ एवं सुविधाएँ",
+      "perksPlaceholder": "प्रत्येक अनुलाभ जोड़ें और Enter दबाएँ",
+      "propertyName": "संपत्ति का नाम",
+      "accommodationName": "आवास का नाम",
+      "accommodationNamePlaceholder": "जैसे ओशनव्यू सूट लेक्की",
+      "propertyNamePlaceholder": "जैसे लेक्की गार्डन सूट",
+      "propertyType": "सम्पत्ती के प्रकार",
+      "propertyTypeSelect": "संपत्ति का प्रकार चुनें",
+      "propertyTypePlaceholder": "जैसे अपार्टमेंट, विला, होटल",
+      "address": "पता",
+      "addressPlaceholder": "संपत्ति का पूरा पता",
+      "accommodationLocationPlaceholder": "जैसे लेक्की चरण 1, लागोस, नाइजीरिया",
+      "accommodationMaxGuests": "अधिकतम अतिथि (संपत्ति)",
+      "accommodationMaxGuestsPlaceholder": "जैसे 12",
+      "checkInTime": "समय पर जांचो",
+      "checkOutTime": "चेक आउट का समय",
+      "availability": "उपलब्धता",
+      "availabilityAlways": "सदैव उपलब्ध",
+      "availabilityDateRange": "दिनांक सीमा निर्धारित करें",
+      "availabilityHint": "आप प्रकाशन के बाद अपने कैलेंडर से विशिष्ट तिथियां भी प्रबंधित कर सकते हैं।",
+      "popularPerks": "लोकप्रिय सुविधाएं",
+      "popularPerksHint": "अपनी संपत्ति पर उपलब्ध सुविधाओं का चयन करें।",
+      "viewAllPerks": "सभी सुविधाएं देखें",
+      "showLessPerks": "कम दिखाओ",
+      "propertyOwner": "क्या आप संपत्ति के मालिक हैं?",
+      "propertyOwnerYes": "हां, मैं मालिक हूं",
+      "propertyOwnerNo": "नहीं, मैं एक अधिकृत एजेंट हूं",
+      "bedrooms": "बेडरूम",
+      "bathrooms": "बाथरूम",
+      "accommodationDescriptionPlaceholder": "अपने आवास, परिवेश, आस-पास के आकर्षणों और इसे विशेष बनाने वाली चीज़ों का संक्षेप में वर्णन करें।",
+      "amenities": "सुविधाएं",
+      "amenitiesPlaceholder": "प्रत्येक सुविधा जोड़ें और Enter दबाएँ",
+      "experienceName": "अनुभव का नाम",
+      "experienceNamePlaceholder": "जैसे पेंटबॉल साहसिक लागोस",
+      "location": "जगह",
+      "locationPlaceholder": "जैसे विक्टोरिया द्वीप, लागोस",
+      "duration": "अवधि",
+      "durationPlaceholder": "जैसे 2 घंटे",
+      "maxGuests": "अधिकतम अतिथि",
+      "experienceDescriptionPlaceholder": "गतिविधि, यात्रा कार्यक्रम और मेहमानों से क्या अपेक्षा करनी चाहिए, इसका वर्णन करें।",
+      "whatsIncluded": "क्या शामिल है",
+      "includesPlaceholder": "प्रत्येक समावेशन जोड़ें और Enter दबाएँ",
+      "mediaHeading": "छवियों की सूची बनाना",
+      "mediaHint": "स्पष्ट फ़ोटो या वीडियो अपलोड करें. 8 फ़ाइलों तक.",
+      "uploadImages": "छवियों या वीडियो को यहां खींचें और छोड़ें, या ब्राउज़ करने के लिए क्लिक करें",
+      "uploadImagesHint": "पीएनजी, जेपीजी, WEBP या MP4 (अधिकतम 10MB)",
+      "removeImage": "छवि हटाएँ",
+      "mediaSkippedUnsupported": "⟦गिनती⟧ फ़ाइल(फ़ाइलें) छोड़ दी गईं - असमर्थित प्रारूप। PNG, JPG, WEBP या MP4 का उपयोग करें (iPhone HEIC फ़ोटो अभी तक समर्थित नहीं हैं)।",
+      "mediaSkippedTooLarge": "⟦गिनती⟧ फ़ाइल(फ़ाइलों) को छोड़ दिया गया - प्रत्येक फ़ाइल 10 एमबी से कम होनी चाहिए।",
+      "mediaPreviewFailed": "पूर्वावलोकन अनुपलब्ध",
+      "mediaUploading": "अपलोड हो रहा है...",
+      "mediaUploadFailed": "अपलोड विफल रहा",
+      "pickupDeliveryHeading": "पिकअप या डिलिवरी",
+      "pickupDeliveryQuestion": "आप कौन से हैंडओवर विकल्प पेश करते हैं? जो भी लागू हो उसे चुनें.",
+      "pickupAddress": "पता चुनें",
+      "pickupAddressPlaceholder": "वह पता दर्ज करें जहां मेहमान कार ले सकते हैं",
+      "clientPickup": "ग्राहक पिकअप",
+      "clientPickupHint": "ग्राहक आपके स्थान से कार एकत्र करता है।",
+      "deliveryDropoff": "डिलिवरी/ड्रॉप-ऑफ़",
+      "deliveryDropoffHint": "आप ग्राहक को कार डिलीवर करते हैं।",
+      "carPricingHeading": "किराये का मूल्य निर्धारण",
+      "price12hr": "12 घंटे का किराया (एनजीएन)",
+      "price24hr": "24 घंटे का किराया (एनजीएन)",
+      "priceMultiDay": "एकाधिक दिन (प्रति दिन, एनजीएन)",
+      "driverAddonPrice": "ड्राइवर ऐड-ऑन मूल्य (एनजीएन)",
+      "selfDriveNoPrice": "सेल्फ-ड्राइव चयनित - ड्राइवर ऐड-ऑन मूल्य की आवश्यकता नहीं है।",
+      "deliveryFee": "डिलिवरी/ड्रॉप-ऑफ़ शुल्क (एनजीएन)",
+      "clientPickupNoPrice": "ग्राहक पिकअप चयनित - कोई डिलीवरी शुल्क आवश्यक नहीं है।",
+      "pricingLocationHint": "आप अगले चरण में पिकअप या डिलीवरी स्थान के बारे में अधिक विवरण प्रदान कर सकते हैं।",
+      "accommodationPricingHeading": "मूल्य निर्धारण रहो",
+      "roomTypesPricing": "कमरे के प्रकार और मूल्य निर्धारण",
+      "roomTypesPricingHint": "आपके द्वारा प्रस्तावित विभिन्न प्रकार के कमरे जोड़ें।",
+      "addRoomType": "कमरे का प्रकार जोड़ें",
+      "addRoomTypeModalTitle": "कमरे का प्रकार जोड़ें",
+      "editRoomTypeModalTitle": "कक्ष प्रकार संपादित करें",
+      "saveRoomType": "कक्ष प्रकार सहेजें",
+      "roomType": "कमरे के प्रकार",
+      "roomTypePlaceholder": "जैसे डीलक्स सुइट",
+      "roomDescription": "विवरण",
+      "roomDescriptionPlaceholder": "इस कमरे के प्रकार का संक्षेप में वर्णन करें",
+      "roomMaxGuests": "अधिकतम अतिथि",
+      "roomMaxGuestsPlaceholder": "जैसे 2",
+      "roomPricePerNight": "कीमत (प्रति रात्रि)",
+      "roomTypesEmptyTitle": "अभी तक कोई कमरा प्रकार नहीं जोड़ा गया है",
+      "roomTypesEmptyHint": "आरंभ करने के लिए \"कमरे का प्रकार जोड़ें\" पर क्लिक करें।",
+      "actions": "कार्रवाई",
+      "edit": "संपादन करना",
+      "delete": "मिटाना",
+      "nightlyRate": "रात्रि दर (एनजीएन)",
+      "cleaningFee": "सफ़ाई शुल्क (एनजीएन)",
+      "experiencePricingHeading": "मूल्य निर्धारण",
+      "experiencePricingHint": "अपने टिकट की कीमतें निर्धारित करें.",
+      "singleTicketPrice": "एकल टिकट की कीमत",
+      "singleTicketPriceHint": "एक व्यक्ति के लिए कीमत",
+      "groupTicketPrice": "समूह टिकट की कीमत (से) (वैकल्पिक)",
+      "groupTicketPriceHint": "समूहों के लिए प्रति व्यक्ति मूल्य",
+      "minGroupSizeOptional": "न्यूनतम समूह आकार (वैकल्पिक)",
+      "maxGroupSizeOptional": "अधिकतम समूह आकार (वैकल्पिक)",
+      "minGroupSizePlaceholder": "जैसे 5",
+      "maxGroupSizePlaceholder": "जैसे 20",
+      "optional": "वैकल्पिक",
+      "review": {
+        "groupSize": "समूह का आकार",
+        "category": "वर्ग",
+        "title": "शीर्षक",
+        "images": "इमेजिस",
+        "documents": "दस्तावेज़ अपलोड किए गए",
+        "description": "विवरण",
+        "gpsConfirmed": "जीपीएस ट्रैकिंग डिवाइस की पुष्टि की गई"
+      },
+      "pricePerPerson": "प्रति व्यक्ति मूल्य (एनजीएन)",
+      "minGroupSize": "न्यूनतम समूह आकार",
+      "documents": {
+        "stepTitle": "दस्तावेज़ अपलोड करें",
+        "pageTitle": "आवश्यक दस्तावेज़ अपलोड करें",
+        "pageIntro": "कृपया अपनी कार सूची को सत्यापित करने के लिए आवश्यक दस्तावेज़ अपलोड करें।",
+        "pageSubtitle": "विश्वास कायम करने और अपनी लिस्टिंग को तेजी से मंजूरी दिलाने के लिए स्पष्ट, वैध दस्तावेज अपलोड करें।",
+        "intro": {
+          "cars": "अपनी कार लिस्टिंग लाइव होने से पहले नीचे दिए गए दस्तावेज़ अपलोड करें।",
+          "accommodations": "इस स्टे लिस्टिंग के लिए स्वामित्व या एजेंट प्राधिकरण दस्तावेज़ अपलोड करें।",
+          "experiences": "प्रकाशन से पहले अपना व्यवसाय सत्यापन दस्तावेज़ अपलोड करें।"
+        },
+        "proofOfOwnership": "स्वामित्व का प्रमाण",
+        "proofOfOwnershipHint": "वाहन स्वामित्व दस्तावेज़ अपलोड करें (जैसे कार लॉगबुक या खरीद रसीद)।",
+        "roadworthiness": "सड़क योग्यता प्रमाण पत्र",
+        "roadworthinessHint": "वाहन के लिए वैध सड़कयोग्यता प्रमाणपत्र अपलोड करें।",
+        "insurance": "बीमा",
+        "insuranceDocument": "बीमा दस्तावेज़",
+        "insuranceHint": "वर्तमान वाहन बीमा प्रमाणपत्र अपलोड करें।",
+        "cac": "सीएसी पंजीकरण",
+        "cacRegistration": "सीएसी पंजीकरण प्रमाणपत्र",
+        "cacHint": "अपना व्यवसाय नाम पंजीकरण (सीएसी) प्रमाणपत्र अपलोड करें।",
+        "accommodationOwnershipHint": "संपत्ति के लिए शीर्षक विलेख, पट्टा, या स्वामित्व प्रमाण",
+        "agentAuthorization": "एजेंट प्राधिकरण पत्र",
+        "agentAuthorizationHint": "संपत्ति के मालिक का हस्ताक्षरित पत्र आपको सूचीबद्ध करने के लिए अधिकृत करता है",
+        "agentProofOfAddress": "पते का एजेंट प्रमाण",
+        "agentProofOfAddressHint": "आपका पता दर्शाने वाला उपयोगिता बिल या बैंक विवरण",
+        "addressPhotos": "तस्वीरें सूचीबद्ध पते से मेल खाती हैं",
+        "addressPhotosHint": "तस्वीरें जो सूचीबद्ध पते पर संपत्ति को स्पष्ट रूप से दिखाती हैं",
+        "gpsAcknowledgment": "मैं पुष्टि करता हूं कि इस वाहन में एक कार्यशील जीपीएस ट्रैकिंग उपकरण लगा हुआ है, और यदि यह गलत पाया जाता है तो मैं उत्तरदायी हूं।",
+        "requiredBadge": "आवश्यक",
+        "uploadPrompt": "अपलोड करने या खींचने और छोड़ने के लिए क्लिक करें",
+        "uploadFormats": "पीडीएफ, जेपीजी, पीएनजी, अधिकतम 10 एमबी",
+        "safetyTitle": "आपके दस्तावेज़ सुरक्षित हैं",
+        "safetyText": "सभी दस्तावेज़ सुरक्षित रूप से संग्रहीत हैं और केवल सत्यापन उद्देश्यों के लिए उपयोग किए जाते हैं। उन्हें जनता के साथ साझा नहीं किया जाएगा.",
+        "submitForReview": "समीक्षा के लिए सबमिट करें",
+        "submitHint": "आपकी सूची की समीक्षा की जाएगी और इसके स्वीकृत होने पर आपको सूचित किया जाएगा।",
+        "untitledListing": "शीर्षक रहित सूची",
+        "sidebar": {
+          "listingPreview": "लिस्टिंग पूर्वावलोकन",
+          "edit": "संपादन करना",
+          "carsListing": "कार लिस्टिंग",
+          "accommodationsListing": "आवास सूची",
+          "experiencesListing": "अनुभव सूची",
+          "comesWithDriver": "ड्राइवर के साथ आता है",
+          "selfDrive": "सेल्फ ड्राइव",
+          "pricing": "मूल्य निर्धारण",
+          "halfDay": "आधा दिन",
+          "fullDay": "पूरा दिन",
+          "extraHour": "अतिरिक्त घंटा",
+          "progress": "प्रगति सूचीबद्ध करना"
+        }
+      },
+      "documentsHeading": "आवश्यक दस्तावेज",
+      "uploadDocument": "दस्तावेज़ अपलोड करें",
+      "removeFile": "निकालना",
+      "reviewHeading": "अपने सूचीकरण का पुनरीक्षण करें",
+      "reviewHint": "प्रकाशन से पहले नीचे दिए गए विवरण जांचें।",
+      "cancel": "रद्द करना",
+      "back": "पीछे",
+      "saveDraft": "ड्राफ्ट के रूप में सेव करें",
+      "draftSaved": "ड्राफ्ट सहेजा गया",
+      "draftSaveFailed": "आपका ड्राफ्ट सहेजा नहीं जा सका. कृपया पुन: प्रयास करें।",
+      "saveContinue": "सहेजें जारी रखें",
+      "completeRequiredFields": "आवश्यक फ़ील्ड पूर्ण करें: ⟦फ़ील्ड⟧",
+      "publish": "सूची प्रकाशित करें",
+      "publishWaitForUploads": "कृपया प्रतीक्षा करें - आपके दस्तावेज़ अभी भी अपलोड हो रहे हैं।",
+      "success": {
+        "title": "सूची समीक्षा हेतु प्रस्तुत की गई",
+        "message": "आपकी सूची अब समीक्षाधीन है. स्वीकृत होने के बाद आपको 2-3 व्यावसायिक दिनों के भीतर एक पुष्टिकरण ईमेल प्राप्त होगा।",
+        "addAnother": "अन्य सूची जोड़ें",
+        "backToListings": "मेरी सूची पर वापस जाएँ"
+      },
+      "categoryChooseHint": "आपके द्वारा दी जाने वाली सेवा का प्रकार चुनें. जब आप अपनी पहली सूची सहेजते हैं तो इसे एक बार सेट किया जाता है और बाद में इसे बदला नहीं जा सकता।",
+      "categoryLockedHint": "आपका विक्रेता खाता केवल ⟦श्रेणी⟧ के लिए पंजीकृत है। अपनी सेवा श्रेणी बदलने के लिए सहायता से संपर्क करें।"
+    }
+  }
+}

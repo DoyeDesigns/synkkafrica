@@ -1,0 +1,2480 @@
+{
+  "nav": {
+    "downloadApp": "Uygulamayı İndir",
+    "becomeVendor": "Satıcı Olun",
+    "chooseCurrency": "Para Birimini Seç",
+    "signInCreate": "Giriş yap | Hesap oluştur",
+    "searchCurrency": "Para Birimini Ara",
+    "signOut": "Oturumu Kapat",
+    "myAccount": "Hesabım",
+    "bookingsTrips": "Rezervasyonlar ve Geziler",
+    "saved": "Kaydedildi",
+    "reviews": "Yorumlar"
+  },
+  "common": {
+    "bookNow": "Şimdi Rezervasyon Yapın",
+    "continue": "Devam et",
+    "loading": "Yükleniyor…",
+    "startingFrom": "Şu tarihten itibaren",
+    "perDay": "Günlük",
+    "budget": "Bütçe",
+    "seeMore": "Daha fazlasını gör",
+    "showMore": "Daha fazlasını göster",
+    "reviews": "Yorumlar",
+    "available": "Mevcut",
+    "selfDriveAvailable": "Kendi aracınızla seyahat etme imkânı mevcuttur",
+    "excludingTaxes": "vergiler ve ücretler hariç",
+    "select": "Seç",
+    "search": "Arama",
+    "edit": "Düzenle",
+    "cancel": "İptal et",
+    "notifications": "Bildirimler",
+    "contactSupport": "Destek birimiyle iletişime geçin",
+    "signOut": "Çıkış yap",
+    "noReviewsYet": "Henüz yorum yok",
+    "viewPhoto": "Fotoğrafı görüntüle {index}",
+    "photoViewer": "Fotoğraf görüntüleyici",
+    "closePhotoViewer": "Fotoğraf görüntüleyicisini kapat",
+    "previousPhoto": "Önceki fotoğraf",
+    "nextPhoto": "Sonraki fotoğraf",
+    "photoOfTotal": "{mevcut} / {toplam}",
+    "secured": "Güvenli"
+  },
+  "hero": {
+    "headline": "Afrika'yı güvenle deneyimleyin",
+    "tab": {
+      "accommodations": "Konaklama",
+      "flights": "Uçuşlar",
+      "carRentals": "Araç Kiralama",
+      "tours": "Turlar ve Deneyimler"
+    },
+    "search": "Aramak",
+    "clearFilter": "Filtreyi Temizle",
+    "accommodations": {
+      "destination": "Hedefiniz",
+      "destinationStay": "{count} kal",
+      "destinationStays": "{count} konaklamalar",
+      "checkIn": "Giriş Tarihi",
+      "checkAvailability": "Müsaitliği Kontrol Et",
+      "propertyType": "Mülk türü",
+      "oneRoom": "1 Oda",
+      "oneGuest": "1 Misafir",
+      "roomsCount": "{count} Oda",
+      "guestsCount": "{count} Misafir",
+      "checkOut": "Tarihi kontrol edin"
+    },
+    "flights": {
+      "roundTrip": "Gidiş-Dönüş",
+      "oneWay": "Tek yön",
+      "directFlight": "Doğrudan Uçuş",
+      "economyClass": "Ekonomi Sınıfı",
+      "premiumEconomyClass": "Premium Ekonomi",
+      "businessClass": "İş Sınıfı",
+      "firstClass": "Birinci Sınıf",
+      "onePassenger": "1 yolcu",
+      "passengersCount": "{count} Yolcu",
+      "fromCity": "Şehir Seç |",
+      "toCity": "Şehre | Seç",
+      "departureDate": "Kalkış tarihi",
+      "returnDate": "İade tarihi",
+      "departing": "Ayrılış",
+      "returning": "Geri Dönüş"
+    },
+    "common": {
+      "addDate": "Tarih ekle",
+      "selectDateRange": "Gidiş ve dönüş tarihlerini seçin",
+      "selectDate": "Bir tarih seçin",
+      "days": "Günler",
+      "nights": "Geceler"
+    },
+    "carRentals": {
+      "searchCarType": "Araç türünü ara",
+      "filterCarType": "Araç türüne göre filtrele",
+      "allCarTypes": "Tüm türler",
+      "selfDrive": "Kendi aracınızla seyahat",
+      "price": "₦ Fiyat",
+      "pickupDate": "Teslim alma tarihi",
+      "destinationCar": "{count} araba",
+      "destinationCars": "{count} araba"
+    },
+    "tours": {
+      "searchPlaceholder": "Konumları, turistik yerleri ve deneyimleri ara",
+      "startDate": "Başlangıç tarihi",
+      "destinationExperience": "{count} deneyim",
+      "destinationExperiences": "{count} deneyim"
+    },
+    "location": "Konum"
+  },
+  "footer": {
+    "brandDescription": "SynkAfrica, dünya çapındaki insanları Afrika seyahat ve yaşam tarzı ekosisteminin kalbine bağlamak üzere tasarlanmış, gelişmekte olan, hepsi bir arada bir seyahat ve birinci sınıf deneyim platformudur.",
+    "explore": {
+      "title": "SynkAfrica'yı keşfedin",
+      "hotels": "Oteller ve Konaklama Yerleri",
+      "carRentals": "Araç Kiralama",
+      "flights": "Uçak bileti rezervasyonları",
+      "restaurants": "Yemek ve Restoranlar"
+    },
+    "support": {
+      "title": "Destek",
+      "contact": "Destek birimiyle iletişime geçin",
+      "changeBooking": "Rezervasyonunuzu değiştirin veya iptal edin",
+      "paymentOptions": "Ödeme seçenekleri",
+      "receipt": "Rezervasyon makbuzunuzu görüntüleyin veya yazdırın"
+    },
+    "community": {
+      "title": "Topluluk",
+      "instagram": "Instagram hesabımız",
+      "facebook": "Facebook",
+      "news": "Haberlerde"
+    },
+    "vendor": {
+      "title": "Satıcı Olun",
+      "listCar": "Arabanızı İlan Edin",
+      "listService": "Hizmetinizi listeleyin",
+      "contact": "Bize ulaşın"
+    },
+    "appPromo": {
+      "headline": "SynkAfrica deneyimini tam anlamıyla yaşayın.",
+      "cta": "Uygulamayı bugün indirin",
+      "getItOn": "HEMEN AL",
+      "googlePlay": "Google Play",
+      "downloadOn": "Şuradan indirin:",
+      "appStore": "App Store"
+    },
+    "legal": {
+      "privacy": "Gizlilik Politikası",
+      "terms": "Kullanım Koşulları",
+      "security": "Güvenlik Sayfası",
+      "faqs": "Sık Sorulan Sorular"
+    },
+    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+  },
+  "login": {
+    "intro": "Hizmetlerimize erişmek için SynkAfrica hesabınızla oturum açabilirsiniz.",
+    "backendNotReady": "Arka uç ortam değişkenleri henüz ayarlanmadı. Kimlik bilgileri yapılandırıldığında oturum açma işlemi çalışacaktır.",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "orUseOptions": "ya da şu seçeneklerden birini kullanın",
+    "signInGoogle": "Google ile giriş yap",
+    "continueApple": "Apple ile devam et"
+  },
+  "account": {
+    "nav": {
+      "notifications": "Bildirimler"
+    },
+    "contactSupport": "Destek ekibiyle iletişime geçin",
+    "profile": {
+      "edit": "Düzenle",
+      "fullName": "Tam adı",
+      "fullNamePlaceholder": "Tam adınızı girin",
+      "location": "Konum",
+      "dateOfBirth": "Doğum tarihi",
+      "dobPlaceholder": "AA | GG | YY",
+      "gender": "Cinsiyet",
+      "notAdded": "Eklenmedi",
+      "contactDetails": "İletişim bilgileri",
+      "phone": "Telefon numarası",
+      "email": "E-posta adresi",
+      "passwordSecurity": "Şifre ve güvenlik",
+      "password": "Şifre",
+      "changePassword": "Şifreyi değiştir"
+    },
+    "deleteAccount": "Hesabı sil",
+    "bookings": {
+      "title": "Siparişleriniz",
+      "tab": {
+        "upcoming": "Yakında",
+        "past": "Geçmiş",
+        "cancelled": "İptal edildi",
+        "bookings": "Rezervasyonlar"
+      },
+      "empty": {
+        "upcoming": "Yakında yapılacak rezervasyon yok.",
+        "past": "Bu dönem için geçmişte yapılan rezervasyon bulunmamaktadır.",
+        "cancelled": "Bu dönemde iptal edilen sipariş bulunmamaktadır.",
+        "bookings": "Bu dönem için herhangi bir rezervasyon bulunmamaktadır."
+      },
+      "orderDate": "Sipariş tarihi:",
+      "experienceDate": "Deneyim tarihi:",
+      "totalAmount": "Toplam tutar:",
+      "orderNumber": "Sipariş:",
+      "guestCount": "Konuklar",
+      "specialRequests": "Özel talepler",
+      "cancel": "İptal et",
+      "receiptRecipient": "Makbuz ve QR alıcısı",
+      "viewDetails": "Ayrıntıları görüntüle",
+      "leaveReview": "Yorum yazın",
+      "reviewSubmitted": "Yorum gönderildi",
+      "cancelWindowClosed": "Bu rezervasyon için iptal süresi sona ermiştir.",
+      "cancelledOn": "{tarih} tarihinde iptal edildi",
+      "cancelConfirmTitle": "Bu rezervasyonu iptal etmek ister misiniz?",
+      "cancelConfirmBody": "Deneyiminiz başlamadan önce, iptal süresi içinde iptal edebilirsiniz. Bu işlem geri alınamaz.",
+      "confirmCancel": "Evet, rezervasyonu iptal et",
+      "filterPeriod": "Döneme göre filtrele",
+      "badge": {
+        "upcoming": "Yakında",
+        "past": "Geçmiş",
+        "cancelled": "İptal edildi"
+      },
+      "countdown": {
+        "label": "Deneyim şöyle başlar:",
+        "daysHours": "[[[gün]]]d {saat}h",
+        "hoursMinutes": "{saat}h {dakika}m",
+        "detailHint": "Deneyiminiz başlayana kadar geri sayım gerçek zamanlı olarak güncellenir."
+      },
+      "review": {
+        "title": "Yorum bırakın",
+        "ratingLabel": "Değerlendirmeniz",
+        "commentLabel": "Yorumunuz",
+        "commentPlaceholder": "Bu deneyimde en çok neyi sevdiğinizi paylaşın...",
+        "submit": "Yorum gönder",
+        "dismiss": "İnceleme iletişim kutusunu kapat"
+      },
+      "detail": {
+        "back": "Rezervasyonlara geri dön",
+        "reference": "Rezervasyon referans numarası",
+        "yourReview": "Yorumunuz",
+        "notFound": "Bu rezervasyon bulunamadı."
+      }
+    },
+    "saved": {
+      "accommodations": "Konaklama Olanakları",
+      "empty": "Henüz hiçbir şey kaydetmediniz.",
+      "cars": "Arabalar",
+      "tours": "Turlar"
+    },
+    "reviews": {
+      "title": "Yorumlar",
+      "youRated": "Değerlendirdiniz",
+      "writeReview": "Bir yorum yazın",
+      "ratingLabel": "Değerlendirmeniz",
+      "commentLabel": "Yorumunuz",
+      "commentPlaceholder": "Bu deneyimde en çok neyi sevdiğinizi paylaşın...",
+      "photosLabel": "Fotoğraflar",
+      "photosCount": "{count}/{max} dosya yüklendi",
+      "addPhoto": "Fotoğraf ekle",
+      "removePhoto": "Fotoğrafı sil",
+      "submit": "Yorum gönder",
+      "pendingTitle": "Tamamlanmış bir rezervasyonu inceleyin",
+      "pendingHint": "Yorumlar, yalnızca hesabınıza bağlı geçmiş rezervasyonlar için gönderilebilir.",
+      "selectBooking": "Yorum yazmak için yukarıdaki tamamlanmış rezervasyonlardan birini seçin.",
+      "noPending": "Değerlendirme bekleyen tamamlanmış rezervasyonunuz bulunmamaktadır.",
+      "submittedTitle": "Gönderdiğiniz yorumlar",
+      "empty": "Henüz herhangi bir yorum göndermediniz.",
+      "deleteReview": "Yorumu sil",
+      "bookingReference": "Rezervasyon {referans}",
+      "listingBadge": "Konuk yorumları",
+      "experienceListingTitle": "Konuk yorumları"
+    },
+    "notifications": {
+      "title": {
+        "reminder24h": "Deneyim 24 saat içinde başlıyor",
+        "reviewRequest": "Deneyiminizi bizimle paylaşın",
+        "cancellationRefund": "Rezervasyon iptal edildi",
+        "bookingConfirmation": "Rezervasyon onaylandı",
+        "info": "Seyahat hatırlatması"
+      },
+      "empty": "Henüz bildirim yok.",
+      "period": {
+        "mostRecent": "En son",
+        "weekEarlier": "Bir hafta önce",
+        "threeMonthsAgo": "3 ay önce"
+      },
+      "kind": {
+        "bookingConfirmation": "Rezervasyon onaylandı",
+        "reminder24h": "24 saatlik hatırlatma",
+        "reviewRequest": "İnceleme talebi",
+        "cancellationRefund": "İptal ve geri ödeme",
+        "info": "Seyahat ipucu"
+      },
+      "message": {
+        "reminder24h": "{title} adlı etkinliğiniz yarın {date} tarihinde {time} saatinde başlayacak. Rezervasyon bilgilerinizi gözden geçirin ve 15 dakika erken gelin.",
+        "reviewRequest": "{title} nasıldı? SynkAfrica’daki diğer gezginlere yardımcı olmak için yıldız puanınızı ve yazılı yorumunuzu paylaşın.",
+        "cancellationRefund": "{title} ([[[reference]]) için yaptığınız rezervasyon iptal edildi. Geri ödeme yapılabilecek tutarlar, 5–7 iş günü içinde işleme alınacaktır.",
+        "bookingConfirmation": "{location}'daki {title} için yaptığınız rezervasyon onaylanmıştır. Faturanızı ve QR kod bilgilerinizi e-postanızdan kontrol edin.",
+        "passportReminder": "Pasaportunuzun seyahat tarihinizden itibaren en az 6 ay daha geçerli olduğundan emin olun."
+      }
+    },
+    "support": {
+      "contact": {
+        "whatsapp": "WhatsApp",
+        "email": "E-posta",
+        "phone": "Bizi arayın"
+      },
+      "createTicket": "Bir destek talebi oluşturun",
+      "topic": "Bu neyle ilgili?",
+      "relatedOrder": "İlgili sipariş (isteğe bağlı)",
+      "relatedOrderNone": "Yok",
+      "subject": "Konu",
+      "subjectPlaceholder": "Konunun kısa özeti",
+      "message": "Mesaj",
+      "messagePlaceholder": "Bize neler olduğunu anlat...",
+      "attachFile": "Bir fotoğraf veya ekran görüntüsü ekleyin",
+      "submitTicket": "Bildirim gönder",
+      "ticketSubmitted": "{numara} numaralı bilet gönderildi. Size en kısa sürede geri dönüş yapacağız.",
+      "yourTickets": "Biletleriniz",
+      "commonQuestions": "Sık sorulan sorular",
+      "ticketMeta": "Bilet No. {numara} · {tarih}",
+      "status": {
+        "open": "Aç",
+        "resolved": "Karar verildi"
+      },
+      "category": {
+        "booking": "Rezervasyon sorunu",
+        "paymentRefund": "Ödeme / iade",
+        "account": "Hesap ve profil",
+        "other": "Diğer"
+      },
+      "faq": {
+        "cancelBooking": "Bir rezervasyonu nasıl iptal edebilirim?",
+        "refundTiming": "Geri ödememi ne zaman alacağım?",
+        "changeDate": "Seyahat tarihimi nasıl değiştiririm?",
+        "paymentSecurity": "Ödemem güvenli mi?",
+        "cancelBookingAnswer": "Rezervasyonunuzu Bookings & Trips'ten açın, siparişi seçin ve hâlâ iptal süresi içindeyse iptal seçeneğini kullanın. Uygun rezervasyonlar için geri ödemeler otomatik olarak gerçekleştirilir.",
+        "refundTimingAnswer": "Uygun geri ödemeler, bankanıza veya ödeme sağlayıcınıza bağlı olarak genellikle iptalden sonraki 5-7 iş günü içinde işleme koyulur.",
+        "changeDateAnswer": "Rezervasyon referansınızla birlikte destek ekibiyle iletişime geçin. Deneyim tarih değişikliklerine izin veriyorsa ekibimiz yeniden planlamanıza yardımcı olacak veya mevcut seçenekler konusunda size rehberlik edecektir.",
+        "paymentSecurityAnswer": "Evet. Synkafrica'daki ödemeler güvenli, şifreli ödeme ortakları aracılığıyla işlenir. Kart bilgilerinizin tamamını asla sunucularımızda saklamayız."
+      },
+      "tabs": {
+        "label": "Destek bölümleri"
+      },
+      "backToTickets": "Biletlere geri dön",
+      "typeMessage": "Bir mesaj yazın...",
+      "send": "Göndermek",
+      "supportTeam": "Synkafrica Desteği",
+      "you": "Sen",
+      "emptyTickets": "Henüz herhangi bir destek talebi göndermediniz.",
+      "attachedImage": "Ekteki resim",
+      "removeAttachment": "Eki kaldır"
+    }
+  },
+  "booking": {
+    "step": {
+      "rooms": "Konaklama ve Odaları Seçin",
+      "chooseExperience": "Deneyimi Seçin",
+      "chooseCar": "Araba Seç",
+      "choosePackage": "Paket Seçin",
+      "checkout": "Ödeme",
+      "payment": "Ödeme",
+      "confirmation": "Onay"
+    },
+    "cta": {
+      "proceedToPay": "ÖDEMEYE DEVAM ET"
+    },
+    "guest": {
+      "title": {
+        "mr": "Bay",
+        "mrs": "Bayan",
+        "ms": "Bayan",
+        "miss": "Bayan",
+        "dr": "Dr."
+      },
+      "adultLabel": "Yetişkin (17 yaş ve üzeri)",
+      "leadGuestLabel": "Baş konuk",
+      "addedCount": "{eklenen}/{toplam} eklendi",
+      "passportHint": "Adınızı pasaportunuzda yazdığı şekliyle girin. Pasaportunuz, seyahat tarihinden itibaren en az 6 ay süreyle geçerli olmalıdır.",
+      "idVerificationHint": "Herhangi bir rezervasyonu tamamlayabilmeniz için devlet tarafından verilmiş geçerli bir kimlik belgesi gereklidir.",
+      "idVerificationTitle": "Kimlik doğrulama",
+      "idVerificationSubtitle": "Kimlik bilgilerinizi, belgenizde yazdığı şekliyle aynen girin.",
+      "idType": {
+        "passport": "Pasaport",
+        "nationalId": "Ulusal Kimlik Numarası",
+        "driversLicense": "Ehliyet"
+      },
+      "idNumber": "Kimlik numarası",
+      "idNumberPlaceholder": "Kimlik numaranızı girin",
+      "idExpiry": "Son kullanma tarihi",
+      "confirmId": "Kimlik bilgilerimin doğru olduğunu ve belgemin seyahat tarihinden itibaren en az 6 ay süreyle geçerli olduğunu teyit ederim.",
+      "idTypeRequired": "Bir kimlik türü seçin.",
+      "idNumberInvalid": "Geçerli bir kimlik numarası girin.",
+      "idExpiryRequired": "Kimlik numarasının geçerlilik son tarihini girin.",
+      "idExpiryInvalid": "Kimlik belgesinin geçerlilik süresi bugünden itibaren en az 6 ay olmalı.",
+      "idConfirmRequired": "Devam etmek için kimlik bilgilerinizi doğrulayın.",
+      "idValidationRequired": "Ödemeye geçmeden önce kimlik bilgilerinizi doldurun ve onaylayın.",
+      "adultCheckbox": "Yetişkin - [[[sayım]]]",
+      "titleField": "Başlık",
+      "lastName": "Soyadı",
+      "firstName": "Ad",
+      "middleName": "İkinci Adı",
+      "dateOfBirth": "Doğum tarihi",
+      "datePlaceholder": "yyyy-aa-gg",
+      "nationality": "Uyruğu",
+      "gender": "Cinsiyet",
+      "male": "Erkek",
+      "female": "Kadın",
+      "mobileNo": "Cep Telefonu Numarası",
+      "emailAddress": "E-posta Adresi",
+      "openCalendar": "Takvimi aç",
+      "countLabel": "Konuk sayısı",
+      "countHint": "Fiyatlar, konuk sayısına göre otomatik olarak güncellenir.",
+      "decreaseGuests": "Konuk sayısını azaltmak",
+      "increaseGuests": "Misafir sayısını artırmak",
+      "specialRequests": "Özel istekler",
+      "specialRequestsPlaceholder": "Erken giriş, beslenme ihtiyaçları, erişilebilirlik gereksinimleri vb."
+    },
+    "summary": {
+      "selectRoom": "Bir oda seçin",
+      "selectCar": "Bir araba seçin",
+      "selectExperience": "Bir deneyim seçin",
+      "selectPackage": "Bir paket seçin",
+      "priceDetails": "Fiyat bilgileri",
+      "taxesAndFees": "Vergiler ve Ücretler",
+      "night": "gece",
+      "nights": "geceler",
+      "room": "oda",
+      "rooms": "odalar",
+      "day": "gün",
+      "days": "gün",
+      "total": "Toplam",
+      "guests": "misafirler"
+    },
+    "table": {
+      "selectRoom": "Bir oda seçin",
+      "guestCount": "Konuk Sayısı",
+      "pricePerNight": "Gecelik fiyat",
+      "includesTaxes": "Vergiler ve ücretler dahildir",
+      "packages": "Paketler",
+      "hours": "Çalışma Saatleri",
+      "price": "Fiyat",
+      "experiences": "Deneyimler",
+      "duration": "Süre"
+    },
+    "dates": {
+      "checkIn": "Giriş Tarihi",
+      "checkOut": "Tarihi kontrol edin",
+      "guests": "Konuklar",
+      "rooms": "Odalar",
+      "nights": "Geceler",
+      "days": "Günler",
+      "rentalDays": "Kiralama günleri",
+      "tripDuration": "Gezi süresi",
+      "tripDurationHint": "Ne kadar gün kalmak veya gezmek istediğinizi belirleyin.",
+      "decreaseNights": "Gece sayısını azaltın",
+      "increaseNights": "Gece sayısını artır",
+      "decreaseDays": "Gün sayısını azalt",
+      "increaseDays": "Gün sayısını artırın"
+    },
+    "car": {
+      "rentalModeHeading": "Bu arabayı nasıl kullanmak istersiniz?",
+      "rentalModeHint": "Rezervasyonunuzda kendi aracınızı sürmeyi tercih edin ya da profesyonel bir şoför ekleyin.",
+      "selfDrive": "Kendi aracınızla seyahat",
+      "selfDriveHint": "Arabayı kendiniz sürün. Satıcıdan teslim alın ya da ek ücret karşılığında teslimat talep edin.",
+      "withDriver": "Sürücü ile",
+      "withDriverHint": "Seyahatiniz için profesyonel bir şoför hizmetinizdedir.",
+      "noExtraCost": "Ek ücret yok",
+      "driverAddon": "+ {miktar} sürücü eklentisi",
+      "requestDelivery": "Araç teslimatı talebi",
+      "requestDeliveryHint": "Ek bir ücret karşılığında aracın bulunduğunuz yere teslim edilmesini sağlayın.",
+      "deliveryFee": "+ {tutar} teslimat ücreti",
+      "deliveryAddress": "Teslimat adresi",
+      "deliveryAddressPlaceholder": "Aracın teslim edileceği adresi girin",
+      "pickupAddress": "Teslim alma adresi",
+      "pickupAddressHint": "Teslimat talebinde bulunmazsanız, aracı bu satıcı şubesinden teslim alın.",
+      "customerPickupAddress": "Teslim alma yeriniz",
+      "customerPickupAddressPlaceholder": "Sürücünün sizi nereden alması gerektiğini girin",
+      "customerPickupAddressHint": "Şoför sizi bu adreste karşılayacak.",
+      "driverAddonLabel": "Sürücü eklentisi",
+      "deliveryFeeLabel": "Kargo ücreti",
+      "about": "Bu araba hakkında",
+      "saveCar": "Arabayı kaydet"
+    },
+    "property": {
+      "saveProperty": "Mülkü kaydet",
+      "morePhotos": "+{count} fotoğraf",
+      "currentOffers": "Güncel teklifler"
+    },
+    "amenity": {
+      "free": "Ücretsiz!",
+      "additionalCharge": "Ek ücret"
+    },
+    "tour": {
+      "about": "Bu deneyim hakkında",
+      "saveTour": "Turunu kaydet"
+    },
+    "package": {
+      "about": "Bu paket hakkında",
+      "savePackage": "Paketi kaydet",
+      "sharePackage": "Paketi paylaş",
+      "nightsDays": "{geceler} Geceler / [[[günler]]] Günler",
+      "durationShort": "[[[gün]]]G / {gece}G",
+      "guestRange": "[[[aralık]]] Konuklar",
+      "moduleCount": "{count} Modüller",
+      "highlight": {
+        "duration": "Süre",
+        "groupSize": "Grup Büyüklüğü",
+        "included": "Dahil olanlar",
+        "cancellation": "İptal+",
+        "free": "Ücretsiz",
+        "standard": "Standart"
+      },
+      "whatsIncluded": "Paket İçeriği",
+      "included": "Dahil olanlar",
+      "priceBreakdown": "Fiyat Dağılımı",
+      "packageDiscount": "Paket indirimi",
+      "packagePrice": "Paket Fiyatı",
+      "whyBook": "Neden Bu Paketi Seçmelisiniz?",
+      "guestCountLocked": "Bu pakette konuk sayısı sabittir ve ödeme sırasında değiştirilemez."
+    },
+    "payment": {
+      "processing": "Ödeme işleniyor..."
+    },
+    "confirmation": {
+      "imageAlt": "Onay işlemi başarıyla tamamlandı",
+      "title": "Ödeme başarıyla gerçekleştirildi",
+      "subtitle": "Lütfen e-postanızı kontrol ederek makbuzunuzu ve QR bilgilerinizi alınız.",
+      "reloadIn": "Bu sayfa şu süre içinde yeniden yüklenecek:",
+      "reloadNow": "Şimdi yeniden yükle",
+      "referenceLabel": "Rezervasyon referans numarası",
+      "copyReference": "Kopyala",
+      "copied": "Kopyalandı",
+      "summaryTitle": "Rezervasyon özeti",
+      "product": "Rezervasyon yapılan ürün",
+      "totalPaid": "Ödenen toplam tutar",
+      "addToCalendar": "Takvime ekle",
+      "openGoogleCalendar": "Google Takvim'de aç",
+      "viewBookings": "Rezervasyonlarımı görüntüle"
+    },
+    "reviews": {
+      "nextReview": "Sonraki inceleme",
+      "allReviews": "Tüm yorumlar",
+      "viewAll": "Tüm yorumları görüntüle",
+      "close": "İncelemeleri kapat"
+    },
+    "content": {
+      "property": {
+        "arkHavn": {
+          "desc0": "Marakeş'in tam kalbinde yer alan The Ark Haven, modern konfor ile geleneksel Fas cazibesini harmanlayarak misafirlerine huzur dolu bir kaçış imkanı sunuyor. Açık havuzun, tesis bünyesindeki barın ve düz ekran TV'li klimalı odaların keyfini çıkarın.",
+          "desc1": "Konuklar, yakındaki turistik yerleri keşfedebilir, servis hizmetlerinden, tenis kortlarından ve araç kiralama hizmetinden yararlanabilir. İster tatil ister iş amaçlı gelmiş olun, The Ark Haven olağanüstü konukseverliğiyle unutulmaz bir konaklama deneyimi sunar."
+        },
+        "fallback": {
+          "desc0": "{name}, {location}’da modern olanaklar ve mükemmel bir konumla konuklarına konforlu bir konaklama imkanı sunuyor.",
+          "desc1": "Konforlu odaların, güler yüzlü hizmetin ve yerel turistik yerlere ve restoranlara kolay ulaşımın keyfini çıkarın."
+        }
+      },
+      "review": {
+        "review1": "Ark Haven beklentilerimi aştı. Personel inanılmaz derecede misafirperverdi ve havuz alanı, şehri gezdikten sonra dinlenmek için mükemmel bir yerdi.",
+        "review2": "Güzel odalar, harika bir konum ve kahvaltı olağanüstüydü. Fas’a yapacağım bir sonraki seyahatimde kesinlikle yine burada kalacağım.",
+        "review3": "Geniş süit, temiz tesisler ve yardımsever konsiyerj. Servis hizmeti sayesinde Marakeş'te dolaşmak çok kolay oldu."
+      },
+      "offer": {
+        "drinkPromo": "1 içecek al, bir tane bedava al",
+        "mealsOff": "Yemeklerde %10 İndirim",
+        "freeWifi": "Ücretsiz Wi-Fi"
+      },
+      "room": {
+        "deluxeSuite": "Deluxe Süit",
+        "supremeRoom": "Supreme Oda",
+        "standardRoom": "Standart Oda",
+        "subtitle": {
+          "deluxe": "Deluxe (1 Yatak Odalı Daire)",
+          "supreme": "Supreme (Stüdyo Daire)",
+          "standard": "Standart (Çift Kişilik Oda)"
+        },
+        "size592": "592 fit kare",
+        "size420": "420 fit kare",
+        "size310": "310 fit kare",
+        "sleeps2Adults": "2 Yetişkin konaklayabilir"
+      },
+      "package": {
+        "dailyHire": "Günlük kiralama",
+        "halfDayHire": "Yarım günlük kiralama",
+        "extraHours": "Fazla mesai",
+        "hours24": "24 saat",
+        "hours12": "12 saat",
+        "hours3": "3 saat"
+      },
+      "feature": {
+        "automatic": "Otomatik",
+        "driverAvailable": "Sürücü mevcut",
+        "selfDrive": "Kendi aracınızla seyahat",
+        "available": "Mevcut",
+        "limitedSlots": "Sınırlı kontenjan",
+        "guidedTour": "Rehberli tur",
+        "selfDriveAvailable": "Kendi aracınızla seyahat seçeneği mevcuttur",
+        "flightsIncluded": "Uçuşlar dahildir",
+        "hotelStay": "Otel konaklaması",
+        "guidedTours": "Rehberli turlar",
+        "nightsDays": "{geceler} geceler / [[[günler]]] günler"
+      },
+      "tourOption": {
+        "standard": "Standart bilet",
+        "premium": "Birinci sınıf deneyim",
+        "private": "Özel grup",
+        "hours5": "5 saat",
+        "fullDay": "Tam gün"
+      },
+      "tier": {
+        "standard": "Standart paket",
+        "deluxe": "Deluxe paket",
+        "allInclusive": "Her şey dahil"
+      },
+      "amenityCat": {
+        "greatForStay": "Konaklamanız için harika bir seçim",
+        "outdoors": "Açık havada",
+        "pets": "Evcil hayvanlar",
+        "internet": "İnternet",
+        "onSiteParking": "Tesis içinde otopark",
+        "frontDesk": "Resepsiyon Hizmetleri",
+        "familyServices": "Eğlence ve Aile Hizmetleri",
+        "cleaningServices": "Temizlik Hizmetleri",
+        "general": "Genel",
+        "accessibility": "Erişilebilirlik",
+        "swimmingPools": "2 yüzme havuzu",
+        "pool1Outdoor": "1. Havuz – açık hava"
+      },
+      "amenityDesc": {
+        "petsAllowed": "Talep üzerine evcil hayvan kabul edilir. Ek ücret alınmaz.",
+        "wifiFree": "Tüm alanlarda Wi-Fi mevcuttur ve ücretsizdir.",
+        "parkingFree": "Tesis bünyesinde ücretsiz halka açık otopark mevcuttur (rezervasyon gerekmez)."
+      },
+      "amenityItem": {
+        "restaurant": "Restoran",
+        "freeWifi": "Ücretsiz Wi-Fi",
+        "parking": "Otopark",
+        "spa": "Spa",
+        "familyRooms": "Aile odaları",
+        "roomService": "Oda servisi",
+        "airportShuttle": "Havaalanı servisi",
+        "bbqFacilities": "Barbekü olanakları",
+        "petFriendly": "Evcil hayvan dostu",
+        "nonSmokingRooms": "Sigara içilmeyen odalar",
+        "outdoorFireplace": "Açık hava şöminesi",
+        "beachfront": "Deniz kıyısı",
+        "sunDeck": "Güneşlenme terası",
+        "privateBeach": "Özel plaj alanı",
+        "terrace": "Teras",
+        "garden": "Bahçe",
+        "valetParking": "Otopark hizmeti",
+        "parkingGarage": "Otopark",
+        "accessibleParking": "Engelliler için park yeri",
+        "lockers": "Dolaplar",
+        "concierge": "Konsiyerj",
+        "atmOnSite": "Tesis içinde ATM",
+        "baggageStorage": "Bagaj emanet hizmeti",
+        "currencyExchange": "Döviz bozdurma",
+        "frontDesk24h": "24 saat açık resepsiyon",
+        "outdoorPlayEquipment": "Çocuklar için açık hava oyun ekipmanları",
+        "dailyHousekeeping": "Günlük temizlik hizmeti",
+        "ironingService": "Ütü hizmeti",
+        "shuttleService": "Servis hizmeti",
+        "sharedLounge": "Ortak dinlenme salonu/TV alanı",
+        "airConditioning": "Klima",
+        "carRental": "Araç kiralama",
+        "packedLunches": "Paketli öğle yemekleri",
+        "disabledFacilities": "Engelli konuklara yönelik olanaklar",
+        "bathroomEmergencyCord": "Banyo acil durum kablosu",
+        "openAllYear": "Tüm yıl boyunca açık",
+        "adultsOnly": "Yalnızca yetişkinler",
+        "poolBeachTowels": "Havuz/Plaj havluları",
+        "poolBar": "Havuz barı",
+        "beachChairs": "Plaj sandalyeleri/Şezlonglar"
+      },
+      "tour": {
+        "desc": {
+          "boatAccess": "Yalnızca tekne veya deniz taksisi ile erişilebilir. Nispeten sakin sularıyla ünlüdür.",
+          "lekkiCanopy": "Afrika'nın en uzun gölgelik köprüsünü yürüyün ve yemyeşil mangrov parkurlarını keşfedin.",
+          "nikeArt": "Batı Afrika'daki en büyük çağdaş Afrika sanatı koleksiyonlarından birini keşfedin.",
+          "badagry": "Müzeler ve önemli noktalar aracılığıyla transatlantik köle ticaretinin tarihinin izini sürün.",
+          "desertSafari": "Kum tepelerinde araba sürme, deve gezintisi ve yıldızların altında geleneksel bir Bedevi kampı.",
+          "cotonou": "Benin’in pazarlarını, sömürge dönemi mimarisini ve canlı sahil şeridini keşfedin.",
+          "winelands": "Şarap tadımı ve muhteşem dağ manzaraları eşliğinde Stellenbosch bağlarını ziyaret edin.",
+          "monacoYacht": "Monte Carlo ve lüks limanların manzarası eşliğinde Fransız Rivierası kıyı şeridinde yelken açın.",
+          "lagosFood": "Şehrin en iyi yemek mekanlarında suya, puff-puff ve yerel lezzetleri tadın.",
+          "dubaiKayak": "Gün batımında, şehir silüetinin manzarası eşliğinde ve rehber eşliğinde marinada kürek çekin."
+        }
+      }
+    },
+    "dateTime": {
+      "title": "Tarih ve saati seçin",
+      "rangeHint": "Takvimden giriş ve çıkış tarihlerinizi seçin.",
+      "singleHint": "Takvimden deneyim tarihini seçin.",
+      "legendAvailable": "Mevcut",
+      "legendUnavailable": "Mevcut değil",
+      "selectCheckout": "Ödemeyi seç",
+      "timeSlots": "Zaman aralığı",
+      "experienceDate": "Deneyim tarihi"
+    }
+  },
+  "breadcrumb": {
+    "synkAfrica": "SynkAfrica",
+    "accommodations": "Konaklama Seçenekleri",
+    "flights": "Uçuşlar",
+    "carForHire": "Araç Kiralama",
+    "tours": "Turlar ve Deneyimler",
+    "tourPackages": "Tur Paketleri",
+    "dealsAndPackages": "Fırsatlar ve Paketler",
+    "packages": "Paketler"
+  },
+  "results": {
+    "accommodations": {
+      "title": "Konaklamalar",
+      "staysFound": "{count} kalıntı bulundu",
+      "searchPlaceholder": "Konaklama yerlerini ara",
+      "empty": "Filtrelerinize uyan konaklama seçeneği bulunamadı."
+    },
+    "carRentals": {
+      "title": "Kiralık araçları keşfedin",
+      "carsFound": "{count} adet araç bulundu",
+      "searchPlaceholder": "Araba Arama",
+      "empty": "Filtrelerinize uyan araç bulunamadı."
+    },
+    "tours": {
+      "title": "{count} Arama sonuçları",
+      "searchPlaceholder": "Arama deneyimi",
+      "empty": "Filtrelerinize uyan hiçbir deneyim bulunamadı."
+    },
+    "emptyHint": "Arama veya filtre seçeneklerinizi değiştirmeyi deneyin.",
+    "promoSubtitle": "Sizin için promosyonlar, fırsatlar ve özel teklifler"
+  },
+  "filters": {
+    "apply": "Filtre uygula",
+    "applyCount": "Filtreyi uygula ({count})",
+    "location": "Konum",
+    "rentalDates": "Kiralama tarihleri",
+    "startDate": "Başlangıç tarihi",
+    "endDate": "Bitiş tarihi",
+    "discounts": "İndirimler",
+    "price": "Fiyat",
+    "category": "Kategori",
+    "experiences": "Deneyimler",
+    "other": "Diğer Filtreler",
+    "budget": "Bütçe",
+    "perNight": "| Gece",
+    "perDaily": "| günlük",
+    "anyPrice": "Herhangi bir fiyat",
+    "apartmentType": "Daire tipi",
+    "bedrooms": "Yatak odası sayısı",
+    "ratings": "Derecelendirmeler",
+    "perks": "Avantajlar ve olanaklar",
+    "priceRange": {
+      "under50k": "50 bin'in altında",
+      "50to150k": "50 - 150 bin",
+      "150kPlus": "150 bin ve üzeri"
+    },
+    "propertyType": {
+      "hotels": "Oteller",
+      "apartments": "Daireler",
+      "resorts": "Tatil Köyleri",
+      "bbs": "Oda ve Kahvaltı Tesisleri",
+      "guestHouse": "Konuk Evi",
+      "beachHouse": "Sahil Evi",
+      "motels": "Moteller"
+    },
+    "bedroom": {
+      "studio": "Stüdyo",
+      "one": "1 yatak odalı",
+      "two": "2 yatak odası",
+      "threePlus": "3 ve üzeri yatak odası"
+    },
+    "perk": {
+      "breakfast": "Kahvaltı dahildir",
+      "cancellation": "Ücretsiz iptal",
+      "pool": "Havuza giriş",
+      "shuttle": "Havaalanı servisi"
+    },
+    "discount": {
+      "all": "Tüm indirimler",
+      "withDiscount": "İndirimli",
+      "noDiscount": "İndirim yok",
+      "tenPercent": "%10 İndirim"
+    },
+    "carType": {
+      "suv": "SUV",
+      "sedan": "Sedan",
+      "hatchback": "Hatchback",
+      "pickup": "Teslim alma"
+    },
+    "serviceType": {
+      "selfDrive": "Kendi aracınızla seyahat",
+      "chauffeur": "Şoför"
+    },
+    "transmission": {
+      "automatic": "Otomatik",
+      "manual": "Kılavuz"
+    },
+    "tourCategory": {
+      "all": "Tüm kategoriler",
+      "outdoor": "Açık hava",
+      "artsCulture": "Sanat ve Kültür",
+      "adventure": "Macera",
+      "foodDrink": "Yiyecek ve İçecek"
+    },
+    "experienceType": {
+      "all": "Tüm deneyimler",
+      "tours": "Turlar",
+      "activities": "Etkinlikler",
+      "workshops": "Atölye Çalışmaları",
+      "dayTrips": "Günübirlik geziler"
+    }
+  },
+  "landing": {
+    "ongoingDeals": {
+      "title": "Devam Eden Kampanyalar",
+      "title2": "Sunulan paketler",
+      "description": "Sizin için promosyonlar, fırsatlar ve özel teklifler",
+      "scrollPackages": "Kaydırma paketleri"
+    },
+    "packages": {
+      "title": "Paketler"
+    },
+    "fansFavourite": {
+      "title": "Hayranların Favorisi"
+    },
+    "packageOffer": {
+      "inclusion": {
+        "flights": "Uçuşlar",
+        "stays": "Konaklamalar",
+        "carDriver": "Car + Driver"
+      },
+      "duration": "[[[günler]]] Günler • {geceler} Geceler • {program}",
+      "bookedSeparately": "ayrı olarak rezerve edilirse"
+    },
+    "bestDealsApartments": {
+      "title": "Daireler için en iyi fırsatlar"
+    },
+    "browsePropertyType": "Mülk türüne göre göz at",
+    "favouriteDestinations": "En Sevilen Destinasyonları Keşfedin",
+    "activitiesCount": "{count} etkinlik",
+    "flightPromo": {
+      "headline": "Uçak bileti rezervasyonu yapmak hiç bu kadar kolay olmamıştı",
+      "cta": "Müsaitlik durumunu kontrol et"
+    },
+    "experiencesPromo": {
+      "headline": "Tek bir destinasyonda sayısız deneyimin tadını çıkarın.",
+      "cta": "Deneyimlere Göz Atın",
+      "imageAlt": "Afrika'daki deneyimlere göz atın"
+    },
+    "tours": {
+      "attractions": {
+        "title": "Synkafrica'daki gezilecek yerler"
+      },
+      "events": {
+        "browsingIn": "Etkinliklere göz atma"
+      },
+      "packages": {
+        "title": "Tur paketleri",
+        "description": "Turlar için en uygun fırsatları yakalayın ve kolayca rezervasyon yapın."
+      }
+    },
+    "carRentals": {
+      "feature1": {
+        "title": "Profesyonel hizmet",
+        "description": "Afrika genelinde saygın havaalanı transfer hizmeti sağlayıcılarıyla çalışıyoruz."
+      },
+      "feature2": {
+        "title": "Esnek iptal koşulları",
+        "description": "Planlarınızda bir değişiklik olursa, esnek koşullarla iptal edebilirsiniz."
+      },
+      "feature3": {
+        "title": "Rekabetçi Fiyatlar",
+        "description": "Ekibimiz, size en uygun fiyatı sunabilmek için havaalanı taksi fiyatlarını her gün karşılaştırır."
+      }
+    }
+  },
+  "tourPackages": {
+    "hero": {
+      "title": "Tur paketleri",
+      "subtitle": "Unutulmaz Afrika maceraları için özenle seçilmiş seyahat paketleri."
+    },
+    "searchPlaceholder": "Hedef arama",
+    "empty": "Aramanızla eşleşen tur paketi bulunamadı."
+  },
+  "admin": {
+    "header": {
+      "role": "Platform yöneticisi"
+    },
+    "nav": {
+      "dashboard": "Kontrol Paneli",
+      "experiences": "Deneyimler",
+      "cars": "Arabalar",
+      "accommodations": "Konaklama Seçenekleri",
+      "vendors": "Satıcılar",
+      "bookings": "Rezervasyonlar",
+      "payouts": "Ödemeler",
+      "reviews": "Yorumlar",
+      "users": "Kullanıcılar",
+      "verifications": "Doğrulamalar",
+      "support": "Destek talepleri",
+      "team": "Takım",
+      "audit": "Denetim günlüğü"
+    },
+    "common": {
+      "all": "Tümü",
+      "enabled": "Etkinleştirildi",
+      "disabled": "Engelli",
+      "edit": "Düzenle",
+      "actions": "Eylemler"
+    },
+    "verifications": {
+      "title": "Doğrulamalar",
+      "subtitle": "Doğrulama hizmet sağlayıcımız tarafından manuel inceleme için işaretlenen başvurular — kimlik/yüz doğrulamalarının çoğu otomatik olarak onaylanır ve bu kuyruğa hiç ulaşmaz.",
+      "stats": {
+        "needsManualReview": "Manuel inceleme gerektiriyor",
+        "approvedToday": "Bugün onaylandı",
+        "deniedToday": "Bugün reddedildi",
+        "avgReviewTime": "Ortalama inceleme süresi",
+        "avgReviewTimeValue": "{dakika} dakika"
+      },
+      "searchPlaceholder": "Ad veya hesap kimliğine göre arama yapın...",
+      "filter": {
+        "users": "Kullanıcılar",
+        "vendors": "Satıcılar"
+      },
+      "status": {
+        "pendingReview": "İnceleme aşamasında",
+        "approved": "Onaylandı",
+        "denied": "Reddedildi"
+      },
+      "audience": {
+        "user": "Kullanıcı",
+        "vendor": "Satıcı"
+      },
+      "submitted": "Gönderilme tarihi {tarih}",
+      "pendingElapsed": "Beklemede [[[geçen süre]]]",
+      "blocking": {
+        "firstCheckout": "ilk ödeme işleminin engellenmesi"
+      },
+      "empty": "Filtrelerinize uyan hiçbir doğrulama başvurusu bulunmuyor.",
+      "accountId": "Hesap {id}",
+      "viewAccount": "Hesabı görüntüle →",
+      "pendingManualReview": "Manuel inceleme bekleniyor",
+      "elapsed": "⟦geçti⟧ geçti",
+      "documentPreviews": "Belge önizlemeleri",
+      "documentViewLogged": "Uyumluluk için belge görünümü günlüğe kaydedilir",
+      "providerResults": "Doğrulama sağlayıcı sonuçları (DIDIT)",
+      "approve": "Onaylamak",
+      "deny": "Reddetmek",
+      "requestResubmission": "Yeniden gönderim iste",
+      "notifyUser": "Kararı kullanıcıya bildir",
+      "notifyVendor": "Kararın satıcıya bildirilmesi",
+      "verificationApproved": "Doğrulama onaylandı",
+      "verificationDenied": "Doğrulama reddedildi",
+      "reviewedInElapsed": "{elapsed} tarihinde incelenmiştir",
+      "approvedBy": "Onaylayan:",
+      "approvedByValue": "Yönetici — {tarih}",
+      "reasonForDenial": "Reddedilme nedeni",
+      "revokeApproval": "Onayı iptal et",
+      "inviteResubmission": "Yeniden gönderim daveti",
+      "viewHistory": "Geçmişi görüntüle",
+      "providerResultsHeading": "Sağlayıcı sonucu — DIDIT",
+      "document": {
+        "ninSlip": "NIN kayması",
+        "passportPhoto": "Pasaport fotoğrafı sayfası",
+        "selfie": "Selfie / canlılık algılama",
+        "cac": "CAC sertifikası",
+        "driversLicense": "Ehliyet (ön yüz)"
+      },
+      "check": {
+        "cacRegistrationLookup": "CAC kayıt sorgulama",
+        "cacRegistrationVerified": "Doğrulanmış",
+        "faceMatchConfidence": "Yüz eşleştirme güvenilirliği",
+        "faceMatchConfidenceDetail": "%96",
+        "documentExpiredDetail": "Başarısız — geçerlilik süresi dolmuş belge",
+        "documentAuthenticity": "Belgenin gerçekliği",
+        "liveness": "Canlılık kontrolü",
+        "faceMatch": "Yüz eşleştirme güvenilirliği",
+        "nameMatch": "Ad, hesapla eşleşiyor",
+        "businessRegistration": "Ticari kayıt",
+        "faceMatchDetail": "%78 — otomatik onay eşiğinin altında",
+        "nameMatchDetail": "Maç",
+        "documentFailedDetail": "Başarısız — belge okunamıyor",
+        "faceMatchFailedDetail": "%42 — eşik değerin altında",
+        "businessRegistrationDetail": "Kısmi eşleşme — manuel inceleme gerekiyor"
+      },
+      "denialReason": {
+        "expiredLicense": "Ehliyetin geçerlilik süresi Mart 2026'da sona ermiştir. Lütfen geçerli ve süresi dolmamış bir resmi kimlik belgesi ekleyerek başvurunuzu yeniden gönderin."
+      },
+      "documentType": {
+        "passport": "Pasaport",
+        "cacNin": "CAC + NIN",
+        "driversLicense": "Ehliyet"
+      },
+      "checkResult": {
+        "passed": "Geçti",
+        "failed": "Başarısız",
+        "warning": "İnceleme gereklidir"
+      }
+    },
+    "dashboard": {
+      "welcome": "Yönetici konsolu,",
+      "addPackages": "Paketleri ekle",
+      "period": {
+        "label": "Ölçüm dönemi",
+        "today": "Bugün",
+        "week": "Bu hafta",
+        "month": "Bu ay",
+        "sixMonths": "6 ay",
+        "year": "1 yıl",
+        "all": "Tümü"
+      },
+      "users": "Kullanıcılar",
+      "bookings": "Rezervasyonlar",
+      "revenue": "Gelir",
+      "activeExperiences": "Aktif deneyimler",
+      "activeVendors": "Aktif satıcılar",
+      "viewAll": "Tümünü görüntüle",
+      "manage": "Yönet",
+      "alerts": "Uyarılar",
+      "alert": {
+        "pendingPayouts": "Onay bekleyen 3 satıcı ödemesi",
+        "flaggedReview": "Moderasyon için işaretlenen 2 yorum",
+        "openTicket": "5 adet açık satıcı destek talebi",
+        "disabledVendor": "1 satıcı hesabı devre dışı bırakıldı — inceleme gerekiyor"
+      }
+    },
+    "packages": {
+      "createTitle": "Yeni Paket / Teklif Oluştur",
+      "createSubtitle": "Uçuşları, konaklamaları, araç kiralamaları ve deneyimleri bir araya getirerek cazip bir seyahat paketi oluşturun.",
+      "addTitle": "Paket ekle",
+      "backToDashboard": "← Kontrol paneline geri dön",
+      "progressLabel": "Paketin ilerleme durumu",
+      "steps": {
+        "details": "Paket Bilgileri",
+        "modules": "Modüller Ekle",
+        "pricing": "Fiyatlandırma",
+        "review": "Gözden Geçir ve Yayınla"
+      },
+      "cancel": "İptal et",
+      "back": "Geri",
+      "saveDraft": "Taslak Olarak Kaydet",
+      "draftSaved": "Taslak kaydedildi",
+      "saveContinue": "Kaydet ve Devam Et",
+      "submit": "Paketi Gönder",
+      "completeRequiredFields": "Gerekli alanları doldurun: {alanlar}",
+      "sections": {
+        "basicInfo": "Paket Detayları",
+        "basicInfoHint": "Paketinizle ilgili temel bilgiler ve meta veriler.",
+        "additionalSettings": "Ek Ayarlar",
+        "additionalSettingsHint": "Politikalar, yemek seçenekleri ve görüntüleme seçenekleri."
+      },
+      "fields": {
+        "packageName": "Paket Adı",
+        "packageSlug": "Paket Slug’ı (URL)",
+        "shortDescription": "Kısa Açıklama",
+        "detailedDescription": "Ayrıntılı Açıklama",
+        "banner": "Paket Başlık Görseli",
+        "category": "Paket Kategorisi",
+        "bestFor": "En Uygun Olan",
+        "tags": "Paket Etiketleri",
+        "includedMeals": "Dahil Olan Yemekler",
+        "cancellationPolicy": "İptal Koşulları",
+        "refundPolicy": "İade Politikası",
+        "maxGuests": "Maksimum Konuk Sayısı",
+        "featuredDeal": "Paketin Önemli Özellikleri",
+        "currency": "Para birimi",
+        "normalPrice": "Normal Fiyat",
+        "salesPrice": "Satış Fiyatı",
+        "showSavingsBadge": "Tasarruf Rozetini Göster",
+        "savingsBadgePercent": "Tasarruf Rozeti Yüzdesi",
+        "validFrom": "Geçerlilik Başlangıç Tarihi",
+        "validUntil": "Son Geçerlilik Tarihi",
+        "minimumBookingNotice": "Asgari Rezervasyon Süresi",
+        "packageActive": "Paket Durumu"
+      },
+      "placeholders": {
+        "packageName": "Örneğin: Lagos ve Paris Kaçamağı",
+        "packageSlug": "Lagos-Paris Kaçamağı",
+        "shortDescription": "Ambalaj kartlarında yer alan kısa bir özet.",
+        "detailedDescription": "Tüm seyahat programını, pakete dahil olan hizmetleri ve öne çıkan noktaları açıklayın.",
+        "category": "Kategori seçin",
+        "tags": "örn. Plaj, Macera",
+        "maxGuests": "örn. 4",
+        "select": "Seç"
+      },
+      "hints": {
+        "packageSlug": "Bu, paket URL’sinde kullanılacaktır.",
+        "tags": "Her bir etiketi ekleyin ve Enter tuşuna basın.",
+        "featuredDeal": "Bu paketi öne çıkan fırsat olarak göster.",
+        "showSavingsBadge": "Paket kartında bir indirim rozeti gösterin.",
+        "savingsBadgePercent": "Tasarruf rozetinde gösterilecek yüzdeyi ayarlayın. Fiyatlarınızdan otomatik olarak doldurulur.",
+        "packageActive": "Etkin paketler müşteriler tarafından görülebilir."
+      },
+      "uploadBanner": "Yüklemek için tıklayın veya sürükleyip bırakın",
+      "uploadBannerHint": "JPG, PNG veya WEBP (En fazla 5 MB)",
+      "removeBanner": "Banner'ı kaldır",
+      "tips": {
+        "title": "Harika bir paket hazırlamak için ipuçları",
+        "one": "Açık ve dikkat çekici bir paket adı kullanın.",
+        "two": "Daha fazla değer elde etmek için birbirini tamamlayan modülleri bir araya getirin.",
+        "three": "Cazip bir satış fiyatıyla tasarrufları öne çıkarın.",
+        "four": "Keşfedilebilirliği artırmak için etiketler ekleyin."
+      },
+      "moduleType": {
+        "flight": "Uçuş",
+        "accommodation": "Konaklama",
+        "car": "Araba",
+        "experience": "Deneyim"
+      },
+      "modules": {
+        "selectHeading": "Modülleri Ekle",
+        "selectHint": "Uçuşları, konaklamaları, araç kiralamalarını ve deneyimleri inceleyin ve paketinizi oluşturmak için bunlara ekleyin.",
+        "addedHeading": "Paket Modülleri",
+        "countLabel": "modüller",
+        "empty": "Henüz eklenen modül yok. Yukarıdaki panellerden öğeleri seçin.",
+        "add": "Ekle",
+        "added": "Eklendi",
+        "remove": "Modülü kaldır",
+        "dragHandle": "Sırayı değiştirmek için sürükleyin",
+        "reorderHint": "Modülleri sürükleyip bırakarak, müşterilere görünecekleri sıraya göre yeniden düzenleyin.",
+        "required": "Devam etmek için en az bir modül ekleyin.",
+        "searchPlaceholder": "Modülleri ara…",
+        "noResults": "Aramanızla eşleşen modül bulunamadı.",
+        "availableLabel": "mevcut"
+      },
+      "pricing": {
+        "heading": "Fiyatlandırma",
+        "hint": "Bilet fiyatlarınızı belirleyin.",
+        "savingsDisplay": "{tutar} ([[[yüzde]]]%) tasarruf edersiniz"
+      },
+      "availability": {
+        "heading": "Stok Durumu",
+        "hint": "Bu paketin ne zaman rezerve edilebileceğini belirleyin."
+      },
+      "review": {
+        "heading": "Gözden Geçir ve Yayınla",
+        "hint": "Göndermeden önce tüm paket ayrıntılarını gözden geçirin."
+      }
+    },
+    "users": {
+      "title": "Gezginler",
+      "searchPlaceholder": "Ad, kullanıcı kimliği, e-posta adresi veya konuma göre arama yapın...",
+      "userId": "Kullanıcı Kimliği",
+      "traveler": "Gezgin",
+      "contact": "İletişim",
+      "location": "Konum",
+      "tier": {
+        "bronze": "Bronz",
+        "silver": "Gümüş",
+        "gold": "Altın",
+        "platinum": "Platin"
+      },
+      "bookingsSpend": "Rezervasyonlar / Harcamalar",
+      "lastTrip": "Son seyahat",
+      "status": {
+        "active": "Etkin",
+        "inactive": "Etkin değil"
+      },
+      "stats": {
+        "found": "Yolcular bulundu",
+        "active": "Etkin",
+        "combinedSpend": "Toplam harcama",
+        "page": "Sayfa",
+        "pageValue": "{mevcut} / {toplam}"
+      },
+      "pagination": {
+        "previous": "Önceki",
+        "next": "Sonraki",
+        "showing": "{toplam} sayfanın [[[güncel]]] sayfası"
+      },
+      "details": "Ayrıntılar",
+      "empty": "Aramanızla eşleşen hiçbir yolcu bulunamadı.",
+      "notFound": "Yolcu bulunamadı.",
+      "backToList": "Gezginlere geri dön",
+      "accountDetails": "Hesap bilgileri",
+      "detail": {
+        "totalBookings": "Toplam rezervasyonlar",
+        "lifetimeSpend": "Toplam harcama",
+        "primaryCorridor": "Ana koridor",
+        "openTickets": "Açık biletler",
+        "idFaceVerified": "Kimlik + Yüz Doğrulaması Yapıldı",
+        "joined": "{tarih} tarihinde üye oldu",
+        "lastActive": "Son etkinlik [[[geçen süre]]]",
+        "phoneWhatsApp": "{telefon} (WhatsApp ile bağlantılı)",
+        "identityVerification": "Kimlik Doğrulama",
+        "governmentId": "Resmi Kimlik Belgesi ([[[tür]]])",
+        "faceMatch": "Yüz / canlılık eşleştirme",
+        "verifiedVia": "Şu kaynak aracılığıyla doğrulanmıştır:",
+        "verified": "Doğrulanmış",
+        "notVerified": "Doğrulanmamış",
+        "paymentMethods": "Kayıtlı ödeme yöntemleri",
+        "card": "Kart",
+        "defaultCurrency": "Varsayılan para birimi",
+        "recentBookings": "Son Rezervasyonlar",
+        "internalNotes": "İç Notlar",
+        "noNotes": "Henüz herhangi bir iç not yok.",
+        "noteAttribution": "— {yazar}, {tarih}",
+        "bookingStatus": {
+          "confirmed": "Onaylandı",
+          "completed": "Tamamlandı",
+          "cancelled": "İptal edildi"
+        }
+      },
+      "menu": {
+        "verification": "Doğrulama",
+        "rerunIdVerification": "Kimlik doğrulamasını yeniden gerçekleştir",
+        "rerunFaceVerification": "Yüz doğrulamasını yeniden yap",
+        "financial": "Mali",
+        "issueRefund": "Para iadesi yapmak",
+        "holdBookingPayment": "Rezervasyon ödemesini beklet",
+        "support": "Destek",
+        "viewAsReadOnly": "Görünüm (salt okunur)",
+        "addInternalNote": "İç not ekle",
+        "dataAccount": "Veriler ve hesap",
+        "mergeDuplicateAccount": "Yinelenen hesapları birleştir",
+        "exportUserData": "Kullanıcı verilerini dışa aktarma (GDPR)",
+        "suspendAccount": "Hesabı askıya al"
+      }
+    },
+    "experiences": {
+      "title": "Deneyimleri yönet",
+      "searchPlaceholder": "Arama deneyimleri",
+      "name": "Deneyim adı",
+      "empty": "Aramanızla eşleşen hiçbir deneyim bulunamadı.",
+      "actions": {
+        "disable": "Deneyimi devre dışı bırak",
+        "enable": "Deneyimi etkinleştir",
+        "goTo": "Deneyimi keşfet",
+        "delete": "Deneyimi sil"
+      }
+    },
+    "cars": {
+      "title": "Araçları yönet",
+      "searchPlaceholder": "Araçları ara",
+      "name": "Araba adı",
+      "empty": "Aramanızla eşleşen araç bulunamadı.",
+      "actions": {
+        "disable": "Aracı devre dışı bırak",
+        "enable": "Otomobil modunu etkinleştir",
+        "goTo": "Arabaya git",
+        "delete": "Aracı sil"
+      }
+    },
+    "accommodations": {
+      "title": "Konaklama yerlerini yönet",
+      "searchPlaceholder": "Konaklama yerlerini ara",
+      "name": "Konaklama tesisi adı",
+      "empty": "Aramanızla eşleşen konaklama seçeneği bulunamadı.",
+      "actions": {
+        "disable": "Konaklama seçeneğini devre dışı bırak",
+        "enable": "Konaklama imkânı sağlamak",
+        "goTo": "Konaklama sayfasına git",
+        "delete": "Konaklama yerini sil"
+      }
+    },
+    "listings": {
+      "location": "İlanın bulunduğu yer",
+      "vendor": "Satıcı",
+      "bookings": "Rezervasyonlar",
+      "ratings": "Derecelendirmeler",
+      "reviews": "yorumlar",
+      "activityStatus": "Etkinlik durumu",
+      "status": {
+        "active": "Etkin",
+        "inactive": "Etkin değil",
+        "deleted": "Silindi"
+      },
+      "tab": {
+        "active": "Etkin ilanlar",
+        "deleted": "Silinmiş ilanlar"
+      },
+      "deletedHint": "Pazar yerinden kaldırılan ilanlar burada görünür. Kayıtların ayrıntılarını görüntüleyebilir veya kalıcı olarak silebilirsiniz.",
+      "viewDetails": "İlanı görüntüle",
+      "deletedAt": "{tarih} tarihinde silindi",
+      "detailTitle": "İlan detayları",
+      "detailHint": "Bu ilanın medya öğeleri, ayrıntılar, fiyatlar ve belgeler dahil olmak üzere tam önizlemesi.",
+      "detailNotFound": "Bu ilan bulunamadı.",
+      "detail": {
+        "backCars": "Arabalara geri dön",
+        "backAccommodations": "Konaklama seçeneklerine geri dön",
+        "backExperiences": "Deneyimlere geri dön"
+      },
+      "detailClose": "Kapat"
+    },
+    "vendors": {
+      "title": "Tedarikçileri yönetme",
+      "add": "Satıcı ekle",
+      "searchPlaceholder": "Ad, satıcı kimliği, e-posta adresi veya telefon numarasıyla arama yapın...",
+      "vendorId": "Satıcı Kimliği",
+      "name": "Satıcı",
+      "userId": "Kullanıcı Kimliği",
+      "stats": {
+        "found": "Bulunan satıcılar",
+        "active": "Etkin",
+        "combinedRevenue": "Toplam gelir",
+        "page": "Sayfa",
+        "pageValue": "[[[güncel]]] / {toplam}"
+      },
+      "pagination": {
+        "previous": "Önceki",
+        "next": "Sonraki",
+        "showing": "{toplam} sayfanın [[[güncel]]] sayfası"
+      },
+      "contactInfo": "İletişim bilgileri",
+      "listings": "İlanlar",
+      "commission": "Komisyon",
+      "commissionValue": "[[[değerlendirme]]]%",
+      "status": {
+        "active": "Etkin",
+        "inactive": "Etkin değil"
+      },
+      "revenue": "Gelir",
+      "rating": "Değerlendirme",
+      "reviews": "yorumlar",
+      "details": "Ayrıntılar",
+      "empty": "Aramanızla eşleşen satıcı bulunamadı.",
+      "notFound": "Satıcı bulunamadı.",
+      "backToList": "Satıcılara geri dön",
+      "accountDetails": "Hesap bilgileri",
+      "joined": "Katıldı",
+      "detail": {
+        "activeListings": "Etkin ilanlar",
+        "completedBookings": "Tamamlanan rezervasyonlar",
+        "averageRating": "Ortalama puan",
+        "openStrikes": "Açık grevler",
+        "category": "Kategori",
+        "onboarded": "{tarih} tarihinde işe başladı",
+        "accountDocuments": "Hesap belgeleri",
+        "listingDocuments": "Listeleme belgeleri — {kategori}",
+        "payoutSummary": "Ödeme özeti",
+        "pendingPayout": "Ödeme beklemede",
+        "lastPayout": "Son ödeme",
+        "internalNotes": "İç notlar",
+        "noNotes": "Henüz iç not yok.",
+        "noteAttribution": "— {yazar}, {tarih}",
+        "viewListings": "İlanları görüntüle",
+        "suspendVendor": "Tedarikçiyi askıya al",
+        "documentStatus": {
+          "verified": "Doğrulanmış",
+          "pendingReview": "İnceleme bekliyor",
+          "signed": "İmzalı",
+          "notVerified": "Doğrulanmamış"
+        }
+      },
+      "menu": {
+        "verification": "Doğrulama",
+        "approvePendingListing": "Beklemede olan ilanı onayla",
+        "requestAdditionalDocuments": "Ek belgeler talep edin",
+        "upgradeToTier": "{tier} seviyesine yükseltin",
+        "standingTrust": "Ayakta durma ve güven",
+        "grantInstantBook": "Anında Kitap Alma ayrıcalığı ver",
+        "addStrike": "Grev ekle / dahili işaretleme",
+        "clearStrike": "Bir vuruşu sil",
+        "financial": "Mali",
+        "holdPendingPayout": "Ödemeyi beklemede tut",
+        "adjustCommissionRate": "Komisyon oranını ayarla",
+        "communication": "İletişim",
+        "contactVendor": "Satıcıyla iletişime geçin",
+        "addInternalNote": "İç not ekle",
+        "account": "Hesap",
+        "suspendAccount": "Hesabı askıya al",
+        "banPermanently": "Kalıcı olarak yasakla"
+      },
+      "requestDocumentsModal": {
+        "title": "Ek belgeler talep edin",
+        "subtitle": "[[[tedarikçi]]]'ye belge talebi gönderin.",
+        "documentLabel": "Belgeyi seçin",
+        "documentPlaceholder": "Bir belge seçin",
+        "otherOption": "Diğer (listede yer almayan)",
+        "customDocumentLabel": "Belgenin adını ekleyin",
+        "customDocumentPlaceholder": "Belge adını yazın",
+        "submit": "Talep gönder",
+        "cancel": "İptal et"
+      },
+      "confirm": {
+        "cancel": "İptal et"
+      },
+      "confirmSuspend": {
+        "title": "Emin misin?",
+        "message": "[[[satıcı]]]'nın hesabını askıya almak üzeresiniz. Hesap yeniden etkinleştirilene kadar bu satıcı, hesabına erişemeyecektir."
+      },
+      "confirmBan": {
+        "title": "Emin misin?",
+        "message": "{vendor}'ı kalıcı olarak engellemek üzeresin. Bu işlem geri alınamaz."
+      },
+      "internalNoteModal": {
+        "title": "İç not ekle",
+        "subtitle": "[[[satıcı]]] için bir gözlem veya not ekleyin.",
+        "label": "Gözlem",
+        "placeholder": "Gözleminizi veya notunuzu buraya yazın...",
+        "submit": "Notu kaydet"
+      },
+      "experiences": "Deneyimler",
+      "earnings": "Toplam gelir"
+    },
+    "bookings": {
+      "title": "Rezervasyonlar",
+      "subtitle": "Uçuşlar, Araç Kiralama, Konaklama ve Deneyimler kapsamındaki tüm rezervasyonlar — ister uygulama üzerinden, ister web sitesi üzerinden, ister manuel olarak oluşturulmuş olsun.",
+      "create": "Rezervasyon oluştur",
+      "searchPlaceholder": "Müşteri, tedarikçi veya rezervasyon numarasına göre arama yapın...",
+      "empty": "Filtrelerinize uyan hiçbir rezervasyon bulunamadı.",
+      "guests": "misafirler",
+      "vendor": "Satıcı",
+      "contactCustomer": "Müşteriyle iletişime geçin",
+      "contactVendor": "Satıcıyla iletişime geçin",
+      "addInternalNote": "İç not ekle",
+      "partialRefund": "Kısmi geri ödeme",
+      "cancelRefund": "İptal ve para iadesi",
+      "flagDispute": "Anlaşmazlık olarak işaretle",
+      "saveChanges": "Değişiklikleri kaydet",
+      "stats": {
+        "upcoming": "Yakında (7 gün)",
+        "awaiting": "Onay bekleniyor",
+        "confirmed": "Onaylandı",
+        "disputed": "Tartışmalı / işaretlenmiş",
+        "totalMonth": "Bu ayın toplamı"
+      },
+      "product": {
+        "all": "Tüm ürün türleri",
+        "flights": "Uçuşlar",
+        "cars": "Arabalar",
+        "accommodations": "Konaklamalar",
+        "experiences": "Deneyimler"
+      },
+      "source": {
+        "all": "Tüm kaynaklar",
+        "website": "Web sitesi",
+        "mobileApp": "Mobil uygulama",
+        "admin": "Yazar: admin"
+      },
+      "dateRange": {
+        "label": "Tarih aralığı",
+        "day": "1 gün",
+        "week": "1 hafta",
+        "month": "1 ay",
+        "sixMonths": "6 ay",
+        "year": "1 yıl",
+        "all": "Tümü"
+      },
+      "filter": {
+        "all": "Toplam ({count})",
+        "upcoming": "Yakında ([[[sayısı]]])",
+        "awaiting": "Onay bekleniyor ([[[sayısı]]])",
+        "confirmed": "Onaylandı ([[[sayısı]]])",
+        "completed": "Tamamlandı ({count})",
+        "cancelled": "İptal edildi ([[[sayısı]]])",
+        "disputed": "Tartışmalı ([[[sayım]]])"
+      },
+      "status": {
+        "confirmed": "Onaylandı",
+        "awaiting": "Onay bekleniyor",
+        "cancelled": "İptal edildi",
+        "completed": "Tamamlandı",
+        "disputed": "Tartışmalı"
+      },
+      "sidebar": {
+        "customer": "Müşteri",
+        "source": "Kaynak: {kaynak}",
+        "vendor": "Satıcı",
+        "bookingDetails": "Rezervasyon bilgileri",
+        "payment": "Ödeme",
+        "timeline": "Zaman Çizelgesi",
+        "name": "Ad",
+        "contact": "İletişim",
+        "whatsapp": "WhatsApp",
+        "assignedTo": "Atandığı yer:",
+        "vendorContact": "Satıcıyla iletişim",
+        "checkIn": "Giriş tarihi",
+        "checkOut": "Çıkış tarihi",
+        "amount": "Miktar",
+        "paymentStatus": "Durum",
+        "chargedCurrency": "Tahsil edilen para birimi"
+      },
+      "createModal": {
+        "title": "Rezervasyon oluştur",
+        "subtitle": "Bir müşteri adına rezervasyon oluşturun.",
+        "infoBannerPrefix": "Bu rezervasyona etiket eklenecek",
+        "infoBannerSource": "Kaynak: admin tarafından oluşturulmuştur",
+        "infoBannerSuffix": "ve müşterinin hesabında ve uygulamasında, self servis rezervasyonla aynı şekilde görünecektir.",
+        "productType": "Ürün türü",
+        "product": {
+          "accommodations": "Konaklama",
+          "flights": "Uçuşlar",
+          "cars": "Arabalar",
+          "experiences": "Deneyimler"
+        },
+        "customer": "Müşteri",
+        "customerPlaceholder": "Mevcut müşterileri isme, e-postaya veya telefona göre arayın...",
+        "vendorListing": "Satıcı / ilan",
+        "vendorPlaceholder": "Satıcıyı veya ilanı ara...",
+        "startDate": "Başlangıç tarihi",
+        "endDate": "Bitiş tarihi",
+        "guestsUnits": "Konuklar / birimler",
+        "guestsPlaceholder": "örn. 2",
+        "totalAmount": "Toplam tutar",
+        "amountPlaceholder": "NGN",
+        "paymentStatus": "Ödeme durumu",
+        "payment": {
+          "sendLink": "Ödeme bağlantısını müşteriye gönder",
+          "paidInFull": "Tamamen ödendi olarak işaretle",
+          "pending": "Ödeme beklemede — bağlantı gönderilmedi"
+        },
+        "internalNote": "İç not",
+        "internalNotePlaceholder": "Örneğin: WhatsApp üzerinden yapılan talep üzerine rezervasyon yapıldı; müşteri zemin kattaki bir oda istedi",
+        "cancel": "İptal et",
+        "submit": "Rezervasyon oluştur"
+      }
+    },
+    "payouts": {
+      "title": "Ödemeler",
+      "subtitle": "Tüm kategorilerdeki satıcı gelirleri, ödeme dönemine göre.",
+      "searchPlaceholder": "Satıcı adına veya referans numarasına göre arama yapın...",
+      "pendingCount": "{count} adet bekleyen ödeme",
+      "markComplete": "Tamamla",
+      "contactVendor": "Satıcıyla iletişime geçin",
+      "decline": "Azalma",
+      "empty": "Aramanızla eşleşen herhangi bir ödeme bulunamadı.",
+      "requested": "İstenen {tarih}",
+      "periodLabel": "Dönem: [[[dönem]]]",
+      "listBookingsBank": "[[[sayım]]] rezervasyon · {banka} {hesap}",
+      "netPayoutToVendor": "Satıcıya ödenecek net tutar",
+      "grossEarnings": "Brüt rezervasyon gelirleri",
+      "platformCommission": "Platform komisyonu ({oran}%)",
+      "netPayout": "Net ödeme",
+      "paymentDestination": "Ödeme alıcısı",
+      "bank": "Banka",
+      "accountNumber": "Hesap numarası",
+      "accountName": "Hesap adı",
+      "payoutMethod": "Ödeme yöntemi",
+      "associatedBookings": "İlgili rezervasyonlar ([[[sayısı]]])",
+      "internalNote": "İç not",
+      "noteAttribution": "— {yazar}, {tarih}",
+      "period": {
+        "thisMonth": "Bu ay — Temmuz 2026",
+        "lastMonth": "Geçen ay — Haziran 2026",
+        "quarter": "Bu çeyrek — 2026 yılının ikinci çeyreği"
+      },
+      "stats": {
+        "totalPeriod": "Toplam ödeme — dönem",
+        "totalVendors": "{count} satıcı arasında",
+        "pending": "Beklemede",
+        "pendingSubtitle": "{count} işlem bekleyen ödemeler",
+        "completed": "Tamamlandı",
+        "completedSubtitle": "{count} ödeme gerçekleştirildi",
+        "declinedFailed": "Reddedildi / Başarısız",
+        "declinedFailedSubtitle": "{reddedildi} reddedildi · [[[başarısız]]] aktarım başarısız oldu"
+      },
+      "filter": {
+        "all": "Toplam ([[[sayısı]]])",
+        "pending": "Beklemede ([[[sayısı]]])",
+        "completed": "Tamamlandı ([[[sayısı]]])",
+        "declined": "Reddedildi ([[[sayısı]]])",
+        "failed": "Başarısız ({count})"
+      },
+      "status": {
+        "pending": "Beklemede",
+        "completed": "Tamamlandı",
+        "declined": "Reddedildi",
+        "failed": "Başarısız",
+        "failedTransfer": "Aktarım başarısız oldu"
+      }
+    },
+    "reviews": {
+      "title": "Yorum denetimi",
+      "category": {
+        "unanswered": "Cevaplanmamış",
+        "responseRequired": "Yanıt gereklidir",
+        "flagged": "İşaretlendi",
+        "deleted": "Silindi",
+        "published": "Yayınlandı"
+      },
+      "selectAll": "Tümünü seç",
+      "deselectAll": "Tümünü seçmeyi kaldır",
+      "bulkPublish": "Seçilenleri yayınla",
+      "bulkFlag": "Bayrak seçildi",
+      "bulkResponseRequired": "Yanıt gereklidir",
+      "bulkDelete": "Seçilenleri sil",
+      "actionsGuideTitle": "Bu eylemler ne anlama geliyor?",
+      "actionsGuide": {
+        "publish": "Yayınla — İncelemeyi herkese açık liste sayfasında görünür hale getir.",
+        "flag": "Bildir — İncelemeyi takip edilecekler listesine ekle (uygunsuz veya şüpheli içerik).",
+        "delete": "Sil — Yorumun herkese açık görünümünden kaldırın. Silinen yorumlar, “Silinmiş” sekmesinde görünür.",
+        "responseRequired": "Yanıt gereklidir — Bir satıcı veya yöneticinin yanıt vermesi gerektiğini belirtin.",
+        "clearResponseRequired": "Net bir yanıt gereklidir — Resmi bir yanıt yayınlandıktan sonra işaretçiyi kaldırın."
+      },
+      "selectReview": "[[[başlık]]] için bir inceleme seçin",
+      "unansweredBadge": "Cevaplanmamış",
+      "responseRequiredBadge": "Yanıt gereklidir",
+      "officialResponse": "Resmi yanıt",
+      "empty": "Bu kategoride herhangi bir yorum yok.",
+      "flag": "Bayrak",
+      "responseRequired": "Yanıt gereklidir",
+      "clearResponseRequired": "Net bir yanıt gereklidir",
+      "delete": "Sil",
+      "hide": "Gizle",
+      "publish": "Yayınla",
+      "respondAsSynkAfrica": "SynkAfrica adına yanıt verin",
+      "responsePlaceholder": "Konuk ve satıcı tarafından görülebilen resmi yanıt...",
+      "photosLabel": "Konukların fotoğrafları",
+      "status": {
+        "published": "Yayınlandı",
+        "flagged": "İşaretlendi",
+        "deleted": "Silindi",
+        "hidden": "Gizli"
+      }
+    },
+    "reports": {
+      "title": "Raporlar",
+      "totalRevenue": "Toplam gelir (ay)",
+      "totalBookings": "Toplam rezervasyonlar (ay)",
+      "topExperience": "En iyi deneyim",
+      "activeVendors": "Aktif satıcılar",
+      "popularExperiences": "Popüler deneyimler",
+      "bookings": "rezervasyonlar",
+      "metric": "Metrik",
+      "value": "Değer",
+      "experience": "Deneyim",
+      "exportRevenue": "CSV dosyasını dışa aktar",
+      "exportBookings": "Rezervasyonları CSV olarak dışa aktar"
+    },
+    "support": {
+      "title": "Destek talepleri",
+      "subtitle": "Kullanıcı ve tedarikçi destek taleplerini inceleyin, bilet durumlarını güncelleyin ve resmi yanıtlar gönderin.",
+      "tab": {
+        "users": "Kullanıcılar",
+        "vendors": "Satıcılar"
+      },
+      "user": "Kullanıcı",
+      "vendor": "Satıcı",
+      "empty": "Bu filtreye uyan bilet yok.",
+      "adminResponse": "Yönetici yanıtı",
+      "previousResponse": "Önceki yanıt",
+      "sendResponse": "Yanıt gönder"
+    }
+  },
+  "vendor": {
+    "nav": {
+      "workspace": "Çalışma Alanı",
+      "account": "Hesap",
+      "dashboard": "Kontrol Paneli",
+      "listings": "İlanlar",
+      "bookings": "Rezervasyonlar",
+      "earnings": "Kâr",
+      "notifications": "Bildirimler",
+      "businessProfile": "Şirket Profili",
+      "settings": "Ayarlar",
+      "support": "Destek",
+      "logOut": "Çıkış yap",
+      "openMenu": "Menüyü aç",
+      "closeMenu": "Menüyü kapat"
+    },
+    "header": {
+      "verifiedVendor": "Onaylı satıcı",
+      "unverifiedVendor": "Doğrulanmamış satıcı",
+      "pendingVendor": "Doğrulama bekliyor"
+    },
+    "signup": {
+      "title": "Satıcı hesabınızı oluşturun",
+      "subtitle": "SynkAfrica’ya katılın ve araçlarınızı, konaklama seçeneklerinizi ve deneyimlerinizi Afrika’nın dört bir yanındaki gezginlere sunmaya başlayın.",
+      "alreadyHaveAccount": "Already have a vendor account?",
+      "signIn": "Sign in",
+      "progressLabel": "Vendor signup progress",
+      "steps": {
+        "business": "Business & Owner Info",
+        "security": "Security & Verification",
+        "identity": "Identity Verification"
+      },
+      "cancel": "Cancel",
+      "back": "Back",
+      "continue": "Continue",
+      "createAccount": "Create Account",
+      "completeRequiredFields": "Complete required fields: {fields}",
+      "securityRequired": "Devam etmek için telefonunuzu OTP ile doğrulayın ve geçerli bir şifre oluşturun.",
+      "identityRequired": "Hesabınızı oluşturmak için resmi kimlik belgenizi yükleyin ve şartları kabul edin.",
+      "sections": {
+        "businessInfo": "İşletme Bilgileri",
+        "businessInfoHint": "Bize işinizden bahsedin.",
+        "ownerInfo": "Sahip Bilgileri",
+        "ownerInfoHint": "İşletme sahibi veya ana irtibat kişisi hakkındaki ayrıntılar.",
+        "phoneVerification": "Telefon Doğrulama",
+        "phoneVerificationHint": "Verdiğiniz telefon numarasına tek kullanımlık bir kod göndereceğiz.",
+        "accountSecurity": "Hesap Güvenliği",
+        "accountSecurityHint": "Satıcı hesabınız için güçlü bir şifre oluşturun.",
+        "governmentId": "Resmi kimlik belgesi",
+        "governmentIdHint": "Kimlik doğrulaması için geçerli bir pasaport, ehliyet veya NIN belgesini yükleyin."
+      },
+      "fields": {
+        "businessName": "İşletmenin Adı",
+        "businessType": "İşletme Türü",
+        "cacRegistrationNumber": "CAC Kayıt Numarası",
+        "companyType": "Şirket Türü",
+        "businessAddress": "İş Adresi",
+        "ownerFullName": "Sahibinin Tam Adı",
+        "ownerEmail": "E-posta Adresi",
+        "phoneNumber": "Telefon Numarası",
+        "dateOfBirth": "Doğum Tarihi",
+        "password": "Şifre",
+        "confirmPassword": "Şifreyi Onayla"
+      },
+      "placeholders": {
+        "companyType": "Şirket türünü seçin",
+        "businessName": "örn. Coastal Trails NG",
+        "businessType": "İşletme türünü seçin",
+        "cacRegistrationNumber": "örn. RC1234567",
+        "businessAddress": "Sokak, şehir, eyalet",
+        "ownerFullName": "Tam yasal adı",
+        "ownerEmail": "you@business.com",
+        "phoneNumber": "7812345678",
+        "password": "Bir şifre oluşturun",
+        "confirmPassword": "Şifrenizi tekrar girin"
+      },
+      "sendOtp": "OTP'yi gönder",
+      "resendOtp": "OTP'yi Yeniden Gönder",
+      "enterOtp": "OTP'yi girin",
+      "resendIn": "00:{saniye} sonra yeniden gönder",
+      "otpVerified": "Telefon numarası doğrulandı.",
+      "passwordRules": {
+        "minLength": "En az 8 karakter",
+        "hasNumber": "Bir sayı içerir",
+        "hasUppercase": "Büyük harf içerir"
+      },
+      "passwordMismatch": "Şifreler birbiriyle uyuşmuyor.",
+      "togglePasswordVisibility": "Şifrenin görünürlüğünü değiştir",
+      "uploadId": "Kimlik belgenizi buraya sürükleyip bırakın",
+      "uploadIdHint": "JPG, PNG veya PDF (En fazla 5 MB)",
+      "chooseFile": "Dosya'yı seçin",
+      "idUploaded": "Belge yüklendi",
+      "idUploadFailed": "Yükleme başarısız oldu — lütfen tekrar deneyin.",
+      "removeId": "Kimliği Kaldır",
+      "idPrivacyNote": "Kimlik bilgilerinizi güvenli bir şekilde saklıyoruz ve yalnızca doğrulama amacıyla kullanıyoruz. Kişisel belgelerinizi asla üçüncü taraflarla paylaşmıyoruz.",
+      "securityBanner": {
+        "title": "Bilgileriniz bizde güvendedir",
+        "message": "Verilerinizi korumak ve hesabınızın güvenliğini sağlamak için sektör standardında güvenlik önlemleri uyguluyoruz."
+      },
+      "agreeTermsPrefix": "Aşağıdakileri kabul ediyorum:",
+      "termsOfService": "Kullanım Koşulları",
+      "and": "ve",
+      "privacyPolicy": "Gizlilik Politikası"
+    },
+    "login": {
+      "title": "Satıcı girişi",
+      "intro": "Listelerinizi, rezervasyonlarınızı ve kazançlarınızı yönetmek için SynkAfrica satıcı hesabınıza giriş yapın.",
+      "emailPlaceholder": "Tedarikçinizin e-posta adresini girin",
+      "signInGoogle": "Google ile giriş yap",
+      "noAccount": "Satıcı hesabınız yok mu?",
+      "signUp": "Kaydolun"
+    },
+    "verificationNotice": {
+      "unverified": {
+        "title": "Doğrulama gerekiyor",
+        "message": "İlan yayınlayabilmek ve ödemelerinizi alabilmek için satıcı doğrulama işleminizi tamamlayın."
+      },
+      "pending": {
+        "title": "Doğrulama işlemi devam ediyor",
+        "message": "Doğrulama işleminiz inceleniyor. Onaylanana kadar bazı özelliklerin kullanımı sınırlı kalabilir."
+      },
+      "completeVerification": "Doğrulama işlemini tamamlayın"
+    },
+    "notifications": {
+      "filter": {
+        "label": "Bildirimleri filtrele",
+        "all": "Tümü",
+        "newBooking": "Yeni rezervasyonlar",
+        "bookingReminder": "24 saatlik hatırlatmalar",
+        "payoutConfirmation": "Ödemeler",
+        "adminMessage": "Yönetici"
+      },
+      "type": {
+        "newBooking": "Yeni rezervasyon",
+        "bookingReminder": "24 saatlik hatırlatma",
+        "payoutConfirmation": "Ödeme",
+        "adminMessage": "Yönetici mesajı"
+      },
+      "unreadCount": "⟦sayısı⟧ okunmamış bildirim(ler)",
+      "allCaughtUp": "Artık her şeyi öğrendin.",
+      "markRead": "Okundu olarak işaretle",
+      "markAllRead": "Hepsini okundu olarak işaretle",
+      "empty": "Bu kategoride herhangi bir bildirim yok.",
+      "time": {
+        "justNow": "Az önce",
+        "hoursAgo": "⟦sayım⟧ saat önce"
+      },
+      "sample": {
+        "newBooking": {
+          "title": "Yeni rezervasyon alındı",
+          "message": "Amara, 25 Temmuz tarihli Lagos Lagünü Gün Batımı Tekne Turu için rezervasyon yaptı · 4 misafir. 24 saat içinde onaylayın veya reddedin."
+        },
+        "newBooking2": {
+          "title": "Yeni rezervasyon alındı",
+          "message": "Chidi, 3 Ağustos için Lekki Garden Suites'te 2 kişilik rezervasyon yaptı."
+        },
+        "reminder": {
+          "title": "24 saat içinde rezervasyon",
+          "message": "Hatırlatma: Yarın saat 17:30’da Fatima ile Lagos Lagünü Gün Batımı Tekne Turu · 6 konuk."
+        },
+        "reminder2": {
+          "title": "24 saat içinde rezervasyon",
+          "message": "Hatırlatma: Yarın saat 09:00'da Emeka ile 2021 model Toyota Camry kiralama."
+        },
+        "payout": {
+          "title": "Ödeme onaylandı",
+          "message": "4521 ile biten GTBank hesabınıza 200.000 NGN yatırılmıştır."
+        },
+        "payout2": {
+          "title": "Ödeme onaylandı",
+          "message": "Access Bank’a 8834 ile biten NGN 150.000 tutarındaki para çekme işlemi başarıyla gerçekleştirildi."
+        },
+        "admin": {
+          "title": "Synkafrica’dan politika güncellemesi",
+          "message": "Deneyim ilanlarına ilişkin güncellenmiş satıcı kılavuzları artık yayınlanmıştır. Lütfen 1 Ağustos’a kadar gözden geçiriniz."
+        },
+        "admin2": {
+          "title": "İlan onaylandı",
+          "message": "Lagos Lagünü Gün Batımı Tekne Turu ilanınız artık Synkafrica'da yayında."
+        }
+      }
+    },
+    "dashboard": {
+      "welcomeBack": "Hoş geldiniz,",
+      "addListing": "İlan ekle",
+      "period": {
+        "label": "Ölçüm dönemi",
+        "day": "Bir gün",
+        "week": "Bir hafta",
+        "month": "Bir ay",
+        "sixMonths": "Altı ay",
+        "year": "Bir yıl"
+      },
+      "stats": {
+        "liveListings": "Canlı İlanlar",
+        "newBookings": "Yeni Rezervasyonlar",
+        "earnings": "Kâr",
+        "pendingApproval": "Onay bekleniyor"
+      },
+      "goToBookings": "Rezervasyonlara git",
+      "yourListings": "İlanlarınız",
+      "seeAll": "Tümünü Görüntüle",
+      "status": {
+        "live": "Canlı Listeleme",
+        "pending": "Beklemede...",
+        "paused": "Duraklatıldı",
+        "draft": "Taslak"
+      },
+      "editListing": "Kayıt düzenle",
+      "deleteListing": "İlanı sil",
+      "pauseListing": "Listeyi duraklat",
+      "playListing": "Özgeçmiş listesi",
+      "deleteListingModal": {
+        "title": "İlanı silmek ister misiniz?",
+        "message": "\"{title}\" öğesini silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+        "confirm": "İlanı sil",
+        "cancel": "İptal et"
+      },
+      "category": {
+        "accommodations": "Konaklama Seçenekleri",
+        "carRentals": "Araç kiralama",
+        "tours": "Turlar",
+        "toursExperiences": "Turlar ve deneyimler"
+      }
+    },
+    "businessProfile": {
+      "businessName": "Şirket adı",
+      "businessNameHint": "Ödemeler ve tedarikçi kayıtlarında kullanılan dahili ad. Halka açık listelerde gösterilmez.",
+      "internalNameLabel": "Şirket içi isim",
+      "contactDetails": "İletişim bilgileri",
+      "contactDetailsHint": "Synkafrica ve misafirler, rezervasyon desteği için size nasıl ulaşır?",
+      "phone": "Telefon numarası",
+      "email": "E-posta adresi",
+      "address": "İş adresi",
+      "payoutAccount": "Ödemeler için banka hesabı",
+      "payoutAccountHint": "Kâr dağıtımları bu hesaba aktarılır.",
+      "bankName": "Banka adı",
+      "accountNumber": "Hesap numarası",
+      "accountNumberLocked": "Hesap numarası yalnızca her {ay} ayda bir değiştirilebilir. Bir sonraki değişiklik {tarih} tarihinde yapılabilir.",
+      "accountName": "Hesap adı",
+      "bank": {
+        "zenith": "Zenith Bankası",
+        "firstBank": "First Bank"
+      },
+      "passwordUpdate": "Şifre güncellemesi",
+      "passwordUpdateHint": "Başka hiçbir yerde kullanmadığınız güçlü bir şifre seçin.",
+      "currentPassword": "Mevcut şifre",
+      "newPassword": "Yeni şifre",
+      "confirmPassword": "Yeni şifreyi onaylayın",
+      "passwordMismatch": "Yeni şifreler birbiriyle uyuşmuyor.",
+      "updatePassword": "Şifreyi güncelle",
+      "passwordUpdated": "Şifre güncellendi.",
+      "saveChanges": "Değişiklikleri kaydet",
+      "saved": "Kaydedildi.",
+      "rejected": {
+        "title": "Başvuru kabul edilmedi",
+        "noReason": "Bir yönetici başvurunuzu onaylamadı. Aşağıdaki bilgilerinizi ve belgelerinizi düzelttikten sonra yeniden gönderin.",
+        "resubmit": "İnceleme için yeniden gönder",
+        "resubmitting": "Yeniden gönderiliyor…",
+        "resubmitted": "Yeniden gönderildi. Bir yönetici başvurunuzu tekrar inceleyecektir.",
+        "resubmitFailed": "Yeniden gönderilemedi. Lütfen tekrar deneyin."
+      },
+      "cac": {
+        "title": "CAC kaydı",
+        "hint": "CAC kayıtlarıyla karşılaştırıldı. Kontrol başarıyla tamamlanana kadar bu bilgileri düzeltebilirsiniz.",
+        "number": "CAC kayıt numarası",
+        "companyType": "Şirket türü",
+        "companyTypePlaceholder": "Şirket türünü seçin",
+        "status": {
+          "verified": "Doğrulanmış",
+          "failed": "Doğrulanmamış",
+          "unverified": "Kontrol bekleniyor"
+        },
+        "verifiedAs": "CAC kayıtlarında {name} ile eşleştirilmiştir.",
+        "failedHint": "CAC kayıtlarında bu bilgilerle eşleşme bulunamadı. Bilgileri düzelttikten sonra kaydedin ve tekrar kontrol edin.",
+        "pendingHint": "Kaydedildiğinde CAC kontrolü yeniden gerçekleştirilir. Sonucu görmek için bir dakika sonra sayfayı yenileyin.",
+        "lockedHint": "Doğrulanmış bilgiler buradan değiştirilemez. Bir sorun varsa destek ekibiyle iletişime geçin."
+      },
+      "documents": {
+        "title": "Belgeler ve Doğrulama",
+        "subtitle": "İşletme düzeyindeki belgeler, hesabınızın tamamı için geçerlidir. Bir ilan yayınlanabilmesi için her ilan başına araç belgeleri gereklidir.",
+        "businessSection": "Ticari belge",
+        "business": {
+          "cac": "Şirket Kuruluş Belgesi (CAC)"
+        },
+        "uploadedMeta": "{tarih} tarihinde yüklendi · [[[dosyaAdı]]]",
+        "view": "Görüntüle",
+        "vehicleSection": "Araç belgeleri · [[[sayısı]]] ilan",
+        "vehicleLegend": "Sigorta · Teknik Muayene · Mülkiyet Belgesi",
+        "type": {
+          "insurance": "Sigorta Sertifikası",
+          "roadworthiness": "Yola Çıkma Belgesi",
+          "ownership": "Mülkiyet Belgesi"
+        },
+        "status": {
+          "verified": "Doğrulanmış",
+          "rejected": "Reddedildi",
+          "pending": "Beklemede",
+          "notUploaded": "Yüklenmemiş"
+        },
+        "listingStatus": {
+          "allVerified": "Hepsi Doğrulanmış",
+          "actionNeeded": "Alınması Gereken Önlem",
+          "notStarted": "Başlamadı",
+          "inProgress": "Devam Ediyor"
+        },
+        "reupload": "Yeniden yükle",
+        "upload": "Yükle",
+        "rejection": {
+          "plateMismatch": "Belge adı, kayıtlı plaka numarasıyla eşleşmiyor. Lütfen ABJ-771-KD plakasına ait araç ruhsatını yeniden yükleyin."
+        }
+      }
+    },
+    "support": {
+      "helpBanner": "Synkafrica satıcı ekibine bir şikayet bildirin veya yardım isteyin. Genellikle 1–2 iş günü içinde yanıt veriyoruz.",
+      "helpBannerEmail": "Güncellemeler [[[e-posta]]] adresine gönderilecektir.",
+      "openTickets": "{count} adet açık bilet",
+      "tabs": {
+        "label": "Destek bölümleri"
+      },
+      "createTicket": "Destek talebi oluştur",
+      "createTicketHint": "Sorununuzu ayrıntılı bir şekilde açıklayın ki, sorunu hızlı bir şekilde çözebilelim.",
+      "subject": "Konu",
+      "subjectPlaceholder": "Sorununuzun kısa özeti",
+      "category": {
+        "booking": "Rezervasyon sorunu",
+        "payout": "Ödemeler ve kazançlar",
+        "listing": "Ürün listesi ve stok durumu",
+        "account": "Hesap ve profil",
+        "complaint": "Şikayet",
+        "other": "Diğer"
+      },
+      "priority": {
+        "low": "Düşük",
+        "medium": "Orta",
+        "high": "Yüksek",
+        "urgent": "Acil"
+      },
+      "priorityHint": "“Acil” seçeneğini yalnızca zaman açısından hassas rezervasyon veya ödeme sorunları için kullanın.",
+      "bookingReference": "Rezervasyon referans numarası",
+      "bookingReferencePlaceholder": "örn. VB-3 veya sipariş numarası (isteğe bağlı)",
+      "description": "Açıklama",
+      "descriptionPlaceholder": "Neler olduğunu, ne zaman gerçekleştiğini ve ne tür bir sonuç beklediğinizi açıklayın.",
+      "submitTicket": "Bildirim gönder",
+      "ticketSubmitted": "{numara} numaralı bilet gönderildi. Ekibimiz kısa süre içinde sizinle iletişime geçecektir.",
+      "responseTime": "Zorunlu alanlar * işaretiyle belirtilmiştir.",
+      "yourTickets": "Biletleriniz",
+      "yourTicketsHint": "Gönderdiğiniz şikayetleri ve destek taleplerini takip edin.",
+      "filter": {
+        "label": "Biletleri duruma göre filtrele",
+        "all": "Tümü"
+      },
+      "status": {
+        "open": "Aç",
+        "inProgress": "Devam ediyor",
+        "resolved": "Karar verildi",
+        "closed": "Kapalı"
+      },
+      "updated": "Güncellenmiştir",
+      "created": "Oluşturuldu",
+      "emptyTickets": "Bu filtreye uyan bilet yok.",
+      "loading": "Biletler yükleniyor…",
+      "loadFailed": "Biletleriniz yüklenemedi. Lütfen tekrar deneyin.",
+      "submitFailed": "Bildiriminiz gönderilemedi. Lütfen tekrar deneyin.",
+      "viewConversation": "Sohbeti görüntüle",
+      "backToTickets": "Biletlere geri dön",
+      "conversation": "Sohbet",
+      "you": "Sen",
+      "supportTeam": "Destek ekibi",
+      "replyPlaceholder": "Cevabınızı yazın…",
+      "sendReply": "Yanıt gönder",
+      "sending": "Gönderiliyor…",
+      "replyFailed": "Cevabınız gönderilemedi. Lütfen tekrar deneyin."
+    },
+    "earnings": {
+      "availableBalance": "Kullanılabilir bakiye",
+      "lifetimeEarnings": "Ömür Boyu Kazanç",
+      "transactionHistory": "İşlem geçmişi",
+      "withdrawFunds": "Para Çekme",
+      "amountToWithdraw": "Çekilecek tutar",
+      "selectBankAccount": "Banka hesabını seçin",
+      "payoutAccount": "Ödeme hesabı",
+      "noBankAccount": "Henüz herhangi bir ödeme hesabı eklenmemiştir.",
+      "addBankAccount": "İşletme Profili → bölümünden bir banka hesabı ekleyin →",
+      "availableHint": "Mevcut:",
+      "processingNote": "Para çekme işlemleri 1–2 iş günü içinde gerçekleştirilir.",
+      "paymentFlowTitle": "Ödeme ve para çekme politikası",
+      "paymentFlowInstant": "200.000 ₦ ve altındaki para çekme işlemleri, onaylandıktan sonra otomatik olarak işleme alınır.",
+      "paymentFlowApproval": "200.000 ₦’nin üzerindeki para çekme işlemleri için süper yönetici onayı gereklidir.",
+      "paymentFlowAuth": "Para çekme işlemlerinde, ₦200.000'ın üzerindeki tutarlar için işlem PIN'i ve OTP gereklidir.",
+      "withdrawalModal": {
+        "title": "Para çekme işlemini onayla",
+        "pin": "İşlem PIN'i",
+        "otp": "OTP kodu",
+        "sendOtp": "OTP'yi gönder",
+        "submit": "Para çekme işlemini onayla",
+        "pendingApproval": "Bu para çekme işlemi için süper yönetici onayı gereklidir. Onaylandığında size bildirim gönderilecektir.",
+        "cancel": "İptal et"
+      },
+      "status": {
+        "completed": "Tamamlandı",
+        "pending": "Beklemede",
+        "failed": "Başarısız"
+      },
+      "transaction": {
+        "bookingPayment": "Rezervasyon ödemesi",
+        "withdrawal": "Para Çekme",
+        "platformFee": "Platform ücreti",
+        "refund": "Para iadesi"
+      },
+      "bank": {
+        "gtbank": "GTBank",
+        "access": "Access Bank"
+      },
+      "duration": {
+        "label": "Kâr açıklaması dönemi",
+        "daily": "Günlük",
+        "weekly": "Haftalık",
+        "monthly": "Aylık",
+        "all": "Tümü"
+      },
+      "commissionSplit": "Komisyon payı",
+      "commissionSplitHint": "Rezervasyon gelirinin [[[satıcı]]]%’si size, {platform}%’si ise Synkafrica’ya ayrılır.",
+      "vendorShare": "Sizin payınız",
+      "platformShare": "Platform ücreti",
+      "grossRevenue": "Brüt gelir",
+      "downloadStatements": "Hesap özetini indir",
+      "emptyTransactions": "Bu dönemde herhangi bir işlem yapılmamıştır.",
+      "statement": {
+        "date": "Tarih",
+        "title": "Başlık",
+        "description": "Açıklama",
+        "type": "Tür",
+        "amount": "Miktar",
+        "status": "Durum"
+      }
+    },
+    "listings": {
+      "detail": {
+        "back": "Listelere geri dön",
+        "backToBookings": "Rezervasyonlara geri dön",
+        "heading": "İlan detayları",
+        "hint": "Bu ilanın medya içerikleri, ayrıntılar, fiyatlar ve belgeler dahil olmak üzere tam önizlemesi.",
+        "status": "Durum",
+        "category": "Kategori",
+        "rating": "Değerlendirme",
+        "notFound": "Liste bulunamadı."
+      },
+      "bookingAvailability": "Rezervasyon durumları",
+      "filter": {
+        "allCategories": "Tüm kategoriler",
+        "allStatuses": "Tüm durumlar",
+        "statusLabel": "Durum",
+        "status": {
+          "live": "Canlı",
+          "pending": "Beklemede",
+          "draft": "Taslaklar",
+          "paused": "Duraklatıldı"
+        },
+        "empty": "Filtrelerinize uyan hiçbir ilan bulunamadı."
+      },
+      "status": {
+        "pendingApproval": "Onay bekleniyor",
+        "paused": "Duraklatıldı"
+      },
+      "availability": {
+        "selectListing": "Liste",
+        "modeAvailable": "Mark mevcut",
+        "modeBlock": "Tarih aralığı",
+        "modeAvailableHint": "Rezervasyon yapmak için tarihlerin üzerine tıklayın. Müsaitlik durumunu kaldırmak için tekrar tıklayın.",
+        "modeBlockHint": "Rezervasyonları engellemek için tarihlere tıklayın. Engellemeyi kaldırmak için tekrar tıklayın.",
+        "legendAvailable": "Mevcut",
+        "legendBlocked": "Engellendi",
+        "legendSelected": "Seçildi",
+        "available": "Mevcut",
+        "blocked": "Engellendi",
+        "timeSlots": "Zaman aralıkları",
+        "capacity": "Kapasite",
+        "selectDayHint": "Zaman aralıklarını ayarlamak için takvimden bir tarih seçin.",
+        "selectAvailableDay": "Zaman aralıklarını ayarlayabilmek için bu tarihi “müsait” olarak işaretleyin.",
+        "blockedDayMessage": "Bu tarih engellenmiştir. Zaman aralıklarını ayarlamak için engellemeyi kaldırın.",
+        "defaultCapacity": "Varsayılan kapasite",
+        "defaultCapacityHint": "Yeni mevcut tarihler ve etkinleştirilmiş zaman aralıklarına uygulanır.",
+        "leadTime": "Teslim süresi",
+        "leadTimeHint": "Bir misafirin rezervasyon yapabilmesi için gerekli olan asgari bildirim süresi.",
+        "leadTimeUnitHours": "Çalışma Saatleri",
+        "leadTimeUnitDays": "Günler"
+      },
+      "calendar": {
+        "sun": "Pazar",
+        "mon": "Pzt",
+        "tue": "Salı",
+        "wed": "Çarşamba",
+        "thu": "Perşembe",
+        "fri": "Cuma",
+        "sat": "Cumartesi",
+        "previousMonth": "Geçen ay",
+        "nextMonth": "Gelecek ay"
+      }
+    },
+    "bookings": {
+      "tab": {
+        "upcoming": "Yakında",
+        "past": "Geçmiş",
+        "cancelled": "İptal edildi",
+        "declined": "Reddedildi"
+      },
+      "stats": {
+        "awaitingConfirmation": "Onay bekleniyor",
+        "upcomingConfirmed": "Yakında (onaylanmış)",
+        "earningsThisMonth": "Bu ayki kazançlar",
+        "responseRate": "Yanıt oranı (30 gün)"
+      },
+      "searchPlaceholder": "Konuk adına veya rezervasyon numarasına göre arama yapın...",
+      "allListings": "Tüm ilanlar",
+      "viewModeLabel": "Rezervasyonlar görünümü",
+      "view": {
+        "list": "Liste",
+        "calendar": "Takvim"
+      },
+      "calendarComingSoon": "Takvim görünümü yakında kullanıma sunulacak.",
+      "respondWithin": "[[[süre]]] içinde yanıt verin",
+      "paymentSecured": "Ödeme güvence altına alındı",
+      "messageGuest": "Mesaj gönder, misafir",
+      "viewListing": "İlanı görüntüle",
+      "cancelBooking": "Rezervasyonu iptal et",
+      "dateRangeLabel": "Tarih aralığına göre filtrele",
+      "dateRange": {
+        "all": "Tüm zamanlar",
+        "pastMonth": "Geçen ay",
+        "past3Months": "Son 3 ay",
+        "past6Months": "Son 6 ay",
+        "pastYear": "Geçen yıl"
+      },
+      "empty": {
+        "upcoming": "Bu dönem için yaklaşan rezervasyon bulunmamaktadır.",
+        "past": "Bu dönem için geçmişte yapılan rezervasyon bulunmamaktadır.",
+        "cancelled": "Bu dönem için iptal edilen rezervasyon bulunmamaktadır.",
+        "declined": "Bu dönem için iptal edilen rezervasyon bulunmamaktadır."
+      },
+      "declineModal": {
+        "title": "Rezervasyonu iptal et",
+        "subtitle": "{misafir}'e {referans} numaralı rezervasyonun neden reddedildiğini açıklayın.",
+        "reasonLabel": "Reddedilme nedeni",
+        "reasonPlaceholder": "Bu rezervasyonu neden kabul edemediğinizi açıklayın...",
+        "cancel": "İptal et",
+        "submit": "Rezervasyonu iptal et"
+      },
+      "declineReason": "Reddedilme nedeni",
+      "deliveryAddress": "Teslimat adresi",
+      "pickupAddress": "Teslim alma adresi",
+      "carMode": {
+        "selfDrive": "Kendi aracınızla seyahat",
+        "withDriver": "Sürücü ile birlikte"
+      },
+      "calendar": {
+        "selectedDay": "{count} bu gün için yapılan rezervasyon(lar)",
+        "noBookings": "Bu gün için rezervasyon yok."
+      },
+      "pendingConfirmation": "{count} adet rezervasyon, onayınızı bekliyor.",
+      "specialRequests": "Özel istekler",
+      "confirm": "Onayla",
+      "decline": "Azalma",
+      "markComplete": "Tamamlandı olarak işaretle",
+      "status": {
+        "awaitingConfirmation": "Onay bekleniyor",
+        "confirmed": "Onaylandı",
+        "declined": "Reddedildi",
+        "completed": "Tamamlandı",
+        "cancelled": "İptal edildi"
+      }
+    },
+    "addListing": {
+      "title": "Yeni İlan Ekle",
+      "editTitle": "İlanı Düzenle",
+      "loadError": "Bu ilan yüklenemedi. Lütfen tekrar deneyin.",
+      "subtitle": "Yeni bir ilan oluşturun ve daha fazla müşteriye ulaşmaya başlayın.",
+      "backToListings": "← Listelere geri dön",
+      "backToListing": "← Listeye geri dön",
+      "progressLabel": "Listeleme süreci",
+      "steps": {
+        "carDetails": "Araç bilgileri",
+        "accommodationDetails": "Konaklama bilgileri",
+        "experienceDetails": "Deneyim ayrıntıları",
+        "media": "Medya",
+        "pricing": "Fiyatlandırma",
+        "documents": "Belgeler",
+        "review": "Gözden Geçir ve Yayınla"
+      },
+      "whatAreYouListing": "Neler satıyorsun?",
+      "category": {
+        "car": {
+          "title": "Araba",
+          "description": "Kiralık bir araba ilanı verin."
+        },
+        "accommodation": {
+          "title": "Konaklama",
+          "description": "Konaklayabileceğiniz bir yer belirtin."
+        },
+        "experience": {
+          "title": "Deneyim",
+          "description": "Bir etkinlik veya turu listeleyin."
+        }
+      },
+      "carDetailsHeading": "Araç Detayları",
+      "accommodationDetailsHeading": "Konaklama Bilgileri",
+      "experienceDetailsHeading": "Deneyim Ayrıntıları",
+      "experienceType": "Deneyim Türü / Kategorisi",
+      "experienceTypeSelect": "Deneyim türünü seçin",
+      "experienceLocationPlaceholder": "örn. Lekki, Lagos, Nijerya",
+      "experienceHighlights": "Öne Çıkanlar / Kısa Açıklama",
+      "experienceHighlightsHint": "Konukların neler yapacağı ve neler yaşayacağına dair kısa ve akılda kalıcı bir özet.",
+      "experienceHighlightsPlaceholder": "Bu deneyimi anlatın; onu benzersiz kılan unsurları ve konukların neden bu deneyimi seveceğini belirtin.",
+      "experienceAvailabilityHeading": "Stok Durumu",
+      "experienceAvailabilityHint": "Deneyiminizin ne zaman sunulacağını belirleyin.",
+      "operatingDays": "Çalışma Günleri",
+      "startTime": "Başlangıç Saati",
+      "endTime": "Son Zaman",
+      "experienceScheduleWeekly": "Haftada bir tekrar eder",
+      "experienceScheduleWeeklyHint": "Bu deneyim, her hafta belirli günlerde sunulmaktadır.",
+      "experienceScheduleDateRange": "Özel tarih aralığı",
+      "experienceScheduleDateRangeHint": "Bu deneyim için belirli bir tarih aralığı belirleyin.",
+      "experienceDateRangeHeading": "Tarih aralığını seçin",
+      "experienceDateRangeHint": "Bu deneyimin sunulacağı başlangıç ve bitiş tarihlerini seçin.",
+      "experienceDateRangeStart": "Başlangıç tarihi",
+      "experienceDateRangeEnd": "Bitiş tarihi",
+      "additionalInfoSection": "Ek Bilgiler",
+      "whatsIncludedHint": "Deneyime nelerin dahil olduğunu listeleyin.",
+      "includesItemsPlaceholder": "Örneğin: Ekipman, rehber, güvenlik malzemeleri, şişelenmiş su",
+      "whatToBring": "Yanınıza Almanız/Giymeniz Gerekenler",
+      "whatToBringHint": "Konuklara ne getirmeleri veya ne giymeleri gerektiğini bildirin.",
+      "whatToBringPlaceholder": "Örneğin: Rahat giysiler, Kapalı ayakkabılar, Güneş kremi",
+      "tagInputFooter": "Her bir öğeyi ekleyin ve Enter tuşuna basın",
+      "additionalInformationHeading": "Ek Bilgiler",
+      "additionalInformationHint": "Konuklarınız için faydalı olabilecek diğer bilgileri de ekleyin.",
+      "additionalInformationPlaceholder": "Örneğin: Yaş sınırlamaları, Sağlık şartları, İptal politikası, Buluşma noktası bilgileri",
+      "weekday": {
+        "mon": "Pzt",
+        "tue": "Salı",
+        "wed": "Çarşamba",
+        "thu": "Perşembe",
+        "fri": "Cuma",
+        "sat": "Cumartesi",
+        "sun": "Pazar"
+      },
+      "carName": "Araba Adı",
+      "carNamePlaceholder": "Örneğin: Toyota Highlander 2024",
+      "carModel": "Araba Modeli / Varyantı",
+      "carModelPlaceholder": "örn. 2,4 L Limited AWD",
+      "transmission": {
+        "automatic": "Otomatik",
+        "manual": "Kılavuz"
+      },
+      "year": "Yıl",
+      "yearPlaceholder": "örn. 2024",
+      "comesWithDriver": "Sürücü dahil mi?",
+      "yes": "Evet",
+      "no": "Hayır",
+      "shortDescription": "Kısa Açıklama",
+      "carDescriptionPlaceholder": "Aracı, durumunu ve kiralayan kişiye sunulan hizmetleri açıklayın.",
+      "perksFeatures": "Avantajlar ve Özellikler",
+      "perksPlaceholder": "Her bir avantajı ekleyin ve Enter tuşuna basın",
+      "propertyName": "Mülk adı",
+      "accommodationName": "Konaklama Tesisi Adı",
+      "accommodationNamePlaceholder": "Örneğin: Oceanview Suites Lekki",
+      "propertyNamePlaceholder": "örn. Lekki Garden Suites",
+      "propertyType": "Mülk Türü",
+      "propertyTypeSelect": "Mülk türünü seçin",
+      "propertyTypePlaceholder": "örn. daire, villa, otel",
+      "address": "Adres",
+      "addressPlaceholder": "Mülkün tam adresi",
+      "accommodationLocationPlaceholder": "örn. Lekki 1. Aşama, Lagos, Nijerya",
+      "accommodationMaxGuests": "Maksimum Konuk Sayısı (Konaklama Yeri)",
+      "accommodationMaxGuestsPlaceholder": "örn. 12",
+      "checkInTime": "Giriş Saati",
+      "checkOutTime": "Çıkış Saati",
+      "availability": "Stok Durumu",
+      "availabilityAlways": "Her zaman ulaşılabilir",
+      "availabilityDateRange": "Tarih aralığını belirle",
+      "availabilityHint": "Yayınladıktan sonra da takviminizden belirli tarihleri yönetebilirsiniz.",
+      "popularPerks": "Popüler Avantajlar",
+      "popularPerksHint": "Tesisinizde sunulan olanakları seçin.",
+      "viewAllPerks": "Tüm avantajları görüntüle",
+      "showLessPerks": "Daha azını göster",
+      "propertyOwner": "Mülk sahibi siz misiniz?",
+      "propertyOwnerYes": "Evet, ben sahibiyim",
+      "propertyOwnerNo": "Hayır, ben yetkili temsilciyim",
+      "bedrooms": "Yatak odaları",
+      "bathrooms": "Banyolar",
+      "accommodationDescriptionPlaceholder": "Konaklama yerinizi, atmosferini, yakınındaki turistik yerleri ve burayı özel kılan unsurları kısaca anlatın.",
+      "amenities": "Olanaklar",
+      "amenitiesPlaceholder": "Her bir olanak ekleyin ve Enter tuşuna basın",
+      "experienceName": "Deneyim adı",
+      "experienceNamePlaceholder": "Örneğin: Lagos Paintball Macerası",
+      "location": "Konum",
+      "locationPlaceholder": "örn. Victoria Adası, Lagos",
+      "duration": "Süre",
+      "durationPlaceholder": "örn. 2 saat",
+      "maxGuests": "En fazla misafir sayısı",
+      "experienceDescriptionPlaceholder": "Etkinliği, programı ve konukların neler beklemeleri gerektiğini açıklayın.",
+      "whatsIncluded": "Paket içeriği",
+      "includesPlaceholder": "Her bir öğeyi ekleyin ve Enter tuşuna basın",
+      "mediaHeading": "İlan görselleri",
+      "mediaHint": "Net fotoğraflar veya videolar yükleyin. En fazla 8 dosya.",
+      "uploadImages": "Görselleri veya videoları buraya sürükleyip bırakın ya da tıklayarak göz atın",
+      "uploadImagesHint": "PNG, JPG, WEBP veya MP4 (En fazla 10 MB)",
+      "removeImage": "Resmi kaldır",
+      "mediaSkippedUnsupported": "{count} dosya atlandı — desteklenmeyen format. PNG, JPG, WEBP veya MP4 kullanın (iPhone HEIC fotoğrafları henüz desteklenmemektedir).",
+      "mediaSkippedTooLarge": "{count} dosya atlandı — her dosyanın boyutu 10 MB'den az olmalıdır.",
+      "mediaPreviewFailed": "Önizleme mevcut değil",
+      "mediaUploading": "Yükleniyor…",
+      "mediaUploadFailed": "Yükleme başarısız oldu",
+      "pickupDeliveryHeading": "Teslim Alma veya Teslimat",
+      "pickupDeliveryQuestion": "Hangi teslimat seçenekleri sunuyorsunuz? Uygun olan tüm seçenekleri işaretleyin.",
+      "pickupAddress": "Teslim alma adresi",
+      "pickupAddressPlaceholder": "Konukların arabayı teslim alabilecekleri adresi girin",
+      "clientPickup": "Müşteri Tarafından Teslim Alma",
+      "clientPickupHint": "Müşteri, aracı bulunduğunuz yerden teslim alır.",
+      "deliveryDropoff": "Teslimat / Bırakma",
+      "deliveryDropoffHint": "Arabayı müşteriye teslim edersiniz.",
+      "carPricingHeading": "Kiralama fiyatları",
+      "price12hr": "12 saatlik kiralama (NGN)",
+      "price24hr": "24 saatlik kiralama (NGN)",
+      "priceMultiDay": "Birden fazla gün (gün başına, NGN)",
+      "driverAddonPrice": "Sürücü ek ücreti (NGN)",
+      "selfDriveNoPrice": "Kendi aracınızı kullanma seçeneği seçildi — şoför ek ücreti gerekmez.",
+      "deliveryFee": "Teslimat / teslim alma ücreti (NGN)",
+      "clientPickupNoPrice": "Müşteri tarafından teslim alınması seçeneği seçildi — teslimat ücreti alınmaz.",
+      "pricingLocationHint": "Bir sonraki adımda teslim alma veya teslimat yeri hakkında daha fazla bilgi verebilirsiniz.",
+      "accommodationPricingHeading": "Konaklama fiyatları",
+      "roomTypesPricing": "Oda Türleri ve Fiyatlar",
+      "roomTypesPricingHint": "Sunduğunuz farklı oda türlerini ekleyin.",
+      "addRoomType": "Oda Türü Ekle",
+      "addRoomTypeModalTitle": "Oda Türü Ekle",
+      "editRoomTypeModalTitle": "Oda Türünü Düzenle",
+      "saveRoomType": "Oda Türünü Kaydet",
+      "roomType": "Oda Türü",
+      "roomTypePlaceholder": "örn. Deluxe Süit",
+      "roomDescription": "Açıklama",
+      "roomDescriptionPlaceholder": "Bu oda tipini kısaca tanımlayınız",
+      "roomMaxGuests": "Maksimum Konuk Sayısı",
+      "roomMaxGuestsPlaceholder": "örn. 2",
+      "roomPricePerNight": "Fiyat (gecelik)",
+      "roomTypesEmptyTitle": "Henüz eklenmiş oda türü yok",
+      "roomTypesEmptyHint": "Başlamak için “Oda Türü Ekle” seçeneğine tıklayın.",
+      "actions": "Eylemler",
+      "edit": "Düzenle",
+      "delete": "Sil",
+      "nightlyRate": "Gecelik fiyat (NGN)",
+      "cleaningFee": "Temizlik ücreti (NGN)",
+      "experiencePricingHeading": "Fiyatlandırma",
+      "experiencePricingHint": "Bilet fiyatlarınızı belirleyin.",
+      "singleTicketPrice": "Tek Bilet Fiyatı",
+      "singleTicketPriceHint": "Bir kişi için fiyat",
+      "groupTicketPrice": "Grup Bilet Fiyatı (başlangıç) (İsteğe bağlı)",
+      "groupTicketPriceHint": "Gruplar için kişi başı fiyat",
+      "minGroupSizeOptional": "Asgari Grup Büyüklüğü (İsteğe Bağlı)",
+      "maxGroupSizeOptional": "Maksimum Grup Büyüklüğü (İsteğe Bağlı)",
+      "minGroupSizePlaceholder": "örn. 5",
+      "maxGroupSizePlaceholder": "örn. 20",
+      "optional": "İsteğe bağlı",
+      "review": {
+        "groupSize": "Grup büyüklüğü",
+        "category": "Kategori",
+        "title": "Başlık",
+        "images": "Görseller",
+        "documents": "Yüklenen belgeler",
+        "description": "Açıklama",
+        "gpsConfirmed": "GPS izleme cihazı doğrulandı"
+      },
+      "pricePerPerson": "Kişi başı fiyat (NGN)",
+      "minGroupSize": "Asgari grup büyüklüğü",
+      "documents": {
+        "stepTitle": "Belge yükleme",
+        "pageTitle": "Gerekli Belgeleri Yükleyin",
+        "pageIntro": "Lütfen araç ilanınızı doğrulamak için gerekli belgeleri yükleyin.",
+        "pageSubtitle": "Güven oluşturmak ve ilanınızın daha hızlı onaylanmasını sağlamak için net ve geçerli belgeler yükleyin.",
+        "intro": {
+          "cars": "Aracınızın ilanı yayına alınabilmesi için lütfen aşağıdaki belgeleri yükleyin.",
+          "accommodations": "Bu konaklama ilanı için mülkiyet veya temsilci yetki belgelerini yükleyin.",
+          "experiences": "Yayına almadan önce işletme doğrulama belgenizi yükleyin."
+        },
+        "proofOfOwnership": "Mülkiyet Belgesi",
+        "proofOfOwnershipHint": "Araç mülkiyet belgesini (örneğin, araç ruhsatı veya satın alma faturası) yükleyin.",
+        "roadworthiness": "Yola Çıkma Belgesi",
+        "roadworthinessHint": "Aracın geçerli bir teknik muayene belgesini yükleyin.",
+        "insurance": "Sigorta",
+        "insuranceDocument": "Sigorta Belgesi",
+        "insuranceHint": "Güncel araç sigorta belgesini yükleyin.",
+        "cac": "CAC kaydı",
+        "cacRegistration": "CAC Kayıt Sertifikası",
+        "cacHint": "Şirket unvanı tescil belgenizi (CAC) yükleyin.",
+        "accommodationOwnershipHint": "Mülkün tapu belgesi, kira sözleşmesi veya mülkiyet belgesi",
+        "agentAuthorization": "Temsilci Yetki Mektubu",
+        "agentAuthorizationHint": "Mülk sahibinin, ilanı yayınlamanıza izin verdiği imzalı mektup",
+        "agentProofOfAddress": "Temsilcinin ikametgah belgesi",
+        "agentProofOfAddressHint": "Adresinizi gösteren bir fatura veya banka ekstresi",
+        "addressPhotos": "Listelenen adrese uyan fotoğraflar",
+        "addressPhotosHint": "Belirtilen adresteki mülkü net bir şekilde gösteren fotoğraflar",
+        "gpsAcknowledgment": "Bu aracın çalışır durumda bir GPS izleme cihazıyla donatıldığını teyit ederim; bunun doğru olmadığı ortaya çıkarsa sorumluluğu üstlenirim.",
+        "requiredBadge": "Zorunlu",
+        "uploadPrompt": "Yüklemek için tıklayın veya sürükleyip bırakın",
+        "uploadFormats": "PDF, JPG, PNG, en fazla 10 MB",
+        "safetyTitle": "Belgeleriniz güvende",
+        "safetyText": "Tüm belgeler güvenli bir şekilde saklanır ve yalnızca doğrulama amacıyla kullanılır. Bu belgeler kamuoyuyla paylaşılmayacaktır.",
+        "submitForReview": "İncelemeye Gönder",
+        "submitHint": "İlanınız incelenecek ve onaylandığında size bildirim gönderilecektir.",
+        "untitledListing": "Başlıksız ilan",
+        "sidebar": {
+          "listingPreview": "İlan Önizlemesi",
+          "edit": "Düzenle",
+          "carsListing": "Araç İlanları",
+          "accommodationsListing": "Konaklama Listesi",
+          "experiencesListing": "Deneyim Listesi",
+          "comesWithDriver": "Sürücü ile birlikte gelir",
+          "selfDrive": "Kendi Kendine Sürüş",
+          "pricing": "Fiyatlandırma",
+          "halfDay": "Yarım Gün",
+          "fullDay": "Tam Gün",
+          "extraHour": "Ekstra Saat",
+          "progress": "Listeleme Süreci"
+        }
+      },
+      "documentsHeading": "Gerekli Belgeler",
+      "uploadDocument": "Belgeyi yükle",
+      "removeFile": "Kaldır",
+      "reviewHeading": "İlanınızı gözden geçirin",
+      "reviewHint": "Yayınlamadan önce aşağıdaki ayrıntıları kontrol edin.",
+      "cancel": "İptal et",
+      "back": "Geri",
+      "saveDraft": "Taslak olarak kaydet",
+      "draftSaved": "Taslak kaydedildi",
+      "draftSaveFailed": "Taslağınızı kaydedilemedi. Lütfen tekrar deneyin.",
+      "saveContinue": "Kaydet ve Devam Et",
+      "completeRequiredFields": "Gerekli alanları doldurun: {alanlar}",
+      "publish": "İlanı yayınla",
+      "publishWaitForUploads": "Lütfen bekleyin — belgeleriniz hâlâ yükleniyor.",
+      "success": {
+        "title": "İnceleme için gönderilen ilan",
+        "message": "İlanınız şu anda inceleme aşamasındadır. Onaylandıktan sonra 2–3 iş günü içinde bir onay e-postası alacaksınız.",
+        "addAnother": "Başka bir ilan ekle",
+        "backToListings": "İlanlarıma geri dön"
+      },
+      "categoryChooseHint": "Sunduğunuz hizmet türünü seçin. Bu ayar, ilk ilanınızı kaydettiğinizde bir kez yapılır ve daha sonra değiştirilemez.",
+      "categoryLockedHint": "Satıcı hesabınız yalnızca {kategori} için kayıtlıdır. Hizmet kategorinizi değiştirmek için destek ekibiyle iletişime geçin."
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 
 import {
   createEmptyGuestIdentity,
-  validateGuestIdentities,
+  // validateGuestIdentities,
   type GuestIdentity,
   type GuestIdentityErrors,
 } from "@/features/travel/booking/guest-identity";
@@ -66,12 +66,13 @@ export function useGuestCheckoutGate(
   }, []);
 
   const guardProceed = (onProceed: () => void) => {
-    const validation = validateGuestIdentities(identities);
-
-    if (!validation.isValid) {
-      setIdentityErrors(validation.errors);
-      return;
-    }
+    // Identity verification is temporarily disabled.
+    // const validation = validateGuestIdentities(identities);
+    //
+    // if (!validation.isValid) {
+    //   setIdentityErrors(validation.errors);
+    //   return;
+    // }
 
     setIdentityErrors([]);
     onProceed();

@@ -30,7 +30,9 @@ function TourBookingPaymentPageContent({ tour }: TourBookingPaymentPageProps) {
     amount: number;
     currency: string;
   } | null>(null);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(
+    () => parseBookingParams(searchParams).email ?? "",
+  );
   const [error, setError] = useState<string | null>(null);
   const [paying, setPaying] = useState<false | "PAYSTACK" | "STRIPE">(false);
 
@@ -46,6 +48,8 @@ function TourBookingPaymentPageContent({ tour }: TourBookingPaymentPageProps) {
       date,
       time: p.time,
       guests: p.guests,
+      guestFirstName: p.guestFirstName,
+      specialRequests: p.specialRequests,
     })
       .then((result) => {
         createBookingConfirmation({
