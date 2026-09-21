@@ -134,7 +134,7 @@ export function toCarDetail(c: CarDetailApi): CarDetail {
     id: c.id,
     name: c.name,
     location: c.location ?? "",
-    country: "",
+    country: c.location ?? "",
     rating: c.ratingAvg,
     reviewCount: c.ratingCount,
     images: c.images.length ? c.images : [cover],

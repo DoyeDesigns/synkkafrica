@@ -77,12 +77,14 @@ export function BookingConfirmationDetails({
               <dd className="font-medium text-foreground">{confirmation.date}</dd>
             </div>
           ) : null}
+          {/* Time slots commented out for all booking modules.
           {confirmation.time ? (
             <div className="flex justify-between gap-3">
               <dt className="text-foreground/70">{t("booking.dateTime.timeSlots")}</dt>
               <dd className="font-medium text-foreground">{confirmation.time}</dd>
             </div>
           ) : null}
+          */}
           <div className="flex justify-between gap-3">
             <dt className="text-foreground/70">{t("booking.dates.guests")}</dt>
             <dd className="font-medium text-foreground">{confirmation.guests}</dd>

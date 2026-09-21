@@ -18,6 +18,7 @@ type BookingDateTimePickerProps = {
   timeSlots: BookingTimeSlot[];
   selectedTime: string | null;
   onSelectTime: (time: string) => void;
+  showTimeSlots?: boolean;
 };
 
 export function BookingDateTimePicker({
@@ -29,12 +30,8 @@ export function BookingDateTimePicker({
   onSelectCheckIn,
   onSelectCheckOut,
   onSelectDate,
-  timeSlots,
-  selectedTime,
-  onSelectTime,
 }: BookingDateTimePickerProps) {
   const t = useTranslation();
-  const activeDate = mode === "single" ? selectedDate : checkIn;
 
   return (
     <section className="rounded-[10px] border border-[#E5E5E5] bg-white p-5">
@@ -94,7 +91,8 @@ export function BookingDateTimePicker({
         </div>
       ) : null}
 
-      {activeDate ? (
+      {/* Time slots commented out for accommodations, tours, and cars.
+      {showTimeSlots && (mode === "single" ? selectedDate : checkIn) ? (
         <div className="mt-5">
           <h3 className="text-sm font-semibold font-inter text-foreground">
             {t("booking.dateTime.timeSlots")}
@@ -125,6 +123,7 @@ export function BookingDateTimePicker({
           </div>
         </div>
       ) : null}
+      */}
     </section>
   );
 }

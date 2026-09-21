@@ -534,7 +534,13 @@
       "guestCountLocked": "Guest count is fixed for this package and cannot be changed at checkout."
     },
     "payment": {
-      "processing": "Processing payment..."
+      "processing": "Processing payment...",
+      "audienceHint": "Nigerians and other African travellers can pay with Paystack. International travellers can use Apple Pay, Google Pay, or PayPal.",
+      "applePay": "Apple Pay",
+      "googlePay": "Google Pay",
+      "paypal": "PayPal",
+      "paystack": "Paystack",
+      "redirecting": "Redirecting…"
     },
     "confirmation": {
       "imageAlt": "Confirmation success",
@@ -865,7 +871,7 @@
     },
     "tours": {
       "attractions": {
-        "title": "Attractions on Synkafrica"
+        "title": "Attractions on SynkKafrica"
       },
       "events": {
         "browsingIn": "Browsing events in",
@@ -1666,6 +1672,23 @@
       "logOut": "Log out",
       "openMenu": "Open menu",
       "closeMenu": "Close menu"
+    },
+    "location": {
+      "country": "Country",
+      "countryPlaceholder": "Select country",
+      "searchCountry": "Search countries",
+      "state": "State / region",
+      "statePlaceholder": "Select state",
+      "searchState": "Search states",
+      "selectCountryFirst": "Select a country first",
+      "noStates": "No states for this country",
+      "city": "City",
+      "cityPlaceholder": "Select city",
+      "searchCity": "Search cities",
+      "selectStateFirst": "Select a state first",
+      "street": "Street / shop address",
+      "streetPlaceholder": "e.g. 12 Admiralty Way",
+      "preview": "Listed as"
     },
     "header": {
       "verifiedVendor": "Verified vendor",

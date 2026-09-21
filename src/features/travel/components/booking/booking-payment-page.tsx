@@ -21,6 +21,11 @@ import {
 import { calculateBookingTotal } from "@/features/travel/booking/calculate-booking-total";
 import { BookingBreadcrumbs } from "@/features/travel/components/booking/booking-breadcrumbs";
 import { BookingPaymentLoader } from "@/features/travel/components/booking/booking-payment-loader";
+import {
+  BookingPaymentMethods,
+  gatewayForMethod,
+  type CheckoutMethodId,
+} from "@/features/travel/components/booking/booking-payment-methods";
 import { BookingStepper } from "@/features/travel/components/booking/booking-stepper";
 import type { PropertyDetail } from "@/features/travel/data/property-booking";
 
@@ -44,7 +49,7 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
     () => parseBookingParams(searchParams).email ?? "",
   );
   const [error, setError] = useState<string | null>(null);
-  const [paying, setPaying] = useState<false | "PAYSTACK" | "STRIPE">(false);
+  const [paying, setPaying] = useState<false | CheckoutMethodId>(false);
 
   // Create the real booking request once (awaiting vendor confirmation). This
   // reserves it; payment is the next action.
@@ -104,14 +109,15 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
       });
   }, [property, searchParams]);
 
-  const handlePay = (provider: "PAYSTACK" | "STRIPE") => {
+  const handlePay = (method: CheckoutMethodId) => {
     if (!booking || paying) return;
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) {
       setError("Enter a valid email for your receipt.");
       return;
     }
     setError(null);
-    setPaying(provider);
+    setPaying(method);
+    const provider = gatewayForMethod(method);
     const callbackUrl = `${window.location.origin}/accommodations/${property.id}/book/confirmation?${query}&bookingId=${booking.bookingId}`;
     initAccommodationPayment(booking.bookingId, {
       email: email.trim(),
@@ -183,23 +189,8 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
               </p>
             ) : null}
 
-            <div className="mt-5 space-y-3">
-              <button
-                type="button"
-                onClick={() => handlePay("PAYSTACK")}
-                disabled={paying !== false}
-                className="h-11 w-full rounded-lg bg-[#D85A30] text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-              >
-                {paying === "PAYSTACK" ? "Redirecting…" : "Pay with Paystack"}
-              </button>
-              <button
-                type="button"
-                onClick={() => handlePay("STRIPE")}
-                disabled={paying !== false}
-                className="h-11 w-full rounded-lg bg-[#635BFF] text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-              >
-                {paying === "STRIPE" ? "Redirecting…" : "Pay with Stripe"}
-              </button>
+            <div className="mt-5">
+              <BookingPaymentMethods paying={paying} onPay={handlePay} />
             </div>
           </div>
         )}

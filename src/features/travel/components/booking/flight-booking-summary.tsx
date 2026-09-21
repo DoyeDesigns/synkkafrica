@@ -4,7 +4,10 @@ import { useQuery } from "@tanstack/react-query";
 import { Loader2, Plane } from "lucide-react";
 
 import { calculateSyncAfricaFeeDecimal } from "@/features/travel/booking/sync-africa-fee";
-import { SyncAfricaFeeLine } from "@/features/travel/components/booking/sync-africa-fee-line";
+import {
+  BookingPaymentMethods,
+  type CheckoutMethodId,
+} from "@/features/travel/components/booking/booking-payment-methods";
 import { useTranslation } from "@/hooks/use-translation";
 import { priceOffer, type FlightItinerary } from "@/lib/api/flights";
 
@@ -68,14 +71,14 @@ function Leg({ itinerary }: { itinerary: FlightItinerary }) {
 export function FlightBookingSummary({
   offerId,
   adults,
-  onProceed,
-  submitting = false,
+  onPay,
+  paying = false,
   disabled = false,
 }: {
   offerId: string;
   adults: number;
-  onProceed?: () => void;
-  submitting?: boolean;
+  onPay?: (method: CheckoutMethodId) => void;
+  paying?: false | CheckoutMethodId;
   disabled?: boolean;
 }) {
   const t = useTranslation();
@@ -137,14 +140,11 @@ export function FlightBookingSummary({
             </span>
           </div>
           <div className="flex items-center justify-between gap-3">
-            <span className="text-foreground/80">Taxes and Fees</span>
-            <span className="font-medium text-foreground">Included</span>
+            <span className="text-foreground/80">{t("booking.summary.taxesAndFees")}</span>
+            <span className="font-medium text-foreground">
+              {Number.isFinite(fare) ? money(String(syncAfricaFee), currency) : "—"}
+            </span>
           </div>
-          <SyncAfricaFeeLine
-            formattedAmount={
-              Number.isFinite(fare) ? money(String(syncAfricaFee), currency) : "—"
-            }
-          />
           <div className="flex items-center justify-between gap-3 border-t border-[#F0D4C4] pt-2">
             <span className="font-semibold text-foreground">{t("booking.summary.total")}</span>
             <span className="font-bold text-foreground">
@@ -156,20 +156,15 @@ export function FlightBookingSummary({
         </div>
       </div>
 
-      <button
-        type="button"
-        onClick={onProceed}
-        disabled={disabled || submitting}
-        className="mt-5 flex w-full items-center justify-center gap-2 rounded-md bg-[#D85A30] px-5 py-3 text-sm font-bold font-montserrat uppercase tracking-wide text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-      >
-        {submitting ? (
-          <>
-            <Loader2 className="h-4 w-4 animate-spin" /> Processing…
-          </>
-        ) : (
-          "Proceed to pay"
-        )}
-      </button>
+      {onPay ? (
+        <div className="mt-5">
+          <BookingPaymentMethods
+            paying={paying}
+            disabled={disabled}
+            onPay={onPay}
+          />
+        </div>
+      ) : null}
 
       <p className="mt-3 text-[11px] font-satoshi text-foreground/50">
         Final total incl. taxes &amp; fees is confirmed at payment.

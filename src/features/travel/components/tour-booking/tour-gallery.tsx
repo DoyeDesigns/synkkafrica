@@ -1,8 +1,8 @@
 "use client";
 
 import { Heart, MapPin, Star } from "lucide-react";
-import Image from "next/image";
 
+import { BookingImageGallery } from "@/features/travel/components/booking/booking-image-gallery";
 import { ReviewSummaryButton } from "@/features/travel/components/booking/review-summary-button";
 import { useBookingContent } from "@/hooks/use-booking-content";
 import { useTranslation } from "@/hooks/use-translation";
@@ -14,7 +14,6 @@ type TourGalleryProps = {
 
 export function TourGallery({ tour }: TourGalleryProps) {
   const t = useTranslation();
-  const [mainImage, thumbnail] = tour.images;
 
   return (
     <div className="space-y-3">
@@ -35,35 +34,20 @@ export function TourGallery({ tour }: TourGalleryProps) {
         </p>
       </div>
 
-      <div className="relative aspect-16/10 w-full overflow-hidden rounded-2xl bg-zinc-100">
-        <Image
-          src={mainImage}
-          alt={tour.title}
-          fill
-          priority
-          className="object-cover"
-          sizes="(max-width: 1024px) 100vw, 760px"
-        />
-        <button
-          type="button"
-          aria-label={t("booking.tour.saveTour")}
-          className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm"
-        >
-          <Heart className="h-5 w-5 text-foreground" strokeWidth={1.5} />
-        </button>
-      </div>
-
-      {thumbnail ? (
-        <div className="relative aspect-[4/3] w-28 overflow-hidden rounded-xl bg-zinc-100">
-          <Image
-            src={thumbnail}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="112px"
-          />
-        </div>
-      ) : null}
+      <BookingImageGallery
+        images={tour.images}
+        alt={tour.title}
+        extraPhotoCount={Math.max(0, tour.images.length - 5)}
+        overlay={
+          <button
+            type="button"
+            aria-label={t("booking.tour.saveTour")}
+            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm"
+          >
+            <Heart className="h-5 w-5 text-foreground" strokeWidth={1.5} />
+          </button>
+        }
+      />
     </div>
   );
 }

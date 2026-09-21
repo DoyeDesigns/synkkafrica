@@ -19,9 +19,20 @@ export async function GET(request: NextRequest) {
     }
 
     const geocode = request.nextUrl.searchParams.get("geocode") === "1";
+    const city = request.nextUrl.searchParams.get("city")?.trim() || undefined;
+    const state = request.nextUrl.searchParams.get("state")?.trim() || undefined;
+    const country =
+      request.nextUrl.searchParams.get("country")?.trim() || undefined;
+    const countryCode =
+      request.nextUrl.searchParams.get("countryCode")?.trim() || undefined;
+    const scoped = Boolean(city || country || countryCode);
     const suggestions = await fetchPhotonSuggestions(query, undefined, {
-      bias: !geocode,
-      limit: geocode ? 1 : 6,
+      bias: !geocode && !scoped,
+      limit: geocode ? 1 : scoped ? 10 : 6,
+      city,
+      state,
+      country,
+      countryCode,
     });
     return NextResponse.json(suggestions);
   } catch {

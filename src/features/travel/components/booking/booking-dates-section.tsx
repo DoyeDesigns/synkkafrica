@@ -89,6 +89,7 @@ export function BookingDatesSection({
         timeSlots={timeSlots}
         selectedTime={selectedTime}
         onSelectTime={onTimeChange}
+        showTimeSlots={false}
       />
 
       <div className="grid gap-3 rounded-[25px] border border-[#E5E5E5] bg-[#B4B4B4]/35 p-3 sm:grid-cols-3">

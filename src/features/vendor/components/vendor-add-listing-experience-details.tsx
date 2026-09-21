@@ -1,8 +1,10 @@
 "use client";
 
-import { Check, Clock, MapPin, X } from "lucide-react";
+import { Check, Clock, X } from "lucide-react";
 import { useState, type KeyboardEvent, type ReactNode } from "react";
 
+import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
+import { StructuredLocationFields } from "@/features/vendor/components/structured-location-fields";
 import {
   EXPERIENCE_ADDITIONAL_INFO_MAX_LENGTH,
   EXPERIENCE_HIGHLIGHTS_MAX_LENGTH,
@@ -12,8 +14,11 @@ import {
   EXPERIENCE_WEEKDAY_LABEL_KEYS,
   EXPERIENCE_WEEKDAYS,
 } from "@/features/vendor/data/experience-listing";
-import type { AddListingFormState } from "@/features/vendor/data/vendor-add-listing";
-import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
+import {
+  structuredLocationFormPatch,
+  structuredLocationFromForm,
+  type AddListingFormState,
+} from "@/features/vendor/data/vendor-add-listing";
 import { useTranslation } from "@/hooks/use-translation";
 
 const inputClassName =
@@ -78,18 +83,18 @@ export function ExperienceDetailsFields({
             </select>
           </FormField>
 
-          <FormField label={t("vendor.addListing.location")} required>
-            <div className="relative">
-              <input
-                type="text"
-                value={form.location}
-                onChange={(event) => onChange({ location: event.target.value })}
-                placeholder={t("vendor.addListing.experienceLocationPlaceholder")}
-                className={`${inputClassName} pr-10`}
-              />
-              <MapPin className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
-            </div>
-          </FormField>
+          <div className="sm:col-span-2">
+            <span className="mb-2 block text-sm font-semibold font-satoshi text-[#2F2F2F]">
+              {t("vendor.addListing.location")}
+              <span className="text-[#C0392B]"> *</span>
+            </span>
+            <StructuredLocationFields
+              value={structuredLocationFromForm(form)}
+              onChange={(location) =>
+                onChange(structuredLocationFormPatch(location, "location"))
+              }
+            />
+          </div>
 
           <FormField label={t("vendor.addListing.duration")} required>
             <div className="relative">

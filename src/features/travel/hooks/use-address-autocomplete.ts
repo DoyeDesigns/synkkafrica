@@ -3,11 +3,21 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import { suggestAddresses } from "@/lib/api/places";
+import {
+  suggestAddresses,
+  type AddressSuggestScope,
+  type PlaceSuggestion,
+} from "@/lib/api/places";
+
+export type AddressAutocompleteOptions = AddressSuggestScope & {
+  enabled?: boolean;
+  formatCommit?: (place: PlaceSuggestion) => string;
+};
 
 export function useAddressAutocomplete(
   value: string,
   onChange: (value: string) => void,
+  options?: AddressAutocompleteOptions,
 ) {
   const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLUListElement>(null);
@@ -26,10 +36,29 @@ export function useAddressAutocomplete(
     return () => window.clearTimeout(id);
   }, [text]);
 
+  const city = options?.city?.trim() ?? "";
+  const state = options?.state?.trim() ?? "";
+  const country = options?.country?.trim() ?? "";
+  const countryCode = options?.countryCode?.trim() ?? "";
+  const lookupEnabled = options?.enabled !== false;
+
   const { data: suggestions = [] } = useQuery({
-    queryKey: ["address-places", debounced],
-    queryFn: ({ signal }) => suggestAddresses(debounced, signal),
-    enabled: open && debounced.length >= 3,
+    queryKey: [
+      "address-places",
+      debounced,
+      city,
+      state,
+      country,
+      countryCode,
+    ],
+    queryFn: ({ signal }) =>
+      suggestAddresses(debounced, signal, {
+        city: city || undefined,
+        state: state || undefined,
+        country: country || undefined,
+        countryCode: countryCode || undefined,
+      }),
+    enabled: lookupEnabled && open && debounced.length >= 3,
     staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
   });
@@ -66,7 +95,11 @@ export function useAddressAutocomplete(
     return () => document.removeEventListener("mousedown", onDown);
   }, [open]);
 
-  const commit = (label: string) => {
+  const resolveCommit = (place: PlaceSuggestion) =>
+    options?.formatCommit?.(place) ?? place.label;
+
+  const commit = (place: PlaceSuggestion | string) => {
+    const label = typeof place === "string" ? place : resolveCommit(place);
     setText(label);
     onChange(label);
     setOpen(false);
@@ -90,7 +123,7 @@ export function useAddressAutocomplete(
       setActiveIndex((i) => (i <= 0 ? suggestions.length - 1 : i - 1));
     } else if (event.key === "Enter" && activeIndex >= 0) {
       event.preventDefault();
-      commit(suggestions[activeIndex].label);
+      commit(suggestions[activeIndex]);
     } else if (event.key === "Escape") {
       setOpen(false);
     }

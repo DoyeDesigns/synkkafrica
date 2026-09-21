@@ -37,7 +37,7 @@ export function CarBookingPage({
 
   const [selectedPackageId, setSelectedPackageId] = useState(defaultPackageId);
   const [pickupDate, setPickupDate] = useState(getDefaultCheckInDate());
-  const [selectedTime, setSelectedTime] = useState("09:00");
+  const [selectedTime, setSelectedTime] = useState("12:00");
   const [days, setDays] = useState(1);
   const [carRentalMode, setCarRentalMode] = useState<CarRentalMode>("self_drive");
   const [requestDelivery, setRequestDelivery] = useState(false);

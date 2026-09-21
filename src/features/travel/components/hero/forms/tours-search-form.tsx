@@ -5,14 +5,13 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { getDefaultCheckInDate } from "@/features/travel/booking/booking-params";
+import { HeroAddressField } from "@/features/travel/components/hero/hero-address-field";
 import {
   HeroField,
   HeroInputShell,
   HeroSearchButton,
 } from "@/features/travel/components/hero/hero-form-primitives";
 import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
-import { HeroDestinationField } from "@/features/travel/components/hero/hero-destination-field";
-import { listExperienceDestinations } from "@/lib/api/experiences";
 import { useTranslation } from "@/hooks/use-translation";
 
 type ToursSearchFormProps = {
@@ -50,20 +49,11 @@ export function ToursSearchForm({ onSubmit }: ToursSearchFormProps) {
           value={query}
           onChange={setQuery}
         />
-        <HeroDestinationField
+        <HeroAddressField
           placeholder={t("hero.location")}
           value={location}
           onChange={setLocation}
-          queryKey="experience-destinations"
-          fetchDestinations={listExperienceDestinations}
-          countLabel={(count) =>
-            t(
-              count === 1
-                ? "hero.tours.destinationExperience"
-                : "hero.tours.destinationExperiences",
-              { count },
-            )
-          }
+          listboxId="hero-tours-location-listbox"
         />
         <HeroDateRangeField
           fromLabel={t("hero.tours.startDate")}

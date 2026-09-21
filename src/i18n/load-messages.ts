@@ -52,7 +52,7 @@ function mergeMessages(base: Messages, overlay: Messages): Messages {
   return result;
 }
 
-export const MESSAGE_CATALOG_VERSION = 8;
+export const MESSAGE_CATALOG_VERSION = 12;
 
 export async function loadMessages(locale: string): Promise<Messages> {
   const resolved: AppLocale =

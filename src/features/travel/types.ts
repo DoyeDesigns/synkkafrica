@@ -25,7 +25,7 @@ export type AccommodationsSearchParams = {
 };
 
 export type FlightsSearchParams = {
-  tripType?: "round-trip" | "one-way" | "direct";
+  tripType?: "round-trip" | "one-way" | "multi-city";
   cabinClass?: string;
   passengers?: string;
   from?: string;
