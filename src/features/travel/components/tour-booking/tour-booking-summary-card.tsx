@@ -1,7 +1,6 @@
 "use client";
 
 import { calculateTourBookingTotal } from "@/features/travel/booking/calculate-tour-booking-total";
-import { SyncAfricaFeeLine } from "@/features/travel/components/booking/sync-africa-fee-line";
 import { useBookingContent } from "@/hooks/use-booking-content";
 import { useFormatPrice } from "@/hooks/use-format-price";
 import { useTranslation } from "@/hooks/use-translation";
@@ -112,12 +111,9 @@ export function TourBookingSummaryCard({
           <div className="flex items-center justify-between gap-3">
             <span className="text-foreground/80">{t("booking.summary.taxesAndFees")}</span>
             <span className="font-medium text-foreground">
-              {formatPrice(tour.currency, pricing.taxesAndFees)}
+              {formatPrice(tour.currency, pricing.taxesAndFees + pricing.syncAfricaFee)}
             </span>
           </div>
-          <SyncAfricaFeeLine
-            formattedAmount={formatPrice(tour.currency, pricing.syncAfricaFee)}
-          />
           <div className="flex items-center justify-between gap-3 border-t border-[#F0D4C4] pt-2">
             <span className="font-semibold text-foreground">{t("booking.summary.total")}</span>
             <span className="font-bold text-foreground">

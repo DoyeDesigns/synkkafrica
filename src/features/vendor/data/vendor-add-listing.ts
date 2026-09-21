@@ -4,6 +4,12 @@ import {
   type ExperienceWeekday,
 } from "@/features/vendor/data/experience-listing";
 import type { TranslationKey } from "@/lib/preferences/translations";
+import {
+  formatStructuredLocation,
+  isStructuredLocationComplete,
+  toStructuredLocation,
+  type StructuredLocationValue,
+} from "@/lib/geo/structured-location";
 
 export type ListingCategory = "cars" | "accommodations" | "experiences";
 
@@ -248,6 +254,12 @@ export type AddListingFormState = {
   propertyName: string;
   propertyType: string;
   address: string;
+  countryCode: string;
+  countryName: string;
+  stateCode: string;
+  stateName: string;
+  cityName: string;
+  streetLine: string;
   accommodationMaxGuests: string;
   checkInTime: string;
   checkOutTime: string;
@@ -301,6 +313,12 @@ export const EMPTY_ADD_LISTING_FORM: AddListingFormState = {
   propertyName: "",
   propertyType: "",
   address: "",
+  countryCode: "",
+  countryName: "",
+  stateCode: "",
+  stateName: "",
+  cityName: "",
+  streetLine: "",
   accommodationMaxGuests: "",
   checkInTime: "14:00",
   checkOutTime: "11:00",
@@ -369,12 +387,21 @@ export function formStateFromListingDetails(
     })
     .filter((m): m is ListingMediaItem => m !== null);
 
+  const parsed = (details as Partial<AddListingFormState> | null) ?? {};
+  const legacyLocation =
+    parsed.streetLine ||
+    parsed.address ||
+    parsed.location ||
+    parsed.pickupAddress ||
+    "";
+
   return {
     ...EMPTY_ADD_LISTING_FORM,
-    ...((details as Partial<AddListingFormState> | null) ?? {}),
+    ...parsed,
     category,
     mediaItems,
     uploadedDocuments: {},
+    streetLine: parsed.countryCode ? parsed.streetLine ?? "" : legacyLocation,
   };
 }
 
@@ -418,6 +445,45 @@ export function isAccommodationDocumentsValid(form: AddListingFormState) {
   return Boolean(form.uploadedDocuments.cac);
 }
 
+export function listingLocationFromForm(form: AddListingFormState) {
+  return (
+    formatStructuredLocation(toStructuredLocation(form)) ||
+    form.pickupAddress.trim() ||
+    form.address.trim() ||
+    form.location.trim()
+  );
+}
+
+export function structuredLocationFromForm(
+  form: Pick<
+    AddListingFormState,
+    | "countryCode"
+    | "countryName"
+    | "stateCode"
+    | "stateName"
+    | "cityName"
+    | "streetLine"
+  >,
+): StructuredLocationValue {
+  return toStructuredLocation(form);
+}
+
+export function structuredLocationFormPatch(
+  value: StructuredLocationValue,
+  target: "address" | "location" | "pickupAddress",
+): Partial<AddListingFormState> {
+  const composed = formatStructuredLocation(value);
+  return {
+    countryCode: value.countryCode,
+    countryName: value.countryName,
+    stateCode: value.stateCode,
+    stateName: value.stateName,
+    cityName: value.cityName,
+    streetLine: value.street,
+    [target]: composed,
+  };
+}
+
 export function getDetailsStepMissingFields(form: AddListingFormState): TranslationKey[] {
   const missing: TranslationKey[] = [];
 
@@ -426,13 +492,18 @@ export function getDetailsStepMissingFields(form: AddListingFormState): Translat
     if (!form.carModel.trim()) missing.push("vendor.addListing.carModel");
     if (!form.year.trim()) missing.push("vendor.addListing.year");
     if (!form.shortDescription.trim()) missing.push("vendor.addListing.shortDescription");
+    if (!isStructuredLocationComplete(toStructuredLocation(form))) {
+      missing.push("vendor.addListing.location");
+    }
     return missing;
   }
 
   if (form.category === "accommodations") {
     if (!form.propertyName.trim()) missing.push("vendor.addListing.accommodationName");
     if (!form.propertyType.trim()) missing.push("vendor.addListing.propertyType");
-    if (!form.address.trim()) missing.push("vendor.addListing.location");
+    if (!isStructuredLocationComplete(toStructuredLocation(form))) {
+      missing.push("vendor.addListing.location");
+    }
     if (!form.accommodationMaxGuests.trim()) missing.push("vendor.addListing.accommodationMaxGuests");
     if (!form.accommodationDescription.trim()) {
       missing.push("vendor.addListing.shortDescription");
@@ -442,7 +513,9 @@ export function getDetailsStepMissingFields(form: AddListingFormState): Translat
 
   if (!form.experienceName.trim()) missing.push("vendor.addListing.experienceName");
   if (!form.experienceType.trim()) missing.push("vendor.addListing.experienceType");
-  if (!form.location.trim()) missing.push("vendor.addListing.location");
+  if (!isStructuredLocationComplete(toStructuredLocation(form))) {
+    missing.push("vendor.addListing.location");
+  }
   if (!form.duration.trim()) missing.push("vendor.addListing.duration");
   if (!form.experienceDescription.trim()) {
     missing.push("vendor.addListing.experienceHighlights");
@@ -475,7 +548,6 @@ export function isStepValid(step: AddListingStepId, form: AddListingFormState) {
           form.price12hr.trim().length > 0 &&
           form.price24hr.trim().length > 0 &&
           form.priceMultiDay.trim().length > 0 &&
-          form.pickupAddress.trim().length > 0 &&
           form.handoverMethods.length > 0 &&
           (form.comesWithDriver ? form.driverAddonPrice.trim().length > 0 : true) &&
           (form.handoverMethods.includes("delivery")

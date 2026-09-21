@@ -1,4 +1,5 @@
 import type { TranslationKey } from "@/lib/preferences/translations";
+import { isStructuredLocationComplete, toStructuredLocation } from "@/lib/geo/structured-location";
 
 export type VendorSignupStepId = "business" | "security" | "identity";
 
@@ -51,6 +52,12 @@ export type VendorSignupFormState = {
   cacRegistrationNumber: string;
   companyType: string;
   businessAddress: string;
+  countryCode: string;
+  countryName: string;
+  stateCode: string;
+  stateName: string;
+  cityName: string;
+  streetLine: string;
   ownerFullName: string;
   ownerEmail: string;
   phoneCountryCode: string;
@@ -77,6 +84,12 @@ export const EMPTY_VENDOR_SIGNUP_FORM: VendorSignupFormState = {
   cacRegistrationNumber: "",
   companyType: "",
   businessAddress: "",
+  countryCode: "",
+  countryName: "",
+  stateCode: "",
+  stateName: "",
+  cityName: "",
+  streetLine: "",
   ownerFullName: "",
   ownerEmail: "",
   phoneCountryCode: "+234",
@@ -131,7 +144,9 @@ export function getVendorSignupBusinessMissingFields(
     missing.push("vendor.signup.fields.cacRegistrationNumber");
   }
   if (!form.companyType.trim()) missing.push("vendor.signup.fields.companyType");
-  if (!form.businessAddress.trim()) missing.push("vendor.signup.fields.businessAddress");
+  if (!isStructuredLocationComplete(toStructuredLocation(form))) {
+    missing.push("vendor.signup.fields.businessAddress");
+  }
   if (!form.ownerFullName.trim()) missing.push("vendor.signup.fields.ownerFullName");
   if (!form.ownerEmail.trim()) missing.push("vendor.signup.fields.ownerEmail");
   if (!form.phoneNumber.trim()) missing.push("vendor.signup.fields.phoneNumber");

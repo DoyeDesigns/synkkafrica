@@ -34,15 +34,15 @@ export function useFlightSearch() {
     10,
   );
   const cabinRaw = (searchParams.get("cabinClass") ?? "economy").toLowerCase();
+  const isRoundTrip = tripType === "round-trip";
 
   const input: FlightSearchInput = {
     origin,
     destination,
     departureDate,
-    returnDate: tripType === "one-way" ? undefined : returnDate || undefined,
+    returnDate: isRoundTrip ? returnDate || undefined : undefined,
     adults: Number.isFinite(passengers) && passengers > 0 ? passengers : 1,
     cabin: CABIN_MAP[cabinRaw] ?? "ECONOMY",
-    nonStop: tripType === "direct" ? true : undefined,
     take: 30,
   };
 

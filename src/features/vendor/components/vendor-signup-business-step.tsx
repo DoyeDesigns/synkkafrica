@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, MapPin } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 import {
   VENDOR_BUSINESS_TYPES,
@@ -8,6 +8,11 @@ import {
   VENDOR_PHONE_COUNTRY_CODES,
   type VendorSignupFormState,
 } from "@/features/vendor/data/vendor-signup";
+import { StructuredLocationFields } from "@/features/vendor/components/structured-location-fields";
+import {
+  formatStructuredLocation,
+  toStructuredLocation,
+} from "@/lib/geo/structured-location";
 import { FormDate } from "@/features/travel/components/booking/form-controls";
 import { useTranslation } from "@/hooks/use-translation";
 
@@ -84,18 +89,20 @@ export function VendorSignupBusinessStep({ form, onChange }: VendorSignupBusines
           </FormField>
         </div>
 
-        <FormField label={t("vendor.signup.fields.businessAddress")} required>
-          <div className="relative">
-            <MapPin className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
-            <input
-              type="text"
-              value={form.businessAddress}
-              onChange={(event) => onChange({ businessAddress: event.target.value })}
-              placeholder={t("vendor.signup.placeholders.businessAddress")}
-              className={`${inputClassName} pl-9`}
-            />
-          </div>
-        </FormField>
+        <StructuredLocationFields
+          value={toStructuredLocation(form)}
+          onChange={(location) =>
+            onChange({
+              countryCode: location.countryCode,
+              countryName: location.countryName,
+              stateCode: location.stateCode,
+              stateName: location.stateName,
+              cityName: location.cityName,
+              streetLine: location.street,
+              businessAddress: formatStructuredLocation(location),
+            })
+          }
+        />
       </section>
 
       <section className="space-y-5 border-t border-[#EEEEEE] pt-6">

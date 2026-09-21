@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
@@ -16,6 +16,10 @@ import {
 } from "@/features/travel/components/booking/flight-traveler-fields";
 import { FlightBookingSummary } from "@/features/travel/components/booking/flight-booking-summary";
 import { FlightBookingHeader } from "@/features/travel/components/booking/flight-booking-header";
+import {
+  gatewayForMethod,
+  type CheckoutMethodId,
+} from "@/features/travel/components/booking/booking-payment-methods";
 import {
   createEmptyGuestIdentity,
   // validateGuestIdentities,
@@ -54,8 +58,9 @@ function BookFlight() {
   const [email, setEmail] = useState(session?.user?.email ?? "");
   const [phone, setPhone] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [submitting, setSubmitting] = useState(false);
+  const [paying, setPaying] = useState<false | CheckoutMethodId>(false);
   const [priceChange, setPriceChange] = useState<PriceChangedBody | null>(null);
+  const selectedMethodRef = useRef<CheckoutMethodId>("paystack");
 
   // Shared with the sidebar summary (same query key → one request).
   const { data: priced } = useQuery({
@@ -92,12 +97,16 @@ function BookFlight() {
     (t) => t.firstName && t.lastName,
   ).length;
 
+  const submitting = paying !== false;
   const canSubmit = Boolean(offerId) && Boolean(email) && !submitting;
 
-  async function doSubmit(confirm?: {
-    acknowledgedTotalAmount: string;
-    offerId: string;
-  }) {
+  async function doSubmit(
+    method: CheckoutMethodId,
+    confirm?: {
+      acknowledgedTotalAmount: string;
+      offerId: string;
+    },
+  ) {
     setError(null);
     setPriceChange(null);
 
@@ -112,7 +121,8 @@ function BookFlight() {
     // }
     setIdentityErrors([]);
 
-    setSubmitting(true);
+    selectedMethodRef.current = method;
+    setPaying(method);
     // PhoneInput yields a full E.164 number (with dial code). Ignore a value
     // that's only the dial code (nothing actually typed yet).
     const normalizedPhone =
@@ -129,12 +139,13 @@ function BookFlight() {
             inline: toTravelerInput(traveler),
           })),
           acknowledgedTotalAmount: confirm?.acknowledgedTotalAmount,
+          paymentProvider: gatewayForMethod(method),
         },
         session?.accessToken,
       );
       window.location.href = authorizationUrl;
     } catch (err) {
-      setSubmitting(false);
+      setPaying(false);
       if (
         err instanceof ApiError &&
         err.status === 409 &&
@@ -279,9 +290,9 @@ function BookFlight() {
               <FlightBookingSummary
                 offerId={offerId}
                 adults={adults}
-                submitting={submitting}
+                paying={paying}
                 disabled={!canSubmit}
-                onProceed={() => void doSubmit()}
+                onPay={(method) => void doSubmit(method)}
               />
             </div>
           </div>
@@ -294,7 +305,7 @@ function BookFlight() {
           submitting={submitting}
           onCancel={() => setPriceChange(null)}
           onConfirm={() =>
-            void doSubmit({
+            void doSubmit(selectedMethodRef.current, {
               acknowledgedTotalAmount: priceChange.currentTotal,
               offerId: priceChange.confirmOfferId,
             })

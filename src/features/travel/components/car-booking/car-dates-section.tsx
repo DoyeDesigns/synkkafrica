@@ -7,7 +7,6 @@ import { getDefaultCheckInDate } from "@/features/travel/booking/booking-params"
 import { BookingCounterField } from "@/features/travel/components/booking/booking-counter-field";
 import { BookingDateTimePicker } from "@/features/travel/components/booking/booking-date-time-picker";
 import {
-  getPropertyTimeSlots,
   getTourDayStatuses,
 } from "@/features/travel/data/property-availability";
 import { useTranslation } from "@/hooks/use-translation";
@@ -36,7 +35,6 @@ export function CarDatesSection({
     () => new Date(pickupDate || getDefaultCheckInDate()),
   );
   const dayStatuses = getTourDayStatuses(carId);
-  const timeSlots = getPropertyTimeSlots();
 
   return (
     <div className="space-y-4">
@@ -51,9 +49,10 @@ export function CarDatesSection({
         onSelectCheckIn={() => undefined}
         onSelectCheckOut={() => undefined}
         onSelectDate={onPickupDateChange}
-        timeSlots={timeSlots}
+        timeSlots={[]}
         selectedTime={selectedTime}
         onSelectTime={onTimeChange}
+        showTimeSlots={false}
       />
 
       <div className="rounded-[25px] border border-[#E5E5E5] bg-[#B4B4B4]/35 p-3">

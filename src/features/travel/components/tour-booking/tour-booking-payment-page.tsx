@@ -7,6 +7,11 @@ import type { TourBookingStepId } from "@/features/travel/booking/tour-constants
 import { createBookingConfirmation } from "@/features/travel/booking/booking-confirmation";
 import { parseBookingParams } from "@/features/travel/booking/booking-params";
 import { BookingPaymentLoader } from "@/features/travel/components/booking/booking-payment-loader";
+import {
+  BookingPaymentMethods,
+  gatewayForMethod,
+  type CheckoutMethodId,
+} from "@/features/travel/components/booking/booking-payment-methods";
 import { TourBookingBreadcrumbs } from "@/features/travel/components/tour-booking/tour-booking-breadcrumbs";
 import { TourBookingStepper } from "@/features/travel/components/tour-booking/tour-booking-stepper";
 import type { TourDetail } from "@/features/travel/data/tour-booking";
@@ -34,7 +39,7 @@ function TourBookingPaymentPageContent({ tour }: TourBookingPaymentPageProps) {
     () => parseBookingParams(searchParams).email ?? "",
   );
   const [error, setError] = useState<string | null>(null);
-  const [paying, setPaying] = useState<false | "PAYSTACK" | "STRIPE">(false);
+  const [paying, setPaying] = useState<false | CheckoutMethodId>(false);
 
   useEffect(() => {
     if (submittedRef.current) return;
@@ -73,14 +78,15 @@ function TourBookingPaymentPageContent({ tour }: TourBookingPaymentPageProps) {
       });
   }, [tour, searchParams]);
 
-  const handlePay = (provider: "PAYSTACK" | "STRIPE") => {
+  const handlePay = (method: CheckoutMethodId) => {
     if (!booking || paying !== false) return;
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) {
       setError("Enter a valid email for your receipt.");
       return;
     }
     setError(null);
-    setPaying(provider);
+    setPaying(method);
+    const provider = gatewayForMethod(method);
     const callbackUrl = `${window.location.origin}/tours/${tour.id}/book/confirmation?${query}&bookingId=${booking.bookingId}`;
     initExperiencePayment(booking.bookingId, { email: email.trim(), callbackUrl, provider })
       .then(({ authorizationUrl }) => {
@@ -147,23 +153,8 @@ function TourBookingPaymentPageContent({ tour }: TourBookingPaymentPageProps) {
               </p>
             ) : null}
 
-            <div className="mt-5 space-y-3">
-              <button
-                type="button"
-                onClick={() => handlePay("PAYSTACK")}
-                disabled={paying !== false}
-                className="h-11 w-full rounded-lg bg-[#D85A30] text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-              >
-                {paying === "PAYSTACK" ? "Redirecting…" : "Pay with Paystack"}
-              </button>
-              <button
-                type="button"
-                onClick={() => handlePay("STRIPE")}
-                disabled={paying !== false}
-                className="h-11 w-full rounded-lg bg-[#635BFF] text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-              >
-                {paying === "STRIPE" ? "Redirecting…" : "Pay with Stripe"}
-              </button>
+            <div className="mt-5">
+              <BookingPaymentMethods paying={paying} onPay={handlePay} />
             </div>
           </div>
         )}

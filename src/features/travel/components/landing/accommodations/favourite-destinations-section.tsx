@@ -26,10 +26,6 @@ export function FavouriteDestinationsSection() {
     container.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
 
-  if (cards.length === 0) {
-    return null;
-  }
-
   return (
     <section className="mt-20 mb-25 rounded-2xl bg-[#F3F3F3] px-11 pt-9.5 pb-6.5">
       <h2 className="text-[22px] font-bold font-montserrat text-[#1E1E1E]">
@@ -43,8 +39,10 @@ export function FavouriteDestinationsSection() {
         >
           {cards.map((destination) => (
             <Link
-              key={destination.location}
-              href={getBrowseEventsHref(destination.location)}
+              key={destination.id ?? destination.location}
+              href={getBrowseEventsHref(
+                destination.filterLocation ?? destination.location,
+              )}
               className="group relative h-[286px] min-w-[217px] shrink-0 overflow-hidden rounded-2xl border-2 border-transparent transition-colors hover:border-[#3B82F6] sm:min-w-[200px]"
             >
               <Image

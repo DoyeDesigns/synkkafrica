@@ -111,18 +111,14 @@ export function ToursEventsSection() {
   }
 
   const locationOptions = useMemo(() => {
-    const live = events
-      .map((event) => event.city || event.location)
-      .filter((value) => value.trim().length > 0);
     return Array.from(
       new Set([
         ALL_EVENT_LOCATIONS,
-        ...live,
         ...TOUR_EVENT_LOCATIONS,
         ...(location && location !== ALL_EVENT_LOCATIONS ? [location] : []),
       ]),
     );
-  }, [events, location]);
+  }, [location]);
 
   useEffect(() => {
     if (!eventLocation) return;

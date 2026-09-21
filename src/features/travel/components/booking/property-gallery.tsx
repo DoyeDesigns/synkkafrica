@@ -1,12 +1,11 @@
 "use client";
 
 import { MapPin } from "lucide-react";
-import Image from "next/image";
 
+import { BookingImageGallery } from "@/features/travel/components/booking/booking-image-gallery";
 import { ReviewSummaryButton } from "@/features/travel/components/booking/review-summary-button";
 import { SaveListingButton } from "@/features/account/components/save-listing-button";
 import { useBookingContent } from "@/hooks/use-booking-content";
-import { useTranslation } from "@/hooks/use-translation";
 import type { PropertyDetail } from "@/features/travel/data/property-booking";
 
 type PropertyGalleryProps = {
@@ -14,54 +13,18 @@ type PropertyGalleryProps = {
 };
 
 export function PropertyGallery({ property }: PropertyGalleryProps) {
-  const t = useTranslation();
-  const [mainImage, ...thumbnails] = property.images;
-
   return (
-    <div className="space-y-3">
-      <div className="relative aspect-16/10 overflow-hidden w-full rounded-2xl bg-zinc-100">
-        <Image
-          src={mainImage}
-          alt={property.name}
-          fill
-          priority
-          className="object-cover"
-          sizes="(max-width: 1024px) 100vw, 760px"
-        />
+    <BookingImageGallery
+      images={property.images}
+      alt={property.name}
+      extraPhotoCount={property.extraPhotoCount}
+      overlay={
         <SaveListingButton
           listingId={property.id}
           className="absolute right-4 top-4"
         />
-      </div>
-
-      <div className="grid grid-cols-3 gap-3">
-        {thumbnails.slice(0, 3).map((image, index) => {
-          const isLast = index === 2 && property.extraPhotoCount > 0;
-
-          return (
-            <div
-              key={`${image}-${index}`}
-              className="relative aspect-[4/3] overflow-hidden rounded-xl bg-zinc-100"
-            >
-              <Image
-                src={image}
-                alt=""
-                fill
-                className="object-cover"
-                sizes="240px"
-              />
-              {isLast ? (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/45 text-sm font-semibold font-satoshi text-white">
-                  {t("booking.property.morePhotos", {
-                    count: property.extraPhotoCount,
-                  })}
-                </div>
-              ) : null}
-            </div>
-          );
-        })}
-      </div>
-    </div>
+      }
+    />
   );
 }
 

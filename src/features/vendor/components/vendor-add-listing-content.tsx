@@ -34,9 +34,12 @@ import {
   createListingMediaItem,
   formStateFromListingDetails,
   getListingMediaRejection,
+  listingLocationFromForm,
   LISTING_MEDIA_ACCEPT,
   LISTING_MEDIA_MAX_COUNT,
   revokeListingMediaItem,
+  structuredLocationFormPatch,
+  structuredLocationFromForm,
   type AddListingFormState,
   type ListingDocumentId,
   type ListingDocumentUpload,
@@ -66,6 +69,7 @@ import { ExperiencePricingStep } from './vendor-add-listing-experience-pricing';
 import { AccommodationPricingStep } from './vendor-add-listing-accommodation-pricing';
 import { ExperienceDetailsFields } from './vendor-add-listing-experience-details';
 import { AccommodationDetailsFields } from './vendor-add-listing-accommodation-details';
+import { StructuredLocationFields } from './structured-location-fields';
 
 // Map the wide add-listing form onto the backend create payload: derive the
 // common columns (title/description/location) per category and carry the rest
@@ -79,15 +83,15 @@ function toCreateInput(form: AddListingFormState): CreateVendorListingInput {
   if (category === 'cars') {
     title = [form.carName, form.carModel, form.year].filter(Boolean).join(' ');
     shortDescription = form.shortDescription;
-    location = form.pickupAddress;
+    location = listingLocationFromForm(form);
   } else if (category === 'accommodations') {
     title = form.propertyName;
     shortDescription = form.accommodationDescription;
-    location = form.address;
+    location = listingLocationFromForm(form);
   } else {
     title = form.experienceName;
     shortDescription = form.experienceDescription;
-    location = form.location;
+    location = listingLocationFromForm(form);
   }
   // Only include media that finished uploading (has a stored URL). The first
   // uploaded image becomes the cover shown on listing cards.
@@ -966,6 +970,19 @@ function CarDetailsFields({
         />
       </FormField>
 
+      <div>
+        <p className="mb-2 text-sm font-semibold font-satoshi text-[#2F2F2F]">
+          {t('vendor.addListing.location')}
+          <span className="text-[#C0392B]"> *</span>
+        </p>
+        <StructuredLocationFields
+          value={structuredLocationFromForm(form)}
+          onChange={(location) =>
+            onChange(structuredLocationFormPatch(location, 'pickupAddress'))
+          }
+        />
+      </div>
+
       <TagInputField
         label={t('vendor.addListing.perksFeatures')}
         placeholder={t('vendor.addListing.perksPlaceholder')}
@@ -1291,16 +1308,10 @@ function PricingStep({
             />
           </div>
 
-          <FormField label={t('vendor.addListing.pickupAddress')} required>
-            <input
-              type="text"
-              value={form.pickupAddress}
-              onChange={(event) =>
-                onChange({ pickupAddress: event.target.value })
-              }
-              placeholder={t('vendor.addListing.pickupAddressPlaceholder')}
-              className={inputClassName}
-            />
+          <FormField label={t('vendor.addListing.pickupAddress')}>
+            <p className="text-sm font-medium font-satoshi text-[#676565]">
+              {form.pickupAddress || t('vendor.location.cityPlaceholder')}
+            </p>
           </FormField>
         </div>
 

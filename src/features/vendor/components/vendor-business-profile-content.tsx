@@ -15,12 +15,18 @@ import { useSession } from "next-auth/react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { VendorBusinessDocumentsSection } from "@/features/vendor/components/vendor-business-documents-section";
+import { StructuredLocationFields } from "@/features/vendor/components/structured-location-fields";
 import {
   VENDOR_PAYOUT_BANK_OPTIONS,
   type VendorBusinessProfile,
 } from "@/features/vendor/data/vendor-business-profile";
 import { VENDOR_CAC_COMPANY_TYPES } from "@/features/vendor/data/vendor-signup";
 import { useTranslation } from "@/hooks/use-translation";
+import {
+  formatStructuredLocation,
+  type StructuredLocationValue,
+  EMPTY_STRUCTURED_LOCATION,
+} from "@/lib/geo/structured-location";
 import {
   changeVendorPassword,
   getVendorFullProfile,
@@ -79,6 +85,9 @@ export function VendorBusinessProfileContent({
     profile?.businessName?.trim() || vendorName?.trim() || "your business";
 
   const [form, setForm] = useState<VendorBusinessProfile | null>(null);
+  const [hqLocation, setHqLocation] = useState<StructuredLocationValue>(
+    EMPTY_STRUCTURED_LOCATION,
+  );
   const [passwordForm, setPasswordForm] = useState({
     currentPassword: "",
     newPassword: "",
@@ -104,6 +113,10 @@ export function VendorBusinessProfileContent({
   if (profile && profile !== seededProfile) {
     setSeededProfile(profile);
     setForm(formFromProfile(profile));
+    setHqLocation({
+      ...EMPTY_STRUCTURED_LOCATION,
+      street: profile.businessAddress ?? "",
+    });
   }
 
   const updateForm = (patch: Partial<VendorBusinessProfile>) => {
@@ -122,6 +135,7 @@ export function VendorBusinessProfileContent({
     try {
       const updated = await updateVendorProfile(token, patch);
       queryClient.setQueryData(["vendor-profile"], updated);
+      setSeededProfile(updated);
       setForm(formFromProfile(updated));
       flashSaved(section);
     } catch {
@@ -206,7 +220,8 @@ export function VendorBusinessProfileContent({
             } else if (section === "contact") {
               void saveSection("contact", {
                 phoneNumber: form.contactPhone,
-                businessAddress: form.businessAddress,
+                businessAddress:
+                  formatStructuredLocation(hqLocation) || form.businessAddress,
               });
             } else if (section === "cac") {
               void saveSection("cac", {
@@ -483,19 +498,20 @@ export function VendorBusinessProfileContent({
               </div>
             </label>
 
-            <label className="flex flex-col gap-2 sm:col-span-2">
-              <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
+            <div className="sm:col-span-2">
+              <span className="mb-2 block text-sm font-semibold font-satoshi text-[#2F2F2F]">
                 {t("vendor.businessProfile.address")}
               </span>
-              <input
-                type="text"
-                value={form?.businessAddress ?? ""}
-                onChange={(event) =>
-                  updateForm({ businessAddress: event.target.value })
-                }
-                className={inputClassName}
+              <StructuredLocationFields
+                value={hqLocation}
+                onChange={(location) => {
+                  setHqLocation(location);
+                  updateForm({
+                    businessAddress: formatStructuredLocation(location),
+                  });
+                }}
               />
-            </label>
+            </div>
           </div>
 
           {renderSaveRow("contact")}

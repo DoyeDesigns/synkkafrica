@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, ChevronUp, Clock, Info, MapPin } from "lucide-react";
+import { ChevronDown, ChevronUp, Clock, Info } from "lucide-react";
 import { useState } from "react";
 
 import {
@@ -9,7 +9,12 @@ import {
   getAccommodationPerksForDisplay,
   getHiddenAccommodationPerkCount,
 } from "@/features/vendor/data/accommodation-listing-perks";
-import type { AddListingFormState } from "@/features/vendor/data/vendor-add-listing";
+import {
+  structuredLocationFormPatch,
+  structuredLocationFromForm,
+  type AddListingFormState,
+} from "@/features/vendor/data/vendor-add-listing";
+import { StructuredLocationFields } from "@/features/vendor/components/structured-location-fields";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -93,18 +98,18 @@ export function AccommodationDetailsFields({
           </select>
         </FormField>
 
-        <FormField label={t("vendor.addListing.location")} required>
-          <div className="relative">
-            <input
-              type="text"
-              value={form.address}
-              onChange={(event) => onChange({ address: event.target.value })}
-              placeholder={t("vendor.addListing.accommodationLocationPlaceholder")}
-              className={`${inputClassName} pr-10`}
-            />
-            <MapPin className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
-          </div>
-        </FormField>
+        <div className="sm:col-span-2">
+          <span className="mb-2 block text-sm font-semibold font-satoshi text-[#2F2F2F]">
+            {t("vendor.addListing.location")}
+            <span className="text-[#C0392B]"> *</span>
+          </span>
+          <StructuredLocationFields
+            value={structuredLocationFromForm(form)}
+            onChange={(location) =>
+              onChange(structuredLocationFormPatch(location, "address"))
+            }
+          />
+        </div>
 
         <FormField label={t("vendor.addListing.accommodationMaxGuests")} required>
           <input

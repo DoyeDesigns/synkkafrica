@@ -1,8 +1,8 @@
 "use client";
 
 import { Heart, Share2, Star } from "lucide-react";
-import Image from "next/image";
 
+import { BookingImageGallery } from "@/features/travel/components/booking/booking-image-gallery";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TourPackageDetail } from "@/features/tour-packages/data/tour-package-booking";
 
@@ -56,19 +56,13 @@ type TourPackageGalleryProps = {
 
 export function TourPackageGallery({ tourPackage }: TourPackageGalleryProps) {
   const t = useTranslation();
-  const [mainImage, ...thumbnails] = tourPackage.images;
 
   return (
-    <div className="space-y-3">
-      <div className="relative aspect-16/10 w-full overflow-hidden rounded-2xl bg-zinc-100">
-        <Image
-          src={mainImage}
-          alt={tourPackage.title}
-          fill
-          priority
-          className="object-cover"
-          sizes="(max-width: 1024px) 100vw, 760px"
-        />
+    <BookingImageGallery
+      images={tourPackage.images}
+      alt={tourPackage.title}
+      extraPhotoCount={tourPackage.extraPhotoCount}
+      overlay={
         <button
           type="button"
           aria-label={t("booking.package.savePackage")}
@@ -76,35 +70,7 @@ export function TourPackageGallery({ tourPackage }: TourPackageGalleryProps) {
         >
           <Heart className="h-5 w-5 text-foreground" strokeWidth={1.5} />
         </button>
-      </div>
-
-      <div className="grid grid-cols-3 gap-3">
-        {thumbnails.slice(0, 3).map((image, index) => {
-          const isLast = index === 2 && tourPackage.extraPhotoCount > 0;
-
-          return (
-            <div
-              key={`${image}-${index}`}
-              className="relative aspect-[4/3] overflow-hidden rounded-xl bg-zinc-100"
-            >
-              <Image
-                src={image}
-                alt=""
-                fill
-                className="object-cover"
-                sizes="240px"
-              />
-              {isLast ? (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/45 text-sm font-semibold font-satoshi text-white">
-                  {t("booking.property.morePhotos", {
-                    count: tourPackage.extraPhotoCount,
-                  })}
-                </div>
-              ) : null}
-            </div>
-          );
-        })}
-      </div>
-    </div>
+      }
+    />
   );
 }

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { getBrowseEventsHref } from "@/features/travel/data/tours-landing";
-import { useExperienceDestinationCards } from "@/features/travel/hooks/use-experience-destination-cards";
+import { useAttractionPlaceCards } from "@/features/travel/hooks/use-experience-destination-cards";
 import { useTranslation } from "@/hooks/use-translation";
 
 const MOBILE_INITIAL_VISIBLE = 6;
@@ -14,12 +14,8 @@ const MOBILE_INITIAL_VISIBLE = 6;
 export function ToursAttractionsSection() {
   const t = useTranslation();
   const [showAll, setShowAll] = useState(false);
-  const attractions = useExperienceDestinationCards();
+  const attractions = useAttractionPlaceCards();
   const hasMoreBelowLg = attractions.length > MOBILE_INITIAL_VISIBLE;
-
-  if (attractions.length === 0) {
-    return null;
-  }
 
   return (
     <section className="w-full">
@@ -31,8 +27,8 @@ export function ToursAttractionsSection() {
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {attractions.map((attraction, index) => (
             <Link
-              key={attraction.location}
-              href={getBrowseEventsHref(attraction.location)}
+              key={attraction.id ?? attraction.location}
+              href={getBrowseEventsHref(attraction.filterLocation ?? attraction.location)}
               className={`group relative aspect-3/4 overflow-hidden rounded-2xl${
                 !showAll && index >= MOBILE_INITIAL_VISIBLE ? " hidden lg:block" : ""
               }`}

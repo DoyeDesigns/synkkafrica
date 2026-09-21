@@ -3,7 +3,6 @@
 import Image from "next/image";
 
 import { calculateBookingTotal } from "@/features/travel/booking/calculate-booking-total";
-import { SyncAfricaFeeLine } from "@/features/travel/components/booking/sync-africa-fee-line";
 import { useBookingContent } from "@/hooks/use-booking-content";
 import { useFormatPrice } from "@/hooks/use-format-price";
 import { useTranslation } from "@/hooks/use-translation";
@@ -142,12 +141,9 @@ export function BookingSummaryCard({
           <div className="flex items-center justify-between gap-3">
             <span className="text-foreground/80">{t("booking.summary.taxesAndFees")}</span>
             <span className="font-medium text-foreground">
-              {formatPrice(property.currency, pricing.taxesAndFees)}
+              {formatPrice(property.currency, pricing.taxesAndFees + pricing.syncAfricaFee)}
             </span>
           </div>
-          <SyncAfricaFeeLine
-            formattedAmount={formatPrice(property.currency, pricing.syncAfricaFee)}
-          />
           <div className="flex items-center justify-between gap-3 border-t border-[#F0D4C4] pt-2">
             <span className="font-semibold text-foreground">{t("booking.summary.total")}</span>
             <span className="font-bold text-foreground">
