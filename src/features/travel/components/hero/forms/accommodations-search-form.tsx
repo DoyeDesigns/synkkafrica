@@ -12,6 +12,7 @@ import {
 } from "@/features/travel/components/hero/hero-form-primitives";
 import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
 import { HeroDestinationField } from "@/features/travel/components/hero/hero-destination-field";
+import { searchCityFromLocation } from "@/lib/geo/city-supplements";
 import { listAccommodationDestinations } from "@/lib/api/accommodations";
 import {
   getDefaultCheckInDate,
@@ -84,7 +85,8 @@ export function AccommodationsSearchForm({
     () => searchParams.get("guests") ?? "1",
   );
   const [destination, setDestination] = useState(
-    () => searchParams.get("destination") ?? "",
+    () => searchCityFromLocation(searchParams.get("destination") ?? "") ||
+      (searchParams.get("destination") ?? ""),
   );
   const [checkIn, setCheckIn] = useState(
     () => searchParams.get("checkIn") ?? getDefaultCheckInDate(),
@@ -153,7 +155,8 @@ export function AccommodationsSearchForm({
           propertyType: getPropertyTypeLabelById(propertyTypeId),
           rooms,
           guests,
-          destination: destination.trim(),
+          destination:
+            searchCityFromLocation(destination.trim()) || destination.trim(),
           checkIn,
           checkOut,
         });
@@ -198,6 +201,7 @@ export function AccommodationsSearchForm({
               { count },
             )
           }
+          listboxId="hero-accommodations-location-listbox"
         />
         <HeroDateRangeField
           fromLabel={t("hero.accommodations.checkIn")}

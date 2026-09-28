@@ -120,7 +120,7 @@ export const VENDOR_TRANSACTIONS: VendorTransaction[] = [
   },
   {
     id: "txn-6",
-    title: "Synkafrica",
+    title: "SynkAfrica",
     descriptionKey: "vendor.earnings.transaction.platformFee",
     date: "2026-07-21",
     amount: 18_000,

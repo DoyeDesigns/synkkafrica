@@ -1,8 +1,8 @@
 import { Coffee, Dumbbell, Flame, Heart, Star } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 import { T } from "@/components/translation";
+import { ListingCardLink } from "@/features/travel/components/listing-card-link";
 
 import type {
   PropertyListingAmenity,
@@ -29,10 +29,12 @@ type PropertyListingCardProps = {
 
 export function PropertyListingCard({ item, saved = false }: PropertyListingCardProps) {
   const fullStars = Math.floor(item.rating);
+  const href = getPropertyBookingPath(item.id);
 
   return (
-    <article className="flex w-[295px] min-w-[295px] shrink-0 flex-col overflow-hidden rounded-2xl border border-black/10 bg-white">
-      <div className="relative h-40 w-full bg-zinc-100">
+    <article className="relative flex w-[295px] min-w-[295px] shrink-0 flex-col overflow-hidden rounded-2xl border border-black/10 bg-white transition-shadow hover:shadow-md">
+      <ListingCardLink href={href} label={item.name} />
+      <div className="relative z-[2] h-40 w-full bg-zinc-100 pointer-events-none">
         <Image
           src={item.image}
           alt={item.name}
@@ -44,7 +46,7 @@ export function PropertyListingCard({ item, saved = false }: PropertyListingCard
         <button
           type="button"
           aria-label={saved ? "Remove from saved" : "Save property"}
-          className={`absolute top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm ${
+          className={`absolute top-3 z-[2] flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm pointer-events-auto ${
             saved ? "right-3" : "left-3"
           }`}
         >
@@ -98,12 +100,9 @@ export function PropertyListingCard({ item, saved = false }: PropertyListingCard
             </p>
           </div>
 
-          <Link
-            href={getPropertyBookingPath(item.id)}
-            className="rounded-[5px] font-montserrat font-bold bg-[#2F2F2F] px-4 py-2.5 text-xs text-white"
-          >
+          <span className="rounded-[5px] font-montserrat font-bold bg-[#2F2F2F] px-4 py-2.5 text-xs text-white">
             <T k="common.bookNow" />
-          </Link>
+          </span>
         </div>
       </div>
     </article>

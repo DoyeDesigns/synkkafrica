@@ -150,7 +150,7 @@
       "security": "Página de seguridad",
       "faqs": "Preguntas frecuentes"
     },
-    "copyright": "Copyright © 2025 Synkafrica | Todos los derechos reservados"
+    "copyright": "Copyright © 2025 SynkAfrica | Todos los derechos reservados"
   },
   "login": {
     "intro": "Puedes iniciar sesión con tu cuenta de SynkAfrica para acceder a nuestros servicios.",
@@ -335,7 +335,7 @@
         "cancelBookingAnswer": "Abre tu reserva desde Reservas y viajes, selecciona el pedido y usa la opción de cancelación si aún estás dentro del plazo permitido. Los reembolsos elegibles se procesan automáticamente.",
         "refundTimingAnswer": "Los reembolsos elegibles suelen procesarse en 5–7 días hábiles después de la cancelación, según tu banco o proveedor de pago.",
         "changeDateAnswer": "Contacta con soporte con tu referencia de reserva. Si la experiencia permite cambios de fecha, nuestro equipo te ayudará a reprogramar o te orientará sobre las opciones disponibles.",
-        "paymentSecurityAnswer": "Sí. Los pagos en Synkafrica se procesan a través de socios de pago seguros y cifrados. Nunca almacenamos los datos completos de tu tarjeta en nuestros servidores."
+        "paymentSecurityAnswer": "Sí. Los pagos en SynkAfrica se procesan a través de socios de pago seguros y cifrados. Nunca almacenamos los datos completos de tu tarjeta en nuestros servidores."
       },
       "tabs": {
         "label": "Secciones de soporte"
@@ -343,7 +343,7 @@
       "backToTickets": "Volver a tickets",
       "typeMessage": "Escribe un mensaje...",
       "send": "Enviar",
-      "supportTeam": "Soporte Synkafrica",
+      "supportTeam": "Soporte SynkAfrica",
       "you": "Tú",
       "emptyTickets": "Aún no has enviado ningún ticket de soporte.",
       "attachedImage": "Imagen adjunta",
@@ -848,7 +848,7 @@
     },
     "tours": {
       "attractions": {
-        "title": "Atracciones en Synkafrica"
+        "title": "Atracciones en SynkAfrica"
       },
       "events": {
         "browsingIn": "Explorando eventos en"
@@ -1806,12 +1806,12 @@
           "message": "Retiro de 150 000 NGN a Access Bank terminada en 8834 procesado correctamente."
         },
         "admin": {
-          "title": "Actualización de políticas Synkafrica",
+          "title": "Actualización de políticas SynkAfrica",
           "message": "Las nuevas directrices para anuncios de experiencias están disponibles. Revísalas antes del 1 ago."
         },
         "admin2": {
           "title": "Anuncio aprobado",
-          "message": "Tu anuncio Lagos Lagoon Sunset Cruise ya está activo en Synkafrica."
+          "message": "Tu anuncio Lagos Lagoon Sunset Cruise ya está activo en SynkAfrica."
         }
       }
     },
@@ -1863,7 +1863,7 @@
       "businessNameHint": "Nombre interno usado en pagos y registros de vendedor. No se muestra en anuncios públicos.",
       "internalNameLabel": "Nombre interno del negocio",
       "contactDetails": "Datos de contacto",
-      "contactDetailsHint": "Cómo Synkafrica y los huéspedes te contactan para soporte de reservas.",
+      "contactDetailsHint": "Cómo SynkAfrica y los huéspedes te contactan para soporte de reservas.",
       "phone": "Número de teléfono",
       "email": "Correo electrónico",
       "address": "Dirección comercial",
@@ -1947,7 +1947,7 @@
       }
     },
     "support": {
-      "helpBanner": "Presenta una queja o solicita ayuda al equipo de vendedores de Synkafrica. Respondemos normalmente en 1–2 días hábiles.",
+      "helpBanner": "Presenta una queja o solicita ayuda al equipo de vendedores de SynkAfrica. Respondemos normalmente en 1–2 días hábiles.",
       "helpBannerEmail": "Las actualizaciones se enviarán a {email}.",
       "openTickets": "{count} ticket(s) abierto(s)",
       "tabs": {
@@ -2055,7 +2055,7 @@
         "all": "Todo"
       },
       "commissionSplit": "Reparto de comisión",
-      "commissionSplitHint": "Los ingresos por reserva se reparten {vendor}% para ti y {platform}% para Synkafrica.",
+      "commissionSplitHint": "Los ingresos por reserva se reparten {vendor}% para ti y {platform}% para SynkAfrica.",
       "vendorShare": "Tu parte",
       "platformShare": "Comisión de plataforma",
       "grossRevenue": "Ingresos brutos",

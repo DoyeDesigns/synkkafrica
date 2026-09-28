@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
 import { getDefaultCheckInDate } from "@/features/travel/booking/booking-params";
-import { HeroAddressField } from "@/features/travel/components/hero/hero-address-field";
+import { HeroDestinationField } from "@/features/travel/components/hero/hero-destination-field";
 import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
 import {
   HeroGlassSelect,
@@ -14,7 +14,9 @@ import {
   HeroSearchButton,
 } from "@/features/travel/components/hero/hero-form-primitives";
 import { useTranslation } from "@/hooks/use-translation";
-import { reverseGeocode } from "@/lib/api/places";
+import { listCarDestinations } from "@/lib/api/cars";
+import { cityNameFromPlace, reverseGeocode } from "@/lib/api/places";
+import { searchCityFromLocation } from "@/lib/geo/city-supplements";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
 type CarRentalsSearchFormProps = {
@@ -67,12 +69,14 @@ export function CarRentalsSearchForm({
   const [locationKind, setLocationKind] = useState<LocationKind>(() =>
     pickParam(searchParams.get("locationKind"), LOCATION_KINDS, "pickup"),
   );
-  const [pickupAddress, setPickupAddress] = useState(
-    () => searchParams.get("location") ?? "",
-  );
-  const [dropoffAddress, setDropoffAddress] = useState(
-    () => searchParams.get("dropoffLocation") ?? "",
-  );
+  const [pickupAddress, setPickupAddress] = useState(() => {
+    const value = searchParams.get("location") ?? "";
+    return searchCityFromLocation(value) || value;
+  });
+  const [dropoffAddress, setDropoffAddress] = useState(() => {
+    const value = searchParams.get("dropoffLocation") ?? "";
+    return searchCityFromLocation(value) || value;
+  });
   const [pickupDate, setPickupDate] = useState(
     () => searchParams.get("date") ?? getDefaultCheckInDate(),
   );
@@ -116,8 +120,8 @@ export function CarRentalsSearchForm({
     detectingLocation && locationKind === "pickup"
       ? t("hero.carRentals.detectingLocation")
       : locationKind === "dropoff"
-        ? t("hero.carRentals.dropoffAddress")
-        : t("hero.carRentals.pickupAddress");
+        ? t("hero.carRentals.dropoffLocation")
+        : t("hero.carRentals.pickupLocation");
 
   const fillPickupFromCurrentLocation = useCallback(() => {
     if (typeof navigator === "undefined" || !navigator.geolocation) {
@@ -134,10 +138,11 @@ export function CarRentalsSearchForm({
       (position) => {
         void reverseGeocode(position.coords.latitude, position.coords.longitude)
           .then((place) => {
-            if (!place?.label) return;
-            setPickupAddress(place.label);
+            const city = cityNameFromPlace(place);
+            if (!city) return;
+            setPickupAddress(city);
             if (rentalMode === "daily-rental") {
-              setDropoffAddress(place.label);
+              setDropoffAddress(city);
             }
           })
           .catch(() => undefined)
@@ -198,8 +203,10 @@ export function CarRentalsSearchForm({
       className="space-y-4"
       onSubmit={(event) => {
         event.preventDefault();
-        const pickup = pickupAddress.trim();
-        const dropoff = dropoffAddress.trim();
+        const pickup =
+          searchCityFromLocation(pickupAddress.trim()) || pickupAddress.trim();
+        const dropoff =
+          searchCityFromLocation(dropoffAddress.trim()) || dropoffAddress.trim();
 
         onSubmit({
           rentalMode,
@@ -235,11 +242,21 @@ export function CarRentalsSearchForm({
           }}
           icon={<MapPin className="h-4 w-4 shrink-0" />}
         />
-        <HeroAddressField
+        <HeroDestinationField
           placeholder={addressPlaceholder}
           value={addressValue}
           onChange={handleAddressChange}
-          listboxId="car-rental-address-listbox"
+          queryKey="car-destinations"
+          fetchDestinations={listCarDestinations}
+          countLabel={(count) =>
+            t(
+              count === 1
+                ? "hero.carRentals.destinationCar"
+                : "hero.carRentals.destinationCars",
+              { count },
+            )
+          }
+          listboxId="car-rental-location-listbox"
         />
       </HeroInputShell>
 

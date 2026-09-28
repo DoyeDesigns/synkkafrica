@@ -89,8 +89,8 @@ export function FooterContent() {
                 width={75}
                 height={75}
               />
-              <span className="text-lg -ml-6 font-bold tracking-tight font-montserrat uppercase">
-                Synkafrica
+              <span className="text-lg -ml-6 font-bold tracking-tight font-montserrat">
+                SynkAfrica
               </span>
             </Link>
 

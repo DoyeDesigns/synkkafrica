@@ -150,7 +150,7 @@
       "security": "Säkerhetssida",
       "faqs": "Vanliga frågor"
     },
-    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+    "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
   "login": {
     "intro": "Du kan logga in med ditt SynkAfrica-konto för att få tillgång till våra tjänster.",
@@ -335,7 +335,7 @@
         "cancelBookingAnswer": "Öppna din bokning under ”Bokningar och resor”, välj beställningen och använd avbokningsalternativet om avbokningstiden ännu inte har löpt ut. Återbetalningar hanteras automatiskt för bokningar som uppfyller kraven.",
         "refundTimingAnswer": "Återbetalningar som uppfyller kraven behandlas vanligtvis inom 5–7 arbetsdagar efter avbokningen, beroende på vilken bank eller betalningsleverantör du använder.",
         "changeDateAnswer": "Kontakta kundtjänst och ange ditt bokningsnummer. Om det går att ändra datum för upplevelsen kommer vårt team att hjälpa dig att boka om eller guida dig genom de tillgängliga alternativen.",
-        "paymentSecurityAnswer": "Ja. Betalningar på Synkafrica hanteras via säkra, krypterade betalningspartner. Vi lagrar aldrig dina fullständiga kortuppgifter på våra servrar."
+        "paymentSecurityAnswer": "Ja. Betalningar på SynkAfrica hanteras via säkra, krypterade betalningspartner. Vi lagrar aldrig dina fullständiga kortuppgifter på våra servrar."
       },
       "tabs": {
         "label": "Supportavsnitt"
@@ -343,7 +343,7 @@
       "backToTickets": "Tillbaka till biljetterna",
       "typeMessage": "Skriv ett meddelande...",
       "send": "Skicka",
-      "supportTeam": "Synkafrica-support",
+      "supportTeam": "SynkAfrica-support",
       "you": "Du",
       "emptyTickets": "Du har ännu inte skickat in några supportärenden.",
       "attachedImage": "Bifogad bild",
@@ -848,7 +848,7 @@
     },
     "tours": {
       "attractions": {
-        "title": "Sevärdheter på Synkafrica"
+        "title": "Sevärdheter på SynkAfrica"
       },
       "events": {
         "browsingIn": "Bläddra bland evenemang i"
@@ -1806,12 +1806,12 @@
           "message": "Uttaget på 150 000 NGN till Access Bank med slutnummer 8834 har genomförts utan problem."
         },
         "admin": {
-          "title": "Uppdatering av riktlinjerna från Synkafrica",
+          "title": "Uppdatering av riktlinjerna från SynkAfrica",
           "message": "Uppdaterade riktlinjer för leverantörer av upplevelser finns nu tillgängliga. Vänligen läs igenom dem senast den 1 augusti."
         },
         "admin2": {
           "title": "Annonsen har godkänts",
-          "message": "Din annons för ”Lagos Lagoon Sunset Cruise” är nu publicerad på Synkafrica."
+          "message": "Din annons för ”Lagos Lagoon Sunset Cruise” är nu publicerad på SynkAfrica."
         }
       }
     },
@@ -1863,7 +1863,7 @@
       "businessNameHint": "Internt namn som används i utbetalningar och leverantörsposter. Visas inte i offentliga listor.",
       "internalNameLabel": "Internt företagsnamn",
       "contactDetails": "Kontaktuppgifter",
-      "contactDetailsHint": "Hur Synkafrica och gästerna kontaktar dig för hjälp med bokningen.",
+      "contactDetailsHint": "Hur SynkAfrica och gästerna kontaktar dig för hjälp med bokningen.",
       "phone": "Telefonnummer",
       "email": "E-postadress",
       "address": "Företagsadress",
@@ -1947,7 +1947,7 @@
       }
     },
     "support": {
-      "helpBanner": "Lämna in ett klagomål eller be om hjälp från Synkafricas supportteam. Vi svarar vanligtvis inom 1–2 arbetsdagar.",
+      "helpBanner": "Lämna in ett klagomål eller be om hjälp från SynkAfricas supportteam. Vi svarar vanligtvis inom 1–2 arbetsdagar.",
       "helpBannerEmail": "Uppdateringar kommer att skickas till [[[e-postadress]].",
       "openTickets": "{antal} öppna ärenden",
       "tabs": {
@@ -2055,7 +2055,7 @@
         "all": "Alla"
       },
       "commissionSplit": "Provisionsfördelning",
-      "commissionSplitHint": "Bokningsintäkterna fördelas så att [[[leverantör]]] % går till dig och {plattform} % till Synkafrica.",
+      "commissionSplitHint": "Bokningsintäkterna fördelas så att [[[leverantör]]] % går till dig och {plattform} % till SynkAfrica.",
       "vendorShare": "Din andel",
       "platformShare": "Plattformsavgift",
       "grossRevenue": "Bruttointäkter",

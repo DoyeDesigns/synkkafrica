@@ -1,9 +1,9 @@
 import { CalendarDays, Clock, Heart } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 import { DisplayPrice } from "@/components/display-price";
 import { T } from "@/components/translation";
+import { ListingCardLink } from "@/features/travel/components/listing-card-link";
 import { getTourPackageBookingPath } from "@/features/tour-packages/booking/tour-package-paths";
 import type { TourPackage } from "@/features/tour-packages/data/tour-packages";
 
@@ -12,9 +12,12 @@ type TourPackageCardProps = {
 };
 
 export function TourPackageCard({ item }: TourPackageCardProps) {
+  const href = getTourPackageBookingPath(item.id);
+
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
-      <div className="relative h-50 m-4 mb-0">
+    <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-shadow hover:shadow-md">
+      <ListingCardLink href={href} label={item.title} />
+      <div className="relative z-[2] h-50 m-4 mb-0 pointer-events-none">
         <Image
           src={item.image}
           alt={item.title}
@@ -26,7 +29,7 @@ export function TourPackageCard({ item }: TourPackageCardProps) {
         <button
           type="button"
           aria-label="Save package"
-          className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm"
+          className="absolute right-3 top-3 z-[2] flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm pointer-events-auto"
         >
           <Heart className="h-4 w-4 text-foreground/70" strokeWidth={1.5} />
         </button>
@@ -61,12 +64,9 @@ export function TourPackageCard({ item }: TourPackageCardProps) {
             </span>
           </p>
 
-          <Link
-            href={getTourPackageBookingPath(item.id)}
-            className="block w-full rounded-md bg-[#3A3A3A] px-5 py-2.5 text-center text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90"
-          >
+          <span className="block w-full rounded-md bg-[#3A3A3A] px-5 py-2.5 text-center text-sm font-bold font-montserrat text-white">
             <T k="common.bookNow" />
-          </Link>
+          </span>
         </div>
       </div>
     </article>

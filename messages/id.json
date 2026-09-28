@@ -150,7 +150,7 @@
       "security": "Halaman Keamanan",
       "faqs": "Pertanyaan yang Sering Diajukan"
     },
-    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+    "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
   "login": {
     "intro": "Anda dapat masuk menggunakan akun SynkAfrica Anda untuk mengakses layanan kami.",
@@ -335,7 +335,7 @@
         "cancelBookingAnswer": "Buka pemesanan Anda dari menu \"Pemesanan & Perjalanan\", pilih pesanan tersebut, lalu gunakan opsi pembatalan jika masih dalam batas waktu pembatalan. Pengembalian dana akan diproses secara otomatis untuk pemesanan yang memenuhi syarat.",
         "refundTimingAnswer": "Pengembalian dana yang memenuhi syarat biasanya diproses dalam waktu 5–7 hari kerja setelah pembatalan, tergantung pada bank atau penyedia layanan pembayaran Anda.",
         "changeDateAnswer": "Hubungi layanan dukungan dengan mencantumkan nomor referensi pemesanan Anda. Jika kegiatan tersebut memungkinkan perubahan tanggal, tim kami akan membantu Anda menjadwalkan ulang atau memandu Anda mengenai opsi-opsi yang tersedia.",
-        "paymentSecurityAnswer": "Ya. Pembayaran di Synkafrica diproses melalui mitra pembayaran yang aman dan terenkripsi. Kami tidak pernah menyimpan detail lengkap kartu Anda di server kami."
+        "paymentSecurityAnswer": "Ya. Pembayaran di SynkAfrica diproses melalui mitra pembayaran yang aman dan terenkripsi. Kami tidak pernah menyimpan detail lengkap kartu Anda di server kami."
       },
       "tabs": {
         "label": "Bagian bantuan"
@@ -343,7 +343,7 @@
       "backToTickets": "Kembali ke tiket",
       "typeMessage": "Ketik pesan...",
       "send": "Kirim",
-      "supportTeam": "Dukungan Synkafrica",
+      "supportTeam": "Dukungan SynkAfrica",
       "you": "Kamu",
       "emptyTickets": "Anda belum pernah mengirimkan tiket dukungan sama sekali.",
       "attachedImage": "Gambar terlampir",
@@ -848,7 +848,7 @@
     },
     "tours": {
       "attractions": {
-        "title": "Tempat Wisata di Synkafrica"
+        "title": "Tempat Wisata di SynkAfrica"
       },
       "events": {
         "browsingIn": "Menelusuri acara di"
@@ -1806,12 +1806,12 @@
           "message": "Penarikan dana sebesar 150.000 NGN ke Access Bank dengan nomor akhir 8834 telah diproses dengan sukses."
         },
         "admin": {
-          "title": "Pembaruan kebijakan dari Synkafrica",
+          "title": "Pembaruan kebijakan dari SynkAfrica",
           "message": "Pedoman terbaru bagi penjual terkait penawaran pengalaman kini telah tersedia. Mohon ditinjau paling lambat tanggal 1 Agustus."
         },
         "admin2": {
           "title": "Iklan telah disetujui",
-          "message": "Iklan \"Lagos Lagoon Sunset Cruise\" Anda kini telah ditayangkan di Synkafrica."
+          "message": "Iklan \"Lagos Lagoon Sunset Cruise\" Anda kini telah ditayangkan di SynkAfrica."
         }
       }
     },
@@ -1863,7 +1863,7 @@
       "businessNameHint": "Nama internal yang digunakan pada catatan pembayaran dan vendor. Tidak ditampilkan pada daftar publik.",
       "internalNameLabel": "Nama internal perusahaan",
       "contactDetails": "Rincian kontak",
-      "contactDetailsHint": "Bagaimana Synkafrica dan para tamu menghubungi Anda untuk mendapatkan bantuan pemesanan.",
+      "contactDetailsHint": "Bagaimana SynkAfrica dan para tamu menghubungi Anda untuk mendapatkan bantuan pemesanan.",
       "phone": "Nomor telepon",
       "email": "Alamat email",
       "address": "Alamat kantor",
@@ -1947,7 +1947,7 @@
       }
     },
     "support": {
-      "helpBanner": "Ajukan keluhan atau minta bantuan kepada tim vendor Synkafrica. Kami biasanya akan merespons dalam waktu 1–2 hari kerja.",
+      "helpBanner": "Ajukan keluhan atau minta bantuan kepada tim vendor SynkAfrica. Kami biasanya akan merespons dalam waktu 1–2 hari kerja.",
       "helpBannerEmail": "Pembaruan akan dikirimkan ke {email}.",
       "openTickets": "{jumlah} tiket yang masih terbuka",
       "tabs": {
@@ -2055,7 +2055,7 @@
         "all": "Semua"
       },
       "commissionSplit": "Pembagian komisi",
-      "commissionSplitHint": "Pendapatan dari pemesanan dibagi menjadi {vendor}% untuk Anda dan {platform}% untuk Synkafrica.",
+      "commissionSplitHint": "Pendapatan dari pemesanan dibagi menjadi {vendor}% untuk Anda dan {platform}% untuk SynkAfrica.",
       "vendorShare": "Bagian Anda",
       "platformShare": "Biaya platform",
       "grossRevenue": "Pendapatan kotor",

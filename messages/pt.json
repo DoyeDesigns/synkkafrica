@@ -150,7 +150,7 @@
       "security": "Página de segurança",
       "faqs": "Perguntas frequentes"
     },
-    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+    "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
   "login": {
     "intro": "Você pode entrar usando sua conta SynkAfrica para acessar nossos serviços.",
@@ -335,7 +335,7 @@
         "cancelBookingAnswer": "Abra sua reserva em Reservas e Viagens, selecione o pedido e use a opção de cancelamento se ainda estiver dentro da janela de cancelamento. Os reembolsos são processados ​​automaticamente para reservas elegíveis.",
         "refundTimingAnswer": "Os reembolsos elegíveis geralmente são processados ​​dentro de 5 a 7 dias úteis após o cancelamento, dependendo do seu banco ou provedor de pagamento.",
         "changeDateAnswer": "Contate o suporte com sua referência de reserva. Caso a experiência permita alterações de data, nossa equipe irá ajudá-lo a remarcar ou orientá-lo sobre as opções disponíveis.",
-        "paymentSecurityAnswer": "Sim. Os pagamentos na Synkafrica são processados ​​através de parceiros de pagamento criptografados e seguros. Nunca armazenamos os dados completos do seu cartão em nossos servidores."
+        "paymentSecurityAnswer": "Sim. Os pagamentos na SynkAfrica são processados ​​através de parceiros de pagamento criptografados e seguros. Nunca armazenamos os dados completos do seu cartão em nossos servidores."
       },
       "tabs": {
         "label": "Seções de suporte"
@@ -343,7 +343,7 @@
       "backToTickets": "Voltar aos ingressos",
       "typeMessage": "Digite uma mensagem...",
       "send": "Enviar",
-      "supportTeam": "Suporte Synkafrica",
+      "supportTeam": "Suporte SynkAfrica",
       "you": "Você",
       "emptyTickets": "Você ainda não enviou nenhum ticket de suporte.",
       "attachedImage": "Imagem anexada",
@@ -848,7 +848,7 @@
     },
     "tours": {
       "attractions": {
-        "title": "Atrações em Synkafrica"
+        "title": "Atrações em SynkAfrica"
       },
       "events": {
         "browsingIn": "Navegando em eventos em"
@@ -1806,12 +1806,12 @@
           "message": "A retirada de NGN 150.000 para o Access Bank com final 8834 foi processada com sucesso."
         },
         "admin": {
-          "title": "Atualização de política da Synkafrica",
+          "title": "Atualização de política da SynkAfrica",
           "message": "As diretrizes atualizadas do fornecedor para listagens de experiências já estão disponíveis. Por favor, revise até 1º de agosto."
         },
         "admin2": {
           "title": "Listagem aprovada",
-          "message": "Sua listagem do cruzeiro ao pôr do sol na Lagoa de Lagos agora está ativa na Synkafrica."
+          "message": "Sua listagem do cruzeiro ao pôr do sol na Lagoa de Lagos agora está ativa na SynkAfrica."
         }
       }
     },
@@ -1863,7 +1863,7 @@
       "businessNameHint": "Nome interno usado em pagamentos e registros de fornecedores. Não mostrado em listagens públicas.",
       "internalNameLabel": "Nome comercial interno",
       "contactDetails": "Detalhes de contato",
-      "contactDetailsHint": "Como a Synkafrica e os hóspedes entram em contato com você para obter suporte de reserva.",
+      "contactDetailsHint": "Como a SynkAfrica e os hóspedes entram em contato com você para obter suporte de reserva.",
       "phone": "Número de telefone",
       "email": "Endereço de email",
       "address": "Endereço comercial",
@@ -1947,7 +1947,7 @@
       }
     },
     "support": {
-      "helpBanner": "Registre uma reclamação ou solicite ajuda da equipe de fornecedores da Synkafrica. We typically respond within 1–2 business days.",
+      "helpBanner": "Registre uma reclamação ou solicite ajuda da equipe de fornecedores da SynkAfrica. We typically respond within 1–2 business days.",
       "helpBannerEmail": "As atualizações serão enviadas para {email}.",
       "openTickets": "{contagem} tickets abertos",
       "tabs": {
@@ -2055,7 +2055,7 @@
         "all": "Todos"
       },
       "commissionSplit": "Divisão da comissão",
-      "commissionSplitHint": "A receita de reservas é dividida em {vendor}% para você e {platform}% para Synkafrica.",
+      "commissionSplitHint": "A receita de reservas é dividida em {vendor}% para você e {platform}% para SynkAfrica.",
       "vendorShare": "Sua parte",
       "platformShare": "Taxa de plataforma",
       "grossRevenue": "Receita bruta",

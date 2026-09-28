@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import {
+  fetchPhotonCitySuggestions,
   fetchPhotonReverse,
   fetchPhotonSuggestions,
 } from "@/lib/api/places";
@@ -16,6 +17,12 @@ export async function GET(request: NextRequest) {
     if (latParam != null && lonParam != null && Number.isFinite(lat) && Number.isFinite(lon)) {
       const place = await fetchPhotonReverse(lat, lon);
       return NextResponse.json(place);
+    }
+
+    const kind = request.nextUrl.searchParams.get("kind")?.trim();
+    if (kind === "city") {
+      const cities = await fetchPhotonCitySuggestions(query);
+      return NextResponse.json(cities);
     }
 
     const geocode = request.nextUrl.searchParams.get("geocode") === "1";

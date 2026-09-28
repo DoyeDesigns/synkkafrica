@@ -311,7 +311,8 @@ export function filterAccommodationResults(
   return results.filter((result) => {
     if (
       normalizedQuery &&
-      !`${result.name} ${result.location}`.toLowerCase().includes(normalizedQuery)
+      !`${result.name} ${result.location}`.toLowerCase().includes(normalizedQuery) &&
+      !locationsOverlap(query, result.location)
     ) {
       return false;
     }

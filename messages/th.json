@@ -150,7 +150,7 @@
       "security": "Security Page",
       "faqs": "FAQs"
     },
-    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+    "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
   "login": {
     "intro": "You can sign in using your SynkAfrica account to access our services.",
@@ -335,7 +335,7 @@
         "cancelBookingAnswer": "เปิดการจองของคุณจาก Bookings & Trips เลือกคำสั่งซื้อ และใช้ตัวเลือกยกเลิกหากยังอยู่ในหน้าต่างการยกเลิก การคืนเงินจะดำเนินการโดยอัตโนมัติสำหรับการจองที่มีสิทธิ์",
         "refundTimingAnswer": "โดยปกติการคืนเงินที่มีสิทธิ์จะดำเนินการภายใน 5-7 วันทำการหลังจากการยกเลิก ขึ้นอยู่กับธนาคารหรือผู้ให้บริการชำระเงินของคุณ",
         "changeDateAnswer": "ติดต่อฝ่ายสนับสนุนโดยใช้ข้อมูลอ้างอิงการจองของคุณ หากประสบการณ์อนุญาตให้เปลี่ยนแปลงวันที่ได้ ทีมของเราจะช่วยคุณจัดกำหนดการใหม่หรือแนะนำตัวเลือกที่มีให้",
-        "paymentSecurityAnswer": "ใช่. การชำระเงินบน Synkafrica จะดำเนินการผ่านพันธมิตรการชำระเงินที่ปลอดภัยและเข้ารหัส เราจะไม่เก็บรายละเอียดบัตรทั้งหมดของคุณไว้บนเซิร์ฟเวอร์ของเรา"
+        "paymentSecurityAnswer": "ใช่. การชำระเงินบน SynkAfrica จะดำเนินการผ่านพันธมิตรการชำระเงินที่ปลอดภัยและเข้ารหัส เราจะไม่เก็บรายละเอียดบัตรทั้งหมดของคุณไว้บนเซิร์ฟเวอร์ของเรา"
       },
       "tabs": {
         "label": "ส่วนสนับสนุน"
@@ -848,7 +848,7 @@
     },
     "tours": {
       "attractions": {
-        "title": "สถานที่ท่องเที่ยวบน Synkafrica"
+        "title": "สถานที่ท่องเที่ยวบน SynkAfrica"
       },
       "events": {
         "browsingIn": "เรียกดูเหตุการณ์ใน"
@@ -1806,12 +1806,12 @@
           "message": "NGN 150,000 withdrawal to Access Bank ending 8834 was processed successfully."
         },
         "admin": {
-          "title": "Policy update from Synkafrica",
+          "title": "Policy update from SynkAfrica",
           "message": "Updated vendor guidelines for experience listings are now available. Please review by 1 Aug."
         },
         "admin2": {
           "title": "Listing approved",
-          "message": "Your Lagos Lagoon Sunset Cruise listing is now live on Synkafrica."
+          "message": "Your Lagos Lagoon Sunset Cruise listing is now live on SynkAfrica."
         }
       }
     },
@@ -1863,7 +1863,7 @@
       "businessNameHint": "Internal name used on payouts and vendor records. Not shown on public listings.",
       "internalNameLabel": "Internal business name",
       "contactDetails": "Contact details",
-      "contactDetailsHint": "How Synkafrica and guests reach you for booking support.",
+      "contactDetailsHint": "How SynkAfrica and guests reach you for booking support.",
       "phone": "Phone number",
       "email": "Email address",
       "address": "Business address",
@@ -1947,7 +1947,7 @@
       }
     },
     "support": {
-      "helpBanner": "ยื่นเรื่องร้องเรียนหรือขอความช่วยเหลือจากทีมงานผู้จำหน่าย Synkafrica โดยปกติเราจะตอบกลับภายใน 1-2 วันทำการ",
+      "helpBanner": "ยื่นเรื่องร้องเรียนหรือขอความช่วยเหลือจากทีมงานผู้จำหน่าย SynkAfrica โดยปกติเราจะตอบกลับภายใน 1-2 วันทำการ",
       "helpBannerEmail": "การอัปเดตจะถูกส่งไปยัง {email}",
       "openTickets": "{count} เปิดตั๋ว",
       "tabs": {
@@ -2055,7 +2055,7 @@
         "all": "All"
       },
       "commissionSplit": "Commission split",
-      "commissionSplitHint": "Booking revenue is split {vendor}% to you and {platform}% to Synkafrica.",
+      "commissionSplitHint": "Booking revenue is split {vendor}% to you and {platform}% to SynkAfrica.",
       "vendorShare": "Your share",
       "platformShare": "Platform fee",
       "grossRevenue": "Gross revenue",
