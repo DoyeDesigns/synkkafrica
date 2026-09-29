@@ -17,9 +17,14 @@ type RoomSelectionTableProps = {
 
 function GuestIcons({ count }: { count: number }) {
   return (
-    <div className="flex items-center gap-1 text-[#676565]">
+    <div className="flex w-full min-w-0 flex-wrap items-center justify-end gap-1 text-[#676565] md:justify-start">
       {Array.from({ length: count }).map((_, index) => (
-        <User key={index} className="h-4 w-4" fill="#817B7B" strokeWidth={1.75} />
+        <User
+          key={index}
+          className="h-4 w-4 shrink-0"
+          fill="#817B7B"
+          strokeWidth={1.75}
+        />
       ))}
     </div>
   );
@@ -53,8 +58,8 @@ export function RoomSelectionTable({
               key={room.id}
               className={`block cursor-pointer transition-colors`}
             >
-              <div className="grid gap-4 md:grid-cols-[minmax(0,1.6fr)_120px_180px] md:items-center">
-                <div className="flex flex-col items-start gap-3 border-r border-[#D9D9D9] px-4 py-4 md:px-5">
+              <div className="grid gap-4 md:grid-cols-[minmax(0,1.6fr)_120px_180px]">
+                <div className="flex h-full flex-col items-start gap-3 border-r border-[#D9D9D9] px-4 py-4 md:px-5">
                   <div className="flex items-start gap-3">
                     <input
                       type="radio"
@@ -96,14 +101,14 @@ export function RoomSelectionTable({
                   ) : null}
                 </div>
 
-                <div className="flex items-center justify-between md:justify-start px-4 py-4 md:px-5 h-full border-r border-[#D9D9D9]">
+                <div className="flex h-full min-w-0 flex-wrap items-center justify-between gap-2 border-r border-[#D9D9D9] px-4 py-4 md:px-5">
                   <span className="text-xs font-medium font-satoshi text-foreground/60 md:hidden">
                     {t("booking.table.guestCount")}
                   </span>
                   <GuestIcons count={room.guestCount} />
                 </div>
 
-                <div className="flex items-end justify-between md:flex-col md:items-end px-4 py-4 md:px-5">
+                <div className="flex h-full items-end justify-between px-4 py-4 md:flex-col md:items-end md:justify-center md:px-5">
                   <span className="text-xs font-medium font-satoshi text-foreground/60 md:hidden">
                     {t("booking.table.pricePerNight")}
                   </span>
