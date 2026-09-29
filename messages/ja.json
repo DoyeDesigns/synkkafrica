@@ -148,7 +148,10 @@
       "privacy": "プライバシーポリシー",
       "terms": "利用規約",
       "security": "セキュリティページ",
-      "faqs": "よくある質問"
+      "faqs": "よくある質問",
+      "cookies": "Cookie Policy",
+      "refunds": "Refund & Cancellation Policy",
+      "vendorTerms": "Vendor Terms"
     },
     "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
@@ -1734,7 +1737,8 @@
       "agreeTermsPrefix": "に同意します",
       "termsOfService": "利用規約",
       "and": "そして",
-      "privacyPolicy": "プライバシーポリシー"
+      "privacyPolicy": "プライバシーポリシー",
+      "vendorTerms": "Vendor Terms"
     },
     "login": {
       "title": "ベンダーのサインイン",

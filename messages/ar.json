@@ -148,7 +148,10 @@
       "privacy": "سياسة الخصوصية",
       "terms": "شروط الاستخدام",
       "security": "صفحة الأمان",
-      "faqs": "الأسئلة الشائعة"
+      "faqs": "الأسئلة الشائعة",
+      "cookies": "Cookie Policy",
+      "refunds": "Refund & Cancellation Policy",
+      "vendorTerms": "Vendor Terms"
     },
     "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
@@ -1734,7 +1737,8 @@
       "agreeTermsPrefix": "أنا أوافق على",
       "termsOfService": "شروط الخدمة",
       "and": "و",
-      "privacyPolicy": "سياسة الخصوصية"
+      "privacyPolicy": "سياسة الخصوصية",
+      "vendorTerms": "Vendor Terms"
     },
     "login": {
       "title": "تسجيل دخول البائع",

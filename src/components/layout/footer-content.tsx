@@ -29,6 +29,14 @@ const VENDOR_LINKS: { key: TranslationKey; href: string }[] = [
   { key: "footer.vendor.listService", href: "/vendor/add-listing" },
 ];
 
+const LEGAL_LINKS: { key: TranslationKey; href: string }[] = [
+  { key: "footer.legal.terms", href: "/terms" },
+  { key: "footer.legal.privacy", href: "/privacy" },
+  { key: "footer.legal.cookies", href: "/cookies" },
+  { key: "footer.legal.refunds", href: "/refunds" },
+  { key: "footer.legal.vendorTerms", href: "/vendor-terms" },
+];
+
 type FooterLinkGroupProps = {
   titleKey: TranslationKey;
   links: { key?: TranslationKey; label?: string; href: string }[];
@@ -130,8 +138,15 @@ export function FooterContent() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-white/20 pt-6 text-xs font-satoshi text-white/80 sm:text-right">
-          <p>
+        <div className="mt-8 border-t border-white/20 pt-6 text-xs font-satoshi text-white/80">
+          <nav className="flex flex-wrap gap-x-4 gap-y-2">
+            {LEGAL_LINKS.map((link) => (
+              <Link key={link.href} href={link.href} className="hover:underline">
+                <T k={link.key} />
+              </Link>
+            ))}
+          </nav>
+          <p className="mt-4 sm:text-right">
             <T k="footer.copyright" />
           </p>
         </div>

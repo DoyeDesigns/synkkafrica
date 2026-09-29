@@ -148,7 +148,10 @@
       "privacy": "Privacy Policy",
       "terms": "Terms of Use",
       "security": "Security Page",
-      "faqs": "FAQs"
+      "faqs": "FAQs",
+      "cookies": "Cookie Policy",
+      "refunds": "Refund & Cancellation Policy",
+      "vendorTerms": "Vendor Terms"
     },
     "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
@@ -1734,7 +1737,8 @@
       "agreeTermsPrefix": "Tôi đồng ý với",
       "termsOfService": "Điều khoản dịch vụ",
       "and": "Và",
-      "privacyPolicy": "Chính sách bảo mật"
+      "privacyPolicy": "Chính sách bảo mật",
+      "vendorTerms": "Vendor Terms"
     },
     "login": {
       "title": "Đăng nhập nhà cung cấp",

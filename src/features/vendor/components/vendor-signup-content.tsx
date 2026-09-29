@@ -200,11 +200,15 @@ export function VendorSignupContent() {
               />
               <span className="text-sm font-medium font-satoshi text-[#2F2F2F]">
                 {t("vendor.signup.agreeTermsPrefix")}{" "}
-                <Link href="/terms" className="font-bold text-[#135391] hover:underline">
+                <Link href="/terms" target="_blank" rel="noopener noreferrer" className="font-bold text-[#135391] hover:underline">
                   {t("vendor.signup.termsOfService")}
+                </Link>
+                {", "}
+                <Link href="/vendor-terms" target="_blank" rel="noopener noreferrer" className="font-bold text-[#135391] hover:underline">
+                  {t("vendor.signup.vendorTerms")}
                 </Link>{" "}
                 {t("vendor.signup.and")}{" "}
-                <Link href="/privacy" className="font-bold text-[#135391] hover:underline">
+                <Link href="/privacy" target="_blank" rel="noopener noreferrer" className="font-bold text-[#135391] hover:underline">
                   {t("vendor.signup.privacyPolicy")}
                 </Link>
               </span>
