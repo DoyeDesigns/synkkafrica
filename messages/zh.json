@@ -150,7 +150,7 @@
       "security": "安全页面",
       "faqs": "常见问题解答"
     },
-    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+    "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
   "login": {
     "intro": "您可以使用您的 SynkAfrica 帐户登录来访问我们的服务。",
@@ -335,7 +335,7 @@
         "cancelBookingAnswer": "从 Bookings & Trips 打开您的预订，选择订单，如果仍在取消窗口内，请使用取消选项。对于符合条件的预订，系统会自动处理退款。",
         "refundTimingAnswer": "符合条件的退款通常会在取消后 5 至 7 个工作日内处理，具体取决于您的银行或支付提供商。",
         "changeDateAnswer": "请联系支持人员并提供您的预订参考号。如果体验允许更改日期，我们的团队将帮助您重新安排或指导您选择可用的选项。",
-        "paymentSecurityAnswer": "是的。 Synkafrica 上的付款是通过安全、加密的付款合作伙伴处理的。我们绝不会将您的完整银行卡详细信息存储在我们的服务器上。"
+        "paymentSecurityAnswer": "是的。 SynkAfrica 上的付款是通过安全、加密的付款合作伙伴处理的。我们绝不会将您的完整银行卡详细信息存储在我们的服务器上。"
       },
       "tabs": {
         "label": "支持部分"
@@ -847,7 +847,7 @@
     },
     "tours": {
       "attractions": {
-        "title": "Synkafrica 的景点"
+        "title": "SynkAfrica 的景点"
       },
       "events": {
         "browsingIn": "浏览事件"
@@ -1805,12 +1805,12 @@
           "message": "已成功处理 150,000 NGN 提款至 Access Bank（尾号为 8834）。"
         },
         "admin": {
-          "title": "Synkafrica 的政策更新",
+          "title": "SynkAfrica 的政策更新",
           "message": "更新后的体验列表供应商指南现已推出。请于 8 月 1 日之前审核"
         },
         "admin2": {
           "title": "上市获批",
-          "message": "您的拉各斯泻湖日落游轮列表现已在 Synkafrica 上发布。"
+          "message": "您的拉各斯泻湖日落游轮列表现已在 SynkAfrica 上发布。"
         }
       }
     },
@@ -1863,7 +1863,7 @@
       "businessNameHint": "付款和供应商记录中使用的内部名称。未显示在公开列表中。",
       "internalNameLabel": "内部企业名称",
       "contactDetails": "联系方式",
-      "contactDetailsHint": "Synkafrica 和客人如何联系您寻求预订支持。",
+      "contactDetailsHint": "SynkAfrica 和客人如何联系您寻求预订支持。",
       "phone": "电话号码",
       "email": "电子邮件",
       "address": "营业地址",
@@ -1947,7 +1947,7 @@
       }
     },
     "support": {
-      "helpBanner": "向 Synkafrica 供应商团队提出投诉或请求帮助。我们通常会在 1-2 个工作日内回复。",
+      "helpBanner": "向 SynkAfrica 供应商团队提出投诉或请求帮助。我们通常会在 1-2 个工作日内回复。",
       "helpBannerEmail": "更新将发送至{email}。",
       "openTickets": "{count} 开放门票",
       "tabs": {
@@ -2055,7 +2055,7 @@
         "all": "全部"
       },
       "commissionSplit": "佣金分割",
-      "commissionSplitHint": "预订收入将 ⟦供应商⟧% 分配给您，将 ⟦平台⟧% 分配给 Synkafrica。",
+      "commissionSplitHint": "预订收入将 ⟦供应商⟧% 分配给您，将 ⟦平台⟧% 分配给 SynkAfrica。",
       "vendorShare": "你的分享",
       "platformShare": "平台费",
       "grossRevenue": "总收入",

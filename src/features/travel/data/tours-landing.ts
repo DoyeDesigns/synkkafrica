@@ -292,6 +292,10 @@ const TOUR_ATTRACTION_FILTER_LOCATIONS: Record<string, string> = {
   cotonou: "Cotonou",
   "south-africa": "South Africa",
   monaco: "Monaco",
+  ghana: "Ghana",
+  "cote-divoire": "Côte d'Ivoire",
+  senegal: "Senegal",
+  kenya: "Kenya",
 };
 
 export function getTourAttractionFilterLocation(attractionId: string) {

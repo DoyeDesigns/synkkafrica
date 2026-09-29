@@ -150,7 +150,7 @@
       "security": "Security Page",
       "faqs": "FAQs"
     },
-    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+    "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
   "login": {
     "intro": "You can sign in using your SynkAfrica account to access our services.",
@@ -335,7 +335,7 @@
         "cancelBookingAnswer": "Open your booking from Bookings & Trips, select the order, and use the cancel option if it is still within the cancellation window. Refunds are processed automatically for eligible bookings.",
         "refundTimingAnswer": "Eligible refunds are usually processed within 5–7 business days after cancellation, depending on your bank or payment provider.",
         "changeDateAnswer": "Contact support with your booking reference. If the experience allows date changes, our team will help you reschedule or guide you through the available options.",
-        "paymentSecurityAnswer": "Yes. Payments on Synkafrica are processed through secure, encrypted payment partners. We never store your full card details on our servers."
+        "paymentSecurityAnswer": "Yes. Payments on SynkAfrica are processed through secure, encrypted payment partners. We never store your full card details on our servers."
       },
       "tabs": {
         "label": "Support sections"
@@ -343,7 +343,7 @@
       "backToTickets": "Back to tickets",
       "typeMessage": "Type a message...",
       "send": "Send",
-      "supportTeam": "Synkafrica Support",
+      "supportTeam": "SynkAfrica Support",
       "you": "You",
       "emptyTickets": "You have not submitted any support tickets yet.",
       "attachedImage": "Attached image",
@@ -847,7 +847,7 @@
     },
     "tours": {
       "attractions": {
-        "title": "Các điểm tham quan trên Synkafrica"
+        "title": "Các điểm tham quan trên SynkAfrica"
       },
       "events": {
         "browsingIn": "Duyệt sự kiện trong"
@@ -1805,12 +1805,12 @@
           "message": "Khoản rút 150.000 NGN về Access Bank có số cuối 8834 đã được xử lý thành công."
         },
         "admin": {
-          "title": "Cập nhật chính sách từ Synkafrica",
+          "title": "Cập nhật chính sách từ SynkAfrica",
           "message": "Hiện đã có hướng dẫn cập nhật của nhà cung cấp cho danh sách trải nghiệm. Vui lòng xem xét trước ngày 1 tháng 8."
         },
         "admin2": {
           "title": "Danh sách đã được phê duyệt",
-          "message": "Danh sách Du thuyền ngắm hoàng hôn ở đầm phá Lagos của bạn hiện có trên Synkafrica."
+          "message": "Danh sách Du thuyền ngắm hoàng hôn ở đầm phá Lagos của bạn hiện có trên SynkAfrica."
         }
       }
     },
@@ -1863,7 +1863,7 @@
       "businessNameHint": "Tên nội bộ được sử dụng trên các khoản thanh toán và hồ sơ nhà cung cấp. Không được hiển thị trên danh sách công khai.",
       "internalNameLabel": "Tên doanh nghiệp nội bộ",
       "contactDetails": "Chi tiết liên hệ",
-      "contactDetailsHint": "Cách Synkafrica và khách liên hệ với bạn để được hỗ trợ đặt phòng.",
+      "contactDetailsHint": "Cách SynkAfrica và khách liên hệ với bạn để được hỗ trợ đặt phòng.",
       "phone": "Số điện thoại",
       "email": "Địa chỉ email",
       "address": "Địa chỉ doanh nghiệp",
@@ -1947,7 +1947,7 @@
       }
     },
     "support": {
-      "helpBanner": "Gửi khiếu nại hoặc yêu cầu trợ giúp từ nhóm nhà cung cấp Synkafrica. Chúng tôi thường trả lời trong vòng 1–2 ngày làm việc.",
+      "helpBanner": "Gửi khiếu nại hoặc yêu cầu trợ giúp từ nhóm nhà cung cấp SynkAfrica. Chúng tôi thường trả lời trong vòng 1–2 ngày làm việc.",
       "helpBannerEmail": "Thông tin cập nhật sẽ được gửi tới {email}.",
       "openTickets": "{count} (các) vé mở",
       "tabs": {
@@ -2055,7 +2055,7 @@
         "all": "Tất cả"
       },
       "commissionSplit": "Chia hoa hồng",
-      "commissionSplitHint": "Doanh thu đặt chỗ được chia ⟦nhà cung cấp⟧% cho bạn và ⟦ nền tảng⟧% cho Synkafrica.",
+      "commissionSplitHint": "Doanh thu đặt chỗ được chia ⟦nhà cung cấp⟧% cho bạn và ⟦ nền tảng⟧% cho SynkAfrica.",
       "vendorShare": "Chia sẻ của bạn",
       "platformShare": "Phí nền tảng",
       "grossRevenue": "Tổng doanh thu",

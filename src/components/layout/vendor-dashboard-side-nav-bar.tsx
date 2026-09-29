@@ -192,7 +192,7 @@ function VendorDashboardSideNavBarContent({
             priority
           />
           <span className="text-lg font-bold tracking-tight font-montserrat text-[#2F2F2F]">
-            SYNKAFRIKA
+            SynkAfrica
           </span>
         </Link>
       </div>
@@ -243,7 +243,7 @@ function VendorDashboardSideNavBarFallback() {
             priority
           />
           <span className="text-lg font-bold tracking-tight font-montserrat text-[#2F2F2F]">
-            SYNKAFRIKA
+            SynkAfrica
           </span>
         </Link>
       </div>

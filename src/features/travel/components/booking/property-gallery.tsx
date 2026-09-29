@@ -32,6 +32,8 @@ type PropertyHeaderProps = {
 };
 
 export function PropertyHeader({ property }: PropertyHeaderProps) {
+  const place = property.location || property.country;
+
   return (
     <div className="space-y-2">
       <ReviewSummaryButton
@@ -44,10 +46,12 @@ export function PropertyHeader({ property }: PropertyHeaderProps) {
         {property.name}
       </h1>
 
-      <p className="inline-flex items-center gap-1.5 text-sm font-medium font-satoshi text-foreground">
-        <MapPin className="h-4 w-4 shrink-0 text-[#2F2F2F]" strokeWidth={1.5} />
-        {property.country}
-      </p>
+      {place ? (
+        <p className="inline-flex items-center gap-1.5 text-sm font-medium font-satoshi text-foreground">
+          <MapPin className="h-4 w-4 shrink-0 text-[#2F2F2F]" strokeWidth={1.5} />
+          {place}
+        </p>
+      ) : null}
     </div>
   );
 }

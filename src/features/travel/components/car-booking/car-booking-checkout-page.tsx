@@ -4,7 +4,6 @@ import { Suspense, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { CarRentalOptionsSection } from "@/features/travel/components/car-booking/car-rental-options-section";
-import type { CarRentalMode } from "@/features/travel/booking/booking-params";
 import type { CarBookingStepId } from "@/features/travel/booking/car-constants";
 import {
   isValidGuestEmail,
@@ -39,15 +38,6 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
 
   const [selectedPackageId, setSelectedPackageId] = useState(initialPackageId);
   const [guestCount, setGuestCount] = useState(bookingParams.guests);
-  const [carRentalMode, setCarRentalMode] = useState<CarRentalMode>(
-    bookingParams.carRentalMode ?? "self_drive",
-  );
-  const [requestDelivery, setRequestDelivery] = useState(
-    bookingParams.requestDelivery ?? false,
-  );
-  const [deliveryAddress, setDeliveryAddress] = useState(
-    bookingParams.deliveryAddress ?? "",
-  );
   const [customerPickupAddress, setCustomerPickupAddress] = useState(
     bookingParams.customerPickupAddress ?? "",
   );
@@ -65,16 +55,6 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
   );
   const [emailError, setEmailError] = useState("");
 
-  const handleRentalModeChange = (mode: CarRentalMode) => {
-    setCarRentalMode(mode);
-    if (mode === "with_driver") {
-      setRequestDelivery(false);
-      setDeliveryAddress("");
-    } else {
-      setCustomerPickupAddress("");
-    }
-  };
-
   const handleProceedToPay = () => {
     if (!isValidGuestEmail(email)) {
       setEmailError(t("booking.guest.emailRequired"));
@@ -90,16 +70,8 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
         days,
         guests: guestCount,
         rooms: 1,
-        carRentalMode,
-        requestDelivery: carRentalMode === "self_drive" ? requestDelivery : undefined,
-        deliveryAddress:
-          carRentalMode === "self_drive" && requestDelivery
-            ? deliveryAddress.trim() || undefined
-            : undefined,
-        customerPickupAddress:
-          carRentalMode === "with_driver"
-            ? customerPickupAddress.trim() || undefined
-            : undefined,
+        carRentalMode: "with_driver",
+        customerPickupAddress: customerPickupAddress.trim() || undefined,
         email: email.trim(),
         guestFirstName: guestFirstName.trim() || undefined,
       });
@@ -118,18 +90,8 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
         <div className="mt-8 grid gap-2 xl:grid-cols-[minmax(0,1fr)_340px]">
           <div className="space-y-4">
             <CarRentalOptionsSection
-              rentalMode={carRentalMode}
-              onRentalModeChange={handleRentalModeChange}
-              requestDelivery={requestDelivery}
-              onRequestDeliveryChange={setRequestDelivery}
-              deliveryAddress={deliveryAddress}
-              onDeliveryAddressChange={setDeliveryAddress}
               customerPickupAddress={customerPickupAddress}
               onCustomerPickupAddressChange={setCustomerPickupAddress}
-              pickupAddress={car.pickupAddress}
-              driverAddonPrice={car.driverAddonPrice}
-              deliveryFee={car.deliveryFee}
-              currency={car.currency}
             />
 
             <GuestDetailsForm
@@ -164,8 +126,8 @@ function CarBookingCheckoutPageContent({ car }: CarBookingCheckoutPageProps) {
                 packages={car.packages}
                 selectedPackageId={selectedPackageId}
                 days={days}
-                carRentalMode={carRentalMode}
-                requestDelivery={requestDelivery}
+                arrivalTime={bookingParams.time}
+                carRentalMode="with_driver"
                 onSelectPackage={setSelectedPackageId}
                 onBookNow={handleProceedToPay}
                 ctaKey="booking.cta.proceedToPay"

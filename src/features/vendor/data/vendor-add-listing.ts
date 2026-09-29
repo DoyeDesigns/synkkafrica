@@ -286,6 +286,11 @@ export type AddListingFormState = {
   whatToBring: string[];
   additionalInfo: string;
   mediaItems: ListingMediaItem[];
+  // Stored URL of the photo shown as the listing cover. Empty until an image
+  // has finished uploading; the first uploaded image is used when unset.
+  coverImageUrl: string;
+  // Client id of the photo chosen as cover before its upload URL exists.
+  coverMediaId: string;
   pickupAddress: string;
   handoverMethods: CarHandoverMethod[];
   // Currency all of this listing's prices are quoted and charged in.
@@ -347,6 +352,8 @@ export const EMPTY_ADD_LISTING_FORM: AddListingFormState = {
   whatToBring: [],
   additionalInfo: "",
   mediaItems: [],
+  coverImageUrl: "",
+  coverMediaId: "",
   pickupAddress: "",
   handoverMethods: ["client_pickup"],
   currency: "NGN",
@@ -364,27 +371,18 @@ export const EMPTY_ADD_LISTING_FORM: AddListingFormState = {
   gpsAcknowledged: false,
 };
 
-// Coerce an API/JSON value to a supported listing currency (NGN fallback,
-// matching the backend default).
-export function toListingCurrency(value: unknown): ListingCurrency {
-  const code = typeof value === "string" ? value.toUpperCase() : "";
-  return (LISTING_CURRENCIES as readonly string[]).includes(code)
-    ? (code as ListingCurrency)
-    : "NGN";
-}
-
-// Move a media item to the front of the list so it becomes the listing's main
-// (cover) image. Only images can be the cover.
-export function setListingMediaCover(
+export function orderMediaWithCoverFirst(
   items: ListingMediaItem[],
-  id: string,
+  coverImageUrl: string,
 ): ListingMediaItem[] {
-  const index = items.findIndex((m) => m.id === id && m.kind === "image");
+  if (!coverImageUrl) return items;
+  const index = items.findIndex(
+    (item) => item.kind === "image" && item.url === coverImageUrl,
+  );
   if (index <= 0) return items;
   const next = [...items];
   const [cover] = next.splice(index, 1);
-  next.unshift(cover!);
-  return next;
+  return cover ? [cover, ...next] : items;
 }
 
 // The item that will be saved as coverImageUrl: the first uploaded image.
@@ -393,6 +391,13 @@ export function listingMediaCoverId(items: ListingMediaItem[]): string | null {
     items.find((m) => m.kind === "image" && m.status === "uploaded" && m.url)
       ?.id ?? null
   );
+}
+
+export function toListingCurrency(value: unknown): ListingCurrency {
+  const code = typeof value === "string" ? value.toUpperCase() : "";
+  return (LISTING_CURRENCIES as readonly string[]).includes(code)
+    ? (code as ListingCurrency)
+    : "NGN";
 }
 
 // Rebuild the wizard form from a persisted listing so a draft can be reopened
@@ -443,11 +448,20 @@ export function formStateFromListingDetails(
     parsed.pickupAddress ||
     "";
 
+  const restoredCover =
+    coverImageUrl ||
+    (typeof parsed.coverImageUrl === "string" ? parsed.coverImageUrl : "");
+  const coverItem = mediaItems.find(
+    (item) => item.kind === "image" && item.url === restoredCover,
+  );
+
   return {
     ...EMPTY_ADD_LISTING_FORM,
     ...parsed,
     category,
     mediaItems,
+    coverImageUrl: coverItem?.url ?? restoredCover,
+    coverMediaId: coverItem?.id ?? "",
     uploadedDocuments: {},
     streetLine: parsed.countryCode ? parsed.streetLine ?? "" : legacyLocation,
   };

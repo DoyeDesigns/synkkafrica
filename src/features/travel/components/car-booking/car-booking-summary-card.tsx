@@ -14,10 +14,12 @@ type CarBookingSummaryCardProps = {
   packages: CarRentalPackage[];
   selectedPackageId: string;
   days?: number;
+  arrivalTime?: string;
   carRentalMode?: CarRentalMode;
   requestDelivery?: boolean;
   onSelectPackage: (packageId: string) => void;
   onBookNow: () => void;
+  bookDisabled?: boolean;
   ctaKey?: TranslationKey;
 };
 
@@ -26,10 +28,12 @@ export function CarBookingSummaryCard({
   packages,
   selectedPackageId,
   days = 1,
-  carRentalMode = "self_drive",
+  arrivalTime,
+  carRentalMode = "with_driver",
   requestDelivery = false,
   onSelectPackage,
   onBookNow,
+  bookDisabled = false,
   ctaKey = "common.bookNow",
 }: CarBookingSummaryCardProps) {
   const t = useTranslation();
@@ -98,6 +102,12 @@ export function CarBookingSummaryCard({
         </div>
       </div>
 
+      {arrivalTime ? (
+        <p className="mt-4 text-sm font-medium font-satoshi text-foreground">
+          {t("booking.dateTime.arrivalTime")}: {arrivalTime}
+        </p>
+      ) : null}
+
       <h3 className="mt-5 text-base font-medium font-satoshi text-foreground">
         {t("booking.summary.priceDetails")}
       </h3>
@@ -151,7 +161,8 @@ export function CarBookingSummaryCard({
       <button
         type="button"
         onClick={onBookNow}
-        className={`mt-5 w-full rounded-md bg-[#D85A30] px-5 py-3 text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90 ${
+        disabled={bookDisabled}
+        className={`mt-5 w-full rounded-md bg-[#D85A30] px-5 py-3 text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40 ${
           isProceedCta ? "uppercase tracking-wide" : ""
         }`}
       >

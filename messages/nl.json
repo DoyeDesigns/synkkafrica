@@ -150,7 +150,7 @@
       "security": "Beveiligingspagina",
       "faqs": "Veelgestelde vragen"
     },
-    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+    "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
   "login": {
     "intro": "U kunt inloggen met uw SynkAfrica-account om toegang te krijgen tot onze diensten.",
@@ -335,7 +335,7 @@
         "cancelBookingAnswer": "Open uw boeking vanuit Bookings & Trips, selecteer de bestelling en gebruik de annuleringsoptie als deze zich nog binnen de annuleringstermijn bevindt. Restituties worden automatisch verwerkt voor in aanmerking komende boekingen.",
         "refundTimingAnswer": "In aanmerking komende terugbetalingen worden doorgaans binnen 5 tot 7 werkdagen na annulering verwerkt, afhankelijk van uw bank of betalingsprovider.",
         "changeDateAnswer": "Neem contact op met de ondersteuning met uw boekingsreferentie. Als de ervaring datumwijzigingen toestaat, zal ons team u helpen bij het opnieuw plannen of u door de beschikbare opties leiden.",
-        "paymentSecurityAnswer": "Ja. Betalingen op Synkafrica worden verwerkt via veilige, gecodeerde betalingspartners. Wij slaan nooit uw volledige kaartgegevens op onze servers op."
+        "paymentSecurityAnswer": "Ja. Betalingen op SynkAfrica worden verwerkt via veilige, gecodeerde betalingspartners. Wij slaan nooit uw volledige kaartgegevens op onze servers op."
       },
       "tabs": {
         "label": "Ondersteunende secties"
@@ -343,7 +343,7 @@
       "backToTickets": "Terug naar kaartjes",
       "typeMessage": "Typ een bericht...",
       "send": "Versturen",
-      "supportTeam": "Synkafrica-ondersteuning",
+      "supportTeam": "SynkAfrica-ondersteuning",
       "you": "Jij",
       "emptyTickets": "U heeft nog geen supporttickets ingediend.",
       "attachedImage": "Bijgevoegde afbeelding",
@@ -847,7 +847,7 @@
     },
     "tours": {
       "attractions": {
-        "title": "Attracties op Synkafrica"
+        "title": "Attracties op SynkAfrica"
       },
       "events": {
         "browsingIn": "Bladeren door evenementen in"
@@ -1805,12 +1805,12 @@
           "message": "De opname van NGN 150.000 naar Access Bank eindigend op 8834 is met succes verwerkt."
         },
         "admin": {
-          "title": "Beleidsupdate van Synkafrica",
+          "title": "Beleidsupdate van SynkAfrica",
           "message": "Er zijn nu bijgewerkte leveranciersrichtlijnen voor ervaringsaanbiedingen beschikbaar. Graag vóór 1 augustus beoordelen."
         },
         "admin2": {
           "title": "Vermelding goedgekeurd",
-          "message": "Uw vermelding voor Lagos Lagoon Sunset Cruise is nu live op Synkafrica."
+          "message": "Uw vermelding voor Lagos Lagoon Sunset Cruise is nu live op SynkAfrica."
         }
       }
     },
@@ -1863,7 +1863,7 @@
       "businessNameHint": "Interne naam die wordt gebruikt in uitbetalingen en leveranciersrecords. Niet weergegeven op openbare vermeldingen.",
       "internalNameLabel": "Interne bedrijfsnaam",
       "contactDetails": "Contactgegevens",
-      "contactDetailsHint": "Hoe Synkafrica en gasten u bereiken voor boekingsondersteuning.",
+      "contactDetailsHint": "Hoe SynkAfrica en gasten u bereiken voor boekingsondersteuning.",
       "phone": "Telefoonnummer",
       "email": "E-mailadres",
       "address": "Zakelijk adres",
@@ -1947,7 +1947,7 @@
       }
     },
     "support": {
-      "helpBanner": "Dien een klacht in of vraag om hulp bij het Synkafrica-leveranciersteam. Wij reageren doorgaans binnen 1 à 2 werkdagen.",
+      "helpBanner": "Dien een klacht in of vraag om hulp bij het SynkAfrica-leveranciersteam. Wij reageren doorgaans binnen 1 à 2 werkdagen.",
       "helpBannerEmail": "Updates worden verzonden naar {email}.",
       "openTickets": "{tel} open ticket(s)",
       "tabs": {
@@ -2055,7 +2055,7 @@
         "all": "Alle"
       },
       "commissionSplit": "Commissie gesplitst",
-      "commissionSplitHint": "De opbrengsten uit boekingen worden {vendor}% aan u en {platform}% aan Synkafrica gesplitst.",
+      "commissionSplitHint": "De opbrengsten uit boekingen worden {vendor}% aan u en {platform}% aan SynkAfrica gesplitst.",
       "vendorShare": "Jouw aandeel",
       "platformShare": "Platformkosten",
       "grossRevenue": "Bruto omzet",

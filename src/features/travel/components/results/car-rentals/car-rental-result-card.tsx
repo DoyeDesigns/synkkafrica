@@ -1,11 +1,11 @@
-import { Car, CarFront, Heart, MapPin, Star } from "lucide-react";
+import { CarFront, Heart, MapPin, Star } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 import { DisplayPrice } from "@/components/display-price";
 import { ReviewCount } from "@/components/review-count";
 import { T } from "@/components/translation";
 import { getCarBookingPath } from "@/features/travel/booking/car-paths";
+import { ListingCardLink } from "@/features/travel/components/listing-card-link";
 import type { CarRentalResult } from "@/features/travel/data/car-rental-results";
 
 type CarRentalResultCardProps = {
@@ -15,10 +15,12 @@ type CarRentalResultCardProps = {
 
 export function CarRentalResultCard({ item, saved = false }: CarRentalResultCardProps) {
   const fullStars = Math.floor(item.rating);
+  const href = getCarBookingPath(item.id);
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
-      <div className="relative m-3 mb-0 aspect-4/3 overflow-hidden rounded-[10px] bg-zinc-100">
+    <article className="relative flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-shadow hover:shadow-md">
+      <ListingCardLink href={href} label={item.name} />
+      <div className="relative z-[2] m-3 mb-0 aspect-4/3 overflow-hidden rounded-[10px] bg-zinc-100 pointer-events-none">
         <Image
           src={item.image}
           alt={item.name}
@@ -30,7 +32,7 @@ export function CarRentalResultCard({ item, saved = false }: CarRentalResultCard
         <button
           type="button"
           aria-label={saved ? "Remove from saved" : "Save car"}
-          className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm"
+          className="absolute right-3 top-3 z-[2] flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm pointer-events-auto"
         >
           <Heart
             className={`h-4 w-4 ${
@@ -40,12 +42,6 @@ export function CarRentalResultCard({ item, saved = false }: CarRentalResultCard
           />
         </button>
 
-        {item.selfDriveAvailable ? (
-          <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-xs font-medium font-satoshi text-foreground shadow-sm">
-            <Image src="/tabler_wheel.png" alt="" width={14} height={14} aria-hidden />
-            <T k="common.selfDriveAvailable" />
-          </span>
-        ) : null}
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-4">
@@ -94,12 +90,9 @@ export function CarRentalResultCard({ item, saved = false }: CarRentalResultCard
           </div>
           </div>
 
-          <Link
-            href={getCarBookingPath(item.id)}
-            className="block w-full rounded-md bg-[#D85A30] px-5 py-2.5 text-center text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90"
-          >
+          <span className="block w-full rounded-md bg-[#D85A30] px-5 py-2.5 text-center text-sm font-bold font-montserrat text-white">
             <T k="common.bookNow" />
-          </Link>
+          </span>
         </div>
       </div>
     </article>

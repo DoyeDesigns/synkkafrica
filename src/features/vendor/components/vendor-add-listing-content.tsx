@@ -35,11 +35,11 @@ import {
   revokeListingDocumentUpload,
   createListingMediaItem,
   formStateFromListingDetails,
-  toListingCurrency,
   getListingMediaRejection,
   listingLocationFromForm,
   listingMediaCoverId,
-  setListingMediaCover,
+  orderMediaWithCoverFirst,
+  toListingCurrency,
   LISTING_MEDIA_ACCEPT,
   LISTING_MEDIA_MAX_COUNT,
   revokeListingMediaItem,
@@ -102,17 +102,26 @@ function toCreateInput(form: AddListingFormState): CreateVendorListingInput {
     location = listingLocationFromForm(form);
   }
   // Only include media that finished uploading (has a stored URL). The first
-  // uploaded image becomes the cover shown on listing cards — the vendor picks
-  // it with "Set as main", which moves that image to the front.
+  // uploaded image becomes the cover shown on listing cards.
   const uploadedMedia = form.mediaItems.filter(
     (m) => m.status === 'uploaded' && m.url,
   );
-  const media = uploadedMedia.map((m) => ({
+  const coverImageUrl =
+    uploadedMedia.find(
+      (m) => m.id === form.coverMediaId && m.kind === 'image',
+    )?.url ??
+    uploadedMedia.find(
+      (m) => m.url === form.coverImageUrl && m.kind === 'image',
+    )?.url ??
+    uploadedMedia.find((m) => m.kind === 'image')?.url;
+  const media = orderMediaWithCoverFirst(
+    uploadedMedia,
+    coverImageUrl ?? '',
+  ).map((m) => ({
     name: m.name,
     kind: m.kind,
     url: m.url,
   }));
-  const coverImageUrl = uploadedMedia.find((m) => m.kind === 'image')?.url;
   const { mediaItems: _media, uploadedDocuments: _docs, ...details } = form;
   void _media;
   void _docs;
@@ -414,12 +423,27 @@ export function VendorAddListingContent({
     id: string,
     patch: Partial<AddListingFormState['mediaItems'][number]>,
   ) => {
-    setForm((current) => ({
-      ...current,
-      mediaItems: current.mediaItems.map((m) =>
+    setForm((current) => {
+      const mediaItems = current.mediaItems.map((m) =>
         m.id === id ? { ...m, ...patch } : m,
-      ),
-    }));
+      );
+      const updated = mediaItems.find((m) => m.id === id);
+      const shouldAdoptCover =
+        Boolean(updated?.url) &&
+        updated?.kind === 'image' &&
+        (current.coverMediaId === id ||
+          (!current.coverImageUrl &&
+            !current.coverMediaId &&
+            mediaItems.find((m) => m.kind === 'image' && m.url)?.id === id));
+
+      return {
+        ...current,
+        mediaItems,
+        coverImageUrl: shouldAdoptCover
+          ? (updated?.url ?? current.coverImageUrl)
+          : current.coverImageUrl,
+      };
+    });
   };
 
   // Functional per-document update so async upload results land on the right
@@ -1203,12 +1227,33 @@ function MediaStep({
       revokeListingMediaItem(item);
     }
 
+    const mediaItems = form.mediaItems.filter((mediaItem) => mediaItem.id !== id);
+    const removedCover =
+      item?.id === form.coverMediaId ||
+      (Boolean(item?.url) && item?.url === form.coverImageUrl);
+    const nextCover = removedCover
+      ? mediaItems.find((mediaItem) => mediaItem.kind === 'image')
+      : undefined;
+
     onChange({
-      mediaItems: form.mediaItems.filter((mediaItem) => mediaItem.id !== id),
+      mediaItems,
+      ...(removedCover
+        ? {
+            coverImageUrl: nextCover?.url ?? '',
+            coverMediaId: nextCover?.id ?? '',
+          }
+        : {}),
     });
   };
 
   const coverId = listingMediaCoverId(form.mediaItems);
+
+  const mainImageId =
+    form.mediaItems.find((item) => item.id === form.coverMediaId)?.id ??
+    form.mediaItems.find(
+      (item) => item.kind === 'image' && item.url === form.coverImageUrl,
+    )?.id ??
+    form.mediaItems.find((item) => item.kind === 'image')?.id;
 
   return (
     <section className="space-y-4">
@@ -1262,10 +1307,15 @@ function MediaStep({
 
       {form.mediaItems.length > 0 ? (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {form.mediaItems.map((item) => (
+          {form.mediaItems.map((item) => {
+            const isMain = item.id === mainImageId;
+
+            return (
             <div
               key={item.id}
-              className="relative aspect-[4/3] overflow-hidden rounded-lg border border-[#E5E5E5] bg-[#F5F5F5]"
+              className={`relative aspect-[4/3] overflow-hidden rounded-lg border bg-[#F5F5F5] ${
+                isMain ? 'border-[#135391] ring-2 ring-[#135391]' : 'border-[#E5E5E5]'
+              }`}
             >
               {item.kind === 'video' ? (
                 <video
@@ -1313,30 +1363,6 @@ function MediaStep({
                   ) : null}
                 </div>
               ) : null}
-              {item.kind === 'image' && item.status === 'uploaded' ? (
-                item.id === coverId ? (
-                  <span className="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded-full bg-[#135391] px-2 py-0.5 text-[10px] font-semibold font-satoshi text-white shadow-sm">
-                    <Star className="h-3 w-3 fill-white" />
-                    {t('vendor.addListing.mainImage')}
-                  </span>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      onChange({
-                        mediaItems: setListingMediaCover(
-                          form.mediaItems,
-                          item.id,
-                        ),
-                      })
-                    }
-                    className="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded-full bg-white/95 px-2 py-0.5 text-[10px] font-semibold font-satoshi text-[#2F2F2F] shadow-sm hover:bg-white hover:text-[#135391]"
-                  >
-                    <Star className="h-3 w-3" />
-                    {t('vendor.addListing.setAsMainImage')}
-                  </button>
-                )
-              ) : null}
               <button
                 type="button"
                 onClick={() => handleRemove(item.id)}
@@ -1346,7 +1372,8 @@ function MediaStep({
                 <X className="h-3.5 w-3.5" />
               </button>
             </div>
-          ))}
+            );
+          })}
         </div>
       ) : null}
     </section>

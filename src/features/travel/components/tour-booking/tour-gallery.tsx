@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, MapPin, Star } from "lucide-react";
+import { Check, Heart, MapPin } from "lucide-react";
 
 import { BookingImageGallery } from "@/features/travel/components/booking/booking-image-gallery";
 import { ReviewSummaryButton } from "@/features/travel/components/booking/review-summary-button";
@@ -76,7 +76,9 @@ export function AboutThisTour({ tour }: AboutThisTourProps) {
             key={feature}
             className="inline-flex items-center gap-2 rounded-lg border border-[#E5E5E5] bg-[#F8F8F8] px-3 py-2 text-sm font-medium font-inter text-[#2F2F2F]"
           >
-            <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+            <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#D85A30]">
+              <Check className="h-2.5 w-2.5 text-white" strokeWidth={3} />
+            </span>
             {labelContent(feature)}
           </span>
         ))}

@@ -3,10 +3,10 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { TRAVEL_CAROUSEL_SCROLL_CLASS } from "@/features/travel/constants";
 import type { PropertyListingItem } from "@/features/travel/data/property-listings";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
-import { InfiniteMarquee } from "./infinite-marquee";
 import { PropertyListingCard } from "./property-listing-card";
 
 type PropertyListingSectionProps = {
@@ -47,11 +47,13 @@ export function PropertyListingSection({
         </Link>
       </div>
 
-      <InfiniteMarquee itemCount={items.length}>
-        {[...items, ...items].map((item, index) => (
-          <PropertyListingCard key={`${item.id}-${index}`} item={item} />
+      <div
+        className={`flex flex-nowrap gap-5 overflow-x-auto overscroll-x-contain touch-pan-x pb-2 ${TRAVEL_CAROUSEL_SCROLL_CLASS}`}
+      >
+        {items.map((item) => (
+          <PropertyListingCard key={item.id} item={item} />
         ))}
-      </InfiniteMarquee>
+      </div>
     </section>
   );
 }

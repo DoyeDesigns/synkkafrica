@@ -147,7 +147,7 @@
       "security": "Güvenlik Sayfası",
       "faqs": "Sık Sorulan Sorular"
     },
-    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+    "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
   "login": {
     "intro": "Hizmetlerimize erişmek için SynkAfrica hesabınızla oturum açabilirsiniz.",
@@ -332,7 +332,7 @@
         "cancelBookingAnswer": "Rezervasyonunuzu Bookings & Trips'ten açın, siparişi seçin ve hâlâ iptal süresi içindeyse iptal seçeneğini kullanın. Uygun rezervasyonlar için geri ödemeler otomatik olarak gerçekleştirilir.",
         "refundTimingAnswer": "Uygun geri ödemeler, bankanıza veya ödeme sağlayıcınıza bağlı olarak genellikle iptalden sonraki 5-7 iş günü içinde işleme koyulur.",
         "changeDateAnswer": "Rezervasyon referansınızla birlikte destek ekibiyle iletişime geçin. Deneyim tarih değişikliklerine izin veriyorsa ekibimiz yeniden planlamanıza yardımcı olacak veya mevcut seçenekler konusunda size rehberlik edecektir.",
-        "paymentSecurityAnswer": "Evet. Synkafrica'daki ödemeler güvenli, şifreli ödeme ortakları aracılığıyla işlenir. Kart bilgilerinizin tamamını asla sunucularımızda saklamayız."
+        "paymentSecurityAnswer": "Evet. SynkAfrica'daki ödemeler güvenli, şifreli ödeme ortakları aracılığıyla işlenir. Kart bilgilerinizin tamamını asla sunucularımızda saklamayız."
       },
       "tabs": {
         "label": "Destek bölümleri"
@@ -340,7 +340,7 @@
       "backToTickets": "Biletlere geri dön",
       "typeMessage": "Bir mesaj yazın...",
       "send": "Göndermek",
-      "supportTeam": "Synkafrica Desteği",
+      "supportTeam": "SynkAfrica Desteği",
       "you": "Sen",
       "emptyTickets": "Henüz herhangi bir destek talebi göndermediniz.",
       "attachedImage": "Ekteki resim",
@@ -844,7 +844,7 @@
     },
     "tours": {
       "attractions": {
-        "title": "Synkafrica'daki gezilecek yerler"
+        "title": "SynkAfrica'daki gezilecek yerler"
       },
       "events": {
         "browsingIn": "Etkinliklere göz atma"
@@ -1802,12 +1802,12 @@
           "message": "Access Bank’a 8834 ile biten NGN 150.000 tutarındaki para çekme işlemi başarıyla gerçekleştirildi."
         },
         "admin": {
-          "title": "Synkafrica’dan politika güncellemesi",
+          "title": "SynkAfrica’dan politika güncellemesi",
           "message": "Deneyim ilanlarına ilişkin güncellenmiş satıcı kılavuzları artık yayınlanmıştır. Lütfen 1 Ağustos’a kadar gözden geçiriniz."
         },
         "admin2": {
           "title": "İlan onaylandı",
-          "message": "Lagos Lagünü Gün Batımı Tekne Turu ilanınız artık Synkafrica'da yayında."
+          "message": "Lagos Lagünü Gün Batımı Tekne Turu ilanınız artık SynkAfrica'da yayında."
         }
       }
     },
@@ -1860,7 +1860,7 @@
       "businessNameHint": "Ödemeler ve tedarikçi kayıtlarında kullanılan dahili ad. Halka açık listelerde gösterilmez.",
       "internalNameLabel": "Şirket içi isim",
       "contactDetails": "İletişim bilgileri",
-      "contactDetailsHint": "Synkafrica ve misafirler, rezervasyon desteği için size nasıl ulaşır?",
+      "contactDetailsHint": "SynkAfrica ve misafirler, rezervasyon desteği için size nasıl ulaşır?",
       "phone": "Telefon numarası",
       "email": "E-posta adresi",
       "address": "İş adresi",
@@ -1944,7 +1944,7 @@
       }
     },
     "support": {
-      "helpBanner": "Synkafrica satıcı ekibine bir şikayet bildirin veya yardım isteyin. Genellikle 1–2 iş günü içinde yanıt veriyoruz.",
+      "helpBanner": "SynkAfrica satıcı ekibine bir şikayet bildirin veya yardım isteyin. Genellikle 1–2 iş günü içinde yanıt veriyoruz.",
       "helpBannerEmail": "Güncellemeler [[[e-posta]]] adresine gönderilecektir.",
       "openTickets": "{count} adet açık bilet",
       "tabs": {
@@ -2052,7 +2052,7 @@
         "all": "Tümü"
       },
       "commissionSplit": "Komisyon payı",
-      "commissionSplitHint": "Rezervasyon gelirinin [[[satıcı]]]%’si size, {platform}%’si ise Synkafrica’ya ayrılır.",
+      "commissionSplitHint": "Rezervasyon gelirinin [[[satıcı]]]%’si size, {platform}%’si ise SynkAfrica’ya ayrılır.",
       "vendorShare": "Sizin payınız",
       "platformShare": "Platform ücreti",
       "grossRevenue": "Brüt gelir",

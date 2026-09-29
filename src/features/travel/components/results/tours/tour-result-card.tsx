@@ -1,11 +1,11 @@
 import { BadgeCheck, Heart, MapPin, Star } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 import { DisplayPrice } from "@/components/display-price";
 import { ReviewCount } from "@/components/review-count";
 import { T } from "@/components/translation";
 import { getTourBookingPath } from "@/features/travel/booking/tour-paths";
+import { ListingCardLink } from "@/features/travel/components/listing-card-link";
 import type { TourResult } from "@/features/travel/data/tour-results";
 
 type TourResultCardProps = {
@@ -14,10 +14,12 @@ type TourResultCardProps = {
 
 export function TourResultCard({ item }: TourResultCardProps) {
   const fullStars = Math.floor(item.rating);
+  const href = getTourBookingPath(item.id);
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
-      <div className="relative m-3 mb-0 aspect-4/3 overflow-hidden rounded-[10px] bg-zinc-100">
+    <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-shadow hover:shadow-md">
+      <ListingCardLink href={href} label={item.title} />
+      <div className="relative z-[2] m-3 mb-0 aspect-4/3 overflow-hidden rounded-[10px] bg-zinc-100 pointer-events-none">
         <Image
           src={item.image}
           alt={item.title}
@@ -29,7 +31,7 @@ export function TourResultCard({ item }: TourResultCardProps) {
         <button
           type="button"
           aria-label="Save experience"
-          className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm"
+          className="absolute right-3 top-3 z-[2] flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm pointer-events-auto"
         >
           <Heart className="h-4 w-4 text-foreground" strokeWidth={1.5} />
         </button>
@@ -99,20 +101,14 @@ export function TourResultCard({ item }: TourResultCardProps) {
               <DisplayPrice currency={item.currency} amount={item.price} />
             </p>
 
-            <Link
-              href={getTourBookingPath(item.id)}
-              className="shrink-0 rounded-[5px] bg-[#3C3C3C] px-5 py-2.5 text-xs font-bold font-montserrat text-white transition-opacity hover:opacity-90 xl:hidden"
-            >
+            <span className="shrink-0 rounded-[5px] bg-[#3C3C3C] px-5 py-2.5 text-xs font-bold font-montserrat text-white xl:hidden">
               <T k="common.bookNow" />
-            </Link>
+            </span>
           </div>
 
-          <Link
-            href={getTourBookingPath(item.id)}
-            className="mt-3 hidden w-full rounded-[5px] bg-[#3C3C3C] px-5 py-2.5 text-center text-xs font-bold font-montserrat text-white transition-opacity hover:opacity-90 xl:block"
-          >
+          <span className="mt-3 hidden w-full rounded-[5px] bg-[#3C3C3C] px-5 py-2.5 text-center text-xs font-bold font-montserrat text-white xl:block">
             <T k="common.bookNow" />
-          </Link>
+          </span>
         </div>
       </div>
     </article>

@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { ArrowLeftRight, PlaneLanding, PlaneTakeoff, Plus, Trash2 } from "lucide-react";
 
-import { getDefaultCheckInDate } from "@/features/travel/booking/booking-params";
 import {
   HeroFormRow,
   HeroInputShell,
@@ -217,7 +216,7 @@ export function FlightsSearchForm({ onSubmit }: FlightsSearchFormProps) {
   const [from, setFrom] = useState(() => searchParams.get("from") ?? "");
   const [to, setTo] = useState(() => searchParams.get("to") ?? "");
   const [departureDate, setDepartureDate] = useState(
-    () => searchParams.get("departureDate") ?? getDefaultCheckInDate(),
+    () => searchParams.get("departureDate") ?? "",
   );
   const [returnDate, setReturnDate] = useState(
     () => searchParams.get("returnDate") ?? "",

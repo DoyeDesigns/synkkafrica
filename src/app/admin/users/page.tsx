@@ -1,5 +1,5 @@
-import { AdminUsersLiveContent } from "@/features/admin/components/admin-users-live-content";
+import { AdminUsersContent } from "@/features/admin/components/admin-users-content";
 
 export default function AdminUsersPage() {
-  return <AdminUsersLiveContent />;
+  return <AdminUsersContent />;
 }

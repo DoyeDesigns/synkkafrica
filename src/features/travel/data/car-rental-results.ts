@@ -53,15 +53,15 @@ export const DEFAULT_CAR_RENTAL_FILTERS: CarRentalFilterState = {
   priceMax: Number.POSITIVE_INFINITY,
   priceRange: null,
   carType: "",
-  serviceType: "",
-  transmission: "",
+  serviceType: "Chauffeur",
+  transmission: "Automatic",
   startDate: "",
   endDate: "",
 };
 
 export const CAR_TYPE_FILTER_OPTIONS = ["", "SUV", "Sedan", "Pickup"] as const;
 export const CAR_TYPE_OPTIONS = ["SUV", "Sedan", "Hatchback", "Pickup", "Van"] as const;
-export const SERVICE_TYPE_OPTIONS = ["Self drive", "Chauffeur"] as const;
+export const SERVICE_TYPE_OPTIONS = ["Chauffeur"] as const;
 export const TRANSMISSION_OPTIONS = ["Automatic", "Manual"] as const;
 
 export const CAR_RENTAL_PRICE_RANGE_OPTIONS: {
@@ -161,9 +161,8 @@ export function countActiveCarRentalFilters(
   if (filters.discounts !== DEFAULT_CAR_RENTAL_FILTERS.discounts) count += 1;
   if (filters.priceBudget.trim()) count += 1;
   if (filters.priceRange) count += 1;
-  if (filters.carType) count += 1;
-  if (filters.serviceType) count += 1;
-  if (filters.transmission) count += 1;
+  if (filters.carType !== DEFAULT_CAR_RENTAL_FILTERS.carType) count += 1;
+  if (filters.transmission !== DEFAULT_CAR_RENTAL_FILTERS.transmission) count += 1;
   if (filters.startDate.trim()) count += 1;
   if (filters.endDate.trim()) count += 1;
 
@@ -224,15 +223,8 @@ export function filterCarRentalResults(
     }
 
     if (
-      filters.serviceType &&
-      !sameOption(result.serviceType, filters.serviceType)
-    ) {
-      return false;
-    }
-
-    if (
-      filters.transmission &&
-      !sameOption(result.transmission, filters.transmission)
+      filters.transmission !== DEFAULT_CAR_RENTAL_FILTERS.transmission &&
+      result.transmission !== filters.transmission
     ) {
       return false;
     }

@@ -77,40 +77,16 @@ export const PROPERTY_TYPES: PropertyType[] = [
     image: "/property-types/fluent-mdl2_hotel.svg",
   },
   {
-    id: "resorts",
-    label: "Resorts",
-    count: 38,
-    image: "/property-types/fluent-mdl2_ski-resorts.svg",
-  },
-  {
     id: "apartments",
     label: "Apartments",
     count: 56,
     image: "/property-types/ph_building-apartment-light.svg",
   },
   {
-    id: "bnbs",
-    label: "B&Bs",
-    count: 14,
-    image: "/property-types/hugeicons_house-01.svg",
-  },
-  {
     id: "beach-house",
     label: "Beach House",
     count: 67,
     image: "/property-types/streamline-plump_beach.svg",
-  },
-  {
-    id: "guest-house",
-    label: "Guest House",
-    count: 2,
-    image: "/property-types/hugeicons_guest-house.svg",
-  },
-  {
-    id: "motels",
-    label: "Motels",
-    count: 3,
-    image: "/property-types/la_hotel.svg",
   },
 ];
 
@@ -145,32 +121,38 @@ export const FAVOURITE_DESTINATIONS: FavouriteDestination[] = [
   {
     id: "lagos",
     name: "Lagos, Nigeria",
-    activityCount: 153,
+    activityCount: 0,
     image: "/destinations/lagos.png",
   },
   {
-    id: "dubai",
-    name: "UAE Dubai",
-    activityCount: 47,
-    image: "/destinations/dubai.png",
-  },
-  {
-    id: "cotonou",
-    name: "Cotonou",
-    activityCount: 28,
-    image: "/destinations/cotonou.png",
+    id: "ghana",
+    name: "Ghana",
+    activityCount: 0,
+    image: "/destinations/ghana.jpg",
   },
   {
     id: "south-africa",
     name: "South Africa",
-    activityCount: 2,
-    image: "/destinations/south-africa.png",
+    activityCount: 0,
+    image: "/destinations/south-africa-cape-town.jpg",
   },
   {
-    id: "monaco",
-    name: "Monaco",
-    activityCount: 12,
-    image: "/destinations/monaco.png",
+    id: "cote-divoire",
+    name: "Côte d'Ivoire",
+    activityCount: 0,
+    image: "/destinations/cote-divoire.jpg",
+  },
+  {
+    id: "senegal",
+    name: "Senegal",
+    activityCount: 0,
+    image: "/destinations/senegal.jpg",
+  },
+  {
+    id: "kenya",
+    name: "Kenya",
+    activityCount: 0,
+    image: "/destinations/kenya.jpg",
   },
 ];
 

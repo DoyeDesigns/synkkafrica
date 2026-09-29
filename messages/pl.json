@@ -150,7 +150,7 @@
       "security": "Strona poświęcona bezpieczeństwu",
       "faqs": "Najczęściej zadawane pytania"
     },
-    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+    "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
   "login": {
     "intro": "Możesz zalogować się przy użyciu swojego konta SynkAfrica, aby uzyskać dostęp do naszych usług.",
@@ -335,7 +335,7 @@
         "cancelBookingAnswer": "Otwórz swoją rezerwację w sekcji „Rezerwacje i wycieczki”, wybierz daną rezerwację i skorzystaj z opcji anulowania, jeśli nie upłynął jeszcze termin anulowania. Zwroty kosztów są realizowane automatycznie w przypadku rezerwacji spełniających warunki.",
         "refundTimingAnswer": "Kwalifikujące się zwroty środków są zazwyczaj realizowane w ciągu 5–7 dni roboczych od momentu anulowania rezerwacji, w zależności od banku lub dostawcy usług płatniczych.",
         "changeDateAnswer": "Skontaktuj się z działem obsługi klienta, podając numer rezerwacji. Jeśli w przypadku danej atrakcji dopuszczalna jest zmiana terminu, nasz zespół pomoże Ci przełożyć rezerwację lub przedstawi dostępne opcje.",
-        "paymentSecurityAnswer": "Tak. Płatności w serwisie Synkafrica są realizowane za pośrednictwem bezpiecznych, szyfrowanych systemów płatniczych naszych partnerów. Nigdy nie przechowujemy pełnych danych kart płatniczych użytkowników na naszych serwerach."
+        "paymentSecurityAnswer": "Tak. Płatności w serwisie SynkAfrica są realizowane za pośrednictwem bezpiecznych, szyfrowanych systemów płatniczych naszych partnerów. Nigdy nie przechowujemy pełnych danych kart płatniczych użytkowników na naszych serwerach."
       },
       "tabs": {
         "label": "Sekcje pomocy"
@@ -343,7 +343,7 @@
       "backToTickets": "Powrót do biletów",
       "typeMessage": "Wpisz wiadomość...",
       "send": "Wyślij",
-      "supportTeam": "Wsparcie Synkafrica",
+      "supportTeam": "Wsparcie SynkAfrica",
       "you": "Ty",
       "emptyTickets": "Nie zgłosiłeś jeszcze żadnych zgłoszeń do pomocy technicznej.",
       "attachedImage": "Załączony obrazek",
@@ -847,7 +847,7 @@
     },
     "tours": {
       "attractions": {
-        "title": "Atrakcje na Synkafrica"
+        "title": "Atrakcje na SynkAfrica"
       },
       "events": {
         "browsingIn": "Przeglądanie wydarzeń w"
@@ -1805,12 +1805,12 @@
           "message": "Wypłata kwoty 150 000 NGN na konto w Access Banku o numerze kończącym się na 8834 została pomyślnie zrealizowana."
         },
         "admin": {
-          "title": "Aktualizacja zasad od Synkafrica",
+          "title": "Aktualizacja zasad od SynkAfrica",
           "message": "Zaktualizowane wytyczne dla sprzedawców dotyczące ofert związanych z atrakcjami są już dostępne. Prosimy o zapoznanie się z nimi do 1 sierpnia."
         },
         "admin2": {
           "title": "Ogłoszenie zatwierdzone",
-          "message": "Twoja oferta rejsu o zachodzie słońca po lagunie w Lagos jest już dostępna na platformie Synkafrica."
+          "message": "Twoja oferta rejsu o zachodzie słońca po lagunie w Lagos jest już dostępna na platformie SynkAfrica."
         }
       }
     },
@@ -1863,7 +1863,7 @@
       "businessNameHint": "Nazwa wewnętrzna używana w dokumentach dotyczących wypłat i dostawców. Nie jest wyświetlana w publicznych wykazach.",
       "internalNameLabel": "Wewnętrzna nazwa firmy",
       "contactDetails": "Dane kontaktowe",
-      "contactDetailsHint": "W jaki sposób firma Synkafrica i jej goście kontaktują się z Tobą w sprawie pomocy przy rezerwacji.",
+      "contactDetailsHint": "W jaki sposób firma SynkAfrica i jej goście kontaktują się z Tobą w sprawie pomocy przy rezerwacji.",
       "phone": "Numer telefonu",
       "email": "Adres e-mail",
       "address": "Adres siedziby firmy",
@@ -1947,7 +1947,7 @@
       }
     },
     "support": {
-      "helpBanner": "Złóż skargę lub poproś o pomoc zespół obsługi klienta Synkafrica. Zazwyczaj odpowiadamy w ciągu 1–2 dni roboczych.",
+      "helpBanner": "Złóż skargę lub poproś o pomoc zespół obsługi klienta SynkAfrica. Zazwyczaj odpowiadamy w ciągu 1–2 dni roboczych.",
       "helpBannerEmail": "Powiadomienia będą wysyłane na adres {email}.",
       "openTickets": "{liczba} otwartych zgłoszeń",
       "tabs": {
@@ -2055,7 +2055,7 @@
         "all": "Wszystkie"
       },
       "commissionSplit": "Podział prowizji",
-      "commissionSplitHint": "Przychody z rezerwacji są dzielone w następujący sposób: {sprzedawca}% dla Ciebie i {platforma}% dla Synkafrica.",
+      "commissionSplitHint": "Przychody z rezerwacji są dzielone w następujący sposób: {sprzedawca}% dla Ciebie i {platforma}% dla SynkAfrica.",
       "vendorShare": "Twój udział",
       "platformShare": "Opłata za korzystanie z platformy",
       "grossRevenue": "Przychody brutto",

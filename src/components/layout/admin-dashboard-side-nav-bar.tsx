@@ -177,7 +177,7 @@ function AdminDashboardSideNavBarContent({
             priority
           />
           <span className="text-lg font-bold tracking-tight font-montserrat text-[#2F2F2F]">
-            SYNKAFRIKA
+            SynkAfrica
           </span>
         </Link>
       </div>
@@ -226,7 +226,7 @@ function AdminDashboardSideNavBarFallback() {
             priority
           />
           <span className="text-lg font-bold tracking-tight font-montserrat text-[#2F2F2F]">
-            SYNKAFRIKA
+            SynkAfrica
           </span>
         </Link>
       </div>

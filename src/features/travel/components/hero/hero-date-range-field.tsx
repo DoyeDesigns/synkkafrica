@@ -128,7 +128,7 @@ export function HeroDateRangeField({
               type="button"
               aria-hidden
               tabIndex={-1}
-              className="fixed inset-0 z-90 cursor-default bg-transparent"
+              className="fixed inset-0 z-[80] cursor-default bg-transparent"
               onClick={() => setOpen(false)}
             />
             <div
@@ -138,7 +138,7 @@ export function HeroDateRangeField({
                 left: popoverPosition.left,
                 width: popoverPosition.width,
               }}
-              className="fixed z-100 rounded-xl border border-[#E5E5E5] bg-white p-4 shadow-2xl"
+              className="fixed z-[90] rounded-xl border border-[#E5E5E5] bg-white p-4 shadow-2xl"
             >
               <HeroRangeCalendar
                 mode={showToDate ? "range" : "single"}

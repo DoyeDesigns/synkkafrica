@@ -24,13 +24,12 @@ const WEEKDAY_KEYS = [
 // Calendar cells are local dates; toISOString() would shift them to UTC and
 // put bookings on the wrong day for vendors east/west of UTC.
 function toDateKey(date: Date) {
+  const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
-  return `${date.getFullYear()}-${month}-${day}`;
+  return `${year}-${month}-${day}`;
 }
 
-// Booking dates arrive as "YYYY-MM-DD" (or an ISO timestamp); key on the
-// calendar date part.
 function bookingDateKey(value: string) {
   return /^\d{4}-\d{2}-\d{2}/.test(value) ? value.slice(0, 10) : value;
 }

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown, Minus, Plus, User } from "lucide-react";
 
+import { formatLocalDateKey } from "@/features/travel/booking/booking-params";
 import type {
   GuestIdentity,
   GuestIdentityErrors,
@@ -39,12 +40,16 @@ function FormField({
   children,
   className = "",
   required = false,
+  optional = false,
+  optionalLabel,
   error,
 }: {
   label: string;
   children: React.ReactNode;
   className?: string;
   required?: boolean;
+  optional?: boolean;
+  optionalLabel?: string;
   error?: string;
 }) {
   return (
@@ -52,6 +57,9 @@ function FormField({
       <span className="text-xs font-bold font-satoshi text-foreground">
         {label}
         {required ? <span className="text-[#004785]"> *</span> : null}
+        {optional ? (
+          <span className="font-medium text-foreground/50"> ({optionalLabel})</span>
+        ) : null}
       </span>
       {children}
       {error ? (
@@ -90,7 +98,7 @@ function AdultGuestSection({
 }: AdultGuestSectionProps) {
   const t = useTranslation();
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const today = new Date().toISOString().split("T")[0];
+  const today = formatLocalDateKey(new Date());
 
   // Identity verification is temporarily disabled — keep helpers for restore.
   const updateIdentity = (patch: Partial<GuestIdentity>) => {
@@ -105,7 +113,7 @@ function AdultGuestSection({
   void fieldError;
 
   return (
-    <div className="overflow-hidden rounded-md border border-[#E5E5E5]">
+    <div className="rounded-md border border-[#E5E5E5]">
       <div className="flex items-center gap-2 border-b border-[#E5E5E5] px-4 py-3">
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#004785] text-white">
           <User className="h-4 w-4" strokeWidth={1.75} />
@@ -116,10 +124,15 @@ function AdultGuestSection({
       </div>
 
       <div className="space-y-4 p-4">
-        <FormField label={t("booking.guest.titleField")} required className="max-w-xs">
+        <FormField
+          label={t("booking.guest.titleField")}
+          optional
+          optionalLabel={t("common.optional")}
+          className="max-w-xs"
+        >
           <div className="relative">
             <select className={selectClassName} defaultValue="">
-              <option value="" disabled>
+              <option value="">
                 {t("common.select")}
               </option>
               {TITLE_KEYS.map((title) => (
@@ -360,7 +373,7 @@ export function GuestDetailsForm({
   return (
     <section className="rounded-[10px] bg-white p-5 sm:p-6">
       <h2 className="text-base font-semibold font-inter text-foreground">
-        {t("booking.guest.title")}
+        {t("booking.guest.heading")}
       </h2>
 
       {allowGuestCountChange ? (

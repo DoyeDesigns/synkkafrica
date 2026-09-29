@@ -12,34 +12,21 @@ const EXPLORE_LINKS: { key: TranslationKey; href: string }[] = [
   { key: "footer.explore.hotels", href: "/?section=accommodations" },
   { key: "footer.explore.carRentals", href: "/?section=car-rentals" },
   { key: "footer.explore.flights", href: "/?section=flights" },
-  { key: "footer.explore.restaurants", href: "/?section=tours" },
 ];
 
 const SUPPORT_LINKS: { key: TranslationKey; href: string }[] = [
-  { key: "footer.support.contact", href: "/support" },
-  { key: "footer.support.changeBooking", href: "/bookings" },
-  { key: "footer.support.paymentOptions", href: "/payment-options" },
-  { key: "footer.support.receipt", href: "/bookings" },
+  { key: "footer.support.contact", href: "/account/support" },
+  { key: "footer.support.changeBooking", href: "/account/bookings" },
+  { key: "footer.support.receipt", href: "/account/bookings" },
 ];
 
 const COMMUNITY_LINKS: { key?: TranslationKey; label?: string; href: string }[] = [
-  { key: "footer.community.instagram", href: "https://instagram.com" },
-  { key: "footer.community.facebook", href: "https://facebook.com" },
   { label: "info@synkafrica.com", href: "mailto:info@synkafrica.com" },
-  { key: "footer.community.news", href: "/news" },
 ];
 
 const VENDOR_LINKS: { key: TranslationKey; href: string }[] = [
-  { key: "footer.vendor.listCar", href: "/vendor" },
-  { key: "footer.vendor.listService", href: "/vendor" },
-  { key: "footer.vendor.contact", href: "/contact" },
-];
-
-const LEGAL_LINKS: { key: TranslationKey; href: string }[] = [
-  { key: "footer.legal.privacy", href: "/privacy" },
-  { key: "footer.legal.terms", href: "/terms" },
-  { key: "footer.legal.security", href: "/security" },
-  { key: "footer.legal.faqs", href: "/faqs" },
+  { key: "footer.vendor.listCar", href: "/vendor/add-listing" },
+  { key: "footer.vendor.listService", href: "/vendor/add-listing" },
 ];
 
 type FooterLinkGroupProps = {
@@ -89,8 +76,8 @@ export function FooterContent() {
                 width={75}
                 height={75}
               />
-              <span className="text-lg -ml-6 font-bold tracking-tight font-montserrat uppercase">
-                Synkafrica
+              <span className="text-lg -ml-6 font-bold tracking-tight font-montserrat">
+                SynkAfrica
               </span>
             </Link>
 
@@ -125,44 +112,25 @@ export function FooterContent() {
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <Link
-                href="/download"
-                className="inline-flex min-w-[150px] items-center gap-2 rounded-lg bg-black px-4 py-2.5 text-xs font-semibold text-white transition-opacity hover:opacity-90"
-              >
-                <span className="text-[10px] font-normal leading-none opacity-80">
-                  {t("footer.appPromo.getItOn")}
-                </span>
-                <span className="text-sm leading-none">{t("footer.appPromo.googlePlay")}</span>
-              </Link>
-
-              <Link
-                href="/download"
-                className="inline-flex min-w-[150px] items-center gap-2 rounded-lg bg-black px-4 py-2.5 text-xs font-semibold text-white transition-opacity hover:opacity-90"
-              >
-                <span className="text-[10px] font-normal leading-none opacity-80">
-                  {t("footer.appPromo.downloadOn")}
-                </span>
-                <span className="text-sm leading-none">{t("footer.appPromo.appStore")}</span>
-              </Link>
+              <Image
+                src="/badges/google-play.png"
+                alt={`${t("footer.appPromo.getItOn")} ${t("footer.appPromo.googlePlay")}`}
+                width={646}
+                height={250}
+                className="h-14 w-auto"
+              />
+              <Image
+                src="/badges/app-store.svg"
+                alt={`${t("footer.appPromo.downloadOn")} ${t("footer.appPromo.appStore")}`}
+                width={120}
+                height={40}
+                className="h-10 w-auto"
+              />
             </div>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-4 border-t border-white/20 pt-6 text-xs font-satoshi text-white/80 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-            {LEGAL_LINKS.map((link, index) => (
-              <span key={link.key} className="inline-flex items-center gap-2">
-                {index > 0 ? <span aria-hidden="true">•</span> : null}
-                <Link
-                  href={link.href}
-                  className="transition-opacity hover:text-white hover:opacity-100"
-                >
-                  <T k={link.key} />
-                </Link>
-              </span>
-            ))}
-          </div>
-
+        <div className="mt-8 border-t border-white/20 pt-6 text-xs font-satoshi text-white/80 sm:text-right">
           <p>
             <T k="footer.copyright" />
           </p>

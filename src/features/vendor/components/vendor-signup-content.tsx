@@ -4,6 +4,7 @@ import { ChevronRight, Lock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 import { VendorSignupBusinessStep } from "@/features/vendor/components/vendor-signup-business-step";
@@ -25,6 +26,7 @@ import { signUpVendorAction } from "@/lib/auth/vendor-actions";
 export function VendorSignupContent() {
   const t = useTranslation();
   const router = useRouter();
+  const { update } = useSession();
   const [currentStep, setCurrentStep] = useState<VendorSignupStepId>("business");
   const [form, setForm] = useState<VendorSignupFormState>(EMPTY_VENDOR_SIGNUP_FORM);
   const [submitting, setSubmitting] = useState(false);
@@ -87,8 +89,17 @@ export function VendorSignupContent() {
       if (res.next === "login") {
         router.push("/vendor/login");
       } else {
-        router.push("/vendor");
-        router.refresh();
+        try {
+          const next = await update();
+          if (next?.accessToken) {
+            router.push("/vendor");
+            router.refresh();
+            return;
+          }
+        } catch {
+          // Fall through to a full navigation, which remounts with the cookie.
+        }
+        window.location.assign("/vendor");
       }
       return;
     }

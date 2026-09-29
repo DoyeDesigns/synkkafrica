@@ -1,3 +1,5 @@
+import { searchCityFromLocation } from "@/lib/geo/city-supplements";
+
 export type PlaceSuggestion = {
   id: string;
   label: string;
@@ -149,6 +151,79 @@ export function parsePhotonSuggestions(body: PhotonResponse): PlaceSuggestion[] 
     .filter((place) => place.label.length > 0);
 }
 
+function parsePhotonCitySuggestions(body: PhotonResponse): PlaceSuggestion[] {
+  const seen = new Set<string>();
+  const places: PlaceSuggestion[] = [];
+
+  for (const [index, feature] of (body.features ?? []).entries()) {
+    const properties = feature.properties;
+    if (!properties) continue;
+    if (properties.housenumber?.trim() || properties.street?.trim()) continue;
+
+    const raw =
+      properties.city?.trim() ||
+      properties.name?.trim() ||
+      properties.locality?.trim() ||
+      "";
+    const city =
+      searchCityFromLocation(raw) ||
+      searchCityFromLocation(formatPlaceLabel(properties));
+    if (!city) continue;
+
+    const key = city.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+
+    const { lat, lon } = coordsFromFeature(feature);
+    const countryCode = properties.countrycode?.trim().toUpperCase();
+    places.push({
+      id: ["city", city, index].join("-"),
+      label: city,
+      city,
+      lat,
+      lon,
+      countryCode:
+        countryCode && countryCode.length === 2 ? countryCode : undefined,
+    });
+  }
+
+  return places;
+}
+
+export function cityNameFromPlace(place: PlaceSuggestion | null | undefined) {
+  if (!place) return "";
+  return (
+    searchCityFromLocation(place.city ?? "") ||
+    searchCityFromLocation(place.label)
+  );
+}
+
+export async function fetchPhotonCitySuggestions(
+  query: string,
+  signal?: AbortSignal,
+): Promise<PlaceSuggestion[]> {
+  const trimmed = query.trim();
+  if (trimmed.length < 2) return [];
+
+  const tags = ["place:city", "place:town"]
+    .map((tag) => `&osm_tag=${encodeURIComponent(tag)}`)
+    .join("");
+  const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(trimmed)}&limit=8${tags}&lat=6.5244&lon=3.3792`;
+  const response = await fetch(url, { signal });
+
+  if (!response.ok) {
+    throw new Error("Location lookup failed");
+  }
+
+  return parsePhotonCitySuggestions((await response.json()) as PhotonResponse).filter(
+    (place) => {
+      const city = place.label.toLowerCase();
+      const q = trimmed.toLowerCase();
+      return city.includes(q) || q.includes(city);
+    },
+  );
+}
+
 export async function fetchPhotonSuggestions(
   query: string,
   signal?: AbortSignal,
@@ -218,6 +293,25 @@ export async function fetchPhotonReverse(
   }
 
   return parsePhotonSuggestions((await response.json()) as PhotonResponse)[0] ?? null;
+}
+
+export async function suggestCities(
+  query: string,
+  signal?: AbortSignal,
+): Promise<PlaceSuggestion[]> {
+  const trimmed = query.trim();
+  if (trimmed.length < 2) return [];
+
+  const response = await fetch(
+    `/api/places?q=${encodeURIComponent(trimmed)}&kind=city`,
+    { signal },
+  );
+
+  if (!response.ok) {
+    throw new Error("Location lookup failed");
+  }
+
+  return (await response.json()) as PlaceSuggestion[];
 }
 
 export async function suggestAddresses(

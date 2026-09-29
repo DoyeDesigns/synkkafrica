@@ -150,7 +150,7 @@
       "security": "Security Page",
       "faqs": "FAQs"
     },
-    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+    "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
   "login": {
     "intro": "You can sign in using your SynkAfrica account to access our services.",
@@ -335,7 +335,7 @@
         "cancelBookingAnswer": "Åpne bestillingen din fra Bookings & Trips, velg bestillingen og bruk kanselleringsalternativet hvis den fortsatt er innenfor kanselleringsvinduet. Refusjoner behandles automatisk for kvalifiserte bestillinger.",
         "refundTimingAnswer": "Kvalifiserte refusjoner behandles vanligvis innen 5–7 virkedager etter kansellering, avhengig av banken eller betalingsleverandøren din.",
         "changeDateAnswer": "Kontakt support med din bestillingsreferanse. Hvis opplevelsen tillater datoendringer, vil teamet vårt hjelpe deg med å planlegge eller veilede deg gjennom de tilgjengelige alternativene.",
-        "paymentSecurityAnswer": "Ja. Betalinger på Synkafrica behandles gjennom sikre, krypterte betalingspartnere. Vi lagrer aldri dine fullstendige kortopplysninger på våre servere."
+        "paymentSecurityAnswer": "Ja. Betalinger på SynkAfrica behandles gjennom sikre, krypterte betalingspartnere. Vi lagrer aldri dine fullstendige kortopplysninger på våre servere."
       },
       "tabs": {
         "label": "Støtteseksjoner"
@@ -343,7 +343,7 @@
       "backToTickets": "Tilbake til billetter",
       "typeMessage": "Skriv inn en melding...",
       "send": "Sende",
-      "supportTeam": "Synkafrica Support",
+      "supportTeam": "SynkAfrica Support",
       "you": "Du",
       "emptyTickets": "Du har ikke sendt inn noen støttebilletter ennå.",
       "attachedImage": "Vedlagt bilde",
@@ -847,7 +847,7 @@
     },
     "tours": {
       "attractions": {
-        "title": "Attraksjoner på Synkafrica"
+        "title": "Attraksjoner på SynkAfrica"
       },
       "events": {
         "browsingIn": "Bla gjennom hendelser i"
@@ -1805,12 +1805,12 @@
           "message": "NGN 150 000 uttak til Access Bank som slutter på 8834 ble behandlet vellykket."
         },
         "admin": {
-          "title": "Policyoppdatering fra Synkafrica",
+          "title": "Policyoppdatering fra SynkAfrica",
           "message": "Oppdaterte leverandørretningslinjer for opplevelsesoppføringer er nå tilgjengelige. Vennligst se gjennom innen 1. august."
         },
         "admin2": {
           "title": "Oppføring godkjent",
-          "message": "Din Lagos Lagoon Sunset Cruise-oppføring er nå live på Synkafrica."
+          "message": "Din Lagos Lagoon Sunset Cruise-oppføring er nå live på SynkAfrica."
         }
       }
     },
@@ -1863,7 +1863,7 @@
       "businessNameHint": "Internt navn brukt på utbetalinger og leverandøroppføringer. Ikke vist på offentlige oppføringer.",
       "internalNameLabel": "Internt firmanavn",
       "contactDetails": "Kontaktinformasjon",
-      "contactDetailsHint": "Hvordan Synkafrica og gjester når deg for bestillingsstøtte.",
+      "contactDetailsHint": "Hvordan SynkAfrica og gjester når deg for bestillingsstøtte.",
       "phone": "Telefonnummer",
       "email": "E-postadresse",
       "address": "Bedriftsadresse",
@@ -1947,7 +1947,7 @@
       }
     },
     "support": {
-      "helpBanner": "Send inn en klage eller be om hjelp fra Synkafrica-leverandørteamet. Vi svarer vanligvis innen 1–2 virkedager.",
+      "helpBanner": "Send inn en klage eller be om hjelp fra SynkAfrica-leverandørteamet. Vi svarer vanligvis innen 1–2 virkedager.",
       "helpBannerEmail": "Oppdateringer vil bli sendt til ⟦e-post⟧.",
       "openTickets": "{telle} åpne billett(er)",
       "tabs": {
@@ -2055,7 +2055,7 @@
         "all": "Alle"
       },
       "commissionSplit": "Kommisjonsdeling",
-      "commissionSplitHint": "Bookinginntekter er delt ⟦leverandør⟧% til deg og {plattform}% til Synkafrica.",
+      "commissionSplitHint": "Bookinginntekter er delt ⟦leverandør⟧% til deg og {plattform}% til SynkAfrica.",
       "vendorShare": "Din andel",
       "platformShare": "Plattformavgift",
       "grossRevenue": "Brutto inntekt",

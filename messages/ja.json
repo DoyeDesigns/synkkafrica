@@ -150,7 +150,7 @@
       "security": "セキュリティページ",
       "faqs": "よくある質問"
     },
-    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+    "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
   "login": {
     "intro": "SynkAfrica アカウントを使用してサインインして、当社のサービスにアクセスできます。",
@@ -335,7 +335,7 @@
         "cancelBookingAnswer": "「予約と旅行」から予約を開き、注文を選択し、まだキャンセル期間内の場合はキャンセル オプションを使用します。対象となる予約については、払い戻しが自動的に処理されます。",
         "refundTimingAnswer": "対象となる返金は、銀行または決済プロバイダーによって異なりますが、通常、キャンセル後 5 ～ 7 営業日以内に処理されます。",
         "changeDateAnswer": "予約番号を添えてサポートにお問い合わせください。エクスペリエンスによって日付の変更が許可される場合は、私たちのチームがスケジュールの変更をお手伝いするか、利用可能なオプションについてご案内します。",
-        "paymentSecurityAnswer": "はい。 Synkafrica での支払いは、安全で暗号化された支払いパートナーを通じて処理されます。当社がカードの詳細情報をすべて当社のサーバーに保存することはありません。"
+        "paymentSecurityAnswer": "はい。 SynkAfrica での支払いは、安全で暗号化された支払いパートナーを通じて処理されます。当社がカードの詳細情報をすべて当社のサーバーに保存することはありません。"
       },
       "tabs": {
         "label": "サポートセクション"
@@ -1805,12 +1805,12 @@
           "message": "アクセス銀行末尾 8834 への 150,000 ナイラの出金が正常に処理されました。"
         },
         "admin": {
-          "title": "Synkafrica からのポリシー更新",
+          "title": "SynkAfrica からのポリシー更新",
           "message": "エクスペリエンスリストに関する最新のベンダーガイドラインが利用可能になりました。 8月1日までにご確認ください。"
         },
         "admin2": {
           "title": "上場承認",
-          "message": "ラゴス ラグーン サンセット クルーズのリストが Synkafrica に掲載されました。"
+          "message": "ラゴス ラグーン サンセット クルーズのリストが SynkAfrica に掲載されました。"
         }
       }
     },
@@ -1863,7 +1863,7 @@
       "businessNameHint": "支払いおよびベンダー記録に使用される内部名。公開リストには掲載されていません。",
       "internalNameLabel": "社内の商号",
       "contactDetails": "連絡先詳細",
-      "contactDetailsHint": "Synkafrica とゲストが予約サポートを受ける方法。",
+      "contactDetailsHint": "SynkAfrica とゲストが予約サポートを受ける方法。",
       "phone": "電話番号",
       "email": "電子メールアドレス",
       "address": "勤務先の住所",
@@ -1947,7 +1947,7 @@
       }
     },
     "support": {
-      "helpBanner": "苦情を提出するか、Synkafrica ベンダー チームに支援を依頼してください。通常、1 ～ 2 営業日以内に返信させていただきます。",
+      "helpBanner": "苦情を提出するか、SynkAfrica ベンダー チームに支援を依頼してください。通常、1 ～ 2 営業日以内に返信させていただきます。",
       "helpBannerEmail": "更新情報は⟦メール⟧に送信されます。",
       "openTickets": "⟦カウント⟧ オープンチケット",
       "tabs": {
@@ -2055,7 +2055,7 @@
         "all": "全て"
       },
       "commissionSplit": "手数料分割",
-      "commissionSplitHint": "予約収益は、⟦ベンダー⟧% がお客様に、⟦プラットフォーム⟧% が Synkafrica に分配されます。",
+      "commissionSplitHint": "予約収益は、⟦ベンダー⟧% がお客様に、⟦プラットフォーム⟧% が SynkAfrica に分配されます。",
       "vendorShare": "あなたのシェア",
       "platformShare": "プラットフォーム料金",
       "grossRevenue": "総収益",

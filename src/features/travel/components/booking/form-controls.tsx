@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { CalendarDays, ChevronDown } from "lucide-react";
 
 import { HeroRangeCalendar } from "@/features/travel/components/hero/hero-range-calendar";
@@ -100,7 +101,14 @@ function displayDate(d: Date): string {
   });
 }
 
-// Custom calendar popover using the shared flights calendar.
+type PopoverPosition = {
+  top: number;
+  left: number;
+  width: number;
+};
+
+// Custom calendar popover using the shared flights calendar. Portaled to the
+// document so checkout cards with overflow clipping can't cover the days.
 export function FormDate({
   value,
   onChange,
@@ -124,17 +132,96 @@ export function FormDate({
   invalid?: boolean;
 }) {
   const [open, setOpen] = useState(false);
+  const [popoverPosition, setPopoverPosition] = useState<PopoverPosition | null>(
+    null,
+  );
+  const anchorRef = useRef<HTMLDivElement>(null);
   const selected = parseISO(value);
   const today = toISO(new Date());
   const disablePast = Boolean(min && min >= today);
 
+  const updatePopoverPosition = () => {
+    const anchor = anchorRef.current;
+    if (!anchor) return;
+
+    const rect = anchor.getBoundingClientRect();
+    const width = Math.min(352, window.innerWidth - 16);
+    const left = Math.max(8, Math.min(rect.left, window.innerWidth - width - 8));
+    const estimatedHeight = 420;
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const top =
+      spaceBelow < estimatedHeight && rect.top > spaceBelow
+        ? Math.max(8, rect.top - estimatedHeight - 8)
+        : rect.bottom + 8;
+
+    setPopoverPosition({ top, left, width });
+  };
+
+  useEffect(() => {
+    if (!open) return;
+
+    updatePopoverPosition();
+
+    const handleReposition = () => updatePopoverPosition();
+    window.addEventListener("resize", handleReposition);
+    window.addEventListener("scroll", handleReposition, true);
+
+    return () => {
+      window.removeEventListener("resize", handleReposition);
+      window.removeEventListener("scroll", handleReposition, true);
+    };
+  }, [open]);
+
+  const calendar =
+    open && popoverPosition
+      ? createPortal(
+          <>
+            <button
+              type="button"
+              aria-hidden
+              tabIndex={-1}
+              className="fixed inset-0 z-[80] cursor-default"
+              onClick={() => setOpen(false)}
+            />
+            <div
+              style={{
+                top: popoverPosition.top,
+                left: popoverPosition.left,
+                width: popoverPosition.width,
+              }}
+              className="fixed z-[90] rounded-xl border border-[#E5E5E5] bg-white p-4 shadow-xl"
+            >
+              <HeroRangeCalendar
+                mode="single"
+                fromDate={value || null}
+                toDate={null}
+                onFromChange={(dateKey) => {
+                  onChange(dateKey);
+                  setOpen(false);
+                }}
+                onToChange={() => undefined}
+                minDate={min}
+                maxDate={max}
+                disablePast={disablePast}
+                showCaptionDropdown
+              />
+            </div>
+          </>,
+          document.body,
+        )
+      : null;
+
   return (
-    <div className="relative">
+    <div className="relative" ref={anchorRef}>
       <button
         type="button"
         aria-label={placeholder}
         disabled={disabled}
-        onClick={() => !disabled && setOpen((o) => !o)}
+        onClick={() => {
+          if (disabled) return;
+          updatePopoverPosition();
+          setOpen((o) => !o);
+        }}
         className={`${className ?? base} justify-between ${
           open ? "border-[#004785]" : invalid ? "border-[#D85A30]" : ""
         } disabled:cursor-default disabled:bg-[#FAFAFA]`}
@@ -144,35 +231,7 @@ export function FormDate({
         </span>
         <CalendarDays className="h-4 w-4 text-foreground/50" />
       </button>
-
-      {open ? (
-        <>
-          <button
-            type="button"
-            aria-hidden
-            tabIndex={-1}
-            className="fixed inset-0 z-10 cursor-default"
-            onClick={() => setOpen(false)}
-          />
-          <div className="absolute left-0 top-full z-20 mt-1 w-[min(100%,22rem)] rounded-xl border border-[#E5E5E5] bg-white p-4 shadow-xl">
-            <HeroRangeCalendar
-              mode="single"
-              fromDate={value || null}
-              toDate={null}
-              onFromChange={(dateKey) => {
-                onChange(dateKey);
-                setOpen(false);
-              }}
-              onToChange={() => undefined}
-              minDate={min}
-              maxDate={max}
-              disablePast={disablePast}
-              showCaptionDropdown
-              initialMonth={defaultMonth}
-            />
-          </div>
-        </>
-      ) : null}
+      {calendar}
     </div>
   );
 }

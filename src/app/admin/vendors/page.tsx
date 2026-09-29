@@ -1,5 +1,5 @@
-import { AdminVendorsLiveContent } from "@/features/admin/components/admin-vendors-live-content";
+import { AdminVendorsContent } from "@/features/admin/components/admin-vendors-content";
 
 export default function AdminVendorsPage() {
-  return <AdminVendorsLiveContent />;
+  return <AdminVendorsContent />;
 }

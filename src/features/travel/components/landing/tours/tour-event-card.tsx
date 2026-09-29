@@ -1,11 +1,11 @@
 import { BadgeCheck, Heart, MapPin, Star } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 import { DisplayPrice } from "@/components/display-price";
 import { ReviewCount } from "@/components/review-count";
 import { T } from "@/components/translation";
 import { getTourBookingPath } from "@/features/travel/booking/tour-paths";
+import { ListingCardLink } from "@/features/travel/components/listing-card-link";
 import type { TourEvent } from "@/features/travel/data/tours-landing";
 
 type TourEventCardProps = {
@@ -14,11 +14,13 @@ type TourEventCardProps = {
 
 export function TourEventCard({ event }: TourEventCardProps) {
   const fullStars = Math.floor(event.rating);
+  const href = getTourBookingPath(event.id);
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-[#EEEEEE] bg-white shadow-sm">
-      <div className="flex flex-col sm:flex-row">
-        <div className="relative m-3 mb-0 aspect-4/3 shrink-0 overflow-hidden rounded-[10px] bg-zinc-100 sm:mb-3 sm:aspect-auto sm:w-[200px]">
+    <article className="relative overflow-hidden rounded-2xl border border-[#EEEEEE] bg-white shadow-sm transition-shadow hover:shadow-md">
+      <ListingCardLink href={href} label={event.title} />
+      <div className="pointer-events-none flex flex-col sm:flex-row">
+        <div className="relative z-[2] m-3 mb-0 aspect-4/3 shrink-0 overflow-hidden rounded-[10px] bg-zinc-100 pointer-events-none sm:mb-3 sm:aspect-auto sm:w-[200px]">
           <Image
             src={event.image}
             alt={event.title}
@@ -30,7 +32,7 @@ export function TourEventCard({ event }: TourEventCardProps) {
           <button
             type="button"
             aria-label="Save experience"
-            className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm"
+            className="absolute right-3 top-3 z-[2] flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm pointer-events-auto"
           >
             <Heart className="h-4 w-4 text-foreground" strokeWidth={1.5} />
           </button>
@@ -88,12 +90,9 @@ export function TourEventCard({ event }: TourEventCardProps) {
               </div>
             </div>
 
-            <Link
-              href={getTourBookingPath(event.id)}
-              className="rounded-[5px] bg-[#3C3C3C] px-5 py-2.5 text-xs font-bold font-montserrat text-white transition-opacity hover:opacity-90"
-            >
+            <span className="rounded-[5px] bg-[#3C3C3C] px-5 py-2.5 text-xs font-bold font-montserrat text-white">
               <T k="common.bookNow" />
-            </Link>
+            </span>
           </div>
         </div>
       </div>

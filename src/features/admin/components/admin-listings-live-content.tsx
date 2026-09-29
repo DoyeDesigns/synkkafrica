@@ -137,11 +137,9 @@ export function AdminListingsLiveContent({
               <div className="min-w-0">
                 <Link
                   href={`/admin/listings/${l.id}`}
-                  className="group inline-block max-w-full rounded outline-none focus-visible:ring-2 focus-visible:ring-[#135391]"
+                  className="inline-block max-w-full truncate text-sm font-bold font-satoshi text-[#135391] underline underline-offset-2 outline-none hover:text-[#004785] focus-visible:ring-2 focus-visible:ring-[#135391]"
                 >
-                  <p className="truncate text-sm font-bold font-satoshi text-[#2F2F2F] group-hover:text-[#135391] group-hover:underline">
-                    {l.title}
-                  </p>
+                  {l.title}
                 </Link>
                 <p className="mt-0.5 truncate text-xs font-medium font-satoshi text-[#676565] capitalize">
                   {l.category} · {l.location ?? "—"}

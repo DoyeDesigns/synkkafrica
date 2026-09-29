@@ -12,11 +12,8 @@ import {
 } from "@/features/travel/components/hero/hero-form-primitives";
 import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
 import { HeroDestinationField } from "@/features/travel/components/hero/hero-destination-field";
+import { searchCityFromLocation } from "@/lib/geo/city-supplements";
 import { listAccommodationDestinations } from "@/lib/api/accommodations";
-import {
-  getDefaultCheckInDate,
-  getDefaultCheckOutDate,
-} from "@/features/travel/booking/booking-params";
 import {
   getPropertyTypeLabelById,
   getPropertyTypeIdByLabel,
@@ -86,15 +83,14 @@ export function AccommodationsSearchForm({
     () => searchParams.get("guests") ?? "1",
   );
   const [destination, setDestination] = useState(
-    () => searchParams.get("destination") ?? "",
+    () => searchCityFromLocation(searchParams.get("destination") ?? "") ||
+      (searchParams.get("destination") ?? ""),
   );
   const [checkIn, setCheckIn] = useState(
-    () => searchParams.get("checkIn") ?? getDefaultCheckInDate(),
+    () => searchParams.get("checkIn") ?? "",
   );
   const [checkOut, setCheckOut] = useState(
-    () =>
-      searchParams.get("checkOut") ??
-      getDefaultCheckOutDate(searchParams.get("checkIn") ?? undefined),
+    () => searchParams.get("checkOut") ?? "",
   );
 
   const propertyTypeOptions = useMemo(
@@ -143,8 +139,8 @@ export function AccommodationsSearchForm({
       return;
     }
 
-    if (!checkOut || checkOut <= value) {
-      setCheckOut(getDefaultCheckOutDate(value));
+    if (checkOut && checkOut <= value) {
+      setCheckOut("");
     }
   };
 
@@ -159,7 +155,8 @@ export function AccommodationsSearchForm({
             : "",
           rooms,
           guests,
-          destination: destination.trim(),
+          destination:
+            searchCityFromLocation(destination.trim()) || destination.trim(),
           checkIn,
           checkOut,
         });
@@ -204,6 +201,7 @@ export function AccommodationsSearchForm({
               { count },
             )
           }
+          listboxId="hero-accommodations-location-listbox"
         />
         <HeroDateRangeField
           fromLabel={t("hero.accommodations.checkIn")}

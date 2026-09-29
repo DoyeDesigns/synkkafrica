@@ -59,6 +59,105 @@ const REGION_PARENTS: Record<string, { state: string; country: string }> = {
   "AE-DU": { state: "Dubai", country: "United Arab Emirates" },
 };
 
+const METRO_CITIES: Record<string, string> = {
+  "NG-LA": "Lagos",
+  "NG-FC": "Abuja",
+  "NG-RI": "Port Harcourt",
+  "NG-KD": "Kaduna",
+  "NG-KN": "Kano",
+  "NG-OY": "Ibadan",
+  "NG-EN": "Enugu",
+  "NG-AN": "Onitsha",
+  "ZA-GP": "Johannesburg",
+  "ZA-WC": "Cape Town",
+  "KE-30": "Nairobi",
+  "GH-AA": "Accra",
+  "AE-DU": "Dubai",
+};
+
+const STREET_LIKE =
+  /^\d|\b(street|st\.?|road|rd\.?|avenue|ave\.?|close|crescent|drive|blvd|boulevard|lane|way|expressway)\b/i;
+
+const COUNTRY_LIKE = new Set([
+  "nigeria",
+  "kenya",
+  "ghana",
+  "south africa",
+  "united arab emirates",
+  "uae",
+  "benin",
+  "togo",
+  "cameroon",
+  "rwanda",
+  "tanzania",
+  "uganda",
+  "egypt",
+  "morocco",
+  "senegal",
+]);
+
+function isStreetLike(value: string) {
+  return STREET_LIKE.test(value.trim());
+}
+
+function isCountryLike(value: string) {
+  return COUNTRY_LIKE.has(value.trim().toLowerCase());
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/** Collapse a street or neighborhood into the metro city used in hero search. */
+export function searchCityFromLocation(location: string) {
+  const trimmed = location.trim();
+  if (!trimmed) return "";
+
+  const metros = [...new Set(Object.values(METRO_CITIES))];
+  const metroHit = metros.find((name) =>
+    new RegExp(`\\b${escapeRegExp(name)}\\b`, "i").test(trimmed),
+  );
+  if (metroHit) return metroHit;
+
+  const lower = trimmed.toLowerCase();
+  for (const [key, cities] of Object.entries(CITY_SUPPLEMENTS)) {
+    const metro = METRO_CITIES[key];
+    if (!metro) continue;
+    if (cities.some((city) => lower.includes(city.toLowerCase()))) {
+      return metro;
+    }
+  }
+
+  const parts = trimmed
+    .split(/[,|/]+/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  const candidates = parts.filter(
+    (part) => !isStreetLike(part) && !isCountryLike(part),
+  );
+  return candidates[0] ?? "";
+}
+
+export function rollupDestinationsByCity(
+  destinations: { location: string; count: number }[],
+) {
+  const map = new Map<string, { location: string; count: number }>();
+
+  for (const destination of destinations) {
+    const city = searchCityFromLocation(destination.location);
+    if (!city) continue;
+    const key = city.toLowerCase();
+    const current = map.get(key);
+    if (current) {
+      current.count += destination.count;
+    } else {
+      map.set(key, { location: city, count: destination.count });
+    }
+  }
+
+  return [...map.values()].sort((a, b) => b.count - a.count);
+}
+
 /** Append parent city/country names so "Lekki Phase 1" still matches a Lagos search. */
 export function expandedLocationHaystack(location: string) {
   const lower = location.toLowerCase();

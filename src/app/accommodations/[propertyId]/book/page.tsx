@@ -1,7 +1,11 @@
 import { notFound } from "next/navigation";
 
 import { PropertyBookingPage } from "@/features/travel/components/booking/property-booking-page";
-import { getAccommodation, toPropertyDetail } from "@/lib/api/accommodations";
+import {
+  getAccommodation,
+  toPropertyDetail,
+  type AccommodationDetailApi,
+} from "@/lib/api/accommodations";
 import { listReviews } from "@/lib/api/reviews";
 import type { PropertyDetail } from "@/features/travel/data/property-booking";
 
@@ -14,12 +18,18 @@ export default async function PropertyBookingRoute({
 }: PropertyBookingRouteProps) {
   const { propertyId } = await params;
 
-  let property: PropertyDetail;
+  let accommodation: AccommodationDetailApi;
   try {
-    property = toPropertyDetail(await getAccommodation(propertyId));
+    accommodation = await getAccommodation(propertyId);
   } catch {
     notFound();
   }
+
+  // Raw listing payload so the image fields (coverImageUrl, images, media)
+  // are visible in the dev server terminal and the browser console.
+  console.log("[accommodations/book] listing", accommodation);
+
+  let property: PropertyDetail = toPropertyDetail(accommodation);
 
   // Merge in real published reviews (best-effort — never block the page).
   try {
@@ -38,5 +48,11 @@ export default async function PropertyBookingRoute({
     // Leave reviews empty on failure.
   }
 
-  return <PropertyBookingPage property={property} currentStep="rooms" />;
+  return (
+    <PropertyBookingPage
+      property={property}
+      currentStep="rooms"
+      listingData={accommodation}
+    />
+  );
 }

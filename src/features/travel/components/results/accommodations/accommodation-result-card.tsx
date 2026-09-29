@@ -4,18 +4,17 @@ import {
   Coffee,
   Heart,
   MapPin,
-  Percent,
   BadgePercent,
   Star,
   Wifi,
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 import { DisplayPrice } from "@/components/display-price";
 import { ReviewCount } from "@/components/review-count";
 import { T } from "@/components/translation";
 import { getPropertyBookingPath } from "@/features/travel/booking/paths";
+import { ListingCardLink } from "@/features/travel/components/listing-card-link";
 import type { AccommodationResult } from "@/features/travel/data/accommodation-results";
 
 type AccommodationResultCardProps = {
@@ -37,11 +36,13 @@ function FeatureIcon({ icon }: { icon: AccommodationResult["features"][number]["
 
 export function AccommodationResultCard({ item }: AccommodationResultCardProps) {
   const fullStars = Math.floor(item.rating);
+  const href = getPropertyBookingPath(item.id);
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
+    <article className="relative overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-shadow hover:shadow-md">
+      <ListingCardLink href={href} label={item.name} />
       <div className="flex flex-col lg:flex-row">
-        <div className="relative h-52 w-full m-3 mr-0 shrink-0 lg:h-auto lg:w-[240px]">
+        <div className="relative z-[2] h-52 w-full m-3 mr-0 shrink-0 pointer-events-none lg:h-auto lg:w-[240px]">
           <Image
             src={item.image}
             alt={item.name}
@@ -53,7 +54,7 @@ export function AccommodationResultCard({ item }: AccommodationResultCardProps) 
           <button
             type="button"
             aria-label="Save stay"
-            className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm"
+            className="absolute right-3 top-3 z-[2] flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm pointer-events-auto"
           >
             <Heart className="h-4 w-4 text-foreground" strokeWidth={1.5} />
           </button>
@@ -104,12 +105,9 @@ export function AccommodationResultCard({ item }: AccommodationResultCardProps) 
             </div>
           </div>
 
-          <Link
-            href={getPropertyBookingPath(item.id)}
-            className="inline-flex w-fit rounded-md bg-[#D85A30] px-5 py-2.5 text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90 sm:w-full sm:max-w-[271px] sm:justify-center"
-          >
+          <span className="inline-flex w-fit rounded-md bg-[#D85A30] px-5 py-2.5 text-sm font-bold font-montserrat text-white sm:w-full sm:max-w-[271px] sm:justify-center">
             <T k="common.bookNow" />
-          </Link>
+          </span>
         </div>
 
         <div className="flex flex-col justify-between p-4 sm:p-5">

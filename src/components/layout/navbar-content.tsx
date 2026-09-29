@@ -55,7 +55,7 @@ export function NavbarContent({ session }: NavbarContentProps) {
             priority
           />
           <span className="text-xl font-bold -ml-6 tracking-tight font-montserrat text-white">
-            Synkafrica
+            SynkAfrica
           </span>
         </Link>
 
@@ -109,7 +109,7 @@ export function NavbarContentFallback({ session }: NavbarContentProps) {
             priority
           />
           <span className="text-xl font-bold -ml-6 tracking-tight font-montserrat text-white">
-            Synkafrica
+            SynkAfrica
           </span>
         </Link>
 

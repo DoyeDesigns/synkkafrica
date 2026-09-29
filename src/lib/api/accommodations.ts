@@ -194,6 +194,35 @@ export function toAccommodationResult(
   };
 }
 
+function pushImageUrl(urls: string[], value: unknown) {
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    if (trimmed) urls.push(trimmed);
+    return;
+  }
+
+  if (value && typeof value === "object" && "url" in value) {
+    pushImageUrl(urls, (value as { url: unknown }).url);
+  }
+}
+
+// Cover first, then every other photo. The public payload sometimes sends
+// image entries as `{ url }` objects and keeps the rest on `media`.
+function imageUrlsFromAccommodation(a: AccommodationDetailApi): string[] {
+  const urls: string[] = [];
+  const media = (a as AccommodationDetailApi & { media?: unknown }).media;
+
+  pushImageUrl(urls, a.coverImageUrl);
+  for (const image of Array.isArray(a.images) ? a.images : []) {
+    pushImageUrl(urls, image);
+  }
+  if (Array.isArray(media)) {
+    for (const item of media) pushImageUrl(urls, item);
+  }
+
+  return [...new Set(urls)];
+}
+
 function coordsFromAccommodation(
   a: AccommodationDetailApi,
 ): [number, number] | null {
@@ -216,10 +245,9 @@ function coordsFromAccommodation(
 // Map a backend detail onto the rich PropertyDetail the booking flow renders.
 // Fields the vendor doesn't capture (reviews, map, taxes) get safe defaults.
 export function toPropertyDetail(a: AccommodationDetailApi): PropertyDetail {
-  const cover = a.coverImageUrl ?? a.images[0] ?? FALLBACK_ACCOMMODATION_IMAGE;
-  const images = a.images.length
-    ? coverFirst(a.coverImageUrl, a.images)
-    : [cover];
+  const collected = imageUrlsFromAccommodation(a);
+  const images = collected.length ? collected : [FALLBACK_ACCOMMODATION_IMAGE];
+  const cover = images[0] ?? FALLBACK_ACCOMMODATION_IMAGE;
   const rooms =
     a.rooms.length > 0
       ? a.rooms.map((r) => ({

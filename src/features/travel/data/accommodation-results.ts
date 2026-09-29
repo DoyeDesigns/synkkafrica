@@ -60,11 +60,7 @@ export const DEFAULT_ACCOMMODATION_FILTERS: AccommodationFilterState = {
 export const PROPERTY_TYPE_OPTIONS = [
   "Hotels",
   "Apartments",
-  "Resorts",
-  "B&Bs",
-  "Guest House",
   "Beach House",
-  "Motels",
 ] as const;
 
 export const PRICE_RANGE_OPTIONS: {
@@ -321,13 +317,13 @@ export function filterAccommodationResults(
   filters: AccommodationFilterState,
   query: string,
 ): AccommodationResult[] {
+  const normalizedQuery = query.trim().toLowerCase();
+
   return results.filter((result) => {
     if (
-      !matchesSearchQuery(
-        query,
-        `${result.name} ${result.propertyType}`,
-        result.location,
-      )
+      normalizedQuery &&
+      !`${result.name} ${result.location}`.toLowerCase().includes(normalizedQuery) &&
+      !locationsOverlap(query, result.location)
     ) {
       return false;
     }

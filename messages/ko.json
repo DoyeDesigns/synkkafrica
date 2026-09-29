@@ -150,7 +150,7 @@
       "security": "보안 페이지",
       "faqs": "자주 묻는 질문"
     },
-    "copyright": "Copyright © 2025 Synkafrica | All Rights Reserved"
+    "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
   "login": {
     "intro": "SynkAfrica 계정을 사용하여 로그인하여 당사 서비스에 액세스할 수 있습니다.",
@@ -335,7 +335,7 @@
         "cancelBookingAnswer": "예약 및 여행에서 예약을 열고 주문을 선택한 후 아직 취소 기간 내에 있으면 취소 옵션을 사용하세요. 환불은 적격한 예약에 대해 자동으로 처리됩니다.",
         "refundTimingAnswer": "적격한 환불은 은행이나 결제 서비스 제공업체에 따라 일반적으로 취소 후 영업일 기준 5~7일 이내에 처리됩니다.",
         "changeDateAnswer": "예약 번호를 가지고 지원팀에 문의하세요. 체험에 따라 날짜 변경이 허용되는 경우, 저희 팀이 일정 변경을 돕거나 사용 가능한 옵션을 안내해 드릴 것입니다.",
-        "paymentSecurityAnswer": "예. Synkafrica에서의 결제는 안전하고 암호화된 결제 파트너를 통해 처리됩니다. 우리는 귀하의 전체 카드 정보를 서버에 저장하지 않습니다."
+        "paymentSecurityAnswer": "예. SynkAfrica에서의 결제는 안전하고 암호화된 결제 파트너를 통해 처리됩니다. 우리는 귀하의 전체 카드 정보를 서버에 저장하지 않습니다."
       },
       "tabs": {
         "label": "지원 섹션"
@@ -847,7 +847,7 @@
     },
     "tours": {
       "attractions": {
-        "title": "Synkafrica의 명소"
+        "title": "SynkAfrica의 명소"
       },
       "events": {
         "browsingIn": "이벤트 찾아보기"
@@ -1805,12 +1805,12 @@
           "message": "8834로 끝나는 Access Bank로 NGN 150,000 인출이 성공적으로 처리되었습니다."
         },
         "admin": {
-          "title": "Synkafrica의 정책 업데이트",
+          "title": "SynkAfrica의 정책 업데이트",
           "message": "이제 체험 목록에 대한 업데이트된 공급업체 지침을 사용할 수 있습니다. 8월 1일까지 검토해 주세요."
         },
         "admin2": {
           "title": "목록이 승인되었습니다.",
-          "message": "귀하의 라고스 라군 선셋 크루즈 목록이 이제 Synkafrica에 게시되었습니다."
+          "message": "귀하의 라고스 라군 선셋 크루즈 목록이 이제 SynkAfrica에 게시되었습니다."
         }
       }
     },
@@ -1863,7 +1863,7 @@
       "businessNameHint": "지불금 및 공급업체 기록에 사용되는 내부 이름입니다. 공개 목록에는 표시되지 않습니다.",
       "internalNameLabel": "내부 업체 이름",
       "contactDetails": "연락처 세부정보",
-      "contactDetailsHint": "Synkafrica와 손님이 예약 지원을 위해 귀하에게 연락하는 방법.",
+      "contactDetailsHint": "SynkAfrica와 손님이 예약 지원을 위해 귀하에게 연락하는 방법.",
       "phone": "전화 번호",
       "email": "이메일 주소",
       "address": "사업장 주소",
@@ -1947,7 +1947,7 @@
       }
     },
     "support": {
-      "helpBanner": "불만 사항을 제기하거나 Synkafrica 공급업체 팀에 도움을 요청하세요. 일반적으로 영업일 기준 1~2일 이내에 응답해 드립니다.",
+      "helpBanner": "불만 사항을 제기하거나 SynkAfrica 공급업체 팀에 도움을 요청하세요. 일반적으로 영업일 기준 1~2일 이내에 응답해 드립니다.",
       "helpBannerEmail": "업데이트 내용은 ⟦이메일⟧로 전송됩니다.",
       "openTickets": "⟦개수⟧ 오픈 티켓",
       "tabs": {
@@ -2055,7 +2055,7 @@
         "all": "모두"
       },
       "commissionSplit": "커미션 분할",
-      "commissionSplitHint": "예약 수익은 귀하에게 ⟦공급업체⟧%, Synkafrica에 ⟦플랫폼⟧%로 분배됩니다.",
+      "commissionSplitHint": "예약 수익은 귀하에게 ⟦공급업체⟧%, SynkAfrica에 ⟦플랫폼⟧%로 분배됩니다.",
       "vendorShare": "당신의 몫",
       "platformShare": "플랫폼 수수료",
       "grossRevenue": "총 수익",

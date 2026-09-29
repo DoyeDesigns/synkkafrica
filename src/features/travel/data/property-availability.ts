@@ -11,48 +11,17 @@ export type BookingTimeSlot = {
   available: boolean;
 };
 
-const SHARED_BLOCKED_DATES = [
-  "2026-09-12",
-  "2026-09-25",
-  "2026-10-03",
-  "2026-10-17",
-];
-
-function hashPropertyId(propertyId: string) {
-  return propertyId.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0);
+function dateFromKey(dateKey: string) {
+  const [year, month, day] = dateKey.split("-").map(Number);
+  return new Date(year, (month || 1) - 1, day || 1);
 }
 
+// Listings do not publish a blocked-day calendar yet. Past days are disabled
+// by the date picker itself; do not invent the same unavailable days for every listing.
 export function getPropertyDayStatuses(
-  propertyId: string,
+  _propertyId: string,
 ): Record<string, AvailabilityDayStatus> {
-  const statuses: Record<string, AvailabilityDayStatus> = {};
-  const seed = hashPropertyId(propertyId);
-  const today = new Date();
-
-  for (let offset = 0; offset < 120; offset += 1) {
-    const date = new Date(today);
-    date.setDate(today.getDate() + offset);
-    const dateKey = toDateKey(date);
-
-    if (dateKey < toDateKey(today)) {
-      statuses[dateKey] = "blocked";
-      continue;
-    }
-
-    if (SHARED_BLOCKED_DATES.includes(dateKey)) {
-      statuses[dateKey] = "blocked";
-      continue;
-    }
-
-    if ((offset + seed) % 11 === 0) {
-      statuses[dateKey] = "blocked";
-      continue;
-    }
-
-    statuses[dateKey] = "available";
-  }
-
-  return statuses;
+  return {};
 }
 
 export function getPropertyTimeSlots(): BookingTimeSlot[] {
@@ -83,8 +52,8 @@ export function isRangeBlocked(
   checkIn: string,
   checkOut: string,
 ) {
-  const start = new Date(checkIn);
-  const end = new Date(checkOut);
+  const start = dateFromKey(checkIn);
+  const end = dateFromKey(checkOut);
 
   for (let current = new Date(start); current < end; current.setDate(current.getDate() + 1)) {
     if (isDateBlocked(dayStatuses, toDateKey(current))) {
@@ -106,8 +75,8 @@ export function clampCheckoutDate(
     return minimumCheckout;
   }
 
-  const start = new Date(checkIn);
-  const end = new Date(requestedCheckOut);
+  const start = dateFromKey(checkIn);
+  const end = dateFromKey(requestedCheckOut);
 
   for (
     let current = new Date(start);
