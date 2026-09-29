@@ -42,6 +42,9 @@ export type TourPackage = {
   days: number;
   startDate: string;
   endDate: string;
+  // Free-text schedule from the backend ("Every weekend", "18–23 June").
+  // Shown instead of start/end dates when present.
+  scheduleLabel?: string;
   price: number;
   currency: string;
   image: string;

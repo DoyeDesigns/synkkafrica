@@ -8,6 +8,9 @@ import { useAddressAutocomplete } from "@/features/travel/hooks/use-address-auto
 type FilterAddressFieldProps = {
   value: string;
   onChange: (value: string) => void;
+  // Called when a suggestion is picked or Enter is pressed — apply the
+  // location filter right away.
+  onCommit?: (value: string) => void;
   placeholder?: string;
   listboxId?: string;
   className?: string;
@@ -16,6 +19,7 @@ type FilterAddressFieldProps = {
 export function FilterAddressField({
   value,
   onChange,
+  onCommit,
   placeholder,
   listboxId = "filter-address-listbox",
   className = "mt-3",
@@ -33,7 +37,7 @@ export function FilterAddressField({
     commit,
     handleChange,
     handleKeyDown,
-  } = useAddressAutocomplete(value, onChange);
+  } = useAddressAutocomplete(value, onChange, { onCommit });
 
   const menu =
     showDropdown && rect && typeof document !== "undefined"

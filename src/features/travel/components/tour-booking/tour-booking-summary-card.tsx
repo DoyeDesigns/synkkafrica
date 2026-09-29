@@ -1,6 +1,7 @@
 "use client";
 
 import { calculateTourBookingTotal } from "@/features/travel/booking/calculate-tour-booking-total";
+import { feeRatePercent } from "@/features/travel/booking/sync-africa-fee";
 import { useBookingContent } from "@/hooks/use-booking-content";
 import { useFormatPrice } from "@/hooks/use-format-price";
 import { useTranslation } from "@/hooks/use-translation";
@@ -12,7 +13,6 @@ type TourBookingSummaryCardProps = {
   options: TourExperienceOption[];
   selectedOptionId: string;
   guestCount?: number;
-  days?: number;
   onSelectOption: (optionId: string) => void;
   onBookNow: () => void;
   bookDisabled?: boolean;
@@ -24,7 +24,6 @@ export function TourBookingSummaryCard({
   options,
   selectedOptionId,
   guestCount = 1,
-  days = 1,
   onSelectOption,
   onBookNow,
   bookDisabled = false,
@@ -38,16 +37,18 @@ export function TourBookingSummaryCard({
 
   if (!selectedOption) return null;
 
+  // A group ticket is a flat price; per-person options scale with guests.
+  const isGroupTicket = selectedOption.id === "group";
+
   const pricing = calculateTourBookingTotal({
     optionPrice: selectedOption.price,
     guestCount,
-    days,
-    taxesAndFees: tour.taxesAndFees,
+    isGroupTicket,
     currency: tour.currency,
     optionName: selectedOption.name,
+    feeRate: tour.feeRate,
   });
-
-  const dayLabel = days > 1 ? t("booking.summary.days") : t("booking.summary.day");
+  const feeRate = tour.feeRate;
 
   const isProceedCta = ctaKey === "booking.cta.proceedToPay";
 
@@ -100,8 +101,14 @@ export function TourBookingSummaryCard({
         <div className="space-y-2 text-sm font-satoshi">
           <div className="flex items-start justify-between gap-3">
             <span className="text-foreground/80">
-              {labelContent(selectedOption.name)} x {guestCount}{" "}
-              {guestCount > 1 ? t("booking.summary.guests") : t("booking.dates.guests").toLowerCase()} x {days} {dayLabel} x{" "}
+              {labelContent(selectedOption.name)}
+              {isGroupTicket ? null : (
+                <>
+                  {" "}x {guestCount}{" "}
+                  {guestCount > 1 ? t("booking.summary.guests") : t("booking.dates.guests").toLowerCase()}
+                </>
+              )}{" "}
+              x{" "}
               <span className="font-bold text-foreground">
                 {formatPrice(tour.currency, selectedOption.price)}
               </span>
@@ -111,9 +118,11 @@ export function TourBookingSummaryCard({
             </span>
           </div>
           <div className="flex items-center justify-between gap-3">
-            <span className="text-foreground/80">{t("booking.summary.taxesAndFees")}</span>
+            <span className="text-foreground/80">
+              {t("booking.summary.serviceFee", { rate: feeRatePercent(feeRate) })}
+            </span>
             <span className="font-medium text-foreground">
-              {formatPrice(tour.currency, pricing.taxesAndFees + pricing.syncAfricaFee)}
+              {formatPrice(tour.currency, pricing.syncAfricaFee)}
             </span>
           </div>
           <div className="flex items-center justify-between gap-3 border-t border-[#F0D4C4] pt-2">

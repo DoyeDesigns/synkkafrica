@@ -26,11 +26,12 @@ function normalizeServiceType(value: string): string {
     return "Chauffeur";
   }
 
-  if ((SERVICE_TYPE_OPTIONS as readonly string[]).includes(value)) {
-    return value;
-  }
+  const known = (SERVICE_TYPE_OPTIONS as readonly string[]).find(
+    (option) => option.toLowerCase() === value.toLowerCase(),
+  );
 
-  return DEFAULT_CAR_RENTAL_FILTERS.serviceType;
+  // Anything else (including "any") means no service-type filter.
+  return known ?? "";
 }
 
 function hasCarRentalSearchParams(searchParams: URLSearchParams) {
@@ -77,8 +78,13 @@ function getFiltersFromSearchParams(
   }
 
   const carType = searchParams.get("carType");
-  if (carType && (CAR_TYPE_OPTIONS as readonly string[]).includes(carType)) {
-    filters.carType = carType;
+  const knownCarType = carType
+    ? (CAR_TYPE_OPTIONS as readonly string[]).find(
+        (option) => option.toLowerCase() === carType.toLowerCase(),
+      )
+    : undefined;
+  if (knownCarType) {
+    filters.carType = knownCarType;
   }
 
   return filters;
@@ -131,6 +137,18 @@ export function useCarRentalFilters() {
     [liveCars],
   );
 
+  // Only offer body types that at least one live car has (explicit or
+  // inferred), so picking a car type can never zero out the list by itself.
+  const availableCarTypes = useMemo(
+    () =>
+      CAR_TYPE_OPTIONS.filter((option) =>
+        allResults.some(
+          (car) => car.carType.toLowerCase() === option.toLowerCase(),
+        ),
+      ),
+    [allResults],
+  );
+
   const results = useMemo(
     () => filterCarRentalResults(allResults, appliedFilters, searchQuery),
     [allResults, appliedFilters, searchQuery],
@@ -145,6 +163,17 @@ export function useCarRentalFilters() {
 
   const applyFilters = () => {
     setAppliedFilters(draftFilters);
+  };
+
+  // Set one filter and apply the draft right away (e.g. picking a location
+  // suggestion should filter immediately, without a separate "Apply" click).
+  const applyFilter = <K extends keyof CarRentalFilterState>(
+    key: K,
+    value: CarRentalFilterState[K],
+  ) => {
+    const next = { ...draftFilters, [key]: value };
+    setDraftFilters(next);
+    setAppliedFilters(next);
   };
 
   const resetFilters = () => {
@@ -166,10 +195,12 @@ export function useCarRentalFilters() {
     activeFilterCount,
     draftFilterCount,
     results,
+    availableCarTypes,
     isLoading,
     setSearchQuery,
     updateDraftFilter,
     applyFilters,
+    applyFilter,
     resetFilters,
     hasAppliedFilters,
   };

@@ -4,6 +4,7 @@ import { CircleHelp, Users } from "lucide-react";
 
 import type { AddListingFormState } from "@/features/vendor/data/vendor-add-listing";
 import { useTranslation } from "@/hooks/use-translation";
+import { ListingCurrencyField } from "@/features/vendor/components/vendor-listing-currency-field";
 
 const inputClassName =
   "h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]";
@@ -27,11 +28,17 @@ export function ExperiencePricingStep({ form, onChange }: ExperiencePricingStepP
         </p>
       </div>
 
+      <ListingCurrencyField
+        value={form.currency}
+        onChange={(currency) => onChange({ currency })}
+      />
+
       <div className="grid gap-5 sm:grid-cols-2">
         <PricingField
           label={t("vendor.addListing.singleTicketPrice")}
           hint={t("vendor.addListing.singleTicketPriceHint")}
           required
+          currency={form.currency}
           value={form.pricePerPerson}
           onChange={(value) => onChange({ pricePerPerson: value })}
         />
@@ -40,6 +47,7 @@ export function ExperiencePricingStep({ form, onChange }: ExperiencePricingStepP
           label={t("vendor.addListing.groupTicketPrice")}
           hint={t("vendor.addListing.groupTicketPriceHint")}
           showInfo
+          currency={form.currency}
           value={form.groupTicketPrice}
           onChange={(value) => onChange({ groupTicketPrice: value })}
         />
@@ -67,6 +75,7 @@ function PricingField({
   hint,
   required,
   showInfo,
+  currency,
   value,
   onChange,
 }: {
@@ -74,6 +83,7 @@ function PricingField({
   hint: string;
   required?: boolean;
   showInfo?: boolean;
+  currency: string;
   value: string;
   onChange: (value: string) => void;
 }) {
@@ -89,7 +99,7 @@ function PricingField({
 
       <div className="flex overflow-hidden rounded-lg border border-[#E5E5E5] bg-white focus-within:border-[#135391]">
         <span className="flex h-11 shrink-0 items-center border-r border-[#E5E5E5] bg-[#F5F5F5] px-3 text-sm font-semibold font-satoshi text-[#676565]">
-          NGN
+          {currency}
         </span>
         <input
           type="number"

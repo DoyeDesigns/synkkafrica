@@ -242,9 +242,16 @@ export async function fetchPhotonSuggestions(
       options?.country?.trim() ||
       options?.countryCode?.trim(),
   );
+  // Soft, country-scale bias toward Lagos (zoom 6 ≈ region radius; a higher
+  // location_bias_scale keeps prominent places elsewhere — "Dubai Marina",
+  // "Accra Mall" — ranking above obscure Lagos matches). No type/country
+  // restriction, so street addresses, estates and landmarks all come back.
   const bias =
-    options?.bias === false || hasScope ? "" : "&lat=6.5244&lon=3.3792";
-  const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(scoped)}&limit=${limit}${bias}`;
+    options?.bias === false || hasScope
+      ? ""
+      : "&lat=6.5244&lon=3.3792&zoom=6&location_bias_scale=0.5";
+  // English labels (otherwise names come back in the local script).
+  const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(scoped)}&limit=${limit}&lang=en${bias}`;
   const response = await fetch(url, { signal });
 
   if (!response.ok) {
@@ -278,7 +285,7 @@ export async function fetchPhotonReverse(
   lon: number,
   signal?: AbortSignal,
 ): Promise<PlaceSuggestion | null> {
-  const url = `https://photon.komoot.io/reverse?lat=${encodeURIComponent(String(lat))}&lon=${encodeURIComponent(String(lon))}`;
+  const url = `https://photon.komoot.io/reverse?lat=${encodeURIComponent(String(lat))}&lon=${encodeURIComponent(String(lon))}&lang=en`;
   const response = await fetch(url, { signal });
 
   if (!response.ok) {

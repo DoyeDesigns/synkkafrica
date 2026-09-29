@@ -24,14 +24,18 @@ const DONE = new Set([
 function Confirmation() {
   const params = useSearchParams();
   const { data: session } = useSession();
-  // Paystack appends ?reference=<bookingId>&trxref=...
+  // The backend bakes ?reference=<bookingId> into the success URL for every
+  // provider (Stripe Checkout and Paystack alike); Paystack also appends its
+  // own reference/trxref, which it sets to the same booking id.
   const bookingId = params.get("reference") ?? params.get("trxref") ?? "";
+  // Stripe's cancel URL is the same page with &cancelled=1.
+  const cancelled = params.get("cancelled") === "1";
   const token = session?.accessToken;
 
   const { data } = useQuery({
     queryKey: ["booking", bookingId],
     queryFn: () => getBooking(bookingId, token as string),
-    enabled: Boolean(bookingId && token),
+    enabled: Boolean(bookingId && token) && !cancelled,
     refetchInterval: (q) =>
       q.state.data && DONE.has(q.state.data.state) ? false : 3000,
   });
@@ -40,6 +44,7 @@ function Confirmation() {
   const ticketed = state === "TICKETED";
   const failed =
     state === "PAYMENT_FAILED" || state === "MANUAL_REVIEW_REQUIRED";
+  const showCancelled = cancelled && !ticketed && !failed;
 
   return (
     <div className="bg-[#F5F5F5]">
@@ -73,6 +78,19 @@ function Confirmation() {
                   </p>
                 ) : null}
               </>
+            ) : showCancelled ? (
+              <>
+                <div className="mx-auto flex items-center justify-center">
+                  <AlertCircle className="h-16 w-16 text-amber-500" strokeWidth={1.25} />
+                </div>
+                <h2 className="mt-6 text-2xl font-bold font-montserrat text-foreground sm:text-[28px]">
+                  Payment cancelled
+                </h2>
+                <p className="mx-auto mt-4 max-w-md text-sm font-normal font-inter text-foreground sm:text-base">
+                  You left checkout before paying, so you haven&apos;t been
+                  charged. Search again to book this or another flight.
+                </p>
+              </>
             ) : failed ? (
               <>
                 <div className="mx-auto flex items-center justify-center">
@@ -103,7 +121,7 @@ function Confirmation() {
             )}
           </div>
 
-          {ticketed || failed ? (
+          {ticketed || failed || showCancelled ? (
             <Link
               href="/?section=flights"
               className="mt-8 rounded-md bg-[#004785] px-5 py-2.5 text-sm font-semibold font-montserrat text-white transition-opacity hover:opacity-90"

@@ -11,6 +11,7 @@ import {
   adminRejectListing,
   type AdminListing,
 } from "@/lib/api/admin";
+import { LIVE_QUERY_OPTIONS } from "@/lib/live-query-options";
 
 const STATUS_TABS = ["pending", "live", "paused", "rejected"] as const;
 type StatusTab = (typeof STATUS_TABS)[number];
@@ -39,11 +40,13 @@ export function AdminListingsLiveContent({
     queryKey: ["admin-listings", tab],
     queryFn: () => adminListListings(token as string, tab),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
 
-  const invalidate = () =>
-    queryClient.invalidateQueries({ queryKey: ["admin-listings"] });
+  const invalidate = () => {
+    void queryClient.invalidateQueries({ queryKey: ["admin-listings"] });
+    void queryClient.invalidateQueries({ queryKey: ["admin-overview"] });
+  };
 
   const approveMutation = useMutation({
     mutationFn: (id: string) => adminApproveListing(token as string, id),
@@ -63,7 +66,19 @@ export function AdminListingsLiveContent({
     mutationFn: (v: { id: string; reason?: string }) =>
       adminRejectListing(token as string, v.id, v.reason),
     onSuccess: invalidate,
+    // 409 when the listing already left `pending`; refresh so it moves tabs.
+    onError: invalidate,
   });
+  const rejectError =
+    rejectMutation.isError && rejectMutation.variables
+      ? {
+          id: rejectMutation.variables.id,
+          message:
+            rejectMutation.error instanceof Error
+              ? rejectMutation.error.message
+              : "Couldn't reject this listing.",
+        }
+      : null;
 
   const listings = useMemo(
     () =>
@@ -135,8 +150,13 @@ export function AdminListingsLiveContent({
                   </p>
                 ) : null}
                 {approveError?.id === l.id ? (
-                  <p className="mt-1 text-xs font-medium font-satoshi text-[#C0392B]">
+                  <p role="alert" className="mt-1 text-xs font-medium font-satoshi text-[#C0392B]">
                     {approveError.message}
+                  </p>
+                ) : null}
+                {rejectError?.id === l.id ? (
+                  <p role="alert" className="mt-1 text-xs font-medium font-satoshi text-[#C0392B]">
+                    {rejectError.message}
                   </p>
                 ) : null}
               </div>
@@ -161,10 +181,15 @@ export function AdminListingsLiveContent({
                       type="button"
                       disabled={busyId === l.id}
                       onClick={() => {
-                        const reason =
-                          window.prompt("Reason for rejection (optional):") ??
-                          undefined;
-                        rejectMutation.mutate({ id: l.id, reason });
+                        const reason = window.prompt(
+                          "Reason for rejection (shown to the vendor):",
+                        );
+                        // Cancelled prompt → don't reject.
+                        if (reason === null) return;
+                        rejectMutation.mutate({
+                          id: l.id,
+                          reason: reason.trim() || undefined,
+                        });
                       }}
                       className="rounded-lg border border-[#E5E5E5] px-3 py-2 text-xs font-bold font-satoshi text-[#C0392B] disabled:opacity-60"
                     >

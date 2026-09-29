@@ -10,7 +10,9 @@ import {
   adminApproveVendorWithoutVerification,
   adminBusinessDocViewUrl,
   adminGetVendor,
+  adminReactivateVendor,
   adminRejectVendor,
+  adminSuspendVendor,
   adminVerifyVendorCac,
   adminVerifyVendorId,
   type AdminBusinessDoc,
@@ -18,6 +20,7 @@ import {
   type AdminVendor,
   type VerificationStatus,
 } from "@/lib/api/admin";
+import { LIVE_QUERY_OPTIONS } from "@/lib/live-query-options";
 
 const VENDOR_STATUS_STYLES: Record<AdminVendor["status"], string> = {
   pending: "bg-[#FDF3EF] text-[#D85A30]",
@@ -93,12 +96,13 @@ export function AdminVendorDetailLiveContent({
     queryKey: ["admin-vendor", vendorId],
     queryFn: () => adminGetVendor(token as string, vendorId),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
 
   const invalidate = () => {
-    queryClient.invalidateQueries({ queryKey: ["admin-vendor", vendorId] });
-    queryClient.invalidateQueries({ queryKey: ["admin-vendors"] });
+    void queryClient.invalidateQueries({ queryKey: ["admin-vendor", vendorId] });
+    void queryClient.invalidateQueries({ queryKey: ["admin-vendors"] });
+    void queryClient.invalidateQueries({ queryKey: ["admin-overview"] });
   };
 
   const approveMutation = useMutation({
@@ -115,6 +119,14 @@ export function AdminVendorDetailLiveContent({
       adminRejectVendor(token as string, vendorId, reason),
     onSuccess: invalidate,
   });
+  // Suspend an active vendor / reactivate a suspended one.
+  const suspendMutation = useMutation({
+    mutationFn: (action: "suspend" | "reactivate") =>
+      action === "suspend"
+        ? adminSuspendVendor(token as string, vendorId)
+        : adminReactivateVendor(token as string, vendorId),
+    onSuccess: invalidate,
+  });
   const verifyCacMutation = useMutation({
     mutationFn: () => adminVerifyVendorCac(token as string, vendorId),
     onSuccess: invalidate,
@@ -126,11 +138,13 @@ export function AdminVendorDetailLiveContent({
   const busy =
     approveMutation.isPending ||
     bypassMutation.isPending ||
-    rejectMutation.isPending;
+    rejectMutation.isPending ||
+    suspendMutation.isPending;
   const actionError = (
     approveMutation.error ||
     bypassMutation.error ||
-    rejectMutation.error
+    rejectMutation.error ||
+    suspendMutation.error
   ) as Error | null;
 
   // Open a blank tab synchronously (survives popup blockers), then redirect it
@@ -209,16 +223,44 @@ export function AdminVendorDetailLiveContent({
                     type="button"
                     disabled={busy}
                     onClick={() => {
-                      const reason =
-                        window.prompt("Reason for rejection (optional):") ??
-                        undefined;
-                      rejectMutation.mutate(reason);
+                      const reason = window.prompt(
+                        "Reason for rejection (shown to the vendor):",
+                      );
+                      // Cancelled prompt → don't reject.
+                      if (reason === null) return;
+                      rejectMutation.mutate(reason.trim() || undefined);
                     }}
                     className="rounded-lg border border-[#E5E5E5] px-3 py-2 text-xs font-bold font-satoshi text-[#C0392B] disabled:opacity-60"
                   >
                     Reject
                   </button>
                 </>
+              ) : vendor.status === "active" ? (
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => {
+                    if (
+                      window.confirm(
+                        `Suspend ${vendor.businessName}? They'll be notified and must contact support to restore their account.`,
+                      )
+                    ) {
+                      suspendMutation.mutate("suspend");
+                    }
+                  }}
+                  className="rounded-lg border border-[#D9A400] bg-[#FFF8E6] px-3 py-2 text-xs font-bold font-satoshi text-[#9A7200] disabled:opacity-60"
+                >
+                  {suspendMutation.isPending ? "Suspending…" : "Suspend vendor"}
+                </button>
+              ) : vendor.status === "suspended" ? (
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => suspendMutation.mutate("reactivate")}
+                  className="rounded-lg bg-[#2E7D32] px-3 py-2 text-xs font-bold font-satoshi text-white disabled:opacity-60"
+                >
+                  {suspendMutation.isPending ? "Reactivating…" : "Reactivate vendor"}
+                </button>
               ) : null}
             </div>
           </div>

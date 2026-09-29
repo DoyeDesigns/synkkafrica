@@ -464,7 +464,6 @@
       "withDriver": "ड्राइवर के साथ",
       "withDriverHint": "आपकी यात्रा के लिए एक पेशेवर ड्राइवर शामिल है।",
       "noExtraCost": "कोई अतिरिक्त लागत नहीं",
-      "driverAddon": "+ ⟦राशि⟧ ड्राइवर ऐड-ऑन",
       "requestDelivery": "कार डिलीवरी का अनुरोध करें",
       "requestDeliveryHint": "अतिरिक्त शुल्क लेकर कार को अपने स्थान पर डिलीवर करवाएं।",
       "deliveryFee": "+ ⟦राशि⟧ डिलीवरी शुल्क",
@@ -1839,7 +1838,8 @@
         "live": "लाइव लिस्टिंग",
         "pending": "लंबित...",
         "paused": "रुका हुआ",
-        "draft": "मसौदा"
+        "draft": "मसौदा",
+        "rejected": "Needs changes"
       },
       "editListing": "एडिट लिस्टिंग",
       "deleteListing": "सूची हटाएँ",
@@ -2090,7 +2090,8 @@
           "live": "रहना",
           "pending": "लंबित",
           "draft": "ड्राफ्ट",
-          "paused": "रुका हुआ"
+          "paused": "रुका हुआ",
+          "rejected": "Needs changes"
         },
         "empty": "कोई भी सूची आपके फ़िल्टर से मेल नहीं खाती."
       },
@@ -2131,6 +2132,13 @@
         "sat": "बैठा",
         "previousMonth": "पिछला महीना",
         "nextMonth": "अगले महीने"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "डिलिवरी/ड्रॉप-ऑफ़",
       "deliveryDropoffHint": "आप ग्राहक को कार डिलीवर करते हैं।",
       "carPricingHeading": "किराये का मूल्य निर्धारण",
-      "price12hr": "12 घंटे का किराया (एनजीएन)",
-      "price24hr": "24 घंटे का किराया (एनजीएन)",
-      "priceMultiDay": "एकाधिक दिन (प्रति दिन, एनजीएन)",
-      "driverAddonPrice": "ड्राइवर ऐड-ऑन मूल्य (एनजीएन)",
       "selfDriveNoPrice": "सेल्फ-ड्राइव चयनित - ड्राइवर ऐड-ऑन मूल्य की आवश्यकता नहीं है।",
-      "deliveryFee": "डिलिवरी/ड्रॉप-ऑफ़ शुल्क (एनजीएन)",
       "clientPickupNoPrice": "ग्राहक पिकअप चयनित - कोई डिलीवरी शुल्क आवश्यक नहीं है।",
       "pricingLocationHint": "आप अगले चरण में पिकअप या डिलीवरी स्थान के बारे में अधिक विवरण प्रदान कर सकते हैं।",
       "accommodationPricingHeading": "मूल्य निर्धारण रहो",
@@ -2381,14 +2384,11 @@
       "actions": "कार्रवाई",
       "edit": "संपादन करना",
       "delete": "मिटाना",
-      "nightlyRate": "रात्रि दर (एनजीएन)",
-      "cleaningFee": "सफ़ाई शुल्क (एनजीएन)",
       "experiencePricingHeading": "मूल्य निर्धारण",
       "experiencePricingHint": "अपने टिकट की कीमतें निर्धारित करें.",
       "singleTicketPrice": "एकल टिकट की कीमत",
       "singleTicketPriceHint": "एक व्यक्ति के लिए कीमत",
       "groupTicketPrice": "समूह टिकट की कीमत (से) (वैकल्पिक)",
-      "groupTicketPriceHint": "समूहों के लिए प्रति व्यक्ति मूल्य",
       "minGroupSizeOptional": "न्यूनतम समूह आकार (वैकल्पिक)",
       "maxGroupSizeOptional": "अधिकतम समूह आकार (वैकल्पिक)",
       "minGroupSizePlaceholder": "जैसे 5",
@@ -2403,7 +2403,6 @@
         "description": "विवरण",
         "gpsConfirmed": "जीपीएस ट्रैकिंग डिवाइस की पुष्टि की गई"
       },
-      "pricePerPerson": "प्रति व्यक्ति मूल्य (एनजीएन)",
       "minGroupSize": "न्यूनतम समूह आकार",
       "documents": {
         "stepTitle": "दस्तावेज़ अपलोड करें",
@@ -2477,7 +2476,12 @@
         "backToListings": "मेरी सूची पर वापस जाएँ"
       },
       "categoryChooseHint": "आपके द्वारा दी जाने वाली सेवा का प्रकार चुनें. जब आप अपनी पहली सूची सहेजते हैं तो इसे एक बार सेट किया जाता है और बाद में इसे बदला नहीं जा सकता।",
-      "categoryLockedHint": "आपका विक्रेता खाता केवल ⟦श्रेणी⟧ के लिए पंजीकृत है। अपनी सेवा श्रेणी बदलने के लिए सहायता से संपर्क करें।"
+      "categoryLockedHint": "आपका विक्रेता खाता केवल ⟦श्रेणी⟧ के लिए पंजीकृत है। अपनी सेवा श्रेणी बदलने के लिए सहायता से संपर्क करें।",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

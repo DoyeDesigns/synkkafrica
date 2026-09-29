@@ -39,7 +39,6 @@ export function CarGallery({ car }: CarGalleryProps) {
       <BookingImageGallery
         images={car.images}
         alt={car.name}
-        extraPhotoCount={Math.max(0, car.images.length - 5)}
         overlay={
           <button
             type="button"

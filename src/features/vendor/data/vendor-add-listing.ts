@@ -4,6 +4,7 @@ import {
   type ExperienceWeekday,
 } from "@/features/vendor/data/experience-listing";
 import type { TranslationKey } from "@/lib/preferences/translations";
+import { LISTING_CURRENCIES, type ListingCurrency } from "@/lib/api/vendor";
 import {
   formatStructuredLocation,
   isStructuredLocationComplete,
@@ -292,6 +293,8 @@ export type AddListingFormState = {
   coverMediaId: string;
   pickupAddress: string;
   handoverMethods: CarHandoverMethod[];
+  // Currency all of this listing's prices are quoted and charged in.
+  currency: ListingCurrency;
   price12hr: string;
   price24hr: string;
   priceMultiDay: string;
@@ -353,6 +356,7 @@ export const EMPTY_ADD_LISTING_FORM: AddListingFormState = {
   coverMediaId: "",
   pickupAddress: "",
   handoverMethods: ["client_pickup"],
+  currency: "NGN",
   price12hr: "",
   price24hr: "",
   priceMultiDay: "",
@@ -381,11 +385,26 @@ export function orderMediaWithCoverFirst(
   return cover ? [cover, ...next] : items;
 }
 
+// The item that will be saved as coverImageUrl: the first uploaded image.
+export function listingMediaCoverId(items: ListingMediaItem[]): string | null {
+  return (
+    items.find((m) => m.kind === "image" && m.status === "uploaded" && m.url)
+      ?.id ?? null
+  );
+}
+
+export function toListingCurrency(value: unknown): ListingCurrency {
+  const code = typeof value === "string" ? value.toUpperCase() : "";
+  return (LISTING_CURRENCIES as readonly string[]).includes(code)
+    ? (code as ListingCurrency)
+    : "NGN";
+}
+
 // Rebuild the wizard form from a persisted listing so a draft can be reopened
 // and edited. The backend stores the whole form (minus media/document blobs)
 // as opaque `details`, so merging it back over the empty form restores every
-// text/pricing/selection field. Media previews can't be restored (blob URLs
-// aren't persisted), so they start empty and are re-added if needed.
+// text/pricing/selection field. Media is restored from its stored URLs,
+// with the persisted cover image moved back to the front.
 export function formStateFromListingDetails(
   category: ListingCategory,
   details: Record<string, unknown> | null | undefined,
@@ -408,6 +427,18 @@ export function formStateFromListingDetails(
       };
     })
     .filter((m): m is ListingMediaItem => m !== null);
+
+  // The cover is always the first uploaded image (see toCreateInput), so put
+  // the persisted cover back at the front when resuming an edit.
+  if (coverImageUrl) {
+    const coverIndex = mediaItems.findIndex(
+      (m) => m.kind === "image" && m.url === coverImageUrl,
+    );
+    if (coverIndex > 0) {
+      const [cover] = mediaItems.splice(coverIndex, 1);
+      mediaItems.unshift(cover!);
+    }
+  }
 
   const parsed = (details as Partial<AddListingFormState> | null) ?? {};
   const legacyLocation =

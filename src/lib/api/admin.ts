@@ -122,6 +122,29 @@ export async function adminVerifyVendorId(
   return apiFetch(`/admin/vendors/${id}/verify-id`, { method: "POST", token });
 }
 
+// PATCH /admin/vendors/:id/suspend — hides the vendor's account; the backend
+// notifies the vendor. Returns the updated vendor summary.
+export async function adminSuspendVendor(
+  token: string,
+  id: string,
+): Promise<AdminVendor> {
+  return apiFetch<AdminVendor>(`/admin/vendors/${id}/suspend`, {
+    method: "PATCH",
+    token,
+  });
+}
+
+// PATCH /admin/vendors/:id/reactivate — suspended → active.
+export async function adminReactivateVendor(
+  token: string,
+  id: string,
+): Promise<AdminVendor> {
+  return apiFetch<AdminVendor>(`/admin/vendors/${id}/reactivate`, {
+    method: "PATCH",
+    token,
+  });
+}
+
 // --- Listings ---
 
 export async function adminListListings(
@@ -186,6 +209,55 @@ export async function adminGetListing(
   id: string,
 ): Promise<AdminListingDetail> {
   return apiFetch<AdminListingDetail>(`/admin/vendor-listings/${id}`, { token });
+}
+
+// --- Listing compliance documents ---
+
+// Raw row from GET /admin/vendor-listing-documents (and the approve/reject
+// responses).
+export type AdminListingDocumentRow = {
+  id: string;
+  listingId: string;
+  vendorId: string;
+  type: string;
+  fileName: string;
+  fileUrl: string | null;
+  status: AdminListingDocument["status"];
+  rejectionReason: string | null;
+  reviewedAt: string | null;
+  createdAt: string;
+};
+
+export async function adminListListingDocuments(
+  token: string,
+  status?: AdminListingDocument["status"],
+): Promise<AdminListingDocumentRow[]> {
+  const qs = status ? `?status=${encodeURIComponent(status)}` : "";
+  return apiFetch<AdminListingDocumentRow[]>(
+    `/admin/vendor-listing-documents${qs}`,
+    { token },
+  );
+}
+
+export async function adminApproveListingDocument(
+  token: string,
+  id: string,
+): Promise<AdminListingDocumentRow> {
+  return apiFetch<AdminListingDocumentRow>(
+    `/admin/vendor-listing-documents/${id}/approve`,
+    { method: "PATCH", token },
+  );
+}
+
+export async function adminRejectListingDocument(
+  token: string,
+  id: string,
+  reason?: string,
+): Promise<AdminListingDocumentRow> {
+  return apiFetch<AdminListingDocumentRow>(
+    `/admin/vendor-listing-documents/${id}/reject`,
+    { method: "PATCH", token, body: { reason } },
+  );
 }
 
 // Short-lived signed URL to view a private listing compliance document.

@@ -96,6 +96,17 @@ export function useAccommodationFilters() {
     setAppliedFilters(draftFilters);
   };
 
+  // Set one filter and apply the draft right away (e.g. picking a location
+  // suggestion should filter immediately, without a separate "Apply" click).
+  const applyFilter = <K extends keyof AccommodationFilterState>(
+    key: K,
+    value: AccommodationFilterState[K],
+  ) => {
+    const next = { ...draftFilters, [key]: value };
+    setDraftFilters(next);
+    setAppliedFilters(next);
+  };
+
   const resetFilters = () => {
     setDraftFilters(DEFAULT_ACCOMMODATION_FILTERS);
     setAppliedFilters(DEFAULT_ACCOMMODATION_FILTERS);
@@ -105,7 +116,8 @@ export function useAccommodationFilters() {
     });
   };
 
-  const hasAppliedFilters = activeFilterCount > 0;
+  const hasAppliedFilters =
+    activeFilterCount > 0 || searchQuery.trim().length > 0;
 
   return {
     draftFilters,
@@ -118,6 +130,7 @@ export function useAccommodationFilters() {
     setSearchQuery,
     updateDraftFilter,
     applyFilters,
+    applyFilter,
     resetFilters,
     hasAppliedFilters,
   };

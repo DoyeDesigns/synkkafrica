@@ -7,6 +7,7 @@ import {
   ChevronRight,
   CloudUpload,
   MapPin,
+  Star,
   X,
 } from "lucide-react";
 import Link from "next/link";
@@ -19,6 +20,7 @@ import {
   type ReactNode,
 } from "react";
 import { getSession, useSession } from "next-auth/react";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { VendorAddListingStepper } from "@/features/vendor/components/vendor-add-listing-stepper";
 import { useVendorVerificationStatus } from "@/features/vendor/components/vendor-verification-context";
@@ -33,9 +35,11 @@ import {
   revokeListingDocumentUpload,
   createListingMediaItem,
   formStateFromListingDetails,
-  orderMediaWithCoverFirst,
   getListingMediaRejection,
   listingLocationFromForm,
+  listingMediaCoverId,
+  orderMediaWithCoverFirst,
+  toListingCurrency,
   LISTING_MEDIA_ACCEPT,
   LISTING_MEDIA_MAX_COUNT,
   revokeListingMediaItem,
@@ -50,6 +54,7 @@ import {
   type ListingCategory,
 } from '@/features/vendor/data/vendor-add-listing';
 import { getLockedCategoryFromListings } from '@/features/vendor/data/vendor-service-category';
+import { VENDOR_QUERY_KEYS } from '@/features/vendor/vendor-query-keys';
 import { useTranslation } from '@/hooks/use-translation';
 import type { TranslationKey } from '@/lib/preferences/translations';
 import {
@@ -62,12 +67,14 @@ import {
   uploadListingDocument,
   describeUploadError,
   type CreateVendorListingInput,
+  type VendorListingStatus,
 } from '@/lib/api/vendor';
 import { ApiError } from '@/lib/api/backend';
 import { ReviewStepPage } from './vendor-add-listing-review-step';
 import { DocumentsStepPage } from './vendor-add-listing-documents-step';
 import { ExperiencePricingStep } from './vendor-add-listing-experience-pricing';
 import { AccommodationPricingStep } from './vendor-add-listing-accommodation-pricing';
+import { ListingCurrencyField } from './vendor-listing-currency-field';
 import { ExperienceDetailsFields } from './vendor-add-listing-experience-details';
 import { AccommodationDetailsFields } from './vendor-add-listing-accommodation-details';
 import { StructuredLocationFields } from './structured-location-fields';
@@ -94,8 +101,8 @@ function toCreateInput(form: AddListingFormState): CreateVendorListingInput {
     shortDescription = form.experienceDescription;
     location = listingLocationFromForm(form);
   }
-  // Only include media that finished uploading (has a stored URL). The photo
-  // the vendor marked as main is the cover; otherwise the first image is.
+  // Only include media that finished uploading (has a stored URL). The first
+  // uploaded image becomes the cover shown on listing cards.
   const uploadedMedia = form.mediaItems.filter(
     (m) => m.status === 'uploaded' && m.url,
   );
@@ -126,6 +133,7 @@ function toCreateInput(form: AddListingFormState): CreateVendorListingInput {
     coverImageUrl,
     details,
     media,
+    currency: form.currency,
   };
 }
 
@@ -260,14 +268,6 @@ export function VendorAddListingContent({
   const verificationStatus = useVendorVerificationStatus();
   const router = useRouter();
   const { data: session } = useSession();
-  // Diagnostic: never log `session` wholesale — it carries the raw access
-  // token straight into the browser console.
-  console.log('[vendor-wizard] session', {
-    hasSession: Boolean(session),
-    hasAccessToken: Boolean(session?.accessToken),
-    role: session?.user?.role,
-    error: session?.error,
-  });
   const token = session?.accessToken;
   const [lockedCategory, setLockedCategory] = useState<ListingCategory | null>(
     null,
@@ -289,6 +289,24 @@ export function VendorAddListingContent({
   const [loadError, setLoadError] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [publishError, setPublishError] = useState<string | null>(null);
+  // Status of the listing being edited (null for a brand-new listing). Decides
+  // whether publishing (re)submits for review or just saves in place: the
+  // backend only accepts submit for draft/rejected listings.
+  const [listingStatus, setListingStatus] =
+    useState<VendorListingStatus | null>(null);
+  const [rejectionReason, setRejectionReason] = useState<string | null>(null);
+  const queryClient = useQueryClient();
+
+  // Other vendor screens (dashboard, listings, detail) read these; refresh
+  // them after any save so they don't show stale data.
+  const invalidateListingQueries = (listingId?: string | null) => {
+    void queryClient.invalidateQueries({ queryKey: VENDOR_QUERY_KEYS.listings });
+    if (listingId) {
+      void queryClient.invalidateQueries({
+        queryKey: VENDOR_QUERY_KEYS.listing(listingId),
+      });
+    }
+  };
 
   // One vendor, one service category — lock only after an admin-approved
   // listing exists (status live or paused). Draft/pending do not lock.
@@ -334,6 +352,15 @@ export function VendorAddListingContent({
             listing.coverImageUrl,
           ),
         );
+        // The listing row's currency is authoritative over the copy in details.
+        if (listing.currency) {
+          setForm((prev) => ({
+            ...prev,
+            currency: toListingCurrency(listing.currency),
+          }));
+        }
+        setListingStatus(listing.status);
+        setRejectionReason(listing.rejectionReason ?? null);
         setLockedCategory(listing.category);
         setCurrentStep('details');
       })
@@ -535,7 +562,9 @@ export function VendorAddListingContent({
           saveAsDraft: true,
         });
         setDraftId(created.id);
+        setListingStatus(created.status ?? 'draft');
       }
+      invalidateListingQueries(draftId);
       // Persisted server-side now — drop the local autosave copy so it can't
       // shadow the saved draft on the next visit.
       clearAutosavedForm(editListingId);
@@ -590,28 +619,52 @@ export function VendorAddListingContent({
     if (!token || publishing) return;
     setPublishing(true);
     setPublishError(null);
+    let savedId: string | null = draftId;
     try {
       if (draftId) {
-        // A saved draft — update it, attach docs, then submit (draft → pending).
         await updateVendorListing(token, draftId, toUpdateInput(form));
         await attachWizardDocuments(draftId);
-        await submitVendorListing(token, draftId);
+        // Only a draft or a rejected ("needs changes") listing goes (back) to
+        // review; live/paused/pending listings are saved in place — the
+        // backend 403s a submit for those.
+        if (submitsForReview) {
+          await submitVendorListing(token, draftId);
+        }
       } else {
         // A fresh listing is created directly as `pending` — just attach docs.
         const created = await createVendorListing(token, toCreateInput(form));
+        savedId = created.id;
         await attachWizardDocuments(created.id);
       }
       // Published — the local autosave copy is no longer needed.
       clearAutosavedForm(editListingId);
+      invalidateListingQueries(savedId);
       router.push(exitHref);
       router.refresh();
-    } catch {
+    } catch (err) {
       setPublishing(false);
-      setPublishError("Couldn't publish your listing. Please try again.");
+      setPublishError(
+        err instanceof ApiError && err.message
+          ? err.message
+          : submitsForReview
+            ? t('vendor.addListing.publishFailed')
+            : t('vendor.addListing.saveFailed'),
+      );
     }
   };
 
   const isLastStep = currentStep === 'review';
+  // New listings, drafts and rejected listings are submitted for review; any
+  // other existing listing is just saved.
+  const submitsForReview =
+    listingStatus === null ||
+    listingStatus === 'draft' ||
+    listingStatus === 'rejected';
+  const publishLabel = !submitsForReview
+    ? t('vendor.addListing.saveChanges')
+    : listingStatus === 'rejected'
+      ? t('vendor.addListing.resubmit')
+      : t('vendor.addListing.publish');
   const canContinue = isStepValid(currentStep, form);
   const missingDetailFields =
     currentStep === 'details' ? getDetailsStepMissingFields(form) : [];
@@ -697,6 +750,25 @@ export function VendorAddListingContent({
           </p>
         </div>
 
+        {listingStatus === 'rejected' ? (
+          <div
+            role="status"
+            className="rounded-[5px] border border-[#DD2222]/30 bg-[#DD2222]/5 px-4 py-3 text-sm font-medium font-satoshi text-[#C0392B]"
+          >
+            {rejectionReason
+              ? t('vendor.addListing.rejectedNotice', { reason: rejectionReason })
+              : t('vendor.addListing.rejectedNoticeNoReason')}
+          </div>
+        ) : listingStatus === 'pending' ? (
+          <div className="rounded-[5px] border border-[#E5E5E5] bg-[#F5F5F5] px-4 py-3 text-sm font-medium font-satoshi text-[#676565]">
+            {t('vendor.addListing.pendingEditNotice')}
+          </div>
+        ) : listingStatus === 'live' || listingStatus === 'paused' ? (
+          <div className="rounded-[5px] border border-[#E5E5E5] bg-[#F5F5F5] px-4 py-3 text-sm font-medium font-satoshi text-[#676565]">
+            {t('vendor.addListing.liveEditNotice')}
+          </div>
+        ) : null}
+
         {isDocumentsStep ? (
           <DocumentsStepPage
             form={form}
@@ -757,7 +829,7 @@ export function VendorAddListingContent({
                 </p>
               ) : null}
 
-              {draftSaved ? (
+              {!submitsForReview ? null : draftSaved ? (
                 <span className="text-sm font-semibold font-satoshi text-[#2E7D32]">
                   {t('vendor.addListing.draftSaved')}
                 </span>
@@ -792,9 +864,7 @@ export function VendorAddListingContent({
                     onClick={() => void handlePublish()}
                     className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    {publishing
-                      ? t('common.loading')
-                      : t('vendor.addListing.publish')}
+                    {publishing ? t('common.loading') : publishLabel}
                   </button>
                 </div>
               ) : (
@@ -1176,6 +1246,8 @@ function MediaStep({
     });
   };
 
+  const coverId = listingMediaCoverId(form.mediaItems);
+
   const mainImageId =
     form.mediaItems.find((item) => item.id === form.coverMediaId)?.id ??
     form.mediaItems.find(
@@ -1291,27 +1363,6 @@ function MediaStep({
                   ) : null}
                 </div>
               ) : null}
-              {item.kind === 'image' ? (
-                <button
-                  type="button"
-                  onClick={() =>
-                    onChange({
-                      coverMediaId: item.id,
-                      coverImageUrl: item.url ?? '',
-                    })
-                  }
-                  className={`absolute bottom-2 left-2 rounded-full px-2 py-0.5 text-[10px] font-bold font-satoshi shadow-sm ${
-                    isMain
-                      ? 'bg-[#135391] text-white'
-                      : 'bg-white text-[#2F2F2F] hover:bg-[#F8FBFF]'
-                  }`}
-                  aria-pressed={isMain}
-                >
-                  {isMain
-                    ? t('vendor.addListing.mainImage')
-                    : t('vendor.addListing.setMainImage')}
-                </button>
-              ) : null}
               <button
                 type="button"
                 onClick={() => handleRemove(item.id)}
@@ -1395,19 +1446,24 @@ function PricingStep({
             {t('vendor.addListing.carPricingHeading')}
           </h3>
 
+          <ListingCurrencyField
+            value={form.currency}
+            onChange={(currency) => onChange({ currency })}
+          />
+
           <div className="grid gap-4 sm:grid-cols-3">
             <PriceField
-              label={t('vendor.addListing.price12hr')}
+              label={t('vendor.addListing.price12hr', { currency: form.currency })}
               value={form.price12hr}
               onChange={(value) => onChange({ price12hr: value })}
             />
             <PriceField
-              label={t('vendor.addListing.price24hr')}
+              label={t('vendor.addListing.price24hr', { currency: form.currency })}
               value={form.price24hr}
               onChange={(value) => onChange({ price24hr: value })}
             />
             <PriceField
-              label={t('vendor.addListing.priceMultiDay')}
+              label={t('vendor.addListing.priceMultiDay', { currency: form.currency })}
               value={form.priceMultiDay}
               onChange={(value) => onChange({ priceMultiDay: value })}
             />
@@ -1415,7 +1471,7 @@ function PricingStep({
 
           {form.comesWithDriver ? (
             <PriceField
-              label={t('vendor.addListing.driverAddonPrice')}
+              label={t('vendor.addListing.driverAddonPrice', { currency: form.currency })}
               value={form.driverAddonPrice}
               onChange={(value) => onChange({ driverAddonPrice: value })}
             />
@@ -1427,7 +1483,7 @@ function PricingStep({
 
           {form.handoverMethods.includes('delivery') ? (
             <PriceField
-              label={t('vendor.addListing.deliveryFee')}
+              label={t('vendor.addListing.deliveryFee', { currency: form.currency })}
               value={form.deliveryFee}
               onChange={(value) => onChange({ deliveryFee: value })}
             />
@@ -1578,7 +1634,7 @@ function PriceField({
         min={0}
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        placeholder="NGN"
+        placeholder="0"
         className={inputClassName}
       />
     </FormField>

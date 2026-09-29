@@ -2,7 +2,6 @@
 
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
-import Image from "next/image";
 
 import { CarRentalsFilterSidebar } from "./car-rentals-filter-sidebar";
 import { CarRentalResultCard } from "./car-rental-result-card";
@@ -23,11 +22,13 @@ export function CarRentalsExplorePage() {
     draftFilters,
     draftFilterCount,
     results,
+    availableCarTypes,
     isLoading,
     searchQuery,
     setSearchQuery,
     updateDraftFilter,
     applyFilters,
+    applyFilter,
     resetFilters,
     hasAppliedFilters,
   } = useCarRentalFiltersContext();
@@ -59,10 +60,12 @@ export function CarRentalsExplorePage() {
           <div className="lg:sticky lg:top-10 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:overscroll-contain">
             <CarRentalsFilterSidebar
               filters={draftFilters}
+              carTypeOptions={availableCarTypes}
               activeFilterCount={draftFilterCount}
               showClearFilter={hasAppliedFilters}
               onFilterChange={updateDraftFilter}
               onApply={applyFilters}
+              onApplyFilter={applyFilter}
               onClearFilters={resetFilters}
             />
           </div>

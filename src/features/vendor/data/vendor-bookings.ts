@@ -407,8 +407,12 @@ export function computeVendorBookingStats(
   const monthStart = startOfDay(referenceDate);
   monthStart.setDate(1);
 
+  // Amounts in different currencies can't be summed; report the primary
+  // (first) booking currency only.
+  const earningsCurrency = bookings[0]?.currency ?? "NGN";
   const earningsThisMonth = bookings
     .filter((booking) => {
+      if (booking.currency !== earningsCurrency) return false;
       const experienceDay = startOfDay(new Date(booking.experienceDate));
       return (
         experienceDay >= monthStart &&
@@ -432,7 +436,7 @@ export function computeVendorBookingStats(
     awaitingConfirmation,
     upcomingConfirmed,
     earningsThisMonth,
-    earningsCurrency: bookings[0]?.currency ?? "NGN",
+    earningsCurrency,
     responseRate,
   };
 }

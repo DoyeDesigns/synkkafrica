@@ -37,6 +37,8 @@ type VendorListingCardProps = {
   highlighted?: boolean;
   onPauseToggle?: (listingId: string) => void;
   onDeleteRequest?: (listingId: string) => void;
+  // A pause/resume or delete for this listing is in flight.
+  busy?: boolean;
 };
 
 const STATUS_LABEL_KEYS: Record<
@@ -47,6 +49,7 @@ const STATUS_LABEL_KEYS: Record<
   pending: "vendor.dashboard.status.pending",
   paused: "vendor.dashboard.status.paused",
   draft: "vendor.dashboard.status.draft",
+  rejected: "vendor.dashboard.status.rejected",
 };
 
 const STATUS_BADGE_STYLES: Record<VendorDashboardListing["status"], string> = {
@@ -54,6 +57,7 @@ const STATUS_BADGE_STYLES: Record<VendorDashboardListing["status"], string> = {
   pending: "bg-[#D85A30]/12 text-[#D85A30]",
   paused: "bg-[#FFCE31]/25 text-[#9A7200]",
   draft: "bg-[#E5E5E5] text-[#5A5A5A]",
+  rejected: "bg-[#DD2222]/12 text-[#C0392B]",
 };
 
 export function VendorListingCard({
@@ -62,20 +66,20 @@ export function VendorListingCard({
   highlighted = false,
   onPauseToggle,
   onDeleteRequest,
+  busy = false,
 }: VendorListingCardProps) {
   const t = useTranslation();
   const isPending = listing.status === "pending";
   const isPaused = listing.status === "paused";
-  const isDraft = listing.status === "draft";
+  const isRejected = listing.status === "rejected";
   const isListingsPage = variant === "listings";
-  // Only a live/paused listing can be paused/resumed. Drafts (not submitted)
-  // and pending (awaiting review) listings can't.
-  const isPauseDisabled = isPending || isDraft;
-  // A draft reopens in the wizard to continue editing; other statuses just
-  // highlight the card on the listings page (in-place edit isn't wired yet).
-  const editHref = isDraft
-    ? `/vendor/listings/${listing.id}/edit`
-    : `/vendor/listings?listing=${listing.id}`;
+  // Only a live/paused listing can be paused/resumed. Drafts (not submitted),
+  // pending (awaiting review) and rejected listings can't.
+  const isPauseDisabled =
+    busy || (listing.status !== "live" && listing.status !== "paused");
+  // Every status reopens in the wizard: drafts/rejected are (re)submitted,
+  // live/paused/pending listings are saved in place.
+  const editHref = `/vendor/listings/${listing.id}/edit`;
 
   const pendingLabel = isListingsPage
     ? t("vendor.listings.status.pendingApproval")
@@ -97,19 +101,19 @@ export function VendorListingCard({
 
   const cardSurfaceClassName = highlighted
     ? "border-[#135391] ring-2 ring-[#135391]/20"
-    : isPending
+    : isPending || isRejected
       ? "border-[#DD2222]/45 bg-[#DD2222]/5"
       : isPaused
         ? "border-[#E6A817]/45 bg-[#FFCE31]/10"
         : "border-[#EEEEEE] bg-[#F5F5F5]";
 
-  const titleClassName = isPending
+  const titleClassName = isPending || isRejected
     ? "text-[#D75A5A]"
     : isPaused
       ? "text-[#B8860B]"
       : "text-[#004785]";
 
-  const categoryClassName = isPending
+  const categoryClassName = isPending || isRejected
     ? "text-[#D75A5A]"
     : isPaused
       ? "text-[#B8860B]"
@@ -160,6 +164,13 @@ export function VendorListingCard({
                 >
                   {t(listing.categoryKey)}
                 </p>
+                {isRejected && listing.rejectionReason ? (
+                  <p className="mt-1 line-clamp-2 text-xs font-medium font-satoshi text-[#C0392B]">
+                    {t("vendor.listings.rejectionNote", {
+                      reason: listing.rejectionReason,
+                    })}
+                  </p>
+                ) : null}
               </div>
 
               <div className="mb-1.5 flex items-center gap-0.5">
@@ -200,6 +211,7 @@ export function VendorListingCard({
               <button
                 type="button"
                 aria-label={t("vendor.dashboard.deleteListing")}
+                disabled={busy || !onDeleteRequest}
                 onClick={() => onDeleteRequest?.(listing.id)}
                 className={`${actionButtonClassName} text-[#1E1E1E] hover:bg-white/80`}
               >
@@ -212,7 +224,8 @@ export function VendorListingCard({
                     ? t("vendor.dashboard.playListing")
                     : t("vendor.dashboard.pauseListing")
                 }
-                disabled={isPauseDisabled}
+                disabled={isPauseDisabled || !onPauseToggle}
+                aria-busy={busy}
                 onClick={() => onPauseToggle?.(listing.id)}
                 className={`${actionButtonClassName} text-[#676565] hover:bg-white/80`}
               >
@@ -227,5 +240,33 @@ export function VendorListingCard({
         </div>
       </div>
     </article>
+  );
+}
+
+// Inline banner for a failed pause/resume/delete (the app has no toast system;
+// errors are shown in place, like the wizard's publish error).
+export function VendorListingActionError({
+  message,
+  onDismiss,
+}: {
+  message: string | null;
+  onDismiss: () => void;
+}) {
+  const t = useTranslation();
+  if (!message) return null;
+  return (
+    <div
+      role="alert"
+      className="flex items-start justify-between gap-3 rounded-[5px] border border-[#DD2222]/30 bg-[#DD2222]/5 px-4 py-3 text-sm font-medium font-satoshi text-[#C0392B]"
+    >
+      <span>{message}</span>
+      <button
+        type="button"
+        onClick={onDismiss}
+        className="shrink-0 font-bold hover:underline"
+      >
+        {t("vendor.listings.dismiss")}
+      </button>
+    </div>
   );
 }

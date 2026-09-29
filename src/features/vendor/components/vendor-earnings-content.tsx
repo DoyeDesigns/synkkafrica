@@ -16,7 +16,7 @@ import {
   type VendorTransaction,
 } from "@/features/vendor/data/vendor-earnings";
 import { VENDOR_PAYOUT_BANK_OPTIONS } from "@/features/vendor/data/vendor-business-profile";
-import { useFormatPrice } from "@/hooks/use-format-price";
+import { formatMoney } from "@/lib/format-money";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
@@ -27,6 +27,8 @@ import {
   requestVendorPayout,
   type VendorTransactionApi,
 } from "@/lib/api/vendor";
+import { VENDOR_QUERY_KEYS } from "@/features/vendor/vendor-query-keys";
+import { LIVE_QUERY_OPTIONS } from "@/lib/live-query-options";
 
 const BANK_LABEL_BY_ID: Record<string, TranslationKey> = Object.fromEntries(
   VENDOR_PAYOUT_BANK_OPTIONS.map((b) => [b.id, b.labelKey]),
@@ -77,7 +79,8 @@ export function VendorEarningsContent({
   vendorName,
 }: VendorEarningsContentProps) {
   const t = useTranslation();
-  const formatPrice = useFormatPrice();
+  // Vendor amounts are shown in the booking/listing currency, never FX-converted.
+  const formatPrice = formatMoney;
   const { data: session } = useSession();
   const token = session?.accessToken;
   const queryClient = useQueryClient();
@@ -87,25 +90,27 @@ export function VendorEarningsContent({
   const [durationOpen, setDurationOpen] = useState(false);
   const [payoutError, setPayoutError] = useState<string | null>(null);
   const [payoutDone, setPayoutDone] = useState(false);
+  // Which currency balance to withdraw from (null = the primary one).
+  const [payoutCurrency, setPayoutCurrency] = useState<string | null>(null);
   const durationDropdownRef = useRef<HTMLDivElement>(null);
 
   const { data: earnings } = useQuery({
-    queryKey: ["vendor-earnings"],
+    queryKey: VENDOR_QUERY_KEYS.earnings,
     queryFn: () => getVendorEarnings(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
   const { data: rawTransactions } = useQuery({
-    queryKey: ["vendor-transactions"],
+    queryKey: VENDOR_QUERY_KEYS.transactions,
     queryFn: () => listVendorTransactions(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
   const { data: profile } = useQuery({
-    queryKey: ["vendor-full-profile"],
+    queryKey: VENDOR_QUERY_KEYS.profile,
     queryFn: () => getVendorFullProfile(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
 
   // The vendor's real payout account, from their business profile. One account
@@ -127,8 +132,27 @@ export function VendorEarningsContent({
     };
   }, [profile, t]);
 
-  const currency = earnings?.currency ?? "NGN";
-  const availableBalance = earnings?.availableBalance ?? 0;
+  // One balance per currency the vendor has earned in; the top-level fields
+  // are the primary currency. Payouts are made from one currency at a time.
+  const balances = useMemo(
+    () =>
+      earnings?.balances?.length
+        ? earnings.balances
+        : [
+            {
+              currency: earnings?.currency ?? "NGN",
+              availableBalance: earnings?.availableBalance ?? 0,
+              lifetimeEarnings: earnings?.lifetimeEarnings ?? 0,
+            },
+          ],
+    [earnings],
+  );
+  const selectedBalance =
+    balances.find((b) => b.currency === payoutCurrency) ??
+    balances.find((b) => b.currency === earnings?.currency) ??
+    balances[0];
+  const currency = selectedBalance?.currency ?? "NGN";
+  const availableBalance = selectedBalance?.availableBalance ?? 0;
   const transactions = useMemo(
     () => (rawTransactions ?? []).map(toFeTxn),
     [rawTransactions],
@@ -136,14 +160,14 @@ export function VendorEarningsContent({
 
   const payoutMutation = useMutation({
     mutationFn: (amount: number) =>
-      requestVendorPayout(token as string, amount, payoutAccount?.title),
+      requestVendorPayout(token as string, amount, payoutAccount?.title, currency),
     onSuccess: () => {
       setWithdrawAmount("");
       setPayoutError(null);
       setPayoutDone(true);
       window.setTimeout(() => setPayoutDone(false), 2500);
-      void queryClient.invalidateQueries({ queryKey: ["vendor-earnings"] });
-      void queryClient.invalidateQueries({ queryKey: ["vendor-transactions"] });
+      void queryClient.invalidateQueries({ queryKey: VENDOR_QUERY_KEYS.earnings });
+      void queryClient.invalidateQueries({ queryKey: VENDOR_QUERY_KEYS.transactions });
     },
     onError: () => setPayoutError("Couldn't process that withdrawal."),
   });
@@ -227,8 +251,22 @@ export function VendorEarningsContent({
                 {t("vendor.earnings.availableBalance")}
               </p>
               <p className="mt-2 text-3xl font-bold font-inter text-[#D85A30]">
-                {formatPrice(currency, availableBalance)}
+                {formatMoney(currency, availableBalance)}
               </p>
+              {balances.length > 1 ? (
+                <ul className="mt-2 space-y-0.5">
+                  {balances
+                    .filter((b) => b.currency !== currency)
+                    .map((b) => (
+                      <li
+                        key={b.currency}
+                        className="text-sm font-semibold font-inter text-[#676565]"
+                      >
+                        {formatMoney(b.currency, b.availableBalance)}
+                      </li>
+                    ))}
+                </ul>
+              ) : null}
             </div>
 
             <div className="rounded-xl border border-[#EEEEEE] bg-white p-5 shadow-sm">
@@ -387,9 +425,24 @@ export function VendorEarningsContent({
                   {t("vendor.earnings.amountToWithdraw")}
                 </span>
                 <div className="flex overflow-hidden rounded-lg border border-[#E5E5E5] bg-white">
-                  <span className="flex items-center border-r border-[#E5E5E5] bg-[#F8F8F8] px-3 text-sm font-medium font-satoshi text-[#676565]">
-                    {currency}
-                  </span>
+                  {balances.length > 1 ? (
+                    <select
+                      value={currency}
+                      onChange={(event) => setPayoutCurrency(event.target.value)}
+                      aria-label={t("vendor.earnings.payoutCurrency")}
+                      className="border-r border-[#E5E5E5] bg-[#F8F8F8] px-2 text-sm font-medium font-satoshi text-[#676565] outline-none"
+                    >
+                      {balances.map((b) => (
+                        <option key={b.currency} value={b.currency}>
+                          {b.currency}
+                        </option>
+                      ))}
+                    </select>
+                  ) : (
+                    <span className="flex items-center border-r border-[#E5E5E5] bg-[#F8F8F8] px-3 text-sm font-medium font-satoshi text-[#676565]">
+                      {currency}
+                    </span>
+                  )}
                   <input
                     type="number"
                     min="0"
@@ -401,7 +454,7 @@ export function VendorEarningsContent({
                 </div>
                 <span className="text-xs font-medium font-satoshi text-[#676565]">
                   {t("vendor.earnings.availableHint")}{" "}
-                  {formatPrice(currency, availableBalance)}
+                  {formatMoney(currency, availableBalance)}
                 </span>
               </label>
 

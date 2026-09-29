@@ -27,7 +27,7 @@ import {
   type ListingDocumentUpload,
 } from "@/features/vendor/data/vendor-add-listing";
 import { DocumentUploadPreview, ListingMediaPreview } from "@/features/vendor/components/listing-media-preview";
-import { useFormatPrice } from "@/hooks/use-format-price";
+import { formatMoney } from "@/lib/format-money";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -192,7 +192,8 @@ function ListingDocumentsSidebar({
   onEditListing: () => void;
 }) {
   const t = useTranslation();
-  const formatPrice = useFormatPrice();
+  // Vendor prices are shown in the listing currency, never FX-converted.
+  const formatPrice = formatMoney;
   const currentStepIndex = ADD_LISTING_STEPS.indexOf("documents");
   const progressPercent = Math.round(((currentStepIndex + 1) / ADD_LISTING_STEPS.length) * 100);
 
@@ -268,7 +269,7 @@ function ListingDocumentsSidebar({
               label={t("vendor.addListing.documents.sidebar.halfDay")}
               value={
                 form.price12hr
-                  ? formatPrice("NGN", Number(form.price12hr))
+                  ? formatPrice(form.currency, Number(form.price12hr))
                   : "—"
               }
             />
@@ -276,7 +277,7 @@ function ListingDocumentsSidebar({
               label={t("vendor.addListing.documents.sidebar.fullDay")}
               value={
                 form.price24hr
-                  ? formatPrice("NGN", Number(form.price24hr))
+                  ? formatPrice(form.currency, Number(form.price24hr))
                   : "—"
               }
             />
@@ -284,7 +285,7 @@ function ListingDocumentsSidebar({
               label={t("vendor.addListing.documents.sidebar.extraHour")}
               value={
                 form.driverAddonPrice
-                  ? formatPrice("NGN", Number(form.driverAddonPrice))
+                  ? formatPrice(form.currency, Number(form.driverAddonPrice))
                   : "—"
               }
             />

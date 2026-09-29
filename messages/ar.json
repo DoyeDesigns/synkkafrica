@@ -464,7 +464,6 @@
       "withDriver": "مع السائق",
       "withDriverHint": "يتم تضمين سائق محترف لرحلتك.",
       "noExtraCost": "لا توجد تكلفة إضافية",
-      "driverAddon": "+ ⟦المبلغ⟧ الوظيفة الإضافية للسائق",
       "requestDelivery": "طلب تسليم السيارة",
       "requestDeliveryHint": "قم بتوصيل السيارة إلى موقعك مقابل رسوم إضافية.",
       "deliveryFee": "+ ⟦المبلغ⟧ رسوم التوصيل",
@@ -1839,7 +1838,8 @@
         "live": "قائمة حية",
         "pending": "قيد الانتظار...",
         "paused": "متوقف مؤقتًا",
-        "draft": "مسودة"
+        "draft": "مسودة",
+        "rejected": "Needs changes"
       },
       "editListing": "تحرير القائمة",
       "deleteListing": "حذف القائمة",
@@ -2090,7 +2090,8 @@
           "live": "يعيش",
           "pending": "قيد الانتظار",
           "draft": "المسودات",
-          "paused": "متوقف مؤقتًا"
+          "paused": "متوقف مؤقتًا",
+          "rejected": "Needs changes"
         },
         "empty": "لا توجد قوائم تطابق عوامل التصفية الخاصة بك."
       },
@@ -2131,6 +2132,13 @@
         "sat": "قعد",
         "previousMonth": "الشهر السابق",
         "nextMonth": "الشهر المقبل"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "التسليم / الانزال",
       "deliveryDropoffHint": "تقوم بتسليم السيارة للعميل.",
       "carPricingHeading": "تسعير الإيجار",
-      "price12hr": "الإيجار لمدة 12 ساعة (NGN)",
-      "price24hr": "تأجير على مدار 24 ساعة (NGN)",
-      "priceMultiDay": "عدة أيام (في اليوم، NGN)",
-      "driverAddonPrice": "سعر إضافة برنامج التشغيل (NGN)",
       "selfDriveNoPrice": "تم تحديد القيادة الذاتية - لا يلزم وجود سعر إضافي للسائق.",
-      "deliveryFee": "رسوم التسليم/التوصيل (NGN)",
       "clientPickupNoPrice": "تم اختيار خدمة استلام العميل - لا توجد رسوم توصيل مطلوبة.",
       "pricingLocationHint": "يمكنك تقديم المزيد من التفاصيل حول موقع الاستلام أو التسليم في الخطوة التالية.",
       "accommodationPricingHeading": "تسعير البقاء",
@@ -2381,14 +2384,11 @@
       "actions": "الإجراءات",
       "edit": "يحرر",
       "delete": "يمسح",
-      "nightlyRate": "سعر الليلة (NGN)",
-      "cleaningFee": "رسوم التنظيف (NGN)",
       "experiencePricingHeading": "التسعير",
       "experiencePricingHint": "تحديد أسعار التذاكر الخاصة بك.",
       "singleTicketPrice": "سعر التذكرة الواحدة",
       "singleTicketPriceHint": "السعر لشخص واحد",
       "groupTicketPrice": "سعر تذكرة المجموعة (من) (اختياري)",
-      "groupTicketPriceHint": "السعر للشخص الواحد للمجموعات",
       "minGroupSizeOptional": "الحد الأدنى لحجم المجموعة (اختياري)",
       "maxGroupSizeOptional": "الحد الأقصى لحجم المجموعة (اختياري)",
       "minGroupSizePlaceholder": "على سبيل المثال 5",
@@ -2403,7 +2403,6 @@
         "description": "وصف",
         "gpsConfirmed": "تم تأكيد جهاز تتبع GPS"
       },
-      "pricePerPerson": "السعر للشخص الواحد (NGN)",
       "minGroupSize": "الحد الأدنى لحجم المجموعة",
       "documents": {
         "stepTitle": "تحميل الوثيقة",
@@ -2477,7 +2476,12 @@
         "backToListings": "العودة إلى القوائم الخاصة بي"
       },
       "categoryChooseHint": "اختر نوع الخدمة التي تقدمها. يتم تعيين هذا مرة واحدة عند حفظ قائمتك الأولى ولا يمكن تغييره لاحقًا.",
-      "categoryLockedHint": "تم تسجيل حساب البائع الخاص بك في {category} فقط. اتصل بالدعم لتغيير فئة الخدمة الخاصة بك."
+      "categoryLockedHint": "تم تسجيل حساب البائع الخاص بك في {category} فقط. اتصل بالدعم لتغيير فئة الخدمة الخاصة بك.",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

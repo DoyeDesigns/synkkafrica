@@ -27,6 +27,13 @@ export type FlightOffer = {
   holdAvailable: boolean;
   paymentRequiredBy: string | null;
   priceGuaranteeExpiresAt: string | null;
+  // Duffel's `passenger_identity_documents_required`: when true every
+  // traveller must send passport number, expiry and issuing country or
+  // POST /bookings 400s. Optional — older backends don't send it, in which
+  // case the UI collects passports defensively.
+  identityDocumentsRequired?: boolean;
+  // Duffel's supported document types for this offer, e.g. ["passport"].
+  supportedIdentityDocumentTypes?: string[];
 };
 
 export type FlightSearchResponse = {
@@ -50,7 +57,23 @@ export type FlightSearchInput = {
   take?: number;
 };
 
-export type FlightPriceResponse = { offer: FlightOffer; expiresAt?: string };
+// What the customer is actually charged for an offer — fare plus the
+// backend's own markup, computed by the same engine booking creation uses.
+// Amounts are major-unit strings (e.g. "453.60").
+export type FlightChargeQuote = {
+  fareAmount: string;
+  serviceFeeAmount: string;
+  totalAmount: string;
+  currency: string;
+  passengerCount: number;
+};
+
+export type FlightPriceResponse = {
+  offer: FlightOffer;
+  expiresAt?: string;
+  // Absent when the backend's markup lookup failed (booking re-computes it).
+  charge?: FlightChargeQuote;
+};
 
 // Re-prices / fetches a single offer by id (POST /flights/price). Used to show
 // a live summary on the booking page. 404 if the offer expired.

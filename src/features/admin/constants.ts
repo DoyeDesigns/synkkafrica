@@ -8,6 +8,7 @@ export type AdminNavItem = {
     | "experiences"
     | "cars"
     | "accommodations"
+    | "packages"
     | "vendors"
     | "bookings"
     | "payouts"
@@ -31,6 +32,7 @@ export const ADMIN_NAV: AdminNavItem[] = [
   { id: "experiences", href: "/admin/experiences", icon: "experiences" },
   { id: "cars", href: "/admin/cars", icon: "cars" },
   { id: "accommodations", href: "/admin/accommodations", icon: "accommodations" },
+  { id: "packages", href: "/admin/packages", icon: "packages" },
   { id: "vendors", href: "/admin/vendors", icon: "vendors" },
   { id: "bookings", href: "/admin/bookings", icon: "bookings" },
   { id: "payouts", href: "/admin/payouts", icon: "payouts" },

@@ -8,9 +8,12 @@ export type TravelerInput = {
   dateOfBirth: string; // YYYY-MM-DD
   gender: "M" | "F";
   nationality: string; // ISO 3166-1 alpha-2
-  passportNumber: string;
-  passportExpiry: string; // YYYY-MM-DD
-  passportIssuingCountry: string; // ISO 3166-1 alpha-2
+  // Passport fields are optional in the DTO; the backend requires all three
+  // only when the offer has `identityDocumentsRequired`. Omit (never send
+  // "") when not collected — an empty string fails the DTO's length check.
+  passportNumber?: string; // [A-Z0-9]{5,20}
+  passportExpiry?: string; // YYYY-MM-DD
+  passportIssuingCountry?: string; // ISO 3166-1 alpha-2
   frequentFlyerProgram?: string;
   frequentFlyerNumber?: string;
 };
@@ -28,6 +31,7 @@ export type CreateBookingInput = {
   offerId: string;
   travelers: BookingTravelerEntry[];
   contactEmail: string;
+  // Required by the backend for flights (Duffel needs one per passenger).
   contactPhone?: string;
   paymentProvider?: "PAYSTACK" | "FLUTTERWAVE" | "STRIPE";
   acknowledgedTotalAmount?: string;

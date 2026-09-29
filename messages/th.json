@@ -464,7 +464,6 @@
       "withDriver": "พร้อมคนขับ",
       "withDriverHint": "รวมคนขับมืออาชีพสำหรับการเดินทางของคุณ",
       "noExtraCost": "ไม่มีค่าใช้จ่ายเพิ่มเติม",
-      "driverAddon": "+ {amount} โปรแกรมเสริมไดรเวอร์",
       "requestDelivery": "ขอส่งมอบรถ",
       "requestDeliveryHint": "ให้รถส่งถึงสถานที่ของคุณโดยมีค่าธรรมเนียมเพิ่มเติม",
       "deliveryFee": "+ ⟦จำนวน⟧ ค่าจัดส่ง",
@@ -1839,7 +1838,8 @@
         "live": "Live Listing",
         "pending": "Pending...",
         "paused": "Paused",
-        "draft": "Draft"
+        "draft": "Draft",
+        "rejected": "Needs changes"
       },
       "editListing": "Edit listing",
       "deleteListing": "Delete listing",
@@ -2090,7 +2090,8 @@
           "live": "Live",
           "pending": "Pending",
           "draft": "Drafts",
-          "paused": "Paused"
+          "paused": "Paused",
+          "rejected": "Needs changes"
         },
         "empty": "No listings match your filters."
       },
@@ -2131,6 +2132,13 @@
         "sat": "Sat",
         "previousMonth": "Previous month",
         "nextMonth": "Next month"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "Delivery / Drop-off",
       "deliveryDropoffHint": "You deliver the car to the customer.",
       "carPricingHeading": "Rental pricing",
-      "price12hr": "12-hour rental (NGN)",
-      "price24hr": "24-hour rental (NGN)",
-      "priceMultiDay": "Multiple days (per day, NGN)",
-      "driverAddonPrice": "Driver add-on price (NGN)",
       "selfDriveNoPrice": "Self-drive selected — no driver add-on price required.",
-      "deliveryFee": "Delivery / drop-off fee (NGN)",
       "clientPickupNoPrice": "Client pickup selected — no delivery fee required.",
       "pricingLocationHint": "You can provide more details about the pickup or delivery location in the next step.",
       "accommodationPricingHeading": "Stay pricing",
@@ -2381,14 +2384,11 @@
       "actions": "Actions",
       "edit": "Edit",
       "delete": "Delete",
-      "nightlyRate": "Nightly rate (NGN)",
-      "cleaningFee": "Cleaning fee (NGN)",
       "experiencePricingHeading": "Pricing",
       "experiencePricingHint": "Set your ticket prices.",
       "singleTicketPrice": "Single Ticket Price",
       "singleTicketPriceHint": "Price for one person",
       "groupTicketPrice": "Group Ticket Price (from) (Optional)",
-      "groupTicketPriceHint": "Price per person for groups",
       "minGroupSizeOptional": "Minimum Group Size (Optional)",
       "maxGroupSizeOptional": "Maximum Group Size (Optional)",
       "minGroupSizePlaceholder": "e.g. 5",
@@ -2403,7 +2403,6 @@
         "description": "Description",
         "gpsConfirmed": "GPS tracking device confirmed"
       },
-      "pricePerPerson": "Price per person (NGN)",
       "minGroupSize": "Minimum group size",
       "documents": {
         "stepTitle": "Document upload",
@@ -2477,7 +2476,12 @@
         "backToListings": "Back to my listings"
       },
       "categoryChooseHint": "Choose the type of service you offer. This is set once when you save your first listing and cannot be changed later.",
-      "categoryLockedHint": "Your vendor account is registered for {category} only. Contact support to change your service category."
+      "categoryLockedHint": "Your vendor account is registered for {category} only. Contact support to change your service category.",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

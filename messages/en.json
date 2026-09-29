@@ -39,6 +39,7 @@
     "previousPhoto": "Previous photo",
     "nextPhoto": "Next photo",
     "photoOfTotal": "{current} of {total}",
+    "showAllPhotos": "Show all {count} photos",
     "secured": "Secured"
   },
   "hero": {
@@ -58,6 +59,7 @@
       "checkIn": "Check In Date",
       "checkAvailability": "Check Availability",
       "propertyType": "Property type",
+      "anyPropertyType": "Any property",
       "oneRoom": "1 Room",
       "oneGuest": "1 Guest",
       "roomsCount": "{count} Rooms",
@@ -126,7 +128,11 @@
       "detectingLocation": "Detecting your location...",
       "searchAddress": "Search address",
       "destinationCar": "{count} car",
-      "destinationCars": "{count} cars"
+      "destinationCars": "{count} cars",
+      "anyService": "Any service",
+      "suggestAvailable": "Cars available in",
+      "suggestAirports": "Airports",
+      "suggestAddresses": "Addresses"
     },
     "tours": {
       "searchPlaceholder": "Search Locations, attractions & experiences",
@@ -460,7 +466,8 @@
       "day": "day",
       "days": "days",
       "total": "Total",
-      "guests": "guests"
+      "guests": "guests",
+      "serviceFee": "SynkAfrica service fee ({rate}%)"
     },
     "table": {
       "selectRoom": "Select a room",
@@ -496,7 +503,7 @@
       "withDriver": "With driver",
       "withDriverHint": "A professional driver is included for your trip.",
       "noExtraCost": "No additional cost",
-      "driverAddon": "+ {amount} driver add-on",
+      "driverAddon": "+ {amount}/day driver add-on",
       "requestDelivery": "Request car delivery",
       "requestDeliveryHint": "Have the car delivered to your location for an additional fee.",
       "deliveryFee": "+ {amount} delivery fee",
@@ -556,7 +563,36 @@
       "googlePay": "Google Pay",
       "paypal": "PayPal",
       "paystack": "Paystack",
-      "redirecting": "Redirecting…"
+      "redirecting": "Redirecting…",
+      "subtotal": "Subtotal",
+      "loadingMethods": "Loading payment options…",
+      "noMethodsForCurrency": "Online payment isn't available for {currency} bookings yet. Please contact support."
+    },
+    "flight": {
+      "travellerN": "Traveller {n}",
+      "selectDate": "Select date",
+      "selectCountry": "Select country",
+      "loadingCountries": "Loading countries…",
+      "passportTitle": "Passport details",
+      "passportSubtitle": "This flight requires passport details for every traveller. Enter them exactly as they appear on the passport.",
+      "passportNumber": "Passport number",
+      "passportExpiry": "Passport expiry date",
+      "passportIssuingCountry": "Issuing country",
+      "fare": "Fare",
+      "serviceFee": "Service fee",
+      "fareNote": "Final total is confirmed before payment.",
+      "completeDetailsHint": "Complete the traveller and contact details to continue to payment.",
+      "errors": {
+        "required": "This field is required.",
+        "nameInvalid": "Use letters only, as printed on the passport.",
+        "countryRequired": "Select a country.",
+        "dobInvalid": "Enter a valid date of birth.",
+        "adultAge": "Travellers must be 18 or older.",
+        "passportNumberInvalid": "Passport number must be 5–20 letters or digits.",
+        "passportExpired": "Passport expiry must be a future date.",
+        "emailInvalid": "Enter a valid email address.",
+        "phoneRequired": "Enter a mobile number — the airline needs it to contact you."
+      }
     },
     "confirmation": {
       "imageAlt": "Confirmation success",
@@ -795,6 +831,7 @@
       "150kPlus": "150k and above"
     },
     "propertyType": {
+      "any": "Any property type",
       "hotels": "Hotels",
       "apartments": "Apartments",
       "resorts": "Resorts",
@@ -822,16 +859,19 @@
       "tenPercent": "10% off Discounts"
     },
     "carType": {
+      "any": "Any car type",
       "suv": "SUV",
       "sedan": "Sedan",
       "hatchback": "Hatchback",
       "pickup": "Pickup"
     },
     "serviceType": {
+      "any": "Any service type",
       "selfDrive": "Self drive",
       "chauffeur": "Chauffeur"
     },
     "transmission": {
+      "any": "Any transmission",
       "automatic": "Automatic",
       "manual": "Manual"
     },
@@ -940,7 +980,8 @@
       "verifications": "Verifications",
       "support": "Support tickets",
       "team": "Team",
-      "audit": "Audit log"
+      "audit": "Audit log",
+      "packages": "Packages"
     },
     "common": {
       "all": "All",
@@ -1898,7 +1939,8 @@
         "live": "Live Listing",
         "pending": "Pending...",
         "paused": "Paused",
-        "draft": "Draft"
+        "draft": "Draft",
+        "rejected": "Needs changes"
       },
       "editListing": "Edit listing",
       "deleteListing": "Delete listing",
@@ -2127,7 +2169,8 @@
         "type": "Type",
         "amount": "Amount",
         "status": "Status"
-      }
+      },
+      "payoutCurrency": "Payout currency"
     },
     "listings": {
       "detail": {
@@ -2138,7 +2181,8 @@
         "status": "Status",
         "category": "Category",
         "rating": "Rating",
-        "notFound": "Listing not found."
+        "notFound": "Listing not found.",
+        "retry": "Try again"
       },
       "bookingAvailability": "Booking availability",
       "filter": {
@@ -2149,7 +2193,8 @@
           "live": "Live",
           "pending": "Pending",
           "draft": "Drafts",
-          "paused": "Paused"
+          "paused": "Paused",
+          "rejected": "Needs changes"
         },
         "empty": "No listings match your filters."
       },
@@ -2178,7 +2223,12 @@
         "leadTime": "Lead time",
         "leadTimeHint": "Minimum notice required before a guest can book.",
         "leadTimeUnitHours": "Hours",
-        "leadTimeUnitDays": "Days"
+        "leadTimeUnitDays": "Days",
+        "save": "Save availability",
+        "saved": "Availability saved",
+        "saveFailed": "Couldn't save availability. Please try again.",
+        "noListings": "Add a listing to manage its availability.",
+        "loadFailed": "Couldn't load this listing's availability."
       },
       "calendar": {
         "sun": "Sun",
@@ -2190,6 +2240,13 @@
         "sat": "Sat",
         "previousMonth": "Previous month",
         "nextMonth": "Next month"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2415,12 +2472,14 @@
       "deliveryDropoff": "Delivery / Drop-off",
       "deliveryDropoffHint": "You deliver the car to the customer.",
       "carPricingHeading": "Rental pricing",
-      "price12hr": "12-hour rental (NGN)",
-      "price24hr": "24-hour rental (NGN)",
-      "priceMultiDay": "Multiple days (per day, NGN)",
-      "driverAddonPrice": "Driver add-on price (NGN)",
+      "currency": "Listing currency",
+      "currencyHint": "All prices for this listing are in this currency and guests are charged in it. NGN is paid via Paystack; USD, EUR and GBP via Stripe.",
+      "price12hr": "12-hour rental ({currency})",
+      "price24hr": "24-hour rental ({currency})",
+      "priceMultiDay": "Multiple days (per day, {currency})",
+      "driverAddonPrice": "Driver add-on price (per day, {currency})",
       "selfDriveNoPrice": "Self-drive selected — no driver add-on price required.",
-      "deliveryFee": "Delivery / drop-off fee (NGN)",
+      "deliveryFee": "Delivery / drop-off fee ({currency})",
       "clientPickupNoPrice": "Client pickup selected — no delivery fee required.",
       "pricingLocationHint": "You can provide more details about the pickup or delivery location in the next step.",
       "accommodationPricingHeading": "Stay pricing",
@@ -2442,14 +2501,14 @@
       "actions": "Actions",
       "edit": "Edit",
       "delete": "Delete",
-      "nightlyRate": "Nightly rate (NGN)",
-      "cleaningFee": "Cleaning fee (NGN)",
+      "nightlyRate": "Nightly rate ({currency})",
+      "cleaningFee": "Cleaning fee ({currency})",
       "experiencePricingHeading": "Pricing",
       "experiencePricingHint": "Set your ticket prices.",
       "singleTicketPrice": "Single Ticket Price",
       "singleTicketPriceHint": "Price for one person",
       "groupTicketPrice": "Group Ticket Price (from) (Optional)",
-      "groupTicketPriceHint": "Price per person for groups",
+      "groupTicketPriceHint": "One flat price for the whole group",
       "minGroupSizeOptional": "Minimum Group Size (Optional)",
       "maxGroupSizeOptional": "Maximum Group Size (Optional)",
       "minGroupSizePlaceholder": "e.g. 5",
@@ -2464,7 +2523,7 @@
         "description": "Description",
         "gpsConfirmed": "GPS tracking device confirmed"
       },
-      "pricePerPerson": "Price per person (NGN)",
+      "pricePerPerson": "Price per person ({currency})",
       "minGroupSize": "Minimum group size",
       "documents": {
         "stepTitle": "Document upload",
@@ -2538,7 +2597,17 @@
         "backToListings": "Back to my listings"
       },
       "categoryChooseHint": "Choose the type of service you offer. This is set once when you save your first listing and cannot be changed later.",
-      "categoryLockedHint": "Your vendor account is registered for {category} only. Contact support to change your service category."
+      "categoryLockedHint": "Your vendor account is registered for {category} only. Contact support to change your service category.",
+      "mainImage": "Main image",
+      "setAsMainImage": "Set as main",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again.",
+      "publishFailed": "Couldn't publish your listing. Please try again.",
+      "pendingEditNotice": "This listing is awaiting review. Your changes are saved to it without restarting the review.",
+      "liveEditNotice": "This listing is published. Saving updates it in place."
     }
   }
 }

@@ -3,7 +3,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Loader2, Plane } from "lucide-react";
 
-import { calculateSyncAfricaFeeDecimal } from "@/features/travel/booking/sync-africa-fee";
 import {
   BookingPaymentMethods,
   type CheckoutMethodId,
@@ -90,12 +89,15 @@ export function FlightBookingSummary({
     retry: 0,
   });
 
-  const currency = data?.offer.currency ?? "USD";
-  const fare = data ? Number(data.offer.totalPrice) : Number.NaN;
-  const syncAfricaFee = Number.isFinite(fare)
-    ? calculateSyncAfricaFeeDecimal(fare)
-    : 0;
-  const checkoutTotal = Number.isFinite(fare) ? fare + syncAfricaFee : Number.NaN;
+  // Show exactly what the backend's price endpoint says will be charged: the
+  // fare plus the backend's own flight markup (`charge`). There is no
+  // SynkAfrica 6% on flights on top of that. Without a quote (older backend
+  // or markup lookup failed) fall back to the raw fare, flagged as provisional.
+  const charge = data?.charge;
+  const currency = charge?.currency ?? data?.offer.currency ?? "";
+  const fareAmount = charge?.fareAmount ?? data?.offer.totalPrice;
+  const serviceFee = charge ? Number(charge.serviceFeeAmount) : 0;
+  const totalAmount = charge?.totalAmount ?? data?.offer.totalPrice;
 
   return (
     <aside className="rounded-xl bg-white p-5">
@@ -130,27 +132,24 @@ export function FlightBookingSummary({
         <div className="space-y-2 text-sm font-satoshi">
           <div className="flex items-start justify-between gap-3">
             <span className="text-foreground/80">
-              {adults} traveller{adults > 1 ? "s" : ""} ×{" "}
-              <span className="font-bold text-foreground">
-                {data ? money(data.offer.totalPrice, currency) : "—"}
-              </span>
+              {t("booking.flight.fare")} · {adults} traveller{adults > 1 ? "s" : ""}
             </span>
             <span className="shrink-0 font-medium text-foreground">
-              {data ? money(data.offer.totalPrice, currency) : "—"}
+              {fareAmount ? money(fareAmount, currency) : "—"}
             </span>
           </div>
-          <div className="flex items-center justify-between gap-3">
-            <span className="text-foreground/80">{t("booking.summary.taxesAndFees")}</span>
-            <span className="font-medium text-foreground">
-              {Number.isFinite(fare) ? money(String(syncAfricaFee), currency) : "—"}
-            </span>
-          </div>
+          {serviceFee > 0 && charge ? (
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-foreground/80">{t("booking.flight.serviceFee")}</span>
+              <span className="font-medium text-foreground">
+                {money(charge.serviceFeeAmount, currency)}
+              </span>
+            </div>
+          ) : null}
           <div className="flex items-center justify-between gap-3 border-t border-[#F0D4C4] pt-2">
             <span className="font-semibold text-foreground">{t("booking.summary.total")}</span>
             <span className="font-bold text-foreground">
-              {Number.isFinite(checkoutTotal)
-                ? money(String(checkoutTotal), currency)
-                : "—"}
+              {totalAmount ? money(totalAmount, currency) : "—"}
             </span>
           </div>
         </div>
@@ -159,6 +158,7 @@ export function FlightBookingSummary({
       {onPay ? (
         <div className="mt-5">
           <BookingPaymentMethods
+            currency={currency || undefined}
             paying={paying}
             disabled={disabled}
             onPay={onPay}
@@ -167,7 +167,7 @@ export function FlightBookingSummary({
       ) : null}
 
       <p className="mt-3 text-[11px] font-satoshi text-foreground/50">
-        Final total incl. taxes &amp; fees is confirmed at payment.
+        {t("booking.flight.fareNote")}
       </p>
     </aside>
   );

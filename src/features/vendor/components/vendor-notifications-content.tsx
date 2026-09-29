@@ -25,6 +25,8 @@ import {
   markVendorNotificationRead,
   type VendorNotificationApi,
 } from "@/lib/api/vendor";
+import { VENDOR_QUERY_KEYS } from "@/features/vendor/vendor-query-keys";
+import { POLLING_QUERY_OPTIONS } from "@/lib/live-query-options";
 
 // A notification as the UI renders it (plain title/message from the backend).
 type DisplayNotification = {
@@ -122,15 +124,15 @@ export function VendorNotificationsContent({
     useState<VendorNotificationFilter>("all");
 
   const { data: raw } = useQuery({
-    queryKey: ["vendor-notifications"],
+    queryKey: VENDOR_QUERY_KEYS.notifications,
     queryFn: () => listVendorNotifications(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...POLLING_QUERY_OPTIONS,
   });
   const notifications = useMemo(() => (raw ?? []).map(toDisplay), [raw]);
 
   const invalidate = () =>
-    queryClient.invalidateQueries({ queryKey: ["vendor-notifications"] });
+    queryClient.invalidateQueries({ queryKey: VENDOR_QUERY_KEYS.notifications });
   const markReadMutation = useMutation({
     mutationFn: (id: string) => markVendorNotificationRead(token as string, id),
     onSuccess: invalidate,

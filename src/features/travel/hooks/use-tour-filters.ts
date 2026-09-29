@@ -90,6 +90,17 @@ export function useTourFilters() {
     setAppliedFilters(draftFilters);
   };
 
+  // Set one filter and apply the draft right away (e.g. picking a location
+  // suggestion should filter immediately, without a separate "Apply" click).
+  const applyFilter = <K extends keyof TourFilterState>(
+    key: K,
+    value: TourFilterState[K],
+  ) => {
+    const next = { ...draftFilters, [key]: value };
+    setDraftFilters(next);
+    setAppliedFilters(next);
+  };
+
   const resetFilters = () => {
     setDraftFilters(DEFAULT_TOUR_FILTERS);
     setAppliedFilters(DEFAULT_TOUR_FILTERS);
@@ -111,6 +122,7 @@ export function useTourFilters() {
     setSearchQuery,
     updateDraftFilter,
     applyFilters,
+    applyFilter,
     resetFilters,
     hasAppliedFilters,
   };

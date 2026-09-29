@@ -105,6 +105,8 @@ export type HeroRangeCalendarProps = {
   disablePast?: boolean;
   blockedDates?: Record<string, "available" | "blocked">;
   showCaptionDropdown?: boolean;
+  /** "YYYY-MM-DD" month to open on when nothing is selected (default: today). */
+  initialMonth?: string | null;
 };
 
 type MonthGridProps = {
@@ -300,12 +302,14 @@ export function HeroRangeCalendar({
   disablePast = true,
   blockedDates,
   showCaptionDropdown = false,
+  initialMonth,
 }: HeroRangeCalendarProps) {
   const t = useTranslation();
   const todayKey = toDateKey(new Date());
   const years = useMemo(() => yearRange(minDate, maxDate), [minDate, maxDate]);
   const [viewDate, setViewDate] = useState(() => {
-    const initial = fromDate ? new Date(`${fromDate}T12:00:00`) : new Date();
+    const start = fromDate || initialMonth;
+    const initial = start ? new Date(`${start}T12:00:00`) : new Date();
     return new Date(initial.getFullYear(), initial.getMonth(), 1);
   });
 

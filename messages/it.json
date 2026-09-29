@@ -464,7 +464,6 @@
       "withDriver": "Con autista",
       "withDriverHint": "Un autista professionista è incluso per il tuo viaggio.",
       "noExtraCost": "Nessun costo aggiuntivo",
-      "driverAddon": "+ {importo} componente aggiuntivo del driver",
       "requestDelivery": "Richiedi la consegna dell'auto",
       "requestDeliveryHint": "Fatti consegnare l'auto presso la tua sede pagando un costo aggiuntivo.",
       "deliveryFee": "+ {importo} spese di spedizione",
@@ -1839,7 +1838,8 @@
         "live": "Elenco in tempo reale",
         "pending": "In attesa di...",
         "paused": "In pausa",
-        "draft": "Bozza"
+        "draft": "Bozza",
+        "rejected": "Needs changes"
       },
       "editListing": "Modifica elenco",
       "deleteListing": "Elimina l'elenco",
@@ -2090,7 +2090,8 @@
           "live": "Vivere",
           "pending": "In attesa di",
           "draft": "Bozze",
-          "paused": "In pausa"
+          "paused": "In pausa",
+          "rejected": "Needs changes"
         },
         "empty": "Nessun annuncio corrisponde ai tuoi filtri."
       },
@@ -2131,6 +2132,13 @@
         "sat": "Sab",
         "previousMonth": "Mese precedente",
         "nextMonth": "Il mese prossimo"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "Consegna/Riconsegna",
       "deliveryDropoffHint": "Consegni l'auto al cliente.",
       "carPricingHeading": "Tariffe di noleggio",
-      "price12hr": "Noleggio di 12 ore (NGN)",
-      "price24hr": "Noleggio 24 ore su 24 (NGN)",
-      "priceMultiDay": "Più giorni (al giorno, NGN)",
-      "driverAddonPrice": "Prezzo del modulo aggiuntivo per il driver (NGN)",
       "selfDriveNoPrice": "Opzione \"senza autista\" selezionata — non è richiesto alcun supplemento per l'autista.",
-      "deliveryFee": "Costo di consegna / ritiro (NGN)",
       "clientPickupNoPrice": "Selezionata l'opzione \"Ritiro presso il cliente\" — nessuna spesa di spedizione.",
       "pricingLocationHint": "Nel passaggio successivo potrai fornire ulteriori dettagli sul luogo di ritiro o di consegna.",
       "accommodationPricingHeading": "Tariffe per il soggiorno",
@@ -2381,14 +2384,11 @@
       "actions": "Azioni",
       "edit": "Modificare",
       "delete": "Eliminare",
-      "nightlyRate": "Tariffa notturna (NGN)",
-      "cleaningFee": "Spese di pulizia (NGN)",
       "experiencePricingHeading": "Prezzi",
       "experiencePricingHint": "Imposta i prezzi dei tuoi biglietti.",
       "singleTicketPrice": "Prezzo del biglietto unico",
       "singleTicketPriceHint": "Prezzo per una persona",
       "groupTicketPrice": "Prezzo del biglietto di gruppo (da) (facoltativo)",
-      "groupTicketPriceHint": "Prezzo a persona per gruppi",
       "minGroupSizeOptional": "Dimensione minima del gruppo (facoltativo)",
       "maxGroupSizeOptional": "Dimensione massima del gruppo (facoltativo)",
       "minGroupSizePlaceholder": "per esempio. 5",
@@ -2403,7 +2403,6 @@
         "description": "Descrizione",
         "gpsConfirmed": "Dispositivo di localizzazione GPS confermato"
       },
-      "pricePerPerson": "Prezzo per persona (NGN)",
       "minGroupSize": "Dimensione minima del gruppo",
       "documents": {
         "stepTitle": "Caricamento del documento",
@@ -2477,7 +2476,12 @@
         "backToListings": "Torna alle mie inserzioni"
       },
       "categoryChooseHint": "Scegli il tipo di servizio che offri. Questo viene impostato una volta quando salvi il tuo primo annuncio e non può essere modificato in seguito.",
-      "categoryLockedHint": "Il tuo account fornitore è registrato solo per {categoria}. Contatta l'assistenza per modificare la categoria del servizio."
+      "categoryLockedHint": "Il tuo account fornitore è registrato solo per {categoria}. Contatta l'assistenza per modificare la categoria del servizio.",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

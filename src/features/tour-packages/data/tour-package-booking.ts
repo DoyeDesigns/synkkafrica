@@ -201,8 +201,9 @@ function buildFromPackage(pkg: (typeof TOUR_PACKAGES)[number]): TourPackageDetai
     days: pkg.days,
     startDate: pkg.startDate,
     endDate: pkg.endDate,
-    images: [pkg.image, pkg.image, pkg.image, pkg.image],
-    extraPhotoCount: 4,
+    // Packages carry a single image; don't pad the gallery with repeats.
+    images: [pkg.image],
+    extraPhotoCount: 0,
     minGuests: 1,
     maxGuests: 2,
     moduleCount: deal?.inclusions.length ?? 3,

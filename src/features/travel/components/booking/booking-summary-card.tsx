@@ -3,6 +3,7 @@
 import Image from "next/image";
 
 import { calculateBookingTotal } from "@/features/travel/booking/calculate-booking-total";
+import { feeRatePercent } from "@/features/travel/booking/sync-africa-fee";
 import { useBookingContent } from "@/hooks/use-booking-content";
 import { useFormatPrice } from "@/hooks/use-format-price";
 import { useTranslation } from "@/hooks/use-translation";
@@ -15,6 +16,7 @@ type BookingSummaryCardProps = {
   selectedRoomId: string;
   nights: number;
   roomCount: number;
+  // Accepted for callers' convenience; stays are priced per room, not per guest.
   guestCount?: number;
   onSelectRoom: (roomId: string) => void;
   onBookNow: () => void;
@@ -28,7 +30,6 @@ export function BookingSummaryCard({
   selectedRoomId,
   nights,
   roomCount,
-  guestCount = 2,
   onSelectRoom,
   onBookNow,
   bookDisabled = false,
@@ -46,12 +47,10 @@ export function BookingSummaryCard({
     pricePerNight: selectedRoom.pricePerNight,
     nights,
     roomCount,
-    guestCount,
-    includedGuests: selectedRoom.guestCount,
-    extraGuestFeePerNight: Math.round(selectedRoom.pricePerNight * 0.15),
-    taxesAndFees: property.taxesAndFees,
+    feeRate: property.feeRate,
     currency: property.currency,
   });
+  const feeRate = property.feeRate;
 
   const nightLabel = nights > 1 ? t("booking.summary.nights") : t("booking.summary.night");
   const roomLabel = roomCount > 1 ? t("booking.summary.rooms") : t("booking.summary.room");
@@ -130,8 +129,7 @@ export function BookingSummaryCard({
         <div className="space-y-2 text-sm font-satoshi">
           <div className="flex items-start justify-between gap-3">
             <span className="text-foreground/80">
-              {nights} {nightLabel} x {roomCount} {roomLabel} x {guestCount}{" "}
-              {guestCount > 1 ? t("booking.summary.guests") : t("booking.dates.guests").toLowerCase()} x{" "}
+              {nights} {nightLabel} x {roomCount} {roomLabel} x{" "}
               <span className="font-bold text-foreground">
                 {formatPrice(property.currency, selectedRoom.pricePerNight)}
               </span>
@@ -141,9 +139,11 @@ export function BookingSummaryCard({
             </span>
           </div>
           <div className="flex items-center justify-between gap-3">
-            <span className="text-foreground/80">{t("booking.summary.taxesAndFees")}</span>
+            <span className="text-foreground/80">
+              {t("booking.summary.serviceFee", { rate: feeRatePercent(feeRate) })}
+            </span>
             <span className="font-medium text-foreground">
-              {formatPrice(property.currency, pricing.taxesAndFees + pricing.syncAfricaFee)}
+              {formatPrice(property.currency, pricing.syncAfricaFee)}
             </span>
           </div>
           <div className="flex items-center justify-between gap-3 border-t border-[#F0D4C4] pt-2">

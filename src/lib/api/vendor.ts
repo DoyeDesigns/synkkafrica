@@ -181,9 +181,16 @@ export type VendorListingStatus =
   | "paused"
   | "rejected";
 
+// Currencies a vendor can price a listing in. The listing's currency decides
+// which payment provider checkout uses (NGN -> Paystack, others -> Stripe).
+export const LISTING_CURRENCIES = ["NGN", "USD", "EUR", "GBP"] as const;
+export type ListingCurrency = (typeof LISTING_CURRENCIES)[number];
+
 export type VendorListingSummary = {
   id: string;
   category: VendorListingCategory;
+  // Currency every price in the listing is quoted (and charged) in.
+  currency?: string;
   title: string;
   shortDescription?: string | null;
   location?: string | null;
@@ -192,13 +199,14 @@ export type VendorListingSummary = {
   ratingAvg: number;
   ratingCount: number;
   createdAt: string;
+  // Admin's note when the listing was rejected (needs changes).
+  rejectionReason?: string | null;
 };
 
 export type VendorListingDetail = VendorListingSummary & {
   details: Record<string, unknown>;
   media: unknown[];
   availability?: Record<string, unknown> | null;
-  rejectionReason?: string | null;
 };
 
 export type CreateVendorListingInput = {
@@ -209,6 +217,7 @@ export type CreateVendorListingInput = {
   coverImageUrl?: string;
   details?: Record<string, unknown>;
   media?: unknown[];
+  currency?: ListingCurrency;
   // When true the backend stores it with status `draft` (private to the
   // vendor) instead of submitting it for admin review (`pending`).
   saveAsDraft?: boolean;
@@ -316,7 +325,11 @@ export type VendorBookingApi = {
     | "declined"
     | "completed"
     | "cancelled";
+  // What the customer paid: `subtotal` (vendor's price) + `fees` (SynkAfrica
+  // service fee) = `amount`. Vendor earnings are based on the subtotal.
   amount: number;
+  subtotal?: number;
+  fees?: number;
   currency: string;
   paymentSecured: boolean;
   respondBy?: string | null;
@@ -353,10 +366,19 @@ export async function declineVendorBooking(
 
 // --- Earnings (GET /vendor/earnings, /vendor/transactions, POST /vendor/payouts) ---
 
+export type VendorCurrencyBalance = {
+  currency: string;
+  availableBalance: number;
+  lifetimeEarnings: number;
+};
+
 export type VendorEarnings = {
+  // Primary currency (the one with the most earnings, NGN if none).
   availableBalance: number;
   lifetimeEarnings: number;
   currency: string;
+  // One entry per currency the vendor has earned in.
+  balances?: VendorCurrencyBalance[];
   vendorSharePercent: number;
   platformSharePercent: number;
 };
@@ -388,11 +410,13 @@ export async function requestVendorPayout(
   token: string,
   amount: number,
   bankAccountId?: string,
+  // Which balance to withdraw from; the backend defaults to the primary one.
+  currency?: string,
 ): Promise<{ earnings: VendorEarnings; transaction: VendorTransactionApi }> {
   return apiFetch("/vendor/payouts", {
     method: "POST",
     token,
-    body: { amount, bankAccountId },
+    body: { amount, bankAccountId, currency },
   });
 }
 

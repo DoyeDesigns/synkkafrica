@@ -11,7 +11,7 @@ import {
   LISTING_DOCUMENTS_BY_CATEGORY,
   type AddListingFormState,
 } from "@/features/vendor/data/vendor-add-listing";
-import { useFormatPrice } from "@/hooks/use-format-price";
+import { formatMoney } from "@/lib/format-money";
 import { useTranslation } from "@/hooks/use-translation";
 
 export function ReviewStepPage({
@@ -40,7 +40,8 @@ function CarListingReview({
   showIntro: boolean;
 }) {
   const t = useTranslation();
-  const formatPrice = useFormatPrice();
+  // Vendor prices are shown in the listing currency, never FX-converted.
+  const formatPrice = formatMoney;
 
   const listingTitle = [form.carName, form.year].filter(Boolean).join(" ") || "—";
   const documents = LISTING_DOCUMENTS_BY_CATEGORY.cars.filter(
@@ -48,7 +49,7 @@ function CarListingReview({
   );
 
   const formatOptionalPrice = (value: string) =>
-    value.trim() ? formatPrice("NGN", Number(value)) : "—";
+    value.trim() ? formatPrice(form.currency, Number(value)) : "—";
 
   return (
     <section className="space-y-6">
@@ -160,18 +161,18 @@ function CarListingReview({
             value={formatOptionalPrice(form.price24hr)}
           />
           <ReviewPriceCard
-            label={t("vendor.addListing.priceMultiDay")}
+            label={t("vendor.addListing.priceMultiDay", { currency: form.currency })}
             value={formatOptionalPrice(form.priceMultiDay)}
           />
           {form.comesWithDriver ? (
             <ReviewPriceCard
-              label={t("vendor.addListing.driverAddonPrice")}
+              label={t("vendor.addListing.driverAddonPrice", { currency: form.currency })}
               value={formatOptionalPrice(form.driverAddonPrice)}
             />
           ) : null}
           {form.handoverMethods.includes("delivery") ? (
             <ReviewPriceCard
-              label={t("vendor.addListing.deliveryFee")}
+              label={t("vendor.addListing.deliveryFee", { currency: form.currency })}
               value={formatOptionalPrice(form.deliveryFee)}
             />
           ) : null}
@@ -229,7 +230,8 @@ function AccommodationListingReview({
   showIntro: boolean;
 }) {
   const t = useTranslation();
-  const formatPrice = useFormatPrice();
+  // Vendor prices are shown in the listing currency, never FX-converted.
+  const formatPrice = formatMoney;
 
   const formatTime = (value: string) => {
     if (!value) return "—";
@@ -306,7 +308,7 @@ function AccommodationListingReview({
                         </td>
                         <td className="px-3 py-3 text-[#676565]">{room.maxGuests}</td>
                         <td className="px-3 py-3 font-semibold text-[#2F2F2F]">
-                          {formatPrice("NGN", Number(room.pricePerNight))}
+                          {formatPrice(form.currency, Number(room.pricePerNight))}
                         </td>
                       </tr>
                     ))}
@@ -382,7 +384,8 @@ function ExperienceListingReview({
   showIntro: boolean;
 }) {
   const t = useTranslation();
-  const formatPrice = useFormatPrice();
+  // Vendor prices are shown in the listing currency, never FX-converted.
+  const formatPrice = formatMoney;
 
   const documents = LISTING_DOCUMENTS_BY_CATEGORY.experiences.filter(
     (document) => form.uploadedDocuments[document.id],
@@ -434,14 +437,14 @@ function ExperienceListingReview({
                 label={t("vendor.addListing.singleTicketPrice")}
                 value={
                   form.pricePerPerson
-                    ? formatPrice("NGN", Number(form.pricePerPerson))
+                    ? formatPrice(form.currency, Number(form.pricePerPerson))
                     : "—"
                 }
               />
               {form.groupTicketPrice ? (
                 <ReviewRow
                   label={t("vendor.addListing.groupTicketPrice")}
-                  value={formatPrice("NGN", Number(form.groupTicketPrice))}
+                  value={formatPrice(form.currency, Number(form.groupTicketPrice))}
                 />
               ) : null}
               {form.minGroupSize || form.maxGroupSize ? (

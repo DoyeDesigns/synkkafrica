@@ -1,10 +1,11 @@
 "use client";
 
-import { Images } from "lucide-react";
+import { ChevronLeft, ChevronRight, Images, X } from "lucide-react";
 import Image from "next/image";
 import { useState, type ReactNode } from "react";
 
 type BookingImageGalleryProps = {
+  // Ordered with the listing's main (cover) image first.
   images: string[];
   alt: string;
   extraPhotoCount?: number;

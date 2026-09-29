@@ -464,7 +464,6 @@
       "withDriver": "Med chauffør",
       "withDriverHint": "Der er en professionel chauffør inkluderet i din rejse.",
       "noExtraCost": "Ingen ekstra omkostninger",
-      "driverAddon": "+ [[[beløb]]] tillægsudstyr til bil",
       "requestDelivery": "Bestil levering af bil",
       "requestDeliveryHint": "Få bilen leveret til din adresse mod et tillægsgebyr.",
       "deliveryFee": "+ [[[beløb]]] leveringsgebyr",
@@ -1839,7 +1838,8 @@
         "live": "Live-oversigt",
         "pending": "Afventer...",
         "paused": "Sat på pause",
-        "draft": "Udkast"
+        "draft": "Udkast",
+        "rejected": "Needs changes"
       },
       "editListing": "Rediger opslag",
       "deleteListing": "Slet annoncen",
@@ -2090,7 +2090,8 @@
           "live": "Levende",
           "pending": "Afventer",
           "draft": "Udkast",
-          "paused": "Pauset"
+          "paused": "Pauset",
+          "rejected": "Needs changes"
         },
         "empty": "Der er ingen resultater, der matcher dine filtre."
       },
@@ -2131,6 +2132,13 @@
         "sat": "Lør",
         "previousMonth": "Forrige måned",
         "nextMonth": "Næste måned"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "Levering / Aflevering",
       "deliveryDropoffHint": "Du leverer bilen til kunden.",
       "carPricingHeading": "Lejepriser",
-      "price12hr": "12-timers leje (NGN)",
-      "price24hr": "24-timers leje (NGN)",
-      "priceMultiDay": "Flere dage (pr. dag, NGN)",
-      "driverAddonPrice": "Pris for ekstra chauffør (NGN)",
       "selfDriveNoPrice": "Selvkørsel valgt — der kræves ingen tillægspris for chauffør.",
-      "deliveryFee": "Leverings-/afleveringsgebyr (NGN)",
       "clientPickupNoPrice": "Afhentning valgt — der opkræves ikke leveringsgebyr.",
       "pricingLocationHint": "Du kan angive flere oplysninger om afhentnings- eller leveringsstedet i det næste trin.",
       "accommodationPricingHeading": "Priser på ophold",
@@ -2381,14 +2384,11 @@
       "actions": "Handlinger",
       "edit": "Rediger",
       "delete": "Slet",
-      "nightlyRate": "Pris pr. overnatning (NGN)",
-      "cleaningFee": "Rengøringsgebyr (NGN)",
       "experiencePricingHeading": "Priser",
       "experiencePricingHint": "Fastlæg dine billetpriser.",
       "singleTicketPrice": "Pris for enkeltbillet",
       "singleTicketPriceHint": "Pris pr. person",
       "groupTicketPrice": "Pris for gruppebilletter (fra) (valgfrit)",
-      "groupTicketPriceHint": "Pris pr. person for grupper",
       "minGroupSizeOptional": "Mindste gruppestørrelse (valgfrit)",
       "maxGroupSizeOptional": "Maksimal gruppestørrelse (valgfrit)",
       "minGroupSizePlaceholder": "f.eks. 5",
@@ -2403,7 +2403,6 @@
         "description": "Beskrivelse",
         "gpsConfirmed": "GPS-sporingsenhed bekræftet"
       },
-      "pricePerPerson": "Pris pr. person (NGN)",
       "minGroupSize": "Mindste gruppestørrelse",
       "documents": {
         "stepTitle": "Upload af dokumenter",
@@ -2477,7 +2476,12 @@
         "backToListings": "Tilbage til mine annoncer"
       },
       "categoryChooseHint": "Vælg den type tjeneste, du tilbyder. Dette indstilles én gang, når du gemmer din første annonce, og kan ikke ændres senere.",
-      "categoryLockedHint": "Din leverandørkonto er kun registreret til {kategori} . Kontakt support for at ændre din servicekategori."
+      "categoryLockedHint": "Din leverandørkonto er kun registreret til {kategori} . Kontakt support for at ændre din servicekategori.",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

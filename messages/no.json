@@ -464,7 +464,6 @@
       "withDriver": "Med sjåfør",
       "withDriverHint": "En profesjonell sjåfør er inkludert for turen.",
       "noExtraCost": "Ingen ekstra kostnad",
-      "driverAddon": "+ {amount} drivertillegg",
       "requestDelivery": "Be om levering av bil",
       "requestDeliveryHint": "Få bilen levert til ditt sted mot en ekstra avgift.",
       "deliveryFee": "+ ⟦beløp⟧ leveringsgebyr",
@@ -1839,7 +1838,8 @@
         "live": "Live-oppføring",
         "pending": "I påvente av...",
         "paused": "Pause",
-        "draft": "Utkast"
+        "draft": "Utkast",
+        "rejected": "Needs changes"
       },
       "editListing": "Rediger oppføringen",
       "deleteListing": "Slett oppføring",
@@ -2090,7 +2090,8 @@
           "live": "Bo",
           "pending": "I påvente av",
           "draft": "Utkast",
-          "paused": "Pause"
+          "paused": "Pause",
+          "rejected": "Needs changes"
         },
         "empty": "Ingen oppføringer samsvarer med filtrene dine."
       },
@@ -2131,6 +2132,13 @@
         "sat": "Lør",
         "previousMonth": "Forrige måned",
         "nextMonth": "Neste måned"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "Levering/avlevering",
       "deliveryDropoffHint": "Du leverer bilen til kunden.",
       "carPricingHeading": "Leiepriser",
-      "price12hr": "12-timers leie (NGN)",
-      "price24hr": "24-timers leie (NGN)",
-      "priceMultiDay": "Flere dager (per dag, NGN)",
-      "driverAddonPrice": "Driver tilleggspris (NGN)",
       "selfDriveNoPrice": "Selvkjør valgt – ingen sjåførtilleggspris kreves.",
-      "deliveryFee": "Leverings-/avleveringsgebyr (NGN)",
       "clientPickupNoPrice": "Kundehenting valgt – ingen leveringsavgift kreves.",
       "pricingLocationHint": "Du kan gi flere detaljer om hente- eller leveringsstedet i neste trinn.",
       "accommodationPricingHeading": "Hold priser",
@@ -2381,14 +2384,11 @@
       "actions": "Actions",
       "edit": "Edit",
       "delete": "Delete",
-      "nightlyRate": "Nightly rate (NGN)",
-      "cleaningFee": "Cleaning fee (NGN)",
       "experiencePricingHeading": "Pricing",
       "experiencePricingHint": "Set your ticket prices.",
       "singleTicketPrice": "Single Ticket Price",
       "singleTicketPriceHint": "Price for one person",
       "groupTicketPrice": "Group Ticket Price (from) (Optional)",
-      "groupTicketPriceHint": "Price per person for groups",
       "minGroupSizeOptional": "Minimum gruppestørrelse (valgfritt)",
       "maxGroupSizeOptional": "Maksimal gruppestørrelse (valgfritt)",
       "minGroupSizePlaceholder": "f.eks. 5",
@@ -2403,7 +2403,6 @@
         "description": "Beskrivelse",
         "gpsConfirmed": "GPS-sporingsenhet bekreftet"
       },
-      "pricePerPerson": "Pris per person (NGN)",
       "minGroupSize": "Minimum gruppestørrelse",
       "documents": {
         "stepTitle": "Dokumentopplasting",
@@ -2477,7 +2476,12 @@
         "backToListings": "Tilbake til mine oppføringer"
       },
       "categoryChooseHint": "Velg typen tjeneste du tilbyr. Dette angis én gang når du lagrer din første oppføring og kan ikke endres senere.",
-      "categoryLockedHint": "Leverandørkontoen din er kun registrert for {kategori}. Kontakt kundestøtte for å endre tjenestekategori."
+      "categoryLockedHint": "Leverandørkontoen din er kun registrert for {kategori}. Kontakt kundestøtte for å endre tjenestekategori.",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

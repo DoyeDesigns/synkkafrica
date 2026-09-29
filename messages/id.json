@@ -464,7 +464,6 @@
       "withDriver": "Dengan pengemudi",
       "withDriverHint": "Seorang sopir profesional sudah termasuk dalam perjalanan Anda.",
       "noExtraCost": "Tanpa biaya tambahan",
-      "driverAddon": "+ {jumlah} add-on pengemudi",
       "requestDelivery": "Meminta pengiriman mobil",
       "requestDeliveryHint": "Minta mobil tersebut dikirimkan ke lokasi Anda dengan biaya tambahan.",
       "deliveryFee": "+ {jumlah} biaya pengiriman",
@@ -1839,7 +1838,8 @@
         "live": "Daftar Langsung",
         "pending": "Sedang diproses...",
         "paused": "Dijeda",
-        "draft": "Draf"
+        "draft": "Draf",
+        "rejected": "Needs changes"
       },
       "editListing": "Edit daftar",
       "deleteListing": "Hapus iklan",
@@ -2090,7 +2090,8 @@
           "live": "Langsung",
           "pending": "Sedang diproses",
           "draft": "Draf",
-          "paused": "Dijeda"
+          "paused": "Dijeda",
+          "rejected": "Needs changes"
         },
         "empty": "Tidak ada daftar yang sesuai dengan filter Anda."
       },
@@ -2131,6 +2132,13 @@
         "sat": "Sabtu",
         "previousMonth": "Bulan lalu",
         "nextMonth": "Bulan depan"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "Pengiriman / Penyerahan",
       "deliveryDropoffHint": "Anda menyerahkan mobil tersebut kepada pelanggan.",
       "carPricingHeading": "Harga sewa",
-      "price12hr": "Sewa selama 12 jam (NGN)",
-      "price24hr": "Penyewaan 24 jam (NGN)",
-      "priceMultiDay": "Beberapa hari (per hari, NGN)",
-      "driverAddonPrice": "Biaya tambahan pengemudi (NGN)",
       "selfDriveNoPrice": "Pilihan menyetir sendiri — tidak diperlukan biaya tambahan untuk sopir.",
-      "deliveryFee": "Biaya pengiriman / pengantaran (NGN)",
       "clientPickupNoPrice": "Pilihan pengambilan oleh klien — tidak dikenakan biaya pengiriman.",
       "pricingLocationHint": "Anda dapat memberikan rincian lebih lanjut mengenai lokasi penjemputan atau pengiriman pada langkah berikutnya.",
       "accommodationPricingHeading": "Harga menginap",
@@ -2381,14 +2384,11 @@
       "actions": "Tindakan",
       "edit": "Sunting",
       "delete": "Hapus",
-      "nightlyRate": "Tarif per malam (NGN)",
-      "cleaningFee": "Biaya pembersihan (NGN)",
       "experiencePricingHeading": "Harga",
       "experiencePricingHint": "Tentukan harga tiket Anda.",
       "singleTicketPrice": "Harga Tiket Tunggal",
       "singleTicketPriceHint": "Harga per orang",
       "groupTicketPrice": "Harga Tiket Kelompok (mulai dari) (Opsional)",
-      "groupTicketPriceHint": "Harga per orang untuk rombongan",
       "minGroupSizeOptional": "Jumlah Peserta Minimum (Opsional)",
       "maxGroupSizeOptional": "Jumlah Peserta Maksimal (Opsional)",
       "minGroupSizePlaceholder": "misalnya 5",
@@ -2403,7 +2403,6 @@
         "description": "Deskripsi",
         "gpsConfirmed": "Perangkat pelacak GPS telah dikonfirmasi"
       },
-      "pricePerPerson": "Harga per orang (NGN)",
       "minGroupSize": "Jumlah peserta minimum",
       "documents": {
         "stepTitle": "Unggah dokumen",
@@ -2477,7 +2476,12 @@
         "backToListings": "Kembali ke daftar produk saya"
       },
       "categoryChooseHint": "Pilih jenis layanan yang Anda tawarkan. Pengaturan ini hanya dilakukan sekali saat Anda menyimpan iklan pertama Anda dan tidak dapat diubah lagi di kemudian hari.",
-      "categoryLockedHint": "Akun vendor Anda hanya terdaftar untuk {kategori}. Hubungi tim dukungan untuk mengubah kategori layanan Anda."
+      "categoryLockedHint": "Akun vendor Anda hanya terdaftar untuk {kategori}. Hubungi tim dukungan untuk mengubah kategori layanan Anda.",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

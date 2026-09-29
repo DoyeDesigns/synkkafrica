@@ -9,7 +9,10 @@ import {
   DISCOUNT_FILTER_OPTIONS,
   matchesDiscountFilter,
 } from "@/features/travel/data/discount-filter";
-import { locationsOverlap } from "@/features/travel/data/location-match";
+import {
+  locationsOverlap,
+  matchesSearchQuery,
+} from "@/features/travel/data/location-match";
 
 export type TourResult = TourEvent & {
   hasDiscount: boolean;
@@ -58,11 +61,12 @@ export const TOUR_EXPERIENCE_FILTER_OPTIONS = [
 ] as const;
 
 export const DEFAULT_TOUR_FILTERS: TourFilterState = {
-  location: "UAE, Dubai",
+  // "" means "any"; price bounds start open so nothing is hidden by default.
+  location: "",
   discounts: DEFAULT_DISCOUNT_FILTER,
   priceBudget: "",
-  priceMin: 10000,
-  priceMax: 200000,
+  priceMin: 0,
+  priceMax: Number.POSITIVE_INFINITY,
   priceRange: null,
   category: TOUR_CATEGORY_FILTER_OPTIONS[0],
   experience: TOUR_EXPERIENCE_FILTER_OPTIONS[0],
@@ -91,15 +95,24 @@ function expandTourResults(events: TourEvent[]): TourResult[] {
 
 export const TOUR_RESULTS: TourResult[] = expandTourResults(TOUR_EVENTS);
 
+function sameOption(a: string, b: string) {
+  return a.trim().toLowerCase() === b.trim().toLowerCase();
+}
+
+// "" and the explicit "All …" option both mean "no filter".
+function isAllOption(value: string, allOption: string) {
+  return !value.trim() || sameOption(value, allOption);
+}
+
 export function countActiveTourFilters(filters: TourFilterState): number {
   let count = 0;
 
-  if (filters.location !== DEFAULT_TOUR_FILTERS.location) count += 1;
+  if (filters.location.trim()) count += 1;
   if (filters.discounts !== DEFAULT_TOUR_FILTERS.discounts) count += 1;
   if (filters.priceBudget.trim()) count += 1;
   if (filters.priceRange) count += 1;
-  if (filters.category !== DEFAULT_TOUR_FILTERS.category) count += 1;
-  if (filters.experience !== DEFAULT_TOUR_FILTERS.experience) count += 1;
+  if (!isAllOption(filters.category, "All categories")) count += 1;
+  if (!isAllOption(filters.experience, "All experiences")) count += 1;
 
   return count;
 }
@@ -109,21 +122,19 @@ export function filterTourResults(
   filters: TourFilterState,
   query: string,
 ): TourResult[] {
-  const normalizedQuery = query.trim().toLowerCase();
-
   return results.filter((result) => {
     if (
-      normalizedQuery &&
-      !`${result.title} ${result.description} ${result.location} ${result.city}`
-        .toLowerCase()
-        .includes(normalizedQuery)
+      !matchesSearchQuery(
+        query,
+        `${result.title} ${result.description} ${result.category} ${result.experience}`,
+        `${result.location} ${result.city}`,
+      )
     ) {
       return false;
     }
 
     if (
       filters.location.trim() &&
-      filters.location !== DEFAULT_TOUR_FILTERS.location &&
       !locationsOverlap(filters.location, result.city) &&
       !locationsOverlap(filters.location, result.location)
     ) {
@@ -135,15 +146,15 @@ export function filterTourResults(
     }
 
     if (
-      filters.category !== "All categories" &&
-      result.category !== filters.category
+      !isAllOption(filters.category, "All categories") &&
+      !sameOption(result.category, filters.category)
     ) {
       return false;
     }
 
     if (
-      filters.experience !== "All experiences" &&
-      result.experience !== filters.experience
+      !isAllOption(filters.experience, "All experiences") &&
+      !sameOption(result.experience, filters.experience)
     ) {
       return false;
     }

@@ -117,6 +117,8 @@ export function FormDate({
   placeholder,
   className,
   disabled = false,
+  defaultMonth,
+  invalid = false,
 }: {
   value: string;
   onChange: (v: string) => void;
@@ -125,6 +127,9 @@ export function FormDate({
   placeholder: string;
   className?: string;
   disabled?: boolean;
+  /** "YYYY-MM-DD" month the calendar opens on while no date is picked. */
+  defaultMonth?: string;
+  invalid?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [popoverPosition, setPopoverPosition] = useState<PopoverPosition | null>(
@@ -218,7 +223,7 @@ export function FormDate({
           setOpen((o) => !o);
         }}
         className={`${className ?? base} justify-between ${
-          open ? "border-[#004785]" : ""
+          open ? "border-[#004785]" : invalid ? "border-[#D85A30]" : ""
         } disabled:cursor-default disabled:bg-[#FAFAFA]`}
       >
         <span className={selected ? "text-foreground" : "text-[#9E9E9E]"}>

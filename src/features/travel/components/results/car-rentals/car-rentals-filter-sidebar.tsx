@@ -25,6 +25,9 @@ const PRICE_SLIDER_MAX = 300000;
 
 type CarRentalsFilterSidebarProps = {
   filters: CarRentalFilterState;
+  // Body types present in the current inventory; the select is hidden when
+  // none can be determined (so it can't zero out the results).
+  carTypeOptions: readonly string[];
   activeFilterCount: number;
   showClearFilter: boolean;
   onFilterChange: <K extends keyof CarRentalFilterState>(
@@ -32,6 +35,11 @@ type CarRentalsFilterSidebarProps = {
     value: CarRentalFilterState[K],
   ) => void;
   onApply: () => void;
+  // Set a filter and apply it immediately (location suggestion picks).
+  onApplyFilter: <K extends keyof CarRentalFilterState>(
+    key: K,
+    value: CarRentalFilterState[K],
+  ) => void;
   onClearFilters: () => void;
 };
 
@@ -41,12 +49,15 @@ function FilterSelect({
   options,
   onChange,
   labelOption,
+  anyLabel,
 }: {
   icon: React.ReactNode;
   value: string;
   options: readonly string[];
   onChange: (value: string) => void;
   labelOption: (value: string) => string;
+  // Label for the "" (no filter) option.
+  anyLabel: string;
 }) {
   return (
     <div className="relative">
@@ -58,6 +69,7 @@ function FilterSelect({
         onChange={(event) => onChange(event.target.value)}
         className="w-full appearance-none rounded-lg border border-[#C9C9C9] bg-white py-2.5 pl-9 pr-8 text-sm font-satoshi text-foreground outline-none"
       >
+        <option value="">{anyLabel}</option>
         {options.map((option) => (
           <option key={option} value={option}>
             {labelOption(option)}
@@ -71,10 +83,12 @@ function FilterSelect({
 
 export function CarRentalsFilterSidebar({
   filters,
+  carTypeOptions,
   activeFilterCount,
   showClearFilter,
   onFilterChange,
   onApply,
+  onApplyFilter,
   onClearFilters,
 }: CarRentalsFilterSidebarProps) {
   const t = useTranslation();
@@ -87,7 +101,7 @@ export function CarRentalsFilterSidebar({
     <aside className="space-y-4">
       <button
         type="button"
-        onClick={onApply}
+        onClick={() => onApply()}
         className="h-11 w-full rounded-[5px] bg-[#004785] px-4 py-3 text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90"
       >
         {t("filters.applyCount", { count: activeFilterCount })}
@@ -108,6 +122,7 @@ export function CarRentalsFilterSidebar({
         <FilterAddressField
           value={filters.location}
           onChange={(value) => onFilterChange("location", value)}
+          onCommit={(value) => onApplyFilter("location", value)}
           placeholder={t("filters.searchAddress")}
           listboxId="car-rentals-filter-address"
         />
@@ -133,12 +148,12 @@ export function CarRentalsFilterSidebar({
               const raw = event.target.value;
               onFilterChange("priceBudget", raw);
               const parsed = Number.parseInt(raw.replace(/[^\d]/g, ""), 10);
-              if (!Number.isNaN(parsed)) {
-                onFilterChange(
-                  "priceMax",
-                  Math.min(PRICE_SLIDER_MAX, Math.max(PRICE_SLIDER_MIN, parsed)),
-                );
-              }
+              // The typed budget is the effective ceiling; the slider only
+              // mirrors it. Clearing the budget removes the ceiling.
+              onFilterChange(
+                "priceMax",
+                Number.isNaN(parsed) ? Number.POSITIVE_INFINITY : parsed,
+              );
             }}
             placeholder={t("filters.budget")}
             className="min-w-0 flex-1 bg-transparent px-1.5 text-sm font-satoshi text-foreground outline-none placeholder:font-medium placeholder:text-foreground/60"
@@ -158,6 +173,12 @@ export function CarRentalsFilterSidebar({
               value={sliderValue}
               onChange={(event) => {
                 const value = Number(event.target.value);
+                // The slider's top end means "no ceiling".
+                if (value >= PRICE_SLIDER_MAX) {
+                  onFilterChange("priceMax", Number.POSITIVE_INFINITY);
+                  onFilterChange("priceBudget", "");
+                  return;
+                }
                 onFilterChange("priceMax", value);
                 onFilterChange("priceBudget", value.toLocaleString("en-NG"));
               }}
@@ -203,13 +224,20 @@ export function CarRentalsFilterSidebar({
         </label>
 
         <div className="space-y-3 mt-3">
-        <FilterSelect
-          icon={<CarFront className="h-4 w-4" strokeWidth={1.75} />}
-          value={filters.carType}
-          options={CAR_TYPE_OPTIONS}
-          onChange={(value) => onFilterChange("carType", value)}
-          labelOption={labelOption}
-        />
+        {carTypeOptions.length > 0 || filters.carType ? (
+          <FilterSelect
+            icon={<CarFront className="h-4 w-4" strokeWidth={1.75} />}
+            value={filters.carType}
+            options={
+              filters.carType && !carTypeOptions.includes(filters.carType)
+                ? [...carTypeOptions, filters.carType]
+                : carTypeOptions
+            }
+            onChange={(value) => onFilterChange("carType", value)}
+            labelOption={labelOption}
+            anyLabel={t("filters.carType.any")}
+          />
+        ) : null}
 
         <FilterSelect
           icon={<Settings className="h-4 w-4" strokeWidth={1.75} />}
@@ -217,6 +245,7 @@ export function CarRentalsFilterSidebar({
           options={TRANSMISSION_OPTIONS}
           onChange={(value) => onFilterChange("transmission", value)}
           labelOption={labelOption}
+          anyLabel={t("filters.transmission.any")}
         />
         </div>
       </FilterPanel>

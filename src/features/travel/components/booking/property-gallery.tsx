@@ -17,7 +17,6 @@ export function PropertyGallery({ property }: PropertyGalleryProps) {
     <BookingImageGallery
       images={property.images}
       alt={property.name}
-      extraPhotoCount={property.extraPhotoCount}
       overlay={
         <SaveListingButton
           listingId={property.id}

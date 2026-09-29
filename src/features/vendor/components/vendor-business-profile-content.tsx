@@ -35,6 +35,8 @@ import {
   type UpdateVendorProfileInput,
   type VendorFullProfile,
 } from "@/lib/api/vendor";
+import { VENDOR_QUERY_KEYS } from "@/features/vendor/vendor-query-keys";
+import { LIVE_QUERY_OPTIONS } from "@/lib/live-query-options";
 
 const inputClassName =
   "h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-foreground outline-none focus:border-[#004785]";
@@ -74,11 +76,10 @@ export function VendorBusinessProfileContent({
   const queryClient = useQueryClient();
 
   const { data: profile } = useQuery({
-    queryKey: ["vendor-profile"],
+    queryKey: VENDOR_QUERY_KEYS.profile,
     queryFn: () => getVendorFullProfile(token as string),
     enabled: Boolean(token),
-    staleTime: 5 * 60 * 1000,
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
 
   const displayName =
@@ -134,7 +135,7 @@ export function VendorBusinessProfileContent({
     setErrorSection(null);
     try {
       const updated = await updateVendorProfile(token, patch);
-      queryClient.setQueryData(["vendor-profile"], updated);
+      queryClient.setQueryData(VENDOR_QUERY_KEYS.profile, updated);
       setSeededProfile(updated);
       setForm(formFromProfile(updated));
       flashSaved(section);
@@ -150,7 +151,7 @@ export function VendorBusinessProfileContent({
     setResubmitState("sending");
     try {
       const updated = await resubmitVendorForReview(token);
-      queryClient.setQueryData(["vendor-profile"], updated);
+      queryClient.setQueryData(VENDOR_QUERY_KEYS.profile, updated);
       setResubmitState("done");
     } catch {
       setResubmitState("error");

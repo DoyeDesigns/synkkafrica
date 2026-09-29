@@ -9,7 +9,7 @@ import type { TranslationKey } from "@/lib/preferences/translations";
 
 const PAGE_TITLE_KEYS: Record<string, TranslationKey> = {
   "/admin": "admin.nav.dashboard",
-  "/admin/packages/new": "admin.packages.createTitle",
+  "/admin/packages": "admin.nav.packages",
   "/admin/experiences": "admin.nav.experiences",
   "/admin/cars": "admin.nav.cars",
   "/admin/accommodations": "admin.nav.accommodations",
@@ -20,6 +20,8 @@ const PAGE_TITLE_KEYS: Record<string, TranslationKey> = {
   "/admin/users": "admin.nav.users",
   "/admin/verifications": "admin.nav.verifications",
   "/admin/support": "admin.nav.support",
+  "/admin/team": "admin.nav.team",
+  "/admin/audit": "admin.nav.audit",
 };
 
 function getPageTitleKey(pathname: string): TranslationKey {
@@ -29,6 +31,10 @@ function getPageTitleKey(pathname: string): TranslationKey {
 
   if (pathname.startsWith("/admin/users/") && pathname !== "/admin/users") {
     return "admin.users.details";
+  }
+
+  if (pathname.startsWith("/admin/listings/")) {
+    return "admin.listings.detailTitle";
   }
 
   if (
