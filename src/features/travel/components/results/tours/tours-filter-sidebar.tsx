@@ -20,6 +20,16 @@ import {
 import { useFilterOptionLabel } from "@/hooks/use-filter-option-label";
 import { useTranslation } from "@/hooks/use-translation";
 
+const PRICE_SLIDER_MIN = 10000;
+const PRICE_SLIDER_MAX = 300000;
+
+// An open ceiling (Infinity) parks the slider at its top end.
+function sliderValue(priceMax: number) {
+  return Number.isFinite(priceMax)
+    ? Math.min(PRICE_SLIDER_MAX, Math.max(PRICE_SLIDER_MIN, priceMax))
+    : PRICE_SLIDER_MAX;
+}
+
 type ToursFilterSidebarProps = {
   filters: TourFilterState;
   activeFilterCount: number;
@@ -29,6 +39,11 @@ type ToursFilterSidebarProps = {
     value: TourFilterState[K],
   ) => void;
   onApply: () => void;
+  // Set a filter and apply it immediately (location suggestion picks).
+  onApplyFilter: <K extends keyof TourFilterState>(
+    key: K,
+    value: TourFilterState[K],
+  ) => void;
   onClearFilters: () => void;
 };
 
@@ -72,6 +87,7 @@ export function ToursFilterSidebar({
   showClearFilter,
   onFilterChange,
   onApply,
+  onApplyFilter,
   onClearFilters,
 }: ToursFilterSidebarProps) {
   const t = useTranslation();
@@ -81,7 +97,7 @@ export function ToursFilterSidebar({
     <aside className="space-y-4">
       <button
         type="button"
-        onClick={onApply}
+        onClick={() => onApply()}
         className="h-11 w-full rounded-[5px] bg-[#004785] px-4 py-3 text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90"
       >
         {t("filters.applyCount", { count: activeFilterCount })}
@@ -102,6 +118,7 @@ export function ToursFilterSidebar({
         <FilterAddressField
           value={filters.location}
           onChange={(value) => onFilterChange("location", value)}
+          onCommit={(value) => onApplyFilter("location", value)}
           placeholder={t("filters.searchAddress")}
           listboxId="tours-filter-address"
         />
@@ -127,12 +144,11 @@ export function ToursFilterSidebar({
               const raw = event.target.value;
               onFilterChange("priceBudget", raw);
               const parsed = Number.parseInt(raw.replace(/[^\d]/g, ""), 10);
-              if (!Number.isNaN(parsed)) {
-                onFilterChange(
-                  "priceMax",
-                  Math.min(300000, Math.max(10000, parsed)),
-                );
-              }
+              // The typed budget is the ceiling; clearing it removes the ceiling.
+              onFilterChange(
+                "priceMax",
+                Number.isNaN(parsed) ? Number.POSITIVE_INFINITY : parsed,
+              );
             }}
             placeholder={t("filters.budget")}
             className="min-w-0 flex-1 bg-transparent px-1.5 text-sm font-satoshi text-foreground outline-none placeholder:font-medium placeholder:text-foreground/60"
@@ -142,12 +158,18 @@ export function ToursFilterSidebar({
         <div className="bg-[#0000003D] rounded-lg px-2 pt-2">
           <input
             type="range"
-            min={10000}
-            max={300000}
+            min={PRICE_SLIDER_MIN}
+            max={PRICE_SLIDER_MAX}
             step={5000}
-            value={filters.priceMax}
+            value={sliderValue(filters.priceMax)}
             onChange={(event) => {
               const value = Number(event.target.value);
+              // The slider's top end means "no ceiling".
+              if (value >= PRICE_SLIDER_MAX) {
+                onFilterChange("priceMax", Number.POSITIVE_INFINITY);
+                onFilterChange("priceBudget", "");
+                return;
+              }
               onFilterChange("priceMax", value);
               onFilterChange("priceBudget", value.toLocaleString("en-NG"));
             }}

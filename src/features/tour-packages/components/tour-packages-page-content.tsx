@@ -3,35 +3,56 @@
 import { ChevronDown, MapPin, Search } from "lucide-react";
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 import { TourPackageCard } from "@/features/tour-packages/components/tour-package-card";
+import { TOUR_PACKAGE_LOCATIONS } from "@/features/tour-packages/data/tour-packages";
 import {
-  TOUR_PACKAGE_LOCATIONS,
-  TOUR_PACKAGES,
-} from "@/features/tour-packages/data/tour-packages";
+  locationsOverlap,
+  matchesSearchQuery,
+} from "@/features/travel/data/location-match";
 import { useTranslation } from "@/hooks/use-translation";
+import { listPackages, toTourPackage } from "@/lib/api/packages";
 
 const INITIAL_VISIBLE_COUNT = 6;
 const LOAD_MORE_COUNT = 4;
 
 export function TourPackagesPageContent() {
   const t = useTranslation();
-  const [location, setLocation] = useState<string>(TOUR_PACKAGE_LOCATIONS[0]);
+  // "" = all locations (a concrete default hid every other destination).
+  const [location, setLocation] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
 
-  const filteredPackages = useMemo(() => {
-    const query = searchQuery.trim().toLowerCase();
+  // Live published packages (shares the ["packages"] cache with the landing
+  // carousels).
+  const { data, isLoading } = useQuery({
+    queryKey: ["packages"],
+    queryFn: listPackages,
+    refetchOnWindowFocus: false,
+  });
+  const packages = useMemo(() => (data ?? []).map(toTourPackage), [data]);
 
-    return TOUR_PACKAGES.filter((item) => {
-      const matchesSearch =
-        !query ||
-        item.title.toLowerCase().includes(query) ||
-        item.country.toLowerCase().includes(query);
+  const filteredPackages = useMemo(
+    () =>
+      packages.filter((item) => {
+        const text = [item.title, item.country, item.scheduleLabel]
+          .filter(Boolean)
+          .join(" ");
+        if (location && !locationsOverlap(location, text)) return false;
+        return matchesSearchQuery(searchQuery, text);
+      }),
+    [packages, location, searchQuery],
+  );
 
-      return matchesSearch;
-    });
-  }, [searchQuery]);
+  // Reset the visible window when the filters change
+  // (adjust-state-during-render, no setState-in-effect).
+  const resetKey = `${location}|${searchQuery}`;
+  const [prevResetKey, setPrevResetKey] = useState(resetKey);
+  if (resetKey !== prevResetKey) {
+    setPrevResetKey(resetKey);
+    setVisibleCount(INITIAL_VISIBLE_COUNT);
+  }
 
   const visiblePackages = filteredPackages.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPackages.length;
@@ -72,6 +93,9 @@ export function TourPackagesPageContent() {
                 onChange={(event) => setLocation(event.target.value)}
                 className="h-12 w-full appearance-none rounded-xl border border-[#C9C9C9] bg-white py-2.5 pl-10 pr-9 text-sm font-medium font-satoshi text-foreground outline-none focus:border-[#D85A30]"
               >
+                <option value="">
+                  {t("landing.tours.events.allLocations")}
+                </option>
                 {TOUR_PACKAGE_LOCATIONS.map((option) => (
                   <option key={option} value={option}>
                     {option}
@@ -103,7 +127,13 @@ export function TourPackagesPageContent() {
           ))}
         </div>
 
-        {filteredPackages.length === 0 ? (
+        {isLoading ? (
+          <div className="mt-8 rounded-2xl border border-black/10 bg-white p-8 text-center shadow-sm">
+            <p className="text-sm font-medium font-satoshi text-foreground/70">
+              {t("common.loading")}
+            </p>
+          </div>
+        ) : filteredPackages.length === 0 ? (
           <div className="mt-8 rounded-2xl border border-black/10 bg-white p-8 text-center shadow-sm">
             <p className="text-sm font-medium font-satoshi text-foreground/70">
               {t("tourPackages.empty")}

@@ -2,7 +2,10 @@ import {
   DEFAULT_DISCOUNT_FILTER,
   matchesDiscountFilter,
 } from "@/features/travel/data/discount-filter";
-import { locationsOverlap } from "@/features/travel/data/location-match";
+import {
+  locationsOverlap,
+  matchesSearchQuery,
+} from "@/features/travel/data/location-match";
 
 export type AccommodationResultFeature = {
   icon: "bed" | "wifi" | "coffee" | "car";
@@ -40,13 +43,15 @@ export type AccommodationFilterState = {
 };
 
 export const DEFAULT_ACCOMMODATION_FILTERS: AccommodationFilterState = {
-  location: "Worldwide",
+  // "" means "any" for every text filter; the price bounds start open so no
+  // listing is hidden before the user touches the price controls.
+  location: "",
   discounts: DEFAULT_DISCOUNT_FILTER,
   priceBudget: "",
-  priceMin: 50000,
-  priceMax: 200000,
+  priceMin: 0,
+  priceMax: Number.POSITIVE_INFINITY,
   priceRange: null,
-  propertyType: "Hotels",
+  propertyType: "",
   bedrooms: "",
   ratings: "",
   perks: "",
@@ -289,11 +294,11 @@ export const ACCOMMODATION_RESULTS: AccommodationResult[] = [
 export function countActiveFilters(filters: AccommodationFilterState): number {
   let count = 0;
 
-  if (filters.location !== DEFAULT_ACCOMMODATION_FILTERS.location) count += 1;
+  if (filters.location.trim()) count += 1;
   if (filters.discounts !== DEFAULT_ACCOMMODATION_FILTERS.discounts) count += 1;
   if (filters.priceBudget.trim()) count += 1;
   if (filters.priceRange) count += 1;
-  if (filters.propertyType !== DEFAULT_ACCOMMODATION_FILTERS.propertyType) count += 1;
+  if (filters.propertyType) count += 1;
   if (filters.bedrooms) count += 1;
   if (filters.ratings) count += 1;
   if (filters.perks) count += 1;
@@ -301,30 +306,44 @@ export function countActiveFilters(filters: AccommodationFilterState): number {
   return count;
 }
 
+// Case/plural-insensitive: "Hotel", "hotels" and "Hotels" are the same type.
+function normalizePropertyType(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z&]+/g, " ")
+    .trim()
+    .replace(/s$/, "");
+}
+
 export function filterAccommodationResults(
   results: AccommodationResult[],
   filters: AccommodationFilterState,
   query: string,
 ): AccommodationResult[] {
-  const normalizedQuery = query.trim().toLowerCase();
-
   return results.filter((result) => {
     if (
-      normalizedQuery &&
-      !`${result.name} ${result.location}`.toLowerCase().includes(normalizedQuery)
+      !matchesSearchQuery(
+        query,
+        `${result.name} ${result.propertyType}`,
+        result.location,
+      )
     ) {
       return false;
     }
 
     if (
-      filters.location !== DEFAULT_ACCOMMODATION_FILTERS.location &&
       filters.location.trim() &&
       !locationsOverlap(filters.location, result.location)
     ) {
       return false;
     }
 
-    if (filters.propertyType && result.propertyType !== filters.propertyType) {
+    if (
+      filters.propertyType &&
+      normalizePropertyType(result.propertyType) !==
+        normalizePropertyType(filters.propertyType)
+    ) {
       return false;
     }
 

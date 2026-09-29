@@ -3,17 +3,25 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import {
   adminApproveListing,
+  adminApproveListingDocument,
   adminGetListing,
   adminListingDocViewUrl,
   adminRejectListing,
+  adminRejectListingDocument,
   type AdminListing,
   type AdminListingDocument,
 } from "@/lib/api/admin";
+import { LIVE_QUERY_OPTIONS } from "@/lib/live-query-options";
+
+function errorMessage(err: unknown, fallback: string): string {
+  return err instanceof Error && err.message ? err.message : fallback;
+}
 
 const LISTING_STATUS_STYLES: Record<AdminListing["status"], string> = {
   draft: "bg-[#F5F5F5] text-[#676565]",
@@ -61,30 +69,66 @@ export function AdminListingDetailLiveContent({
   const token = session?.accessToken;
   const queryClient = useQueryClient();
 
-  const { data: listing, isLoading } = useQuery({
+  const { data: listing, isLoading, error: loadError } = useQuery({
     queryKey: ["admin-listing", listingId],
     queryFn: () => adminGetListing(token as string, listingId),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
 
   const invalidate = () => {
-    queryClient.invalidateQueries({ queryKey: ["admin-listing", listingId] });
-    queryClient.invalidateQueries({ queryKey: ["admin-listings"] });
+    void queryClient.invalidateQueries({ queryKey: ["admin-listing", listingId] });
+    void queryClient.invalidateQueries({ queryKey: ["admin-listings"] });
+    void queryClient.invalidateQueries({ queryKey: ["admin-overview"] });
   };
+
+  // One inline error for every action on this page (moderation + documents).
+  const [actionError, setActionError] = useState<string | null>(null);
 
   const approveMutation = useMutation({
     mutationFn: () => adminApproveListing(token as string, listingId),
+    onMutate: () => setActionError(null),
     onSuccess: invalidate,
+    // 409 when the listing is no longer pending or the vendor isn't verified.
+    onError: (err) => {
+      setActionError(errorMessage(err, "Couldn't approve this listing."));
+      invalidate();
+    },
   });
   const rejectMutation = useMutation({
     mutationFn: (reason?: string) =>
       adminRejectListing(token as string, listingId, reason),
+    onMutate: () => setActionError(null),
     onSuccess: invalidate,
+    onError: (err) => {
+      setActionError(errorMessage(err, "Couldn't reject this listing."));
+      invalidate();
+    },
   });
   const busy = approveMutation.isPending || rejectMutation.isPending;
-  const approveError =
-    approveMutation.error instanceof Error ? approveMutation.error.message : null;
+
+  const [docBusyId, setDocBusyId] = useState<string | null>(null);
+  const docMutation = useMutation({
+    mutationFn: (v: { id: string; action: "approve" | "reject"; reason?: string }) =>
+      v.action === "approve"
+        ? adminApproveListingDocument(token as string, v.id)
+        : adminRejectListingDocument(token as string, v.id, v.reason),
+    onMutate: ({ id }) => {
+      setActionError(null);
+      setDocBusyId(id);
+    },
+    onSuccess: invalidate,
+    onError: (err, { action }) =>
+      setActionError(
+        errorMessage(
+          err,
+          action === "approve"
+            ? "Couldn't approve this document."
+            : "Couldn't reject this document.",
+        ),
+      ),
+    onSettled: () => setDocBusyId(null),
+  });
 
   const handleViewDoc = (id: string) => {
     const win = window.open("", "_blank");
@@ -92,7 +136,10 @@ export function AdminListingDetailLiveContent({
       .then(({ url }) => {
         if (win) win.location.href = url;
       })
-      .catch(() => win?.close());
+      .catch((err) => {
+        win?.close();
+        setActionError(errorMessage(err, "Couldn't open this document."));
+      });
   };
 
   // The cover image plus any valid media entries (test data sometimes stores
@@ -118,8 +165,16 @@ export function AdminListingDetailLiveContent({
       </button>
 
       {isLoading || !listing ? (
-        <p className="text-sm font-medium font-satoshi text-[#676565]">
-          {isLoading ? "Loading…" : "Listing not found."}
+        <p
+          className={`text-sm font-medium font-satoshi ${
+            loadError ? "text-[#C0392B]" : "text-[#676565]"
+          }`}
+        >
+          {isLoading
+            ? "Loading…"
+            : loadError
+              ? errorMessage(loadError, "Couldn't load this listing.")
+              : "Listing not found."}
         </p>
       ) : (
         <>
@@ -158,10 +213,12 @@ export function AdminListingDetailLiveContent({
                     type="button"
                     disabled={busy}
                     onClick={() => {
-                      const reason =
-                        window.prompt("Reason for rejection (optional):") ??
-                        undefined;
-                      rejectMutation.mutate(reason);
+                      const reason = window.prompt(
+                        "Reason for rejection (shown to the vendor):",
+                      );
+                      // Cancelled prompt → don't reject.
+                      if (reason === null) return;
+                      rejectMutation.mutate(reason.trim() || undefined);
                     }}
                     className="rounded-lg border border-[#E5E5E5] px-3 py-2 text-xs font-bold font-satoshi text-[#C0392B] disabled:opacity-60"
                   >
@@ -172,12 +229,27 @@ export function AdminListingDetailLiveContent({
             </div>
           </div>
 
-          {approveError ? (
-            <p className="rounded-lg border border-[#FDEBEB] bg-[#FDEBEB] px-4 py-3 text-sm font-medium font-satoshi text-[#C0392B]">
-              {approveError}
+          {actionError ? (
+            <div
+              role="alert"
+              className="flex items-start justify-between gap-3 rounded-lg border border-[#FDEBEB] bg-[#FDEBEB] px-4 py-3 text-sm font-medium font-satoshi text-[#C0392B]"
+            >
+              <span>{actionError}</span>
+              <button
+                type="button"
+                onClick={() => setActionError(null)}
+                className="shrink-0 font-bold hover:underline"
+              >
+                Dismiss
+              </button>
+            </div>
+          ) : null}
+          {listing.status !== "pending" ? (
+            <p className="text-xs font-medium font-satoshi text-[#676565]">
+              Only listings awaiting review can be approved or rejected.
             </p>
           ) : null}
-          {listing.rejectionReason ? (
+          {listing.status === "rejected" && listing.rejectionReason ? (
             <p className="rounded-lg border border-[#FDEBEB] bg-[#FDEBEB] px-4 py-3 text-sm font-medium font-satoshi text-[#C0392B]">
               {listing.rejectionReason}
             </p>
@@ -249,6 +321,11 @@ export function AdminListingDetailLiveContent({
                       <p className="mt-0.5 truncate text-xs font-medium font-satoshi text-[#676565]">
                         {doc.fileName}
                       </p>
+                      {doc.status === "rejected" && doc.rejectionReason ? (
+                        <p className="mt-0.5 text-xs font-medium font-satoshi text-[#C0392B]">
+                          {doc.rejectionReason}
+                        </p>
+                      ) : null}
                     </div>
                     <div className="flex shrink-0 items-center gap-2">
                       {doc.fileUrl ? (
@@ -269,6 +346,38 @@ export function AdminListingDetailLiveContent({
                       >
                         {doc.status}
                       </span>
+                      {doc.status !== "approved" ? (
+                        <button
+                          type="button"
+                          disabled={docBusyId !== null}
+                          onClick={() =>
+                            docMutation.mutate({ id: doc.id, action: "approve" })
+                          }
+                          className="rounded-lg bg-[#2E7D32] px-3 py-1.5 text-xs font-bold font-satoshi text-white disabled:opacity-60"
+                        >
+                          {docBusyId === doc.id ? "…" : "Approve"}
+                        </button>
+                      ) : null}
+                      {doc.status !== "rejected" ? (
+                        <button
+                          type="button"
+                          disabled={docBusyId !== null}
+                          onClick={() => {
+                            const reason = window.prompt(
+                              "Why is this document rejected? (shown to the vendor)",
+                            );
+                            if (reason === null) return;
+                            docMutation.mutate({
+                              id: doc.id,
+                              action: "reject",
+                              reason: reason.trim() || undefined,
+                            });
+                          }}
+                          className="rounded-lg border border-[#E5E5E5] px-3 py-1.5 text-xs font-bold font-satoshi text-[#C0392B] disabled:opacity-60"
+                        >
+                          Reject
+                        </button>
+                      ) : null}
                     </div>
                   </div>
                 ))}

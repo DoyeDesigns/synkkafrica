@@ -14,23 +14,29 @@ import { useMemo, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 
-import { VendorListingCard } from "@/features/vendor/components/vendor-listing-card";
+import { VendorDeleteListingModal } from "@/features/vendor/components/vendor-delete-listing-modal";
+import {
+  VendorListingActionError,
+  VendorListingCard,
+} from "@/features/vendor/components/vendor-listing-card";
 import { VendorStatCard } from "@/features/vendor/components/vendor-stat-card";
 import {
   VENDOR_DASHBOARD_PERIOD_OPTIONS,
   type VendorDashboardListing,
   type VendorDashboardPeriod,
 } from "@/features/vendor/data/vendor-dashboard";
-import { useFormatPrice } from "@/hooks/use-format-price";
+import { useVendorListingMutations } from "@/features/vendor/hooks/use-vendor-listing-mutations";
+import { toVendorDashListing } from "@/features/vendor/vendor-listing-mappers";
+import { VENDOR_QUERY_KEYS } from "@/features/vendor/vendor-query-keys";
+import { formatMoney } from "@/lib/format-money";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { useTranslation } from "@/hooks/use-translation";
+import { LIVE_QUERY_OPTIONS, POLLING_QUERY_OPTIONS } from "@/lib/live-query-options";
 import type { TranslationKey } from "@/lib/preferences/translations";
 import {
   getVendorEarnings,
   listVendorBookings,
   listVendorListings,
-  type VendorListingCategory,
-  type VendorListingSummary,
 } from "@/lib/api/vendor";
 
 const PERIOD_LABEL_KEYS: Record<VendorDashboardPeriod, TranslationKey> = {
@@ -41,39 +47,6 @@ const PERIOD_LABEL_KEYS: Record<VendorDashboardPeriod, TranslationKey> = {
   year: "vendor.dashboard.period.year",
 };
 
-const CATEGORY_KEY: Record<
-  VendorListingCategory,
-  VendorDashboardListing["categoryKey"]
-> = {
-  cars: "vendor.dashboard.category.carRentals",
-  accommodations: "vendor.dashboard.category.accommodations",
-  experiences: "vendor.dashboard.category.toursExperiences",
-};
-const CATEGORY_LABEL: Record<VendorListingCategory, string> = {
-  cars: "Car rentals",
-  accommodations: "Accommodations",
-  experiences: "Tours & experiences",
-};
-function toDashListing(l: VendorListingSummary): VendorDashboardListing {
-  return {
-    id: l.id,
-    title: l.title,
-    category: CATEGORY_LABEL[l.category],
-    categoryKey: CATEGORY_KEY[l.category],
-    rating: Math.round(l.ratingAvg),
-    // Empty when no cover uploaded → card renders a category-icon placeholder.
-    image: l.coverImageUrl || "",
-    status:
-      l.status === "live"
-        ? "live"
-        : l.status === "paused"
-          ? "paused"
-          : l.status === "draft"
-            ? "draft"
-            : "pending",
-  };
-}
-
 type VendorDashboardContentProps = {
   vendorName?: string | null;
 };
@@ -82,35 +55,39 @@ export function VendorDashboardContent({
   vendorName,
 }: VendorDashboardContentProps) {
   const t = useTranslation();
-  const formatPrice = useFormatPrice();
+  // Vendor amounts are shown in the booking/listing currency, never FX-converted.
+  const formatPrice = formatMoney;
   const { data: session } = useSession();
   const token = session?.accessToken;
   const displayName = vendorName?.trim() || "your business";
   const [period, setPeriod] = useState<VendorDashboardPeriod>("month");
   const [periodOpen, setPeriodOpen] = useState(false);
   const periodDropdownRef = useRef<HTMLDivElement>(null);
+  const listingMutations = useVendorListingMutations();
+  const [deleteTarget, setDeleteTarget] =
+    useState<VendorDashboardListing | null>(null);
 
   const { data: rawListings, isLoading } = useQuery({
-    queryKey: ["vendor-listings"],
+    queryKey: VENDOR_QUERY_KEYS.listings,
     queryFn: () => listVendorListings(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
   const { data: bookings } = useQuery({
-    queryKey: ["vendor-bookings"],
+    queryKey: VENDOR_QUERY_KEYS.bookings,
     queryFn: () => listVendorBookings(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...POLLING_QUERY_OPTIONS,
   });
   const { data: earnings } = useQuery({
-    queryKey: ["vendor-earnings"],
+    queryKey: VENDOR_QUERY_KEYS.earnings,
     queryFn: () => getVendorEarnings(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
 
   const listings = useMemo(
-    () => (rawListings ?? []).map(toDashListing),
+    () => (rawListings ?? []).map(toVendorDashListing),
     [rawListings],
   );
 
@@ -234,13 +211,29 @@ export function VendorDashboardContent({
         </div>
 
         <div className="grid gap-4 lg:grid-cols-2 bg-white rounded-[5px] p-5">
+          {listingMutations.error ? (
+            <div className="col-span-full">
+              <VendorListingActionError
+                message={listingMutations.error}
+                onDismiss={listingMutations.clearError}
+              />
+            </div>
+          ) : null}
           {isLoading ? (
             <div className="col-span-full flex items-center justify-center gap-2 p-8 text-sm font-medium font-satoshi text-[#676565]">
               <Loader2 className="h-4 w-4 animate-spin" /> Loading…
             </div>
           ) : listings.length > 0 ? (
             listings.map((listing) => (
-              <VendorListingCard key={listing.id} listing={listing} />
+              <VendorListingCard
+                key={listing.id}
+                listing={listing}
+                busy={listingMutations.isTogglePending(listing.id)}
+                onPauseToggle={listingMutations.togglePause}
+                onDeleteRequest={(id) =>
+                  setDeleteTarget(listings.find((l) => l.id === id) ?? null)
+                }
+              />
             ))
           ) : (
             <div className="col-span-full rounded-[5px] border border-[#EEEEEE] bg-[#F5F5F5] p-8 text-center">
@@ -251,6 +244,17 @@ export function VendorDashboardContent({
           )}
         </div>
       </section>
+
+      <VendorDeleteListingModal
+        listingTitle={deleteTarget?.title ?? ""}
+        isOpen={Boolean(deleteTarget)}
+        onClose={() => setDeleteTarget(null)}
+        onConfirm={() => {
+          if (!deleteTarget) return;
+          listingMutations.deleteListing(deleteTarget.id);
+          setDeleteTarget(null);
+        }}
+      />
     </>
   );
 }

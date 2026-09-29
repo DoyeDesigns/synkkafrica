@@ -37,6 +37,8 @@ export type AccommodationDetailApi = AccommodationSummaryApi & {
   checkInTime: string | null;
   checkOutTime: string | null;
   rooms: AccommodationRoomApi[];
+  // SynkAfrica service fee rate charged once on the booking subtotal.
+  feeRate?: number;
   latitude?: number | null;
   longitude?: number | null;
   lat?: number | null;
@@ -61,6 +63,13 @@ export type AccommodationBookingResult = {
   currency: string;
   nights: number;
   status: string;
+  // Authoritative price breakdown from the backend: `subtotal` is the
+  // vendor's price (days/nights/guests/add-ons), `fees` the SynkAfrica
+  // service fee charged once on it, `total` === `amount` is what is charged.
+  subtotal: number;
+  fees: number;
+  feeRate: number;
+  total: number;
 };
 
 export async function listAccommodations(): Promise<AccommodationSummaryApi[]> {
@@ -99,7 +108,9 @@ export async function initAccommodationPayment(
   bookingId: string,
   input: {
     email?: string;
+    phone?: string;
     callbackUrl?: string;
+    // Omit to let the backend pick by currency (NGN -> Paystack, else Stripe).
     provider?: "PAYSTACK" | "STRIPE";
   },
   token?: string,
@@ -135,6 +146,12 @@ function amenityIcon(a: string): AccommodationResult["features"][number]["icon"]
   if (s.includes("breakfast") || s.includes("coffee")) return "coffee";
   if (s.includes("park") || s.includes("car")) return "car";
   return "bed";
+}
+
+// Gallery order: the vendor-chosen main image first, then the rest.
+function coverFirst(cover: string | null, images: string[]): string[] {
+  if (!cover) return images;
+  return [cover, ...images.filter((url) => url !== cover)];
 }
 
 // Map a backend summary onto the landing "featured property" card shape.
@@ -200,7 +217,9 @@ function coordsFromAccommodation(
 // Fields the vendor doesn't capture (reviews, map, taxes) get safe defaults.
 export function toPropertyDetail(a: AccommodationDetailApi): PropertyDetail {
   const cover = a.coverImageUrl ?? a.images[0] ?? FALLBACK_ACCOMMODATION_IMAGE;
-  const images = a.images.length ? a.images : [cover];
+  const images = a.images.length
+    ? coverFirst(a.coverImageUrl, a.images)
+    : [cover];
   const rooms =
     a.rooms.length > 0
       ? a.rooms.map((r) => ({
@@ -243,5 +262,6 @@ export function toPropertyDetail(a: AccommodationDetailApi): PropertyDetail {
     amenities: DEFAULT_PROPERTY_AMENITIES,
     taxesAndFees: 0,
     currency: a.currency,
+    feeRate: a.feeRate,
   };
 }

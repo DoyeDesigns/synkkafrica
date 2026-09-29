@@ -464,7 +464,6 @@
       "withDriver": "드라이버 포함",
       "withDriverHint": "귀하의 여행에는 전문 운전기사가 포함되어 있습니다.",
       "noExtraCost": "추가 비용 없음",
-      "driverAddon": "+ ⟦금액⟧ 드라이버 추가 기능",
       "requestDelivery": "자동차 배송 요청",
       "requestDeliveryHint": "추가 비용을 지불하면 차량을 귀하의 위치로 배달해 드립니다.",
       "deliveryFee": "+ ⟦금액⟧ 배송비",
@@ -1839,7 +1838,8 @@
         "live": "실시간 상장",
         "pending": "보류 중...",
         "paused": "일시중지됨",
-        "draft": "초안"
+        "draft": "초안",
+        "rejected": "Needs changes"
       },
       "editListing": "목록 수정",
       "deleteListing": "목록 삭제",
@@ -2090,7 +2090,8 @@
           "live": "살다",
           "pending": "보류 중",
           "draft": "체커",
-          "paused": "일시중지됨"
+          "paused": "일시중지됨",
+          "rejected": "Needs changes"
         },
         "empty": "필터와 일치하는 목록이 없습니다."
       },
@@ -2131,6 +2132,13 @@
         "sat": "앉았다",
         "previousMonth": "지난달",
         "nextMonth": "다음 달"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "배달 / 반납",
       "deliveryDropoffHint": "고객에게 차량을 인도합니다.",
       "carPricingHeading": "렌탈 가격",
-      "price12hr": "12시간 대여(NGN)",
-      "price24hr": "24시간 렌탈(NGN)",
-      "priceMultiDay": "여러 날(매일, NGN)",
-      "driverAddonPrice": "드라이버 추가 가격(NGN)",
       "selfDriveNoPrice": "자가 운전 선택 - 운전자 추가 비용이 필요하지 않습니다.",
-      "deliveryFee": "배송/반납 수수료(NGN)",
       "clientPickupNoPrice": "고객 픽업이 선택되었습니다. 배송비가 필요하지 않습니다.",
       "pricingLocationHint": "다음 단계에서 픽업 또는 배송 위치에 대한 자세한 내용을 제공할 수 있습니다.",
       "accommodationPricingHeading": "숙박 가격",
@@ -2381,14 +2384,11 @@
       "actions": "행위",
       "edit": "편집하다",
       "delete": "삭제",
-      "nightlyRate": "야간 요금(NGN)",
-      "cleaningFee": "청소비(NGN)",
       "experiencePricingHeading": "가격",
       "experiencePricingHint": "티켓 가격을 설정하세요.",
       "singleTicketPrice": "단일 티켓 가격",
       "singleTicketPriceHint": "1인 가격",
       "groupTicketPrice": "단체 티켓 가격 (부터) (선택 사항)",
-      "groupTicketPriceHint": "단체의 경우 1인당 가격",
       "minGroupSizeOptional": "최소 그룹 크기(선택 사항)",
       "maxGroupSizeOptional": "최대 그룹 크기(선택 사항)",
       "minGroupSizePlaceholder": "예를 들어 5",
@@ -2403,7 +2403,6 @@
         "description": "설명",
         "gpsConfirmed": "GPS 추적 장치 확인"
       },
-      "pricePerPerson": "1인당 가격(NGN)",
       "minGroupSize": "최소 그룹 크기",
       "documents": {
         "stepTitle": "문서 업로드",
@@ -2477,7 +2476,12 @@
         "backToListings": "내 목록으로 돌아가기"
       },
       "categoryChooseHint": "제공하는 서비스 유형을 선택하세요. 이는 첫 번째 목록을 저장할 때 한 번 설정되며 나중에 변경할 수 없습니다.",
-      "categoryLockedHint": "귀하의 공급업체 계정은 {category}에만 등록되어 있습니다. 서비스 카테고리를 변경하려면 지원팀에 문의하세요."
+      "categoryLockedHint": "귀하의 공급업체 계정은 {category}에만 등록되어 있습니다. 서비스 카테고리를 변경하려면 지원팀에 문의하세요.",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

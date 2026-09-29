@@ -34,19 +34,16 @@ type OtherFiltersPanelProps = {
 
 const FILTER_ICON_CLASS = "h-4 w-4 shrink-0 text-[#676565]";
 
-function getPerkIcon(perk: string): LucideIcon {
-  switch (perk) {
-    case "Breakfast included":
-      return Coffee;
-    case "Free cancellation":
-      return RotateCcw;
-    case "Pool access":
-      return Waves;
-    case "Airport shuttle":
-      return Bus;
-    default:
-      return Wifi;
-  }
+const PERK_ICONS: Record<string, LucideIcon> = {
+  "Breakfast included": Coffee,
+  "Free cancellation": RotateCcw,
+  "Pool access": Waves,
+  "Airport shuttle": Bus,
+};
+
+function renderPerkIcon(perk: string) {
+  const Icon = PERK_ICONS[perk] ?? Wifi;
+  return <Icon className={FILTER_ICON_CLASS} strokeWidth={1.75} />;
 }
 
 type FilterDropdownRowProps = {
@@ -130,7 +127,6 @@ export function OtherFiltersPanel({
 }: OtherFiltersPanelProps) {
   const t = useTranslation();
   const { labelOption } = useFilterOptionLabel();
-  const PerkIcon = getPerkIcon(perks);
 
   const activeTags = [
     bedrooms
@@ -193,7 +189,7 @@ export function OtherFiltersPanel({
         />
 
         <FilterDropdownRow
-          icon={<PerkIcon className={FILTER_ICON_CLASS} strokeWidth={1.75} />}
+          icon={renderPerkIcon(perks)}
           label={t("filters.perks")}
           value={perks}
           options={PERK_OPTIONS}

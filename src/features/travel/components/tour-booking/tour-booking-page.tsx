@@ -100,7 +100,6 @@ export function TourBookingPage({
               options={tour.options}
               selectedOptionId={selectedOptionId}
               guestCount={guests}
-              days={days}
               onSelectOption={setSelectedOptionId}
               onBookNow={handleBookNow}
             />

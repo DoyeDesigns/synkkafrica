@@ -30,6 +30,8 @@ import {
   listVendorBookings,
   listVendorNotifications,
 } from "@/lib/api/vendor";
+import { VENDOR_QUERY_KEYS } from "@/features/vendor/vendor-query-keys";
+import { POLLING_QUERY_OPTIONS } from "@/lib/live-query-options";
 
 // Live badge counts: awaiting-confirmation bookings + unread notifications.
 // Shares query keys with the pages so it's one deduped fetch each.
@@ -37,16 +39,16 @@ function useVendorNavBadges(): Record<string, number> {
   const { data: session } = useSession();
   const token = session?.accessToken;
   const { data: bookings } = useQuery({
-    queryKey: ["vendor-bookings"],
+    queryKey: VENDOR_QUERY_KEYS.bookings,
     queryFn: () => listVendorBookings(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...POLLING_QUERY_OPTIONS,
   });
   const { data: notifications } = useQuery({
-    queryKey: ["vendor-notifications"],
+    queryKey: VENDOR_QUERY_KEYS.notifications,
     queryFn: () => listVendorNotifications(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...POLLING_QUERY_OPTIONS,
   });
   return {
     bookings: (bookings ?? []).filter(

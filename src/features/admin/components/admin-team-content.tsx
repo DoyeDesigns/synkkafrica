@@ -13,6 +13,8 @@ import {
   type AdminRole,
   type InvitableAdminRole,
 } from "@/lib/api/admin";
+import { disableAdminUser, enableAdminUser } from "@/lib/api/admin/users";
+import { getAdminMe } from "@/lib/api/admin-auth";
 
 const ROLE_LABELS: Record<AdminRole, string> = {
   super_admin: "Super admin",
@@ -71,6 +73,35 @@ export function AdminTeamContent() {
     mutationFn: (id: string) => adminRevokeInvite(token as string, id),
     onSuccess: invalidate,
   });
+
+  // The signed-in admin (to hide "Disable" on your own row).
+  const { data: me } = useQuery({
+    queryKey: ["admin-me"],
+    queryFn: () => getAdminMe(token as string),
+    enabled: Boolean(token),
+    refetchOnWindowFocus: false,
+  });
+  // POST /admin/users/:id/disable|enable. Disabling revokes the admin's
+  // sessions immediately; enabling requires them to log in again.
+  const accessMutation = useMutation({
+    mutationFn: (v: { id: string; action: "disable" | "enable" }) =>
+      v.action === "disable"
+        ? disableAdminUser(token as string, v.id)
+        : enableAdminUser(token as string, v.id),
+    onSuccess: invalidate,
+    onError: invalidate,
+  });
+  const accessError =
+    accessMutation.isError && accessMutation.variables
+      ? {
+          id: accessMutation.variables.id,
+          message:
+            accessMutation.error instanceof Error &&
+            accessMutation.error.message
+              ? accessMutation.error.message
+              : "Couldn't update this admin's access.",
+        }
+      : null;
 
   const handleCopy = async () => {
     if (!inviteLink) return;
@@ -226,7 +257,35 @@ export function AdminTeamContent() {
                   {ROLE_LABELS[admin.role]}
                   {admin.disabledAt ? " · Disabled" : ""}
                 </p>
+                {accessError?.id === admin.id ? (
+                  <p role="alert" className="mt-1 text-xs font-medium font-satoshi text-[#C0392B]">
+                    {accessError.message}
+                  </p>
+                ) : null}
               </div>
+              <div className="flex shrink-0 items-center gap-2">
+              {me && me.id !== admin.id ? (
+                <button
+                  type="button"
+                  disabled={accessMutation.isPending}
+                  onClick={() => {
+                    if (admin.disabledAt) {
+                      accessMutation.mutate({ id: admin.id, action: "enable" });
+                    } else if (
+                      window.confirm(
+                        `Disable ${admin.email}? They'll be signed out immediately.`,
+                      )
+                    ) {
+                      accessMutation.mutate({ id: admin.id, action: "disable" });
+                    }
+                  }}
+                  className={`text-xs font-bold font-satoshi hover:underline disabled:opacity-60 ${
+                    admin.disabledAt ? "text-[#2E7D32]" : "text-[#C0392B]"
+                  }`}
+                >
+                  {admin.disabledAt ? "Enable" : "Disable"}
+                </button>
+              ) : null}
               <span
                 className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold font-satoshi ${
                   admin.mfaEnrolled
@@ -236,6 +295,7 @@ export function AdminTeamContent() {
               >
                 {admin.mfaEnrolled ? "MFA on" : "MFA pending"}
               </span>
+              </div>
             </div>
           ))}
         </div>

@@ -12,6 +12,9 @@ import {
 export type AddressAutocompleteOptions = AddressSuggestScope & {
   enabled?: boolean;
   formatCommit?: (place: PlaceSuggestion) => string;
+  // Fired when the user settles on a value: picks a suggestion, or presses
+  // Enter on typed text with no suggestion highlighted.
+  onCommit?: (value: string) => void;
 };
 
 export function useAddressAutocomplete(
@@ -27,9 +30,13 @@ export function useAddressAutocomplete(
   const [activeIndex, setActiveIndex] = useState(-1);
   const [rect, setRect] = useState<DOMRect | null>(null);
 
-  useEffect(() => {
+  // Mirror external value changes (e.g. the parent resets the field) via the
+  // adjust-state-during-render pattern rather than a setState-in-effect.
+  const [prevValue, setPrevValue] = useState(value);
+  if (value !== prevValue) {
+    setPrevValue(value);
     setText(value);
-  }, [value]);
+  }
 
   useEffect(() => {
     const id = window.setTimeout(() => setDebounced(text.trim()), 250);
@@ -104,6 +111,7 @@ export function useAddressAutocomplete(
     onChange(label);
     setOpen(false);
     setActiveIndex(-1);
+    options?.onCommit?.(label);
   };
 
   const handleChange = (next: string) => {
@@ -114,6 +122,16 @@ export function useAddressAutocomplete(
   };
 
   const handleKeyDown = (event: KeyboardEvent) => {
+    if (
+      event.key === "Enter" &&
+      options?.onCommit &&
+      (!showDropdown || activeIndex < 0)
+    ) {
+      event.preventDefault();
+      setOpen(false);
+      options.onCommit(text.trim());
+      return;
+    }
     if (!showDropdown) return;
     if (event.key === "ArrowDown") {
       event.preventDefault();

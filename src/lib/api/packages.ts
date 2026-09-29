@@ -3,6 +3,7 @@ import type {
   AccommodationDeal,
   PackageOfferInclusion,
 } from "@/features/travel/data/accommodations-landing";
+import type { TourPackage } from "@/features/tour-packages/data/tour-packages";
 
 export type PackageApi = {
   id: string;
@@ -48,5 +49,24 @@ export function toAccommodationDeal(p: PackageApi): AccommodationDeal {
       VALID_INCLUSIONS.includes(i as PackageOfferInclusion),
     ),
     packageId: p.id,
+  };
+}
+
+// Map a backend package onto the /tour-packages listing card shape. Packages
+// carry no structured destination yet, so `country` is left empty and the
+// page's location filter matches against the title / schedule text.
+export function toTourPackage(p: PackageApi): TourPackage {
+  return {
+    id: p.id,
+    country: "",
+    title: p.title,
+    nights: p.nights,
+    days: p.days,
+    startDate: "",
+    endDate: "",
+    scheduleLabel: p.scheduleLabel ?? undefined,
+    price: p.currentPrice,
+    currency: p.currency,
+    image: p.image ?? FALLBACK_PACKAGE_IMAGE,
   };
 }

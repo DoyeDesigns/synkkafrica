@@ -13,19 +13,23 @@ import {
   initAccommodationPayment,
 } from "@/lib/api/accommodations";
 import {
-  calculateNights,
   getDefaultCheckInDate,
   getDefaultCheckOutDate,
   parseBookingParams,
 } from "@/features/travel/booking/booking-params";
-import { calculateBookingTotal } from "@/features/travel/booking/calculate-booking-total";
 import { BookingBreadcrumbs } from "@/features/travel/components/booking/booking-breadcrumbs";
 import { BookingPaymentLoader } from "@/features/travel/components/booking/booking-payment-loader";
 import {
   BookingPaymentMethods,
   gatewayForMethod,
+  redirectToCheckout,
   type CheckoutMethodId,
 } from "@/features/travel/components/booking/booking-payment-methods";
+import {
+  BookingPaymentBreakdown,
+  toChargeBreakdown,
+  type BookingChargeBreakdown,
+} from "@/features/travel/components/booking/booking-payment-breakdown";
 import { BookingStepper } from "@/features/travel/components/booking/booking-stepper";
 import type { PropertyDetail } from "@/features/travel/data/property-booking";
 
@@ -40,14 +44,13 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
   // Effects can run twice (StrictMode); ensure the booking is created once.
   const submittedRef = useRef(false);
 
-  const [booking, setBooking] = useState<{
-    bookingId: string;
-    amount: number;
-    currency: string;
-  } | null>(null);
+  // The backend's price breakdown for the booking it just created — the
+  // authoritative amounts (subtotal + service fee = total) that get charged.
+  const [booking, setBooking] = useState<BookingChargeBreakdown | null>(null);
   const [email, setEmail] = useState(
     () => parseBookingParams(searchParams).email ?? "",
   );
+  const [phone, setPhone] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [paying, setPaying] = useState<false | CheckoutMethodId>(false);
 
@@ -63,19 +66,6 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
     const selectedRoom =
       property.rooms.find((room) => room.id === bookingParams.room) ??
       property.rooms[0];
-    const nights = calculateNights(checkIn, checkOut);
-    const pricing = selectedRoom
-      ? calculateBookingTotal({
-          pricePerNight: selectedRoom.pricePerNight,
-          nights,
-          roomCount: bookingParams.rooms,
-          guestCount: bookingParams.guests,
-          includedGuests: selectedRoom.guestCount,
-          extraGuestFeePerNight: Math.round(selectedRoom.pricePerNight * 0.15),
-          taxesAndFees: property.taxesAndFees,
-          currency: property.currency,
-        })
-      : null;
 
     bookAccommodation(property.id, {
       roomId: selectedRoom?.id,
@@ -92,16 +82,13 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
             type: "accommodation",
             id: property.id,
             name: property.name,
-            total: pricing?.total ?? result.amount,
+            // The backend total (subtotal + service fee) is what's charged.
+            total: result.total ?? result.amount,
             currency: result.currency,
           }),
           reference: result.bookingReference,
         });
-        setBooking({
-          bookingId: result.bookingId,
-          amount: result.amount,
-          currency: result.currency,
-        });
+        setBooking(toChargeBreakdown(result));
       })
       .catch(() => {
         submittedRef.current = false;
@@ -121,12 +108,11 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
     const callbackUrl = `${window.location.origin}/accommodations/${property.id}/book/confirmation?${query}&bookingId=${booking.bookingId}`;
     initAccommodationPayment(booking.bookingId, {
       email: email.trim(),
+      phone: phone.trim() || undefined,
       callbackUrl,
       provider,
     })
-      .then(({ authorizationUrl }) => {
-        window.location.href = authorizationUrl;
-      })
+      .then(({ authorizationUrl }) => redirectToCheckout(authorizationUrl))
       .catch(() => {
         setPaying(false);
         setError("We couldn't start the payment. Please try again.");
@@ -160,15 +146,7 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
               {property.name}
             </p>
 
-            <div className="mt-4 flex items-center justify-between rounded-lg bg-[#F8F8F8] px-4 py-3">
-              <span className="text-sm font-medium font-satoshi text-[#676565]">
-                Total
-              </span>
-              <span className="text-lg font-bold font-satoshi text-[#D85A30]">
-                {booking.currency}{" "}
-                {booking.amount.toLocaleString()}
-              </span>
-            </div>
+            <BookingPaymentBreakdown breakdown={booking} />
 
             <label className="mt-4 block">
               <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
@@ -183,6 +161,19 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
               />
             </label>
 
+            <label className="mt-4 block">
+              <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
+                Phone (optional)
+              </span>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(event) => setPhone(event.target.value)}
+                placeholder="+234 800 000 0000"
+                className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]"
+              />
+            </label>
+
             {error ? (
               <p className="mt-3 text-xs font-medium font-satoshi text-[#C0392B]">
                 {error}
@@ -190,7 +181,11 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
             ) : null}
 
             <div className="mt-5">
-              <BookingPaymentMethods paying={paying} onPay={handlePay} />
+              <BookingPaymentMethods
+                currency={booking.currency}
+                paying={paying}
+                onPay={handlePay}
+              />
             </div>
           </div>
         )}

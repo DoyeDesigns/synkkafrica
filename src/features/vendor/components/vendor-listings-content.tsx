@@ -5,21 +5,22 @@ import { ChevronDown, Loader2, Plus } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import { VendorListingAvailabilityPanel } from "@/features/vendor/components/vendor-listing-availability-panel";
-import { VendorListingCard } from "@/features/vendor/components/vendor-listing-card";
+import {
+  VendorListingActionError,
+  VendorListingCard,
+} from "@/features/vendor/components/vendor-listing-card";
 import { VendorDeleteListingModal } from "@/features/vendor/components/vendor-delete-listing-modal";
 import type { VendorDashboardListing } from "@/features/vendor/data/vendor-dashboard";
+import { useVendorListingMutations } from "@/features/vendor/hooks/use-vendor-listing-mutations";
+import { toVendorDashListing } from "@/features/vendor/vendor-listing-mappers";
+import { VENDOR_QUERY_KEYS } from "@/features/vendor/vendor-query-keys";
 import { useTranslation } from "@/hooks/use-translation";
+import { LIVE_QUERY_OPTIONS } from "@/lib/live-query-options";
 import type { TranslationKey } from "@/lib/preferences/translations";
-import {
-  deleteVendorListing,
-  listVendorListings,
-  setVendorListingStatus,
-  type VendorListingCategory,
-  type VendorListingSummary,
-} from "@/lib/api/vendor";
+import { listVendorListings } from "@/lib/api/vendor";
 
 const CATEGORY_FILTERS = [
   "all",
@@ -28,7 +29,14 @@ const CATEGORY_FILTERS = [
   "vendor.dashboard.category.toursExperiences",
 ] as const;
 
-const STATUS_FILTERS = ["all", "live", "pending", "draft"] as const;
+const STATUS_FILTERS = [
+  "all",
+  "live",
+  "pending",
+  "paused",
+  "rejected",
+  "draft",
+] as const;
 
 type CategoryFilter = (typeof CATEGORY_FILTERS)[number];
 type StatusFilter = (typeof STATUS_FILTERS)[number];
@@ -36,47 +44,10 @@ type StatusFilter = (typeof STATUS_FILTERS)[number];
 const STATUS_LABEL_KEYS: Record<Exclude<StatusFilter, "all">, TranslationKey> = {
   live: "vendor.listings.filter.status.live",
   pending: "vendor.listings.filter.status.pending",
+  paused: "vendor.listings.filter.status.paused",
+  rejected: "vendor.listings.filter.status.rejected",
   draft: "vendor.listings.filter.status.draft",
 };
-
-const CATEGORY_KEY: Record<
-  VendorListingCategory,
-  VendorDashboardListing["categoryKey"]
-> = {
-  cars: "vendor.dashboard.category.carRentals",
-  accommodations: "vendor.dashboard.category.accommodations",
-  experiences: "vendor.dashboard.category.toursExperiences",
-};
-const CATEGORY_LABEL: Record<VendorListingCategory, string> = {
-  cars: "Car rentals",
-  accommodations: "Accommodations",
-  experiences: "Tours & experiences",
-};
-
-// Map the backend's five listing statuses onto the card's statuses.
-// `rejected` has no dedicated card treatment yet, so it reads as pending.
-function toDashStatus(
-  status: VendorListingSummary["status"],
-): VendorDashboardListing["status"] {
-  if (status === "live") return "live";
-  if (status === "paused") return "paused";
-  if (status === "draft") return "draft";
-  return "pending";
-}
-
-function toDashListing(l: VendorListingSummary): VendorDashboardListing {
-  return {
-    id: l.id,
-    title: l.title,
-    category: CATEGORY_LABEL[l.category],
-    categoryKey: CATEGORY_KEY[l.category],
-    rating: Math.round(l.ratingAvg),
-    // Empty when no cover has been uploaded → the card shows a category-icon
-    // placeholder rather than a cropped hero banner.
-    image: l.coverImageUrl || "",
-    status: toDashStatus(l.status),
-  };
-}
 
 function FilterPill<T extends string>({
   value,
@@ -121,7 +92,7 @@ export function VendorListingsContent({
   const searchParams = useSearchParams();
   const { data: session } = useSession();
   const token = session?.accessToken;
-  const queryClient = useQueryClient();
+  const listingMutations = useVendorListingMutations();
 
   const displayName = vendorName?.trim() || "your business";
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
@@ -131,44 +102,16 @@ export function VendorListingsContent({
   const highlightedListingId = searchParams.get("listing");
 
   const { data: rawListings, isLoading } = useQuery({
-    queryKey: ["vendor-listings"],
+    queryKey: VENDOR_QUERY_KEYS.listings,
     queryFn: () => listVendorListings(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
 
   const listings = useMemo(
-    () => (rawListings ?? []).map(toDashListing),
+    () => (rawListings ?? []).map(toVendorDashListing),
     [rawListings],
   );
-
-  const invalidate = () =>
-    queryClient.invalidateQueries({ queryKey: ["vendor-listings"] });
-
-  const statusMutation = useMutation({
-    mutationFn: ({ id, status }: { id: string; status: "live" | "paused" }) =>
-      setVendorListingStatus(token as string, id, status),
-    onSuccess: invalidate,
-  });
-  const deleteMutation = useMutation({
-    mutationFn: (id: string) => deleteVendorListing(token as string, id),
-    onSuccess: () => {
-      setDeleteTarget(null);
-      void invalidate();
-    },
-  });
-
-  const handlePauseToggle = (id: string) => {
-    const current = listings.find((l) => l.id === id);
-    // Only live/paused listings can toggle; pending & draft can't.
-    if (!current || current.status === "pending" || current.status === "draft") {
-      return;
-    }
-    statusMutation.mutate({
-      id,
-      status: current.status === "live" ? "paused" : "live",
-    });
-  };
 
   const filteredListings = useMemo(
     () =>
@@ -239,6 +182,10 @@ export function VendorListingsContent({
           </div>
 
           <div className="space-y-4 rounded-[5px] bg-white p-4">
+            <VendorListingActionError
+              message={listingMutations.error}
+              onDismiss={listingMutations.clearError}
+            />
             {isLoading ? (
               <div className="flex items-center justify-center gap-2 p-8 text-sm font-medium font-satoshi text-[#676565]">
                 <Loader2 className="h-4 w-4 animate-spin" /> Loading…
@@ -250,7 +197,8 @@ export function VendorListingsContent({
                   listing={listing}
                   variant="listings"
                   highlighted={listing.id === highlightedListingId}
-                  onPauseToggle={handlePauseToggle}
+                  busy={listingMutations.isTogglePending(listing.id)}
+                  onPauseToggle={listingMutations.togglePause}
                   onDeleteRequest={(id) =>
                     setDeleteTarget(listings.find((l) => l.id === id) ?? null)
                   }
@@ -280,7 +228,10 @@ export function VendorListingsContent({
         isOpen={Boolean(deleteTarget)}
         onClose={() => setDeleteTarget(null)}
         onConfirm={() => {
-          if (deleteTarget) deleteMutation.mutate(deleteTarget.id);
+          if (!deleteTarget) return;
+          // Close right away; a failure surfaces in the inline error banner.
+          listingMutations.deleteListing(deleteTarget.id);
+          setDeleteTarget(null);
         }}
       />
     </>

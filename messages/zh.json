@@ -464,7 +464,6 @@
       "withDriver": "带司机",
       "withDriverHint": "为您的旅程提供专业司机。",
       "noExtraCost": "无需额外费用",
-      "driverAddon": "+ {amount} 驱动程序附加组件",
       "requestDelivery": "要求送车",
       "requestDeliveryHint": "支付额外费用即可将汽车送到您所在的位置。",
       "deliveryFee": "+ ⟦金额⟧ 运费",
@@ -1839,7 +1838,8 @@
         "live": "实时列表",
         "pending": "待办的...",
         "paused": "已暂停",
-        "draft": "草稿"
+        "draft": "草稿",
+        "rejected": "Needs changes"
       },
       "editListing": "编辑列表",
       "deleteListing": "删除列表",
@@ -2090,7 +2090,8 @@
           "live": "居住",
           "pending": "待办的",
           "draft": "草稿",
-          "paused": "已暂停"
+          "paused": "已暂停",
+          "rejected": "Needs changes"
         },
         "empty": "没有列表符合您的过滤条件。"
       },
@@ -2131,6 +2132,13 @@
         "sat": "星期六",
         "previousMonth": "上个月",
         "nextMonth": "下个月"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "交付/投递",
       "deliveryDropoffHint": "您将汽车交付给客户。",
       "carPricingHeading": "租金定价",
-      "price12hr": "12 小时租赁 (NGN)",
-      "price24hr": "24 小时租赁 (NGN)",
-      "priceMultiDay": "多天（每天，NGN）",
-      "driverAddonPrice": "司机附加价格 (NGN)",
       "selfDriveNoPrice": "选择自驾 — 无需司机附加价格。",
-      "deliveryFee": "送货/送机费 (NGN)",
       "clientPickupNoPrice": "选择客户取货——无需运费。",
       "pricingLocationHint": "您可以在下一步中提供有关取货或送货地点的更多详细信息。",
       "accommodationPricingHeading": "保持定价",
@@ -2381,14 +2384,11 @@
       "actions": "行动",
       "edit": "编辑",
       "delete": "删除",
-      "nightlyRate": "每晚价格 (NGN)",
-      "cleaningFee": "清洁费（NGN）",
       "experiencePricingHeading": "定价",
       "experiencePricingHint": "设置您的票价。",
       "singleTicketPrice": "单程票价",
       "singleTicketPriceHint": "一人价",
       "groupTicketPrice": "团体票价（起价）（可选）",
-      "groupTicketPriceHint": "团体每人价格",
       "minGroupSizeOptional": "最小团体人数（可选）",
       "maxGroupSizeOptional": "最大团体人数（可选）",
       "minGroupSizePlaceholder": "例如5",
@@ -2403,7 +2403,6 @@
         "description": "描述",
         "gpsConfirmed": "GPS追踪装置已确认"
       },
-      "pricePerPerson": "每人价格 (NGN)",
       "minGroupSize": "最小团体人数",
       "documents": {
         "stepTitle": "文件上传",
@@ -2477,7 +2476,12 @@
         "backToListings": "返回我的列表"
       },
       "categoryChooseHint": "选择您提供的服务类型。该设置在您保存第一个列表时设置一次，以后无法更改。",
-      "categoryLockedHint": "您的供应商帐户仅针对⟦类别⟧注册。请联系支持人员更改您的服务类别。"
+      "categoryLockedHint": "您的供应商帐户仅针对⟦类别⟧注册。请联系支持人员更改您的服务类别。",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

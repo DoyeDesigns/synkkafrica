@@ -20,6 +20,7 @@ export function AccommodationsResultsPage() {
     setSearchQuery,
     updateDraftFilter,
     applyFilters,
+    applyFilter,
     resetFilters,
     hasAppliedFilters,
   } = useAccommodationFiltersContext();
@@ -42,6 +43,7 @@ export function AccommodationsResultsPage() {
               showClearFilter={hasAppliedFilters}
               onFilterChange={updateDraftFilter}
               onApply={applyFilters}
+              onApplyFilter={applyFilter}
               onClearFilters={resetFilters}
             />
           </div>

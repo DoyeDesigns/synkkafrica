@@ -10,8 +10,14 @@ import { BookingPaymentLoader } from "@/features/travel/components/booking/booki
 import {
   BookingPaymentMethods,
   gatewayForMethod,
+  redirectToCheckout,
   type CheckoutMethodId,
 } from "@/features/travel/components/booking/booking-payment-methods";
+import {
+  BookingPaymentBreakdown,
+  toChargeBreakdown,
+  type BookingChargeBreakdown,
+} from "@/features/travel/components/booking/booking-payment-breakdown";
 import { TourBookingBreadcrumbs } from "@/features/travel/components/tour-booking/tour-booking-breadcrumbs";
 import { TourBookingStepper } from "@/features/travel/components/tour-booking/tour-booking-stepper";
 import type { TourDetail } from "@/features/travel/data/tour-booking";
@@ -30,14 +36,13 @@ function TourBookingPaymentPageContent({ tour }: TourBookingPaymentPageProps) {
   const query = searchParams.toString();
   const submittedRef = useRef(false);
 
-  const [booking, setBooking] = useState<{
-    bookingId: string;
-    amount: number;
-    currency: string;
-  } | null>(null);
+  // The backend's price breakdown for the booking it just created — the
+  // authoritative amounts (subtotal + service fee = total) that get charged.
+  const [booking, setBooking] = useState<BookingChargeBreakdown | null>(null);
   const [email, setEmail] = useState(
     () => parseBookingParams(searchParams).email ?? "",
   );
+  const [phone, setPhone] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [paying, setPaying] = useState<false | CheckoutMethodId>(false);
 
@@ -62,15 +67,11 @@ function TourBookingPaymentPageContent({ tour }: TourBookingPaymentPageProps) {
           productId: tour.id,
           productName: tour.title,
           guests: p.guests,
-          total: result.amount,
+          total: result.total ?? result.amount,
           currency: result.currency,
           reference: result.bookingReference,
         });
-        setBooking({
-          bookingId: result.bookingId,
-          amount: result.amount,
-          currency: result.currency,
-        });
+        setBooking(toChargeBreakdown(result));
       })
       .catch(() => {
         submittedRef.current = false;
@@ -88,10 +89,13 @@ function TourBookingPaymentPageContent({ tour }: TourBookingPaymentPageProps) {
     setPaying(method);
     const provider = gatewayForMethod(method);
     const callbackUrl = `${window.location.origin}/tours/${tour.id}/book/confirmation?${query}&bookingId=${booking.bookingId}`;
-    initExperiencePayment(booking.bookingId, { email: email.trim(), callbackUrl, provider })
-      .then(({ authorizationUrl }) => {
-        window.location.href = authorizationUrl;
-      })
+    initExperiencePayment(booking.bookingId, {
+      email: email.trim(),
+      phone: phone.trim() || undefined,
+      callbackUrl,
+      provider,
+    })
+      .then(({ authorizationUrl }) => redirectToCheckout(authorizationUrl))
       .catch(() => {
         setPaying(false);
         setError("We couldn't start the payment. Please try again.");
@@ -125,14 +129,7 @@ function TourBookingPaymentPageContent({ tour }: TourBookingPaymentPageProps) {
               {tour.title}
             </p>
 
-            <div className="mt-4 flex items-center justify-between rounded-lg bg-[#F8F8F8] px-4 py-3">
-              <span className="text-sm font-medium font-satoshi text-[#676565]">
-                Total
-              </span>
-              <span className="text-lg font-bold font-satoshi text-[#D85A30]">
-                {booking.currency} {booking.amount.toLocaleString()}
-              </span>
-            </div>
+            <BookingPaymentBreakdown breakdown={booking} />
 
             <label className="mt-4 block">
               <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
@@ -147,6 +144,19 @@ function TourBookingPaymentPageContent({ tour }: TourBookingPaymentPageProps) {
               />
             </label>
 
+            <label className="mt-4 block">
+              <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
+                Phone (optional)
+              </span>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(event) => setPhone(event.target.value)}
+                placeholder="+234 800 000 0000"
+                className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]"
+              />
+            </label>
+
             {error ? (
               <p className="mt-3 text-xs font-medium font-satoshi text-[#C0392B]">
                 {error}
@@ -154,7 +164,11 @@ function TourBookingPaymentPageContent({ tour }: TourBookingPaymentPageProps) {
             ) : null}
 
             <div className="mt-5">
-              <BookingPaymentMethods paying={paying} onPay={handlePay} />
+              <BookingPaymentMethods
+                currency={booking.currency}
+                paying={paying}
+                onPay={handlePay}
+              />
             </div>
           </div>
         )}

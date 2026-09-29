@@ -464,7 +464,6 @@
       "withDriver": "With driver",
       "withDriverHint": "A professional driver is included for your trip.",
       "noExtraCost": "No additional cost",
-      "driverAddon": "+ {amount} driver add-on",
       "requestDelivery": "Request car delivery",
       "requestDeliveryHint": "Have the car delivered to your location for an additional fee.",
       "deliveryFee": "+ {amount} delivery fee",
@@ -1839,7 +1838,8 @@
         "live": "Danh sách trực tiếp",
         "pending": "Chưa giải quyết...",
         "paused": "Đã tạm dừng",
-        "draft": "Bản nháp"
+        "draft": "Bản nháp",
+        "rejected": "Needs changes"
       },
       "editListing": "Chỉnh sửa danh sách",
       "deleteListing": "Xóa danh sách",
@@ -2090,7 +2090,8 @@
           "live": "Sống",
           "pending": "Chưa giải quyết",
           "draft": "Bản nháp",
-          "paused": "Đã tạm dừng"
+          "paused": "Đã tạm dừng",
+          "rejected": "Needs changes"
         },
         "empty": "Không có danh sách nào phù hợp với bộ lọc của bạn."
       },
@@ -2131,6 +2132,13 @@
         "sat": "Đã ngồi",
         "previousMonth": "Tháng trước",
         "nextMonth": "Tháng tiếp theo"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "Giao hàng/Trả hàng",
       "deliveryDropoffHint": "Bạn giao xe cho khách hàng.",
       "carPricingHeading": "Giá thuê",
-      "price12hr": "Thuê 12 giờ (NGN)",
-      "price24hr": "Cho thuê 24 giờ (NGN)",
-      "priceMultiDay": "Nhiều ngày (mỗi ngày, NGN)",
-      "driverAddonPrice": "Giá bổ sung cho tài xế (NGN)",
       "selfDriveNoPrice": "Đã chọn tự lái - không yêu cầu giá bổ sung cho trình điều khiển.",
-      "deliveryFee": "Phí giao/trả hàng (NGN)",
       "clientPickupNoPrice": "Đã chọn đón khách hàng - không yêu cầu phí giao hàng.",
       "pricingLocationHint": "Bạn có thể cung cấp thêm thông tin chi tiết về địa điểm nhận hàng hoặc giao hàng trong bước tiếp theo.",
       "accommodationPricingHeading": "Giữ nguyên giá",
@@ -2381,14 +2384,11 @@
       "actions": "hành động",
       "edit": "Biên tập",
       "delete": "Xóa bỏ",
-      "nightlyRate": "Giá mỗi đêm (NGN)",
-      "cleaningFee": "Phí vệ sinh (NGN)",
       "experiencePricingHeading": "Định giá",
       "experiencePricingHint": "Đặt giá vé của bạn.",
       "singleTicketPrice": "Giá vé đơn",
       "singleTicketPriceHint": "Giá cho một người",
       "groupTicketPrice": "Giá vé đoàn (từ) (Tùy chọn)",
-      "groupTicketPriceHint": "Giá mỗi người cho nhóm",
       "minGroupSizeOptional": "Kích thước nhóm tối thiểu (Tùy chọn)",
       "maxGroupSizeOptional": "Kích thước nhóm tối đa (Tùy chọn)",
       "minGroupSizePlaceholder": "ví dụ. 5",
@@ -2403,7 +2403,6 @@
         "description": "Sự miêu tả",
         "gpsConfirmed": "Thiết bị theo dõi GPS đã được xác nhận"
       },
-      "pricePerPerson": "Giá mỗi người (NGN)",
       "minGroupSize": "Quy mô nhóm tối thiểu",
       "documents": {
         "stepTitle": "Tải lên tài liệu",
@@ -2477,7 +2476,12 @@
         "backToListings": "Quay lại danh sách của tôi"
       },
       "categoryChooseHint": "Chọn loại dịch vụ bạn cung cấp. Điều này được đặt một lần khi bạn lưu danh sách đầu tiên của mình và không thể thay đổi sau này.",
-      "categoryLockedHint": "Tài khoản nhà cung cấp của bạn chỉ được đăng ký cho {category}. Liên hệ với bộ phận hỗ trợ để thay đổi danh mục dịch vụ của bạn."
+      "categoryLockedHint": "Tài khoản nhà cung cấp của bạn chỉ được đăng ký cho {category}. Liên hệ với bộ phận hỗ trợ để thay đổi danh mục dịch vụ của bạn.",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

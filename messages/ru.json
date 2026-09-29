@@ -464,7 +464,6 @@
       "withDriver": "С водителем",
       "withDriverHint": "В вашу поездку включен профессиональный водитель.",
       "noExtraCost": "Никаких дополнительных затрат",
-      "driverAddon": "+ надстройка драйвера {amount}",
       "requestDelivery": "Заказать доставку автомобиля",
       "requestDeliveryHint": "Доставим автомобиль к вам за дополнительную плату.",
       "deliveryFee": "+ ⟦сумма⟧ стоимость доставки",
@@ -1839,7 +1838,8 @@
         "live": "Живой листинг",
         "pending": "В ожидании...",
         "paused": "Приостановлено",
-        "draft": "Черновик"
+        "draft": "Черновик",
+        "rejected": "Needs changes"
       },
       "editListing": "Редактировать объявление",
       "deleteListing": "Удалить объявление",
@@ -2090,7 +2090,8 @@
           "live": "Жить",
           "pending": "В ожидании",
           "draft": "Черновики",
-          "paused": "Приостановлено"
+          "paused": "Приостановлено",
+          "rejected": "Needs changes"
         },
         "empty": "Нет объявлений, соответствующих вашим фильтрам."
       },
@@ -2131,6 +2132,13 @@
         "sat": "Суббота",
         "previousMonth": "Предыдущий месяц",
         "nextMonth": "В следующем месяце"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "Доставка / Сдача",
       "deliveryDropoffHint": "Вы доставляете автомобиль заказчику.",
       "carPricingHeading": "Цены на аренду",
-      "price12hr": "12-часовая аренда (NGN)",
-      "price24hr": "Круглосуточная аренда (NGN)",
-      "priceMultiDay": "Несколько дней (в день, NGN)",
-      "driverAddonPrice": "Стоимость дополнительной услуги для водителя (NGN)",
       "selfDriveNoPrice": "Выбран вариант «Самостоятельное вождение» — доплата за услуги водителя не требуется.",
-      "deliveryFee": "Плата за доставку / сдачу (NGN)",
       "clientPickupNoPrice": "Выбран самовывоз — плата за доставку не взимается.",
       "pricingLocationHint": "На следующем этапе вы сможете указать более подробную информацию о месте самовывоза или доставки.",
       "accommodationPricingHeading": "Цены на проживание",
@@ -2381,14 +2384,11 @@
       "actions": "Действия",
       "edit": "Редактировать",
       "delete": "Удалить",
-      "nightlyRate": "Стоимость проживания за ночь (NGN)",
-      "cleaningFee": "Плата за уборку (NGN)",
       "experiencePricingHeading": "Цены",
       "experiencePricingHint": "Установите цены на билеты.",
       "singleTicketPrice": "Стоимость одного билета",
       "singleTicketPriceHint": "Стоимость на одного человека",
       "groupTicketPrice": "Стоимость группового билета (от) (необязательно)",
-      "groupTicketPriceHint": "Стоимость на человека для групп",
       "minGroupSizeOptional": "Минимальное количество участников в группе (необязательно)",
       "maxGroupSizeOptional": "Максимальный размер группы (необязательно)",
       "minGroupSizePlaceholder": "например, 5",
@@ -2403,7 +2403,6 @@
         "description": "Описание",
         "gpsConfirmed": "Подтверждено наличие устройства GPS-слежения"
       },
-      "pricePerPerson": "Цена на человека (NGN)",
       "minGroupSize": "Минимальный размер группы",
       "documents": {
         "stepTitle": "Загрузка документа",
@@ -2477,7 +2476,12 @@
         "backToListings": "Вернуться к моим объявлениям"
       },
       "categoryChooseHint": "Выберите тип предоставляемой вами услуги. Этот параметр устанавливается однократно при сохранении первого объявления и впоследствии не может быть изменен.",
-      "categoryLockedHint": "Ваша учетная запись продавца зарегистрирована только для [[[категории]]]. Для изменения категории услуг обратитесь в службу поддержки."
+      "categoryLockedHint": "Ваша учетная запись продавца зарегистрирована только для [[[категории]]]. Для изменения категории услуг обратитесь в службу поддержки.",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

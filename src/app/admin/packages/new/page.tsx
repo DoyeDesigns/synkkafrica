@@ -1,8 +1,8 @@
-import { AdminAddPackageContent } from "@/features/admin/components/admin-add-package-content";
-import { getAdminSession } from "@/features/admin/get-admin-session";
+import { redirect } from "next/navigation";
 
-export default async function AdminAddPackagePage() {
-  await getAdminSession();
-
-  return <AdminAddPackageContent />;
+// The old multi-step package wizard was a mock that never saved anything.
+// Packages are created (and edited) on /admin/packages, which talks to the
+// backend; keep this URL working for old links/bookmarks.
+export default function AdminAddPackagePage() {
+  redirect("/admin/packages?new=1");
 }

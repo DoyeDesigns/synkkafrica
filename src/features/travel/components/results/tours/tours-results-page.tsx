@@ -24,6 +24,7 @@ export function ToursResultsPage() {
     setSearchQuery,
     updateDraftFilter,
     applyFilters,
+    applyFilter,
     resetFilters,
     hasAppliedFilters,
   } = useTourFiltersContext();
@@ -58,6 +59,7 @@ export function ToursResultsPage() {
               showClearFilter={hasAppliedFilters}
               onFilterChange={updateDraftFilter}
               onApply={applyFilters}
+              onApplyFilter={applyFilter}
               onClearFilters={resetFilters}
             />
           </div>

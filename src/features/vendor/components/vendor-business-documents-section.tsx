@@ -26,6 +26,8 @@ import {
   type VendorListingDocApi,
   type VendorDocumentsOverview,
 } from "@/lib/api/vendor";
+import { VENDOR_QUERY_KEYS } from "@/features/vendor/vendor-query-keys";
+import { LIVE_QUERY_OPTIONS } from "@/lib/live-query-options";
 
 const DOCUMENT_STATUS_LABEL_KEYS: Record<DocStatus, TranslationKey> = {
   verified: "vendor.businessProfile.documents.status.verified",
@@ -107,10 +109,10 @@ export function VendorBusinessDocumentsSection() {
   );
 
   const { data, isLoading } = useQuery({
-    queryKey: ["vendor-documents"],
+    queryKey: VENDOR_QUERY_KEYS.documents,
     queryFn: () => getVendorDocuments(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
 
   const uploadMutation = useMutation({
@@ -129,7 +131,7 @@ export function VendorBusinessDocumentsSection() {
       );
     },
     onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["vendor-documents"] }),
+      queryClient.invalidateQueries({ queryKey: VENDOR_QUERY_KEYS.documents }),
   });
 
   const businessUploadMutation = useMutation({
@@ -147,7 +149,7 @@ export function VendorBusinessDocumentsSection() {
       );
     },
     onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["vendor-documents"] }),
+      queryClient.invalidateQueries({ queryKey: VENDOR_QUERY_KEYS.documents }),
   });
 
   const business = data?.business ?? [];

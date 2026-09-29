@@ -14,8 +14,13 @@ import {
   hasGoogleAuth,
 } from "@/lib/env";
 import { refreshTokens, signOutBackend, verifyOtp } from "@/lib/api/backend";
-import { loginVendor, refreshVendorTokens } from "@/lib/api/vendor";
+import {
+  loginVendor,
+  refreshVendorTokens,
+  signOutVendor,
+} from "@/lib/api/vendor";
 import { refreshAdminTokens, verifyAdminMfa } from "@/lib/api/admin-auth";
+import { adminLogout } from "@/lib/api/admin/auth";
 
 // 30s clock-skew guard so we refresh a hair early rather than sending a
 // just-expired access token.
@@ -269,15 +274,22 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   events: {
     // Best-effort: revoke the backend refresh token when the NextAuth session
-    // ends, so a signed-out session can't be silently refreshed.
+    // ends, so a signed-out session can't be silently refreshed. Each realm
+    // has its own revoke endpoint — a vendor/admin refresh token sent to the
+    // customer /auth/signout would be ignored and stay live.
     async signOut(message) {
-      const refreshToken =
-        "token" in message
-          ? (message.token as BackendToken | null)?.refreshToken
-          : undefined;
+      const token =
+        "token" in message ? (message.token as BackendToken | null) : null;
+      const refreshToken = token?.refreshToken;
       if (refreshToken) {
         try {
-          await signOutBackend(refreshToken);
+          if (token?.realm === "vendor") {
+            await signOutVendor(refreshToken);
+          } else if (token?.realm === "admin") {
+            await adminLogout(refreshToken);
+          } else {
+            await signOutBackend(refreshToken);
+          }
         } catch {
           // Non-fatal — the token expires on its own.
         }

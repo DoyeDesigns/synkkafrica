@@ -41,6 +41,8 @@ export type PropertyDetail = {
   amenities: PropertyAmenities;
   taxesAndFees: number;
   currency: string;
+  // SynkAfrica service fee rate from the API (defaults to 6%).
+  feeRate?: number;
 };
 
 const PROPERTY_DETAILS: Record<string, PropertyDetail> = {

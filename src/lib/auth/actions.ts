@@ -1,22 +1,33 @@
 "use server";
 
+import { redirect } from "next/navigation";
+
 import { signIn, signOut } from "@/auth";
 import { requestOtp } from "@/lib/api/backend";
 
+// Sign-out clears the session cookie (and fires the realm-aware backend revoke
+// in auth.ts `events.signOut`) WITHOUT letting next-auth build the redirect.
+// With `redirectTo`, next-auth turns the path into an absolute URL based on
+// AUTH_URL / NEXTAUTH_URL (or the forwarded host); a wrong value there sends
+// users to an unreachable host ("unable to connect"). Redirecting with a
+// relative path via next/navigation always stays on the current origin.
+async function signOutTo(path: string): Promise<never> {
+  await signOut({ redirect: false });
+  redirect(path);
+}
+
 export async function signOutAction() {
-  await signOut({ redirectTo: "/" });
+  await signOutTo("/");
 }
 
 // Module-specific sign-out: return the vendor/admin to their own login screen
-// rather than the customer home. (next-auth v5 resolves redirectTo against
-// AUTH_URL — ensure AUTH_URL is set in deployed environments, otherwise the
-// post-logout redirect falls back to localhost.)
+// rather than the customer home.
 export async function signOutVendorAction() {
-  await signOut({ redirectTo: "/vendor/login" });
+  await signOutTo("/vendor/login");
 }
 
 export async function signOutAdminAction() {
-  await signOut({ redirectTo: "/admin/login" });
+  await signOutTo("/admin/login");
 }
 
 export async function signInWithGoogleAction() {

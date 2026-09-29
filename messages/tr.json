@@ -461,7 +461,6 @@
       "withDriver": "Sürücü ile",
       "withDriverHint": "Seyahatiniz için profesyonel bir şoför hizmetinizdedir.",
       "noExtraCost": "Ek ücret yok",
-      "driverAddon": "+ {miktar} sürücü eklentisi",
       "requestDelivery": "Araç teslimatı talebi",
       "requestDeliveryHint": "Ek bir ücret karşılığında aracın bulunduğunuz yere teslim edilmesini sağlayın.",
       "deliveryFee": "+ {tutar} teslimat ücreti",
@@ -1836,7 +1835,8 @@
         "live": "Canlı Listeleme",
         "pending": "Beklemede...",
         "paused": "Duraklatıldı",
-        "draft": "Taslak"
+        "draft": "Taslak",
+        "rejected": "Needs changes"
       },
       "editListing": "Kayıt düzenle",
       "deleteListing": "İlanı sil",
@@ -2087,7 +2087,8 @@
           "live": "Canlı",
           "pending": "Beklemede",
           "draft": "Taslaklar",
-          "paused": "Duraklatıldı"
+          "paused": "Duraklatıldı",
+          "rejected": "Needs changes"
         },
         "empty": "Filtrelerinize uyan hiçbir ilan bulunamadı."
       },
@@ -2128,6 +2129,13 @@
         "sat": "Cumartesi",
         "previousMonth": "Geçen ay",
         "nextMonth": "Gelecek ay"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2351,12 +2359,7 @@
       "deliveryDropoff": "Teslimat / Bırakma",
       "deliveryDropoffHint": "Arabayı müşteriye teslim edersiniz.",
       "carPricingHeading": "Kiralama fiyatları",
-      "price12hr": "12 saatlik kiralama (NGN)",
-      "price24hr": "24 saatlik kiralama (NGN)",
-      "priceMultiDay": "Birden fazla gün (gün başına, NGN)",
-      "driverAddonPrice": "Sürücü ek ücreti (NGN)",
       "selfDriveNoPrice": "Kendi aracınızı kullanma seçeneği seçildi — şoför ek ücreti gerekmez.",
-      "deliveryFee": "Teslimat / teslim alma ücreti (NGN)",
       "clientPickupNoPrice": "Müşteri tarafından teslim alınması seçeneği seçildi — teslimat ücreti alınmaz.",
       "pricingLocationHint": "Bir sonraki adımda teslim alma veya teslimat yeri hakkında daha fazla bilgi verebilirsiniz.",
       "accommodationPricingHeading": "Konaklama fiyatları",
@@ -2378,14 +2381,11 @@
       "actions": "Eylemler",
       "edit": "Düzenle",
       "delete": "Sil",
-      "nightlyRate": "Gecelik fiyat (NGN)",
-      "cleaningFee": "Temizlik ücreti (NGN)",
       "experiencePricingHeading": "Fiyatlandırma",
       "experiencePricingHint": "Bilet fiyatlarınızı belirleyin.",
       "singleTicketPrice": "Tek Bilet Fiyatı",
       "singleTicketPriceHint": "Bir kişi için fiyat",
       "groupTicketPrice": "Grup Bilet Fiyatı (başlangıç) (İsteğe bağlı)",
-      "groupTicketPriceHint": "Gruplar için kişi başı fiyat",
       "minGroupSizeOptional": "Asgari Grup Büyüklüğü (İsteğe Bağlı)",
       "maxGroupSizeOptional": "Maksimum Grup Büyüklüğü (İsteğe Bağlı)",
       "minGroupSizePlaceholder": "örn. 5",
@@ -2400,7 +2400,6 @@
         "description": "Açıklama",
         "gpsConfirmed": "GPS izleme cihazı doğrulandı"
       },
-      "pricePerPerson": "Kişi başı fiyat (NGN)",
       "minGroupSize": "Asgari grup büyüklüğü",
       "documents": {
         "stepTitle": "Belge yükleme",
@@ -2474,7 +2473,12 @@
         "backToListings": "İlanlarıma geri dön"
       },
       "categoryChooseHint": "Sunduğunuz hizmet türünü seçin. Bu ayar, ilk ilanınızı kaydettiğinizde bir kez yapılır ve daha sonra değiştirilemez.",
-      "categoryLockedHint": "Satıcı hesabınız yalnızca {kategori} için kayıtlıdır. Hizmet kategorinizi değiştirmek için destek ekibiyle iletişime geçin."
+      "categoryLockedHint": "Satıcı hesabınız yalnızca {kategori} için kayıtlıdır. Hizmet kategorinizi değiştirmek için destek ekibiyle iletişime geçin.",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

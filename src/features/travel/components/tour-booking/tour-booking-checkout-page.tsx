@@ -118,7 +118,6 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
                 options={tour.options}
                 selectedOptionId={selectedOptionId}
                 guestCount={guestCount}
-                days={days}
                 onSelectOption={setSelectedOptionId}
                 onBookNow={handleProceedToPay}
                 ctaKey="booking.cta.proceedToPay"

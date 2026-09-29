@@ -1,60 +1,164 @@
 "use client";
 
-// Identity verification + nationality are temporarily hidden.
-// import { ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { ChevronDown } from "lucide-react";
 
 import { FormDate, FormSelect } from "./form-controls";
-import {
-  createEmptyGuestIdentity,
-  type GuestIdentity,
-  type GuestIdentityErrors,
-  type GuestIdentityField,
-} from "@/features/travel/booking/guest-identity";
 import type { TravelerInput } from "@/lib/api/bookings";
+import { listCountries } from "@/lib/api/locations";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
 const input =
   "w-full rounded-md border border-[#E5E5E5] bg-white px-3 py-2.5 text-sm font-medium font-satoshi text-foreground outline-none placeholder:text-foreground/40 focus:border-[#004785]";
+const inputInvalid = "border-[#D85A30]";
 
-// const selectClassName = `${input} appearance-none`;
+export type TravelerValue = Partial<TravelerInput>;
 
-export type TravelerValue = Partial<TravelerInput> & {
-  identity?: GuestIdentity;
-};
+type TravelerField =
+  | "firstName"
+  | "lastName"
+  | "dateOfBirth"
+  | "nationality"
+  | "passportNumber"
+  | "passportExpiry"
+  | "passportIssuingCountry";
 
-// Identity verification is temporarily hidden.
-// const ID_TYPE_KEYS: { value: GuestIdentity["idType"]; key: TranslationKey }[] = [
-//   { value: "passport", key: "booking.guest.idType.passport" },
-//   { value: "national-id", key: "booking.guest.idType.nationalId" },
-//   { value: "drivers-license", key: "booking.guest.idType.driversLicense" },
-// ];
+export type TravelerErrors = Partial<Record<TravelerField, TranslationKey>>;
+
+// Duffel books every search passenger as type "adult", which airlines only
+// accept for travellers aged 18+.
+const ADULT_MIN_AGE = 18;
+// Latin letters (incl. accents), spaces, hyphens, apostrophes and dots — the
+// characters airline reservation systems accept in passenger names.
+const NAME_RE = /^[\p{Script=Latin}][\p{Script=Latin} .'-]*$/u;
+const PASSPORT_RE = /^[A-Z0-9]{5,20}$/;
+const ISO2_RE = /^[A-Z]{2}$/;
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+function localDateKey(d: Date): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
+    d.getDate(),
+  ).padStart(2, "0")}`;
+}
+
+function yearsAgo(years: number): string {
+  const d = new Date();
+  d.setFullYear(d.getFullYear() - years);
+  return localDateKey(d);
+}
+
+/** Uppercase letters/digits only — what the backend and Duffel accept. */
+export function sanitizePassportNumber(raw: string): string {
+  return raw.replace(/[^a-zA-Z0-9]/g, "").toUpperCase().slice(0, 20);
+}
 
 function genderFromTitle(title: TravelerInput["title"] | undefined): "M" | "F" {
   if (title === "MS" || title === "MRS" || title === "MISS") return "F";
   return "M";
 }
 
-/** Narrow form state to the full traveler payload expected by createBooking. */
-export function toTravelerInput(value: TravelerValue): TravelerInput {
-  const title = value.title ?? "MR";
-  const identity = value.identity ?? createEmptyGuestIdentity();
-  // Nationality / passport are hidden in the UI; send empty values until restored.
-  const nationality = (value.nationality ?? "").toUpperCase();
+function validateName(value: string | undefined): TranslationKey | undefined {
+  const v = (value ?? "").trim();
+  if (!v) return "booking.flight.errors.required";
+  if (v.length > 100 || !NAME_RE.test(v)) return "booking.flight.errors.nameInvalid";
+  return undefined;
+}
 
+function validateCountry(value: string | undefined): TranslationKey | undefined {
+  return ISO2_RE.test(value ?? "") ? undefined : "booking.flight.errors.countryRequired";
+}
+
+type IdentityOptions = {
+  /**
+   * The offer's `identityDocumentsRequired`. Passport number, expiry and
+   * issuing country are validated (and sent) only when true. Callers that
+   * don't know the flag should pass true — the backend 400s a booking whose
+   * offer needs passports and doesn't get them.
+   */
+  requireIdentityDocuments?: boolean;
+};
+
+/** Per-traveller validation mirroring the backend TravelerPiiDto + Duffel rules. */
+export function validateTraveler(
+  value: TravelerValue,
+  { requireIdentityDocuments = true }: IdentityOptions = {},
+): TravelerErrors {
+  const errors: TravelerErrors = {};
+  const today = localDateKey(new Date());
+
+  const first = validateName(value.firstName);
+  if (first) errors.firstName = first;
+  const last = validateName(value.lastName);
+  if (last) errors.lastName = last;
+
+  const dob = value.dateOfBirth ?? "";
+  if (!dob) errors.dateOfBirth = "booking.flight.errors.required";
+  else if (!DATE_RE.test(dob) || dob > today || dob < "1900-01-01")
+    errors.dateOfBirth = "booking.flight.errors.dobInvalid";
+  else if (dob > yearsAgo(ADULT_MIN_AGE))
+    errors.dateOfBirth = "booking.flight.errors.adultAge";
+
+  const nationality = validateCountry(value.nationality);
+  if (nationality) errors.nationality = nationality;
+
+  if (!requireIdentityDocuments) return errors;
+
+  const passport = value.passportNumber ?? "";
+  if (!passport) errors.passportNumber = "booking.flight.errors.required";
+  else if (!PASSPORT_RE.test(passport))
+    errors.passportNumber = "booking.flight.errors.passportNumberInvalid";
+
+  const expiry = value.passportExpiry ?? "";
+  if (!expiry) errors.passportExpiry = "booking.flight.errors.required";
+  else if (!DATE_RE.test(expiry) || expiry <= today)
+    errors.passportExpiry = "booking.flight.errors.passportExpired";
+
+  const issuing = validateCountry(value.passportIssuingCountry);
+  if (issuing) errors.passportIssuingCountry = issuing;
+
+  return errors;
+}
+
+export function isTravelerValid(
+  value: TravelerValue,
+  options: IdentityOptions = {},
+): boolean {
+  return Object.keys(validateTraveler(value, options)).length === 0;
+}
+
+/** Narrow form state to the full traveler payload expected by createBooking. */
+export function toTravelerInput(
+  value: TravelerValue,
+  { requireIdentityDocuments = true }: IdentityOptions = {},
+): TravelerInput {
+  const title = value.title ?? "MR";
+  const passportNumber = sanitizePassportNumber(value.passportNumber ?? "");
+  const passportExpiry = value.passportExpiry ?? "";
+  const passportIssuingCountry = (value.passportIssuingCountry ?? "").toUpperCase();
+  // Passport data is sent only when the offer needs it. Empty strings are
+  // never sent: the backend DTO rejects "" (length / ISO checks) even though
+  // the fields are optional.
+  const passport = requireIdentityDocuments
+    ? {
+        passportNumber: passportNumber || undefined,
+        passportExpiry: passportExpiry || undefined,
+        passportIssuingCountry: passportIssuingCountry || undefined,
+      }
+    : {};
   return {
     title,
-    firstName: value.firstName ?? "",
-    lastName: value.lastName ?? "",
+    firstName: (value.firstName ?? "").trim(),
+    lastName: (value.lastName ?? "").trim(),
     dateOfBirth: value.dateOfBirth ?? "",
-    // Still required by the flights API — derived from title, not collected in UI.
+    // Required by the flights API — derived from the title unless the
+    // traveller picked one explicitly (only offered for gender-neutral "Dr").
     gender: value.gender ?? genderFromTitle(title),
-    nationality,
-    passportNumber: identity.idNumber.trim().toUpperCase(),
-    passportExpiry: identity.expiryDate,
-    passportIssuingCountry: nationality,
-    frequentFlyerProgram: value.frequentFlyerProgram,
-    frequentFlyerNumber: value.frequentFlyerNumber,
+    nationality: (value.nationality ?? "").toUpperCase(),
+    ...passport,
+    frequentFlyerProgram: value.frequentFlyerProgram || undefined,
+    frequentFlyerNumber: value.frequentFlyerNumber || undefined,
   };
 }
 
@@ -92,33 +196,109 @@ function Field({
   );
 }
 
+function CountrySelect({
+  value,
+  onChange,
+  onBlur,
+  invalid,
+  ariaLabel,
+}: {
+  value: string;
+  onChange: (code: string) => void;
+  onBlur: () => void;
+  invalid: boolean;
+  ariaLabel: string;
+}) {
+  const t = useTranslation();
+  const { data: countries, isError } = useQuery({
+    queryKey: ["geo", "countries"],
+    queryFn: ({ signal }) => listCountries(signal),
+    staleTime: Infinity,
+    gcTime: Infinity,
+    retry: 1,
+  });
+
+  // Fallback when the country list can't load: accept a raw ISO alpha-2 code.
+  if (isError) {
+    return (
+      <input
+        aria-label={ariaLabel}
+        aria-invalid={invalid || undefined}
+        className={`${input} uppercase ${invalid ? inputInvalid : ""}`}
+        placeholder="NG"
+        maxLength={2}
+        value={value}
+        onChange={(e) =>
+          onChange(e.target.value.replace(/[^a-zA-Z]/g, "").slice(0, 2).toUpperCase())
+        }
+        onBlur={onBlur}
+      />
+    );
+  }
+
+  return (
+    <div className="relative">
+      <select
+        aria-label={ariaLabel}
+        aria-invalid={invalid || undefined}
+        className={`${input} h-11 appearance-none pr-9 ${invalid ? inputInvalid : ""} ${
+          value ? "" : "text-foreground/40"
+        }`}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        onBlur={onBlur}
+      >
+        <option value="" disabled>
+          {countries ? t("booking.flight.selectCountry") : t("booking.flight.loadingCountries")}
+        </option>
+        {(countries ?? []).map((c) => (
+          <option key={c.code} value={c.code} className="text-foreground">
+            {c.name}
+          </option>
+        ))}
+      </select>
+      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/50" />
+    </div>
+  );
+}
+
 export function FlightTravelerFields({
   index,
   value,
   onChange,
-  identityErrors = {},
+  showAllErrors = false,
+  requireIdentityDocuments = true,
 }: {
   index: number;
   value: TravelerValue;
   onChange: (next: TravelerValue) => void;
-  identityErrors?: GuestIdentityErrors;
+  /** Offer's `identityDocumentsRequired` — hides the passport block when false. */
+  requireIdentityDocuments?: boolean;
+  /** Reveal every error (e.g. after a submit attempt), not just touched ones. */
+  showAllErrors?: boolean;
 }) {
   const t = useTranslation();
-  const identity = value.identity ?? createEmptyGuestIdentity();
+  const [touched, setTouched] = useState<Partial<Record<TravelerField, boolean>>>({});
   const set = (patch: Partial<TravelerValue>) => onChange({ ...value, ...patch });
-  const updateIdentity = (patch: Partial<GuestIdentity>) =>
-    set({ identity: { ...identity, ...patch } });
-  // const iso2 = (v: string) =>
-  //   v.replace(/[^a-zA-Z]/g, "").slice(0, 2).toUpperCase();
-  const today = new Date().toISOString().slice(0, 10);
+  const touch = (field: TravelerField) =>
+    setTouched((prev) => (prev[field] ? prev : { ...prev, [field]: true }));
 
-  const fieldError = (field: GuestIdentityField) =>
-    identityErrors[field]
-      ? t(identityErrors[field] as TranslationKey)
-      : undefined;
-  // Identity verification is temporarily disabled — keep helpers for restore.
-  void updateIdentity;
-  void fieldError;
+  const today = localDateKey(new Date());
+  // Open the DOB calendar around a typical adult age instead of this month.
+  const dobDefaultMonth = yearsAgo(30);
+
+  // Passport expiry must be strictly in the future.
+  const tomorrow = (() => {
+    const d = new Date();
+    d.setDate(d.getDate() + 1);
+    return localDateKey(d);
+  })();
+
+  const errors = validateTraveler(value, { requireIdentityDocuments });
+  const errorFor = (field: TravelerField) =>
+    (showAllErrors || touched[field]) && errors[field] ? t(errors[field]) : undefined;
+
+  const title = value.title ?? "MR";
 
   return (
     <div className="rounded-md border border-[#E5E5E5]">
@@ -139,155 +319,184 @@ export function FlightTravelerFields({
           </svg>
         </span>
         <span className="text-sm font-semibold font-inter text-foreground">
-          Traveller {index + 1}
+          {t("booking.flight.travellerN", { n: index + 1 })}
         </span>
       </div>
 
       <div className="space-y-4 p-4">
-        <Field label="Title" required className="max-w-xs">
-          <FormSelect
-            aria-label="Title"
-            value={value.title ?? "MR"}
-            onChange={(v) => set({ title: v as TravelerInput["title"] })}
-            options={TITLES}
-          />
-        </Field>
+        <p className="text-xs font-normal font-inter text-foreground/70">
+          {t("booking.guest.passportHint")}
+        </p>
 
         <div className="grid gap-4 lg:grid-cols-3">
-          <Field label="Last Name" required>
+          <Field label={t("booking.guest.titleField")} required>
+            <FormSelect
+              aria-label={t("booking.guest.titleField")}
+              value={title}
+              onChange={(v) => {
+                const nextTitle = v as TravelerInput["title"];
+                // Gender follows the title except for "Dr", where it's asked.
+                set({
+                  title: nextTitle,
+                  gender: nextTitle === "DR" ? value.gender : undefined,
+                });
+              }}
+              options={TITLES}
+            />
+          </Field>
+          {title === "DR" ? (
+            <Field label={t("booking.guest.gender")} required>
+              <FormSelect
+                aria-label={t("booking.guest.gender")}
+                value={value.gender ?? "M"}
+                onChange={(v) => set({ gender: v as TravelerInput["gender"] })}
+                options={[
+                  { value: "M", label: t("booking.guest.male") },
+                  { value: "F", label: t("booking.guest.female") },
+                ]}
+              />
+            </Field>
+          ) : null}
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-3">
+          <Field label={t("booking.guest.lastName")} required error={errorFor("lastName")}>
             <input
-              className={input}
-              placeholder="Last Name"
+              className={`${input} ${errorFor("lastName") ? inputInvalid : ""}`}
+              placeholder={t("booking.guest.lastName")}
+              autoComplete="family-name"
               value={value.lastName ?? ""}
               onChange={(e) => set({ lastName: e.target.value })}
+              onBlur={() => touch("lastName")}
+              aria-invalid={Boolean(errorFor("lastName")) || undefined}
               required
             />
           </Field>
-          <Field label="First Name" required>
+          <Field label={t("booking.guest.firstName")} required error={errorFor("firstName")}>
             <input
-              className={input}
-              placeholder="First Name"
+              className={`${input} ${errorFor("firstName") ? inputInvalid : ""}`}
+              placeholder={t("booking.guest.firstName")}
+              autoComplete="given-name"
               value={value.firstName ?? ""}
               onChange={(e) => set({ firstName: e.target.value })}
+              onBlur={() => touch("firstName")}
+              aria-invalid={Boolean(errorFor("firstName")) || undefined}
               required
             />
           </Field>
-          <Field label="Date of birth" required>
+          <Field
+            label={t("booking.guest.dateOfBirth")}
+            required
+            error={errorFor("dateOfBirth")}
+          >
             <FormDate
-              placeholder="Select date"
+              placeholder={t("booking.flight.selectDate")}
               value={value.dateOfBirth ?? ""}
               max={today}
-              onChange={(v) => set({ dateOfBirth: v })}
+              defaultMonth={dobDefaultMonth}
+              invalid={Boolean(errorFor("dateOfBirth"))}
+              onChange={(v) => {
+                touch("dateOfBirth");
+                set({ dateOfBirth: v });
+              }}
             />
           </Field>
         </div>
 
-        {/* Nationality — temporarily hidden
-        <Field label="Nationality" required className="max-w-xs">
-          <input
-            className={`${input} uppercase`}
-            placeholder="NG"
-            value={value.nationality ?? ""}
-            onChange={(e) => set({ nationality: iso2(e.target.value) })}
+        <div className="grid gap-4 lg:grid-cols-3">
+          <Field
+            label={t("booking.guest.nationality")}
             required
-          />
-        </Field>
-        */}
+            error={errorFor("nationality")}
+          >
+            <CountrySelect
+              ariaLabel={t("booking.guest.nationality")}
+              value={value.nationality ?? ""}
+              invalid={Boolean(errorFor("nationality"))}
+              onBlur={() => touch("nationality")}
+              onChange={(code) => {
+                touch("nationality");
+                // Most travellers hold a passport from their nationality —
+                // keep the issuing country in step until they pick a
+                // different one themselves.
+                const issuing = value.passportIssuingCountry;
+                set({
+                  nationality: code,
+                  passportIssuingCountry:
+                    issuing && issuing !== value.nationality ? issuing : code,
+                });
+              }}
+            />
+          </Field>
+        </div>
 
-        {/* Identity verification — temporarily hidden
+        {requireIdentityDocuments ? (
         <div className="rounded-md border border-[#E5E5E5] bg-[#F8F8F8] p-4">
           <h3 className="text-sm font-semibold font-inter text-foreground">
-            {t("booking.guest.idVerificationTitle")}
+            {t("booking.flight.passportTitle")}
           </h3>
           <p className="mt-1 text-xs font-normal font-inter text-foreground/70">
-            {t("booking.guest.idVerificationSubtitle")}
+            {t("booking.flight.passportSubtitle")}
           </p>
 
           <div className="mt-4 grid gap-4 lg:grid-cols-3">
             <Field
-              label={t("booking.guest.idType")}
+              label={t("booking.flight.passportNumber")}
               required
-              error={fieldError("idType")}
-            >
-              <div className="relative">
-                <select
-                  className={selectClassName}
-                  value={identity.idType}
-                  onChange={(event) =>
-                    updateIdentity({
-                      idType: event.target.value as GuestIdentity["idType"],
-                    })
-                  }
-                  required
-                >
-                  <option value="" disabled>
-                    {t("common.select")}
-                  </option>
-                  {ID_TYPE_KEYS.map((idType) => (
-                    <option key={idType.value} value={idType.value}>
-                      {t(idType.key)}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
-              </div>
-            </Field>
-
-            <Field
-              label={t("booking.guest.idNumber")}
-              required
-              error={fieldError("idNumber")}
+              error={errorFor("passportNumber")}
             >
               <input
-                type="text"
-                className={input}
-                value={identity.idNumber}
-                onChange={(event) =>
-                  updateIdentity({ idNumber: event.target.value })
+                className={`${input} uppercase ${
+                  errorFor("passportNumber") ? inputInvalid : ""
+                }`}
+                placeholder="A12345678"
+                autoComplete="off"
+                spellCheck={false}
+                maxLength={20}
+                value={value.passportNumber ?? ""}
+                onChange={(e) =>
+                  set({ passportNumber: sanitizePassportNumber(e.target.value) })
                 }
-                placeholder={t("booking.guest.idNumberPlaceholder")}
+                onBlur={() => touch("passportNumber")}
+                aria-invalid={Boolean(errorFor("passportNumber")) || undefined}
                 required
               />
             </Field>
-
             <Field
-              label={t("booking.guest.idExpiry")}
+              label={t("booking.flight.passportExpiry")}
               required
-              error={fieldError("expiryDate")}
+              error={errorFor("passportExpiry")}
             >
-              <input
-                type="date"
-                className={input}
-                value={identity.expiryDate}
-                min={today}
-                onChange={(event) =>
-                  updateIdentity({ expiryDate: event.target.value })
-                }
-                required
+              <FormDate
+                placeholder={t("booking.flight.selectDate")}
+                value={value.passportExpiry ?? ""}
+                min={tomorrow}
+                invalid={Boolean(errorFor("passportExpiry"))}
+                onChange={(v) => {
+                  touch("passportExpiry");
+                  set({ passportExpiry: v });
+                }}
+              />
+            </Field>
+            <Field
+              label={t("booking.flight.passportIssuingCountry")}
+              required
+              error={errorFor("passportIssuingCountry")}
+            >
+              <CountrySelect
+                ariaLabel={t("booking.flight.passportIssuingCountry")}
+                value={value.passportIssuingCountry ?? ""}
+                invalid={Boolean(errorFor("passportIssuingCountry"))}
+                onBlur={() => touch("passportIssuingCountry")}
+                onChange={(code) => {
+                  touch("passportIssuingCountry");
+                  set({ passportIssuingCountry: code });
+                }}
               />
             </Field>
           </div>
-
-          <label className="mt-4 flex cursor-pointer items-start gap-2 rounded-md border border-[#E5E5E5] bg-white px-3 py-3">
-            <input
-              type="checkbox"
-              checked={identity.confirmed}
-              onChange={(event) =>
-                updateIdentity({ confirmed: event.target.checked })
-              }
-              className="mt-0.5 h-4 w-4 accent-[#004785]"
-            />
-            <span className="text-sm font-medium font-inter text-foreground">
-              {t("booking.guest.confirmId")}
-            </span>
-          </label>
-          {identityErrors.confirmed ? (
-            <p className="mt-2 text-xs font-medium font-inter text-[#D85A30]">
-              {t(identityErrors.confirmed as TranslationKey)}
-            </p>
-          ) : null}
         </div>
-        */}
+        ) : null}
       </div>
     </div>
   );

@@ -23,6 +23,8 @@ export type TourDetail = {
   currency: string;
   category: string;
   experienceType: string;
+  // SynkAfrica service fee rate from the API (defaults to 6%).
+  feeRate?: number;
 };
 
 const DEFAULT_OPTIONS: TourExperienceOption[] = [

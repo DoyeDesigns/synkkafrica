@@ -10,7 +10,7 @@ import {
   getVendorListingHref,
   type VendorBooking,
 } from "@/features/vendor/data/vendor-bookings";
-import { useFormatPrice } from "@/hooks/use-format-price";
+import { formatMoney } from "@/lib/format-money";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -46,7 +46,8 @@ export function VendorBookingCard({
   onCancel,
 }: VendorBookingCardProps) {
   const t = useTranslation();
-  const formatPrice = useFormatPrice();
+  // Vendor amounts are shown in the booking/listing currency, never FX-converted.
+  const formatPrice = formatMoney;
 
   const canConfirmOrDecline = booking.status === "awaiting_confirmation";
   const canCancel = booking.status === "confirmed";
@@ -207,12 +208,14 @@ export function VendorBookingCard({
             </button>
           ) : null}
 
-          <Link
-            href={getVendorListingHref(booking.listingId, { from: "bookings" })}
-            className="rounded-lg border border-[#E5E5E5] bg-white px-4 py-2.5 text-sm font-bold font-satoshi text-[#2F2F2F] transition-colors hover:bg-[#FAFAFA]"
-          >
-            {t("vendor.bookings.viewListing")}
-          </Link>
+          {booking.listingId ? (
+            <Link
+              href={getVendorListingHref(booking.listingId, { from: "bookings" })}
+              className="rounded-lg border border-[#E5E5E5] bg-white px-4 py-2.5 text-sm font-bold font-satoshi text-[#2F2F2F] transition-colors hover:bg-[#FAFAFA]"
+            >
+              {t("vendor.bookings.viewListing")}
+            </Link>
+          ) : null}
         </div>
       ) : null}
     </article>

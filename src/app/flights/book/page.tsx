@@ -11,6 +11,7 @@ import "@/features/travel/components/booking/phone-input.css";
 
 import {
   FlightTravelerFields,
+  isTravelerValid,
   toTravelerInput,
   type TravelerValue,
 } from "@/features/travel/components/booking/flight-traveler-fields";
@@ -18,13 +19,9 @@ import { FlightBookingSummary } from "@/features/travel/components/booking/fligh
 import { FlightBookingHeader } from "@/features/travel/components/booking/flight-booking-header";
 import {
   gatewayForMethod,
+  redirectToCheckout,
   type CheckoutMethodId,
 } from "@/features/travel/components/booking/booking-payment-methods";
-import {
-  createEmptyGuestIdentity,
-  // validateGuestIdentities,
-  type GuestIdentityErrors,
-} from "@/features/travel/booking/guest-identity";
 import {
   createBooking,
   isPriceChanged,
@@ -33,13 +30,23 @@ import {
 import { priceOffer } from "@/lib/api/flights";
 import { ApiError } from "@/lib/api/backend";
 import { PriceChangeDialog } from "@/features/travel/components/booking/price-change-dialog";
-// import { useTranslation } from "@/hooks/use-translation";
+import { useTranslation } from "@/hooks/use-translation";
 
 const contactInput =
   "w-full rounded-md border border-[#E5E5E5] bg-white px-3 py-2.5 text-sm font-medium font-satoshi text-foreground outline-none placeholder:text-foreground/40 focus:border-[#004785]";
 
+const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+// PhoneInput yields E.164 (with dial code). Treat a value that's only the
+// dial code — or too short to be a real number — as missing. The backend
+// requires 7–32 chars and Duffel needs a usable number per passenger.
+function normalizePhone(raw: string): string | undefined {
+  const digits = raw.replace(/\D/g, "");
+  return digits.length >= 8 && raw.length <= 32 ? raw : undefined;
+}
+
 function BookFlight() {
-  // const t = useTranslation();
+  const t = useTranslation();
   const params = useSearchParams();
   const { data: session } = useSession();
 
@@ -47,14 +54,12 @@ function BookFlight() {
   const adults = Math.max(1, Math.min(9, Number(params.get("adults") ?? "1")));
 
   const [travelers, setTravelers] = useState<TravelerValue[]>(() =>
-    Array.from({ length: adults }, () => ({
-      title: "MR",
-      identity: createEmptyGuestIdentity(),
-    })),
+    Array.from({ length: adults }, () => ({ title: "MR" })),
   );
-  const [identityErrors, setIdentityErrors] = useState<GuestIdentityErrors[]>(
-    [],
-  );
+  // After a pay attempt, reveal every field's error, not just touched ones.
+  const [showAllErrors, setShowAllErrors] = useState(false);
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [phoneTouched, setPhoneTouched] = useState(false);
   const [email, setEmail] = useState(session?.user?.email ?? "");
   const [phone, setPhone] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -93,12 +98,33 @@ function BookFlight() {
     };
   }, [priced]);
 
-  const filledCount = travelers.filter(
-    (t) => t.firstName && t.lastName,
+  // Passports are needed only when the offer says so. If the flag is missing
+  // (older backend, or the price call failed) collect them anyway — the
+  // backend rejects an offer that needs them and doesn't get them.
+  const requireIdentityDocuments =
+    priced?.offer.identityDocumentsRequired ?? true;
+  const identityOptions = { requireIdentityDocuments };
+
+  const filledCount = travelers.filter((traveler) =>
+    isTravelerValid(traveler, identityOptions),
   ).length;
 
+  const emailValid = EMAIL_RE.test(email.trim());
+  const contactPhone = normalizePhone(phone);
+  const travelersValid = filledCount === travelers.length;
+  const formValid = travelersValid && emailValid && Boolean(contactPhone);
+
+  const emailError =
+    (showAllErrors || emailTouched) && !emailValid
+      ? t("booking.flight.errors.emailInvalid")
+      : undefined;
+  const phoneError =
+    (showAllErrors || phoneTouched) && !contactPhone
+      ? t("booking.flight.errors.phoneRequired")
+      : undefined;
+
   const submitting = paying !== false;
-  const canSubmit = Boolean(offerId) && Boolean(email) && !submitting;
+  const canSubmit = Boolean(offerId) && formValid && !submitting;
 
   async function doSubmit(
     method: CheckoutMethodId,
@@ -110,40 +136,33 @@ function BookFlight() {
     setError(null);
     setPriceChange(null);
 
-    // Identity verification is temporarily disabled.
-    // const validation = validateGuestIdentities(
-    //   travelers.map((traveler) => traveler.identity ?? createEmptyGuestIdentity()),
-    // );
-    // setIdentityErrors(validation.errors);
-    // if (!validation.isValid) {
-    //   setError(t("booking.guest.idValidationRequired"));
-    //   return;
-    // }
-    setIdentityErrors([]);
+    if (!formValid || !contactPhone) {
+      setShowAllErrors(true);
+      setError(t("booking.flight.completeDetailsHint"));
+      return;
+    }
 
     selectedMethodRef.current = method;
     setPaying(method);
-    // PhoneInput yields a full E.164 number (with dial code). Ignore a value
-    // that's only the dial code (nothing actually typed yet).
-    const normalizedPhone =
-      phone.replace(/\D/g, "").length >= 8 ? phone : undefined;
     try {
       const { authorizationUrl } = await createBooking(
         {
           // On a price-change confirm, book the exact re-priced offer the
           // backend returned — not the original search offer.
           offerId: confirm?.offerId ?? offerId,
-          contactEmail: email,
-          contactPhone: normalizedPhone,
+          contactEmail: email.trim(),
+          contactPhone,
           travelers: travelers.map((traveler) => ({
-            inline: toTravelerInput(traveler),
+            inline: toTravelerInput(traveler, identityOptions),
           })),
           acknowledgedTotalAmount: confirm?.acknowledgedTotalAmount,
           paymentProvider: gatewayForMethod(method),
         },
         session?.accessToken,
       );
-      window.location.href = authorizationUrl;
+      // Only an absolute http(s) hosted-checkout URL is followed (Paystack
+      // or Stripe Checkout); anything else throws into the error path.
+      redirectToCheckout(authorizationUrl);
     } catch (err) {
       setPaying(false);
       if (
@@ -225,7 +244,8 @@ function BookFlight() {
                     key={i}
                     index={i}
                     value={traveler}
-                    identityErrors={identityErrors[i]}
+                    requireIdentityDocuments={requireIdentityDocuments}
+                    showAllErrors={showAllErrors}
                     onChange={(next) =>
                       setTravelers((prev) =>
                         prev.map((p, j) => (j === i ? next : p)),
@@ -254,15 +274,26 @@ function BookFlight() {
                     required
                     value={email}
                     placeholder="user@mail.com"
+                    autoComplete="email"
                     onChange={(e) => setEmail(e.target.value)}
-                    className={contactInput}
+                    onBlur={() => setEmailTouched(true)}
+                    aria-invalid={Boolean(emailError) || undefined}
+                    className={`${contactInput} ${emailError ? "border-[#D85A30]" : ""}`}
                   />
+                  {emailError ? (
+                    <span className="text-xs font-medium font-inter text-[#D85A30]">
+                      {emailError}
+                    </span>
+                  ) : null}
                 </label>
                 <label className="flex flex-col gap-1.5">
                   <span className="text-xs font-bold font-satoshi text-foreground">
-                    Mobile No
+                    Mobile No<span className="text-[#004785]"> *</span>
                   </span>
-                  <div className="synka-phone w-full font-satoshi">
+                  <div
+                    className="synka-phone w-full font-satoshi"
+                    onBlur={() => setPhoneTouched(true)}
+                  >
                     <PhoneInput
                       defaultCountry="ng"
                       value={phone}
@@ -271,11 +302,27 @@ function BookFlight() {
                       disableDialCodeAndPrefix
                       showDisabledDialCodeAndPrefix
                       className="w-full"
+                      inputProps={{
+                        required: true,
+                        autoComplete: "tel",
+                        "aria-invalid": Boolean(phoneError) || undefined,
+                      }}
                     />
                   </div>
+                  {phoneError ? (
+                    <span className="text-xs font-medium font-inter text-[#D85A30]">
+                      {phoneError}
+                    </span>
+                  ) : null}
                 </label>
               </div>
             </section>
+
+            {!formValid && !error ? (
+              <p className="rounded-lg bg-[#F4F8FC] px-3 py-2 text-sm font-medium text-[#135391]">
+                {t("booking.flight.completeDetailsHint")}
+              </p>
+            ) : null}
 
             {error ? (
               <p className="rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-700">

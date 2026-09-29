@@ -29,6 +29,8 @@ export type ExperienceDetailApi = ExperienceSummaryApi & {
   duration: string | null;
   maxGuests: number | null;
   options: ExperienceOptionApi[];
+  // SynkAfrica service fee rate charged once on the booking subtotal.
+  feeRate?: number;
 };
 
 export type BookExperienceInput = {
@@ -46,6 +48,13 @@ export type ExperienceBookingResult = {
   amount: number;
   currency: string;
   status: string;
+  // Authoritative price breakdown from the backend: `subtotal` is the
+  // vendor's price (days/nights/guests/add-ons), `fees` the SynkAfrica
+  // service fee charged once on it, `total` === `amount` is what is charged.
+  subtotal: number;
+  fees: number;
+  feeRate: number;
+  total: number;
 };
 
 const FALLBACK_TOUR_IMAGE = "/destinations/lagos.png";
@@ -83,7 +92,9 @@ export async function initExperiencePayment(
   bookingId: string,
   input: {
     email?: string;
+    phone?: string;
     callbackUrl?: string;
+    // Omit to let the backend pick by currency (NGN -> Paystack, else Stripe).
     provider?: "PAYSTACK" | "STRIPE";
   },
   token?: string,
@@ -102,6 +113,12 @@ export async function getExperiencePaymentStatus(
   return apiFetch(`/experiences/bookings/${bookingId}/payment-status`, {
     token,
   });
+}
+
+// Gallery order: the vendor-chosen main image first, then the rest.
+function coverFirst(cover: string | null, images: string[]): string[] {
+  if (!cover) return images;
+  return [cover, ...images.filter((url) => url !== cover)];
 }
 
 // Map a backend summary onto the tour results-card shape.
@@ -136,7 +153,7 @@ export function toTourDetail(e: ExperienceDetailApi): TourDetail {
     description: e.description ?? "",
     rating: e.ratingAvg,
     reviewCount: e.ratingCount,
-    images: e.images.length ? e.images : [cover],
+    images: e.images.length ? coverFirst(e.coverImageUrl, e.images) : [cover],
     features: e.features,
     options: e.options.length
       ? e.options
@@ -152,5 +169,6 @@ export function toTourDetail(e: ExperienceDetailApi): TourDetail {
     currency: e.currency,
     category: e.category ?? "",
     experienceType: e.experienceType ?? "",
+    feeRate: e.feeRate,
   };
 }

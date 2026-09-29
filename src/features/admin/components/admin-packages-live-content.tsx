@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
@@ -12,8 +13,44 @@ import {
   type AdminPackageInput,
 } from "@/lib/api/admin";
 import type { PackageApi } from "@/lib/api/packages";
+import { LIVE_QUERY_OPTIONS } from "@/lib/live-query-options";
 
 const INCLUSION_OPTIONS = ["flights", "stays", "carDriver"] as const;
+const CURRENCY_OPTIONS = ["NGN", "USD", "EUR", "GBP"] as const;
+
+function errorMessage(err: unknown, fallback: string): string {
+  return err instanceof Error && err.message ? err.message : fallback;
+}
+
+// Everything the PATCH endpoint needs to rewrite a package (it validates the
+// full body, so an edit always sends every field).
+function toInput(p: PackageApi): AdminPackageInput {
+  return {
+    title: p.title,
+    days: p.days,
+    nights: p.nights,
+    scheduleLabel: p.scheduleLabel ?? undefined,
+    savingsPercent: p.savingsPercent,
+    currentPrice: p.currentPrice,
+    separateBookingPrice: p.separateBookingPrice ?? undefined,
+    currency: p.currency,
+    image: p.image ?? undefined,
+    inclusions: p.inclusions,
+    status: p.status,
+    sortOrder: p.sortOrder,
+  };
+}
+
+// Blank optional strings are dropped rather than sent as "".
+function cleanInput(input: AdminPackageInput): AdminPackageInput {
+  return {
+    ...input,
+    title: input.title.trim(),
+    scheduleLabel: input.scheduleLabel?.trim() || undefined,
+    image: input.image?.trim() || undefined,
+    separateBookingPrice: input.separateBookingPrice || undefined,
+  };
+}
 
 const EMPTY_FORM: AdminPackageInput = {
   title: "",
@@ -37,13 +74,27 @@ export function AdminPackagesLiveContent() {
   const { data: session } = useSession();
   const token = session?.accessToken;
   const queryClient = useQueryClient();
+  const searchParams = useSearchParams();
   const [form, setForm] = useState<AdminPackageInput>(EMPTY_FORM);
+  // The package being edited, or null when the form creates a new one.
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [formError, setFormError] = useState<string | null>(null);
+  const [listError, setListError] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const titleRef = useRef<HTMLInputElement>(null);
 
-  const { data, isLoading } = useQuery({
+  // /admin/packages?new=1 (dashboard "Add packages", old wizard URL) jumps
+  // straight to the create form.
+  const wantsNew = searchParams.get("new") === "1";
+  useEffect(() => {
+    if (wantsNew) titleRef.current?.focus();
+  }, [wantsNew]);
+
+  const { data, isLoading, error: loadError } = useQuery({
     queryKey: ["admin-packages"],
     queryFn: () => adminListPackages(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
 
   const invalidate = () => {
@@ -51,41 +102,87 @@ export function AdminPackagesLiveContent() {
     void queryClient.invalidateQueries({ queryKey: ["packages"] });
   };
 
-  const createMutation = useMutation({
-    mutationFn: () => adminCreatePackage(token as string, form),
+  const resetForm = () => {
+    setForm(EMPTY_FORM);
+    setEditingId(null);
+    setFormError(null);
+  };
+
+  // Create or save the package in the form.
+  const saveMutation = useMutation({
+    mutationFn: () => {
+      const input = cleanInput(form);
+      return editingId
+        ? adminUpdatePackage(token as string, editingId, input)
+        : adminCreatePackage(token as string, input);
+    },
+    onMutate: () => setFormError(null),
     onSuccess: () => {
-      setForm(EMPTY_FORM);
+      resetForm();
       invalidate();
     },
+    onError: (err) =>
+      setFormError(
+        errorMessage(
+          err,
+          editingId
+            ? "Couldn't save this package. Please try again."
+            : "Couldn't create this package. Please try again.",
+        ),
+      ),
   });
+  // Row actions (publish toggle, delete) report into the list banner.
   const updateMutation = useMutation({
     mutationFn: (v: { id: string; input: AdminPackageInput }) =>
       adminUpdatePackage(token as string, v.id, v.input),
+    onMutate: () => setListError(null),
     onSuccess: invalidate,
+    onError: (err) =>
+      setListError(errorMessage(err, "Couldn't update the package.")),
   });
   const deleteMutation = useMutation({
     mutationFn: (id: string) => adminDeletePackage(token as string, id),
-    onSuccess: invalidate,
+    onMutate: () => setListError(null),
+    onSuccess: (_data, id) => {
+      if (id === editingId) resetForm();
+      invalidate();
+    },
+    onError: (err) =>
+      setListError(errorMessage(err, "Couldn't delete the package.")),
   });
 
   const togglePublish = (p: PackageApi) => {
     updateMutation.mutate({
       id: p.id,
       input: {
-        title: p.title,
-        days: p.days,
-        nights: p.nights,
-        scheduleLabel: p.scheduleLabel ?? undefined,
-        savingsPercent: p.savingsPercent,
-        currentPrice: p.currentPrice,
-        separateBookingPrice: p.separateBookingPrice ?? undefined,
-        currency: p.currency,
-        image: p.image ?? undefined,
-        inclusions: p.inclusions,
+        ...toInput(p),
         status: p.status === "published" ? "draft" : "published",
-        sortOrder: p.sortOrder,
       },
     });
+  };
+
+  const startEdit = (p: PackageApi) => {
+    setEditingId(p.id);
+    setForm(toInput(p));
+    setFormError(null);
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    titleRef.current?.focus({ preventScroll: true });
+  };
+
+  const handleSubmit = () => {
+    if (!token) {
+      setFormError("Your session has expired. Sign in again and retry.");
+      return;
+    }
+    if (!form.title.trim()) {
+      setFormError("Add a title.");
+      return;
+    }
+    if (!(form.currentPrice > 0)) {
+      setFormError("Set a current price above 0.");
+      return;
+    }
+    saveMutation.mutate();
   };
 
   const packages = data ?? [];
@@ -101,17 +198,24 @@ export function AdminPackagesLiveContent() {
         </p>
       </div>
 
-      {/* Create form */}
+      {/* Create / edit form */}
       <form
+        ref={formRef}
         onSubmit={(e) => {
           e.preventDefault();
-          if (form.title && form.currentPrice > 0) createMutation.mutate();
+          handleSubmit();
         }}
-        className="grid gap-4 rounded-xl border border-[#EEEEEE] bg-white p-5 sm:grid-cols-2"
+        className={`grid scroll-mt-24 gap-4 rounded-xl border bg-white p-5 sm:grid-cols-2 ${
+          editingId ? "border-[#135391] ring-2 ring-[#135391]/15" : "border-[#EEEEEE]"
+        }`}
       >
+        <h2 className="text-base font-bold font-satoshi text-[#2F2F2F] sm:col-span-2">
+          {editingId ? `Edit package — ${form.title || "Untitled"}` : "New package"}
+        </h2>
         <label className="text-sm font-semibold font-satoshi text-[#2F2F2F] sm:col-span-2">
           Title
           <input
+            ref={titleRef}
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
             className={inputClass}
@@ -129,6 +233,36 @@ export function AdminPackagesLiveContent() {
             className={inputClass}
             required
           />
+        </label>
+        <label className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
+          Currency
+          <select
+            value={form.currency ?? "NGN"}
+            onChange={(e) => setForm({ ...form, currency: e.target.value })}
+            className={inputClass}
+          >
+            {CURRENCY_OPTIONS.map((code) => (
+              <option key={code} value={code}>
+                {code}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
+          Status
+          <select
+            value={form.status ?? "draft"}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                status: e.target.value as AdminPackageInput["status"],
+              })
+            }
+            className={inputClass}
+          >
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+          </select>
         </label>
         <label className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
           &quot;If booked separately&quot; price
@@ -222,21 +356,68 @@ export function AdminPackagesLiveContent() {
             })}
           </div>
         </div>
-        <div className="sm:col-span-2">
+        {formError ? (
+          <p
+            role="alert"
+            className="rounded-lg border border-[#DD2222]/30 bg-[#DD2222]/5 px-3 py-2 text-sm font-medium font-satoshi text-[#C0392B] sm:col-span-2"
+          >
+            {formError}
+          </p>
+        ) : null}
+        <div className="flex flex-wrap gap-3 sm:col-span-2">
           <button
             type="submit"
-            disabled={createMutation.isPending}
+            disabled={saveMutation.isPending}
             className="h-10 rounded-lg bg-[#135391] px-5 text-sm font-bold font-satoshi text-white disabled:opacity-60"
           >
-            {createMutation.isPending ? "Creating…" : "Create package"}
+            {saveMutation.isPending
+              ? editingId
+                ? "Saving…"
+                : "Creating…"
+              : editingId
+                ? "Save changes"
+                : "Create package"}
           </button>
+          {editingId ? (
+            <button
+              type="button"
+              disabled={saveMutation.isPending}
+              onClick={resetForm}
+              className="h-10 rounded-lg border border-[#E5E5E5] px-5 text-sm font-bold font-satoshi text-[#2F2F2F] disabled:opacity-60"
+            >
+              Cancel
+            </button>
+          ) : null}
         </div>
       </form>
+
+      {listError ? (
+        <div
+          role="alert"
+          className="flex items-start justify-between gap-3 rounded-lg border border-[#DD2222]/30 bg-[#DD2222]/5 px-4 py-3 text-sm font-medium font-satoshi text-[#C0392B]"
+        >
+          <span>{listError}</span>
+          <button
+            type="button"
+            onClick={() => setListError(null)}
+            className="shrink-0 font-bold hover:underline"
+          >
+            Dismiss
+          </button>
+        </div>
+      ) : null}
 
       {/* Existing packages */}
       {isLoading ? (
         <p className="text-sm font-medium font-satoshi text-[#676565]">
           Loading…
+        </p>
+      ) : loadError ? (
+        <p
+          role="alert"
+          className="rounded-lg border border-[#DD2222]/30 bg-[#DD2222]/5 px-4 py-3 text-sm font-medium font-satoshi text-[#C0392B]"
+        >
+          {errorMessage(loadError, "Couldn't load packages.")}
         </p>
       ) : packages.length === 0 ? (
         <p className="rounded-lg border border-[#EEEEEE] bg-[#FAFAFA] px-4 py-6 text-center text-sm font-medium font-satoshi text-[#676565]">
@@ -268,6 +449,13 @@ export function AdminPackagesLiveContent() {
                 >
                   {p.status}
                 </span>
+                <button
+                  type="button"
+                  onClick={() => startEdit(p)}
+                  className="rounded-lg border border-[#E5E5E5] px-3 py-2 text-xs font-bold font-satoshi text-[#2F2F2F]"
+                >
+                  Edit
+                </button>
                 <button
                   type="button"
                   disabled={updateMutation.isPending}

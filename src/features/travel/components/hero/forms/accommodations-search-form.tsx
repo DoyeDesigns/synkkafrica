@@ -59,7 +59,9 @@ function getInitialPropertyTypeId(searchParams: URLSearchParams) {
     }
   }
 
-  return PROPERTY_TYPES[0]?.id ?? "hotels";
+  // "" = any property type. Defaulting to "Hotels" hid every apartment,
+  // resort, etc. from a plain destination search.
+  return "";
 }
 
 /**
@@ -96,12 +98,14 @@ export function AccommodationsSearchForm({
   );
 
   const propertyTypeOptions = useMemo(
-    () =>
-      PROPERTY_TYPES.map((type) => ({
+    () => [
+      { value: "", label: t("hero.accommodations.anyPropertyType") },
+      ...PROPERTY_TYPES.map((type) => ({
         value: type.id,
         label: labelPropertyTypeId(type.id, type.label),
       })),
-    [labelPropertyTypeId],
+    ],
+    [labelPropertyTypeId, t],
   );
 
   const roomOptions = useMemo(
@@ -150,7 +154,9 @@ export function AccommodationsSearchForm({
       onSubmit={(event) => {
         event.preventDefault();
         onSubmit({
-          propertyType: getPropertyTypeLabelById(propertyTypeId),
+          propertyType: propertyTypeId
+            ? getPropertyTypeLabelById(propertyTypeId)
+            : "",
           rooms,
           guests,
           destination: destination.trim(),

@@ -61,7 +61,6 @@ export function TourPackageGallery({ tourPackage }: TourPackageGalleryProps) {
     <BookingImageGallery
       images={tourPackage.images}
       alt={tourPackage.title}
-      extraPhotoCount={tourPackage.extraPhotoCount}
       overlay={
         <button
           type="button"

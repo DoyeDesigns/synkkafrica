@@ -34,9 +34,11 @@ export function TourPackageCard({ item }: TourPackageCardProps) {
 
       <div className="flex flex-1 flex-col gap-3 p-4">
         <div>
-          <p className="text-xs font-bold font-montserrat uppercase tracking-wide text-[#D85A30]">
-            {item.country}
-          </p>
+          {item.country ? (
+            <p className="text-xs font-bold font-montserrat uppercase tracking-wide text-[#D85A30]">
+              {item.country}
+            </p>
+          ) : null}
           <h2 className="mt-1 text-base font-bold font-montserrat text-foreground">
             {item.title}
           </h2>
@@ -47,10 +49,13 @@ export function TourPackageCard({ item }: TourPackageCardProps) {
             <Clock className="h-4 w-4 shrink-0" strokeWidth={1.75} />
             {item.nights} Nights / {item.days} Days
           </p>
-          <p className="inline-flex items-center gap-2 text-sm font-satoshi text-foreground/65">
-            <CalendarDays className="h-4 w-4 shrink-0" strokeWidth={1.75} />
-            {item.startDate} - {item.endDate}
-          </p>
+          {item.scheduleLabel || item.startDate ? (
+            <p className="inline-flex items-center gap-2 text-sm font-satoshi text-foreground/65">
+              <CalendarDays className="h-4 w-4 shrink-0" strokeWidth={1.75} />
+              {item.scheduleLabel ||
+                [item.startDate, item.endDate].filter(Boolean).join(" - ")}
+            </p>
+          ) : null}
         </div>
 
         <div className="mt-auto space-y-3 pt-1">

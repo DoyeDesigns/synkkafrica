@@ -7,8 +7,9 @@ import type {
   AccommodationRoomType,
   AddListingFormState,
 } from "@/features/vendor/data/vendor-add-listing";
-import { useFormatPrice } from "@/hooks/use-format-price";
+import { ListingCurrencyField } from "@/features/vendor/components/vendor-listing-currency-field";
 import { useTranslation } from "@/hooks/use-translation";
+import { formatMoney } from "@/lib/format-money";
 
 const inputClassName =
   "h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none focus:border-[#135391]";
@@ -37,7 +38,6 @@ const EMPTY_DRAFT: RoomTypeDraft = {
 
 export function AccommodationPricingStep({ form, onChange }: AccommodationPricingStepProps) {
   const t = useTranslation();
-  const formatPrice = useFormatPrice();
   const [modalOpen, setModalOpen] = useState(false);
   const [editingRoomId, setEditingRoomId] = useState<string | null>(null);
   const [draft, setDraft] = useState<RoomTypeDraft>(EMPTY_DRAFT);
@@ -107,6 +107,11 @@ export function AccommodationPricingStep({ form, onChange }: AccommodationPricin
   return (
     <>
       <section className="space-y-4">
+        <ListingCurrencyField
+          value={form.currency}
+          onChange={(currency) => onChange({ currency })}
+        />
+
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <h3 className="text-base font-bold font-satoshi text-[#2F2F2F]">
@@ -174,7 +179,7 @@ export function AccommodationPricingStep({ form, onChange }: AccommodationPricin
                       </td>
                       <td className="px-4 py-4 text-[#676565]">{room.maxGuests}</td>
                       <td className="px-4 py-4 font-semibold text-[#2F2F2F]">
-                        {formatPrice("NGN", Number(room.pricePerNight))}
+                        {formatMoney(form.currency, Number(room.pricePerNight))}
                       </td>
                       <td className="px-4 py-4">
                         <div className="flex items-center gap-3">
@@ -206,6 +211,7 @@ export function AccommodationPricingStep({ form, onChange }: AccommodationPricin
 
       {modalOpen ? (
         <AddRoomTypeModal
+          currency={form.currency}
           draft={draft}
           isEditing={Boolean(editingRoomId)}
           canSave={canSave}
@@ -219,6 +225,7 @@ export function AccommodationPricingStep({ form, onChange }: AccommodationPricin
 }
 
 function AddRoomTypeModal({
+  currency,
   draft,
   isEditing,
   canSave,
@@ -226,6 +233,7 @@ function AddRoomTypeModal({
   onClose,
   onSave,
 }: {
+  currency: string;
   draft: RoomTypeDraft;
   isEditing: boolean;
   canSave: boolean;
@@ -310,7 +318,7 @@ function AddRoomTypeModal({
                 min={0}
                 value={draft.pricePerNight}
                 onChange={(event) => onChange({ ...draft, pricePerNight: event.target.value })}
-                placeholder="NGN"
+                placeholder={currency}
                 className={inputClassName}
               />
             </ModalField>
