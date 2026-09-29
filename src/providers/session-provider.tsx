@@ -22,8 +22,14 @@ export function AuthProvider({
   // which rotates the backend tokens and hands the client a live one. Without
   // this the context keeps serving whatever it was hydrated with, and every
   // authenticated call fails until a manual reload.
+  // SessionProvider only reads `session` on its first mount. After a
+  // client-side login the root layout can pass the new session, but the
+  // provider keeps the logged-out one until it remounts.
+  const sessionKey = session?.user?.id ?? "signed-out";
+
   return (
     <SessionProvider
+      key={sessionKey}
       session={session}
       refetchInterval={10 * 60}
       refetchOnWindowFocus

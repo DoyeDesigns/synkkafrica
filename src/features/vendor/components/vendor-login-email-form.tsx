@@ -1,7 +1,8 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 
 import { useTranslation } from "@/hooks/use-translation";
@@ -10,19 +11,35 @@ import { signInWithEmailAsVendorAction } from "@/lib/auth/vendor-actions";
 export function VendorLoginEmailForm() {
   const t = useTranslation();
   const router = useRouter();
+  const { update } = useSession();
   const [showPassword, setShowPassword] = useState(false);
   const [state, formAction, pending] = useActionState(
     signInWithEmailAsVendorAction,
     undefined,
   );
+  const started = useRef(false);
 
-  // On success the vendor session cookie is set; navigate into the dashboard.
+  // The cookie is set by the server action, but SessionProvider was hydrated
+  // as logged-out and will not notice that cookie on a client navigation.
+  // Pull the session into context before opening the dashboard, or the
+  // vendor queries stay disabled until a manual reload.
   useEffect(() => {
-    if (state?.ok) {
-      router.push("/vendor");
-      router.refresh();
-    }
-  }, [state, router]);
+    if (!state?.ok || started.current) return;
+    started.current = true;
+    void (async () => {
+      try {
+        const next = await update();
+        if (next?.accessToken) {
+          router.push("/vendor");
+          router.refresh();
+          return;
+        }
+      } catch {
+        // Fall through to a full navigation, which remounts with the cookie.
+      }
+      window.location.assign("/vendor");
+    })();
+  }, [state?.ok, router, update]);
 
   return (
     <form action={formAction} className="space-y-4">

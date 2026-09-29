@@ -101,34 +101,67 @@ export function generateBookingReference() {
   return `SYNK-${suffix}`;
 }
 
+export function formatLocalDateKey(date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+export function parseLocalDateKey(dateKey: string) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateKey);
+  if (!match) return null;
+
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const date = new Date(year, month - 1, day);
+
+  if (
+    date.getFullYear() !== year ||
+    date.getMonth() !== month - 1 ||
+    date.getDate() !== day
+  ) {
+    return null;
+  }
+
+  return date;
+}
+
 export function getDefaultCheckInDate() {
   const date = new Date();
   date.setDate(date.getDate() + 7);
-  return date.toISOString().split("T")[0] ?? "";
+  return formatLocalDateKey(date);
 }
 
 export function getDefaultCheckOutDate(checkIn?: string) {
-  const date = checkIn ? new Date(checkIn) : new Date();
+  const date = checkIn ? parseLocalDateKey(checkIn) : new Date();
+  if (!date) return "";
+
   if (!checkIn) {
     date.setDate(date.getDate() + 7);
   }
   date.setDate(date.getDate() + 1);
-  return date.toISOString().split("T")[0] ?? "";
+  return formatLocalDateKey(date);
 }
 
 export function calculateNights(checkIn: string, checkOut: string) {
-  const start = new Date(checkIn);
-  const end = new Date(checkOut);
-  const diff = end.getTime() - start.getTime();
-  const nights = Math.ceil(diff / (1000 * 60 * 60 * 24));
+  const start = parseLocalDateKey(checkIn);
+  const end = parseLocalDateKey(checkOut);
+  if (!start || !end) return 0;
 
-  return Number.isFinite(nights) && nights > 0 ? nights : 1;
+  const diff = end.getTime() - start.getTime();
+  const nights = Math.round(diff / (1000 * 60 * 60 * 24));
+
+  return Number.isFinite(nights) && nights > 0 ? nights : 0;
 }
 
 export function addDaysToDate(dateKey: string, days: number) {
-  const date = new Date(dateKey);
+  const date = parseLocalDateKey(dateKey);
+  if (!date) return "";
+
   date.setDate(date.getDate() + days);
-  return date.toISOString().split("T")[0] ?? "";
+  return formatLocalDateKey(date);
 }
 
 export function getCheckOutFromNights(checkIn: string, nights: number) {

@@ -22,7 +22,6 @@ export function calculateTourPackageBookingTotal({
   tierPrice,
   days = 1,
   baseDays = 1,
-  taxesAndFees,
   currency,
   tierName,
 }: TourPackageBookingPricingInput): TourPackageBookingPricingBreakdown {
@@ -30,12 +29,12 @@ export function calculateTourPackageBookingTotal({
   const safeBaseDays = Math.max(1, baseDays);
   const dailyRate = tierPrice / safeBaseDays;
   const subtotal = Math.round(dailyRate * safeDays);
-  const syncAfricaFee = calculateSyncAfricaFee(subtotal + taxesAndFees);
-  const total = subtotal + taxesAndFees + syncAfricaFee;
+  const syncAfricaFee = calculateSyncAfricaFee(subtotal);
+  const total = subtotal + syncAfricaFee;
 
   return {
     subtotal,
-    taxesAndFees,
+    taxesAndFees: 0,
     syncAfricaFee,
     total,
     currency,

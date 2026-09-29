@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 
-import { getDefaultCheckInDate } from "@/features/travel/booking/booking-params";
 import {
   HeroInputShell,
   HeroSearchButton,
@@ -26,7 +25,7 @@ export function ToursSearchForm({ onSubmit }: ToursSearchFormProps) {
     return searchCityFromLocation(value) || value;
   });
   const [date, setDate] = useState(
-    () => searchParams.get("date") ?? getDefaultCheckInDate(),
+    () => searchParams.get("date") ?? "",
   );
 
   return (

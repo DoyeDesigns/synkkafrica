@@ -285,6 +285,11 @@ export type AddListingFormState = {
   whatToBring: string[];
   additionalInfo: string;
   mediaItems: ListingMediaItem[];
+  // Stored URL of the photo shown as the listing cover. Empty until an image
+  // has finished uploading; the first uploaded image is used when unset.
+  coverImageUrl: string;
+  // Client id of the photo chosen as cover before its upload URL exists.
+  coverMediaId: string;
   pickupAddress: string;
   handoverMethods: CarHandoverMethod[];
   price12hr: string;
@@ -344,6 +349,8 @@ export const EMPTY_ADD_LISTING_FORM: AddListingFormState = {
   whatToBring: [],
   additionalInfo: "",
   mediaItems: [],
+  coverImageUrl: "",
+  coverMediaId: "",
   pickupAddress: "",
   handoverMethods: ["client_pickup"],
   price12hr: "",
@@ -360,6 +367,20 @@ export const EMPTY_ADD_LISTING_FORM: AddListingFormState = {
   gpsAcknowledged: false,
 };
 
+export function orderMediaWithCoverFirst(
+  items: ListingMediaItem[],
+  coverImageUrl: string,
+): ListingMediaItem[] {
+  if (!coverImageUrl) return items;
+  const index = items.findIndex(
+    (item) => item.kind === "image" && item.url === coverImageUrl,
+  );
+  if (index <= 0) return items;
+  const next = [...items];
+  const [cover] = next.splice(index, 1);
+  return cover ? [cover, ...next] : items;
+}
+
 // Rebuild the wizard form from a persisted listing so a draft can be reopened
 // and edited. The backend stores the whole form (minus media/document blobs)
 // as opaque `details`, so merging it back over the empty form restores every
@@ -369,6 +390,7 @@ export function formStateFromListingDetails(
   category: ListingCategory,
   details: Record<string, unknown> | null | undefined,
   media?: unknown[] | null,
+  coverImageUrl?: string | null,
 ): AddListingFormState {
   // Media now persists real storage URLs, so a resumed draft can show its
   // previously-uploaded images directly (no blob needed).
@@ -395,11 +417,20 @@ export function formStateFromListingDetails(
     parsed.pickupAddress ||
     "";
 
+  const restoredCover =
+    coverImageUrl ||
+    (typeof parsed.coverImageUrl === "string" ? parsed.coverImageUrl : "");
+  const coverItem = mediaItems.find(
+    (item) => item.kind === "image" && item.url === restoredCover,
+  );
+
   return {
     ...EMPTY_ADD_LISTING_FORM,
     ...parsed,
     category,
     mediaItems,
+    coverImageUrl: coverItem?.url ?? restoredCover,
+    coverMediaId: coverItem?.id ?? "",
     uploadedDocuments: {},
     streetLine: parsed.countryCode ? parsed.streetLine ?? "" : legacyLocation,
   };

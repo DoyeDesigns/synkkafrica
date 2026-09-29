@@ -6,15 +6,9 @@ import { useState } from "react";
 import {
   calculateNights,
   getCheckOutFromNights,
-  getDefaultCheckOutDate,
 } from "@/features/travel/booking/booking-params";
 import { BookingCounterField } from "@/features/travel/components/booking/booking-counter-field";
 import { BookingDateTimePicker } from "@/features/travel/components/booking/booking-date-time-picker";
-import {
-  getPropertyDayStatuses,
-  getPropertyTimeSlots,
-  clampCheckoutDate,
-} from "@/features/travel/data/property-availability";
 import { useTranslation } from "@/hooks/use-translation";
 
 type BookingDatesSectionProps = {
@@ -32,7 +26,6 @@ type BookingDatesSectionProps = {
 };
 
 export function BookingDatesSection({
-  propertyId,
   checkIn,
   checkOut,
   guests,
@@ -45,9 +38,7 @@ export function BookingDatesSection({
   onTimeChange,
 }: BookingDatesSectionProps) {
   const t = useTranslation();
-  const [viewDate, setViewDate] = useState(() => new Date(checkIn || Date.now()));
-  const dayStatuses = getPropertyDayStatuses(propertyId);
-  const timeSlots = getPropertyTimeSlots();
+  const [viewDate, setViewDate] = useState(() => new Date());
   const nights = calculateNights(checkIn, checkOut);
 
   const handleSelectCheckIn = (dateKey: string) => {
@@ -56,11 +47,11 @@ export function BookingDatesSection({
   };
 
   const handleSelectCheckOut = (dateKey: string) => {
-    if (!checkIn) {
+    if (!checkIn || dateKey <= checkIn) {
       return;
     }
 
-    onCheckOutChange(clampCheckoutDate(dayStatuses, checkIn, dateKey));
+    onCheckOutChange(dateKey);
   };
 
   const handleNightsChange = (value: number) => {
@@ -68,9 +59,7 @@ export function BookingDatesSection({
       return;
     }
 
-    onCheckOutChange(
-      clampCheckoutDate(dayStatuses, checkIn, getCheckOutFromNights(checkIn, value)),
-    );
+    onCheckOutChange(getCheckOutFromNights(checkIn, value));
   };
 
   return (
@@ -79,14 +68,13 @@ export function BookingDatesSection({
         mode="range"
         viewDate={viewDate}
         onViewDateChange={setViewDate}
-        blockedDates={dayStatuses}
         checkIn={checkIn}
         checkOut={checkOut}
         selectedDate={null}
         onSelectCheckIn={handleSelectCheckIn}
         onSelectCheckOut={handleSelectCheckOut}
         onSelectDate={() => undefined}
-        timeSlots={timeSlots}
+        timeSlots={[]}
         selectedTime={selectedTime}
         onSelectTime={onTimeChange}
         showTimeSlots={false}

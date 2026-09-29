@@ -8,7 +8,7 @@ type BookingDateTimePickerProps = {
   mode: "range" | "single";
   viewDate: Date;
   onViewDateChange: (date: Date) => void;
-  blockedDates: Record<string, "available" | "blocked">;
+  blockedDates?: Record<string, "available" | "blocked">;
   checkIn: string | null;
   checkOut: string | null;
   selectedDate: string | null;
@@ -23,7 +23,7 @@ type BookingDateTimePickerProps = {
 
 export function BookingDateTimePicker({
   mode,
-  blockedDates,
+  blockedDates = {},
   checkIn,
   checkOut,
   selectedDate,

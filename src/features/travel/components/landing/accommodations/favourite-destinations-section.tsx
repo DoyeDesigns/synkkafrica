@@ -35,7 +35,7 @@ export function FavouriteDestinationsSection() {
       <div className="relative mt-6">
         <div
           ref={scrollRef}
-          className={`flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-14 ${TRAVEL_CAROUSEL_SCROLL_CLASS}`}
+          className={`flex flex-nowrap gap-4 overflow-x-auto scroll-smooth pb-2 pr-14 ${TRAVEL_CAROUSEL_SCROLL_CLASS}`}
         >
           {cards.map((destination) => (
             <Link
@@ -43,7 +43,7 @@ export function FavouriteDestinationsSection() {
               href={getBrowseEventsHref(
                 destination.filterLocation ?? destination.location,
               )}
-              className="group relative h-[286px] min-w-[217px] shrink-0 overflow-hidden rounded-2xl border-2 border-transparent transition-colors hover:border-[#3B82F6] sm:min-w-[200px]"
+              className="group relative h-[286px] w-[217px] shrink-0 overflow-hidden rounded-2xl border-2 border-transparent transition-colors hover:border-[#3B82F6]"
             >
               <Image
                 src={destination.image}

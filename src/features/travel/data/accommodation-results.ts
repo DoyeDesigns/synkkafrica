@@ -55,11 +55,7 @@ export const DEFAULT_ACCOMMODATION_FILTERS: AccommodationFilterState = {
 export const PROPERTY_TYPE_OPTIONS = [
   "Hotels",
   "Apartments",
-  "Resorts",
-  "B&Bs",
-  "Guest House",
   "Beach House",
-  "Motels",
 ] as const;
 
 export const PRICE_RANGE_OPTIONS: {

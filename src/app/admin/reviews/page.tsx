@@ -1,5 +1,5 @@
-import { AdminReviewsLiveContent } from "@/features/admin/components/admin-reviews-live-content";
+import { AdminReviewsContent } from "@/features/admin/components/admin-reviews-content";
 
 export default function AdminReviewsPage() {
-  return <AdminReviewsLiveContent />;
+  return <AdminReviewsContent />;
 }

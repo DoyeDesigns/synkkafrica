@@ -1,13 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import type { BookingStepId } from "@/features/travel/booking/constants";
 import {
   calculateNights,
-  getDefaultCheckInDate,
-  getDefaultCheckOutDate,
   serializeBookingParams,
 } from "@/features/travel/booking/booking-params";
 import { AmenitiesFacilitiesSection } from "@/features/travel/components/booking/amenities-facilities-section";
@@ -30,18 +28,26 @@ import { ACCOMMODATION_DEALS } from "../../data/accommodations-landing";
 type PropertyBookingPageProps = {
   property: PropertyDetail;
   currentStep?: BookingStepId;
+  listingData?: unknown;
 };
 
 export function PropertyBookingPage({
   property,
   currentStep = "rooms",
+  listingData,
 }: PropertyBookingPageProps) {
   const router = useRouter();
+
+  useEffect(() => {
+    if (listingData !== undefined) {
+      console.log("[accommodations/book] listing", listingData);
+    }
+  }, [listingData]);
   const defaultRoomId = property.rooms[0]?.id ?? "";
 
   const [selectedRoomId, setSelectedRoomId] = useState(defaultRoomId);
-  const [checkIn, setCheckIn] = useState(getDefaultCheckInDate);
-  const [checkOut, setCheckOut] = useState(getDefaultCheckOutDate);
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
   const [guests, setGuests] = useState(2);
   const [roomCount, setRoomCount] = useState(1);
   const [selectedTime, setSelectedTime] = useState("09:00");
@@ -52,6 +58,8 @@ export function PropertyBookingPage({
   );
 
   const handleBookNow = () => {
+    if (!checkIn || !checkOut) return;
+
     const params = serializeBookingParams({
       room: selectedRoomId,
       checkIn,
@@ -151,6 +159,7 @@ export function PropertyBookingPage({
             guestCount={guests}
             onSelectRoom={setSelectedRoomId}
             onBookNow={handleBookNow}
+            bookDisabled={!checkIn || !checkOut}
           />
         </aside>
       </div>

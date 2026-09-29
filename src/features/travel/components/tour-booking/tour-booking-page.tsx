@@ -4,10 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import type { TourBookingStepId } from "@/features/travel/booking/tour-constants";
-import {
-  getDefaultCheckInDate,
-  serializeBookingParams,
-} from "@/features/travel/booking/booking-params";
+import { serializeBookingParams } from "@/features/travel/booking/booking-params";
 import { NoReviewsCard } from "@/features/travel/components/car-booking/no-reviews-card";
 import { TourBookingBreadcrumbs } from "@/features/travel/components/tour-booking/tour-booking-breadcrumbs";
 import { TourBookingCheckoutPage } from "@/features/travel/components/tour-booking/tour-booking-checkout-page";
@@ -17,9 +14,20 @@ import { TourBookingStepper } from "@/features/travel/components/tour-booking/to
 import { TourBookingSummaryCard } from "@/features/travel/components/tour-booking/tour-booking-summary-card";
 import { TourDatesSection } from "@/features/travel/components/tour-booking/tour-dates-section";
 import { ExperienceSelectionTable } from "@/features/travel/components/tour-booking/experience-selection-table";
+import { PropertyMap } from "@/features/travel/components/booking/property-map";
 import { AboutThisTour, TourGallery } from "@/features/travel/components/tour-booking/tour-gallery";
 import { TourExperienceReviews } from "@/features/travel/components/tour-booking/tour-experience-reviews";
 import type { TourDetail } from "@/features/travel/data/tour-booking";
+
+function TourLocationMap({ tour }: { tour: TourDetail }) {
+  return (
+    <PropertyMap
+      coordinates={tour.mapCoordinates}
+      label={tour.title}
+      query={tour.location}
+    />
+  );
+}
 
 type TourBookingPageProps = {
   tour: TourDetail;
@@ -33,12 +41,14 @@ export function TourBookingPage({
   const router = useRouter();
   const defaultOptionId = tour.options[0]?.id ?? "";
   const [selectedOptionId, setSelectedOptionId] = useState(defaultOptionId);
-  const [selectedDate, setSelectedDate] = useState(getDefaultCheckInDate());
+  const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("09:00");
   const [guests, setGuests] = useState(2);
   const [days, setDays] = useState(1);
 
   const handleBookNow = () => {
+    if (!selectedDate) return;
+
     const params = serializeBookingParams({
       option: selectedOptionId,
       date: selectedDate,
@@ -74,6 +84,9 @@ export function TourBookingPage({
           <div className="space-y-8">
             <TourGallery tour={tour} />
             <AboutThisTour tour={tour} />
+            <div className="xl:hidden">
+              <TourLocationMap tour={tour} />
+            </div>
             <TourDatesSection
               tourId={tour.id}
               selectedDate={selectedDate}
@@ -95,6 +108,9 @@ export function TourBookingPage({
           </div>
 
           <aside className="space-y-5 xl:sticky xl:top-10 xl:self-start">
+            <div className="hidden xl:block">
+              <TourLocationMap tour={tour} />
+            </div>
             <TourBookingSummaryCard
               tour={tour}
               options={tour.options}
@@ -103,6 +119,7 @@ export function TourBookingPage({
               days={days}
               onSelectOption={setSelectedOptionId}
               onBookNow={handleBookNow}
+              bookDisabled={!selectedDate}
             />
             <NoReviewsCard />
           </aside>

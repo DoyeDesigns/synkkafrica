@@ -15,10 +15,6 @@ import { HeroDestinationField } from "@/features/travel/components/hero/hero-des
 import { searchCityFromLocation } from "@/lib/geo/city-supplements";
 import { listAccommodationDestinations } from "@/lib/api/accommodations";
 import {
-  getDefaultCheckInDate,
-  getDefaultCheckOutDate,
-} from "@/features/travel/booking/booking-params";
-import {
   getPropertyTypeLabelById,
   getPropertyTypeIdByLabel,
   PROPERTY_TYPES,
@@ -89,12 +85,10 @@ export function AccommodationsSearchForm({
       (searchParams.get("destination") ?? ""),
   );
   const [checkIn, setCheckIn] = useState(
-    () => searchParams.get("checkIn") ?? getDefaultCheckInDate(),
+    () => searchParams.get("checkIn") ?? "",
   );
   const [checkOut, setCheckOut] = useState(
-    () =>
-      searchParams.get("checkOut") ??
-      getDefaultCheckOutDate(searchParams.get("checkIn") ?? undefined),
+    () => searchParams.get("checkOut") ?? "",
   );
 
   const propertyTypeOptions = useMemo(
@@ -141,8 +135,8 @@ export function AccommodationsSearchForm({
       return;
     }
 
-    if (!checkOut || checkOut <= value) {
-      setCheckOut(getDefaultCheckOutDate(value));
+    if (checkOut && checkOut <= value) {
+      setCheckOut("");
     }
   };
 

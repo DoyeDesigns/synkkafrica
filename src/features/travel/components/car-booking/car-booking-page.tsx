@@ -4,12 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { CarRentalOptionsSection } from "@/features/travel/components/car-booking/car-rental-options-section";
-import type { CarRentalMode } from "@/features/travel/booking/booking-params";
 import type { CarBookingStepId } from "@/features/travel/booking/car-constants";
-import {
-  getDefaultCheckInDate,
-  serializeBookingParams,
-} from "@/features/travel/booking/booking-params";
+import { serializeBookingParams } from "@/features/travel/booking/booking-params";
 import { AboutThisCar, CarGallery } from "@/features/travel/components/car-booking/car-gallery";
 import { CarBookingBreadcrumbs } from "@/features/travel/components/car-booking/car-booking-breadcrumbs";
 import { CarBookingStepper } from "@/features/travel/components/car-booking/car-booking-stepper";
@@ -36,25 +32,14 @@ export function CarBookingPage({
   const defaultPackageId = car.packages[0]?.id ?? "";
 
   const [selectedPackageId, setSelectedPackageId] = useState(defaultPackageId);
-  const [pickupDate, setPickupDate] = useState(getDefaultCheckInDate());
+  const [pickupDate, setPickupDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("12:00");
   const [days, setDays] = useState(1);
-  const [carRentalMode, setCarRentalMode] = useState<CarRentalMode>("self_drive");
-  const [requestDelivery, setRequestDelivery] = useState(false);
-  const [deliveryAddress, setDeliveryAddress] = useState("");
   const [customerPickupAddress, setCustomerPickupAddress] = useState("");
 
-  const handleRentalModeChange = (mode: CarRentalMode) => {
-    setCarRentalMode(mode);
-    if (mode === "with_driver") {
-      setRequestDelivery(false);
-      setDeliveryAddress("");
-    } else {
-      setCustomerPickupAddress("");
-    }
-  };
-
   const handleBookNow = () => {
+    if (!pickupDate) return;
+
     const params = serializeBookingParams({
       package: selectedPackageId,
       date: pickupDate,
@@ -62,16 +47,8 @@ export function CarBookingPage({
       days,
       guests: 1,
       rooms: 1,
-      carRentalMode,
-      requestDelivery: carRentalMode === "self_drive" ? requestDelivery : undefined,
-      deliveryAddress:
-        carRentalMode === "self_drive" && requestDelivery
-          ? deliveryAddress.trim() || undefined
-          : undefined,
-      customerPickupAddress:
-        carRentalMode === "with_driver"
-          ? customerPickupAddress.trim() || undefined
-          : undefined,
+      carRentalMode: "with_driver",
+      customerPickupAddress: customerPickupAddress.trim() || undefined,
     });
     router.push(`/car-rentals/${car.id}/book/checkout?${params.toString()}`);
   };
@@ -121,18 +98,8 @@ export function CarBookingPage({
               onSelectPackage={setSelectedPackageId}
             />
             <CarRentalOptionsSection
-              rentalMode={carRentalMode}
-              onRentalModeChange={handleRentalModeChange}
-              requestDelivery={requestDelivery}
-              onRequestDeliveryChange={setRequestDelivery}
-              deliveryAddress={deliveryAddress}
-              onDeliveryAddressChange={setDeliveryAddress}
               customerPickupAddress={customerPickupAddress}
               onCustomerPickupAddressChange={setCustomerPickupAddress}
-              pickupAddress={car.pickupAddress}
-              driverAddonPrice={car.driverAddonPrice}
-              deliveryFee={car.deliveryFee}
-              currency={car.currency}
             />
           </div>
 
@@ -142,10 +109,11 @@ export function CarBookingPage({
               packages={car.packages}
               selectedPackageId={selectedPackageId}
               days={days}
-              carRentalMode={carRentalMode}
-              requestDelivery={requestDelivery}
+              arrivalTime={selectedTime}
+              carRentalMode="with_driver"
               onSelectPackage={setSelectedPackageId}
               onBookNow={handleBookNow}
+              bookDisabled={!pickupDate}
             />
             <NoReviewsCard />
           </aside>

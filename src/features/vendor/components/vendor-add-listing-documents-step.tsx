@@ -220,7 +220,11 @@ function ListingDocumentsSidebar({
           </button>
         </div>
 
-        <ListingMediaPreview items={form.mediaItems} className="rounded-none" />
+        <ListingMediaPreview
+          items={form.mediaItems}
+          coverUrl={form.coverImageUrl}
+          className="rounded-none"
+        />
 
         <div className="space-y-3 p-4">
           <div>

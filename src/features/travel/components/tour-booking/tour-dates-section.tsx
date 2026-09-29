@@ -5,10 +5,6 @@ import { useState } from "react";
 
 import { BookingCounterField } from "@/features/travel/components/booking/booking-counter-field";
 import { BookingDateTimePicker } from "@/features/travel/components/booking/booking-date-time-picker";
-import {
-  getTourDayStatuses,
-  getTourTimeSlots,
-} from "@/features/travel/data/property-availability";
 import { useTranslation } from "@/hooks/use-translation";
 
 type TourDatesSectionProps = {
@@ -24,7 +20,6 @@ type TourDatesSectionProps = {
 };
 
 export function TourDatesSection({
-  tourId,
   selectedDate,
   selectedTime,
   guests,
@@ -35,9 +30,7 @@ export function TourDatesSection({
   onDaysChange,
 }: TourDatesSectionProps) {
   const t = useTranslation();
-  const [viewDate, setViewDate] = useState(() => new Date(selectedDate || Date.now()));
-  const dayStatuses = getTourDayStatuses(tourId);
-  const timeSlots = getTourTimeSlots();
+  const [viewDate, setViewDate] = useState(() => new Date());
 
   return (
     <div className="space-y-4">
@@ -45,14 +38,13 @@ export function TourDatesSection({
         mode="single"
         viewDate={viewDate}
         onViewDateChange={setViewDate}
-        blockedDates={dayStatuses}
         checkIn={null}
         checkOut={null}
         selectedDate={selectedDate}
         onSelectCheckIn={() => undefined}
         onSelectCheckOut={() => undefined}
         onSelectDate={onDateChange}
-        timeSlots={timeSlots}
+        timeSlots={[]}
         selectedTime={selectedTime}
         onSelectTime={onTimeChange}
         showTimeSlots={false}

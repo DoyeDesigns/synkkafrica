@@ -5,12 +5,10 @@ import {
   ChevronDown,
   Settings,
 } from "lucide-react";
-import Image from "next/image";
 
 import {
   CAR_RENTAL_PRICE_RANGE_OPTIONS,
   CAR_TYPE_OPTIONS,
-  SERVICE_TYPE_OPTIONS,
   TRANSMISSION_OPTIONS,
   type CarRentalFilterState,
   type CarRentalPriceRangeOption,
@@ -210,16 +208,6 @@ export function CarRentalsFilterSidebar({
           value={filters.carType}
           options={CAR_TYPE_OPTIONS}
           onChange={(value) => onFilterChange("carType", value)}
-          labelOption={labelOption}
-        />
-
-        <FilterSelect
-          icon={
-            <Image src="/wheel-grey.png" alt="" width={16} height={16} aria-hidden />
-          }
-          value={filters.serviceType}
-          options={SERVICE_TYPE_OPTIONS}
-          onChange={(value) => onFilterChange("serviceType", value)}
           labelOption={labelOption}
         />
 

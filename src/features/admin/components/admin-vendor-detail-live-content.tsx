@@ -378,7 +378,7 @@ export function AdminVendorDetailLiveContent({
                     className="flex items-center justify-between gap-3 rounded-lg border border-[#EEEEEE] px-4 py-3 transition-colors hover:border-[#135391] hover:bg-[#F8FBFF]"
                   >
                     <div className="min-w-0">
-                      <p className="truncate text-sm font-bold font-satoshi text-[#2F2F2F]">
+                      <p className="truncate text-sm font-bold font-satoshi text-[#135391] underline underline-offset-2">
                         {listing.title}
                       </p>
                       <p className="mt-0.5 truncate text-xs font-medium font-satoshi text-[#676565] capitalize">

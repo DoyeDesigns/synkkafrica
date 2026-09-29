@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Clock } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 
@@ -17,7 +17,7 @@ type HeroFieldProps = {
   className?: string;
   value?: string;
   onChange?: (value: string) => void;
-  type?: "text" | "date" | "search";
+  type?: "text" | "date" | "time" | "number" | "search";
   min?: string;
 };
 
@@ -31,7 +31,8 @@ export function HeroField({
   min,
 }: HeroFieldProps) {
   const isControlled = value !== undefined && onChange !== undefined;
-  const showPlaceholder = isControlled && type === "date" && !value;
+  const showPlaceholder =
+    isControlled && (type === "date" || type === "time") && !value;
 
   if (isControlled) {
     return (
@@ -48,10 +49,12 @@ export function HeroField({
           type={type}
           value={value}
           min={min}
-          placeholder={type === "date" ? undefined : placeholder}
+          placeholder={
+            type === "date" || type === "time" ? undefined : placeholder
+          }
           onChange={(event) => onChange(event.target.value)}
           className={`w-full min-w-0 bg-transparent text-sm text-white/90 outline-none placeholder:text-white/70 ${
-            type === "date" ? "scheme-dark" : ""
+            type === "date" || type === "time" ? "scheme-dark" : ""
           }`}
         />
       </label>
@@ -65,6 +68,39 @@ export function HeroField({
       {icon}
       <span className="truncate">{placeholder}</span>
     </div>
+  );
+}
+
+type HeroTimeFieldProps = {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  className?: string;
+};
+
+export function HeroTimeField({
+  label,
+  value,
+  onChange,
+  className = "",
+}: HeroTimeFieldProps) {
+  return (
+    <label
+      className={`relative flex min-h-12 min-w-0 flex-1 cursor-pointer items-center gap-2 rounded-xl bg-[#0000003D] px-4 text-sm text-white/90 ${className}`}
+    >
+      <Clock className="h-4 w-4 shrink-0" strokeWidth={1.75} />
+      <span className="min-w-0 flex-1 leading-none">
+        <span className="block text-[10px] font-medium text-white/65">
+          {label}
+        </span>
+        <input
+          type="time"
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          className="mt-0.5 block w-full min-w-0 bg-transparent text-sm font-semibold leading-4 text-white outline-none scheme-dark"
+        />
+      </span>
+    </label>
   );
 }
 

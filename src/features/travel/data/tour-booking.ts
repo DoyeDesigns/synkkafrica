@@ -23,6 +23,7 @@ export type TourDetail = {
   currency: string;
   category: string;
   experienceType: string;
+  mapCoordinates: [number, number];
 };
 
 const DEFAULT_OPTIONS: TourExperienceOption[] = [
@@ -70,6 +71,7 @@ function buildFromEvent(event: (typeof TOUR_EVENTS)[number]): TourDetail {
     currency: event.currency,
     category: event.category,
     experienceType: event.experience,
+    mapCoordinates: [0, 0],
   };
 }
 

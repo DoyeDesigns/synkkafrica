@@ -19,7 +19,7 @@ export function TourEventCard({ event }: TourEventCardProps) {
   return (
     <article className="relative overflow-hidden rounded-2xl border border-[#EEEEEE] bg-white shadow-sm transition-shadow hover:shadow-md">
       <ListingCardLink href={href} label={event.title} />
-      <div className="flex flex-col sm:flex-row">
+      <div className="pointer-events-none flex flex-col sm:flex-row">
         <div className="relative z-[2] m-3 mb-0 aspect-4/3 shrink-0 overflow-hidden rounded-[10px] bg-zinc-100 pointer-events-none sm:mb-3 sm:aspect-auto sm:w-[200px]">
           <Image
             src={event.image}

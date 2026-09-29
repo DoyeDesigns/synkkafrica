@@ -2,6 +2,8 @@
 
 import { ChevronDown } from "lucide-react";
 
+import { formatLocalDateKey } from "@/features/travel/booking/booking-params";
+
 import {
   VENDOR_BUSINESS_TYPES,
   VENDOR_CAC_COMPANY_TYPES,
@@ -164,7 +166,7 @@ export function VendorSignupBusinessStep({ form, onChange }: VendorSignupBusines
             <FormDate
               value={form.dateOfBirth}
               onChange={(value) => onChange({ dateOfBirth: value })}
-              max={new Date().toISOString().split("T")[0]}
+              max={formatLocalDateKey(new Date())}
               placeholder={t("hero.common.selectDate")}
               className={`${inputClassName} flex items-center justify-between`}
             />

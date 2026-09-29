@@ -3,6 +3,7 @@
 // Identity verification + nationality are temporarily hidden.
 // import { ChevronDown } from "lucide-react";
 
+import { formatLocalDateKey } from "@/features/travel/booking/booking-params";
 import { FormDate, FormSelect } from "./form-controls";
 import {
   createEmptyGuestIdentity,
@@ -110,7 +111,7 @@ export function FlightTravelerFields({
     set({ identity: { ...identity, ...patch } });
   // const iso2 = (v: string) =>
   //   v.replace(/[^a-zA-Z]/g, "").slice(0, 2).toUpperCase();
-  const today = new Date().toISOString().slice(0, 10);
+  const today = formatLocalDateKey(new Date());
 
   const fieldError = (field: GuestIdentityField) =>
     identityErrors[field]

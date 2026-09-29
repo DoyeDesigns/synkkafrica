@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { toDateKey } from "@/features/vendor/data/vendor-listing-availability";
 import { useTranslation } from "@/hooks/use-translation";
@@ -235,15 +235,8 @@ function MonthGrid({
         {days.map(({ date, inMonth }) => {
           const dateKey = toDateKey(date);
           const day = date.getDate();
-          const isUnavailable = isDateDisabled(dateKey, {
-            todayKey,
-            minDate,
-            maxDate,
-            disablePast,
-            blockedDates,
-          });
           const isFromOnly =
-            mode === "range" && fromDate && !toDate && dateKey === fromDate;
+            mode === "range" && Boolean(fromDate) && !toDate && dateKey === fromDate;
           const rangePosition =
             mode === "range" && hasCompleteRange
               ? getRangePosition(dateKey, fromDate, toDate)
@@ -254,6 +247,15 @@ function MonthGrid({
           const isSelectedSingle = mode === "single" && fromDate === dateKey;
           const isEndpoint =
             isFromOnly || isRangeStart || isRangeEnd || isSelectedSingle;
+          const isUnavailable =
+            !isEndpoint &&
+            isDateDisabled(dateKey, {
+              todayKey,
+              minDate,
+              maxDate,
+              disablePast,
+              blockedDates,
+            });
 
           return (
             <div
@@ -306,6 +308,24 @@ export function HeroRangeCalendar({
     const initial = fromDate ? new Date(`${fromDate}T12:00:00`) : new Date();
     return new Date(initial.getFullYear(), initial.getMonth(), 1);
   });
+
+  useEffect(() => {
+    if (!fromDate) return;
+
+    const selected = new Date(`${fromDate}T12:00:00`);
+    const selectedMonth = new Date(selected.getFullYear(), selected.getMonth(), 1);
+
+    setViewDate((current) => {
+      const visibleMonths = mode === "range" ? [current, addMonths(current, 1)] : [current];
+      const alreadyVisible = visibleMonths.some(
+        (month) =>
+          month.getFullYear() === selectedMonth.getFullYear() &&
+          month.getMonth() === selectedMonth.getMonth(),
+      );
+
+      return alreadyVisible ? current : selectedMonth;
+    });
+  }, [fromDate, mode]);
 
   const shiftMonth = (offset: number) => {
     setViewDate((current) => addMonths(current, offset));

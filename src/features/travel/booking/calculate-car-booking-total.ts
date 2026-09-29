@@ -26,11 +26,10 @@ export type CarBookingPricingBreakdown = {
 export function calculateCarBookingTotal({
   packagePrice,
   days = 1,
-  taxesAndFees,
   currency,
   packageName,
   driverAddonPrice = 0,
-  carRentalMode = "self_drive",
+  carRentalMode = "with_driver",
   deliveryFee = 0,
   requestDelivery = false,
 }: CarBookingPricingInput): CarBookingPricingBreakdown {
@@ -40,16 +39,15 @@ export function calculateCarBookingTotal({
     carRentalMode === "with_driver" ? Math.max(0, driverAddonPrice) : 0;
   const appliedDeliveryFee =
     carRentalMode === "self_drive" && requestDelivery ? Math.max(0, deliveryFee) : 0;
-  const syncAfricaFee = calculateSyncAfricaFee(
-    subtotal + driverAddon + appliedDeliveryFee + taxesAndFees,
-  );
-  const total = subtotal + driverAddon + appliedDeliveryFee + taxesAndFees + syncAfricaFee;
+  const preTaxTotal = subtotal + driverAddon + appliedDeliveryFee;
+  const syncAfricaFee = calculateSyncAfricaFee(preTaxTotal);
+  const total = preTaxTotal + syncAfricaFee;
 
   return {
     subtotal,
     driverAddon,
     deliveryFee: appliedDeliveryFee,
-    taxesAndFees,
+    taxesAndFees: 0,
     syncAfricaFee,
     total,
     currency,

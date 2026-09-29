@@ -42,12 +42,6 @@ export function CarRentalResultCard({ item, saved = false }: CarRentalResultCard
           />
         </button>
 
-        {item.selfDriveAvailable ? (
-          <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-xs font-medium font-satoshi text-foreground shadow-sm">
-            <Image src="/tabler_wheel.png" alt="" width={14} height={14} aria-hidden />
-            <T k="common.selfDriveAvailable" />
-          </span>
-        ) : null}
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-4">

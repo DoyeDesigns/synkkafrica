@@ -78,8 +78,10 @@
   will-change: transform;
 }
 
-.infinite-marquee-track:hover {
-  animation-play-state: paused;
+@media (hover: hover) {
+  .infinite-marquee-track:hover {
+    animation-play-state: paused;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

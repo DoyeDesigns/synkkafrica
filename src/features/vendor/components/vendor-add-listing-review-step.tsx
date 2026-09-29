@@ -59,7 +59,8 @@ function CarListingReview({
           <div className="border-b border-[#F0F0F0] lg:border-b-0 lg:border-r">
             <ListingMediaPreview
               items={form.mediaItems}
-              className="aspect-[4/3] lg:aspect-auto lg:min-h-[280px] lg:rounded-none"
+              coverUrl={form.coverImageUrl}
+              className="rounded-none"
             />
 
             {form.mediaItems.length > 1 ? (
@@ -244,7 +245,11 @@ function AccommodationListingReview({
       {showIntro ? <ReviewIntro /> : null}
 
       <div className="overflow-hidden rounded-xl border border-[#EEEEEE] bg-white shadow-sm">
-        <ListingMediaPreview items={form.mediaItems} className="rounded-none" />
+        <ListingMediaPreview
+          items={form.mediaItems}
+          coverUrl={form.coverImageUrl}
+          className="rounded-none"
+        />
         <div className="space-y-5 p-5 sm:p-6">
           <div>
             <h4 className="text-xl font-bold font-satoshi text-[#2F2F2F]">
@@ -392,7 +397,8 @@ function ExperienceListingReview({
           <div className="border-b border-[#F0F0F0] lg:border-b-0 lg:border-r">
             <ListingMediaPreview
               items={form.mediaItems}
-              className="aspect-[4/3] lg:aspect-auto lg:min-h-[280px] lg:rounded-none"
+              coverUrl={form.coverImageUrl}
+              className="rounded-none"
             />
             {form.mediaItems.length > 1 ? (
               <div className="grid grid-cols-4 gap-2 p-3">

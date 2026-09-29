@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import type { Session } from "next-auth";
 
+import { formatLocalDateKey } from "@/features/travel/booking/booking-params";
+
 import {
   AccountField,
   accountInputClassName,
@@ -59,7 +61,7 @@ export function AccountProfileCard({ session, profile }: AccountProfileCardProps
   const [dob, setDob] = useState("");
 
   const canEdit = Boolean(token);
-  const todayISO = new Date().toISOString().slice(0, 10);
+  const todayISO = formatLocalDateKey(new Date());
 
   function startEdit() {
     setError(null);

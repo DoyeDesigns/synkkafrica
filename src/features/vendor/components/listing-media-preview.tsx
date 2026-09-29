@@ -2,7 +2,11 @@
 
 import { Car, FileText } from "lucide-react";
 
-import type { ListingDocumentUpload, ListingMediaItem } from "@/features/vendor/data/vendor-add-listing";
+import {
+  orderMediaWithCoverFirst,
+  type ListingDocumentUpload,
+  type ListingMediaItem,
+} from "@/features/vendor/data/vendor-add-listing";
 
 type ListingMediaThumbnailProps = {
   item: ListingMediaItem;
@@ -30,28 +34,42 @@ export function ListingMediaThumbnail({ item, className = "" }: ListingMediaThum
 
 type ListingMediaPreviewProps = {
   items: ListingMediaItem[];
+  coverUrl?: string;
   fallbackIcon?: typeof Car;
   className?: string;
 };
 
 export function ListingMediaPreview({
   items,
+  coverUrl = "",
   fallbackIcon: FallbackIcon = Car,
   className = "",
 }: ListingMediaPreviewProps) {
-  const primary = items[0];
+  const ordered = orderMediaWithCoverFirst(items, coverUrl);
+  const primary =
+    ordered[0] ??
+    (coverUrl
+      ? {
+          id: "cover",
+          name: "Cover",
+          previewUrl: coverUrl,
+          url: coverUrl,
+          kind: "image" as const,
+          status: "uploaded" as const,
+        }
+      : undefined);
 
   return (
     <div
-      className={`relative aspect-[16/10] w-full min-h-[140px] overflow-hidden bg-[#F5F5F5] ${className}`}
+      className={`relative h-56 w-full max-w-full overflow-hidden bg-[#F5F5F5] sm:h-72 ${className}`}
     >
       {primary ? (
         <ListingMediaThumbnail
           item={primary}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-center"
         />
       ) : (
-        <div className="flex h-full min-h-[140px] items-center justify-center">
+        <div className="flex h-full items-center justify-center">
           <FallbackIcon className="h-10 w-10 text-[#CFCFCF]" strokeWidth={1.5} />
         </div>
       )}

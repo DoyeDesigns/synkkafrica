@@ -29,6 +29,11 @@ export type ExperienceDetailApi = ExperienceSummaryApi & {
   duration: string | null;
   maxGuests: number | null;
   options: ExperienceOptionApi[];
+  latitude?: number | null;
+  longitude?: number | null;
+  lat?: number | null;
+  lng?: number | null;
+  lon?: number | null;
 };
 
 export type BookExperienceInput = {
@@ -125,6 +130,23 @@ export function toTourResult(e: ExperienceSummaryApi): TourResult {
   };
 }
 
+function coordsFromExperience(e: ExperienceDetailApi): [number, number] | null {
+  const lat = e.latitude ?? e.lat;
+  const lon = e.longitude ?? e.lng ?? e.lon;
+
+  if (
+    typeof lat === "number" &&
+    typeof lon === "number" &&
+    Number.isFinite(lat) &&
+    Number.isFinite(lon) &&
+    (Math.abs(lat) > 0.001 || Math.abs(lon) > 0.001)
+  ) {
+    return [lat, lon];
+  }
+
+  return null;
+}
+
 // Map a backend detail onto the rich TourDetail the booking flow renders.
 export function toTourDetail(e: ExperienceDetailApi): TourDetail {
   const cover = e.coverImageUrl ?? e.images[0] ?? FALLBACK_TOUR_IMAGE;
@@ -152,5 +174,6 @@ export function toTourDetail(e: ExperienceDetailApi): TourDetail {
     currency: e.currency,
     category: e.category ?? "",
     experienceType: e.experienceType ?? "",
+    mapCoordinates: coordsFromExperience(e) ?? [0, 0],
   };
 }

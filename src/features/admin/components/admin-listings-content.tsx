@@ -216,7 +216,12 @@ function ListingRow({
               className="object-cover"
             />
           </div>
-          <p className="font-bold text-[#2F2F2F]">{listing.name}</p>
+          <Link
+            href={getAdminListingDetailHref(kind, listing.id)}
+            className="font-bold text-[#135391] underline underline-offset-2 hover:text-[#004785]"
+          >
+            {listing.name}
+          </Link>
         </div>
       </td>
       <td className="px-4 py-4 font-medium whitespace-nowrap text-[#676565]">

@@ -22,19 +22,18 @@ export function calculateTourBookingTotal({
   optionPrice,
   guestCount = 1,
   days = 1,
-  taxesAndFees,
   currency,
   optionName,
 }: TourBookingPricingInput): TourBookingPricingBreakdown {
   const safeGuests = Math.max(1, guestCount);
   const safeDays = Math.max(1, days);
   const subtotal = optionPrice * safeGuests * safeDays;
-  const syncAfricaFee = calculateSyncAfricaFee(subtotal + taxesAndFees);
-  const total = subtotal + taxesAndFees + syncAfricaFee;
+  const syncAfricaFee = calculateSyncAfricaFee(subtotal);
+  const total = subtotal + syncAfricaFee;
 
   return {
     subtotal,
-    taxesAndFees,
+    taxesAndFees: 0,
     syncAfricaFee,
     total,
     currency,
