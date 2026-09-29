@@ -469,6 +469,9 @@ export type AdminCustomer = {
   phoneNumber: string | null;
   emailVerified: boolean;
   deleted: boolean;
+  // Admin block state. `disabledAt` null = active.
+  disabledAt: string | null;
+  disabledReason: string | null;
   createdAt: string;
 };
 
@@ -476,6 +479,46 @@ export async function adminListCustomers(
   token: string,
 ): Promise<AdminCustomer[]> {
   return apiFetch<AdminCustomer[]>("/admin/customers", { token });
+}
+
+export type AdminCustomerBlockState = {
+  disabledAt: string | null;
+  disabledReason: string | null;
+  disabledBy: string | null;
+};
+
+export type AdminCustomerBlockResult = AdminCustomerBlockState & {
+  id: string;
+  email: string;
+  // false when the call was a no-op (already blocked / already active).
+  changed: boolean;
+  revokedRefreshTokens: number;
+  before: AdminCustomerBlockState;
+};
+
+// Support / super-admin only. Blocks sign-in, token refresh and every
+// signed-in customer route; guest checkout by email is unaffected. `reason`
+// is required (3–500 chars) and recorded in the audit log.
+export async function adminBlockCustomer(
+  token: string,
+  id: string,
+  reason: string,
+): Promise<AdminCustomerBlockResult> {
+  return apiFetch<AdminCustomerBlockResult>(`/admin/customers/${id}/block`, {
+    method: "POST",
+    token,
+    body: { reason },
+  });
+}
+
+export async function adminUnblockCustomer(
+  token: string,
+  id: string,
+): Promise<AdminCustomerBlockResult> {
+  return apiFetch<AdminCustomerBlockResult>(`/admin/customers/${id}/unblock`, {
+    method: "POST",
+    token,
+  });
 }
 
 // --- Reviews moderation ---

@@ -1,8 +1,39 @@
 "use client";
 
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider, signOut, useSession } from "next-auth/react";
 import type { Session } from "next-auth";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
+
+import {
+  LOGIN_ACCOUNT_BLOCKED_URL,
+  SESSION_ERROR_ACCOUNT_BLOCKED,
+  SESSION_ERROR_REVOKED,
+} from "@/lib/auth/session-errors";
+
+// Signs a customer out once the jwt() callback reports the backend
+// definitively rejected their refresh token (account blocked by an admin, or
+// tokens revoked). Transient refresh failures ("RefreshTokenError") are left
+// alone so a network blip doesn't log anyone out.
+function SessionErrorWatcher() {
+  const { data: session } = useSession();
+  const error = session?.error;
+
+  useEffect(() => {
+    if (
+      error === SESSION_ERROR_ACCOUNT_BLOCKED ||
+      error === SESSION_ERROR_REVOKED
+    ) {
+      void signOut({
+        redirectTo:
+          error === SESSION_ERROR_ACCOUNT_BLOCKED
+            ? LOGIN_ACCOUNT_BLOCKED_URL
+            : "/login",
+      });
+    }
+  }, [error]);
+
+  return null;
+}
 
 /**
  * Provides `useSession()` to client components. Mounted once at the root
@@ -34,6 +65,7 @@ export function AuthProvider({
       refetchInterval={10 * 60}
       refetchOnWindowFocus
     >
+      <SessionErrorWatcher />
       {children}
     </SessionProvider>
   );

@@ -195,7 +195,8 @@
     "emailPlaceholder": "Enter your email",
     "orUseOptions": "or use one of these options",
     "signInGoogle": "Sign in with Google",
-    "continueApple": "Continue with Apple"
+    "continueApple": "Continue with Apple",
+    "accountBlocked": "This account has been blocked. Contact support."
   },
   "account": {
     "nav": {
