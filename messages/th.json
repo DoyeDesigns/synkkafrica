@@ -148,7 +148,10 @@
       "privacy": "Privacy Policy",
       "terms": "Terms of Use",
       "security": "Security Page",
-      "faqs": "FAQs"
+      "faqs": "FAQs",
+      "cookies": "Cookie Policy",
+      "refunds": "Refund & Cancellation Policy",
+      "vendorTerms": "Vendor Terms"
     },
     "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
@@ -1734,7 +1737,8 @@
       "agreeTermsPrefix": "I agree to the",
       "termsOfService": "Terms of Service",
       "and": "and",
-      "privacyPolicy": "Privacy Policy"
+      "privacyPolicy": "Privacy Policy",
+      "vendorTerms": "Vendor Terms"
     },
     "login": {
       "title": "Vendor sign in",

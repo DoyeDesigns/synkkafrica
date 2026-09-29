@@ -148,7 +148,10 @@
       "privacy": "Datenschutzrichtlinie",
       "terms": "Nutzungsbedingungen",
       "security": "Sicherheitsseite",
-      "faqs": "FAQ"
+      "faqs": "FAQ",
+      "cookies": "Cookie Policy",
+      "refunds": "Refund & Cancellation Policy",
+      "vendorTerms": "Vendor Terms"
     },
     "copyright": "Copyright © 2025 SynkAfrica | Alle Rechte vorbehalten"
   },
@@ -1734,7 +1737,8 @@
       "agreeTermsPrefix": "Ich stimme den",
       "termsOfService": "Nutzungsbedingungen",
       "and": "und der",
-      "privacyPolicy": "Datenschutzrichtlinie zu"
+      "privacyPolicy": "Datenschutzrichtlinie zu",
+      "vendorTerms": "Vendor Terms"
     },
     "login": {
       "title": "Anbieter-Anmeldung",

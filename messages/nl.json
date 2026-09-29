@@ -148,7 +148,10 @@
       "privacy": "Privacybeleid",
       "terms": "Gebruiksvoorwaarden",
       "security": "Beveiligingspagina",
-      "faqs": "Veelgestelde vragen"
+      "faqs": "Veelgestelde vragen",
+      "cookies": "Cookie Policy",
+      "refunds": "Refund & Cancellation Policy",
+      "vendorTerms": "Vendor Terms"
     },
     "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
@@ -1734,7 +1737,8 @@
       "agreeTermsPrefix": "Ik ga akkoord met de",
       "termsOfService": "Servicevoorwaarden",
       "and": "En",
-      "privacyPolicy": "Privacybeleid"
+      "privacyPolicy": "Privacybeleid",
+      "vendorTerms": "Vendor Terms"
     },
     "login": {
       "title": "Verkoper aanmelden",

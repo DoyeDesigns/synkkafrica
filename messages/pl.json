@@ -148,7 +148,10 @@
       "privacy": "Polityka prywatności",
       "terms": "Warunki korzystania z serwisu",
       "security": "Strona poświęcona bezpieczeństwu",
-      "faqs": "Najczęściej zadawane pytania"
+      "faqs": "Najczęściej zadawane pytania",
+      "cookies": "Cookie Policy",
+      "refunds": "Refund & Cancellation Policy",
+      "vendorTerms": "Vendor Terms"
     },
     "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
@@ -1734,7 +1737,8 @@
       "agreeTermsPrefix": "Wyrażam zgodę na",
       "termsOfService": "Warunki korzystania z serwisu",
       "and": "oraz",
-      "privacyPolicy": "Polityka prywatności"
+      "privacyPolicy": "Polityka prywatności",
+      "vendorTerms": "Vendor Terms"
     },
     "login": {
       "title": "Logowanie dostawcy",

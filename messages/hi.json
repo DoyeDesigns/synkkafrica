@@ -148,7 +148,10 @@
       "privacy": "गोपनीयता नीति",
       "terms": "उपयोग की शर्तें",
       "security": "सुरक्षा पृष्ठ",
-      "faqs": "पूछे जाने वाले प्रश्न"
+      "faqs": "पूछे जाने वाले प्रश्न",
+      "cookies": "Cookie Policy",
+      "refunds": "Refund & Cancellation Policy",
+      "vendorTerms": "Vendor Terms"
     },
     "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
@@ -1734,7 +1737,8 @@
       "agreeTermsPrefix": "मैं करने के लिए सहमत हूं",
       "termsOfService": "सेवा की शर्तें",
       "and": "और",
-      "privacyPolicy": "गोपनीयता नीति"
+      "privacyPolicy": "गोपनीयता नीति",
+      "vendorTerms": "Vendor Terms"
     },
     "login": {
       "title": "विक्रेता साइन इन करें",

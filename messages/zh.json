@@ -148,7 +148,10 @@
       "privacy": "隐私政策",
       "terms": "使用条款",
       "security": "安全页面",
-      "faqs": "常见问题解答"
+      "faqs": "常见问题解答",
+      "cookies": "Cookie Policy",
+      "refunds": "Refund & Cancellation Policy",
+      "vendorTerms": "Vendor Terms"
     },
     "copyright": "Copyright © 2025 SynkAfrica | All Rights Reserved"
   },
@@ -1734,7 +1737,8 @@
       "agreeTermsPrefix": "我同意",
       "termsOfService": "服务条款",
       "and": "和",
-      "privacyPolicy": "隐私政策"
+      "privacyPolicy": "隐私政策",
+      "vendorTerms": "Vendor Terms"
     },
     "login": {
       "title": "供应商登录",
