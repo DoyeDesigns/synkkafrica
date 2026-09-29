@@ -11,17 +11,22 @@ import {
   type AccommodationFilterState,
   type PriceRangeOption,
 } from "@/features/travel/data/accommodation-results";
+import { useDisplayCurrency } from "@/hooks/use-display-currency";
 import { useFilterOptionLabel } from "@/hooks/use-filter-option-label";
 import { useTranslation } from "@/hooks/use-translation";
+import {
+  scalePriceSlider,
+  type PriceSliderBounds,
+} from "@/lib/preferences/price-filter";
 
-const PRICE_SLIDER_MIN = 10000;
-const PRICE_SLIDER_MAX = 300000;
+// Slider bounds in Naira; shown in the display currency via scalePriceSlider.
+const NGN_PRICE_SLIDER = { min: 10000, max: 300000, step: 5000 };
 
 // An open ceiling (Infinity) parks the slider at its top end.
-function sliderValue(priceMax: number) {
+function sliderValue(priceMax: number, slider: PriceSliderBounds) {
   return Number.isFinite(priceMax)
-    ? Math.min(PRICE_SLIDER_MAX, Math.max(PRICE_SLIDER_MIN, priceMax))
-    : PRICE_SLIDER_MAX;
+    ? Math.min(slider.max, Math.max(slider.min, priceMax))
+    : slider.max;
 }
 import { FilterPanel } from "./filter-panel";
 import { OtherFiltersPanel } from "./other-filters-panel";
@@ -57,6 +62,14 @@ export function AccommodationsFilterSidebar({
 }: AccommodationsFilterSidebarProps) {
   const t = useTranslation();
   const { labelOption, labelPriceRange } = useFilterOptionLabel();
+  // Prices on the result cards are shown in the display currency, so the
+  // budget input and slider are too.
+  const display = useDisplayCurrency();
+  const slider = scalePriceSlider(
+    NGN_PRICE_SLIDER,
+    (amount) => display.toDisplay(amount, "NGN"),
+    display.currency,
+  );
 
   return (
     <aside className="space-y-4">
@@ -101,7 +114,9 @@ export function AccommodationsFilterSidebar({
           </label>
 
           <div className="mt-3 flex items-center rounded-lg border border-[#C9C9C9] px-3 py-2.5">
-            <span className="shrink-0 text-sm font-satoshi text-foreground">₦</span>
+            <span className="shrink-0 text-sm font-satoshi text-foreground">
+              {display.symbol}
+            </span>
             <input
               type="text"
               inputMode="numeric"
@@ -128,14 +143,14 @@ export function AccommodationsFilterSidebar({
             <div className="bg-[#0000003D] pt-2 px-2 rounded-lg">
             <input
               type="range"
-              min={PRICE_SLIDER_MIN}
-              max={PRICE_SLIDER_MAX}
-              step={5000}
-              value={sliderValue(filters.priceMax)}
+              min={slider.min}
+              max={slider.max}
+              step={slider.step}
+              value={sliderValue(filters.priceMax, slider)}
               onChange={(event) => {
                 const value = Number(event.target.value);
                 // The slider's top end means "no ceiling".
-                if (value >= PRICE_SLIDER_MAX) {
+                if (value >= slider.max) {
                   onFilterChange("priceMax", Number.POSITIVE_INFINITY);
                   onFilterChange("priceBudget", "");
                   return;

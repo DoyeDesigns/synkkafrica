@@ -316,6 +316,9 @@ export function filterAccommodationResults(
   results: AccommodationResult[],
   filters: AccommodationFilterState,
   query: string,
+  // Converts a listing price into the display currency the budget (price
+  // input / slider) is expressed in. Defaults to no conversion.
+  toDisplay: (amount: number, currency: string) => number = (amount) => amount,
 ): AccommodationResult[] {
   const normalizedQuery = query.trim().toLowerCase();
 
@@ -366,7 +369,9 @@ export function filterAccommodationResults(
         ? budgetMax
         : filters.priceMax;
 
-    if (result.price < filters.priceMin || result.price > effectiveMax) return false;
+    // The budget is in the shopper's display currency (what cards show).
+    const shownPrice = toDisplay(result.price, result.currency);
+    if (shownPrice < filters.priceMin || shownPrice > effectiveMax) return false;
 
     if (filters.ratings) {
       const minRating = Number.parseFloat(filters.ratings);

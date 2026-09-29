@@ -4,6 +4,10 @@ import {
   type CarRentalResult,
 } from "@/features/travel/data/car-rental-results";
 import type { CarDetail } from "@/features/travel/data/car-booking";
+import type {
+  InitBookingPaymentInput,
+  InitBookingPaymentResult,
+} from "@/lib/api/payments";
 
 export type CarPackageApi = {
   id: string;
@@ -97,15 +101,9 @@ export async function bookCar(
 
 export async function initCarPayment(
   bookingId: string,
-  input: {
-    email?: string;
-    phone?: string;
-    callbackUrl?: string;
-    // Omit to let the backend pick by currency (NGN -> Paystack, else Stripe).
-    provider?: "PAYSTACK" | "STRIPE";
-  },
+  input: InitBookingPaymentInput,
   token?: string,
-): Promise<{ authorizationUrl: string; reference: string }> {
+): Promise<InitBookingPaymentResult> {
   return apiFetch(`/cars/bookings/${bookingId}/pay`, {
     method: "POST",
     token,

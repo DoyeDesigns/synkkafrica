@@ -569,7 +569,15 @@
       "redirecting": "Redirecting…",
       "subtotal": "Subtotal",
       "loadingMethods": "Loading payment options…",
-      "noMethodsForCurrency": "Online payment isn't available for {currency} bookings yet. Please contact support."
+      "noMethodsForCurrency": "Online payment isn't available for {currency} bookings yet. Please contact support.",
+      "currencyChoice": "Choose how to pay",
+      "payInNaira": "Pay in Naira",
+      "payInNairaHint": "{amount} with Paystack",
+      "payInUsd": "Pay in US dollars",
+      "usdQuote": "≈ {amount}",
+      "usdQuoteNote": "Final amount confirmed on the next page · rate as of {time}",
+      "usdQuoteLoading": "Getting the US dollar amount…",
+      "usdUnavailable": "Paying in US dollars isn't available right now. You can still pay in Naira."
     },
     "flight": {
       "travellerN": "Traveller {n}",
