@@ -1,6 +1,11 @@
 export type VendorDashboardPeriod = "day" | "week" | "month" | "sixMonths" | "year";
 
-export type VendorListingStatus = "live" | "pending" | "paused" | "draft";
+export type VendorListingStatus =
+  | "live"
+  | "pending"
+  | "paused"
+  | "draft"
+  | "rejected";
 
 export type VendorDashboardListing = {
   id: string;
@@ -14,6 +19,8 @@ export type VendorDashboardListing = {
   rating: number;
   image: string;
   status: VendorListingStatus;
+  // Admin's note when `status` is "rejected" (the listing needs changes).
+  rejectionReason?: string | null;
 };
 
 export type VendorDashboardStats = {

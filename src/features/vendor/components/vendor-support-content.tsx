@@ -27,6 +27,7 @@ import {
   type SupportTicketApi,
   type SupportTicketMessageApi,
 } from "@/lib/api/vendor";
+import { LIVE_QUERY_OPTIONS } from "@/lib/live-query-options";
 
 const inputClassName =
   "h-11 w-full rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi text-foreground outline-none focus:border-[#004785]";
@@ -123,7 +124,7 @@ export function VendorSupportContent({
     queryKey: ["vendor-support-tickets"],
     queryFn: () => listSupportTickets(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
 
   const filteredTickets = useMemo(
@@ -563,7 +564,7 @@ function TicketConversation({
     queryKey: ["vendor-support-ticket", ticketId],
     queryFn: () => getSupportTicket(token as string, ticketId),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
 
   const replyMutation = useMutation({

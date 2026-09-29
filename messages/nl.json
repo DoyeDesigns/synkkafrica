@@ -464,7 +464,6 @@
       "withDriver": "Met chauffeur",
       "withDriverHint": "Een professionele chauffeur is inbegrepen voor uw reis.",
       "noExtraCost": "Geen extra kosten",
-      "driverAddon": "+ {bedrag} stuurprogramma-add-on",
       "requestDelivery": "Vraag autolevering aan",
       "requestDeliveryHint": "Laat de auto tegen een meerprijs op uw locatie afleveren.",
       "deliveryFee": "+ {bedrag} bezorgkosten",
@@ -1839,7 +1838,8 @@
         "live": "Live vermelding",
         "pending": "In behandeling...",
         "paused": "Gepauzeerd",
-        "draft": "Voorlopige versie"
+        "draft": "Voorlopige versie",
+        "rejected": "Needs changes"
       },
       "editListing": "Bewerk vermelding",
       "deleteListing": "Lijst verwijderen",
@@ -2090,7 +2090,8 @@
           "live": "Live",
           "pending": "In behandeling",
           "draft": "Concepten",
-          "paused": "Gepauzeerd"
+          "paused": "Gepauzeerd",
+          "rejected": "Needs changes"
         },
         "empty": "Er zijn geen vermeldingen die overeenkomen met uw filters."
       },
@@ -2131,6 +2132,13 @@
         "sat": "Zat",
         "previousMonth": "Vorige maand",
         "nextMonth": "Volgende maand"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "Bezorging / afleveren",
       "deliveryDropoffHint": "Jij levert de auto af bij de klant.",
       "carPricingHeading": "Huurprijzen",
-      "price12hr": "12-uurs huur (NGN)",
-      "price24hr": "24-uurs verhuur (NGN)",
-      "priceMultiDay": "Meerdere dagen (per dag, NGN)",
-      "driverAddonPrice": "Meerprijs chauffeur (NGN)",
       "selfDriveNoPrice": "Zelfrijdend geselecteerd - geen extra prijs voor chauffeur vereist.",
-      "deliveryFee": "Bezorg-/afleverkosten (NGN)",
       "clientPickupNoPrice": "Ophalen door klant geselecteerd - geen bezorgkosten vereist.",
       "pricingLocationHint": "In de volgende stap kunt u meer details doorgeven over de ophaal- of bezorglocatie.",
       "accommodationPricingHeading": "Blijf prijzen",
@@ -2381,14 +2384,11 @@
       "actions": "Acties",
       "edit": "Bewerking",
       "delete": "Verwijderen",
-      "nightlyRate": "Nachttarief (NGN)",
-      "cleaningFee": "Schoonmaakkosten (NGN)",
       "experiencePricingHeading": "Prijzen",
       "experiencePricingHint": "Bepaal uw ticketprijzen.",
       "singleTicketPrice": "Prijs voor een enkel ticket",
       "singleTicketPriceHint": "Prijs voor één persoon",
       "groupTicketPrice": "Groepsticketprijs (vanaf) (optioneel)",
-      "groupTicketPriceHint": "Prijs per persoon voor groepen",
       "minGroupSizeOptional": "Minimale groepsgrootte (optioneel)",
       "maxGroupSizeOptional": "Maximale groepsgrootte (optioneel)",
       "minGroupSizePlaceholder": "bijv. 5",
@@ -2403,7 +2403,6 @@
         "description": "Beschrijving",
         "gpsConfirmed": "GPS-trackingapparaat bevestigd"
       },
-      "pricePerPerson": "Prijs per persoon (NGN)",
       "minGroupSize": "Minimale groepsgrootte",
       "documents": {
         "stepTitle": "Document uploaden",
@@ -2477,7 +2476,12 @@
         "backToListings": "Terug naar mijn advertenties"
       },
       "categoryChooseHint": "Kies het type dienst dat u aanbiedt. Dit wordt eenmalig ingesteld wanneer u uw eerste advertentie opslaat en kan later niet meer worden gewijzigd.",
-      "categoryLockedHint": "Uw leveranciersaccount is uitsluitend geregistreerd voor {categorie} . Neem contact op met de klantenservice om uw servicecategorie te wijzigen."
+      "categoryLockedHint": "Uw leveranciersaccount is uitsluitend geregistreerd voor {categorie} . Neem contact op met de klantenservice om uw servicecategorie te wijzigen.",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

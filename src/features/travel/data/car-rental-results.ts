@@ -2,7 +2,10 @@ import {
   DEFAULT_DISCOUNT_FILTER,
   matchesDiscountFilter,
 } from "@/features/travel/data/discount-filter";
-import { locationsOverlap } from "@/features/travel/data/location-match";
+import {
+  locationsOverlap,
+  matchesSearchQuery,
+} from "@/features/travel/data/location-match";
 
 export type CarRentalResult = {
   id: string;
@@ -37,8 +40,11 @@ export type CarRentalFilterState = {
   endDate: string;
 };
 
+// Every select defaults to "" = "Any": nothing is filtered until the user
+// picks a value (a concrete default like "Self drive" used to double as the
+// "no filter" sentinel, so choosing it filtered nothing).
 export const DEFAULT_CAR_RENTAL_FILTERS: CarRentalFilterState = {
-  location: "Lagos Nigeria",
+  location: "",
   discounts: DEFAULT_DISCOUNT_FILTER,
   priceBudget: "",
   // Slider + budget start unconstrained. A finite ceiling here would hide
@@ -47,14 +53,14 @@ export const DEFAULT_CAR_RENTAL_FILTERS: CarRentalFilterState = {
   priceMax: Number.POSITIVE_INFINITY,
   priceRange: null,
   carType: "",
-  serviceType: "Self drive",
-  transmission: "Automatic",
+  serviceType: "",
+  transmission: "",
   startDate: "",
   endDate: "",
 };
 
 export const CAR_TYPE_FILTER_OPTIONS = ["", "SUV", "Sedan", "Pickup"] as const;
-export const CAR_TYPE_OPTIONS = ["SUV", "Sedan", "Hatchback", "Pickup"] as const;
+export const CAR_TYPE_OPTIONS = ["SUV", "Sedan", "Hatchback", "Pickup", "Van"] as const;
 export const SERVICE_TYPE_OPTIONS = ["Self drive", "Chauffeur"] as const;
 export const TRANSMISSION_OPTIONS = ["Automatic", "Manual"] as const;
 
@@ -151,17 +157,43 @@ export function countActiveCarRentalFilters(
 ): number {
   let count = 0;
 
-  if (filters.location !== DEFAULT_CAR_RENTAL_FILTERS.location) count += 1;
+  if (filters.location.trim()) count += 1;
   if (filters.discounts !== DEFAULT_CAR_RENTAL_FILTERS.discounts) count += 1;
   if (filters.priceBudget.trim()) count += 1;
   if (filters.priceRange) count += 1;
-  if (filters.carType !== DEFAULT_CAR_RENTAL_FILTERS.carType) count += 1;
-  if (filters.serviceType !== DEFAULT_CAR_RENTAL_FILTERS.serviceType) count += 1;
-  if (filters.transmission !== DEFAULT_CAR_RENTAL_FILTERS.transmission) count += 1;
+  if (filters.carType) count += 1;
+  if (filters.serviceType) count += 1;
+  if (filters.transmission) count += 1;
   if (filters.startDate.trim()) count += 1;
   if (filters.endDate.trim()) count += 1;
 
   return count;
+}
+
+function sameOption(a: string, b: string) {
+  const normalize = (value: string) =>
+    value.trim().toLowerCase().replace(/[-_\s]+/g, " ");
+  return normalize(a) === normalize(b);
+}
+
+// Body type keywords for listings that don't carry an explicit car type.
+const CAR_TYPE_KEYWORDS: Record<(typeof CAR_TYPE_OPTIONS)[number], RegExp> = {
+  SUV: /\b(suv|jeep|crossover|highlander|rav ?4|prado|land ?cruiser|lx ?\d{3}|gx ?\d{3}|rx ?\d{3}|venza|4runner|sequoia|fortuner|range ?rover|defender|discovery|evoque|velar|x[1-7]|q[3-8]|gl[abcse]?|g ?wagon|g ?class|ml ?\d{3}|escalade|tahoe|suburban|yukon|explorer|expedition|edge|escape|pathfinder|murano|rogue|x-?trail|patrol|armada|cr-?v|pilot|santa ?fe|tucson|palisade|sorento|sportage|telluride|cayenne|macan|touareg|tiguan|atlas|pajero|montero|outlander|grand ?cherokee|wrangler|durango|kluger)\b/i,
+  Sedan: /\b(sedan|saloon|camry|corolla|avalon|accord|civic|elantra|sonata|altima|sentra|maxima|passat|jetta|e-?class|c-?class|s-?class|[3-7] ?series|a[4-8]|es ?\d{3}|is ?\d{3}|ls ?\d{3}|optima|k5|malibu|impala|fusion|mazda ?[36])\b/i,
+  Hatchback: /\b(hatchback|hatch|yaris|golf|polo|fit|jazz|picanto|rio|i10|i20|swift|micra|fiesta|focus|mini|cooper|a3|1 ?series|auris)\b/i,
+  Pickup: /\b(pick ?-?up|truck|hilux|tacoma|tundra|ranger|f-?150|f-?250|navara|frontier|l200|triton|d-?max|amarok|silverado|sierra|ram)\b/i,
+  Van: /\b(van|minivan|minibus|bus|hiace|sienna|odyssey|previa|alphard|sprinter|v-?class|vito|transit|carnival|sedona|quest|caravan)\b/i,
+};
+
+// Infer a body type from the listing name/model. The backend doesn't store a
+// car type yet, so without this every car-type filter returned zero results.
+export function inferCarType(...parts: (string | null | undefined)[]): string {
+  const text = parts.filter(Boolean).join(" ");
+  if (!text) return "";
+  for (const option of CAR_TYPE_OPTIONS) {
+    if (CAR_TYPE_KEYWORDS[option].test(text)) return option;
+  }
+  return "";
 }
 
 export function filterCarRentalResults(
@@ -169,39 +201,38 @@ export function filterCarRentalResults(
   filters: CarRentalFilterState,
   query: string,
 ): CarRentalResult[] {
-  const normalizedQuery = query.trim().toLowerCase();
-
   return results.filter((result) => {
     if (
-      normalizedQuery &&
-      !`${result.name} ${result.location} ${result.carType}`
-        .toLowerCase()
-        .includes(normalizedQuery)
+      !matchesSearchQuery(
+        query,
+        `${result.name} ${result.carType} ${result.transmission} ${result.serviceType}`,
+        result.location,
+      )
     ) {
       return false;
     }
 
     if (
-      filters.location !== DEFAULT_CAR_RENTAL_FILTERS.location &&
+      filters.location.trim() &&
       !locationsOverlap(filters.location, result.location)
     ) {
       return false;
     }
 
-    if (filters.carType && result.carType !== filters.carType) {
+    if (filters.carType && !sameOption(result.carType, filters.carType)) {
       return false;
     }
 
     if (
-      filters.serviceType !== DEFAULT_CAR_RENTAL_FILTERS.serviceType &&
-      result.serviceType !== filters.serviceType
+      filters.serviceType &&
+      !sameOption(result.serviceType, filters.serviceType)
     ) {
       return false;
     }
 
     if (
-      filters.transmission !== DEFAULT_CAR_RENTAL_FILTERS.transmission &&
-      result.transmission !== filters.transmission
+      filters.transmission &&
+      !sameOption(result.transmission, filters.transmission)
     ) {
       return false;
     }
@@ -213,12 +244,14 @@ export function filterCarRentalResults(
     if (filters.priceRange === "under-50k" && result.pricePerDay >= 50000) {
       return false;
     }
+
     if (
       filters.priceRange === "50-150k" &&
       (result.pricePerDay < 50000 || result.pricePerDay > 150000)
     ) {
       return false;
     }
+
     if (filters.priceRange === "150k-plus" && result.pricePerDay < 150000) {
       return false;
     }

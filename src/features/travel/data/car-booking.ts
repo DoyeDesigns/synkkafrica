@@ -22,6 +22,8 @@ export type CarDetail = {
   pickupAddress?: string;
   driverAddonPrice?: number;
   deliveryFee?: number;
+  // SynkAfrica service fee rate from the API (defaults to 6%).
+  feeRate?: number;
 };
 
 const DEFAULT_PACKAGES: CarRentalPackage[] = [

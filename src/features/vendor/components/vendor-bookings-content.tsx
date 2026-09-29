@@ -18,7 +18,7 @@ import {
   type VendorBookingDateRange,
   type VendorBookingTab,
 } from "@/features/vendor/data/vendor-bookings";
-import { useFormatPrice } from "@/hooks/use-format-price";
+import { formatMoney } from "@/lib/format-money";
 import { useTranslation } from "@/hooks/use-translation";
 import type { TranslationKey } from "@/lib/preferences/translations";
 import {
@@ -27,6 +27,8 @@ import {
   listVendorBookings,
   type VendorBookingApi,
 } from "@/lib/api/vendor";
+import { VENDOR_QUERY_KEYS } from "@/features/vendor/vendor-query-keys";
+import { POLLING_QUERY_OPTIONS } from "@/lib/live-query-options";
 
 // Backend booking → the frontend's slightly stricter shape (non-null defaults).
 function toFeBooking(b: VendorBookingApi): VendorBooking {
@@ -48,7 +50,9 @@ function toFeBooking(b: VendorBookingApi): VendorBooking {
     pickupAddress: b.pickupAddress ?? undefined,
     declineReason: b.declineReason ?? undefined,
     status: b.status,
-    amount: b.amount,
+    // Vendors see their own price (the booking subtotal); the SynkAfrica
+    // service fee on top is the platform's, and earnings are based on it.
+    amount: b.subtotal ?? b.amount,
     currency: b.currency,
     paymentSecured: b.paymentSecured,
     respondBy: b.respondBy ?? undefined,
@@ -108,7 +112,8 @@ export function VendorBookingsContent({
   vendorName,
 }: VendorBookingsContentProps) {
   const t = useTranslation();
-  const formatPrice = useFormatPrice();
+  // Vendor amounts are shown in the booking/listing currency, never FX-converted.
+  const formatPrice = formatMoney;
   const { data: session } = useSession();
   const token = session?.accessToken;
   const queryClient = useQueryClient();
@@ -123,10 +128,10 @@ export function VendorBookingsContent({
   );
 
   const { data: rawBookings } = useQuery({
-    queryKey: ["vendor-bookings"],
+    queryKey: VENDOR_QUERY_KEYS.bookings,
     queryFn: () => listVendorBookings(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...POLLING_QUERY_OPTIONS,
   });
   const bookings = useMemo(
     () => (rawBookings ?? []).map(toFeBooking),
@@ -192,8 +197,17 @@ export function VendorBookingsContent({
       });
   }, [bookings, dateRange, listingFilter, searchQuery]);
 
+  // Confirming/declining changes the bookings list, the vendor's earnings
+  // (a confirmed booking accrues to the balance) and the dashboard stats,
+  // which are derived from bookings + earnings.
   const invalidate = () =>
-    queryClient.invalidateQueries({ queryKey: ["vendor-bookings"] });
+    Promise.all([
+      queryClient.invalidateQueries({ queryKey: VENDOR_QUERY_KEYS.bookings }),
+      queryClient.invalidateQueries({ queryKey: VENDOR_QUERY_KEYS.earnings }),
+      queryClient.invalidateQueries({
+        queryKey: VENDOR_QUERY_KEYS.transactions,
+      }),
+    ]);
 
   const confirmMutation = useMutation({
     mutationFn: (id: string) => confirmVendorBooking(token as string, id),

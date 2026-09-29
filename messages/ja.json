@@ -464,7 +464,6 @@
       "withDriver": "ドライバー付き",
       "withDriverHint": "あなたの旅行にはプロのドライバーが同行します。",
       "noExtraCost": "追加費用なし",
-      "driverAddon": "+ ⟦量⟧ ドライバー アドオン",
       "requestDelivery": "車の納車を依頼する",
       "requestDeliveryHint": "追加料金で車をあなたの場所まで配達してもらいます。",
       "deliveryFee": "+ ⟦金額⟧ 送料",
@@ -1839,7 +1838,8 @@
         "live": "ライブリスト",
         "pending": "保留中...",
         "paused": "一時停止中",
-        "draft": "下書き"
+        "draft": "下書き",
+        "rejected": "Needs changes"
       },
       "editListing": "リストの編集",
       "deleteListing": "リストの削除",
@@ -2090,7 +2090,8 @@
           "live": "ライブ",
           "pending": "保留中",
           "draft": "下書き",
-          "paused": "一時停止中"
+          "paused": "一時停止中",
+          "rejected": "Needs changes"
         },
         "empty": "フィルターに一致するリストはありません。"
       },
@@ -2131,6 +2132,13 @@
         "sat": "土",
         "previousMonth": "前月",
         "nextMonth": "来月"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "配送・返却",
       "deliveryDropoffHint": "お客様に車を納車させていただきます。",
       "carPricingHeading": "レンタル料金",
-      "price12hr": "12時間レンタル（NGN）",
-      "price24hr": "24時間レンタル（NGN）",
-      "priceMultiDay": "複数日（1日あたり、NGN）",
-      "driverAddonPrice": "ドライバー追加価格（NGN）",
       "selfDriveNoPrice": "セルフドライブが選択されました - ドライバーの追加価格は必要ありません。",
-      "deliveryFee": "配達/返却料金（NGN）",
       "clientPickupNoPrice": "顧客の引き取りが選択されました — 配送料は必要ありません。",
       "pricingLocationHint": "次のステップで、集荷場所または配達場所に関する詳細を指定できます。",
       "accommodationPricingHeading": "宿泊料金",
@@ -2381,14 +2384,11 @@
       "actions": "アクション",
       "edit": "編集",
       "delete": "消去",
-      "nightlyRate": "1 泊料金 (NGN)",
-      "cleaningFee": "清掃料金（NGN）",
       "experiencePricingHeading": "価格設定",
       "experiencePricingHint": "チケットの価格を設定します。",
       "singleTicketPrice": "シングルチケット料金",
       "singleTicketPriceHint": "1人あたりの料金",
       "groupTicketPrice": "団体チケット料金（から）（オプション）",
-      "groupTicketPriceHint": "団体の場合お一人様あたりの料金",
       "minGroupSizeOptional": "最小グループサイズ (オプション)",
       "maxGroupSizeOptional": "最大グループ サイズ (オプション)",
       "minGroupSizePlaceholder": "例えば5",
@@ -2403,7 +2403,6 @@
         "description": "説明",
         "gpsConfirmed": "GPS追跡装置が確認されました"
       },
-      "pricePerPerson": "1人あたりの料金（NGN）",
       "minGroupSize": "最小グループサイズ",
       "documents": {
         "stepTitle": "書類のアップロード",
@@ -2477,7 +2476,12 @@
         "backToListings": "私のリストに戻る"
       },
       "categoryChooseHint": "提供するサービスの種類を選択してください。これは、最初のリストを保存するときに一度設定され、後で変更することはできません。",
-      "categoryLockedHint": "あなたのベンダーアカウントは{category}のみに登録されています。サービス カテゴリを変更するには、サポートにお問い合わせください。"
+      "categoryLockedHint": "あなたのベンダーアカウントは{category}のみに登録されています。サービス カテゴリを変更するには、サポートにお問い合わせください。",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

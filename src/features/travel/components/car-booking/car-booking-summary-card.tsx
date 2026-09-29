@@ -2,6 +2,7 @@
 
 import type { CarRentalMode } from "@/features/travel/booking/booking-params";
 import { calculateCarBookingTotal } from "@/features/travel/booking/calculate-car-booking-total";
+import { feeRatePercent } from "@/features/travel/booking/sync-africa-fee";
 import { useBookingContent } from "@/hooks/use-booking-content";
 import { useFormatPrice } from "@/hooks/use-format-price";
 import { useTranslation } from "@/hooks/use-translation";
@@ -42,14 +43,15 @@ export function CarBookingSummaryCard({
   const pricing = calculateCarBookingTotal({
     packagePrice: selectedPackage.price,
     days,
-    taxesAndFees: car.taxesAndFees,
     currency: car.currency,
     packageName: selectedPackage.name,
     driverAddonPrice: car.driverAddonPrice,
     carRentalMode,
     deliveryFee: car.deliveryFee,
     requestDelivery,
+    feeRate: car.feeRate,
   });
+  const feeRate = car.feeRate;
 
   const dayLabel = days > 1 ? t("booking.summary.days") : t("booking.summary.day");
 
@@ -130,9 +132,11 @@ export function CarBookingSummaryCard({
             </div>
           ) : null}
           <div className="flex items-center justify-between gap-3">
-            <span className="text-foreground/80">{t("booking.summary.taxesAndFees")}</span>
+            <span className="text-foreground/80">
+              {t("booking.summary.serviceFee", { rate: feeRatePercent(feeRate) })}
+            </span>
             <span className="font-medium text-foreground">
-              {formatPrice(car.currency, pricing.taxesAndFees + pricing.syncAfricaFee)}
+              {formatPrice(car.currency, pricing.syncAfricaFee)}
             </span>
           </div>
           <div className="flex items-center justify-between gap-3 border-t border-[#F0D4C4] pt-2">

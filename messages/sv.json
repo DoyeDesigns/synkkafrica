@@ -464,7 +464,6 @@
       "withDriver": "Med förare",
       "withDriverHint": "En yrkesförare ingår i resan.",
       "noExtraCost": "Ingen extra kostnad",
-      "driverAddon": "+ {belopp} tilläggstjänst för förare",
       "requestDelivery": "Begär leverans av bil",
       "requestDeliveryHint": "Låt bilen levereras till din adress mot en extra avgift.",
       "deliveryFee": "+ {belopp} fraktavgift",
@@ -1839,7 +1838,8 @@
         "live": "Aktuella annonser",
         "pending": "Väntar...",
         "paused": "Pausad",
-        "draft": "Utkast"
+        "draft": "Utkast",
+        "rejected": "Needs changes"
       },
       "editListing": "Redigera annons",
       "deleteListing": "Ta bort annonsen",
@@ -2090,7 +2090,8 @@
           "live": "Bo",
           "pending": "Väntar på beslut",
           "draft": "Utkast",
-          "paused": "Pausad"
+          "paused": "Pausad",
+          "rejected": "Needs changes"
         },
         "empty": "Inga annonser matchar dina sökkriterier."
       },
@@ -2131,6 +2132,13 @@
         "sat": "lör",
         "previousMonth": "Föregående månad",
         "nextMonth": "Nästa månad"
+      },
+      "rejectionNote": "Admin note: {reason}",
+      "dismiss": "Dismiss",
+      "errors": {
+        "noSession": "Your session has expired. Sign in again and retry.",
+        "statusFailed": "Couldn't update the listing. Please try again.",
+        "deleteFailed": "Couldn't delete the listing. Please try again."
       }
     },
     "bookings": {
@@ -2354,12 +2362,7 @@
       "deliveryDropoff": "Leverans / Avlämning",
       "deliveryDropoffHint": "Du levererar bilen till kunden.",
       "carPricingHeading": "Hyrespriser",
-      "price12hr": "12 timmars hyra (NGN)",
-      "price24hr": "24-timmarsuthyrning (NGN)",
-      "priceMultiDay": "Flera dagar (per dag, NGN)",
-      "driverAddonPrice": "Tilläggspris för förare (NGN)",
       "selfDriveNoPrice": "Självkörning valt — ingen extra kostnad för chaufför krävs.",
-      "deliveryFee": "Leverans-/avlämningsavgift (NGN)",
       "clientPickupNoPrice": "Upphämtning hos kund har valts — ingen leveransavgift tillkommer.",
       "pricingLocationHint": "I nästa steg kan du ange ytterligare uppgifter om upphämtnings- eller leveransplatsen.",
       "accommodationPricingHeading": "Priser för vistelser",
@@ -2381,14 +2384,11 @@
       "actions": "Åtgärder",
       "edit": "Redigera",
       "delete": "Ta bort",
-      "nightlyRate": "Pris per natt (NGN)",
-      "cleaningFee": "Städavgift (NGN)",
       "experiencePricingHeading": "Priser",
       "experiencePricingHint": "Bestäm dina biljettpriser.",
       "singleTicketPrice": "Pris för enstaka biljett",
       "singleTicketPriceHint": "Pris per person",
       "groupTicketPrice": "Gruppbiljettpris (från) (valfritt)",
-      "groupTicketPriceHint": "Pris per person för grupper",
       "minGroupSizeOptional": "Minsta gruppstorlek (valfritt)",
       "maxGroupSizeOptional": "Maximal gruppstorlek (valfritt)",
       "minGroupSizePlaceholder": "t.ex. 5",
@@ -2403,7 +2403,6 @@
         "description": "Beskrivning",
         "gpsConfirmed": "GPS-spårningsenhet bekräftad"
       },
-      "pricePerPerson": "Pris per person (NGN)",
       "minGroupSize": "Minsta gruppstorlek",
       "documents": {
         "stepTitle": "Uppladdning av dokument",
@@ -2477,7 +2476,12 @@
         "backToListings": "Tillbaka till mina annonser"
       },
       "categoryChooseHint": "Välj vilken typ av tjänst du erbjuder. Detta anges en gång när du sparar din första annons och kan inte ändras senare.",
-      "categoryLockedHint": "Ditt leverantörskonto är endast registrerat för {kategori}. Kontakta supporten för att ändra din tjänstekategori."
+      "categoryLockedHint": "Ditt leverantörskonto är endast registrerat för {kategori}. Kontakta supporten för att ändra din tjänstekategori.",
+      "saveChanges": "Save changes",
+      "resubmit": "Resubmit for review",
+      "rejectedNotice": "An admin asked for changes before this listing can go live: {reason}",
+      "rejectedNoticeNoReason": "An admin asked for changes before this listing can go live. Update it and resubmit for review.",
+      "saveFailed": "Couldn't save your changes. Please try again."
     }
   }
 }

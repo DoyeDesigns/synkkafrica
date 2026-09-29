@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
 import { getDefaultCheckInDate } from "@/features/travel/booking/booking-params";
-import { HeroAddressField } from "@/features/travel/components/hero/hero-address-field";
+import { CarLocationField } from "@/features/travel/components/hero/car-location-field";
 import { HeroDateRangeField } from "@/features/travel/components/hero/hero-date-range-field";
 import {
   HeroGlassSelect,
@@ -23,7 +23,9 @@ type CarRentalsSearchFormProps = {
 
 const RENTAL_MODES = ["pickup-dropoff", "daily-rental"] as const;
 const LOCATION_KINDS = ["pickup", "dropoff"] as const;
-const SERVICE_TYPES = ["chauffeur", "self-drive"] as const;
+// "any" = don't filter by service type (the default — a concrete default
+// silently hid every car of the other type).
+const SERVICE_TYPES = ["any", "chauffeur", "self-drive"] as const;
 
 type RentalMode = (typeof RENTAL_MODES)[number];
 type LocationKind = (typeof LOCATION_KINDS)[number];
@@ -40,6 +42,7 @@ const LOCATION_KIND_LABEL_KEYS: Record<LocationKind, TranslationKey> = {
 };
 
 const SERVICE_TYPE_LABEL_KEYS: Record<ServiceType, TranslationKey> = {
+  any: "hero.carRentals.anyService",
   chauffeur: "filters.serviceType.chauffeur",
   "self-drive": "hero.carRentals.selfDrive",
 };
@@ -77,7 +80,7 @@ export function CarRentalsSearchForm({
     () => searchParams.get("date") ?? getDefaultCheckInDate(),
   );
   const [serviceType, setServiceType] = useState<ServiceType>(() =>
-    pickParam(searchParams.get("serviceType"), SERVICE_TYPES, "chauffeur"),
+    pickParam(searchParams.get("serviceType"), SERVICE_TYPES, "any"),
   );
   const [detectingLocation, setDetectingLocation] = useState(false);
   const locatingRef = useRef(false);
@@ -209,7 +212,7 @@ export function CarRentalsSearchForm({
             rentalMode === "pickup-dropoff" && dropoff && dropoff !== pickup
               ? dropoff
               : "",
-          serviceType,
+          serviceType: serviceType === "any" ? "" : serviceType,
           date: pickupDate,
         });
       }}
@@ -235,7 +238,7 @@ export function CarRentalsSearchForm({
           }}
           icon={<MapPin className="h-4 w-4 shrink-0" />}
         />
-        <HeroAddressField
+        <CarLocationField
           placeholder={addressPlaceholder}
           value={addressValue}
           onChange={handleAddressChange}
@@ -250,7 +253,7 @@ export function CarRentalsSearchForm({
             value={serviceType}
             options={serviceTypeOptions}
             onChange={(value) =>
-              setServiceType(pickParam(value, SERVICE_TYPES, "chauffeur"))
+              setServiceType(pickParam(value, SERVICE_TYPES, "any"))
             }
             icon={
               <Image src="/wheel.png" alt="" width={20} height={20} aria-hidden />

@@ -21,8 +21,18 @@ const WEEKDAY_KEYS = [
   "vendor.listings.calendar.sat",
 ] as const;
 
+// Calendar cells are local dates; toISOString() would shift them to UTC and
+// put bookings on the wrong day for vendors east/west of UTC.
 function toDateKey(date: Date) {
-  return date.toISOString().split("T")[0] ?? "";
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${date.getFullYear()}-${month}-${day}`;
+}
+
+// Booking dates arrive as "YYYY-MM-DD" (or an ISO timestamp); key on the
+// calendar date part.
+function bookingDateKey(value: string) {
+  return /^\d{4}-\d{2}-\d{2}/.test(value) ? value.slice(0, 10) : value;
 }
 
 function buildCalendarDays(viewDate: Date) {
@@ -68,7 +78,7 @@ export function VendorBookingsCalendar({ bookings }: VendorBookingsCalendarProps
     const grouped = new Map<string, VendorBooking[]>();
 
     for (const booking of bookings) {
-      const key = booking.experienceDate;
+      const key = bookingDateKey(booking.experienceDate);
       const current = grouped.get(key) ?? [];
       current.push(booking);
       grouped.set(key, current);
@@ -190,12 +200,16 @@ export function VendorBookingsCalendar({ bookings }: VendorBookingsCalendarProps
                   className="rounded-lg border border-[#EEEEEE] bg-white px-3 py-2"
                 >
                   <p className="text-sm font-bold font-satoshi">
-                    <Link
-                      href={getVendorListingHref(booking.listingId, { from: "bookings" })}
-                      className="text-[#135391] underline underline-offset-2 transition-colors hover:text-[#004785]"
-                    >
-                      {booking.listingTitle}
-                    </Link>
+                    {booking.listingId ? (
+                      <Link
+                        href={getVendorListingHref(booking.listingId, { from: "bookings" })}
+                        className="text-[#135391] underline underline-offset-2 transition-colors hover:text-[#004785]"
+                      >
+                        {booking.listingTitle}
+                      </Link>
+                    ) : (
+                      <span className="text-[#2F2F2F]">{booking.listingTitle}</span>
+                    )}
                   </p>
                   <p className="mt-0.5 text-xs font-medium font-satoshi text-[#676565]">
                     {booking.guestFirstName} · {formatExperienceTime(booking.experienceTime)} ·{" "}

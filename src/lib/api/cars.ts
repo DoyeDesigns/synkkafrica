@@ -1,5 +1,8 @@
 import { apiFetch } from "@/lib/api/backend";
-import type { CarRentalResult } from "@/features/travel/data/car-rental-results";
+import {
+  inferCarType,
+  type CarRentalResult,
+} from "@/features/travel/data/car-rental-results";
 import type { CarDetail } from "@/features/travel/data/car-booking";
 
 export type CarPackageApi = {
@@ -22,6 +25,7 @@ export type CarSummaryApi = {
   transmission: string | null;
   comesWithDriver: boolean;
   carModel: string | null;
+  carType?: string | null;
   year: string | null;
   features: string[];
 };
@@ -32,6 +36,8 @@ export type CarDetailApi = CarSummaryApi & {
   driverAddonPrice: number | null;
   deliveryFee: number | null;
   packages: CarPackageApi[];
+  // SynkAfrica service fee rate charged once on the booking subtotal.
+  feeRate?: number;
 };
 
 export type BookCarInput = {
@@ -51,6 +57,13 @@ export type CarBookingResult = {
   currency: string;
   days: number;
   status: string;
+  // Authoritative price breakdown from the backend: `subtotal` is the
+  // vendor's price (days/nights/guests/add-ons), `fees` the SynkAfrica
+  // service fee charged once on it, `total` === `amount` is what is charged.
+  subtotal: number;
+  fees: number;
+  feeRate: number;
+  total: number;
 };
 
 const FALLBACK_CAR_IMAGE = "/car-rental-landing.png";
@@ -86,7 +99,9 @@ export async function initCarPayment(
   bookingId: string,
   input: {
     email?: string;
+    phone?: string;
     callbackUrl?: string;
+    // Omit to let the backend pick by currency (NGN -> Paystack, else Stripe).
     provider?: "PAYSTACK" | "STRIPE";
   },
   token?: string,
@@ -105,6 +120,12 @@ export async function getCarPaymentStatus(
   return apiFetch(`/cars/bookings/${bookingId}/payment-status`, { token });
 }
 
+// Gallery order: the vendor-chosen main image first, then the rest.
+function coverFirst(cover: string | null, images: string[]): string[] {
+  if (!cover) return images;
+  return [cover, ...images.filter((url) => url !== cover)];
+}
+
 // Map a backend summary onto the results-card shape.
 export function toCarRentalResult(c: CarSummaryApi): CarRentalResult {
   return {
@@ -116,7 +137,9 @@ export function toCarRentalResult(c: CarSummaryApi): CarRentalResult {
     pricePerDay: c.pricePerDay,
     currency: c.currency,
     image: c.coverImageUrl ?? c.images[0] ?? FALLBACK_CAR_IMAGE,
-    carType: "",
+    // Vendor-picked body type, else inferred from make/model so the car type
+    // filter works for older listings too.
+    carType: c.carType?.trim() || inferCarType(c.name, c.carModel),
     // Must speak the filter's vocabulary (SERVICE_TYPE_OPTIONS: "Self drive" |
     // "Chauffeur"). "With driver" matched neither, so filtering by Chauffeur
     // excluded every chauffeur-driven car.
@@ -137,7 +160,7 @@ export function toCarDetail(c: CarDetailApi): CarDetail {
     country: c.location ?? "",
     rating: c.ratingAvg,
     reviewCount: c.ratingCount,
-    images: c.images.length ? c.images : [cover],
+    images: c.images.length ? coverFirst(c.coverImageUrl, c.images) : [cover],
     features: c.features,
     packages: c.packages.length
       ? c.packages
@@ -147,5 +170,6 @@ export function toCarDetail(c: CarDetailApi): CarDetail {
     pickupAddress: c.pickupAddress ?? undefined,
     driverAddonPrice: c.driverAddonPrice ?? undefined,
     deliveryFee: c.deliveryFee ?? undefined,
+    feeRate: c.feeRate,
   };
 }

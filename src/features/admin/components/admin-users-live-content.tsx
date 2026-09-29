@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 
 import { adminListCustomers } from "@/lib/api/admin";
+import { LIVE_QUERY_OPTIONS } from "@/lib/live-query-options";
 
 export function AdminUsersLiveContent() {
   const { data: session } = useSession();
@@ -15,7 +16,7 @@ export function AdminUsersLiveContent() {
     queryKey: ["admin-customers"],
     queryFn: () => adminListCustomers(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...LIVE_QUERY_OPTIONS,
   });
 
   const customers = useMemo(() => {

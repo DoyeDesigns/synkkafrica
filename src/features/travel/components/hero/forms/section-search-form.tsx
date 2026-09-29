@@ -1,5 +1,7 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
+
 import type { TravelSection } from "@/features/travel/types";
 import { AccommodationsSearchForm } from "./accommodations-search-form";
 import { CarRentalsSearchForm } from "./car-rentals-search-form";
@@ -11,7 +13,7 @@ type SectionSearchFormProps = {
   onSubmit: (fields: Record<string, string>) => void;
 };
 
-export function SectionSearchForm({ section, onSubmit }: SectionSearchFormProps) {
+function SectionForm({ section, onSubmit }: SectionSearchFormProps) {
   switch (section) {
     case "accommodations":
       return <AccommodationsSearchForm onSubmit={onSubmit} />;
@@ -22,4 +24,13 @@ export function SectionSearchForm({ section, onSubmit }: SectionSearchFormProps)
     case "tours":
       return <ToursSearchForm onSubmit={onSubmit} />;
   }
+}
+
+export function SectionSearchForm({ section, onSubmit }: SectionSearchFormProps) {
+  // The forms seed their fields from the URL once. Keying on the query string
+  // remounts them whenever the URL changes (a new search, "Clear filters",
+  // back/forward), so the hero always mirrors the active search.
+  const searchKey = useSearchParams().toString();
+
+  return <SectionForm key={searchKey} section={section} onSubmit={onSubmit} />;
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { signOut } from "next-auth/react";
+import { useQueryClient } from "@tanstack/react-query";
 import { AlertTriangle, Loader2, Trash2 } from "lucide-react";
 
 import { useTranslation } from "@/hooks/use-translation";
@@ -9,6 +10,7 @@ import { requestErasure } from "@/lib/api/users";
 
 export function DeleteAccountButton({ token }: { token: string | null }) {
   const t = useTranslation();
+  const queryClient = useQueryClient();
   const [open, setOpen] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -19,8 +21,13 @@ export function DeleteAccountButton({ token }: { token: string | null }) {
     setError(null);
     try {
       await requestErasure(token);
-      // Account PII is gone — end the session and return home.
-      await signOut({ redirectTo: "/" });
+      // Account PII is gone — end the session and return home. `redirect:
+      // false` stops next-auth from navigating to an AUTH_URL-derived absolute
+      // URL; a full-page load of a relative path stays on this origin and
+      // discards all client state.
+      await signOut({ redirect: false });
+      queryClient.clear();
+      window.location.assign("/");
     } catch (err) {
       setDeleting(false);
       setError(

@@ -57,7 +57,7 @@ export function AdminDashboardContent({
         </h2>
 
         <Link
-          href="/admin/packages/new"
+          href="/admin/packages?new=1"
           className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90"
         >
           <Plus className="h-4 w-4" strokeWidth={2.5} />

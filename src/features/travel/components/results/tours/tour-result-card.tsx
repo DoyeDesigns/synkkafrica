@@ -1,4 +1,4 @@
-import { BadgeCheck, CheckCircle2, Heart, MapPin, Star } from "lucide-react";
+import { BadgeCheck, Heart, MapPin, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -184,8 +184,10 @@ export function computeCommissionSplitSummary(
   const currency =
     transactions[0]?.currency ?? VENDOR_EARNINGS_SUMMARY.currency;
 
+  // Mixed-currency ledgers can't be summed; summarise the first currency.
   const bookingCredits = transactions.filter(
     (transaction) =>
+      transaction.currency === currency &&
       transaction.type === "credit" &&
       transaction.descriptionKey === "vendor.earnings.transaction.bookingPayment",
   );
@@ -198,6 +200,7 @@ export function computeCommissionSplitSummary(
   const explicitPlatformFees = transactions
     .filter(
       (transaction) =>
+        transaction.currency === currency &&
         transaction.type === "debit" &&
         transaction.descriptionKey === "vendor.earnings.transaction.platformFee",
     )
