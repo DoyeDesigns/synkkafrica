@@ -1,5 +1,11 @@
 import { apiFetch } from "@/lib/api/backend";
 import type { PackageApi } from "@/lib/api/packages";
+import {
+  putToStorage,
+  resolveContentType,
+  signOrThrow,
+  type SignedUpload,
+} from "@/lib/api/vendor";
 import type {
   SupportTicketCategory,
   SupportTicketPriority,
@@ -320,6 +326,125 @@ export async function adminDeletePackage(
   id: string,
 ): Promise<void> {
   await apiFetch<void>(`/admin/packages/${id}`, { method: "DELETE", token });
+}
+
+// --- Deals ---
+
+export type DealType = "package" | "flight" | "tour" | "stay" | "car";
+
+// published = live ("play"), paused = temporarily hidden, draft = unfinished.
+export type DealStatus = "draft" | "published" | "paused";
+
+export type DealCabin = "economy" | "premium_economy" | "business" | "first";
+
+export type DealTarget =
+  | {
+      kind: "flight";
+      origin: string;
+      destination: string;
+      cabin: DealCabin;
+      adults: number;
+      departureDate?: string;
+    }
+  | { kind: "package" | "experience" | "stay" | "car"; id: string };
+
+export type AdminDeal = {
+  id: string;
+  type: DealType;
+  title: string;
+  subtitle: string | null;
+  image: string | null;
+  currency: string;
+  originalPrice: number;
+  dealPrice: number;
+  discountPercent: number;
+  startsAt: string | null;
+  endsAt: string | null;
+  target: DealTarget;
+  status: DealStatus;
+  state: "draft" | "paused" | "scheduled" | "live" | "expired";
+  sortOrder: number;
+};
+
+// The backend derives `kind` from `type`, so the input target omits it.
+export type AdminDealInput = {
+  type: DealType;
+  title: string;
+  subtitle?: string;
+  image?: string;
+  currency?: string;
+  originalPrice: number;
+  dealPrice: number;
+  startsAt?: string;
+  endsAt?: string;
+  target: Record<string, unknown>;
+  status?: DealStatus;
+  sortOrder?: number;
+};
+
+export async function adminListDeals(token: string): Promise<AdminDeal[]> {
+  return apiFetch<AdminDeal[]>("/admin/deals", { token });
+}
+
+export async function adminCreateDeal(
+  token: string,
+  input: AdminDealInput,
+): Promise<AdminDeal> {
+  return apiFetch<AdminDeal>("/admin/deals", {
+    method: "POST",
+    token,
+    body: input,
+  });
+}
+
+export async function adminUpdateDeal(
+  token: string,
+  id: string,
+  input: AdminDealInput,
+): Promise<AdminDeal> {
+  return apiFetch<AdminDeal>(`/admin/deals/${id}`, {
+    method: "PATCH",
+    token,
+    body: input,
+  });
+}
+
+// Publish / pause / resume / back to draft without resending the deal.
+export async function adminSetDealStatus(
+  token: string,
+  id: string,
+  status: DealStatus,
+): Promise<AdminDeal> {
+  return apiFetch<AdminDeal>(`/admin/deals/${id}/status`, {
+    method: "PATCH",
+    token,
+    body: { status },
+  });
+}
+
+export async function adminDeleteDeal(token: string, id: string): Promise<void> {
+  await apiFetch<void>(`/admin/deals/${id}`, { method: "DELETE", token });
+}
+
+// --- Admin image uploads (deal / package cards) ---
+
+// Sign with the admin endpoint, then PUT the bytes straight to the public
+// bucket. Returns the stable public URL to save on the deal.
+export async function uploadAdminImage(
+  token: string,
+  file: File,
+): Promise<string> {
+  const contentType = resolveContentType(file);
+  const signed = await signOrThrow(() =>
+    apiFetch<SignedUpload>("/admin/uploads/sign", {
+      method: "POST",
+      token,
+      body: { fileName: file.name, contentType },
+    }),
+  );
+  await putToStorage(signed.uploadUrl, contentType, file);
+  if (!signed.publicUrl) throw new Error("Upload has no public URL");
+  return signed.publicUrl;
 }
 
 // --- Vendor bookings (oversight) ---

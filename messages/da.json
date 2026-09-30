@@ -900,7 +900,8 @@
       "verifications": "Kontroller",
       "support": "Supportanmodninger",
       "team": "Hold",
-      "audit": "Revisionslog"
+      "audit": "Revisionslog",
+      "deals": "Tilbud"
     },
     "common": {
       "all": "Alle",

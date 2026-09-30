@@ -900,7 +900,8 @@
       "verifications": "Kontroller",
       "support": "Supportärenden",
       "team": "Team",
-      "audit": "Revisionslogg"
+      "audit": "Revisionslogg",
+      "deals": "Erbjudanden"
     },
     "common": {
       "all": "Alla",

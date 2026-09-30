@@ -993,7 +993,8 @@
       "support": "Support tickets",
       "team": "Team",
       "audit": "Audit log",
-      "packages": "Packages"
+      "packages": "Packages",
+      "deals": "Deals"
     },
     "common": {
       "all": "All",
