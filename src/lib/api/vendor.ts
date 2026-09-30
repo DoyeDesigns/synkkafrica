@@ -570,7 +570,7 @@ const CONTENT_TYPE_BY_EXTENSION: Record<string, string> = {
 // `application/octet-stream`; some Android browsers say `image/jpg`. Trust
 // `.type` only when it is already signable, otherwise derive from the
 // extension, which is what the picker validated in the first place.
-function resolveContentType(file: File): string {
+export function resolveContentType(file: File): string {
   if (SIGNABLE_CONTENT_TYPES.has(file.type)) {
     return file.type;
   }
@@ -627,7 +627,7 @@ export class UploadError extends Error {
   }
 }
 
-async function signOrThrow<T>(sign: () => Promise<T>): Promise<T> {
+export async function signOrThrow<T>(sign: () => Promise<T>): Promise<T> {
   try {
     return await sign();
   } catch (err) {
@@ -649,7 +649,7 @@ export function describeUploadError(err: unknown): string {
 // PUT the bytes to the presigned URL. Failures here are otherwise invisible:
 // a CORS-blocked preflight rejects the fetch with an opaque `TypeError`, and a
 // signature/permission mismatch answers with an XML body the caller never sees.
-async function putToStorage(
+export async function putToStorage(
   uploadUrl: string,
   contentType: string,
   file: File,

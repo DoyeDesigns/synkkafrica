@@ -22,6 +22,21 @@ export class ApiError extends Error {
   }
 }
 
+// Backend error code for a customer account an admin has blocked. Returned
+// (403) by /auth/verify-otp, /auth/refresh, and any customer-authenticated
+// route while the block is in place.
+export const ACCOUNT_BLOCKED_CODE = "ACCOUNT_BLOCKED";
+
+export function isAccountBlockedError(err: unknown): boolean {
+  if (!(err instanceof ApiError) || err.status !== 403) return false;
+  const body = err.body;
+  return (
+    typeof body === "object" &&
+    body !== null &&
+    (body as { code?: unknown }).code === ACCOUNT_BLOCKED_CODE
+  );
+}
+
 type ApiFetchOptions = {
   method?: "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
   body?: unknown;

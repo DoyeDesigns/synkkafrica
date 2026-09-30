@@ -195,7 +195,8 @@
     "emailPlaceholder": "Enter your email",
     "orUseOptions": "or use one of these options",
     "signInGoogle": "Sign in with Google",
-    "continueApple": "Continue with Apple"
+    "continueApple": "Continue with Apple",
+    "accountBlocked": "This account has been blocked. Contact support."
   },
   "account": {
     "nav": {
@@ -992,7 +993,8 @@
       "support": "Support tickets",
       "team": "Team",
       "audit": "Audit log",
-      "packages": "Packages"
+      "packages": "Packages",
+      "deals": "Deals"
     },
     "common": {
       "all": "All",

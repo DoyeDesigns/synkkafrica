@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { CredentialsSignin } from "next-auth";
 import Apple from "next-auth/providers/apple";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
@@ -13,18 +13,35 @@ import {
   hasAppleAuth,
   hasGoogleAuth,
 } from "@/lib/env";
-import { refreshTokens, signOutBackend, verifyOtp } from "@/lib/api/backend";
+import {
+  ApiError,
+  isAccountBlockedError,
+  refreshTokens,
+  signOutBackend,
+  verifyOtp,
+} from "@/lib/api/backend";
 import {
   loginVendor,
   refreshVendorTokens,
   signOutVendor,
 } from "@/lib/api/vendor";
 import { refreshAdminTokens, verifyAdminMfa } from "@/lib/api/admin-auth";
+import {
+  ACCOUNT_BLOCKED_SIGNIN_CODE,
+  SESSION_ERROR_ACCOUNT_BLOCKED,
+  SESSION_ERROR_REVOKED,
+} from "@/lib/auth/session-errors";
 import { adminLogout } from "@/lib/api/admin/auth";
 
 // 30s clock-skew guard so we refresh a hair early rather than sending a
 // just-expired access token.
 const REFRESH_SKEW_MS = 30_000;
+
+// Lets the login form show the blocked-account message instead of
+// "invalid code" (read client-side as `res.code`).
+class AccountBlockedSignin extends CredentialsSignin {
+  code = ACCOUNT_BLOCKED_SIGNIN_CODE;
+}
 
 // The custom fields we carry on the NextAuth JWT (Auth.js types it loosely).
 // `realm` tells the refresh/session logic which backend realm this session
@@ -77,7 +94,9 @@ const providers = [
                 accessTokenExpires:
                   Date.now() + tokens.accessTokenExpiresIn * 1000,
               } as unknown as { id: string; email: string };
-            } catch {
+            } catch (err) {
+              // Admin-blocked account → distinct code for the login UI.
+              if (isAccountBlockedError(err)) throw new AccountBlockedSignin();
               // Wrong/expired code → NextAuth surfaces a CredentialsSignin error.
               return null;
             }
@@ -251,9 +270,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         t.refreshToken = rotated.refreshToken;
         t.accessTokenExpires = Date.now() + rotated.accessTokenExpiresIn * 1000;
         t.error = undefined;
-      } catch {
+      } catch (err) {
         // Refresh failed → mark the session so the UI can force re-login.
-        t.error = "RefreshTokenError";
+        // A 401/403 from the customer realm is definitive (account blocked,
+        // or refresh tokens revoked — which is what a block does), so flag it
+        // for the client to sign out. Anything else may be transient.
+        t.error =
+          t.realm === "customer" && isAccountBlockedError(err)
+            ? SESSION_ERROR_ACCOUNT_BLOCKED
+            : t.realm === "customer" &&
+                err instanceof ApiError &&
+                (err.status === 401 || err.status === 403)
+              ? SESSION_ERROR_REVOKED
+              : "RefreshTokenError";
       }
       return token;
     },

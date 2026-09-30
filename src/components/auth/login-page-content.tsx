@@ -10,9 +10,13 @@ import { useTranslation } from "@/hooks/use-translation";
 
 type LoginPageContentProps = {
   backendReady: boolean;
+  accountBlocked?: boolean;
 };
 
-export function LoginPageContent({ backendReady }: LoginPageContentProps) {
+export function LoginPageContent({
+  backendReady,
+  accountBlocked = false,
+}: LoginPageContentProps) {
   const t = useTranslation();
 
   return (
@@ -40,7 +44,7 @@ export function LoginPageContent({ backendReady }: LoginPageContentProps) {
         ) : null}
 
         <div className="mt-8 space-y-6">
-          <LoginEmailForm />
+          <LoginEmailForm accountBlocked={accountBlocked} />
 
           <div className="flex items-center gap-4">
             <div className="h-px flex-1 bg-[#E0E0E0]" />
