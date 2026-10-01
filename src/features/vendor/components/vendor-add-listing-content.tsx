@@ -1056,6 +1056,31 @@ function CarDetailsFields({
         />
       </FormField>
 
+      <FormField label={t('vendor.addListing.seats')} required>
+        <input
+          type="number"
+          inputMode="numeric"
+          min={1}
+          max={50}
+          step={1}
+          value={form.seats}
+          onChange={(event) => onChange({ seats: event.target.value })}
+          placeholder={t('vendor.addListing.seatsPlaceholder')}
+          className={inputClassName}
+        />
+      </FormField>
+
+      <FormField label={t('vendor.addListing.airportTransfer')} required>
+        <RadioGroup
+          value={form.airportTransfer ? 'yes' : 'no'}
+          options={[
+            { value: 'yes', label: t('vendor.addListing.yes') },
+            { value: 'no', label: t('vendor.addListing.no') },
+          ]}
+          onChange={(value) => onChange({ airportTransfer: value === 'yes' })}
+        />
+      </FormField>
+
       <FormField label={t('vendor.addListing.shortDescription')} required>
         <textarea
           value={form.shortDescription}

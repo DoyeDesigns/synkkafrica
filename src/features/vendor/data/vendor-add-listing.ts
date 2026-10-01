@@ -250,6 +250,10 @@ export type AddListingFormState = {
   transmission: CarTransmission;
   year: string;
   comesWithDriver: boolean;
+  // Passenger seats (digits as typed); drives the "No. of passengers" search.
+  seats: string;
+  // Offers airport pick-up / drop-off; drives "Airport transport" search.
+  airportTransfer: boolean;
   shortDescription: string;
   perks: string[];
   propertyName: string;
@@ -316,6 +320,8 @@ export const EMPTY_ADD_LISTING_FORM: AddListingFormState = {
   transmission: "automatic",
   year: "",
   comesWithDriver: true,
+  seats: "",
+  airportTransfer: false,
   shortDescription: "",
   perks: [],
   propertyName: "",
@@ -464,6 +470,14 @@ export function formStateFromListingDetails(
     coverMediaId: coverItem?.id ?? "",
     uploadedDocuments: {},
     streetLine: parsed.countryCode ? parsed.streetLine ?? "" : legacyLocation,
+    seats: parsed.seats === undefined ? "" : String(parsed.seats),
+    // Cars saved before the field existed count as airport-capable when they
+    // come with a driver (the backend reads them the same way), so re-saving
+    // an old listing doesn't change its search results.
+    airportTransfer:
+      typeof parsed.airportTransfer === "boolean"
+        ? parsed.airportTransfer
+        : parsed.comesWithDriver === true,
   };
 }
 
@@ -546,11 +560,17 @@ export function structuredLocationFormPatch(
   };
 }
 
+export function isValidSeatCount(value: string): boolean {
+  const seats = Number(value.trim());
+  return value.trim() !== "" && Number.isInteger(seats) && seats >= 1 && seats <= 50;
+}
+
 export function getDetailsStepMissingFields(form: AddListingFormState): TranslationKey[] {
   const missing: TranslationKey[] = [];
 
   if (form.category === "cars") {
     if (!form.carName.trim()) missing.push("vendor.addListing.carName");
+    if (!isValidSeatCount(form.seats)) missing.push("vendor.addListing.seats");
     if (!form.carModel.trim()) missing.push("vendor.addListing.carModel");
     if (!form.year.trim()) missing.push("vendor.addListing.year");
     if (!form.shortDescription.trim()) missing.push("vendor.addListing.shortDescription");
