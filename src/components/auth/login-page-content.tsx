@@ -11,11 +11,17 @@ import { useTranslation } from "@/hooks/use-translation";
 type LoginPageContentProps = {
   backendReady: boolean;
   accountBlocked?: boolean;
+  socialFailed?: boolean;
+  googleEnabled?: boolean;
+  appleEnabled?: boolean;
 };
 
 export function LoginPageContent({
   backendReady,
   accountBlocked = false,
+  socialFailed = false,
+  googleEnabled = false,
+  appleEnabled = false,
 }: LoginPageContentProps) {
   const t = useTranslation();
 
@@ -46,18 +52,28 @@ export function LoginPageContent({
         <div className="mt-8 space-y-6">
           <LoginEmailForm accountBlocked={accountBlocked} />
 
-          <div className="flex items-center gap-4">
-            <div className="h-px flex-1 bg-[#E0E0E0]" />
-            <span className="shrink-0 text-sm font-medium font-satoshi text-foreground/70">
-              {t("login.orUseOptions")}
-            </span>
-            <div className="h-px flex-1 bg-[#E0E0E0]" />
-          </div>
+          {googleEnabled || appleEnabled ? (
+            <>
+              <div className="flex items-center gap-4">
+                <div className="h-px flex-1 bg-[#E0E0E0]" />
+                <span className="shrink-0 text-sm font-medium font-satoshi text-foreground/70">
+                  {t("login.orUseOptions")}
+                </span>
+                <div className="h-px flex-1 bg-[#E0E0E0]" />
+              </div>
 
-          <div className="space-y-4">
-            <LoginGoogleButton />
-            <LoginAppleButton />
-          </div>
+              {socialFailed ? (
+                <p className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-center text-sm text-red-700">
+                  {t("login.socialFailed")}
+                </p>
+              ) : null}
+
+              <div className="space-y-4">
+                {googleEnabled ? <LoginGoogleButton /> : null}
+                {appleEnabled ? <LoginAppleButton /> : null}
+              </div>
+            </>
+          ) : null}
         </div>
 
         <LoginTrustBadges />

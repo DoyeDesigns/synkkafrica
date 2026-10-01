@@ -15,3 +15,6 @@ export const SESSION_ERROR_REVOKED = "SessionRevoked";
 
 // `/login?error=account_blocked` shows the blocked message on arrival.
 export const LOGIN_ACCOUNT_BLOCKED_URL = `/login?error=${ACCOUNT_BLOCKED_SIGNIN_CODE}`;
+
+// /login?error=… after a Google/Apple sign-in could not be completed.
+export const SOCIAL_SIGNIN_FAILED_CODE = "social_signin_failed";

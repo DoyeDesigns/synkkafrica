@@ -196,7 +196,8 @@
     "orUseOptions": "or use one of these options",
     "signInGoogle": "Sign in with Google",
     "continueApple": "Continue with Apple",
-    "accountBlocked": "This account has been blocked. Contact support."
+    "accountBlocked": "This account has been blocked. Contact support.",
+    "socialFailed": "We couldn't sign you in with that account. Try again, or use your email instead."
   },
   "account": {
     "nav": {
