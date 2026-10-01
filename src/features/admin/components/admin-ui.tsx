@@ -695,6 +695,111 @@ export function ConfirmDialog({
 }
 
 // ---------------------------------------------------------------------------
+// Form dialog (create/edit forms open over the list instead of above it)
+
+export function AdminFormDialog({
+  open,
+  title,
+  description,
+  onClose,
+  busy = false,
+  footer,
+  children,
+}: {
+  open: boolean;
+  title: string;
+  description?: ReactNode;
+  // Called for the ✕ button, Escape and a backdrop click. The caller decides
+  // whether to close straight away or confirm discarding unsaved edits.
+  onClose: () => void;
+  // While saving/uploading, dismissing is ignored.
+  busy?: boolean;
+  // Action buttons, pinned below the scrolling body.
+  footer: ReactNode;
+  children: ReactNode;
+}) {
+  const titleId = useId();
+  const panelRef = useRef<HTMLDivElement>(null);
+  const onCloseRef = useRef(onClose);
+  const busyRef = useRef(busy);
+  useEffect(() => {
+    onCloseRef.current = onClose;
+    busyRef.current = busy;
+  });
+
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.activeElement as HTMLElement | null;
+    // Focus the first field, so typing can start straight away.
+    const first = panelRef.current?.querySelector<HTMLElement>(
+      "input:not([type=hidden]):not([disabled]), select, textarea",
+    );
+    first?.focus();
+    const onKey = (event: KeyboardEvent) => {
+      // Let a confirm dialog stacked on top handle its own Escape.
+      if (document.querySelector('[role="alertdialog"]')) return;
+      if (event.key === "Escape" && !busyRef.current) onCloseRef.current();
+    };
+    window.addEventListener("keydown", onKey);
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = overflow;
+      previous?.focus?.();
+    };
+  }, [open]);
+
+  if (!open) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-end justify-center bg-black/45 sm:items-center sm:p-4"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget && !busy) onClose();
+      }}
+    >
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        className="flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-t-2xl bg-white shadow-xl sm:rounded-2xl"
+      >
+        <div className="flex items-start justify-between gap-4 border-b border-[#EEEEEE] px-6 py-4">
+          <div className="min-w-0">
+            <h2
+              id={titleId}
+              className="truncate text-lg font-bold font-satoshi text-[#2F2F2F]"
+            >
+              {title}
+            </h2>
+            {description ? (
+              <div className="mt-0.5 text-sm font-medium font-satoshi text-[#676565]">
+                {description}
+              </div>
+            ) : null}
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            disabled={busy}
+            aria-label="Close"
+            className={`-mr-2 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[#676565] hover:bg-[#F5F5F5] disabled:opacity-50 ${focusRing}`}
+          >
+            <X className="h-5 w-5" aria-hidden="true" />
+          </button>
+        </div>
+        <div className="min-h-0 flex-1 overflow-y-auto px-6 py-5">{children}</div>
+        <div className="flex flex-col-reverse gap-3 border-t border-[#EEEEEE] bg-[#FCFCFC] px-6 py-4 sm:flex-row sm:justify-end">
+          {footer}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Forms
 
 export function FieldError({ id, message }: { id: string; message?: string }) {
