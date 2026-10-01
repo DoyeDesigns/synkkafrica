@@ -1,7 +1,19 @@
-import { redirect } from "next/navigation";
+import { Suspense } from "react";
 
-// There is no per-customer admin view yet (the backend has no customer
-// detail endpoint); customers are managed from the users list.
-export default function AdminUserDetailPage() {
-  redirect("/admin/users");
+import { AdminUserDetailLiveContent } from "@/features/admin/components/admin-user-detail-live-content";
+
+type AdminUserDetailPageProps = {
+  params: Promise<{ id: string }>;
+};
+
+export default async function AdminUserDetailPage({
+  params,
+}: AdminUserDetailPageProps) {
+  const { id } = await params;
+
+  return (
+    <Suspense fallback={null}>
+      <AdminUserDetailLiveContent userId={id} />
+    </Suspense>
+  );
 }

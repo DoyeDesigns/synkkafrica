@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { BadgePercent, ImagePlus } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
@@ -12,14 +13,39 @@ import {
   adminListPackages,
   adminSetDealStatus,
   adminUpdateDeal,
-  uploadAdminImage,
   type AdminDeal,
   type AdminDealInput,
   type DealCabin,
   type DealStatus,
   type DealType,
 } from "@/lib/api/admin";
+import { describeUploadError } from "@/lib/api/vendor";
 import { LIVE_QUERY_OPTIONS } from "@/lib/live-query-options";
+import {
+  AdminPageHeader,
+  ConfirmDialog,
+  EmptyState,
+  ErrorBanner,
+  FieldError,
+  Pagination,
+  ResultCount,
+  SearchInput,
+  SkeletonList,
+  focusRing,
+  formatDate,
+  formatDateTime,
+  formatMoney,
+  useAdminToast,
+  usePagedItems,
+  useUnsavedChangesGuard,
+  useUrlSearch,
+  useUrlState,
+} from "@/features/admin/components/admin-ui";
+import {
+  ADMIN_IMAGE_ACCEPT,
+  checkAdminImage,
+  uploadAdminImageWithProgress,
+} from "@/features/admin/lib/admin-image-upload";
 
 const TYPE_OPTIONS: { value: DealType; label: string }[] = [
   { value: "flight", label: "Flight" },
@@ -174,7 +200,9 @@ function toInput(form: DealForm): AdminDealInput {
             destination: form.destination.trim().toUpperCase(),
             cabin: form.cabin,
             adults: form.adults,
-            ...(form.departureDate ? { departureDate: form.departureDate } : {}),
+            ...(form.departureDate
+              ? { departureDate: form.departureDate }
+              : {}),
           }
         : { id: form.targetId },
   };
@@ -185,73 +213,137 @@ function discountOf(original: number, deal: number): number {
   return Math.round(((original - deal) / original) * 100);
 }
 
-function validate(form: DealForm): string | null {
-  if (!form.title.trim()) return "Add a title.";
-  if (!(form.originalPrice > 0)) return "Set an original price above 0.";
-  if (!(form.dealPrice >= 0) || form.dealPrice >= form.originalPrice)
-    return "The deal price must be lower than the original price.";
+type DealFieldErrors = Partial<
+  Record<
+    | "title"
+    | "originalPrice"
+    | "dealPrice"
+    | "endsAt"
+    | "origin"
+    | "destination"
+    | "targetId",
+    string
+  >
+>;
+
+function validate(form: DealForm): DealFieldErrors {
+  const errors: DealFieldErrors = {};
+  if (!form.title.trim()) errors.title = "Add a title.";
+  if (!(form.originalPrice > 0))
+    errors.originalPrice = "Set an original price above 0.";
+  if (!(form.dealPrice > 0)) errors.dealPrice = "Set a deal price above 0.";
+  else if (form.originalPrice > 0 && form.dealPrice >= form.originalPrice)
+    errors.dealPrice = "Must be lower than the original price.";
   if (
     form.startsAt &&
     form.endsAt &&
     new Date(form.endsAt) <= new Date(form.startsAt)
   )
-    return "The end must be after the start.";
+    errors.endsAt = "The end must be after the start.";
   if (form.type === "flight") {
     if (!/^[A-Za-z]{3}$/.test(form.origin.trim()))
-      return "Origin must be a 3-letter airport code (e.g. LOS).";
+      errors.origin = "3-letter airport code, e.g. LOS.";
     if (!/^[A-Za-z]{3}$/.test(form.destination.trim()))
-      return "Destination must be a 3-letter airport code (e.g. LHR).";
+      errors.destination = "3-letter airport code, e.g. LHR.";
+    else if (
+      form.origin.trim().toUpperCase() === form.destination.trim().toUpperCase()
+    )
+      errors.destination = "Must differ from the origin.";
   } else if (!form.targetId) {
-    return form.type === "package"
-      ? "Choose the package this deal opens."
-      : "Choose the listing this deal opens.";
+    errors.targetId =
+      form.type === "package"
+        ? "Choose the package this deal opens."
+        : "Choose the listing this deal opens.";
   }
-  return null;
+  return errors;
 }
 
 function formatWindow(d: AdminDeal): string {
-  const fmt = (iso: string) =>
-    new Date(iso).toLocaleString(undefined, {
-      dateStyle: "medium",
-      timeStyle: "short",
-    });
-  if (d.startsAt && d.endsAt) return `${fmt(d.startsAt)} → ${fmt(d.endsAt)}`;
-  if (d.endsAt) return `Ends ${fmt(d.endsAt)}`;
-  if (d.startsAt) return `Starts ${fmt(d.startsAt)}`;
+  if (d.startsAt && d.endsAt)
+    return `${formatDate(d.startsAt)} → ${formatDate(d.endsAt)}`;
+  if (d.endsAt) return `Ends ${formatDateTime(d.endsAt)}`;
+  if (d.startsAt) return `Starts ${formatDateTime(d.startsAt)}`;
   return "No deadline";
 }
 
-const inputClass =
-  "mt-1 h-10 w-full rounded-lg border border-[#E5E5E5] px-3 text-sm font-satoshi outline-none focus:border-[#135391]";
+const STATE_FILTERS = [
+  "all",
+  "live",
+  "scheduled",
+  "paused",
+  "expired",
+  "draft",
+] as const;
+
+const inputBase =
+  "mt-1 h-10 w-full rounded-lg border px-3 text-sm font-satoshi outline-none focus:ring-2 focus:ring-[#135391]/15";
+function inputClass(error?: string) {
+  return `${inputBase} ${
+    error
+      ? "border-[#C0392B] focus:border-[#C0392B]"
+      : "border-[#E5E5E5] focus:border-[#135391]"
+  }`;
+}
 const labelClass = "text-sm font-semibold font-satoshi text-[#2F2F2F]";
 
 export function AdminDealsLiveContent() {
   const { data: session } = useSession();
   const token = session?.accessToken;
   const queryClient = useQueryClient();
+  const toast = useAdminToast();
+  const { get, set: setUrl } = useUrlState();
+  const { input, setInput, term } = useUrlSearch();
+  const typeParam = get("type");
+  const typeFilter = TYPE_OPTIONS.some((o) => o.value === typeParam)
+    ? (typeParam as DealType)
+    : "all";
+  const stateParam = get("state");
+  const stateFilter = (STATE_FILTERS as readonly string[]).includes(stateParam)
+    ? stateParam
+    : "all";
+
   const [form, setForm] = useState<DealForm>(EMPTY_FORM);
-  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editing, setEditing] = useState<AdminDeal | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
-  const [listError, setListError] = useState<string | null>(null);
-  const [uploading, setUploading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState<number | null>(null);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [toDelete, setToDelete] = useState<AdminDeal | null>(null);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const titleRef = useRef<HTMLInputElement>(null);
 
-  const set = (patch: Partial<DealForm>) => setForm((f) => ({ ...f, ...patch }));
+  const set = (patch: Partial<DealForm>) =>
+    setForm((f) => ({ ...f, ...patch }));
 
-  const { data, isLoading, error: loadError } = useQuery({
+  const baseline = useMemo(
+    () => (editing ? toForm(editing) : EMPTY_FORM),
+    [editing],
+  );
+  const dirty = JSON.stringify(form) !== JSON.stringify(baseline);
+  useUnsavedChangesGuard(dirty);
+  const errors = validate(form);
+  const showErrors: DealFieldErrors = submitted ? errors : {};
+
+  const {
+    data,
+    isLoading,
+    isFetching,
+    error: loadError,
+    refetch,
+  } = useQuery({
     queryKey: ["admin-deals"],
     queryFn: () => adminListDeals(token as string),
     enabled: Boolean(token),
     ...LIVE_QUERY_OPTIONS,
   });
   // Target pickers.
-  const { data: packages } = useQuery({
+  const { data: packages, isLoading: packagesLoading } = useQuery({
     queryKey: ["admin-packages"],
     queryFn: () => adminListPackages(token as string),
     enabled: Boolean(token) && form.type === "package",
   });
-  const { data: liveListings } = useQuery({
+  const { data: liveListings, isLoading: listingsLoading } = useQuery({
     queryKey: ["admin-listings", "live"],
     queryFn: () => adminListListings(token as string, "live"),
     enabled: Boolean(token) && Boolean(LISTING_CATEGORY[form.type]),
@@ -259,6 +351,8 @@ export function AdminDealsLiveContent() {
   const listingOptions = (liveListings ?? []).filter(
     (l) => l.category === LISTING_CATEGORY[form.type],
   );
+  const targetsLoading =
+    form.type === "package" ? packagesLoading : listingsLoading;
 
   const invalidate = () => {
     void queryClient.invalidateQueries({ queryKey: ["admin-deals"] });
@@ -266,19 +360,24 @@ export function AdminDealsLiveContent() {
 
   const resetForm = () => {
     setForm(EMPTY_FORM);
-    setEditingId(null);
+    setEditing(null);
     setFormError(null);
+    setSubmitted(false);
+    setUploadError(null);
   };
 
   const saveMutation = useMutation({
     mutationFn: () => {
-      const input = toInput(form);
-      return editingId
-        ? adminUpdateDeal(token as string, editingId, input)
-        : adminCreateDeal(token as string, input);
+      const payload = toInput(form);
+      return editing
+        ? adminUpdateDeal(token as string, editing.id, payload)
+        : adminCreateDeal(token as string, payload);
     },
     onMutate: () => setFormError(null),
-    onSuccess: () => {
+    onSuccess: (deal) => {
+      toast.success(
+        editing ? `Saved “${deal.title}”.` : `Created “${deal.title}”.`,
+      );
       resetForm();
       invalidate();
     },
@@ -286,7 +385,7 @@ export function AdminDealsLiveContent() {
       setFormError(
         errorMessage(
           err,
-          editingId
+          editing
             ? "Couldn't save this deal. Please try again."
             : "Couldn't create this deal. Please try again.",
         ),
@@ -294,88 +393,164 @@ export function AdminDealsLiveContent() {
   });
   // Row status buttons: publish, pause, resume, back to draft.
   const statusMutation = useMutation({
-    mutationFn: (v: { id: string; status: DealStatus }) =>
-      adminSetDealStatus(token as string, v.id, v.status),
-    onMutate: () => setListError(null),
-    onSuccess: (updated) => {
+    mutationFn: (v: { deal: AdminDeal; status: DealStatus; label: string }) =>
+      adminSetDealStatus(token as string, v.deal.id, v.status),
+    onSuccess: (updated, v) => {
       // Keep an open edit form in step with the row.
-      if (updated.id === editingId) setForm((f) => ({ ...f, status: updated.status }));
+      if (updated.id === editing?.id) {
+        setEditing(updated);
+        setForm((f) => ({ ...f, status: updated.status }));
+      }
       invalidate();
+      toast.success(
+        `“${v.deal.title}” ${
+          v.status === "published"
+            ? "published"
+            : v.status === "paused"
+              ? "paused"
+              : "moved to draft"
+        }.`,
+      );
     },
-    onError: (err) => setListError(errorMessage(err, "Couldn't update the deal.")),
+    onError: (err) =>
+      toast.error(errorMessage(err, "Couldn't update the deal.")),
   });
   const deleteMutation = useMutation({
-    mutationFn: (id: string) => adminDeleteDeal(token as string, id),
-    onMutate: () => setListError(null),
-    onSuccess: (_data, id) => {
-      if (id === editingId) resetForm();
+    mutationFn: (deal: AdminDeal) => adminDeleteDeal(token as string, deal.id),
+    onSuccess: (_data, deal) => {
+      if (deal.id === editing?.id) resetForm();
+      setToDelete(null);
       invalidate();
+      toast.success(`Deleted “${deal.title}”.`);
     },
-    onError: (err) => setListError(errorMessage(err, "Couldn't delete the deal.")),
+    onError: (err) =>
+      setDeleteError(errorMessage(err, "Couldn't delete the deal.")),
   });
 
   const startEdit = (d: AdminDeal) => {
-    setEditingId(d.id);
+    if (
+      dirty &&
+      editing?.id !== d.id &&
+      !window.confirm("Discard your unsaved changes to this form?")
+    )
+      return;
+    setEditing(d);
     setForm(toForm(d));
     setFormError(null);
+    setSubmitted(false);
+    setUploadError(null);
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     titleRef.current?.focus({ preventScroll: true });
   };
 
+  const cancelEdit = () => {
+    if (dirty && !window.confirm("Discard your unsaved changes?")) return;
+    resetForm();
+  };
+
   const handleImage = async (file: File | undefined) => {
-    if (!file || !token) return;
-    setUploading(true);
-    setFormError(null);
+    if (!file) return;
+    if (!token) {
+      setUploadError("Your session has expired. Sign in again and retry.");
+      return;
+    }
+    const problem = checkAdminImage(file);
+    if (problem) {
+      setUploadError(problem);
+      return;
+    }
+    setUploadError(null);
+    setUploadProgress(0);
     try {
-      set({ image: await uploadAdminImage(token, file) });
+      const url = await uploadAdminImageWithProgress(
+        token,
+        file,
+        setUploadProgress,
+      );
+      set({ image: url });
     } catch (err) {
-      setFormError(errorMessage(err, "Couldn't upload the image."));
+      setUploadError(`Upload failed — ${describeUploadError(err)}`);
     } finally {
-      setUploading(false);
+      setUploadProgress(null);
     }
   };
 
   const handleSubmit = () => {
+    setSubmitted(true);
     if (!token) {
       setFormError("Your session has expired. Sign in again and retry.");
       return;
     }
-    const problem = validate(form);
-    if (problem) {
-      setFormError(problem);
+    const first = Object.keys(errors)[0];
+    if (first) {
+      setFormError("Fix the highlighted fields.");
+      formRef.current?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
       return;
     }
     saveMutation.mutate();
   };
 
-  const deals = data ?? [];
+  const deals = useMemo(() => data ?? [], [data]);
+  const filtered = useMemo(
+    () =>
+      deals.filter(
+        (d) =>
+          (typeFilter === "all" || d.type === typeFilter) &&
+          (stateFilter === "all" || d.state === stateFilter) &&
+          (!term ||
+            d.title.toLowerCase().includes(term) ||
+            (d.subtitle ?? "").toLowerCase().includes(term)),
+      ),
+    [deals, typeFilter, stateFilter, term],
+  );
+  const { page, pageCount, pageItems, setPage, total } =
+    usePagedItems(filtered);
   const discount = discountOf(form.originalPrice, form.dealPrice);
+  const uploading = uploadProgress !== null;
+  const hasFilters =
+    typeFilter !== "all" || stateFilter !== "all" || Boolean(term);
 
   return (
     <section className="space-y-8">
-      <div>
-        <h1 className="text-2xl font-bold font-satoshi text-[#2F2F2F]">Deals</h1>
-        <p className="mt-1 text-sm font-medium font-satoshi text-[#676565]">
-          Time-limited offers on the app&apos;s Deals screen. Published deals show
-          between their start and end; those ending within 7 days also appear
-          under &quot;Ending soon&quot;. Pause hides a deal without losing its
-          schedule; drafts stay hidden until published.
-        </p>
-      </div>
+      <AdminPageHeader
+        title="Deals"
+        description={
+          <>
+            Time-limited offers on the app&apos;s Deals screen. Published deals
+            show between their start and end; those ending within 7 days also
+            appear under &quot;Ending soon&quot;. Pause hides a deal without
+            losing its schedule; drafts stay hidden until published.
+          </>
+        }
+      />
 
       <form
         ref={formRef}
+        noValidate
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
         }}
+        aria-labelledby="deal-form-heading"
         className={`grid scroll-mt-24 gap-4 rounded-xl border bg-white p-5 sm:grid-cols-2 ${
-          editingId ? "border-[#135391] ring-2 ring-[#135391]/15" : "border-[#EEEEEE]"
+          editing
+            ? "border-[#135391] ring-2 ring-[#135391]/15"
+            : "border-[#EEEEEE]"
         }`}
       >
-        <h2 className="text-base font-bold font-satoshi text-[#2F2F2F] sm:col-span-2">
-          {editingId ? `Edit deal — ${form.title || "Untitled"}` : "New deal"}
-        </h2>
+        <div className="flex flex-wrap items-center justify-between gap-2 sm:col-span-2">
+          <h2
+            id="deal-form-heading"
+            className="text-base font-bold font-satoshi text-[#2F2F2F]"
+          >
+            {editing ? `Edit deal — ${form.title || "Untitled"}` : "New deal"}
+          </h2>
+          {dirty ? (
+            <span className="rounded-full bg-[#FFF4E5] px-2.5 py-0.5 text-[11px] font-semibold font-satoshi text-[#9A7200]">
+              Unsaved changes
+            </span>
+          ) : null}
+        </div>
 
         <label className={labelClass}>
           Type
@@ -384,7 +559,7 @@ export function AdminDealsLiveContent() {
             onChange={(e) =>
               set({ type: e.target.value as DealType, targetId: "" })
             }
-            className={inputClass}
+            className={inputClass()}
           >
             {TYPE_OPTIONS.map((o) => (
               <option key={o.value} value={o.value}>
@@ -400,24 +575,27 @@ export function AdminDealsLiveContent() {
             onChange={(e) =>
               set({ status: e.target.value as DealForm["status"] })
             }
-            className={inputClass}
+            className={inputClass()}
           >
-            <option value="draft">Draft</option>
+            <option value="draft">Draft (hidden)</option>
             <option value="published">Published</option>
             <option value="paused">Paused</option>
           </select>
         </label>
 
         <label className={labelClass}>
-          Title
+          Title *
           <input
             ref={titleRef}
+            name="title"
             value={form.title}
             onChange={(e) => set({ title: e.target.value })}
             placeholder="Lagos → London"
-            className={inputClass}
-            required
+            aria-invalid={Boolean(showErrors.title)}
+            aria-describedby="deal-title-error"
+            className={inputClass(showErrors.title)}
           />
+          <FieldError id="deal-title-error" message={showErrors.title} />
         </label>
         <label className={labelClass}>
           Subtitle
@@ -425,33 +603,47 @@ export function AdminDealsLiveContent() {
             value={form.subtitle}
             onChange={(e) => set({ subtitle: e.target.value })}
             placeholder="Economy • 1 adult"
-            className={inputClass}
+            className={inputClass()}
           />
         </label>
 
         {/* What the deal opens */}
         {form.type === "flight" ? (
-          <div className="grid gap-4 rounded-lg bg-[#FAFAFA] p-4 sm:col-span-2 sm:grid-cols-5">
+          <fieldset className="grid gap-4 rounded-lg bg-[#FAFAFA] p-4 sm:col-span-2 sm:grid-cols-5">
+            <legend className="sr-only">Flight search this deal opens</legend>
             <label className={labelClass}>
-              From (IATA)
+              From (IATA) *
               <input
+                name="origin"
                 value={form.origin}
                 onChange={(e) => set({ origin: e.target.value.toUpperCase() })}
                 placeholder="LOS"
                 maxLength={3}
-                className={inputClass}
+                autoCapitalize="characters"
+                aria-invalid={Boolean(showErrors.origin)}
+                aria-describedby="deal-origin-error"
+                className={inputClass(showErrors.origin)}
               />
+              <FieldError id="deal-origin-error" message={showErrors.origin} />
             </label>
             <label className={labelClass}>
-              To (IATA)
+              To (IATA) *
               <input
+                name="destination"
                 value={form.destination}
                 onChange={(e) =>
                   set({ destination: e.target.value.toUpperCase() })
                 }
                 placeholder="LHR"
                 maxLength={3}
-                className={inputClass}
+                autoCapitalize="characters"
+                aria-invalid={Boolean(showErrors.destination)}
+                aria-describedby="deal-destination-error"
+                className={inputClass(showErrors.destination)}
+              />
+              <FieldError
+                id="deal-destination-error"
+                message={showErrors.destination}
               />
             </label>
             <label className={labelClass}>
@@ -459,7 +651,7 @@ export function AdminDealsLiveContent() {
               <select
                 value={form.cabin}
                 onChange={(e) => set({ cabin: e.target.value as DealCabin })}
-                className={inputClass}
+                className={inputClass()}
               >
                 {CABIN_OPTIONS.map((o) => (
                   <option key={o.value} value={o.value}>
@@ -475,8 +667,15 @@ export function AdminDealsLiveContent() {
                 min={1}
                 max={9}
                 value={form.adults}
-                onChange={(e) => set({ adults: Number(e.target.value) })}
-                className={inputClass}
+                onChange={(e) =>
+                  set({
+                    adults: Math.min(
+                      9,
+                      Math.max(1, Number(e.target.value) || 1),
+                    ),
+                  })
+                }
+                className={inputClass()}
               />
             </label>
             <label className={labelClass}>
@@ -485,24 +684,32 @@ export function AdminDealsLiveContent() {
                 type="date"
                 value={form.departureDate}
                 onChange={(e) => set({ departureDate: e.target.value })}
-                className={inputClass}
+                className={inputClass()}
               />
             </label>
-          </div>
+          </fieldset>
         ) : (
           <label className={`${labelClass} sm:col-span-2`}>
-            {form.type === "package" ? "Package" : "Listing (live only)"}
+            {form.type === "package" ? "Package *" : "Listing (live only) *"}
             <select
+              name="targetId"
               value={form.targetId}
               onChange={(e) => set({ targetId: e.target.value })}
-              className={inputClass}
+              aria-invalid={Boolean(showErrors.targetId)}
+              aria-describedby="deal-target-error"
+              disabled={targetsLoading}
+              className={`${inputClass(showErrors.targetId)} disabled:opacity-60`}
             >
-              <option value="">Choose…</option>
+              <option value="">
+                {targetsLoading ? "Loading…" : "Choose…"}
+              </option>
               {form.type === "package"
                 ? (packages ?? []).map((p) => (
                     <option key={p.id} value={p.id}>
                       {p.title}
-                      {p.status === "draft" ? " (draft — hidden until published)" : ""}
+                      {p.status === "draft"
+                        ? " (draft — hidden until published)"
+                        : ""}
                     </option>
                   ))
                 : listingOptions.map((l) => (
@@ -519,39 +726,67 @@ export function AdminDealsLiveContent() {
                 <option value={form.targetId}>Current target (not live)</option>
               ) : null}
             </select>
+            <FieldError id="deal-target-error" message={showErrors.targetId} />
+            {!targetsLoading &&
+            (form.type === "package"
+              ? (packages ?? []).length === 0
+              : listingOptions.length === 0) ? (
+              <span className="mt-1 block text-xs font-medium text-[#9A7200]">
+                {form.type === "package"
+                  ? "No packages yet — create one on the Packages page first."
+                  : "No live listings in this category yet."}
+              </span>
+            ) : null}
           </label>
         )}
 
         <label className={labelClass}>
-          Original price
+          Original price *
           <input
             type="number"
+            name="originalPrice"
             min={0}
             step="0.01"
+            inputMode="decimal"
             value={form.originalPrice || ""}
             onChange={(e) => set({ originalPrice: Number(e.target.value) })}
-            className={inputClass}
-            required
+            aria-invalid={Boolean(showErrors.originalPrice)}
+            aria-describedby="deal-original-error"
+            className={inputClass(showErrors.originalPrice)}
+          />
+          <FieldError
+            id="deal-original-error"
+            message={showErrors.originalPrice}
           />
         </label>
         <label className={labelClass}>
-          Deal price{discount > 0 ? ` (−${discount}%)` : ""}
+          Deal price *{discount > 0 ? ` (−${discount}%)` : ""}
           <input
             type="number"
+            name="dealPrice"
             min={0}
             step="0.01"
+            inputMode="decimal"
             value={form.dealPrice || ""}
             onChange={(e) => set({ dealPrice: Number(e.target.value) })}
-            className={inputClass}
-            required
+            aria-invalid={Boolean(showErrors.dealPrice)}
+            aria-describedby="deal-price-error"
+            className={inputClass(showErrors.dealPrice)}
           />
+          <FieldError id="deal-price-error" message={showErrors.dealPrice} />
+          {!showErrors.dealPrice && form.dealPrice > 0 && discount > 0 ? (
+            <span className="mt-1 block text-xs font-medium text-[#676565]">
+              {formatMoney(form.dealPrice, form.currency)} instead of{" "}
+              {formatMoney(form.originalPrice, form.currency)}
+            </span>
+          ) : null}
         </label>
         <label className={labelClass}>
           Currency
           <select
             value={form.currency}
             onChange={(e) => set({ currency: e.target.value })}
-            className={inputClass}
+            className={inputClass()}
           >
             {CURRENCY_OPTIONS.map((code) => (
               <option key={code} value={code}>
@@ -566,8 +801,11 @@ export function AdminDealsLiveContent() {
             type="number"
             value={form.sortOrder}
             onChange={(e) => set({ sortOrder: Number(e.target.value) })}
-            className={inputClass}
+            className={inputClass()}
           />
+          <span className="mt-1 block text-xs font-medium text-[#9A9A9A]">
+            Lower numbers show first.
+          </span>
         </label>
         <label className={labelClass}>
           Starts (optional)
@@ -575,17 +813,22 @@ export function AdminDealsLiveContent() {
             type="datetime-local"
             value={form.startsAt}
             onChange={(e) => set({ startsAt: e.target.value })}
-            className={inputClass}
+            className={inputClass()}
           />
         </label>
         <label className={labelClass}>
           Ends (optional — drives the countdown)
           <input
             type="datetime-local"
+            name="endsAt"
             value={form.endsAt}
+            min={form.startsAt || undefined}
             onChange={(e) => set({ endsAt: e.target.value })}
-            className={inputClass}
+            aria-invalid={Boolean(showErrors.endsAt)}
+            aria-describedby="deal-ends-error"
+            className={inputClass(showErrors.endsAt)}
           />
+          <FieldError id="deal-ends-error" message={showErrors.endsAt} />
         </label>
 
         <div className="sm:col-span-2">
@@ -595,32 +838,71 @@ export function AdminDealsLiveContent() {
               // eslint-disable-next-line @next/next/no-img-element -- admin preview of an arbitrary bucket URL
               <img
                 src={form.image}
-                alt=""
+                alt="Deal preview"
                 className="h-20 w-32 rounded-lg border border-[#EEEEEE] object-cover"
               />
-            ) : null}
-            <label className="cursor-pointer rounded-lg border border-[#E5E5E5] px-4 py-2 text-sm font-bold font-satoshi text-[#2F2F2F]">
-              {uploading ? "Uploading…" : form.image ? "Replace image" : "Upload image"}
-              <input
-                type="file"
-                accept="image/png,image/jpeg,image/webp"
-                className="hidden"
-                disabled={uploading}
-                onChange={(e) => {
-                  void handleImage(e.target.files?.[0]);
-                  e.target.value = "";
-                }}
+            ) : (
+              <span className="flex h-20 w-32 items-center justify-center rounded-lg border border-dashed border-[#E0E0E0] text-[#9A9A9A]">
+                <ImagePlus className="h-6 w-6" aria-hidden="true" />
+              </span>
+            )}
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-wrap items-center gap-3">
+                <label
+                  className={`cursor-pointer rounded-lg border border-[#E5E5E5] px-4 py-2 text-sm font-bold font-satoshi text-[#2F2F2F] hover:bg-[#FAFAFA] focus-within:ring-2 focus-within:ring-[#135391] ${
+                    uploading ? "pointer-events-none opacity-60" : ""
+                  }`}
+                >
+                  {uploading
+                    ? `Uploading… ${uploadProgress}%`
+                    : form.image
+                      ? "Replace image"
+                      : "Upload image"}
+                  <input
+                    type="file"
+                    accept={ADMIN_IMAGE_ACCEPT}
+                    className="sr-only"
+                    disabled={uploading}
+                    onChange={(e) => {
+                      void handleImage(e.target.files?.[0]);
+                      e.target.value = "";
+                    }}
+                  />
+                </label>
+                {form.image && !uploading ? (
+                  <button
+                    type="button"
+                    onClick={() => set({ image: "" })}
+                    className={`rounded text-sm font-bold font-satoshi text-[#C0392B] hover:underline ${focusRing}`}
+                  >
+                    Remove
+                  </button>
+                ) : null}
+              </div>
+              {uploading ? (
+                <div
+                  role="progressbar"
+                  aria-label="Image upload progress"
+                  aria-valuenow={uploadProgress ?? 0}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  className="h-1.5 w-48 overflow-hidden rounded-full bg-[#EEEEEE]"
+                >
+                  <div
+                    className="h-full rounded-full bg-[#135391] transition-[width]"
+                    style={{ width: `${uploadProgress ?? 0}%` }}
+                  />
+                </div>
+              ) : (
+                <span className="text-xs font-medium text-[#9A9A9A]">
+                  PNG, JPEG or WebP, up to 10 MB.
+                </span>
+              )}
+              <FieldError
+                id="deal-image-error"
+                message={uploadError ?? undefined}
               />
-            </label>
-            {form.image ? (
-              <button
-                type="button"
-                onClick={() => set({ image: "" })}
-                className="text-sm font-bold font-satoshi text-[#C0392B] hover:underline"
-              >
-                Remove
-              </button>
-            ) : null}
+            </div>
           </div>
         </div>
 
@@ -636,139 +918,278 @@ export function AdminDealsLiveContent() {
           <button
             type="submit"
             disabled={saveMutation.isPending || uploading}
-            className="h-10 rounded-lg bg-[#135391] px-5 text-sm font-bold font-satoshi text-white disabled:opacity-60"
+            className={`h-10 rounded-lg bg-[#135391] px-5 text-sm font-bold font-satoshi text-white hover:opacity-90 disabled:opacity-60 ${focusRing}`}
           >
             {saveMutation.isPending
-              ? editingId
+              ? editing
                 ? "Saving…"
                 : "Creating…"
-              : editingId
-                ? "Save changes"
-                : "Create deal"}
+              : uploading
+                ? "Waiting for upload…"
+                : editing
+                  ? "Save changes"
+                  : "Create deal"}
           </button>
-          {editingId ? (
+          {editing || dirty ? (
             <button
               type="button"
               disabled={saveMutation.isPending}
-              onClick={resetForm}
-              className="h-10 rounded-lg border border-[#E5E5E5] px-5 text-sm font-bold font-satoshi text-[#2F2F2F] disabled:opacity-60"
+              onClick={cancelEdit}
+              className={`h-10 rounded-lg border border-[#E5E5E5] px-5 text-sm font-bold font-satoshi text-[#2F2F2F] hover:bg-[#FAFAFA] disabled:opacity-60 ${focusRing}`}
             >
-              Cancel
+              {editing ? "Cancel" : "Clear form"}
             </button>
           ) : null}
         </div>
       </form>
 
-      {listError ? (
-        <div
-          role="alert"
-          className="flex items-start justify-between gap-3 rounded-lg border border-[#DD2222]/30 bg-[#DD2222]/5 px-4 py-3 text-sm font-medium font-satoshi text-[#C0392B]"
-        >
-          <span>{listError}</span>
-          <button
-            type="button"
-            onClick={() => setListError(null)}
-            className="shrink-0 font-bold hover:underline"
-          >
-            Dismiss
-          </button>
-        </div>
-      ) : null}
-
-      {isLoading ? (
-        <p className="text-sm font-medium font-satoshi text-[#676565]">Loading…</p>
-      ) : loadError ? (
-        <p
-          role="alert"
-          className="rounded-lg border border-[#DD2222]/30 bg-[#DD2222]/5 px-4 py-3 text-sm font-medium font-satoshi text-[#C0392B]"
-        >
-          {errorMessage(loadError, "Couldn't load deals.")}
-        </p>
-      ) : deals.length === 0 ? (
-        <p className="rounded-lg border border-[#EEEEEE] bg-[#FAFAFA] px-4 py-6 text-center text-sm font-medium font-satoshi text-[#676565]">
-          No deals yet.
-        </p>
-      ) : (
-        <div className="space-y-3">
-          {deals.map((d) => (
-            <div
-              key={d.id}
-              className="flex flex-col gap-3 rounded-xl border border-[#EEEEEE] bg-white px-4 py-4 sm:flex-row sm:items-center sm:justify-between"
+      <div className="space-y-4">
+        <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
+          <SearchInput
+            value={input}
+            onChange={setInput}
+            placeholder="Search deals"
+            label="Search deals"
+            className="lg:w-72"
+          />
+          <div className="flex flex-wrap gap-3">
+            <label className="sr-only" htmlFor="deal-type-filter">
+              Type
+            </label>
+            <select
+              id="deal-type-filter"
+              value={typeFilter}
+              onChange={(e) =>
+                setUrl({
+                  type: e.target.value === "all" ? null : e.target.value,
+                  page: null,
+                })
+              }
+              className={`h-10 rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi outline-none focus:border-[#135391] ${focusRing}`}
             >
-              <div className="flex min-w-0 items-center gap-3">
-                {d.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element -- admin thumbnail of an arbitrary bucket URL
-                  <img
-                    src={d.image}
-                    alt=""
-                    className="h-12 w-16 shrink-0 rounded-md object-cover"
-                  />
-                ) : null}
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-bold font-satoshi text-[#2F2F2F]">
-                    {d.title}
-                    <span className="ml-2 text-xs font-semibold text-[#676565]">
-                      {TYPE_OPTIONS.find((o) => o.value === d.type)?.label}
-                    </span>
-                  </p>
-                  <p className="mt-0.5 text-xs font-medium font-satoshi text-[#676565]">
-                    <span className="line-through">
-                      {d.currency} {d.originalPrice.toLocaleString()}
-                    </span>{" "}
-                    {d.currency} {d.dealPrice.toLocaleString()} · −
-                    {d.discountPercent}% · {formatWindow(d)}
-                  </p>
-                </div>
-              </div>
-              <div className="flex shrink-0 items-center gap-2">
-                <span
-                  className={`rounded-full px-3 py-1 text-xs font-semibold font-satoshi ${STATE_BADGE[d.state]}`}
-                >
-                  {d.state}
-                </span>
+              <option value="all">All types</option>
+              {TYPE_OPTIONS.map((o) => (
+                <option key={o.value} value={o.value}>
+                  {o.label}
+                </option>
+              ))}
+            </select>
+            <label className="sr-only" htmlFor="deal-state-filter">
+              State
+            </label>
+            <select
+              id="deal-state-filter"
+              value={stateFilter}
+              onChange={(e) =>
+                setUrl({
+                  state: e.target.value === "all" ? null : e.target.value,
+                  page: null,
+                })
+              }
+              className={`h-10 rounded-lg border border-[#E5E5E5] bg-white px-3 text-sm font-medium font-satoshi capitalize outline-none focus:border-[#135391] ${focusRing}`}
+            >
+              {STATE_FILTERS.map((s) => (
+                <option key={s} value={s}>
+                  {s === "all"
+                    ? "All states"
+                    : s.charAt(0).toUpperCase() + s.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
+          {!isLoading ? (
+            <span className="lg:ml-auto">
+              <ResultCount
+                shown={filtered.length}
+                total={deals.length}
+                noun="deal"
+              />
+            </span>
+          ) : null}
+        </div>
+
+        {loadError ? (
+          <ErrorBanner
+            message={errorMessage(loadError, "Couldn't load deals.")}
+            onRetry={() => void refetch()}
+            retrying={isFetching}
+          />
+        ) : null}
+
+        {isLoading ? (
+          <SkeletonList rows={4} label="Loading deals" />
+        ) : loadError ? null : filtered.length === 0 ? (
+          <EmptyState
+            icon={BadgePercent}
+            title={hasFilters ? "No deals match" : "No deals yet"}
+            description={
+              hasFilters
+                ? "Try another type or state, or clear the search."
+                : "Create a time-limited offer with the form above. It stays a draft until you publish it."
+            }
+            action={
+              hasFilters ? (
                 <button
                   type="button"
-                  onClick={() => startEdit(d)}
-                  className="rounded-lg border border-[#E5E5E5] px-3 py-2 text-xs font-bold font-satoshi text-[#2F2F2F]"
+                  onClick={() => {
+                    setInput("");
+                    setUrl({ type: null, state: null, q: null, page: null });
+                  }}
+                  className={`rounded-lg border border-[#135391] px-4 py-2 text-sm font-bold font-satoshi text-[#135391] hover:bg-[#F0F6FC] ${focusRing}`}
                 >
-                  Edit
+                  Clear filters
                 </button>
-                {STATUS_ACTIONS[d.status].map((action) => (
-                  <button
-                    key={action.to}
-                    type="button"
-                    disabled={
-                      statusMutation.isPending &&
-                      statusMutation.variables?.id === d.id
-                    }
-                    onClick={() =>
-                      statusMutation.mutate({ id: d.id, status: action.to })
-                    }
-                    className={`rounded-lg px-3 py-2 text-xs font-bold font-satoshi disabled:opacity-60 ${
-                      action.primary
-                        ? "bg-[#135391] text-white"
-                        : "border border-[#E5E5E5] text-[#2F2F2F]"
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => titleRef.current?.focus()}
+                  className={`rounded-lg bg-[#135391] px-4 py-2 text-sm font-bold font-satoshi text-white ${focusRing}`}
+                >
+                  Create a deal
+                </button>
+              )
+            }
+          />
+        ) : (
+          <>
+            <ul className="space-y-3">
+              {pageItems.map((d) => {
+                const busy =
+                  statusMutation.isPending &&
+                  statusMutation.variables?.deal.id === d.id;
+                return (
+                  <li
+                    key={d.id}
+                    className={`flex flex-col gap-3 rounded-xl border bg-white px-4 py-4 lg:flex-row lg:items-center lg:justify-between ${
+                      editing?.id === d.id
+                        ? "border-[#135391]"
+                        : "border-[#EEEEEE]"
                     }`}
                   >
-                    {action.label}
-                  </button>
-                ))}
-                <button
-                  type="button"
-                  disabled={deleteMutation.isPending}
-                  onClick={() => {
-                    if (window.confirm(`Delete "${d.title}"?`))
-                      deleteMutation.mutate(d.id);
-                  }}
-                  className="rounded-lg border border-[#E5E5E5] px-3 py-2 text-xs font-bold font-satoshi text-[#C0392B] disabled:opacity-60"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+                    <div className="flex min-w-0 items-center gap-3">
+                      {d.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element -- admin thumbnail of an arbitrary bucket URL
+                        <img
+                          src={d.image}
+                          alt=""
+                          className="h-12 w-16 shrink-0 rounded-md object-cover"
+                        />
+                      ) : (
+                        <span className="flex h-12 w-16 shrink-0 items-center justify-center rounded-md bg-[#F5F5F5] text-[#9A9A9A]">
+                          <BadgePercent
+                            className="h-5 w-5"
+                            aria-hidden="true"
+                          />
+                        </span>
+                      )}
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-bold font-satoshi text-[#2F2F2F]">
+                          {d.title}
+                          <span className="ml-2 text-xs font-semibold text-[#676565]">
+                            {
+                              TYPE_OPTIONS.find((o) => o.value === d.type)
+                                ?.label
+                            }
+                          </span>
+                        </p>
+                        <p className="mt-0.5 text-xs font-medium font-satoshi text-[#676565]">
+                          <span className="font-bold text-[#2F2F2F]">
+                            {formatMoney(d.dealPrice, d.currency)}
+                          </span>{" "}
+                          <span className="line-through">
+                            {formatMoney(d.originalPrice, d.currency)}
+                          </span>{" "}
+                          <span className="font-semibold text-[#2E7D32]">
+                            −{d.discountPercent}%
+                          </span>{" "}
+                          · {formatWindow(d)}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex shrink-0 flex-wrap items-center gap-2">
+                      <span
+                        className={`rounded-full px-3 py-1 text-xs font-semibold font-satoshi capitalize ${STATE_BADGE[d.state]}`}
+                      >
+                        {d.state}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => startEdit(d)}
+                        aria-label={`Edit ${d.title}`}
+                        className={`rounded-lg border border-[#E5E5E5] px-3 py-2 text-xs font-bold font-satoshi text-[#2F2F2F] hover:bg-[#FAFAFA] ${focusRing}`}
+                      >
+                        Edit
+                      </button>
+                      {STATUS_ACTIONS[d.status].map((action) => {
+                        const running =
+                          busy &&
+                          statusMutation.variables?.status === action.to;
+                        return (
+                          <button
+                            key={action.to}
+                            type="button"
+                            disabled={busy}
+                            onClick={() =>
+                              statusMutation.mutate({
+                                deal: d,
+                                status: action.to,
+                                label: action.label,
+                              })
+                            }
+                            className={`rounded-lg px-3 py-2 text-xs font-bold font-satoshi disabled:opacity-60 ${focusRing} ${
+                              action.primary
+                                ? "bg-[#135391] text-white hover:opacity-90"
+                                : "border border-[#E5E5E5] text-[#2F2F2F] hover:bg-[#FAFAFA]"
+                            }`}
+                          >
+                            {running ? "Updating…" : action.label}
+                          </button>
+                        );
+                      })}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setDeleteError(null);
+                          setToDelete(d);
+                        }}
+                        aria-label={`Delete ${d.title}`}
+                        className={`rounded-lg border border-[#F5C2C0] px-3 py-2 text-xs font-bold font-satoshi text-[#C0392B] hover:bg-[#FDF2F2] ${focusRing}`}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+            <Pagination
+              page={page}
+              pageCount={pageCount}
+              total={total}
+              onPage={setPage}
+            />
+          </>
+        )}
+      </div>
+
+      <ConfirmDialog
+        open={toDelete !== null}
+        title={`Delete “${toDelete?.title ?? ""}”?`}
+        message={
+          toDelete?.state === "live"
+            ? "This deal is live right now. Deleting it removes it from the app immediately. This can't be undone — use Pause if you may bring it back."
+            : "The deal will be removed permanently. This can't be undone."
+        }
+        confirmLabel="Delete deal"
+        pendingLabel="Deleting…"
+        pending={deleteMutation.isPending}
+        destructive
+        error={deleteError}
+        onConfirm={() => {
+          if (toDelete) deleteMutation.mutate(toDelete);
+        }}
+        onClose={() => setToDelete(null)}
+      />
     </section>
   );
 }

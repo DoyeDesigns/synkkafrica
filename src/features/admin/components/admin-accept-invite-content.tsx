@@ -68,16 +68,19 @@ export function AdminAcceptInviteContent() {
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
+                autoComplete="new-password"
+                autoFocus
+                aria-describedby="invite-password-hint"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={12}
-                className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] px-3 pr-10 text-sm font-satoshi outline-none focus:border-[#135391]"
+                className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] px-3 pr-10 text-sm font-satoshi outline-none focus:border-[#135391] focus:ring-2 focus:ring-[#135391]/15"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword((current) => !current)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#9E9E9E] hover:text-[#135391]"
+                className="absolute right-3 top-1/2 -translate-y-1/2 rounded text-[#9E9E9E] hover:text-[#135391] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#135391]"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? (
@@ -87,6 +90,17 @@ export function AdminAcceptInviteContent() {
                 )}
               </button>
             </div>
+            <span
+              id="invite-password-hint"
+              className={`mt-1 block text-xs font-medium font-satoshi ${
+                password && password.length < 12
+                  ? "text-[#9A7200]"
+                  : "text-[#9A9A9A]"
+              }`}
+            >
+              At least 12 characters
+              {password ? ` (${password.length}/12)` : ""}
+            </span>
           </label>
           <label className="block">
             <span className="text-sm font-semibold font-satoshi text-[#2F2F2F]">
@@ -94,22 +108,32 @@ export function AdminAcceptInviteContent() {
             </span>
             <input
               type={showPassword ? "text" : "password"}
+              autoComplete="new-password"
+              aria-invalid={Boolean(confirm) && confirm !== password}
               value={confirm}
               onChange={(e) => setConfirm(e.target.value)}
               required
               minLength={12}
-              className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] px-3 text-sm font-satoshi outline-none focus:border-[#135391]"
+              className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] px-3 text-sm font-satoshi outline-none focus:border-[#135391] focus:ring-2 focus:ring-[#135391]/15"
             />
+            {confirm && confirm !== password ? (
+              <span className="mt-1 block text-xs font-medium font-satoshi text-[#C0392B]">
+                Passwords don&apos;t match yet.
+              </span>
+            ) : null}
           </label>
           {error ? (
-            <p className="text-xs font-medium font-satoshi text-[#C0392B]">
+            <p
+              role="alert"
+              className="rounded-lg bg-[#FDF2F2] px-3 py-2 text-xs font-medium font-satoshi text-[#C0392B]"
+            >
               {error}
             </p>
           ) : null}
           <button
             type="submit"
             disabled={loading}
-            className="h-11 w-full rounded-lg bg-[#135391] text-sm font-bold font-satoshi text-white disabled:opacity-60"
+            className="h-11 w-full rounded-lg bg-[#135391] text-sm font-bold font-satoshi text-white hover:opacity-90 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#135391] focus-visible:ring-offset-2"
           >
             {loading ? "Creating account…" : "Create account"}
           </button>
