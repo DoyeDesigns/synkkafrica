@@ -1,11 +1,7 @@
-import { AdminUserDetailContent } from "@/features/admin/components/admin-user-detail-content";
+import { redirect } from "next/navigation";
 
-type AdminUserDetailPageProps = {
-  params: Promise<{ id: string }>;
-};
-
-export default async function AdminUserDetailPage({ params }: AdminUserDetailPageProps) {
-  const { id } = await params;
-
-  return <AdminUserDetailContent userId={id} />;
+// There is no per-customer admin view yet (the backend has no customer
+// detail endpoint); customers are managed from the users list.
+export default function AdminUserDetailPage() {
+  redirect("/admin/users");
 }
