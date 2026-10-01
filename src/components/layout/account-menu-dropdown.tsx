@@ -12,8 +12,10 @@ import type { Session } from "next-auth";
 
 import { NavbarDropdownPanel } from "@/components/layout/navbar-dropdown-panel";
 import { NavbarSignOutItem } from "@/components/layout/navbar-sign-out-item";
+import { SignOutConfirmDialog } from "@/components/auth/sign-out-confirm";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { useTranslation } from "@/hooks/use-translation";
+import { signOutAction } from "@/lib/auth/actions";
 
 const ACCOUNT_NOTIFICATION_BADGE = 2;
 
@@ -46,6 +48,7 @@ function MenuIcon({ icon }: { icon: (typeof menuItems)[number]["icon"] }) {
 export function AccountMenuDropdown({ session }: AccountMenuDropdownProps) {
   const t = useTranslation();
   const [open, setOpen] = useState(false);
+  const [confirmSignOut, setConfirmSignOut] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useClickOutside(containerRef, () => setOpen(false), open);
@@ -98,9 +101,21 @@ export function AccountMenuDropdown({ session }: AccountMenuDropdownProps) {
 
           <div className="mx-3 my-2 border-t border-[#E8E8E8]" />
 
-          <NavbarSignOutItem label={t("nav.signOut")} />
+          <NavbarSignOutItem
+            label={t("nav.signOut")}
+            onSelect={() => {
+              setOpen(false);
+              setConfirmSignOut(true);
+            }}
+          />
         </NavbarDropdownPanel>
       ) : null}
+
+      <SignOutConfirmDialog
+        open={confirmSignOut}
+        onClose={() => setConfirmSignOut(false)}
+        action={signOutAction}
+      />
     </div>
   );
 }

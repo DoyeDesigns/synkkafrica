@@ -87,7 +87,7 @@ export function AdminDashboardLayoutClient({
           <main
             id="admin-main"
             tabIndex={-1}
-            className="min-h-0 flex-1 overflow-y-auto bg-[#FBFBFB] focus:outline-none"
+            className="relative min-h-0 flex-1 overflow-y-auto bg-[#FBFBFB] focus:outline-none"
           >
             <div className="space-y-8 p-4 sm:p-6 lg:p-8">{children}</div>
           </main>
