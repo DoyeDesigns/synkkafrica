@@ -29,6 +29,7 @@ import {
 import { refreshAdminTokens, verifyAdminMfa } from "@/lib/api/admin-auth";
 import {
   ACCOUNT_BLOCKED_SIGNIN_CODE,
+  SIGNIN_UNAVAILABLE_CODE,
   SESSION_ERROR_ACCOUNT_BLOCKED,
   SOCIAL_SIGNIN_FAILED_CODE,
   SESSION_ERROR_REVOKED,
@@ -43,6 +44,11 @@ const REFRESH_SKEW_MS = 30_000;
 // "invalid code" (read client-side as `res.code`).
 class AccountBlockedSignin extends CredentialsSignin {
   code = ACCOUNT_BLOCKED_SIGNIN_CODE;
+}
+
+// Vendor login failed for a reason other than bad credentials.
+class SigninUnavailable extends CredentialsSignin {
+  code = SIGNIN_UNAVAILABLE_CODE;
 }
 
 // The custom fields we carry on the NextAuth JWT (Auth.js types it loosely).
@@ -137,8 +143,16 @@ const providers = [
                 role: "vendor",
                 vendorStatus: vendor.status,
               } as unknown as { id: string; email: string };
-            } catch {
-              return null;
+            } catch (err) {
+              // Wrong email/password → the generic "invalid" message.
+              if (err instanceof ApiError && err.status === 401) return null;
+              // Suspended vendor (403) → say so instead of "wrong password".
+              if (err instanceof ApiError && err.status === 403) {
+                throw new AccountBlockedSignin();
+              }
+              // Anything else (network, timeout, 429, 5xx) isn't the vendor's
+              // password, so don't report it as one.
+              throw new SigninUnavailable();
             }
           },
         }),
@@ -243,8 +257,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       const isAdminRoute = nextUrl.pathname.startsWith("/admin");
 
       if (isAdminRoute) {
-        // The admin login page must stay public.
-        if (nextUrl.pathname === "/admin/login") return true;
+        // The admin login, invite and password-reset pages must stay public.
+        if (
+          nextUrl.pathname === "/admin/login" ||
+          nextUrl.pathname === "/admin/accept-invite" ||
+          nextUrl.pathname === "/admin/forgot-password"
+        ) {
+          return true;
+        }
         if (isAdminDemoEnabled()) {
           return true;
         }
@@ -252,11 +272,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
 
       // Vendor area — everything under /vendor requires a signed-in vendor,
-      // except the public login/signup pages.
+      // except the public login/signup/forgot-password pages.
       if (nextUrl.pathname.startsWith("/vendor")) {
         const isPublicVendor =
           nextUrl.pathname === "/vendor/login" ||
-          nextUrl.pathname === "/vendor/signup";
+          nextUrl.pathname === "/vendor/signup" ||
+          nextUrl.pathname === "/vendor/forgot-password";
         if (isPublicVendor) return true;
         return auth?.user?.role === "vendor";
       }

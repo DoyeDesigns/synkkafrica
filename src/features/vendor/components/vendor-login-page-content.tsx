@@ -9,9 +9,13 @@ import { useTranslation } from "@/hooks/use-translation";
 
 type VendorLoginPageContentProps = {
   backendReady: boolean;
+  passwordUpdated?: boolean;
 };
 
-export function VendorLoginPageContent({ backendReady }: VendorLoginPageContentProps) {
+export function VendorLoginPageContent({
+  backendReady,
+  passwordUpdated = false,
+}: VendorLoginPageContentProps) {
   const t = useTranslation();
 
   return (
@@ -35,6 +39,15 @@ export function VendorLoginPageContent({ backendReady }: VendorLoginPageContentP
             {t("vendor.login.intro")}
           </p>
         </div>
+
+        {passwordUpdated ? (
+          <p
+            role="status"
+            className="mt-6 rounded-lg bg-[#E7F6EC] px-4 py-3 text-center text-sm font-medium font-satoshi text-[#2E7D32]"
+          >
+            {t("vendor.login.passwordUpdated")}
+          </p>
+        ) : null}
 
         {!backendReady ? (
           <p className="mt-6 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-center text-xs text-amber-800">

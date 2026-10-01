@@ -4,10 +4,16 @@ import { signIn } from "@/auth";
 import { ApiError } from "@/lib/api/backend";
 import {
   requestVendorOtp,
+  requestVendorPasswordReset,
+  resetVendorPassword,
   signupVendor,
   verifyVendorOtp,
   type VendorSignupInput,
 } from "@/lib/api/vendor";
+import {
+  ACCOUNT_BLOCKED_SIGNIN_CODE,
+  SIGNIN_UNAVAILABLE_CODE,
+} from "@/lib/auth/session-errors";
 
 export type VendorActionResult = { ok: boolean; error?: string };
 
@@ -32,8 +38,22 @@ export async function signInWithEmailAsVendorAction(
   try {
     await signIn("vendor", { email, password, redirect: false });
     return { ok: true };
-  } catch {
-    // Credentials provider throws on bad login.
+  } catch (err) {
+    // The vendor credentials provider tags failures that aren't a wrong
+    // password (see src/auth.ts) with a `code`.
+    const code = (err as { code?: string } | null)?.code;
+    if (code === ACCOUNT_BLOCKED_SIGNIN_CODE) {
+      return {
+        ok: false,
+        error: "This vendor account is suspended. Contact SynkAfrica support.",
+      };
+    }
+    if (code === SIGNIN_UNAVAILABLE_CODE) {
+      return {
+        ok: false,
+        error: "We couldn't sign you in right now. Please try again in a moment.",
+      };
+    }
     return { ok: false, error: "Invalid email or password." };
   }
 }
@@ -111,5 +131,81 @@ export async function signUpVendorAction(
   } catch {
     // Account created but auto-login failed — send them to log in.
     return { ok: true, next: "login" };
+  }
+}
+
+// Forgot-password outcomes carry an error *code* (not a display string) so the
+// client can translate it; `message` is the backend's own validation text for
+// 400s, which the vendor can act on directly.
+export type VendorPasswordResetResult =
+  | { ok: true }
+  | {
+      ok: false;
+      error:
+        | "invalidEmail"
+        | "sendFailed"
+        | "invalidCode"
+        | "validation"
+        | "resetFailed";
+      message?: string;
+    };
+
+const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+// Nest's ValidationPipe returns `message` as a string or an array of strings.
+function backendMessage(err: ApiError): string {
+  const body = err.body;
+  if (body && typeof body === "object" && "message" in body) {
+    const message = (body as { message: unknown }).message;
+    if (Array.isArray(message)) return message.map(String).join(" ");
+    if (typeof message === "string") return message;
+  }
+  return err.message;
+}
+
+// Forgot password step 1: email a reset code. The backend always answers 204
+// whether or not the account exists, so success says nothing about the email.
+export async function requestVendorPasswordResetAction(
+  email: string,
+): Promise<VendorPasswordResetResult> {
+  const trimmed = email.trim().toLowerCase();
+  if (!EMAIL_RE.test(trimmed)) return { ok: false, error: "invalidEmail" };
+  try {
+    await requestVendorPasswordReset(trimmed);
+    return { ok: true };
+  } catch (err) {
+    console.error("[vendor-forgot-password] failed", {
+      status: err instanceof ApiError ? err.status : null,
+      message: err instanceof Error ? err.message : String(err),
+    });
+    return { ok: false, error: "sendFailed" };
+  }
+}
+
+// Forgot password step 2: consume the code and set the new password.
+export async function resetVendorPasswordAction(input: {
+  email: string;
+  code: string;
+  newPassword: string;
+}): Promise<VendorPasswordResetResult> {
+  const email = input.email.trim().toLowerCase();
+  const code = input.code.trim();
+  if (!EMAIL_RE.test(email)) return { ok: false, error: "invalidEmail" };
+  if (!/^\d{6}$/.test(code)) return { ok: false, error: "invalidCode" };
+  try {
+    await resetVendorPassword({ email, code, newPassword: input.newPassword });
+    return { ok: true };
+  } catch (err) {
+    if (err instanceof ApiError && err.status === 401) {
+      return { ok: false, error: "invalidCode" };
+    }
+    if (err instanceof ApiError && err.status === 400) {
+      return { ok: false, error: "validation", message: backendMessage(err) };
+    }
+    console.error("[vendor-reset-password] failed", {
+      status: err instanceof ApiError ? err.status : null,
+      message: err instanceof Error ? err.message : String(err),
+    });
+    return { ok: false, error: "resetFailed" };
   }
 }

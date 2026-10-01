@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
@@ -81,6 +82,15 @@ export function VendorLoginEmailForm() {
             <Eye className="h-4 w-4" strokeWidth={1.75} />
           )}
         </button>
+      </div>
+
+      <div className="-mt-1 flex justify-end">
+        <Link
+          href="/vendor/forgot-password"
+          className="text-sm font-semibold font-satoshi text-[#D85A30] transition-opacity hover:opacity-80"
+        >
+          {t("vendor.login.forgotPassword")}
+        </Link>
       </div>
 
       {state?.error ? (
