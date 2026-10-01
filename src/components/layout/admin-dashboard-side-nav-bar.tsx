@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
+import { Fragment, Suspense } from "react";
 import {
   Building2,
   Calendar,
@@ -13,6 +13,7 @@ import {
   Package,
   LogOut,
   ScrollText,
+  X,
   ShieldCheck,
   Sparkles,
   Star,
@@ -32,25 +33,58 @@ import {
   type AdminNavItem,
 } from "@/features/admin/constants";
 import { useTranslation } from "@/hooks/use-translation";
-import { adminGetOverview, type AdminOverview } from "@/lib/api/admin";
+import {
+  adminGetOverview,
+  adminListListings,
+  type AdminListing,
+  type AdminOverview,
+} from "@/lib/api/admin";
+import {
+  LIVE_QUERY_OPTIONS,
+  POLLING_QUERY_OPTIONS,
+} from "@/lib/live-query-options";
 import { getAdminMe } from "@/lib/api/admin-auth";
 import { signOutAdminAction } from "@/lib/auth/actions";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
 // Maps the live overview counts onto the actionable nav items. Reviews have no
-// pending queue (published/hidden only), so they carry no badge.
+// pending queue (published/hidden only), so they carry no badge. Pending
+// listings are split per category from the pending-listings queue.
 function navBadges(
   overview: AdminOverview | undefined,
+  pendingListings: AdminListing[] | undefined,
 ): Partial<Record<AdminNavItem["id"], number>> {
-  if (!overview) return {};
+  const byCategory = (category: AdminListing["category"]) =>
+    pendingListings?.filter((l) => l.category === category).length;
   return {
-    vendors: overview.pendingVendors,
-    bookings: overview.awaitingBookings,
-    payouts: overview.pendingPayouts,
-    verifications: overview.pendingDocuments,
-    support: overview.openSupportTickets,
+    experiences: byCategory("experiences"),
+    cars: byCategory("cars"),
+    accommodations: byCategory("accommodations"),
+    vendors: overview?.pendingVendors,
+    bookings: overview?.awaitingBookings,
+    payouts: overview?.pendingPayouts,
+    verifications: overview?.pendingDocuments,
+    support: overview?.openSupportTickets,
   };
 }
+
+const BADGE_HINTS: Partial<Record<AdminNavItem["id"], string>> = {
+  experiences: "pending review",
+  cars: "pending review",
+  accommodations: "pending review",
+  vendors: "awaiting approval",
+  bookings: "awaiting response",
+  payouts: "payout requests",
+  verifications: "documents to verify",
+  support: "open tickets",
+};
+
+// Visual groups (separated by a divider) — catalog, operations, admin.
+const NAV_GROUP_STARTS = new Set<AdminNavItem["id"]>([
+  "experiences",
+  "vendors",
+  "team",
+]);
 
 const NAV_LABEL_KEYS: Record<AdminNavItem["id"], TranslationKey> = {
   dashboard: "admin.nav.dashboard",
@@ -93,7 +127,7 @@ function isNavItemActive(pathname: string, href: string) {
     return pathname === "/admin";
   }
 
-  return pathname.startsWith(href);
+  return pathname === href || pathname.startsWith(`${href}/`);
 }
 
 type AdminNavLinkProps = {
@@ -103,26 +137,51 @@ type AdminNavLinkProps = {
   onNavigate?: () => void;
 };
 
-function AdminNavLink({ item, pathname, badge, onNavigate }: AdminNavLinkProps) {
+function AdminNavLink({
+  item,
+  pathname,
+  badge,
+  onNavigate,
+}: AdminNavLinkProps) {
   const t = useTranslation();
   const isActive = isNavItemActive(pathname, item.href);
   const Icon = NAV_ICONS[item.icon];
+
+  const hint = BADGE_HINTS[item.id];
 
   return (
     <Link
       href={item.href}
       onClick={onNavigate}
-      className={`flex h-11 items-center gap-3 rounded-[5px] px-3 py-2.5 text-sm font-medium font-satoshi transition-colors ${
+      aria-current={isActive ? "page" : undefined}
+      className={`group relative flex h-11 items-center gap-3 rounded-[6px] px-3 py-2.5 text-sm font-satoshi transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#135391] focus-visible:ring-offset-2 ${
         isActive
-          ? "bg-[#135391] text-white fill-white"
-          : "text-[#3C3C3C] hover:bg-[#F5F5F5]"
+          ? "bg-[#135391] font-bold text-white shadow-sm"
+          : "font-medium text-[#3C3C3C] hover:bg-[#F0F6FC] hover:text-[#135391]"
       }`}
     >
-      <Icon className="h-[18px] w-[18px] shrink-0" strokeWidth={1.75} />
-      <span className="flex-1">{t(NAV_LABEL_KEYS[item.id])}</span>
+      {isActive ? (
+        <span
+          aria-hidden="true"
+          className="absolute -left-4 top-1.5 bottom-1.5 w-1 rounded-r-full bg-[#D85A30]"
+        />
+      ) : null}
+      <Icon
+        className="h-[18px] w-[18px] shrink-0"
+        strokeWidth={isActive ? 2.25 : 1.75}
+      />
+      <span className="flex-1 truncate">{t(NAV_LABEL_KEYS[item.id])}</span>
       {badge ? (
-        <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#E53935] px-1.5 text-[11px] font-bold text-white">
-          {badge}
+        <span
+          className={`flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-bold ${
+            isActive ? "bg-white text-[#135391]" : "bg-[#E53935] text-white"
+          }`}
+          title={hint ? `${badge} ${hint}` : undefined}
+        >
+          <span aria-hidden="true">{badge > 99 ? "99+" : badge}</span>
+          <span className="sr-only">
+            {hint ? `, ${badge} ${hint}` : `, ${badge}`}
+          </span>
         </span>
       ) : null}
     </Link>
@@ -139,11 +198,15 @@ function getSidebarClassName(isMobileOpen: boolean) {
 type AdminDashboardSideNavBarProps = {
   isMobileOpen?: boolean;
   onNavigate?: () => void;
+  onClose?: () => void;
+  closeLabel?: string;
 };
 
 function AdminDashboardSideNavBarContent({
   isMobileOpen,
   onNavigate,
+  onClose,
+  closeLabel,
 }: AdminDashboardSideNavBarProps) {
   const pathname = usePathname();
   const t = useTranslation();
@@ -154,9 +217,15 @@ function AdminDashboardSideNavBarContent({
     queryKey: ["admin-overview"],
     queryFn: () => adminGetOverview(token as string),
     enabled: Boolean(token),
-    refetchOnWindowFocus: false,
+    ...POLLING_QUERY_OPTIONS,
   });
-  const badges = navBadges(overview);
+  const { data: pendingListings } = useQuery({
+    queryKey: ["admin-listings", "pending"],
+    queryFn: () => adminListListings(token as string, "pending"),
+    enabled: Boolean(token),
+    ...LIVE_QUERY_OPTIONS,
+  });
+  const badges = navBadges(overview, pendingListings);
 
   const { data: me } = useQuery({
     queryKey: ["admin-me"],
@@ -169,9 +238,17 @@ function AdminDashboardSideNavBarContent({
     : ADMIN_NAV;
 
   return (
-    <aside className={getSidebarClassName(isMobileOpen ?? false)}>
-      <div className="px-6 pb-6 pt-8">
-        <Link href="/admin" className="flex items-center">
+    <aside
+      id="admin-sidebar"
+      aria-label="Admin navigation"
+      className={getSidebarClassName(isMobileOpen ?? false)}
+    >
+      <div className="flex items-center justify-between px-6 pb-6 pt-8">
+        <Link
+          href="/admin"
+          onClick={onNavigate}
+          className="flex items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#135391]"
+        >
           <Image
             src="/synkafrica-logo.svg"
             alt=""
@@ -183,18 +260,35 @@ function AdminDashboardSideNavBarContent({
             SynkAfrica
           </span>
         </Link>
+        {onClose ? (
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label={closeLabel ?? "Close menu"}
+            className="flex size-9 items-center justify-center rounded-lg text-[#676565] hover:bg-[#F5F5F5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#135391] lg:hidden"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        ) : null}
       </div>
 
       <nav className="flex-1 overflow-y-auto px-4 pb-6">
         <div className="space-y-1">
-          {navItems.map((item) => (
-            <AdminNavLink
-              key={item.id}
-              item={item}
-              pathname={pathname}
-              badge={badges[item.id]}
-              onNavigate={onNavigate}
-            />
+          {navItems.map((item, index) => (
+            <Fragment key={item.id}>
+              {index > 0 && NAV_GROUP_STARTS.has(item.id) ? (
+                <div
+                  aria-hidden="true"
+                  className="my-3 border-t border-[#F0F0F0]"
+                />
+              ) : null}
+              <AdminNavLink
+                item={item}
+                pathname={pathname}
+                badge={badges[item.id]}
+                onNavigate={onNavigate}
+              />
+            </Fragment>
           ))}
         </div>
       </nav>
@@ -203,7 +297,7 @@ function AdminDashboardSideNavBarContent({
         <form action={signOutAdminAction}>
           <button
             type="submit"
-            className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/15 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222] transition-opacity hover:opacity-90"
+            className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/10 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222] transition-colors hover:bg-[#DD2222]/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DD2222]"
           >
             <LogOut className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
             {t("vendor.nav.logOut")}

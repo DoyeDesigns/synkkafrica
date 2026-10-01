@@ -68,10 +68,12 @@ export function AdminLoginContent() {
             </span>
             <input
               type="email"
+              autoComplete="username"
+              autoFocus
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] px-3 text-sm font-satoshi outline-none focus:border-[#135391]"
+              className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] px-3 text-sm font-satoshi outline-none focus:border-[#135391] focus:ring-2 focus:ring-[#135391]/15"
             />
           </label>
           <label className="block">
@@ -81,15 +83,16 @@ export function AdminLoginContent() {
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
+                autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] px-3 pr-10 text-sm font-satoshi outline-none focus:border-[#135391]"
+                className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] px-3 pr-10 text-sm font-satoshi outline-none focus:border-[#135391] focus:ring-2 focus:ring-[#135391]/15"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword((current) => !current)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#9E9E9E] hover:text-[#135391]"
+                className="absolute right-3 top-1/2 -translate-y-1/2 rounded text-[#9E9E9E] hover:text-[#135391] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#135391]"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? (
@@ -101,14 +104,17 @@ export function AdminLoginContent() {
             </div>
           </label>
           {error ? (
-            <p className="text-xs font-medium font-satoshi text-[#C0392B]">
+            <p
+              role="alert"
+              className="rounded-lg bg-[#FDF2F2] px-3 py-2 text-xs font-medium font-satoshi text-[#C0392B]"
+            >
               {error}
             </p>
           ) : null}
           <button
             type="submit"
             disabled={loading}
-            className="h-11 w-full rounded-lg bg-[#135391] text-sm font-bold font-satoshi text-white disabled:opacity-60"
+            className="h-11 w-full rounded-lg bg-[#135391] text-sm font-bold font-satoshi text-white hover:opacity-90 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#135391] focus-visible:ring-offset-2"
           >
             {loading ? "Checking…" : "Continue"}
           </button>
@@ -149,22 +155,32 @@ export function AdminLoginContent() {
             <input
               type="text"
               inputMode="numeric"
+              autoComplete="one-time-code"
+              autoFocus
+              maxLength={6}
+              pattern="[0-9]{6}"
+              title="The 6-digit code from your authenticator app"
               value={totpCode}
-              onChange={(e) => setTotpCode(e.target.value)}
+              onChange={(e) =>
+                setTotpCode(e.target.value.replace(/\D/g, "").slice(0, 6))
+              }
               required
-              className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] px-3 text-sm font-satoshi tracking-widest outline-none focus:border-[#135391]"
+              className="mt-1.5 h-11 w-full rounded-lg border border-[#E5E5E5] px-3 text-sm font-satoshi tracking-widest outline-none focus:border-[#135391] focus:ring-2 focus:ring-[#135391]/15"
               placeholder="123456"
             />
           </label>
           {error ? (
-            <p className="text-xs font-medium font-satoshi text-[#C0392B]">
+            <p
+              role="alert"
+              className="rounded-lg bg-[#FDF2F2] px-3 py-2 text-xs font-medium font-satoshi text-[#C0392B]"
+            >
               {error}
             </p>
           ) : null}
           <button
             type="submit"
             disabled={loading}
-            className="h-11 w-full rounded-lg bg-[#135391] text-sm font-bold font-satoshi text-white disabled:opacity-60"
+            className="h-11 w-full rounded-lg bg-[#135391] text-sm font-bold font-satoshi text-white hover:opacity-90 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#135391] focus-visible:ring-offset-2"
           >
             {loading ? "Verifying…" : "Sign in"}
           </button>

@@ -37,7 +37,13 @@ export type AdminListing = {
   location: string | null;
   coverImageUrl: string | null;
   rejectionReason: string | null;
+  ratingAvg: number;
+  ratingCount: number;
+  currency: string | null;
   createdAt: string;
+  vendorName: string | null;
+  // Bookings excluding declined and cancelled requests.
+  bookingCount: number;
 };
 
 // --- Vendors ---
@@ -183,6 +189,18 @@ export async function adminRejectListing(
   });
 }
 
+// Permanently deletes a listing (and its reviews); the vendor is notified.
+// 409 with a message when the listing still has bookings in progress.
+export async function adminRemoveListing(
+  token: string,
+  id: string,
+): Promise<{ removed: boolean }> {
+  return apiFetch<{ removed: boolean }>(`/admin/vendor-listings/${id}`, {
+    method: "DELETE",
+    token,
+  });
+}
+
 export type AdminListingMedia = {
   name?: string;
   url?: string;
@@ -202,12 +220,13 @@ export type AdminListingDetail = AdminListing & {
   shortDescription: string | null;
   details: Record<string, unknown>;
   media: AdminListingMedia[];
-  ratingAvg: string;
-  ratingCount: number;
   reviewedAt: string | null;
   vendorName: string;
   vendorStatus: AdminVendor["status"];
   documents: AdminListingDocument[];
+  // Every booking for this listing grouped by status, e.g. {confirmed: 3}.
+  bookingsByStatus: Partial<Record<string, number>>;
+  updatedAt: string;
 };
 
 export async function adminGetListing(

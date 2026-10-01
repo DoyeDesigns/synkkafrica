@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { AdminVendorDetailLiveContent } from "@/features/admin/components/admin-vendor-detail-live-content";
 
 type AdminVendorDetailPageProps = {
@@ -9,5 +11,9 @@ export default async function AdminVendorDetailPage({
 }: AdminVendorDetailPageProps) {
   const { id } = await params;
 
-  return <AdminVendorDetailLiveContent vendorId={id} />;
+  return (
+    <Suspense fallback={null}>
+      <AdminVendorDetailLiveContent vendorId={id} />
+    </Suspense>
+  );
 }
