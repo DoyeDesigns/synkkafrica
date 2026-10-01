@@ -5,7 +5,11 @@ import { usePathname } from "next/navigation";
 import { VendorDashboardLayoutClient } from "@/features/vendor/components/vendor-dashboard-layout-client";
 import type { VendorVerificationStatus } from "@/features/vendor/constants";
 
-const STANDALONE_VENDOR_PATHS = ["/vendor/signup", "/vendor/login"];
+const STANDALONE_VENDOR_PATHS = [
+  "/vendor/signup",
+  "/vendor/login",
+  "/vendor/forgot-password",
+];
 
 type VendorLayoutSwitcherProps = {
   children: React.ReactNode;

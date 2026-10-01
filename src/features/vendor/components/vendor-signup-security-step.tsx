@@ -284,7 +284,7 @@ export function VendorSignupSecurityStep({ form, onChange }: VendorSignupSecurit
   );
 }
 
-function PasswordRule({ met, label }: { met: boolean; label: string }) {
+export function PasswordRule({ met, label }: { met: boolean; label: string }) {
   return (
     <li className="flex items-center gap-2 text-xs font-medium font-satoshi">
       <Check className={`h-3.5 w-3.5 ${met ? "text-[#2E7D32]" : "text-[#CFCFCF]"}`} />

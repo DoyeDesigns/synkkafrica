@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { Eye, EyeOff } from "lucide-react";
@@ -8,7 +9,13 @@ import { QRCodeSVG } from "qrcode.react";
 
 import { loginAdmin, type AdminEnrollment } from "@/lib/api/admin-auth";
 
-export function AdminLoginContent() {
+type AdminLoginContentProps = {
+  passwordUpdated?: boolean;
+};
+
+export function AdminLoginContent({
+  passwordUpdated = false,
+}: AdminLoginContentProps) {
   const router = useRouter();
   const [step, setStep] = useState<"password" | "mfa">("password");
   const [email, setEmail] = useState("");
@@ -60,6 +67,16 @@ export function AdminLoginContent() {
         Admin sign in
       </h1>
 
+      {passwordUpdated && step === "password" ? (
+        <p
+          role="status"
+          className="mt-6 rounded-lg border border-[#E7F6EC] bg-[#E7F6EC] px-4 py-3 text-sm font-medium font-satoshi text-[#2E7D32]"
+        >
+          Password updated. Sign in with your new password — you&apos;ll still
+          need your authenticator code.
+        </p>
+      ) : null}
+
       {step === "password" ? (
         <form onSubmit={handlePassword} className="mt-6 space-y-4">
           <label className="block">
@@ -103,6 +120,14 @@ export function AdminLoginContent() {
               </button>
             </div>
           </label>
+          <div className="-mt-2 flex justify-end">
+            <Link
+              href="/admin/forgot-password"
+              className="rounded text-xs font-semibold font-satoshi text-[#135391] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#135391]"
+            >
+              Forgot password?
+            </Link>
+          </div>
           {error ? (
             <p
               role="alert"

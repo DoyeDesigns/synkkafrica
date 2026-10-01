@@ -73,6 +73,22 @@ export async function loginVendor(
   });
 }
 
+// Password reset — step 1: email a 6-digit reset code. Always 204 (no
+// account enumeration), so the UI shows the same message either way.
+export async function requestVendorPasswordReset(email: string): Promise<void> {
+  await apiFetch<void>("/vendor/auth/forgot-password", { body: { email } });
+}
+
+// Password reset — step 2: consume the code and set the new password. 204 on
+// success; 401 when the code is invalid/expired; 400 on validation failure.
+export async function resetVendorPassword(input: {
+  email: string;
+  code: string;
+  newPassword: string;
+}): Promise<void> {
+  await apiFetch<void>("/vendor/auth/reset-password", { body: input });
+}
+
 export async function refreshVendorTokens(
   refreshToken: string,
 ): Promise<BackendTokens> {
