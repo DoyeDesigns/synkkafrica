@@ -117,6 +117,17 @@ export async function verifyOtp(
   return apiFetch<BackendTokens>("/auth/verify-otp", { body: { email, code } });
 }
 
+// Exchanges a Google/Apple OpenID Connect ID token for a customer session.
+// The backend verifies the token and signs the customer in by email.
+export async function socialSignIn(
+  provider: "google" | "apple",
+  idToken: string,
+): Promise<BackendTokens> {
+  return apiFetch<BackendTokens>("/auth/social", {
+    body: { provider, idToken },
+  });
+}
+
 // Rotates the refresh token, returning a fresh pair.
 export async function refreshTokens(
   refreshToken: string,

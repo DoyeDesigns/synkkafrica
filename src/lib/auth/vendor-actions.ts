@@ -9,8 +9,6 @@ import {
   type VendorSignupInput,
 } from "@/lib/api/vendor";
 
-const VENDOR_REDIRECT = "/vendor";
-
 export type VendorActionResult = { ok: boolean; error?: string };
 
 // Signup outcome: on success, `next` says where to route (auto-login landed
@@ -38,14 +36,6 @@ export async function signInWithEmailAsVendorAction(
     // Credentials provider throws on bad login.
     return { ok: false, error: "Invalid email or password." };
   }
-}
-
-export async function signInWithGoogleAsVendorAction() {
-  await signIn("google", { redirectTo: VENDOR_REDIRECT });
-}
-
-export async function signInWithAppleAsVendorAction() {
-  await signIn("apple", { redirectTo: VENDOR_REDIRECT });
 }
 
 // Signup step: email the verification code.
