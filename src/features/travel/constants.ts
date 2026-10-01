@@ -53,7 +53,8 @@ export const TRAVEL_SECTIONS: TravelSectionConfig[] = [
     id: "tours",
     label: "Tours & Experiences",
     headline: "Experience Africa with confidence",
-    heroImage: "/hero/tours.png",
+    heroImage:
+      "/high-fashion-look-back-glamor-sexy-model-woman-colorful-cloth-sunhat-blue-beach-sky.JPG.jpeg",
     landingBlurb:
       "Tours landing — discover cultural experiences and attractions.",
     resultsBlurb:
