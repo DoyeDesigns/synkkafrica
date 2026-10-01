@@ -31,6 +31,9 @@
     "notifications": "Bildirimler",
     "contactSupport": "Destek birimiyle iletişime geçin",
     "signOut": "Çıkış yap",
+    "signOutConfirmTitle": "Log out of SynkAfrica?",
+    "signOutConfirmBody": "You'll need to sign in again to continue.",
+    "signingOut": "Logging out…",
     "noReviewsYet": "Henüz yorum yok",
     "viewPhoto": "Fotoğrafı görüntüle {index}",
     "photoViewer": "Fotoğraf görüntüleyici",
@@ -897,7 +900,8 @@
       "verifications": "Doğrulamalar",
       "support": "Destek talepleri",
       "team": "Takım",
-      "audit": "Denetim günlüğü"
+      "audit": "Denetim günlüğü",
+      "deals": "Fırsatlar"
     },
     "common": {
       "all": "Tümü",
@@ -2298,6 +2302,11 @@
       "year": "Yıl",
       "yearPlaceholder": "örn. 2024",
       "comesWithDriver": "Sürücü dahil mi?",
+      "seats": "Number of seats",
+      "seatsPlaceholder": "e.g. 4",
+      "seatsChip": "{count} seats",
+      "airportTransfer": "Offers airport pick-up / drop-off?",
+      "airportTransferChip": "Airport transfers",
       "yes": "Evet",
       "no": "Hayır",
       "shortDescription": "Kısa Açıklama",

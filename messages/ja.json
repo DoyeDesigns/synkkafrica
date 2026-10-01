@@ -31,6 +31,9 @@
     "notifications": "通知",
     "contactSupport": "サポートに連絡する",
     "signOut": "サインアウト",
+    "signOutConfirmTitle": "Log out of SynkAfrica?",
+    "signOutConfirmBody": "You'll need to sign in again to continue.",
+    "signingOut": "Logging out…",
     "noReviewsYet": "まだレビューはありません",
     "viewPhoto": "写真を見る ⟦インデックス⟧",
     "photoViewer": "写真ビューア",
@@ -900,7 +903,8 @@
       "verifications": "検証",
       "support": "サポートチケット",
       "team": "チーム",
-      "audit": "監査ログ"
+      "audit": "監査ログ",
+      "deals": "お得なセール"
     },
     "common": {
       "all": "全て",
@@ -2301,6 +2305,11 @@
       "year": "年",
       "yearPlaceholder": "例えば2024年",
       "comesWithDriver": "ドライバーは付属しますか？",
+      "seats": "Number of seats",
+      "seatsPlaceholder": "e.g. 4",
+      "seatsChip": "{count} seats",
+      "airportTransfer": "Offers airport pick-up / drop-off?",
+      "airportTransferChip": "Airport transfers",
       "yes": "はい",
       "no": "いいえ",
       "shortDescription": "簡単な説明",

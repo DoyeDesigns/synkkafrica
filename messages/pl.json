@@ -31,6 +31,9 @@
     "notifications": "Powiadomienia",
     "contactSupport": "Skontaktuj się z pomocą techniczną",
     "signOut": "Wyloguj się",
+    "signOutConfirmTitle": "Log out of SynkAfrica?",
+    "signOutConfirmBody": "You'll need to sign in again to continue.",
+    "signingOut": "Logging out…",
     "noReviewsYet": "Jeszcze nie ma żadnych recenzji",
     "viewPhoto": "Zobacz zdjęcie {index}",
     "photoViewer": "Przeglądarka zdjęć",
@@ -900,7 +903,8 @@
       "verifications": "Weryfikacje",
       "support": "Zgłoszenia do pomocy technicznej",
       "team": "Zespół",
-      "audit": "Dziennik audytowy"
+      "audit": "Dziennik audytowy",
+      "deals": "Oferty"
     },
     "common": {
       "all": "Wszystkie",
@@ -2301,6 +2305,11 @@
       "year": "Rok",
       "yearPlaceholder": "np. 2024",
       "comesWithDriver": "Czy w zestawie znajduje się sterownik?",
+      "seats": "Number of seats",
+      "seatsPlaceholder": "e.g. 4",
+      "seatsChip": "{count} seats",
+      "airportTransfer": "Offers airport pick-up / drop-off?",
+      "airportTransferChip": "Airport transfers",
       "yes": "Tak",
       "no": "Nie",
       "shortDescription": "Krótki opis",

@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { CredentialsSignin } from "next-auth";
 import Apple from "next-auth/providers/apple";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
@@ -13,18 +13,37 @@ import {
   hasAppleAuth,
   hasGoogleAuth,
 } from "@/lib/env";
-import { refreshTokens, signOutBackend, verifyOtp } from "@/lib/api/backend";
+import {
+  ApiError,
+  isAccountBlockedError,
+  refreshTokens,
+  signOutBackend,
+  socialSignIn,
+  verifyOtp,
+} from "@/lib/api/backend";
 import {
   loginVendor,
   refreshVendorTokens,
   signOutVendor,
 } from "@/lib/api/vendor";
 import { refreshAdminTokens, verifyAdminMfa } from "@/lib/api/admin-auth";
+import {
+  ACCOUNT_BLOCKED_SIGNIN_CODE,
+  SESSION_ERROR_ACCOUNT_BLOCKED,
+  SOCIAL_SIGNIN_FAILED_CODE,
+  SESSION_ERROR_REVOKED,
+} from "@/lib/auth/session-errors";
 import { adminLogout } from "@/lib/api/admin/auth";
 
 // 30s clock-skew guard so we refresh a hair early rather than sending a
 // just-expired access token.
 const REFRESH_SKEW_MS = 30_000;
+
+// Lets the login form show the blocked-account message instead of
+// "invalid code" (read client-side as `res.code`).
+class AccountBlockedSignin extends CredentialsSignin {
+  code = ACCOUNT_BLOCKED_SIGNIN_CODE;
+}
 
 // The custom fields we carry on the NextAuth JWT (Auth.js types it loosely).
 // `realm` tells the refresh/session logic which backend realm this session
@@ -77,7 +96,9 @@ const providers = [
                 accessTokenExpires:
                   Date.now() + tokens.accessTokenExpiresIn * 1000,
               } as unknown as { id: string; email: string };
-            } catch {
+            } catch (err) {
+              // Admin-blocked account → distinct code for the login UI.
+              if (isAccountBlockedError(err)) throw new AccountBlockedSignin();
               // Wrong/expired code → NextAuth surfaces a CredentialsSignin error.
               return null;
             }
@@ -171,7 +192,48 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   trustHost: true,
   providers,
   session: { strategy: "jwt" },
+  // Apple returns to /api/auth/callback/apple with a cross-site form POST
+  // (response_mode=form_post). Lax cookies are not sent on that request, so
+  // the state/nonce checks would fail; these two must be SameSite=None.
+  ...(process.env.NODE_ENV === "production"
+    ? {
+        cookies: {
+          state: { options: { sameSite: "none", secure: true } },
+          nonce: { options: { sameSite: "none", secure: true } },
+          callbackUrl: { options: { sameSite: "none", secure: true } },
+        } as const,
+      }
+    : {}),
   callbacks: {
+    // Google/Apple only prove who the user is; the app needs a backend
+    // session. Swap the provider's ID token for backend tokens here and hang
+    // them on `user` — the jwt() callback below copies them onto the token
+    // exactly as it does for the OTP provider.
+    async signIn({ user, account }) {
+      if (account?.provider !== "google" && account?.provider !== "apple") {
+        return true;
+      }
+      if (!account.id_token) {
+        return `/login?error=${SOCIAL_SIGNIN_FAILED_CODE}`;
+      }
+      try {
+        const tokens = await socialSignIn(account.provider, account.id_token);
+        Object.assign(user, {
+          id: decodeJwtSub(tokens.accessToken) ?? user.id,
+          accessToken: tokens.accessToken,
+          refreshToken: tokens.refreshToken,
+          accessTokenExpires: Date.now() + tokens.accessTokenExpiresIn * 1000,
+        });
+        return true;
+      } catch (err) {
+        if (isAccountBlockedError(err)) {
+          return `/login?error=${ACCOUNT_BLOCKED_SIGNIN_CODE}`;
+        }
+        console.error(`[auth] ${account.provider} sign-in exchange failed`, err);
+        return `/login?error=${SOCIAL_SIGNIN_FAILED_CODE}`;
+      }
+    },
+
     authorized: ({ auth, request: { nextUrl } }) => {
       const protectedPrefixes = ["/account", "/bookings"];
       const isProtected = protectedPrefixes.some((prefix) =>
@@ -231,7 +293,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         return token;
       }
 
-      // 2. No backend session (e.g. Google-only) → nothing to refresh.
+      // 2. No backend session → nothing to refresh.
       if (!t.refreshToken || !t.accessTokenExpires) return token;
 
       // 3. Access token still valid → use as-is.
@@ -251,9 +313,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         t.refreshToken = rotated.refreshToken;
         t.accessTokenExpires = Date.now() + rotated.accessTokenExpiresIn * 1000;
         t.error = undefined;
-      } catch {
+      } catch (err) {
         // Refresh failed → mark the session so the UI can force re-login.
-        t.error = "RefreshTokenError";
+        // A 401/403 from the customer realm is definitive (account blocked,
+        // or refresh tokens revoked — which is what a block does), so flag it
+        // for the client to sign out. Anything else may be transient.
+        t.error =
+          t.realm === "customer" && isAccountBlockedError(err)
+            ? SESSION_ERROR_ACCOUNT_BLOCKED
+            : t.realm === "customer" &&
+                err instanceof ApiError &&
+                (err.status === 401 || err.status === 403)
+              ? SESSION_ERROR_REVOKED
+              : "RefreshTokenError";
       }
       return token;
     },
@@ -296,7 +368,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
     },
   },
-  pages: { signIn: "/login" },
+  // Auth.js errors (cancelled consent, failed OAuth checks) land back on the
+  // login page as ?error=<type> instead of the bare built-in error page.
+  pages: { signIn: "/login", error: "/login" },
 });
 
 // Reads the `sub` (user id) claim out of a signed JWT without verifying it —

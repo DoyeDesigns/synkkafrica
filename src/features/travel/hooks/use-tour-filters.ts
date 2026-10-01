@@ -12,6 +12,7 @@ import {
   type TourFilterState,
 } from "@/features/travel/data/tour-results";
 import { listExperiences, toTourResult } from "@/lib/api/experiences";
+import { useDisplayCurrency } from "@/hooks/use-display-currency";
 
 function getFiltersFromSearchParams(
   searchParams: URLSearchParams,
@@ -74,9 +75,11 @@ export function useTourFilters() {
     [liveTours],
   );
 
+  // Budgets are typed in the display currency (what result cards show).
+  const { toDisplay } = useDisplayCurrency();
   const results = useMemo(
-    () => filterTourResults(allResults, appliedFilters, searchQuery),
-    [allResults, appliedFilters, searchQuery],
+    () => filterTourResults(allResults, appliedFilters, searchQuery, toDisplay),
+    [allResults, appliedFilters, searchQuery, toDisplay],
   );
 
   const updateDraftFilter = <K extends keyof TourFilterState>(

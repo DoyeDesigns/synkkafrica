@@ -199,6 +199,9 @@ export function filterCarRentalResults(
   results: CarRentalResult[],
   filters: CarRentalFilterState,
   query: string,
+  // Converts a listing price into the display currency the budget (price
+  // input / slider) is expressed in. Defaults to no conversion.
+  toDisplay: (amount: number, currency: string) => number = (amount) => amount,
 ): CarRentalResult[] {
   return results.filter((result) => {
     if (
@@ -257,9 +260,11 @@ export function filterCarRentalResults(
         ? budgetMax
         : filters.priceMax;
 
+    // The budget is in the shopper's display currency (what cards show).
+    const shownPrice = toDisplay(result.pricePerDay, result.currency);
     if (
-      result.pricePerDay < filters.priceMin ||
-      result.pricePerDay > effectiveMax
+      shownPrice < filters.priceMin ||
+      shownPrice > effectiveMax
     ) {
       return false;
     }

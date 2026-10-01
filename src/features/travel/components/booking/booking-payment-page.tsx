@@ -21,9 +21,10 @@ import { BookingBreadcrumbs } from "@/features/travel/components/booking/booking
 import { BookingPaymentLoader } from "@/features/travel/components/booking/booking-payment-loader";
 import {
   BookingPaymentMethods,
-  gatewayForMethod,
+  payInputForMethod,
   redirectToCheckout,
   type CheckoutMethodId,
+  type PayOptions,
 } from "@/features/travel/components/booking/booking-payment-methods";
 import {
   BookingPaymentBreakdown,
@@ -96,7 +97,7 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
       });
   }, [property, searchParams]);
 
-  const handlePay = (method: CheckoutMethodId) => {
+  const handlePay = (method: CheckoutMethodId, options?: PayOptions) => {
     if (!booking || paying) return;
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) {
       setError("Enter a valid email for your receipt.");
@@ -104,13 +105,14 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
     }
     setError(null);
     setPaying(method);
-    const provider = gatewayForMethod(method);
+    const { provider, chargeCurrency } = payInputForMethod(method, options);
     const callbackUrl = `${window.location.origin}/accommodations/${property.id}/book/confirmation?${query}&bookingId=${booking.bookingId}`;
     initAccommodationPayment(booking.bookingId, {
       email: email.trim(),
       phone: phone.trim() || undefined,
       callbackUrl,
       provider,
+      chargeCurrency,
     })
       .then(({ authorizationUrl }) => redirectToCheckout(authorizationUrl))
       .catch(() => {
@@ -183,6 +185,7 @@ function BookingPaymentPageContent({ property }: BookingPaymentPageProps) {
             <div className="mt-5">
               <BookingPaymentMethods
                 currency={booking.currency}
+                convertibleTotal={booking.total}
                 paying={paying}
                 onPay={handlePay}
               />

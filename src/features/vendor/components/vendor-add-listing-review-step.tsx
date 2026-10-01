@@ -108,6 +108,16 @@ function CarListingReview({
                     : t("vendor.addListing.documents.sidebar.selfDrive")
                 }
               />
+              {form.seats.trim() ? (
+                <ReviewChip
+                  label={t("vendor.addListing.seatsChip", {
+                    count: form.seats.trim(),
+                  })}
+                />
+              ) : null}
+              {form.airportTransfer ? (
+                <ReviewChip label={t("vendor.addListing.airportTransferChip")} />
+              ) : null}
               {form.handoverMethods.includes("client_pickup") ? (
                 <ReviewChip label={t("vendor.addListing.clientPickup")} />
               ) : null}

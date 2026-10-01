@@ -31,6 +31,9 @@
     "notifications": "Varsler",
     "contactSupport": "Kontakt support",
     "signOut": "Logg ut",
+    "signOutConfirmTitle": "Log out of SynkAfrica?",
+    "signOutConfirmBody": "You'll need to sign in again to continue.",
+    "signingOut": "Logging out…",
     "noReviewsYet": "Ingen anmeldelser ennå",
     "viewPhoto": "Se bilde {indeks}",
     "photoViewer": "Bildeviser",
@@ -900,7 +903,8 @@
       "verifications": "Verifikasjoner",
       "support": "Støttebilletter",
       "team": "Team",
-      "audit": "Revisjonslogg"
+      "audit": "Revisjonslogg",
+      "deals": "Tilbud"
     },
     "common": {
       "all": "Alle",
@@ -2301,6 +2305,11 @@
       "year": "År",
       "yearPlaceholder": "f.eks. 2024",
       "comesWithDriver": "Kommer med driver?",
+      "seats": "Number of seats",
+      "seatsPlaceholder": "e.g. 4",
+      "seatsChip": "{count} seats",
+      "airportTransfer": "Offers airport pick-up / drop-off?",
+      "airportTransferChip": "Airport transfers",
       "yes": "Ja",
       "no": "Ingen",
       "shortDescription": "Kort beskrivelse",

@@ -31,6 +31,9 @@
     "notifications": "Meddelanden",
     "contactSupport": "Kontakta supporten",
     "signOut": "Logga ut",
+    "signOutConfirmTitle": "Log out of SynkAfrica?",
+    "signOutConfirmBody": "You'll need to sign in again to continue.",
+    "signingOut": "Logging out…",
     "noReviewsYet": "Inga recensioner ännu",
     "viewPhoto": "Visa foto {index}",
     "photoViewer": "Bildvisare",
@@ -900,7 +903,8 @@
       "verifications": "Kontroller",
       "support": "Supportärenden",
       "team": "Team",
-      "audit": "Revisionslogg"
+      "audit": "Revisionslogg",
+      "deals": "Erbjudanden"
     },
     "common": {
       "all": "Alla",
@@ -2301,6 +2305,11 @@
       "year": "År",
       "yearPlaceholder": "t.ex. 2024",
       "comesWithDriver": "Ingår drivrutinen?",
+      "seats": "Number of seats",
+      "seatsPlaceholder": "e.g. 4",
+      "seatsChip": "{count} seats",
+      "airportTransfer": "Offers airport pick-up / drop-off?",
+      "airportTransferChip": "Airport transfers",
       "yes": "Ja",
       "no": "Nej",
       "shortDescription": "Kort beskrivning",

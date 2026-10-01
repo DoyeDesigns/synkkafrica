@@ -24,6 +24,7 @@ import {
   type VendorNavItem,
 } from "@/features/vendor/constants";
 import { useTranslation } from "@/hooks/use-translation";
+import { SignOutConfirmButton } from "@/components/auth/sign-out-confirm";
 import { signOutVendorAction } from "@/lib/auth/actions";
 import type { TranslationKey } from "@/lib/preferences/translations";
 import {
@@ -214,15 +215,13 @@ function VendorDashboardSideNavBarContent({
       </nav>
 
       <div className="border-t border-[#EEEEEE] p-4">
-        <form action={signOutVendorAction}>
-          <button
-            type="submit"
-            className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/15 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222] transition-opacity hover:opacity-90"
-          >
+        <SignOutConfirmButton
+          action={signOutVendorAction}
+          className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/15 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222] transition-opacity hover:opacity-90"
+        >
             <LogOut className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
             {t("vendor.nav.logOut")}
-          </button>
-        </form>
+          </SignOutConfirmButton>
       </div>
     </aside>
   );
@@ -262,15 +261,13 @@ function VendorDashboardSideNavBarFallback() {
       </nav>
 
       <div className="border-t border-[#EEEEEE] p-4">
-        <form action={signOutVendorAction}>
-          <button
-            type="submit"
-            className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/15 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222] transition-opacity hover:opacity-90"
-          >
+        <SignOutConfirmButton
+          action={signOutVendorAction}
+          className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/15 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222] transition-opacity hover:opacity-90"
+        >
             <LogOut className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
             {t("vendor.nav.logOut")}
-          </button>
-        </form>
+          </SignOutConfirmButton>
       </div>
     </aside>
   );

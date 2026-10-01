@@ -31,6 +31,9 @@
     "notifications": "Meldingen",
     "contactSupport": "Neem contact op met ondersteuning",
     "signOut": "Meld u af",
+    "signOutConfirmTitle": "Log out of SynkAfrica?",
+    "signOutConfirmBody": "You'll need to sign in again to continue.",
+    "signingOut": "Logging out…",
     "noReviewsYet": "Nog geen beoordelingen",
     "viewPhoto": "Bekijk foto {index}",
     "photoViewer": "Foto-viewer",
@@ -900,7 +903,8 @@
       "verifications": "Verificaties",
       "support": "Ondersteuningstickets",
       "team": "Team",
-      "audit": "Auditlogboek"
+      "audit": "Auditlogboek",
+      "deals": "Deals"
     },
     "common": {
       "all": "Alle",
@@ -2301,6 +2305,11 @@
       "year": "Jaar",
       "yearPlaceholder": "bijv. 2024",
       "comesWithDriver": "Wordt geleverd met chauffeur?",
+      "seats": "Number of seats",
+      "seatsPlaceholder": "e.g. 4",
+      "seatsChip": "{count} seats",
+      "airportTransfer": "Offers airport pick-up / drop-off?",
+      "airportTransferChip": "Airport transfers",
       "yes": "Ja",
       "no": "Nee",
       "shortDescription": "Korte beschrijving",

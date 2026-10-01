@@ -3,11 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { LoginAppleButton } from "@/components/auth/login-apple-button";
 import { LoginTrustBadges } from "@/components/auth/login-trust-badges";
-import { signInWithAppleAsVendorAction } from "@/lib/auth/vendor-actions";
 import { VendorLoginEmailForm } from "@/features/vendor/components/vendor-login-email-form";
-import { VendorLoginGoogleButton } from "@/features/vendor/components/vendor-login-google-button";
 import { useTranslation } from "@/hooks/use-translation";
 
 type VendorLoginPageContentProps = {
@@ -47,19 +44,6 @@ export function VendorLoginPageContent({ backendReady }: VendorLoginPageContentP
 
         <div className="mt-8 space-y-6">
           <VendorLoginEmailForm />
-
-          <div className="flex items-center gap-4">
-            <div className="h-px flex-1 bg-[#E0E0E0]" />
-            <span className="shrink-0 text-sm font-medium font-satoshi text-foreground/70">
-              {t("login.orUseOptions")}
-            </span>
-            <div className="h-px flex-1 bg-[#E0E0E0]" />
-          </div>
-
-          <div className="space-y-4">
-            <VendorLoginGoogleButton />
-            <LoginAppleButton action={signInWithAppleAsVendorAction} />
-          </div>
         </div>
 
         <div className="mt-8 text-center">

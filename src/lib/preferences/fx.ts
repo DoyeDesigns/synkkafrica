@@ -11,7 +11,9 @@ export type FxRatesSnapshot = {
   source: "live" | "fallback";
 };
 
-const CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6 hours
+// Match the backend FxService (1h cache, same feed) so the price shown here is
+// the price Stripe charges when a customer pays an NGN booking in USD.
+const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
 
 let memoryCache: FxRatesSnapshot | null = null;
 
@@ -20,15 +22,18 @@ function withUsdBase(rates: Record<string, number>): Record<string, number> {
 }
 
 async function fetchLiveUsdRates(): Promise<Record<string, number> | null> {
-  // Frankfurter is ECB-based and free (no key). NGN and some African FX may be
-  // missing — we merge fallbacks for those codes.
+  // open.er-api.com is free (no key) and, unlike ECB-based feeds, publishes
+  // NGN. Fallbacks only fill codes the feed omits.
   try {
-    const res = await fetch("https://api.frankfurter.app/latest?from=USD", {
-      next: { revalidate: 21_600 },
+    const res = await fetch("https://open.er-api.com/v6/latest/USD", {
+      next: { revalidate: 3_600 },
     });
     if (!res.ok) return null;
-    const data = (await res.json()) as { rates?: Record<string, number> };
-    if (!data.rates) return null;
+    const data = (await res.json()) as {
+      result?: string;
+      rates?: Record<string, number>;
+    };
+    if (data.result !== "success" || !data.rates) return null;
     return withUsdBase({ ...FALLBACK_USD_RATES, ...data.rates });
   } catch {
     return null;

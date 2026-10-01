@@ -48,7 +48,7 @@ export const CURRENCIES: CurrencyOption[] = [
 /** Last-known-good USD-based rates used when the live FX API is unavailable. */
 export const FALLBACK_USD_RATES: Record<CurrencyCode, number> = {
   USD: 1,
-  NGN: 1580,
+  NGN: 1330,
   EUR: 0.92,
   GBP: 0.79,
   CAD: 1.36,

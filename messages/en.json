@@ -32,6 +32,9 @@
     "notifications": "Notifications",
     "contactSupport": "Contact support",
     "signOut": "Sign out",
+    "signOutConfirmTitle": "Log out of SynkAfrica?",
+    "signOutConfirmBody": "You'll need to sign in again to continue.",
+    "signingOut": "Logging out…",
     "noReviewsYet": "No Reviews yet",
     "viewPhoto": "View photo {index}",
     "photoViewer": "Photo viewer",
@@ -195,7 +198,9 @@
     "emailPlaceholder": "Enter your email",
     "orUseOptions": "or use one of these options",
     "signInGoogle": "Sign in with Google",
-    "continueApple": "Continue with Apple"
+    "continueApple": "Continue with Apple",
+    "accountBlocked": "This account has been blocked. Contact support.",
+    "socialFailed": "We couldn't sign you in with that account. Try again, or use your email instead."
   },
   "account": {
     "nav": {
@@ -569,7 +574,15 @@
       "redirecting": "Redirecting…",
       "subtotal": "Subtotal",
       "loadingMethods": "Loading payment options…",
-      "noMethodsForCurrency": "Online payment isn't available for {currency} bookings yet. Please contact support."
+      "noMethodsForCurrency": "Online payment isn't available for {currency} bookings yet. Please contact support.",
+      "currencyChoice": "Choose how to pay",
+      "payInNaira": "Pay in Naira",
+      "payInNairaHint": "{amount} with Paystack",
+      "payInUsd": "Pay in US dollars",
+      "usdQuote": "≈ {amount}",
+      "usdQuoteNote": "Final amount confirmed on the next page · rate as of {time}",
+      "usdQuoteLoading": "Getting the US dollar amount…",
+      "usdUnavailable": "Paying in US dollars isn't available right now. You can still pay in Naira."
     },
     "flight": {
       "travellerN": "Traveller {n}",
@@ -984,7 +997,8 @@
       "support": "Support tickets",
       "team": "Team",
       "audit": "Audit log",
-      "packages": "Packages"
+      "packages": "Packages",
+      "deals": "Deals"
     },
     "common": {
       "all": "All",
@@ -2409,6 +2423,11 @@
       "year": "Year",
       "yearPlaceholder": "e.g. 2024",
       "comesWithDriver": "Comes with Driver?",
+      "seats": "Number of seats",
+      "seatsPlaceholder": "e.g. 4",
+      "seatsChip": "{count} seats",
+      "airportTransfer": "Offers airport pick-up / drop-off?",
+      "airportTransferChip": "Airport transfers",
       "yes": "Yes",
       "no": "No",
       "shortDescription": "Short Description",

@@ -1,6 +1,10 @@
 import { apiFetch } from "@/lib/api/backend";
 import type { TourResult } from "@/features/travel/data/tour-results";
 import type { TourDetail } from "@/features/travel/data/tour-booking";
+import type {
+  InitBookingPaymentInput,
+  InitBookingPaymentResult,
+} from "@/lib/api/payments";
 
 export type ExperienceOptionApi = {
   id: string;
@@ -95,15 +99,9 @@ export async function bookExperience(
 
 export async function initExperiencePayment(
   bookingId: string,
-  input: {
-    email?: string;
-    phone?: string;
-    callbackUrl?: string;
-    // Omit to let the backend pick by currency (NGN -> Paystack, else Stripe).
-    provider?: "PAYSTACK" | "STRIPE";
-  },
+  input: InitBookingPaymentInput,
   token?: string,
-): Promise<{ authorizationUrl: string; reference: string }> {
+): Promise<InitBookingPaymentResult> {
   return apiFetch(`/experiences/bookings/${bookingId}/pay`, {
     method: "POST",
     token,

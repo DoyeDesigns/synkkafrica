@@ -22,6 +22,21 @@ export class ApiError extends Error {
   }
 }
 
+// Backend error code for a customer account an admin has blocked. Returned
+// (403) by /auth/verify-otp, /auth/refresh, and any customer-authenticated
+// route while the block is in place.
+export const ACCOUNT_BLOCKED_CODE = "ACCOUNT_BLOCKED";
+
+export function isAccountBlockedError(err: unknown): boolean {
+  if (!(err instanceof ApiError) || err.status !== 403) return false;
+  const body = err.body;
+  return (
+    typeof body === "object" &&
+    body !== null &&
+    (body as { code?: unknown }).code === ACCOUNT_BLOCKED_CODE
+  );
+}
+
 type ApiFetchOptions = {
   method?: "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
   body?: unknown;
@@ -100,6 +115,17 @@ export async function verifyOtp(
   code: string,
 ): Promise<BackendTokens> {
   return apiFetch<BackendTokens>("/auth/verify-otp", { body: { email, code } });
+}
+
+// Exchanges a Google/Apple OpenID Connect ID token for a customer session.
+// The backend verifies the token and signs the customer in by email.
+export async function socialSignIn(
+  provider: "google" | "apple",
+  idToken: string,
+): Promise<BackendTokens> {
+  return apiFetch<BackendTokens>("/auth/social", {
+    body: { provider, idToken },
+  });
 }
 
 // Rotates the refresh token, returning a fresh pair.

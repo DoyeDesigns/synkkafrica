@@ -11,7 +11,9 @@ import { usePreferencesStore } from "@/stores/preferences-store";
 
 let fxFetchStarted = false;
 
-async function ensureClientFxRates() {
+// Load live display-currency rates once per page load (falls back to the
+// built-in rates until then).
+export async function ensureClientFxRates() {
   if (fxFetchStarted || typeof window === "undefined") return;
   fxFetchStarted = true;
   try {

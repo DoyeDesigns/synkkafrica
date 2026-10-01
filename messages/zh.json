@@ -31,6 +31,9 @@
     "notifications": "通知",
     "contactSupport": "联系支持人员",
     "signOut": "登出",
+    "signOutConfirmTitle": "Log out of SynkAfrica?",
+    "signOutConfirmBody": "You'll need to sign in again to continue.",
+    "signingOut": "Logging out…",
     "noReviewsYet": "还没有评论",
     "viewPhoto": "查看照片⟦索引⟧",
     "photoViewer": "照片浏览器",
@@ -900,7 +903,8 @@
       "verifications": "验证",
       "support": "支持票",
       "team": "团队",
-      "audit": "审核日志"
+      "audit": "审核日志",
+      "deals": "优惠"
     },
     "common": {
       "all": "全部",
@@ -2301,6 +2305,11 @@
       "year": "年",
       "yearPlaceholder": "例如2024年",
       "comesWithDriver": "附带驱动程序吗？",
+      "seats": "Number of seats",
+      "seatsPlaceholder": "e.g. 4",
+      "seatsChip": "{count} seats",
+      "airportTransfer": "Offers airport pick-up / drop-off?",
+      "airportTransferChip": "Airport transfers",
       "yes": "是的",
       "no": "不",
       "shortDescription": "简短描述",

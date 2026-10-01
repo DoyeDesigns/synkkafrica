@@ -31,6 +31,9 @@
     "notifications": "알림",
     "contactSupport": "고객 지원팀에 문의하기",
     "signOut": "로그아웃",
+    "signOutConfirmTitle": "Log out of SynkAfrica?",
+    "signOutConfirmBody": "You'll need to sign in again to continue.",
+    "signingOut": "Logging out…",
     "noReviewsYet": "아직 리뷰가 없습니다",
     "viewPhoto": "사진 보기 [[[목록]]]",
     "photoViewer": "사진 뷰어",
@@ -900,7 +903,8 @@
       "verifications": "검증",
       "support": "지원 티켓",
       "team": "팀",
-      "audit": "감사 로그"
+      "audit": "감사 로그",
+      "deals": "특가"
     },
     "common": {
       "all": "모두",
@@ -2301,6 +2305,11 @@
       "year": "년도",
       "yearPlaceholder": "예를 들어 2024년",
       "comesWithDriver": "드라이버와 함께 제공됩니까?",
+      "seats": "Number of seats",
+      "seatsPlaceholder": "e.g. 4",
+      "seatsChip": "{count} seats",
+      "airportTransfer": "Offers airport pick-up / drop-off?",
+      "airportTransferChip": "Airport transfers",
       "yes": "예",
       "no": "아니요",
       "shortDescription": "간단한 설명",

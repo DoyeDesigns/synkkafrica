@@ -15,6 +15,7 @@ import {
   listAccommodations,
   toAccommodationResult,
 } from "@/lib/api/accommodations";
+import { useDisplayCurrency } from "@/hooks/use-display-currency";
 
 function getFiltersFromSearchParams(
   searchParams: URLSearchParams,
@@ -80,9 +81,11 @@ export function useAccommodationFilters() {
     [liveResults],
   );
 
+  // Budgets are typed in the display currency (what result cards show).
+  const { toDisplay } = useDisplayCurrency();
   const results = useMemo(
-    () => filterAccommodationResults(allResults, appliedFilters, searchQuery),
-    [allResults, appliedFilters, searchQuery],
+    () => filterAccommodationResults(allResults, appliedFilters, searchQuery, toDisplay),
+    [allResults, appliedFilters, searchQuery, toDisplay],
   );
 
   const updateDraftFilter = <K extends keyof AccommodationFilterState>(

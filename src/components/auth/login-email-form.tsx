@@ -7,19 +7,27 @@ import { signIn } from "next-auth/react";
 
 import { useTranslation } from "@/hooks/use-translation";
 import { requestOtpAction } from "@/lib/auth/actions";
+import { ACCOUNT_BLOCKED_SIGNIN_CODE } from "@/lib/auth/session-errors";
 
 const inputClass =
   "h-12 w-full rounded-lg border border-[#C9C9C9] bg-white pl-11 pr-4 text-sm font-medium font-satoshi text-foreground outline-none placeholder:text-[#BDBCBC] focus:border-[#004785]";
 const buttonClass =
   "flex h-12 w-full items-center justify-center rounded-lg bg-[#3A3A3A] text-sm font-bold font-montserrat text-white transition-opacity hover:opacity-90 disabled:opacity-60";
 
-export function LoginEmailForm() {
+export function LoginEmailForm({
+  accountBlocked = false,
+}: {
+  // Arrived via /login?error=account_blocked after a forced sign-out.
+  accountBlocked?: boolean;
+}) {
   const t = useTranslation();
   const router = useRouter();
   const [step, setStep] = useState<"email" | "code">("email");
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(() =>
+    accountBlocked ? t("login.accountBlocked") : null,
+  );
   const [pending, startTransition] = useTransition();
 
   function handleRequest(formData: FormData) {
@@ -46,7 +54,11 @@ export function LoginEmailForm() {
         redirect: false,
       });
       if (res?.error) {
-        setError("That code is invalid or expired.");
+        setError(
+          res.code === ACCOUNT_BLOCKED_SIGNIN_CODE
+            ? t("login.accountBlocked")
+            : "That code is invalid or expired.",
+        );
         return;
       }
       router.push("/");

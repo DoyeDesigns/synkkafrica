@@ -14,6 +14,7 @@ import {
   type CarRentalFilterState,
 } from "@/features/travel/data/car-rental-results";
 import { listCars, toCarRentalResult } from "@/lib/api/cars";
+import { useDisplayCurrency } from "@/hooks/use-display-currency";
 
 function normalizeServiceType(value: string): string {
   const normalized = value.toLowerCase().replace(/-/g, " ");
@@ -149,9 +150,11 @@ export function useCarRentalFilters() {
     [allResults],
   );
 
+  // Budgets are typed in the display currency (what result cards show).
+  const { toDisplay } = useDisplayCurrency();
   const results = useMemo(
-    () => filterCarRentalResults(allResults, appliedFilters, searchQuery),
-    [allResults, appliedFilters, searchQuery],
+    () => filterCarRentalResults(allResults, appliedFilters, searchQuery, toDisplay),
+    [allResults, appliedFilters, searchQuery, toDisplay],
   );
 
   const updateDraftFilter = <K extends keyof CarRentalFilterState>(

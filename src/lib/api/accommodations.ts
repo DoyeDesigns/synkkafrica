@@ -3,6 +3,10 @@ import type { AccommodationResult } from "@/features/travel/data/accommodation-r
 import type { PropertyDetail } from "@/features/travel/data/property-booking";
 import type { PropertyListingItem } from "@/features/travel/data/property-listings";
 import { DEFAULT_PROPERTY_AMENITIES } from "@/features/travel/data/property-amenities";
+import type {
+  InitBookingPaymentInput,
+  InitBookingPaymentResult,
+} from "@/lib/api/payments";
 
 // Mirrors the backend AccommodationSummary / AccommodationDetail (public,
 // live-only vendor accommodation listings).
@@ -106,15 +110,9 @@ export async function bookAccommodation(
 // Initialize Paystack checkout; returns the hosted URL to redirect to.
 export async function initAccommodationPayment(
   bookingId: string,
-  input: {
-    email?: string;
-    phone?: string;
-    callbackUrl?: string;
-    // Omit to let the backend pick by currency (NGN -> Paystack, else Stripe).
-    provider?: "PAYSTACK" | "STRIPE";
-  },
+  input: InitBookingPaymentInput,
   token?: string,
-): Promise<{ authorizationUrl: string; reference: string }> {
+): Promise<InitBookingPaymentResult> {
   return apiFetch(`/accommodations/bookings/${bookingId}/pay`, {
     method: "POST",
     token,

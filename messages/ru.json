@@ -31,6 +31,9 @@
     "notifications": "Уведомления",
     "contactSupport": "Связаться со службой поддержки",
     "signOut": "выход",
+    "signOutConfirmTitle": "Log out of SynkAfrica?",
+    "signOutConfirmBody": "You'll need to sign in again to continue.",
+    "signingOut": "Logging out…",
     "noReviewsYet": "Пока нет отзывов",
     "viewPhoto": "Посмотреть фото {index}",
     "photoViewer": "Просмотрщик фотографий",
@@ -900,7 +903,8 @@
       "verifications": "Проверки",
       "support": "Билеты в службу поддержки",
       "team": "Команда",
-      "audit": "Журнал аудита"
+      "audit": "Журнал аудита",
+      "deals": "Акции"
     },
     "common": {
       "all": "Все",
@@ -2301,6 +2305,11 @@
       "year": "Год",
       "yearPlaceholder": "например 2024 год",
       "comesWithDriver": "В комплекте с драйвером?",
+      "seats": "Number of seats",
+      "seatsPlaceholder": "e.g. 4",
+      "seatsChip": "{count} seats",
+      "airportTransfer": "Offers airport pick-up / drop-off?",
+      "airportTransferChip": "Airport transfers",
       "yes": "Да",
       "no": "Нет",
       "shortDescription": "Краткое описание",

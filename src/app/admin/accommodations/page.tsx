@@ -1,5 +1,16 @@
-import { AdminAccommodationsContent } from "@/features/admin/components/admin-accommodations-content";
+import { Suspense } from "react";
 
-export default function AdminAccommodationsPage() {
-  return <AdminAccommodationsContent />;
+import {
+  AdminListingsLiveContent,
+  AdminListingsSkeleton,
+} from "@/features/admin/components/admin-listings-live-content";
+
+// The list keeps its search / tab / sort / page in the URL (useSearchParams),
+// which needs a Suspense boundary for the static prerender.
+export default function AdminaccommodationsPage() {
+  return (
+    <Suspense fallback={<AdminListingsSkeleton />}>
+      <AdminListingsLiveContent category="accommodations" title="Accommodations" />
+    </Suspense>
+  );
 }
