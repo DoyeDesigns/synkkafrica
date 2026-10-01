@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useClickOutside } from "@/hooks/use-click-outside";
 import { useTranslation } from "@/hooks/use-translation";
 import { getAdminMe } from "@/lib/api/admin-auth";
+import { SignOutConfirmDialog } from "@/components/auth/sign-out-confirm";
 import { signOutAdminAction } from "@/lib/auth/actions";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -107,7 +108,7 @@ function AdminAccountMenu({
   const t = useTranslation();
   const menuId = useId();
   const [open, setOpen] = useState(false);
-  const [signingOut, setSigningOut] = useState(false);
+  const [confirmSignOut, setConfirmSignOut] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const { data: session } = useSession();
@@ -221,23 +222,29 @@ function AdminAccountMenu({
               </Link>
             </div>
           ) : null}
-          <form
-            action={signOutAdminAction}
-            onSubmit={() => setSigningOut(true)}
-            className="py-1"
-          >
+          <div className="py-1">
             <button
-              type="submit"
+              type="button"
               role="menuitem"
-              disabled={signingOut}
-              className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm font-bold font-satoshi text-[#DD2222] hover:bg-[#FDF2F2] focus-visible:bg-[#FDF2F2] focus-visible:outline-none disabled:opacity-60"
+              aria-haspopup="dialog"
+              onClick={() => {
+                setOpen(false);
+                setConfirmSignOut(true);
+              }}
+              className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm font-bold font-satoshi text-[#DD2222] hover:bg-[#FDF2F2] focus-visible:bg-[#FDF2F2] focus-visible:outline-none"
             >
               <LogOut className="h-4 w-4" aria-hidden="true" />
-              {signingOut ? "Signing out…" : t("vendor.nav.logOut")}
+              {t("vendor.nav.logOut")}
             </button>
-          </form>
+          </div>
         </div>
       ) : null}
+
+      <SignOutConfirmDialog
+        open={confirmSignOut}
+        onClose={() => setConfirmSignOut(false)}
+        action={signOutAdminAction}
+      />
     </div>
   );
 }

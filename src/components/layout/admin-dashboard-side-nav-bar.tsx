@@ -44,6 +44,7 @@ import {
   POLLING_QUERY_OPTIONS,
 } from "@/lib/live-query-options";
 import { getAdminMe } from "@/lib/api/admin-auth";
+import { SignOutConfirmButton } from "@/components/auth/sign-out-confirm";
 import { signOutAdminAction } from "@/lib/auth/actions";
 import type { TranslationKey } from "@/lib/preferences/translations";
 
@@ -294,15 +295,13 @@ function AdminDashboardSideNavBarContent({
       </nav>
 
       <div className="border-t border-[#EEEEEE] p-4">
-        <form action={signOutAdminAction}>
-          <button
-            type="submit"
-            className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/10 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222] transition-colors hover:bg-[#DD2222]/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DD2222]"
-          >
+        <SignOutConfirmButton
+          action={signOutAdminAction}
+          className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/10 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222] transition-colors hover:bg-[#DD2222]/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#DD2222]"
+        >
             <LogOut className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
             {t("vendor.nav.logOut")}
-          </button>
-        </form>
+          </SignOutConfirmButton>
       </div>
     </aside>
   );
@@ -335,15 +334,13 @@ function AdminDashboardSideNavBarFallback() {
         </div>
       </nav>
       <div className="border-t border-[#EEEEEE] p-4">
-        <form action={signOutAdminAction}>
-          <button
-            type="submit"
-            className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/15 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222]"
-          >
+        <SignOutConfirmButton
+          action={signOutAdminAction}
+          className="flex w-full items-center gap-3 rounded-lg bg-[#DD2222]/15 px-4 py-3 text-sm font-bold font-satoshi text-[#DD2222]"
+        >
             <LogOut className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
             {t("vendor.nav.logOut")}
-          </button>
-        </form>
+          </SignOutConfirmButton>
       </div>
     </aside>
   );
