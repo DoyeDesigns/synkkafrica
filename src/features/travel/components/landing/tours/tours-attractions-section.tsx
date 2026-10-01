@@ -19,7 +19,7 @@ export function ToursAttractionsSection() {
 
   return (
     <section className="w-full">
-      <div className="mx-auto bg-[#F9F9F9] max-w-7xl mt-10 md:rounded-2xl px-4 pb-0 py-10 sm:px-6 lg:px-8 lg:py-12">
+      {/* <div className="mx-auto bg-[#F9F9F9] max-w-7xl mt-10 md:rounded-2xl px-4 pb-0 py-10 sm:px-6 lg:px-8 lg:py-12">
         <h2 className="text-[22px] font-bold font-montserrat text-[#1E1E1E]">
           {t("landing.tours.attractions.title")}
         </h2>
@@ -67,7 +67,7 @@ export function ToursAttractionsSection() {
             </button>
           </div>
         ) : null}
-      </div>
+      </div> */}
     </section>
   );
 }
