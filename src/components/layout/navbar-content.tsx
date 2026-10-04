@@ -52,7 +52,7 @@ export function NavbarContent({ session }: NavbarContentProps) {
             alt=""
             width={75}
             height={75}
-            className="-ml-10 md:-ml-0"
+            className="-ml-5 md:-ml-0"
             priority
           />
           <span className="text-xl font-bold -ml-6 tracking-tight font-montserrat text-white">
