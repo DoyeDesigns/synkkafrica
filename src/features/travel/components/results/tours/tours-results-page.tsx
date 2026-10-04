@@ -6,6 +6,7 @@ import { useState } from "react";
 import { ToursFilterSidebar } from "./tours-filter-sidebar";
 import { TourResultCard } from "./tour-result-card";
 import { ToursResultsHeader } from "./tours-results-header";
+import { MobileFilterToggle } from "../shared/mobile-filter-toggle";
 import { ResultsBreadcrumbs } from "../shared/results-breadcrumbs";
 import { useTourFiltersContext } from "@/features/travel/providers/tour-filters-provider";
 import { useTranslation } from "@/hooks/use-translation";
@@ -52,6 +53,7 @@ export function ToursResultsPage() {
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-1">
+          <MobileFilterToggle>
           <div className="lg:sticky lg:top-10 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:overscroll-contain">
             <ToursFilterSidebar
               filters={draftFilters}
@@ -63,6 +65,7 @@ export function ToursResultsPage() {
               onClearFilters={resetFilters}
             />
           </div>
+          </MobileFilterToggle>
         </div>
 
         <div className="space-y-5 lg:col-span-2">

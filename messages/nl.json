@@ -4,6 +4,7 @@
     "becomeVendor": "Word een leverancier",
     "chooseCurrency": "Kies Valuta",
     "signInCreate": "Aanmelden | Account aanmaken",
+    "signIn": "Aanmelden",
     "searchCurrency": "Zoek valuta",
     "signOut": "Uitloggen",
     "myAccount": "Mijn account",
@@ -734,6 +735,7 @@
     "promoSubtitle": "Promoties, aanbiedingen en speciale aanbiedingen voor u"
   },
   "filters": {
+    "filter": "Filter",
     "apply": "Filter toepassen",
     "applyCount": "Filter toepassen ({telling})",
     "location": "Locatie",
@@ -1676,15 +1678,15 @@
       "continue": "Doorgaan",
       "createAccount": "Account aanmaken",
       "completeRequiredFields": "Vul de verplichte velden in: {fields}",
-      "securityRequired": "Verifieer uw telefoon met OTP en maak een geldig wachtwoord aan om door te gaan.",
+      "securityRequired": "Verifieer uw e-mail met OTP en maak een geldig wachtwoord aan om door te gaan.",
       "identityRequired": "Upload uw overheids-ID en accepteer de voorwaarden om uw account aan te maken.",
       "sections": {
         "businessInfo": "Bedrijfsinformatie",
         "businessInfoHint": "Vertel ons over uw bedrijf.",
         "ownerInfo": "Eigenaar Informatie",
         "ownerInfoHint": "Details over de bedrijfseigenaar of primaire contactpersoon.",
-        "phoneVerification": "Telefonische verificatie",
-        "phoneVerificationHint": "Wij sturen een eenmalige code naar het door u opgegeven telefoonnummer.",
+        "phoneVerification": "E-mailverificatie",
+        "phoneVerificationHint": "Wij sturen een eenmalige code naar het door u opgegeven e-mailadres.",
         "accountSecurity": "Accountbeveiliging",
         "accountSecurityHint": "Maak een sterk wachtwoord voor uw leveranciersaccount.",
         "governmentId": "Door de overheid uitgegeven identiteitsbewijs",
@@ -1719,7 +1721,7 @@
       "resendOtp": "OTP opnieuw verzenden",
       "enterOtp": "Voer OTP in",
       "resendIn": "Opnieuw verzenden over 00:{seconden}",
-      "otpVerified": "Telefoonnummer geverifieerd.",
+      "otpVerified": "E-mailadres geverifieerd.",
       "passwordRules": {
         "minLength": "Minimaal 8 tekens",
         "hasNumber": "Inclusief een nummer",

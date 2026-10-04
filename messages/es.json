@@ -4,6 +4,7 @@
     "becomeVendor": "Conviértete en vendedor",
     "chooseCurrency": "Elegir moneda",
     "signInCreate": "Iniciar sesión | Crear cuenta",
+    "signIn": "Iniciar sesión",
     "searchCurrency": "Buscar moneda",
     "signOut": "Cerrar sesión",
     "myAccount": "Mi cuenta",
@@ -734,6 +735,7 @@
     "promoSubtitle": "Promociones, ofertas y ofertas especiales para ti"
   },
   "filters": {
+    "filter": "Filtrar",
     "apply": "Aplicar filtro",
     "applyCount": "Aplicar filtro ({count})",
     "location": "Ubicación",
@@ -1676,15 +1678,15 @@
       "continue": "Continuar",
       "createAccount": "Crear cuenta",
       "completeRequiredFields": "Completa los campos obligatorios: {fields}",
-      "securityRequired": "Verifica tu teléfono con OTP y crea una contraseña válida para continuar.",
+      "securityRequired": "Verifica tu correo electrónico con OTP y crea una contraseña válida para continuar.",
       "identityRequired": "Sube tu identificación oficial y acepta los términos para crear tu cuenta.",
       "sections": {
         "businessInfo": "Información del negocio",
         "businessInfoHint": "Cuéntanos sobre tu negocio.",
         "ownerInfo": "Información del propietario",
         "ownerInfoHint": "Datos del propietario o contacto principal.",
-        "phoneVerification": "Verificación telefónica",
-        "phoneVerificationHint": "Enviaremos un código de un solo uso al número que proporcionaste.",
+        "phoneVerification": "Verificación de correo",
+        "phoneVerificationHint": "Enviaremos un código de un solo uso al correo que proporcionaste.",
         "accountSecurity": "Seguridad de la cuenta",
         "accountSecurityHint": "Crea una contraseña segura para tu cuenta de vendedor.",
         "governmentId": "Identificación oficial",
@@ -1719,7 +1721,7 @@
       "resendOtp": "Reenviar OTP",
       "enterOtp": "Introduce el OTP",
       "resendIn": "Reenviar en 00:{seconds}",
-      "otpVerified": "Número de teléfono verificado.",
+      "otpVerified": "Correo electrónico verificado.",
       "passwordRules": {
         "minLength": "Al menos 8 caracteres",
         "hasNumber": "Incluye un número",

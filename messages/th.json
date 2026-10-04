@@ -4,6 +4,7 @@
     "becomeVendor": "Become a Vendor",
     "chooseCurrency": "Choose Currency",
     "signInCreate": "Sign in | Create Account",
+    "signIn": "Sign in",
     "searchCurrency": "Search Currency",
     "signOut": "Sign Out",
     "myAccount": "My Account",
@@ -734,6 +735,7 @@
     "promoSubtitle": "โปรโมชั่น ข้อเสนอ และข้อเสนอพิเศษสำหรับคุณ"
   },
   "filters": {
+    "filter": "Filter",
     "apply": "ใช้ตัวกรอง",
     "applyCount": "ใช้ตัวกรอง ({count})",
     "location": "ที่ตั้ง",
@@ -1676,15 +1678,15 @@
       "continue": "ดำเนินการต่อ",
       "createAccount": "สร้างบัญชี",
       "completeRequiredFields": "กรอกข้อมูลในช่องที่ต้องกรอก: {fields}",
-      "securityRequired": "ยืนยันโทรศัพท์ของคุณด้วย OTP และสร้างรหัสผ่านที่ถูกต้องเพื่อดำเนินการต่อ",
+      "securityRequired": "ยืนยันอีเมลของคุณด้วย OTP และสร้างรหัสผ่านที่ถูกต้องเพื่อดำเนินการต่อ",
       "identityRequired": "อัปโหลดบัตรประจำตัวรัฐบาลของคุณและยอมรับข้อกำหนดเพื่อสร้างบัญชีของคุณ",
       "sections": {
         "businessInfo": "ข้อมูลทางธุรกิจ",
         "businessInfoHint": "บอกเราเกี่ยวกับธุรกิจของคุณ",
         "ownerInfo": "ข้อมูลเจ้าของ",
         "ownerInfoHint": "รายละเอียดเกี่ยวกับเจ้าของธุรกิจหรือผู้ติดต่อหลัก",
-        "phoneVerification": "การยืนยันทางโทรศัพท์",
-        "phoneVerificationHint": "เราจะส่งรหัสแบบใช้ครั้งเดียวไปยังหมายเลขโทรศัพท์ที่คุณให้ไว้",
+        "phoneVerification": "การยืนยันอีเมล",
+        "phoneVerificationHint": "เราจะส่งรหัสแบบใช้ครั้งเดียวไปยังอีเมลที่คุณให้ไว้",
         "accountSecurity": "ความปลอดภัยของบัญชี",
         "accountSecurityHint": "สร้างรหัสผ่านที่รัดกุมสำหรับบัญชีผู้ขายของคุณ",
         "governmentId": "บัตรประจำตัวที่ออกโดยหน่วยงานราชการ",
@@ -1719,7 +1721,7 @@
       "resendOtp": "ส่ง OTP อีกครั้ง",
       "enterOtp": "กรอกรหัส OTP",
       "resendIn": "Resend in 00:{seconds}",
-      "otpVerified": "Phone number verified.",
+      "otpVerified": "อีเมลได้รับการยืนยันแล้ว",
       "passwordRules": {
         "minLength": "At least 8 characters",
         "hasNumber": "Includes a number",

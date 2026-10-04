@@ -4,6 +4,7 @@
     "becomeVendor": "Zostań dostawcą",
     "chooseCurrency": "Wybierz walutę",
     "signInCreate": "Zaloguj się | Utwórz konto",
+    "signIn": "Zaloguj się",
     "searchCurrency": "Wyszukaj walutę",
     "signOut": "Wyloguj się",
     "myAccount": "Moje konto",
@@ -734,6 +735,7 @@
     "promoSubtitle": "Promocje, okazje i oferty specjalne dla Ciebie"
   },
   "filters": {
+    "filter": "Filtruj",
     "apply": "Zastosuj filtr",
     "applyCount": "Zastosuj filtr ({count})",
     "location": "Lokalizacja",
@@ -1676,15 +1678,15 @@
       "continue": "Kontynuuj",
       "createAccount": "Załóż konto",
       "completeRequiredFields": "Wypełnij pola obowiązkowe: {pola}",
-      "securityRequired": "Zweryfikuj swój numer telefonu za pomocą kodu OTP i ustaw prawidłowe hasło, aby kontynuować.",
+      "securityRequired": "Zweryfikuj swój adres e-mail za pomocą kodu OTP i ustaw prawidłowe hasło, aby kontynuować.",
       "identityRequired": "Prześlij kopię dokumentu tożsamości wydanego przez organ państwowy i zaakceptuj warunki, aby utworzyć konto.",
       "sections": {
         "businessInfo": "Informacje o firmie",
         "businessInfoHint": "Opowiedz nam o swojej firmie.",
         "ownerInfo": "Informacje o właścicielu",
         "ownerInfoHint": "Szczegółowe informacje o właścicielu firmy lub głównej osobie kontaktowej.",
-        "phoneVerification": "Weryfikacja numeru telefonu",
-        "phoneVerificationHint": "Wyślemy jednorazowy kod na podany przez Ciebie numer telefonu.",
+        "phoneVerification": "Weryfikacja adresu e-mail",
+        "phoneVerificationHint": "Wyślemy jednorazowy kod na podany przez Ciebie adres e-mail.",
         "accountSecurity": "Bezpieczeństwo konta",
         "accountSecurityHint": "Utwórz silne hasło do swojego konta dostawcy.",
         "governmentId": "Dokument tożsamości wydany przez władze",
@@ -1719,7 +1721,7 @@
       "resendOtp": "Wyślij ponownie kod OTP",
       "enterOtp": "Wprowadź kod OTP",
       "resendIn": "Wyślij ponownie za 00:{sekund}",
-      "otpVerified": "Numer telefonu został zweryfikowany.",
+      "otpVerified": "Adres e-mail został zweryfikowany.",
       "passwordRules": {
         "minLength": "Co najmniej 8 znaków",
         "hasNumber": "Zawiera liczbę",

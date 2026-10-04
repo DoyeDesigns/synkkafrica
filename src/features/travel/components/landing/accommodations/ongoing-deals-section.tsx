@@ -34,7 +34,7 @@ export function OngoingDealsSection({
 
   return (
     <section className="space-y-8">
-      <div className="flex items-end justify-between gap-4">
+      <div className="flex flex-col md:flex-row items-start justify-between gap-4">
         <div className="min-w-0">
           <h2 className="text-[22px] font-bold font-montserrat text-[#1E1E1E]">
             {t("landing.packages.title")}
@@ -55,7 +55,7 @@ export function OngoingDealsSection({
         </Link>
       </div>
 
-      <InfiniteMarquee itemCount={items.length} className="-mx-4 sm:mx-0">
+      <InfiniteMarquee itemCount={items.length}>
         {[...items, ...items].map((item, index) => (
           <OngoingDealCard key={`${item.id}-${index}`} item={item} />
         ))}

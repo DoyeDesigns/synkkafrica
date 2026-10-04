@@ -147,8 +147,8 @@ export function VendorListingsContent({
         </Link>
       </div>
 
-      <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_340px]">
-        <section className="order-2 xl:order-1">
+      <div className="grid min-w-0 gap-8 xl:grid-cols-[minmax(0,1fr)_340px]">
+        <section className="order-2 min-w-0 xl:order-1">
           <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h3 className="text-lg font-bold font-satoshi text-[#2F2F2F]">
               {t("vendor.dashboard.yourListings")}{" "}
@@ -181,7 +181,7 @@ export function VendorListingsContent({
             </div>
           </div>
 
-          <div className="space-y-4 rounded-[5px] bg-white p-4">
+          <div className="min-w-0 space-y-4 rounded-[5px] bg-white p-3 sm:p-4">
             <VendorListingActionError
               message={listingMutations.error}
               onDismiss={listingMutations.clearError}

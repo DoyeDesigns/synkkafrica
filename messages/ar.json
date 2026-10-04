@@ -4,6 +4,7 @@
     "becomeVendor": "كن بائعًا",
     "chooseCurrency": "اختر العملة",
     "signInCreate": "تسجيل الدخول | إنشاء حساب",
+    "signIn": "تسجيل الدخول",
     "searchCurrency": "بحث العملة",
     "signOut": "تسجيل الخروج",
     "myAccount": "حسابي",
@@ -734,6 +735,7 @@
     "promoSubtitle": "العروض الترويجية والصفقات والعروض الخاصة بالنسبة لك"
   },
   "filters": {
+    "filter": "تصفية",
     "apply": "تطبيق الفلتر",
     "applyCount": "تطبيق الفلتر ({count})",
     "location": "موقع",
@@ -1676,15 +1678,15 @@
       "continue": "يكمل",
       "createAccount": "إنشاء حساب",
       "completeRequiredFields": "أكمل الحقول المطلوبة: ⟦الحقول⟧",
-      "securityRequired": "تحقق من هاتفك باستخدام OTP وقم بإنشاء كلمة مرور صالحة للمتابعة.",
+      "securityRequired": "تحقق من بريدك الإلكتروني باستخدام OTP وقم بإنشاء كلمة مرور صالحة للمتابعة.",
       "identityRequired": "قم بتحميل هويتك الحكومية واقبل الشروط لإنشاء حسابك.",
       "sections": {
         "businessInfo": "معلومات الأعمال",
         "businessInfoHint": "أخبرنا عن عملك.",
         "ownerInfo": "معلومات المالك",
         "ownerInfoHint": "تفاصيل حول صاحب العمل أو جهة الاتصال الأساسية.",
-        "phoneVerification": "التحقق من الهاتف",
-        "phoneVerificationHint": "سوف نقوم بإرسال رمز لمرة واحدة إلى رقم الهاتف الذي قدمته.",
+        "phoneVerification": "التحقق من البريد الإلكتروني",
+        "phoneVerificationHint": "سوف نقوم بإرسال رمز لمرة واحدة إلى البريد الإلكتروني الذي قدمته.",
         "accountSecurity": "أمان الحساب",
         "accountSecurityHint": "قم بإنشاء كلمة مرور قوية لحساب البائع الخاص بك.",
         "governmentId": "بطاقة هوية صادرة عن الحكومة",
@@ -1719,7 +1721,7 @@
       "resendOtp": "إعادة إرسال كلمة المرور لمرة واحدة",
       "enterOtp": "أدخل كلمة المرور لمرة واحدة",
       "resendIn": "إعادة الإرسال خلال 00:⟦ثواني⟧",
-      "otpVerified": "تم التحقق من رقم الهاتف.",
+      "otpVerified": "تم التحقق من البريد الإلكتروني.",
       "passwordRules": {
         "minLength": "ما لا يقل عن 8 أحرف",
         "hasNumber": "يتضمن عددا",

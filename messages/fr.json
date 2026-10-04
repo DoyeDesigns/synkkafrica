@@ -4,6 +4,7 @@
     "becomeVendor": "Devenir vendeur",
     "chooseCurrency": "Choisir la devise",
     "signInCreate": "Connexion | Créer un compte",
+    "signIn": "Connexion",
     "searchCurrency": "Rechercher une devise",
     "signOut": "Se déconnecter",
     "myAccount": "Mon compte",
@@ -734,6 +735,7 @@
     "promoSubtitle": "Promotions, offres et offres spéciales pour vous"
   },
   "filters": {
+    "filter": "Filtrer",
     "apply": "Appliquer le filtre",
     "applyCount": "Appliquer le filtre ({count})",
     "location": "Emplacement",
@@ -1676,15 +1678,15 @@
       "continue": "Continuer",
       "createAccount": "Créer le compte",
       "completeRequiredFields": "Complétez les champs obligatoires : {fields}",
-      "securityRequired": "Vérifiez votre téléphone par OTP et créez un mot de passe valide pour continuer.",
+      "securityRequired": "Vérifiez votre e-mail par OTP et créez un mot de passe valide pour continuer.",
       "identityRequired": "Téléversez votre pièce d'identité et acceptez les conditions pour créer votre compte.",
       "sections": {
         "businessInfo": "Informations sur l'entreprise",
         "businessInfoHint": "Parlez-nous de votre entreprise.",
         "ownerInfo": "Informations sur le propriétaire",
         "ownerInfoHint": "Coordonnées du propriétaire ou contact principal.",
-        "phoneVerification": "Vérification du téléphone",
-        "phoneVerificationHint": "Nous enverrons un code à usage unique au numéro fourni.",
+        "phoneVerification": "Vérification de l'e-mail",
+        "phoneVerificationHint": "Nous enverrons un code à usage unique à l'adresse e-mail fournie.",
         "accountSecurity": "Sécurité du compte",
         "accountSecurityHint": "Créez un mot de passe fort pour votre compte vendeur.",
         "governmentId": "Pièce d'identité officielle",
@@ -1719,7 +1721,7 @@
       "resendOtp": "Renvoyer l'OTP",
       "enterOtp": "Saisir l'OTP",
       "resendIn": "Renvoyer dans 00:{seconds}",
-      "otpVerified": "Numéro de téléphone vérifié.",
+      "otpVerified": "Adresse e-mail vérifiée.",
       "passwordRules": {
         "minLength": "Au moins 8 caractères",
         "hasNumber": "Contient un chiffre",

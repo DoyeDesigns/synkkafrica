@@ -5,6 +5,7 @@ import { AlertCircle, Loader2, PlaneTakeoff } from "lucide-react";
 
 import { FlightResultCard } from "@/features/travel/components/results/flights/flight-result-card";
 import { FilterAddressField } from "@/features/travel/components/results/shared/filter-address-field";
+import { MobileFilterToggle } from "@/features/travel/components/results/shared/mobile-filter-toggle";
 import { useFlightSearch } from "@/features/travel/hooks/use-flight-search";
 import { useTravelNavigation } from "@/features/travel/hooks/use-travel-navigation";
 import { useTranslation } from "@/hooks/use-translation";
@@ -165,7 +166,7 @@ export function FlightsResultsPage() {
         />
       ) : (
         <div className="grid gap-6 lg:grid-cols-[240px_1fr]">
-          {/* Filters */}
+          <MobileFilterToggle>
           <aside className="space-y-6 lg:sticky lg:top-6 lg:self-start">
             <FilterGroup title={t("filters.location")}>
               <FilterAddressField
@@ -222,6 +223,7 @@ export function FlightsResultsPage() {
               </FilterGroup>
             ) : null}
           </aside>
+          </MobileFilterToggle>
 
           {/* Sort + list */}
           <div className="space-y-4">

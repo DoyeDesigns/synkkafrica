@@ -122,10 +122,10 @@ export function VendorListingCard({
   return (
     <article
       id={`listing-${listing.id}`}
-      className={`rounded-[5px] border p-4 ${cardSurfaceClassName}`}
+      className={`w-full min-w-0 max-w-full rounded-[5px] border p-3 sm:p-4 ${cardSurfaceClassName}`}
     >
-      <div className="flex gap-4">
-        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-[#ECEFF3]">
+      <div className="flex min-w-0 gap-3">
+        <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-[#ECEFF3] sm:h-20 sm:w-20">
           {listing.image ? (
             <Image
               src={listing.image}
@@ -150,45 +150,43 @@ export function VendorListingCard({
           )}
         </div>
 
-        <div className="flex min-w-0 flex-1 gap-3">
-          <div className="min-w-0 flex-1">
-            <div className="flex h-full flex-col items-start justify-between">
-              <div>
-                <h3
-                  className={`truncate text-base font-bold font-satoshi ${titleClassName}`}
-                >
-                  {listing.title}
-                </h3>
-                <p
-                  className={`mt-0.5 text-sm font-medium font-satoshi ${categoryClassName}`}
-                >
-                  {t(listing.categoryKey)}
+        <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-row sm:gap-3">
+          <div className="flex min-w-0 flex-1 flex-col justify-between gap-2">
+            <div className="min-w-0">
+              <h3
+                className={`truncate text-base font-bold font-satoshi ${titleClassName}`}
+              >
+                {listing.title}
+              </h3>
+              <p
+                className={`mt-0.5 truncate text-sm font-medium font-satoshi ${categoryClassName}`}
+              >
+                {t(listing.categoryKey)}
+              </p>
+              {isRejected && listing.rejectionReason ? (
+                <p className="mt-1 line-clamp-2 text-xs font-medium font-satoshi text-[#C0392B]">
+                  {t("vendor.listings.rejectionNote", {
+                    reason: listing.rejectionReason,
+                  })}
                 </p>
-                {isRejected && listing.rejectionReason ? (
-                  <p className="mt-1 line-clamp-2 text-xs font-medium font-satoshi text-[#C0392B]">
-                    {t("vendor.listings.rejectionNote", {
-                      reason: listing.rejectionReason,
-                    })}
-                  </p>
-                ) : null}
-              </div>
+              ) : null}
+            </div>
 
-              <div className="mb-1.5 flex items-center gap-0.5">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Star
-                    key={index}
-                    className={`h-3.5 w-3.5 ${
-                      index < listing.rating
-                        ? "fill-[#FFCE31] text-[#FFCE31]"
-                        : "fill-zinc-200 text-zinc-200"
-                    }`}
-                  />
-                ))}
-              </div>
+            <div className="flex items-center gap-0.5">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Star
+                  key={index}
+                  className={`h-3.5 w-3.5 ${
+                    index < listing.rating
+                      ? "fill-[#FFCE31] text-[#FFCE31]"
+                      : "fill-zinc-200 text-zinc-200"
+                  }`}
+                />
+              ))}
             </div>
           </div>
 
-          <div className="flex shrink-0 flex-col items-end justify-between gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 sm:shrink-0 sm:flex-col sm:items-end sm:justify-between">
             <span
               className={`rounded-full px-3 py-1 text-xs font-semibold font-satoshi ${STATUS_BADGE_STYLES[listing.status]}`}
             >

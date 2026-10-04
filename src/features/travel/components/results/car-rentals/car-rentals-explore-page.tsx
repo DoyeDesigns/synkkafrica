@@ -6,6 +6,7 @@ import { useState } from "react";
 import { CarRentalsFilterSidebar } from "./car-rentals-filter-sidebar";
 import { CarRentalResultCard } from "./car-rental-result-card";
 import { CarRentalsResultsHeader } from "./car-rentals-results-header";
+import { MobileFilterToggle } from "../shared/mobile-filter-toggle";
 import { ResultsBreadcrumbs } from "../shared/results-breadcrumbs";
 import { useCarRentalFiltersContext } from "@/features/travel/providers/car-rental-filters-provider";
 import { useTranslation } from "@/hooks/use-translation";
@@ -57,6 +58,7 @@ export function CarRentalsExplorePage() {
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-1">
+          <MobileFilterToggle>
           <div className="lg:sticky lg:top-10 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:overscroll-contain">
             <CarRentalsFilterSidebar
               filters={draftFilters}
@@ -69,6 +71,7 @@ export function CarRentalsExplorePage() {
               onClearFilters={resetFilters}
             />
           </div>
+          </MobileFilterToggle>
         </div>
 
         <div className="space-y-5 lg:col-span-2">

@@ -196,7 +196,7 @@ export function VendorDashboardContent({
         />
       </div>
 
-      <section>
+      <section className="min-w-0">
         <div className="mb-4 flex items-center justify-between gap-4">
           <h3 className="text-lg font-bold font-satoshi text-[#2F2F2F]">
             {t("vendor.dashboard.yourListings")}{" "}
@@ -210,7 +210,7 @@ export function VendorDashboardContent({
           </Link>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-2 bg-white rounded-[5px] p-5">
+        <div className="grid min-w-0 gap-4 rounded-[5px] bg-white p-4 sm:p-5 lg:grid-cols-2">
           {listingMutations.error ? (
             <div className="col-span-full">
               <VendorListingActionError

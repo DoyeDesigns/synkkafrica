@@ -4,6 +4,7 @@
     "becomeVendor": "Anbieter werden",
     "chooseCurrency": "Währung wählen",
     "signInCreate": "Anmelden | Konto erstellen",
+    "signIn": "Anmelden",
     "searchCurrency": "Währung suchen",
     "signOut": "Abmelden",
     "myAccount": "Mein Konto",
@@ -734,6 +735,7 @@
     "promoSubtitle": "Aktionen, Angebote und Sonderangebote für Sie"
   },
   "filters": {
+    "filter": "Filter",
     "apply": "Filter anwenden",
     "applyCount": "Filter anwenden ({count})",
     "location": "Standort",
@@ -1676,15 +1678,15 @@
       "continue": "Weiter",
       "createAccount": "Konto erstellen",
       "completeRequiredFields": "Pflichtfelder ausfüllen: {fields}",
-      "securityRequired": "Telefon per OTP verifizieren und ein gültiges Passwort erstellen, um fortzufahren.",
+      "securityRequired": "E-Mail per OTP verifizieren und ein gültiges Passwort erstellen, um fortzufahren.",
       "identityRequired": "Amtlichen Ausweis hochladen und Bedingungen akzeptieren, um Ihr Konto zu erstellen.",
       "sections": {
         "businessInfo": "Unternehmensinformationen",
         "businessInfoHint": "Erzählen Sie uns von Ihrem Unternehmen.",
         "ownerInfo": "Inhaberinformationen",
         "ownerInfoHint": "Angaben zum Inhaber oder Hauptansprechpartner.",
-        "phoneVerification": "Telefonverifizierung",
-        "phoneVerificationHint": "Wir senden einen Einmalcode an die angegebene Telefonnummer.",
+        "phoneVerification": "E-Mail-Verifizierung",
+        "phoneVerificationHint": "Wir senden einen Einmalcode an die angegebene E-Mail-Adresse.",
         "accountSecurity": "Kontosicherheit",
         "accountSecurityHint": "Erstellen Sie ein starkes Passwort für Ihr Anbieterkonto.",
         "governmentId": "Amtlicher Ausweis",
@@ -1719,7 +1721,7 @@
       "resendOtp": "OTP erneut senden",
       "enterOtp": "OTP eingeben",
       "resendIn": "Erneut senden in 00:{seconds}",
-      "otpVerified": "Telefonnummer verifiziert.",
+      "otpVerified": "E-Mail-Adresse verifiziert.",
       "passwordRules": {
         "minLength": "Mindestens 8 Zeichen",
         "hasNumber": "Enthält eine Zahl",
