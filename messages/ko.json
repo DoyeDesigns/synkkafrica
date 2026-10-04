@@ -4,6 +4,7 @@
     "becomeVendor": "판매자로 등록하기",
     "chooseCurrency": "통화 선택",
     "signInCreate": "로그인 | 계정 만들기",
+    "signIn": "로그인",
     "searchCurrency": "통화 검색",
     "signOut": "로그아웃",
     "myAccount": "내 계정",
@@ -734,6 +735,7 @@
     "promoSubtitle": "당신을 위한 프로모션, 딜, 특별 제안"
   },
   "filters": {
+    "filter": "필터",
     "apply": "필터 적용",
     "applyCount": "필터 적용(⟦개수⟧)",
     "location": "위치",
@@ -1676,15 +1678,15 @@
       "continue": "계속하다",
       "createAccount": "계정 만들기",
       "completeRequiredFields": "필수 입력란을 작성하세요: {fields}",
-      "securityRequired": "계속하려면 OTP로 휴대폰을 인증하고 유효한 비밀번호를 만드세요.",
+      "securityRequired": "계속하려면 OTP로 이메일을 인증하고 유효한 비밀번호를 만드세요.",
       "identityRequired": "정부 발급 신분증을 업로드하고 약관에 동의하여 계정을 만드세요.",
       "sections": {
         "businessInfo": "사업정보",
         "businessInfoHint": "귀하의 사업에 대해 알려주십시오.",
         "ownerInfo": "소유자 정보",
         "ownerInfoHint": "업체 소유자 또는 기본 연락처에 대한 세부정보입니다.",
-        "phoneVerification": "전화인증",
-        "phoneVerificationHint": "귀하가 제공한 전화번호로 일회용 코드를 보내드립니다.",
+        "phoneVerification": "이메일 인증",
+        "phoneVerificationHint": "귀하가 제공한 이메일 주소로 일회용 코드를 보내드립니다.",
         "accountSecurity": "계정 보안",
         "accountSecurityHint": "공급업체 계정에 대한 강력한 비밀번호를 만드세요.",
         "governmentId": "정부 발급 신분증",
@@ -1719,7 +1721,7 @@
       "resendOtp": "OTP 재전송",
       "enterOtp": "OTP를 입력하세요",
       "resendIn": "00:⟦초⟧ 후에 재전송",
-      "otpVerified": "전화번호가 확인되었습니다.",
+      "otpVerified": "이메일 주소가 확인되었습니다.",
       "passwordRules": {
         "minLength": "8자 이상",
         "hasNumber": "숫자를 포함합니다",

@@ -4,6 +4,7 @@
     "becomeVendor": "Diventa un venditore",
     "chooseCurrency": "Scegli valuta",
     "signInCreate": "Accedi | Creare un account",
+    "signIn": "Accedi",
     "searchCurrency": "Cerca valuta",
     "signOut": "Disconnessione",
     "myAccount": "Il mio conto",
@@ -734,6 +735,7 @@
     "promoSubtitle": "Promozioni, offerte e offerte speciali per te"
   },
   "filters": {
+    "filter": "Filtra",
     "apply": "Applica filtro",
     "applyCount": "Applica filtro ({count})",
     "location": "Posizione",
@@ -1676,15 +1678,15 @@
       "continue": "Continuare",
       "createAccount": "Creare un account",
       "completeRequiredFields": "Compila i campi obbligatori: {fields}",
-      "securityRequired": "Verifica il tuo telefono con OTP e crea una password valida per continuare.",
+      "securityRequired": "Verifica la tua email con OTP e crea una password valida per continuare.",
       "identityRequired": "Carica il tuo documento d'identità governativo e accetta i termini per creare il tuo account.",
       "sections": {
         "businessInfo": "Informazioni commerciali",
         "businessInfoHint": "Raccontaci della tua attività.",
         "ownerInfo": "Informazioni sul proprietario",
         "ownerInfoHint": "Dettagli sul proprietario dell'attività o sul contatto principale.",
-        "phoneVerification": "Verifica telefonica",
-        "phoneVerificationHint": "Invieremo un codice monouso al numero di telefono che hai fornito.",
+        "phoneVerification": "Verifica email",
+        "phoneVerificationHint": "Invieremo un codice monouso all'indirizzo email che hai fornito.",
         "accountSecurity": "Sicurezza dell'account",
         "accountSecurityHint": "Crea una password complessa per il tuo account fornitore.",
         "governmentId": "Documento d'identità rilasciato dal governo",
@@ -1719,7 +1721,7 @@
       "resendOtp": "Invia nuovamente OTP",
       "enterOtp": "Inserisci l'OTP",
       "resendIn": "Invia di nuovo tra 00:{secondi}",
-      "otpVerified": "Numero di telefono verificato.",
+      "otpVerified": "Indirizzo email verificato.",
       "passwordRules": {
         "minLength": "Almeno 8 caratteri",
         "hasNumber": "Include un numero",

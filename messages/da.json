@@ -4,6 +4,7 @@
     "becomeVendor": "Bliv leverandør",
     "chooseCurrency": "Vælg valuta",
     "signInCreate": "Log ind | Opret konto",
+    "signIn": "Log ind",
     "searchCurrency": "Søg efter valuta",
     "signOut": "Log ud",
     "myAccount": "Min konto",
@@ -734,6 +735,7 @@
     "promoSubtitle": "Kampagner, tilbud og særtilbud til dig"
   },
   "filters": {
+    "filter": "Filter",
     "apply": "Anvend filter",
     "applyCount": "Anvend filter ({count})",
     "location": "Placering",
@@ -1676,15 +1678,15 @@
       "continue": "Fortsæt",
       "createAccount": "Opret konto",
       "completeRequiredFields": "Udfyld de obligatoriske felter: {felter}",
-      "securityRequired": "Bekræft din telefon med en engangskode (OTP), og opret en gyldig adgangskode for at fortsætte.",
+      "securityRequired": "Bekræft din e-mail med en engangskode (OTP), og opret en gyldig adgangskode for at fortsætte.",
       "identityRequired": "Upload dit officielle ID-kort, og accepter vilkårene for at oprette din konto.",
       "sections": {
         "businessInfo": "Virksomhedsoplysninger",
         "businessInfoHint": "Fortæl os om din virksomhed.",
         "ownerInfo": "Oplysninger om ejeren",
         "ownerInfoHint": "Oplysninger om virksomhedsejeren eller den primære kontaktperson.",
-        "phoneVerification": "Telefonverifikation",
-        "phoneVerificationHint": "Vi sender en engangskode til det telefonnummer, du har angivet.",
+        "phoneVerification": "E-mailverifikation",
+        "phoneVerificationHint": "Vi sender en engangskode til den e-mailadresse, du har angivet.",
         "accountSecurity": "Konto-sikkerhed",
         "accountSecurityHint": "Opret en stærk adgangskode til din leverandørkonto.",
         "governmentId": "Officielt udstedt identitetsbevis",
@@ -1719,7 +1721,7 @@
       "resendOtp": "Send OTP igen",
       "enterOtp": "Indtast engangskode",
       "resendIn": "Send igen om 00:{sekunder}",
-      "otpVerified": "Telefonnummeret er bekræftet.",
+      "otpVerified": "E-mailadressen er bekræftet.",
       "passwordRules": {
         "minLength": "Mindst 8 tegn",
         "hasNumber": "Omfatter et antal",

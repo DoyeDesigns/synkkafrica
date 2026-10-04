@@ -4,6 +4,7 @@
     "becomeVendor": "Become a Vendor",
     "chooseCurrency": "Choose Currency",
     "signInCreate": "Sign in | Create Account",
+    "signIn": "Sign in",
     "searchCurrency": "Search Currency",
     "signOut": "Sign Out",
     "myAccount": "My Account",
@@ -734,6 +735,7 @@
     "promoSubtitle": "Khuyến mãi, ưu đãi và ưu đãi đặc biệt dành cho bạn"
   },
   "filters": {
+    "filter": "Filter",
     "apply": "Áp dụng bộ lọc",
     "applyCount": "Áp dụng bộ lọc ({count})",
     "location": "Vị trí",
@@ -1676,15 +1678,15 @@
       "continue": "Tiếp tục",
       "createAccount": "Tạo tài khoản",
       "completeRequiredFields": "Hoàn thành các trường bắt buộc: {fields}",
-      "securityRequired": "Xác minh điện thoại của bạn bằng OTP và tạo mật khẩu hợp lệ để tiếp tục.",
+      "securityRequired": "Xác minh email của bạn bằng OTP và tạo mật khẩu hợp lệ để tiếp tục.",
       "identityRequired": "Tải lên ID chính phủ của bạn và chấp nhận các điều khoản để tạo tài khoản của bạn.",
       "sections": {
         "businessInfo": "Thông tin doanh nghiệp",
         "businessInfoHint": "Hãy cho chúng tôi biết về doanh nghiệp của bạn.",
         "ownerInfo": "Thông tin chủ sở hữu",
         "ownerInfoHint": "Thông tin chi tiết về chủ doanh nghiệp hoặc người liên hệ chính.",
-        "phoneVerification": "Xác minh điện thoại",
-        "phoneVerificationHint": "Chúng tôi sẽ gửi mã một lần đến số điện thoại bạn đã cung cấp.",
+        "phoneVerification": "Xác minh email",
+        "phoneVerificationHint": "Chúng tôi sẽ gửi mã một lần đến địa chỉ email bạn đã cung cấp.",
         "accountSecurity": "Bảo mật tài khoản",
         "accountSecurityHint": "Tạo mật khẩu mạnh cho tài khoản nhà cung cấp của bạn.",
         "governmentId": "ID do chính phủ cấp",
@@ -1719,7 +1721,7 @@
       "resendOtp": "Gửi lại OTP",
       "enterOtp": "Nhập OTP",
       "resendIn": "Gửi lại sau 00:⟦giây⟧",
-      "otpVerified": "Số điện thoại đã được xác minh.",
+      "otpVerified": "Địa chỉ email đã được xác minh.",
       "passwordRules": {
         "minLength": "Ít nhất 8 ký tự",
         "hasNumber": "Bao gồm một số",

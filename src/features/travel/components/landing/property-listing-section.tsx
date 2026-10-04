@@ -26,7 +26,7 @@ export function PropertyListingSection({
 
   return (
     <section className="space-y-8">
-      <div className="flex items-end justify-between gap-4">
+      <div className="flex flex-col md:flex-row items-start justify-between gap-4">
         <div>
           <h2 className="text-[22px] font-bold font-montserrat text-[#1E1E1E]">
             {t(titleKey)}

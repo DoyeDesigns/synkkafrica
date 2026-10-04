@@ -62,7 +62,7 @@ export function HeroSection({
       />
 
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-4 pb-10 pt-28 sm:px-6 lg:px-8">
-        <h1 className="mb-8 text-center text-4xl font-montserrat font-bold text-white sm:text-4xl">
+        <h1 className="mb-8 text-center text-2xl md:text-4xl font-montserrat font-bold text-white sm:text-4xl">
           {t("hero.headline")}
         </h1>
 
@@ -73,7 +73,7 @@ export function HeroSection({
         >
           <HeroTabs activeSection={section} onSectionChange={onSectionChange} />
 
-          <div className="pt-5 px-10 lg:px-20 pb-10">
+          <div className="pt-5 px-2 lg:px-20 pb-10">
             <SectionSearchForm section={section} onSubmit={onSearch} />
             {showClearFilter ? (
               <div className="mt-4">

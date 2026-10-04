@@ -1,12 +1,11 @@
 "use client";
 
-import { Check, ChevronDown, Eye, EyeOff } from "lucide-react";
+import { Check, Eye, EyeOff } from "lucide-react";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 
 import {
   getPasswordChecks,
   isOtpComplete,
-  VENDOR_PHONE_COUNTRY_CODES,
   type VendorSignupFormState,
 } from "@/features/vendor/data/vendor-signup";
 import { useTranslation } from "@/hooks/use-translation";
@@ -33,20 +32,9 @@ export function VendorSignupSecurityStep({ form, onChange }: VendorSignupSecurit
   const otpRefs = useRef<Array<HTMLInputElement | null>>([]);
   const passwordChecks = getPasswordChecks(form.password);
 
-  const handlePhoneChange = (patch: Pick<VendorSignupFormState, "phoneCountryCode" | "phoneNumber">) => {
-    onChange({
-      ...patch,
-      otpSent: false,
-      otpDigits: ["", "", "", "", "", ""],
-      signupToken: "",
-    });
-    setResendSeconds(0);
-  };
-
   // The verification code is emailed to the owner email captured in the
   // business step (the backend does email OTP, not SMS).
-  const canSendOtp =
-    form.phoneNumber.trim().length > 0 && form.ownerEmail.trim().length > 0;
+  const canSendOtp = form.ownerEmail.trim().length > 0;
 
   useEffect(() => {
     if (resendSeconds <= 0) {
@@ -121,40 +109,13 @@ export function VendorSignupSecurityStep({ form, onChange }: VendorSignupSecurit
           hint={t("vendor.signup.sections.phoneVerificationHint")}
         />
 
-        <FormField label={t("vendor.signup.fields.phoneNumber")} required>
-          <div className="flex overflow-hidden rounded-lg border border-[#E5E5E5] bg-white focus-within:border-[#135391]">
-            <div className="relative border-r border-[#E5E5E5]">
-              <select
-                value={form.phoneCountryCode}
-                onChange={(event) =>
-                  handlePhoneChange({
-                    phoneCountryCode: event.target.value,
-                    phoneNumber: form.phoneNumber,
-                  })
-                }
-                className="h-11 appearance-none bg-[#F8F8F8] pl-3 pr-8 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none"
-              >
-                {VENDOR_PHONE_COUNTRY_CODES.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-              <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-[#676565]" />
-            </div>
-            <input
-              type="tel"
-              value={form.phoneNumber}
-              onChange={(event) =>
-                handlePhoneChange({
-                  phoneCountryCode: form.phoneCountryCode,
-                  phoneNumber: event.target.value,
-                })
-              }
-              placeholder={t("vendor.signup.placeholders.phoneNumber")}
-              className="h-11 min-w-0 flex-1 border-0 bg-transparent px-3 text-sm font-medium font-satoshi text-[#2F2F2F] outline-none"
-            />
-          </div>
+        <FormField label={t("vendor.signup.fields.ownerEmail")} required>
+          <input
+            type="email"
+            value={form.ownerEmail}
+            readOnly
+            className={`${inputClassName} bg-[#F8F8F8]`}
+          />
         </FormField>
 
         <button

@@ -4,6 +4,7 @@
     "becomeVendor": "Satıcı Olun",
     "chooseCurrency": "Para Birimini Seç",
     "signInCreate": "Giriş yap | Hesap oluştur",
+    "signIn": "Giriş yap",
     "searchCurrency": "Para Birimini Ara",
     "signOut": "Oturumu Kapat",
     "myAccount": "Hesabım",
@@ -731,6 +732,7 @@
     "promoSubtitle": "Sizin için promosyonlar, fırsatlar ve özel teklifler"
   },
   "filters": {
+    "filter": "Filtre",
     "apply": "Filtre uygula",
     "applyCount": "Filtreyi uygula ({count})",
     "location": "Konum",
@@ -1673,15 +1675,15 @@
       "continue": "Continue",
       "createAccount": "Create Account",
       "completeRequiredFields": "Complete required fields: {fields}",
-      "securityRequired": "Devam etmek için telefonunuzu OTP ile doğrulayın ve geçerli bir şifre oluşturun.",
+      "securityRequired": "Devam etmek için e-postanızı OTP ile doğrulayın ve geçerli bir şifre oluşturun.",
       "identityRequired": "Hesabınızı oluşturmak için resmi kimlik belgenizi yükleyin ve şartları kabul edin.",
       "sections": {
         "businessInfo": "İşletme Bilgileri",
         "businessInfoHint": "Bize işinizden bahsedin.",
         "ownerInfo": "Sahip Bilgileri",
         "ownerInfoHint": "İşletme sahibi veya ana irtibat kişisi hakkındaki ayrıntılar.",
-        "phoneVerification": "Telefon Doğrulama",
-        "phoneVerificationHint": "Verdiğiniz telefon numarasına tek kullanımlık bir kod göndereceğiz.",
+        "phoneVerification": "E-posta Doğrulama",
+        "phoneVerificationHint": "Verdiğiniz e-posta adresine tek kullanımlık bir kod göndereceğiz.",
         "accountSecurity": "Hesap Güvenliği",
         "accountSecurityHint": "Satıcı hesabınız için güçlü bir şifre oluşturun.",
         "governmentId": "Resmi kimlik belgesi",
@@ -1716,7 +1718,7 @@
       "resendOtp": "OTP'yi Yeniden Gönder",
       "enterOtp": "OTP'yi girin",
       "resendIn": "00:{saniye} sonra yeniden gönder",
-      "otpVerified": "Telefon numarası doğrulandı.",
+      "otpVerified": "E-posta adresi doğrulandı.",
       "passwordRules": {
         "minLength": "En az 8 karakter",
         "hasNumber": "Bir sayı içerir",

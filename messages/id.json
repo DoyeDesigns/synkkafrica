@@ -4,6 +4,7 @@
     "becomeVendor": "Menjadi Mitra Penjual",
     "chooseCurrency": "Pilih Mata Uang",
     "signInCreate": "Masuk | Buat Akun",
+    "signIn": "Masuk",
     "searchCurrency": "Cari Mata Uang",
     "signOut": "Keluar",
     "myAccount": "Akun Saya",
@@ -734,6 +735,7 @@
     "promoSubtitle": "Promosi, penawaran, dan penawaran khusus untuk Anda"
   },
   "filters": {
+    "filter": "Filter",
     "apply": "Terapkan filter",
     "applyCount": "Terapkan filter ({count})",
     "location": "Lokasi",
@@ -1676,15 +1678,15 @@
       "continue": "Lanjutkan",
       "createAccount": "Buat Akun",
       "completeRequiredFields": "Isi kolom-kolom yang wajib diisi: {kolom}",
-      "securityRequired": "Verifikasi nomor telepon Anda dengan OTP dan buat kata sandi yang valid untuk melanjutkan.",
+      "securityRequired": "Verifikasi email Anda dengan OTP dan buat kata sandi yang valid untuk melanjutkan.",
       "identityRequired": "Unggah kartu identitas resmi Anda dan setujui persyaratannya untuk membuat akun Anda.",
       "sections": {
         "businessInfo": "Informasi Bisnis",
         "businessInfoHint": "Ceritakan kepada kami tentang bisnis Anda.",
         "ownerInfo": "Informasi Pemilik",
         "ownerInfoHint": "Rincian mengenai pemilik usaha atau kontak utama.",
-        "phoneVerification": "Verifikasi Nomor Telepon",
-        "phoneVerificationHint": "Kami akan mengirimkan kode satu kali ke nomor telepon yang Anda berikan.",
+        "phoneVerification": "Verifikasi Email",
+        "phoneVerificationHint": "Kami akan mengirimkan kode satu kali ke alamat email yang Anda berikan.",
         "accountSecurity": "Keamanan Akun",
         "accountSecurityHint": "Buat kata sandi yang kuat untuk akun vendor Anda.",
         "governmentId": "Kartu identitas yang diterbitkan oleh pemerintah",
@@ -1719,7 +1721,7 @@
       "resendOtp": "Kirim Ulang OTP",
       "enterOtp": "Masukkan OTP",
       "resendIn": "Kirim ulang dalam 00:{detik}",
-      "otpVerified": "Nomor telepon telah diverifikasi.",
+      "otpVerified": "Alamat email telah diverifikasi.",
       "passwordRules": {
         "minLength": "Setidaknya 8 karakter",
         "hasNumber": "Termasuk sejumlah",

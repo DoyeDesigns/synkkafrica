@@ -4,6 +4,7 @@
     "becomeVendor": "Bli leverantör",
     "chooseCurrency": "Välj valuta",
     "signInCreate": "Logga in | Skapa konto",
+    "signIn": "Logga in",
     "searchCurrency": "Sök valuta",
     "signOut": "Logga ut",
     "myAccount": "Mitt konto",
@@ -734,6 +735,7 @@
     "promoSubtitle": "Kampanjer, erbjudanden och specialerbjudanden för dig"
   },
   "filters": {
+    "filter": "Filter",
     "apply": "Tillämpa filter",
     "applyCount": "Tillämpa filter ({antal})",
     "location": "Plats",
@@ -1676,15 +1678,15 @@
       "continue": "Fortsätt",
       "createAccount": "Skapa konto",
       "completeRequiredFields": "Fyll i de obligatoriska fälten: [[[fält]]]",
-      "securityRequired": "Verifiera din telefon med en engångskod (OTP) och skapa ett giltigt lösenord för att fortsätta.",
+      "securityRequired": "Verifiera din e-post med en engångskod (OTP) och skapa ett giltigt lösenord för att fortsätta.",
       "identityRequired": "Ladda upp ditt officiella ID-kort och godkänn villkoren för att skapa ditt konto.",
       "sections": {
         "businessInfo": "Företagsinformation",
         "businessInfoHint": "Berätta om ditt företag.",
         "ownerInfo": "Information om ägaren",
         "ownerInfoHint": "Uppgifter om företagets ägare eller huvudkontaktperson.",
-        "phoneVerification": "Telefonverifiering",
-        "phoneVerificationHint": "Vi skickar en engångskod till det telefonnummer du har angett.",
+        "phoneVerification": "E-postverifiering",
+        "phoneVerificationHint": "Vi skickar en engångskod till den e-postadress du har angett.",
         "accountSecurity": "Kontosäkerhet",
         "accountSecurityHint": "Skapa ett starkt lösenord till ditt leverantörskonto.",
         "governmentId": "Officiellt utfärdat ID-kort",
@@ -1719,7 +1721,7 @@
       "resendOtp": "Skicka OTP på nytt",
       "enterOtp": "Ange engångskoden",
       "resendIn": "Skicka igen om 00:{sekunder}",
-      "otpVerified": "Telefonnumret har verifierats.",
+      "otpVerified": "E-postadressen har verifierats.",
       "passwordRules": {
         "minLength": "Minst 8 tecken",
         "hasNumber": "Innehåller ett antal",

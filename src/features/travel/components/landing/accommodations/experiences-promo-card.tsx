@@ -18,8 +18,8 @@ export function ExperiencesPromoCard() {
 
       <div className="absolute inset-0 bg-black/30" />
 
-      <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
-        <p className="max-w-[220px] text-2xl font-semibold leading-tight text-white drop-shadow-sm">
+      <div className="absolute bottom-6 left-6 right-6 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+        <p className="text-2xl font-semibold leading-tight text-white drop-shadow-sm">
           {t("landing.experiencesPromo.headline")}
         </p>
 

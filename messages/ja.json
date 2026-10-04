@@ -4,6 +4,7 @@
     "becomeVendor": "ベンダーになる",
     "chooseCurrency": "通貨を選択してください",
     "signInCreate": "サインイン |アカウントを作成する",
+    "signIn": "サインイン",
     "searchCurrency": "検索通貨",
     "signOut": "サインアウト",
     "myAccount": "私のアカウント",
@@ -734,6 +735,7 @@
     "promoSubtitle": "あなたのためのプロモーション、セール、特別オファー"
   },
   "filters": {
+    "filter": "フィルター",
     "apply": "フィルターを適用する",
     "applyCount": "フィルターを適用します (⟦カウント⟧)",
     "location": "位置",
@@ -1676,15 +1678,15 @@
       "continue": "続く",
       "createAccount": "アカウントを作成する",
       "completeRequiredFields": "必須フィールドに入力します: ⟦フィールド⟧",
-      "securityRequired": "OTP で電話を確認し、有効なパスワードを作成して続行します。",
+      "securityRequired": "OTP でメールを確認し、有効なパスワードを作成して続行します。",
       "identityRequired": "政府 ID をアップロードし、アカウントを作成するための条件に同意します。",
       "sections": {
         "businessInfo": "事業案内",
         "businessInfoHint": "あなたのビジネスについて教えてください。",
         "ownerInfo": "所有者情報",
         "ownerInfoHint": "ビジネスオーナーまたは主な連絡先に関する詳細。",
-        "phoneVerification": "電話認証",
-        "phoneVerificationHint": "ご入力いただいた電話番号にワンタイムコードを送信いたします。",
+        "phoneVerification": "メール認証",
+        "phoneVerificationHint": "ご入力いただいたメールアドレスにワンタイムコードを送信いたします。",
         "accountSecurity": "アカウントのセキュリティ",
         "accountSecurityHint": "ベンダー アカウントに強力なパスワードを作成します。",
         "governmentId": "政府発行の身分証明書",
@@ -1719,7 +1721,7 @@
       "resendOtp": "OTPを再送信する",
       "enterOtp": "OTPを入力してください",
       "resendIn": "00:⟦秒⟧後に再送信します",
-      "otpVerified": "電話番号が確認されました。",
+      "otpVerified": "メールアドレスが確認されました。",
       "passwordRules": {
         "minLength": "少なくとも 8 文字",
         "hasNumber": "数字が含まれています",

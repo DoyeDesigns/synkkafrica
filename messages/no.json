@@ -4,6 +4,7 @@
     "becomeVendor": "Bli en leverandør",
     "chooseCurrency": "Velg Valuta",
     "signInCreate": "Logg på | Opprett konto",
+    "signIn": "Logg på",
     "searchCurrency": "Søk etter valuta",
     "signOut": "Logg ut",
     "myAccount": "Min konto",
@@ -734,6 +735,7 @@
     "promoSubtitle": "Kampanjer, tilbud og spesialtilbud for deg"
   },
   "filters": {
+    "filter": "Filter",
     "apply": "Bruk filter",
     "applyCount": "Bruk filter ({antall})",
     "location": "Sted",
@@ -1676,15 +1678,15 @@
       "continue": "Fortsette",
       "createAccount": "Opprett konto",
       "completeRequiredFields": "Fyll ut obligatoriske felt: {felter}",
-      "securityRequired": "Bekreft telefonen med OTP og opprett et gyldig passord for å fortsette.",
+      "securityRequired": "Bekreft e-posten med OTP og opprett et gyldig passord for å fortsette.",
       "identityRequired": "Last opp offentlig ID og godta vilkårene for å opprette kontoen din.",
       "sections": {
         "businessInfo": "Bedriftsinformasjon",
         "businessInfoHint": "Fortell oss om virksomheten din.",
         "ownerInfo": "Eierinformasjon",
         "ownerInfoHint": "Detaljer om bedriftseieren eller hovedkontakten.",
-        "phoneVerification": "Telefonbekreftelse",
-        "phoneVerificationHint": "Vi sender en engangskode til telefonnummeret du oppga.",
+        "phoneVerification": "E-postbekreftelse",
+        "phoneVerificationHint": "Vi sender en engangskode til e-postadressen du oppga.",
         "accountSecurity": "Kontosikkerhet",
         "accountSecurityHint": "Opprett et sterkt passord for leverandørkontoen din.",
         "governmentId": "Offentlig utstedt ID",
@@ -1719,7 +1721,7 @@
       "resendOtp": "Send OTP på nytt",
       "enterOtp": "Skriv inn OTP",
       "resendIn": "Send på nytt om 00:{sekunder}",
-      "otpVerified": "Telefonnummer bekreftet.",
+      "otpVerified": "E-postadresse bekreftet.",
       "passwordRules": {
         "minLength": "Minst 8 tegn",
         "hasNumber": "Inkluderer et tall",

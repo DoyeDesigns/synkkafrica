@@ -4,6 +4,7 @@
     "becomeVendor": "Torne-se um fornecedor",
     "chooseCurrency": "Escolha a moeda",
     "signInCreate": "Entrar | Criar uma conta",
+    "signIn": "Entrar",
     "searchCurrency": "Moeda de pesquisa",
     "signOut": "Sair",
     "myAccount": "Minha conta",
@@ -734,6 +735,7 @@
     "promoSubtitle": "Promoções, ofertas e ofertas especiais para você"
   },
   "filters": {
+    "filter": "Filtrar",
     "apply": "Aplicar filtro",
     "applyCount": "Aplicar filtro ({count})",
     "location": "Localização",
@@ -1676,15 +1678,15 @@
       "continue": "Continuar",
       "createAccount": "Criar uma conta",
       "completeRequiredFields": "Preencha os campos obrigatórios: {campos}",
-      "securityRequired": "Verifique seu telefone com OTP e crie uma senha válida para continuar.",
+      "securityRequired": "Verifique seu e-mail com OTP e crie uma senha válida para continuar.",
       "identityRequired": "Faça upload do seu documento de identidade governamental e aceite os termos para criar sua conta.",
       "sections": {
         "businessInfo": "Informações comerciais",
         "businessInfoHint": "Conte-nos sobre o seu negócio.",
         "ownerInfo": "Informações do proprietário",
         "ownerInfoHint": "Detalhes sobre o proprietário da empresa ou contato principal.",
-        "phoneVerification": "Verificação de telefone",
-        "phoneVerificationHint": "Enviaremos um código único para o número de telefone que você forneceu.",
+        "phoneVerification": "Verificação de e-mail",
+        "phoneVerificationHint": "Enviaremos um código único para o e-mail que você forneceu.",
         "accountSecurity": "Segurança da conta",
         "accountSecurityHint": "Crie uma senha forte para sua conta de fornecedor.",
         "governmentId": "ID emitido pelo governo",
@@ -1719,7 +1721,7 @@
       "resendOtp": "Reenviar OTP",
       "enterOtp": "Digite OTP",
       "resendIn": "Reenviar em 00:{segundos}",
-      "otpVerified": "Número de telefone verificado.",
+      "otpVerified": "E-mail verificado.",
       "passwordRules": {
         "minLength": "Pelo menos 8 caracteres",
         "hasNumber": "Inclui um número",

@@ -4,6 +4,7 @@
     "becomeVendor": "成为供应商",
     "chooseCurrency": "选择货币",
     "signInCreate": "登录 |创建账户",
+    "signIn": "登录",
     "searchCurrency": "搜索货币",
     "signOut": "登出",
     "myAccount": "我的账户",
@@ -734,6 +735,7 @@
     "promoSubtitle": "为您提供的促销、优惠和特别优惠"
   },
   "filters": {
+    "filter": "筛选",
     "apply": "应用过滤器",
     "applyCount": "应用过滤器（{count}）",
     "location": "地点",
@@ -1676,15 +1678,15 @@
       "continue": "继续",
       "createAccount": "创建账户",
       "completeRequiredFields": "填写必填字段：⟦字段⟧",
-      "securityRequired": "使用 OTP 验证您的手机并创建有效的密码以继续。",
+      "securityRequired": "使用 OTP 验证您的电子邮箱并创建有效的密码以继续。",
       "identityRequired": "上传您的政府身份证件并接受创建帐户的条款。",
       "sections": {
         "businessInfo": "商业资讯",
         "businessInfoHint": "告诉我们您的业务。",
         "ownerInfo": "业主信息",
         "ownerInfoHint": "有关企业主或主要联系人的详细信息。",
-        "phoneVerification": "电话验证",
-        "phoneVerificationHint": "我们将向您提供的电话号码发送一次性代码。",
+        "phoneVerification": "邮箱验证",
+        "phoneVerificationHint": "我们将向您提供的电子邮箱发送一次性代码。",
         "accountSecurity": "账户安全",
         "accountSecurityHint": "为您的供应商帐户创建一个强密码。",
         "governmentId": "政府颁发的身份证件",
@@ -1719,7 +1721,7 @@
       "resendOtp": "重新发送一次性密码",
       "enterOtp": "输入一次性密码",
       "resendIn": "00:⟦秒⟧后重新发送",
-      "otpVerified": "电话号码已验证。",
+      "otpVerified": "电子邮箱已验证。",
       "passwordRules": {
         "minLength": "至少 8 个字符",
         "hasNumber": "包括一个号码",

@@ -4,6 +4,7 @@
     "becomeVendor": "Become a Vendor",
     "chooseCurrency": "Choose Currency",
     "signInCreate": "Sign in | Create Account",
+    "signIn": "Sign in",
     "searchCurrency": "Search Currency",
     "signOut": "Sign Out",
     "myAccount": "My Account",
@@ -821,6 +822,7 @@
     "promoSubtitle": "Promotions, deals, and special offers for you"
   },
   "filters": {
+    "filter": "Filter",
     "apply": "Apply filter",
     "applyCount": "Apply filter ({count})",
     "location": "Location",
@@ -1787,15 +1789,15 @@
       "continue": "Continue",
       "createAccount": "Create Account",
       "completeRequiredFields": "Complete required fields: {fields}",
-      "securityRequired": "Verify your phone with OTP and create a valid password to continue.",
+      "securityRequired": "Verify your email with OTP and create a valid password to continue.",
       "identityRequired": "Upload your government ID and accept the terms to create your account.",
       "sections": {
         "businessInfo": "Business Information",
         "businessInfoHint": "Tell us about your business.",
         "ownerInfo": "Owner Information",
         "ownerInfoHint": "Details about the business owner or primary contact.",
-        "phoneVerification": "Phone Verification",
-        "phoneVerificationHint": "We will send a one-time code to the phone number you provided.",
+        "phoneVerification": "Email Verification",
+        "phoneVerificationHint": "We will send a one-time code to the email address you provided.",
         "accountSecurity": "Account Security",
         "accountSecurityHint": "Create a strong password for your vendor account.",
         "governmentId": "Government-issued ID",
@@ -1830,7 +1832,7 @@
       "resendOtp": "Resend OTP",
       "enterOtp": "Enter OTP",
       "resendIn": "Resend in 00:{seconds}",
-      "otpVerified": "Phone number verified.",
+      "otpVerified": "Email address verified.",
       "passwordRules": {
         "minLength": "At least 8 characters",
         "hasNumber": "Includes a number",
