@@ -700,7 +700,12 @@
       "legendUnavailable": "Non disponibile",
       "selectCheckout": "Seleziona cassa",
       "timeSlots": "Fascia oraria",
-      "experienceDate": "Data dell'esperienza"
+      "experienceDate": "Data dell'esperienza",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

@@ -700,7 +700,12 @@
       "legendUnavailable": "Không có sẵn",
       "selectCheckout": "Chọn thanh toán",
       "timeSlots": "Khe thời gian",
-      "experienceDate": "Ngày trải nghiệm"
+      "experienceDate": "Ngày trải nghiệm",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

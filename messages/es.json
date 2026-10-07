@@ -700,7 +700,12 @@
       "legendUnavailable": "No disponible",
       "selectCheckout": "Seleccionar salida",
       "timeSlots": "Franja horaria",
-      "experienceDate": "Fecha de la experiencia"
+      "experienceDate": "Fecha de la experiencia",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

@@ -700,7 +700,12 @@
       "legendUnavailable": "Ikke tilgængelig",
       "selectCheckout": "Vælg kasse",
       "timeSlots": "Tidsinterval",
-      "experienceDate": "Dato for oplevelsen"
+      "experienceDate": "Dato for oplevelsen",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

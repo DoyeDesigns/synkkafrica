@@ -700,7 +700,12 @@
       "legendUnavailable": "ไม่พร้อมใช้งาน",
       "selectCheckout": "เลือกชำระเงิน",
       "timeSlots": "ช่วงเวลา",
-      "experienceDate": "วันที่มีประสบการณ์"
+      "experienceDate": "วันที่มีประสบการณ์",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

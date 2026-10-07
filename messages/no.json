@@ -700,7 +700,12 @@
       "legendUnavailable": "Utilgjengelig",
       "selectCheckout": "Velg utsjekking",
       "timeSlots": "Tidsluke",
-      "experienceDate": "Opplevelsesdato"
+      "experienceDate": "Opplevelsesdato",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

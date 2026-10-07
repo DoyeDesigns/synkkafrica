@@ -700,7 +700,12 @@
       "legendUnavailable": "Ej tillgängligt",
       "selectCheckout": "Välj kassa",
       "timeSlots": "Tidsintervall",
-      "experienceDate": "Datum för upplevelsen"
+      "experienceDate": "Datum för upplevelsen",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

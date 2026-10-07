@@ -104,6 +104,8 @@ export type HeroRangeCalendarProps = {
   maxDate?: string | null;
   disablePast?: boolean;
   blockedDates?: Record<string, "available" | "blocked">;
+  /** Extra predicate: return true to disable a "YYYY-MM-DD" date. */
+  isDateDisabled?: (dateKey: string) => boolean;
   showCaptionDropdown?: boolean;
   /** "YYYY-MM-DD" month to open on when nothing is selected (default: today). */
   initialMonth?: string | null;
@@ -119,6 +121,7 @@ type MonthGridProps = {
   maxDate?: string | null;
   disablePast: boolean;
   blockedDates?: Record<string, "available" | "blocked">;
+  extraDisabled?: (dateKey: string) => boolean;
   showCaptionDropdown: boolean;
   years: number[];
   onDayClick: (dateKey: string) => void;
@@ -133,15 +136,21 @@ function isDateDisabled(
     maxDate,
     disablePast,
     blockedDates,
+    extraDisabled,
   }: {
     todayKey: string;
     minDate?: string | null;
     maxDate?: string | null;
     disablePast: boolean;
     blockedDates?: Record<string, "available" | "blocked">;
+    extraDisabled?: (dateKey: string) => boolean;
   },
 ) {
   if (blockedDates?.[dateKey] === "blocked") {
+    return true;
+  }
+
+  if (extraDisabled?.(dateKey)) {
     return true;
   }
 
@@ -170,6 +179,7 @@ function MonthGrid({
   maxDate,
   disablePast,
   blockedDates,
+  extraDisabled,
   showCaptionDropdown,
   years,
   onDayClick,
@@ -257,6 +267,7 @@ function MonthGrid({
               maxDate,
               disablePast,
               blockedDates,
+              extraDisabled,
             });
 
           return (
@@ -301,6 +312,7 @@ export function HeroRangeCalendar({
   maxDate,
   disablePast = true,
   blockedDates,
+  isDateDisabled: extraDisabled,
   showCaptionDropdown = false,
   initialMonth,
 }: HeroRangeCalendarProps) {
@@ -343,6 +355,7 @@ export function HeroRangeCalendar({
         maxDate,
         disablePast,
         blockedDates,
+        extraDisabled,
       })
     ) {
       return;
@@ -379,6 +392,7 @@ export function HeroRangeCalendar({
     maxDate,
     disablePast,
     blockedDates,
+    extraDisabled,
     showCaptionDropdown,
     years,
     onDayClick: handleDayClick,
