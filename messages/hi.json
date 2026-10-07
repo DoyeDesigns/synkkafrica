@@ -700,7 +700,12 @@
       "legendUnavailable": "अनुपलब्ध",
       "selectCheckout": "चेकआउट का चयन करें",
       "timeSlots": "टाइम स्लॉट",
-      "experienceDate": "अनुभव दिनांक"
+      "experienceDate": "अनुभव दिनांक",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

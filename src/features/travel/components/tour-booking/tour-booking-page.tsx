@@ -5,6 +5,12 @@ import { useRouter } from "next/navigation";
 
 import type { TourBookingStepId } from "@/features/travel/booking/tour-constants";
 import { serializeBookingParams } from "@/features/travel/booking/booking-params";
+import {
+  clampTourGuests,
+  DEFAULT_TOUR_GUESTS,
+  isTourDateBookable,
+  nextBookableTourDate,
+} from "@/features/travel/booking/tour-schedule";
 import { NoReviewsCard } from "@/features/travel/components/car-booking/no-reviews-card";
 import { TourBookingBreadcrumbs } from "@/features/travel/components/tour-booking/tour-booking-breadcrumbs";
 import { TourBookingCheckoutPage } from "@/features/travel/components/tour-booking/tour-booking-checkout-page";
@@ -41,10 +47,26 @@ export function TourBookingPage({
   const router = useRouter();
   const defaultOptionId = tour.options[0]?.id ?? "";
   const [selectedOptionId, setSelectedOptionId] = useState(defaultOptionId);
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState("09:00");
-  const [guests, setGuests] = useState(2);
+  const timeSlots = tour.timeSlots ?? [];
+  const [pickedDate, setPickedDate] = useState("");
+  const [pickedTime, setPickedTime] = useState(() => timeSlots[0] ?? "");
+  const [pickedGuests, setGuests] = useState(() =>
+    clampTourGuests(tour, DEFAULT_TOUR_GUESTS),
+  );
   const [days, setDays] = useState(1);
+
+  // Derived, schedule-safe values: a picked date that is no longer bookable
+  // (e.g. it became past) rolls forward to the next operating day; the time
+  // falls back to the first vendor slot (none when the vendor has no slots);
+  // guests stay within the vendor's min/max.
+  const selectedDate =
+    pickedDate && !isTourDateBookable(tour, pickedDate)
+      ? nextBookableTourDate(tour, pickedDate)
+      : pickedDate;
+  const selectedTime = timeSlots.includes(pickedTime)
+    ? pickedTime
+    : (timeSlots[0] ?? "");
+  const guests = clampTourGuests(tour, pickedGuests);
 
   const handleBookNow = () => {
     if (!selectedDate) return;
@@ -52,7 +74,7 @@ export function TourBookingPage({
     const params = serializeBookingParams({
       option: selectedOptionId,
       date: selectedDate,
-      time: selectedTime,
+      time: selectedTime || undefined,
       guests,
       days,
       rooms: 1,
@@ -88,13 +110,13 @@ export function TourBookingPage({
               <TourLocationMap tour={tour} />
             </div>
             <TourDatesSection
-              tourId={tour.id}
+              tour={tour}
               selectedDate={selectedDate}
               selectedTime={selectedTime}
               guests={guests}
               days={days}
-              onDateChange={setSelectedDate}
-              onTimeChange={setSelectedTime}
+              onDateChange={setPickedDate}
+              onTimeChange={setPickedTime}
               onGuestsChange={setGuests}
               onDaysChange={setDays}
             />

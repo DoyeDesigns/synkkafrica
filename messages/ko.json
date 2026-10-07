@@ -700,7 +700,12 @@
       "legendUnavailable": "없는",
       "selectCheckout": "결제 선택",
       "timeSlots": "시간대",
-      "experienceDate": "체험날짜"
+      "experienceDate": "체험날짜",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

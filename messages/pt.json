@@ -700,7 +700,12 @@
       "legendUnavailable": "Indisponível",
       "selectCheckout": "Selecione finalizar compra",
       "timeSlots": "Horário",
-      "experienceDate": "Data da experiência"
+      "experienceDate": "Data da experiência",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

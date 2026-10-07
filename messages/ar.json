@@ -700,7 +700,12 @@
       "legendUnavailable": "غير متاح",
       "selectCheckout": "حدد الخروج",
       "timeSlots": "فتحة زمنية",
-      "experienceDate": "تاريخ الخبرة"
+      "experienceDate": "تاريخ الخبرة",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

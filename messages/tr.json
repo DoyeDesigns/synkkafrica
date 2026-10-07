@@ -697,7 +697,12 @@
       "legendUnavailable": "Mevcut değil",
       "selectCheckout": "Ödemeyi seç",
       "timeSlots": "Zaman aralığı",
-      "experienceDate": "Deneyim tarihi"
+      "experienceDate": "Deneyim tarihi",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

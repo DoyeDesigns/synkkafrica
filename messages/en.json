@@ -787,7 +787,12 @@
       "timeSlots": "Time slot",
       "arrivalTime": "Arrival time",
       "arrivalTimeHint": "Choose the time you want the car to arrive.",
-      "experienceDate": "Experience date"
+      "experienceDate": "Experience date",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

@@ -700,7 +700,12 @@
       "legendUnavailable": "Tidak tersedia",
       "selectCheckout": "Pilih metode pembayaran",
       "timeSlots": "Slot waktu",
-      "experienceDate": "Tanggal pengalaman"
+      "experienceDate": "Tanggal pengalaman",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

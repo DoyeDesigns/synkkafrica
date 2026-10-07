@@ -700,7 +700,12 @@
       "legendUnavailable": "利用不可",
       "selectCheckout": "チェックアウトを選択",
       "timeSlots": "時間帯",
-      "experienceDate": "体験日"
+      "experienceDate": "体験日",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

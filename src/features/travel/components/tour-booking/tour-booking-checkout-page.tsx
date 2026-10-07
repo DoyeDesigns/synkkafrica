@@ -9,6 +9,7 @@ import {
   parseBookingParams,
   serializeBookingParams,
 } from "@/features/travel/booking/booking-params";
+import { clampTourGuests } from "@/features/travel/booking/tour-schedule";
 import { GuestDetailsForm } from "@/features/travel/components/booking/guest-details-form";
 import { TourBookingBreadcrumbs } from "@/features/travel/components/tour-booking/tour-booking-breadcrumbs";
 import { TourBookingStepper } from "@/features/travel/components/tour-booking/tour-booking-stepper";
@@ -36,7 +37,9 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
   }, [bookingParams.option, tour.options]);
 
   const [selectedOptionId, setSelectedOptionId] = useState(initialOptionId);
-  const [guestCount, setGuestCount] = useState(bookingParams.guests);
+  const [guestCount, setGuestCount] = useState(() =>
+    clampTourGuests(tour, bookingParams.guests),
+  );
   const [specialRequests, setSpecialRequests] = useState(
     bookingParams.specialRequests ?? "",
   );
@@ -88,7 +91,10 @@ function TourBookingCheckoutPageContent({ tour }: TourBookingCheckoutPageProps) 
         <div className="mt-8 grid gap-2 xl:grid-cols-[minmax(0,1fr)_340px]">
           <GuestDetailsForm
             guestCount={guestCount}
-            onGuestCountChange={setGuestCount}
+            onGuestCountChange={(count) =>
+              setGuestCount(clampTourGuests(tour, count))
+            }
+            maxGuests={tour.maxGuests ?? Number.POSITIVE_INFINITY}
             specialRequests={specialRequests}
             onSpecialRequestsChange={setSpecialRequests}
             identities={identities}

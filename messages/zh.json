@@ -700,7 +700,12 @@
       "legendUnavailable": "不可用",
       "selectCheckout": "选择结账",
       "timeSlots": "时段",
-      "experienceDate": "体验日期"
+      "experienceDate": "体验日期",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {

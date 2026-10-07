@@ -700,7 +700,12 @@
       "legendUnavailable": "Недоступно",
       "selectCheckout": "Выберите оформление заказа",
       "timeSlots": "Временной интервал",
-      "experienceDate": "Дата опыта"
+      "experienceDate": "Дата опыта",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {
