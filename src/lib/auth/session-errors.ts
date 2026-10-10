@@ -6,6 +6,11 @@
 // backend refuses an admin-blocked account.
 export const ACCOUNT_BLOCKED_SIGNIN_CODE = "account_blocked";
 
+// Vendor password login: the backend couldn't be reached or failed (network,
+// timeout, 429, 5xx). Kept distinct from a wrong password so the form doesn't
+// tell the vendor their password is wrong during an outage.
+export const SIGNIN_UNAVAILABLE_CODE = "signin_unavailable";
+
 // `session.error` values meaning the backend definitively rejected the
 // customer's session (blocked, or refresh token revoked — which a block
 // does). The client signs out on these. "RefreshTokenError" stays the

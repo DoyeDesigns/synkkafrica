@@ -9,6 +9,8 @@ type BookingDateTimePickerProps = {
   viewDate: Date;
   onViewDateChange: (date: Date) => void;
   blockedDates?: Record<string, "available" | "blocked">;
+  /** Extra predicate: return true to disable a "YYYY-MM-DD" date. */
+  isDateDisabled?: (dateKey: string) => boolean;
   checkIn: string | null;
   checkOut: string | null;
   selectedDate: string | null;
@@ -24,12 +26,17 @@ type BookingDateTimePickerProps = {
 export function BookingDateTimePicker({
   mode,
   blockedDates = {},
+  isDateDisabled,
   checkIn,
   checkOut,
   selectedDate,
   onSelectCheckIn,
   onSelectCheckOut,
   onSelectDate,
+  timeSlots,
+  selectedTime,
+  onSelectTime,
+  showTimeSlots = false,
 }: BookingDateTimePickerProps) {
   const t = useTranslation();
 
@@ -67,6 +74,7 @@ export function BookingDateTimePicker({
             }
           }}
           blockedDates={blockedDates}
+          isDateDisabled={isDateDisabled}
         />
       </div>
 
@@ -91,8 +99,9 @@ export function BookingDateTimePicker({
         </div>
       ) : null}
 
-      {/* Time slots commented out for accommodations, tours, and cars.
-      {showTimeSlots && (mode === "single" ? selectedDate : checkIn) ? (
+      {/* Accommodations and cars pass showTimeSlots={false}; tours enable it
+          when the vendor configured start times. */}
+      {showTimeSlots && timeSlots.length > 0 && (mode === "single" ? selectedDate : checkIn) ? (
         <div className="mt-5">
           <h3 className="text-sm font-semibold font-inter text-foreground">
             {t("booking.dateTime.timeSlots")}
@@ -123,7 +132,6 @@ export function BookingDateTimePicker({
           </div>
         </div>
       ) : null}
-      */}
     </section>
   );
 }

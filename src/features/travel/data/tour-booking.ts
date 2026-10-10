@@ -26,6 +26,20 @@ export type TourDetail = {
   mapCoordinates: [number, number];
   // SynkAfrica service fee rate from the API (defaults to 6%).
   feeRate?: number;
+  // Vendor schedule / capacity (absent for static fallbacks or older APIs).
+  duration?: string;
+  schedule?: TourSchedule;
+  timeSlots?: string[];
+  minGuests?: number;
+  maxGuests?: number;
+};
+
+export type TourSchedule = {
+  startTime: string | null;
+  endTime: string | null;
+  operatingDays: string[] | null;
+  dateRangeStart: string | null;
+  dateRangeEnd: string | null;
 };
 
 const DEFAULT_OPTIONS: TourExperienceOption[] = [

@@ -30,7 +30,11 @@ export default auth((req) => {
 
   // --- Admin area ---
   if (pathname.startsWith("/admin")) {
-    if (pathname === "/admin/login" || pathname === "/admin/accept-invite") {
+    if (
+      pathname === "/admin/login" ||
+      pathname === "/admin/accept-invite" ||
+      pathname === "/admin/forgot-password"
+    ) {
       return NextResponse.next();
     }
     if (isAdminDemoEnabled()) return NextResponse.next();
@@ -40,9 +44,13 @@ export default auth((req) => {
     return NextResponse.next();
   }
 
-  // --- Vendor area (login/signup stay public) ---
+  // --- Vendor area (login/signup/forgot-password stay public) ---
   if (pathname.startsWith("/vendor")) {
-    if (pathname === "/vendor/login" || pathname === "/vendor/signup") {
+    if (
+      pathname === "/vendor/login" ||
+      pathname === "/vendor/signup" ||
+      pathname === "/vendor/forgot-password"
+    ) {
       return NextResponse.next();
     }
     if (role !== "vendor") {

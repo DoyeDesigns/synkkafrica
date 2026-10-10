@@ -26,6 +26,7 @@ import {
   bookExperience,
   initExperiencePayment,
 } from "@/lib/api/experiences";
+import { ApiError } from "@/lib/api/backend";
 
 type TourBookingPaymentPageProps = {
   tour: TourDetail;
@@ -57,7 +58,8 @@ function TourBookingPaymentPageContent({ tour }: TourBookingPaymentPageProps) {
     bookExperience(tour.id, {
       optionId: p.option,
       date,
-      time: p.time,
+      // Only send a time when one was chosen (vendors without slots take none).
+      ...(p.time ? { time: p.time } : {}),
       guests: p.guests,
       guestFirstName: p.guestFirstName,
       specialRequests: p.specialRequests,
@@ -74,9 +76,15 @@ function TourBookingPaymentPageContent({ tour }: TourBookingPaymentPageProps) {
         });
         setBooking(toChargeBreakdown(result));
       })
-      .catch(() => {
+      .catch((err: unknown) => {
         submittedRef.current = false;
-        setError("We couldn't reserve your booking. Please try again.");
+        // A 400 carries the backend's human-readable reason (guest limits,
+        // non-operating date, invalid time slot) — show it as-is.
+        setError(
+          err instanceof ApiError && err.status === 400 && err.message
+            ? err.message
+            : "We couldn't reserve your booking. Please try again.",
+        );
       });
   }, [tour, searchParams]);
 

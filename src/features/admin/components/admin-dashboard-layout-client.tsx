@@ -47,8 +47,13 @@ export function AdminDashboardLayoutClient({
     };
   }, [isMobileOpen]);
 
-  // The login and invite-accept pages render without the dashboard chrome.
-  if (pathname === "/admin/login" || pathname === "/admin/accept-invite") {
+  // The login, invite-accept and password-reset pages render without the
+  // dashboard chrome.
+  if (
+    pathname === "/admin/login" ||
+    pathname === "/admin/accept-invite" ||
+    pathname === "/admin/forgot-password"
+  ) {
     return <>{children}</>;
   }
 

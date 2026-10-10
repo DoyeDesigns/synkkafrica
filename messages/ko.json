@@ -700,7 +700,12 @@
       "legendUnavailable": "없는",
       "selectCheckout": "결제 선택",
       "timeSlots": "시간대",
-      "experienceDate": "체험날짜"
+      "experienceDate": "체험날짜",
+      "runsWindow": "Runs {start}–{end}",
+      "startsAt": "Starts at {time}",
+      "guestLimits": "Min {min} · Max {max} guests",
+      "guestMin": "Min {min} guests",
+      "durationHours": "{count} hours"
     }
   },
   "breadcrumb": {
@@ -1746,7 +1751,35 @@
       "privacyPolicy": "개인 정보 보호 정책",
       "vendorTerms": "Vendor Terms"
     },
+    "forgotPassword": {
+      "title": "Reset your password",
+      "intro": "Enter the email for your vendor account and we'll send you a 6-digit code to reset your password.",
+      "emailPlaceholder": "Enter your vendor email",
+      "sendCode": "Send code",
+      "sending": "Sending…",
+      "codeSent": "If an account exists for that email, we've sent a 6-digit code.",
+      "codeLabel": "6-digit code",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm new password",
+      "newPasswordPlaceholder": "Create a new password",
+      "confirmPasswordPlaceholder": "Re-enter your new password",
+      "resend": "Resend code",
+      "resendIn": "Resend code in {seconds}s",
+      "changeEmail": "Use a different email",
+      "submit": "Reset password",
+      "submitting": "Updating…",
+      "success": "Password updated. Redirecting you to sign in…",
+      "invalidEmail": "Enter a valid email address.",
+      "invalidCode": "That code is invalid or expired.",
+      "enterCode": "Enter the 6-digit code from your email.",
+      "passwordRequirements": "Your new password doesn't meet the requirements.",
+      "sendFailed": "Could not send a code. Try again.",
+      "resetFailed": "Could not reset your password. Try again.",
+      "backToLogin": "Back to sign in"
+    },
     "login": {
+      "forgotPassword": "Forgot password?",
+      "passwordUpdated": "Password updated. Sign in with your new password.",
       "title": "공급업체 로그인",
       "intro": "목록, 예약 및 수익을 관리하려면 SynkAfrica 공급업체 계정에 로그인하세요.",
       "emailPlaceholder": "공급업체 이메일을 입력하세요.",

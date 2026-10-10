@@ -28,10 +28,25 @@ export type ExperienceSummaryApi = {
   features: string[];
 };
 
+// Vendor-defined operating window. Times are "HH:mm", days are lowercase
+// 3-letter codes ("mon".."sun"), range bounds are "YYYY-MM-DD". Any field may
+// be null when the vendor hasn't set it.
+export type ExperienceScheduleApi = {
+  startTime: string | null;
+  endTime: string | null;
+  operatingDays: string[] | null;
+  dateRangeStart: string | null;
+  dateRangeEnd: string | null;
+};
+
 export type ExperienceDetailApi = ExperienceSummaryApi & {
   description: string | null;
   duration: string | null;
-  maxGuests: number | null;
+  maxGuests?: number | null;
+  minGuests?: number;
+  schedule?: ExperienceScheduleApi | null;
+  // Bookable start times ("HH:mm"). Empty/absent: no time selection.
+  timeSlots?: string[];
   options: ExperienceOptionApi[];
   // SynkAfrica service fee rate charged once on the booking subtotal.
   feeRate?: number;
@@ -190,6 +205,17 @@ export function toTourDetail(e: ExperienceDetailApi): TourDetail {
     category: e.category ?? "",
     experienceType: e.experienceType ?? "",
     feeRate: e.feeRate,
+    duration: e.duration ?? undefined,
+    schedule: e.schedule ?? undefined,
+    timeSlots: (e.timeSlots ?? []).filter((slot) => /^\d{2}:\d{2}$/.test(slot)),
+    minGuests:
+      typeof e.minGuests === "number" && e.minGuests >= 1
+        ? Math.floor(e.minGuests)
+        : undefined,
+    maxGuests:
+      typeof e.maxGuests === "number" && e.maxGuests >= 1
+        ? Math.floor(e.maxGuests)
+        : undefined,
     mapCoordinates: coordsFromExperience(e) ?? [0, 0],
   };
 }

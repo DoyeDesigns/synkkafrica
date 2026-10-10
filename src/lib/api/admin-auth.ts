@@ -63,3 +63,20 @@ export async function acceptAdminInvite(
     body: { token, password },
   });
 }
+
+// Password reset — step 1: email a 6-digit reset code. Always 204 (no
+// account enumeration). Public (no token required).
+export async function requestAdminPasswordReset(email: string): Promise<void> {
+  await apiFetch<void>("/admin/auth/forgot-password", { body: { email } });
+}
+
+// Password reset — step 2: consume the code and set the new password. 204 on
+// success; 401 when the code is invalid/expired; 400 on validation failure.
+// MFA is unaffected — the admin still needs their authenticator to sign in.
+export async function resetAdminPassword(input: {
+  email: string;
+  code: string;
+  newPassword: string;
+}): Promise<void> {
+  await apiFetch<void>("/admin/auth/reset-password", { body: input });
+}
