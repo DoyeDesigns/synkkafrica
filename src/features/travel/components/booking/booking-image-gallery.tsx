@@ -108,9 +108,9 @@ export function BookingImageGallery({
   const multiple = count > 1;
 
   return (
-    <div className="space-y-2">
+    <div className="w-full min-w-0 max-w-full space-y-2">
       <div
-        className="group relative h-[240px] overflow-hidden rounded-2xl bg-zinc-100 sm:h-[320px] lg:h-[420px]"
+        className="group relative h-[240px] w-full min-w-0 overflow-hidden rounded-2xl bg-zinc-100 sm:h-[320px] lg:h-[420px]"
         role="region"
         aria-roledescription="carousel"
         aria-label={`${alt} photos`}
@@ -174,7 +174,7 @@ export function BookingImageGallery({
       {multiple ? (
         <div
           ref={thumbsRef}
-          className="flex gap-2 overflow-x-auto pb-1"
+          className="flex w-full min-w-0 max-w-full gap-2 overflow-x-auto pb-1"
           aria-label="Choose a photo"
         >
           {photos.map((src, i) => {
@@ -220,7 +220,7 @@ export function BookingImageGallery({
   );
 }
 
-// Full-screen slideshow: arrows, swipe, ←/→ and Escape.
+// Full-screen slideshow: arrows, swipe, ΓåÉ/ΓåÆ and Escape.
 function FullscreenViewer({
   photos,
   alt,

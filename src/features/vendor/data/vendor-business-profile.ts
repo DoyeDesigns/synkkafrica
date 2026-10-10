@@ -1,4 +1,16 @@
-export type VendorPayoutBankId = "gtbank" | "access" | "zenith" | "firstbank";
+export type VendorPayoutBankId = string;
+
+const LEGACY_PAYOUT_BANK_NAMES: Record<string, string> = {
+  gtbank: "Guaranty Trust Bank",
+  access: "Access Bank",
+  zenith: "Zenith Bank",
+  firstbank: "First Bank of Nigeria",
+};
+
+export function resolvePayoutBankName(value: string | null | undefined) {
+  if (!value) return "";
+  return LEGACY_PAYOUT_BANK_NAMES[value] ?? value;
+}
 
 export type VendorBusinessProfile = {
   internalBusinessName: string;

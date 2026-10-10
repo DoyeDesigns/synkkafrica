@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarDays, Clock } from "lucide-react";
+import { CalendarDays, Clock, Users } from "lucide-react";
 import { useState } from "react";
 
 import { BookingCounterField } from "@/features/travel/components/booking/booking-counter-field";
@@ -11,18 +11,22 @@ type CarDatesSectionProps = {
   carId: string;
   pickupDate: string;
   days: number;
+  passengers: number;
   selectedTime: string;
   onPickupDateChange: (value: string) => void;
   onDaysChange: (value: number) => void;
+  onPassengersChange: (value: number) => void;
   onTimeChange: (value: string) => void;
 };
 
 export function CarDatesSection({
   pickupDate,
   days,
+  passengers,
   selectedTime,
   onPickupDateChange,
   onDaysChange,
+  onPassengersChange,
   onTimeChange,
 }: CarDatesSectionProps) {
   const t = useTranslation();
@@ -63,7 +67,7 @@ export function CarDatesSection({
         />
       </label>
 
-      <div className="rounded-[25px] border border-[#E5E5E5] bg-[#B4B4B4]/35 p-3">
+      <div className="grid gap-3 rounded-[25px] border border-[#E5E5E5] bg-[#B4B4B4]/35 p-3 sm:grid-cols-2">
         <BookingCounterField
           icon={<CalendarDays className="h-4 w-4" />}
           label={t("booking.dates.rentalDays")}
@@ -73,6 +77,16 @@ export function CarDatesSection({
           decreaseLabel={t("booking.dates.decreaseDays")}
           increaseLabel={t("booking.dates.increaseDays")}
           onChange={onDaysChange}
+        />
+        <BookingCounterField
+          icon={<Users className="h-4 w-4" />}
+          label={t("hero.carRentals.passengers")}
+          value={passengers}
+          min={1}
+          max={12}
+          decreaseLabel={t("booking.guest.decreaseGuests")}
+          increaseLabel={t("booking.guest.increaseGuests")}
+          onChange={onPassengersChange}
         />
       </div>
     </div>

@@ -3,7 +3,12 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
+import { useTranslation } from "@/hooks/use-translation";
 import { geocodeAddress } from "@/lib/api/places";
+import {
+  canOpenGoogleMapsDirections,
+  openGoogleMapsDirections,
+} from "@/lib/google-maps-directions";
 
 const PropertyMapInner = dynamic(
   () =>
@@ -35,6 +40,7 @@ function isRealCoord(c: [number, number]): boolean {
 }
 
 export function PropertyMap({ coordinates, label, query }: PropertyMapProps) {
+  const t = useTranslation();
   const immediate = isRealCoord(coordinates) ? coordinates : null;
   const q = query?.trim() ?? "";
   const [geocoded, setGeocoded] = useState<[number, number] | null>(null);
@@ -67,6 +73,16 @@ export function PropertyMap({ coordinates, label, query }: PropertyMapProps) {
   }, [immediate, q]);
 
   const unavailable = !resolved && (geoFailed || !q);
+  const destination = {
+    coordinates: resolved,
+    address: q || null,
+    label,
+  };
+  const canOpenMaps = canOpenGoogleMapsDirections(destination);
+
+  const handleOpenDirections = () => {
+    openGoogleMapsDirections(destination);
+  };
 
   return (
     <div className="h-56 overflow-hidden rounded-xl sm:h-64">
@@ -75,10 +91,22 @@ export function PropertyMap({ coordinates, label, query }: PropertyMapProps) {
           key={`${resolved[0]},${resolved[1]}`}
           coordinates={resolved}
           label={label}
+          onOpenDirections={handleOpenDirections}
         />
       ) : unavailable ? (
-        <div className="flex h-full w-full items-center justify-center rounded-2xl bg-zinc-100 px-4 text-center text-sm font-medium font-satoshi text-foreground/60">
-          {q || "Location not available"}
+        <div className="flex h-full w-full flex-col items-center justify-center gap-3 rounded-2xl bg-zinc-100 px-4 text-center">
+          <p className="text-sm font-medium font-satoshi text-foreground/60">
+            {q || t("booking.map.locationNotAvailable")}
+          </p>
+          {canOpenMaps ? (
+            <button
+              type="button"
+              onClick={handleOpenDirections}
+              className="text-sm font-bold font-satoshi text-[#D85A30] underline-offset-2 hover:underline"
+            >
+              {t("booking.map.checkOnGoogleMaps")}
+            </button>
+          ) : null}
         </div>
       ) : (
         <div className="h-full w-full animate-pulse rounded-2xl bg-zinc-100" />

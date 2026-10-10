@@ -29,12 +29,20 @@ type PropertyBookingPageProps = {
   property: PropertyDetail;
   currentStep?: BookingStepId;
   listingData?: unknown;
+  initialCheckIn?: string;
+  initialCheckOut?: string;
+  initialGuests?: number;
+  initialRooms?: number;
 };
 
 export function PropertyBookingPage({
   property,
   currentStep = "rooms",
   listingData,
+  initialCheckIn = "",
+  initialCheckOut = "",
+  initialGuests = 2,
+  initialRooms = 1,
 }: PropertyBookingPageProps) {
   const router = useRouter();
 
@@ -46,10 +54,10 @@ export function PropertyBookingPage({
   const defaultRoomId = property.rooms[0]?.id ?? "";
 
   const [selectedRoomId, setSelectedRoomId] = useState(defaultRoomId);
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
-  const [guests, setGuests] = useState(2);
-  const [roomCount, setRoomCount] = useState(1);
+  const [checkIn, setCheckIn] = useState(initialCheckIn);
+  const [checkOut, setCheckOut] = useState(initialCheckOut);
+  const [guests, setGuests] = useState(initialGuests);
+  const [roomCount, setRoomCount] = useState(initialRooms);
   const [selectedTime, setSelectedTime] = useState("09:00");
 
   const nights = useMemo(
@@ -93,8 +101,8 @@ export function PropertyBookingPage({
         <BookingStepper propertyId={property.id} currentStep={currentStep} />
       </div>
 
-      <div className="mt-8 grid gap-8 xl:grid-cols-[minmax(0,1fr)_340px]">
-        <div className="space-y-8">
+      <div className="mt-8 grid min-w-0 gap-8 xl:grid-cols-[minmax(0,1fr)_340px]">
+        <div className="min-w-0 space-y-8">
           <PropertyHeader property={property} />
           <PropertyGallery property={property} />
           <PropertyDescription property={property} />

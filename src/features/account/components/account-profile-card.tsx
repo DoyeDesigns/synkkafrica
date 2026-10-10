@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   Check,
+  ChevronDown,
   Loader2,
   Lock,
   Mail,
@@ -59,6 +60,8 @@ export function AccountProfileCard({ session, profile }: AccountProfileCardProps
   const [name, setName] = useState(initialName);
   const [phone, setPhone] = useState(profile?.phoneNumber ?? "");
   const [dob, setDob] = useState("");
+  const [gender, setGender] = useState("");
+  const [savedGender, setSavedGender] = useState("");
 
   const canEdit = Boolean(token);
   const todayISO = formatLocalDateKey(new Date());
@@ -75,6 +78,7 @@ export function AccountProfileCard({ session, profile }: AccountProfileCardProps
     setError(null);
     setName(initialName);
     setPhone(profile?.phoneNumber ?? "");
+    setGender(savedGender);
   }
 
   async function save() {
@@ -88,6 +92,7 @@ export function AccountProfileCard({ session, profile }: AccountProfileCardProps
         lastName,
         phoneNumber: phone.trim(),
       });
+      setSavedGender(gender);
       setEditing(false);
       router.refresh();
     } catch (err) {
@@ -201,11 +206,18 @@ export function AccountProfileCard({ session, profile }: AccountProfileCardProps
           label={t("account.profile.gender")}
           icon={<Mars className="h-4 w-4" strokeWidth={1.75} />}
         >
-          <input
-            type="text"
-            placeholder={t("account.profile.notAdded")}
-            className={`${accountInputClassName} pl-10`}
-          />
+          <select
+            value={gender}
+            onChange={(event) => setGender(event.target.value)}
+            disabled={!editing}
+            aria-label={t("account.profile.gender")}
+            className={`${editableInput} appearance-none pr-9 disabled:cursor-default`}
+          >
+            <option value="">{t("account.profile.notAdded")}</option>
+            <option value="male">{t("booking.guest.male")}</option>
+            <option value="female">{t("booking.guest.female")}</option>
+          </select>
+          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#676565]" />
         </AccountField>
       </div>
 

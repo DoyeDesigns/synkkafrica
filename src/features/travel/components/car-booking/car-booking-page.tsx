@@ -22,20 +22,31 @@ import type { CarDetail } from "@/features/travel/data/car-booking";
 type CarBookingPageProps = {
   car: CarDetail;
   currentStep?: CarBookingStepId;
+  initialPickupDate?: string;
+  initialTime?: string;
+  initialPickupAddress?: string;
+  initialPassengers?: number;
 };
 
 export function CarBookingPage({
   car,
   currentStep = "choose-car",
+  initialPickupDate = "",
+  initialTime = "",
+  initialPickupAddress = "",
+  initialPassengers = 1,
 }: CarBookingPageProps) {
   const router = useRouter();
   const defaultPackageId = car.packages[0]?.id ?? "";
 
   const [selectedPackageId, setSelectedPackageId] = useState(defaultPackageId);
-  const [pickupDate, setPickupDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState("12:00");
+  const [pickupDate, setPickupDate] = useState(initialPickupDate);
+  const [selectedTime, setSelectedTime] = useState(initialTime || "12:00");
   const [days, setDays] = useState(1);
-  const [customerPickupAddress, setCustomerPickupAddress] = useState("");
+  const [passengers, setPassengers] = useState(initialPassengers);
+  const [customerPickupAddress, setCustomerPickupAddress] = useState(
+    initialPickupAddress,
+  );
 
   const handleBookNow = () => {
     if (!pickupDate) return;
@@ -45,7 +56,7 @@ export function CarBookingPage({
       date: pickupDate,
       time: selectedTime,
       days,
-      guests: 1,
+      guests: passengers,
       rooms: 1,
       carRentalMode: "with_driver",
       customerPickupAddress: customerPickupAddress.trim() || undefined,
@@ -78,17 +89,19 @@ export function CarBookingPage({
           <CarBookingStepper carId={car.id} currentStep={currentStep} />
         </div>
 
-        <div className="mt-8 grid gap-8 xl:grid-cols-[minmax(0,1fr)_340px]">
-          <div className="space-y-8">
+        <div className="mt-8 grid min-w-0 gap-8 xl:grid-cols-[minmax(0,1fr)_340px]">
+          <div className="min-w-0 space-y-8">
             <CarGallery car={car} />
             <AboutThisCar car={car} />
             <CarDatesSection
               carId={car.id}
               pickupDate={pickupDate}
               days={days}
+              passengers={passengers}
               selectedTime={selectedTime}
               onPickupDateChange={setPickupDate}
               onDaysChange={setDays}
+              onPassengersChange={setPassengers}
               onTimeChange={setSelectedTime}
             />
             <PackageSelectionTable

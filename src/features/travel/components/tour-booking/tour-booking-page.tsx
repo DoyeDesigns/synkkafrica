@@ -38,17 +38,19 @@ function TourLocationMap({ tour }: { tour: TourDetail }) {
 type TourBookingPageProps = {
   tour: TourDetail;
   currentStep?: TourBookingStepId;
+  initialDate?: string;
 };
 
 export function TourBookingPage({
   tour,
   currentStep = "choose-experience",
+  initialDate = "",
 }: TourBookingPageProps) {
   const router = useRouter();
   const defaultOptionId = tour.options[0]?.id ?? "";
   const [selectedOptionId, setSelectedOptionId] = useState(defaultOptionId);
   const timeSlots = tour.timeSlots ?? [];
-  const [pickedDate, setPickedDate] = useState("");
+  const [pickedDate, setPickedDate] = useState(initialDate);
   const [pickedTime, setPickedTime] = useState(() => timeSlots[0] ?? "");
   const [pickedGuests, setGuests] = useState(() =>
     clampTourGuests(tour, DEFAULT_TOUR_GUESTS),
@@ -102,8 +104,8 @@ export function TourBookingPage({
           <TourBookingStepper tourId={tour.id} currentStep={currentStep} />
         </div>
 
-        <div className="mt-8 grid gap-8 xl:grid-cols-[minmax(0,1fr)_340px]">
-          <div className="space-y-8">
+        <div className="mt-8 grid min-w-0 gap-8 xl:grid-cols-[minmax(0,1fr)_340px]">
+          <div className="min-w-0 space-y-8">
             <TourGallery tour={tour} />
             <AboutThisTour tour={tour} />
             <div className="xl:hidden">

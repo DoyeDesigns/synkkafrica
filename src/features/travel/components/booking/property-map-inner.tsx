@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 import L from "leaflet";
 
 import "leaflet/dist/leaflet.css";
@@ -9,6 +9,7 @@ import "leaflet/dist/leaflet.css";
 type PropertyMapInnerProps = {
   coordinates: [number, number];
   label: string;
+  onOpenDirections?: () => void;
 };
 
 const markerIcon = L.divIcon({
@@ -18,9 +19,23 @@ const markerIcon = L.divIcon({
   iconAnchor: [9, 9],
 });
 
-export function PropertyMapInner({ coordinates, label }: PropertyMapInnerProps) {
+function MapClickToDirections({ onOpen }: { onOpen?: () => void }) {
+  useMapEvents({
+    click() {
+      onOpen?.();
+    },
+  });
+  return null;
+}
+
+export function PropertyMapInner({
+  coordinates,
+  label,
+  onOpenDirections,
+}: PropertyMapInnerProps) {
   useEffect(() => {
-    delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: unknown })._getIconUrl;
+    delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: unknown })
+      ._getIconUrl;
     L.Icon.Default.mergeOptions({
       iconRetinaUrl:
         "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
@@ -34,14 +49,21 @@ export function PropertyMapInner({ coordinates, label }: PropertyMapInnerProps) 
       center={coordinates}
       zoom={15}
       scrollWheelZoom={false}
-      className="h-full w-full rounded-2xl"
-      aria-label={`Map showing ${label}`}
+      className="h-full w-full cursor-pointer rounded-2xl"
+      aria-label={`Map showing ${label}. Click to open directions in Google Maps.`}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={coordinates} icon={markerIcon} />
+      <Marker
+        position={coordinates}
+        icon={markerIcon}
+        eventHandlers={{
+          click: () => onOpenDirections?.(),
+        }}
+      />
+      <MapClickToDirections onOpen={onOpenDirections} />
     </MapContainer>
   );
 }

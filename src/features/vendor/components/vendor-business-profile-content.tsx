@@ -10,16 +10,18 @@ import {
   Save,
   ShieldAlert,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { VendorBusinessDocumentsSection } from "@/features/vendor/components/vendor-business-documents-section";
 import { StructuredLocationFields } from "@/features/vendor/components/structured-location-fields";
 import {
-  VENDOR_PAYOUT_BANK_OPTIONS,
+  resolvePayoutBankName,
   type VendorBusinessProfile,
 } from "@/features/vendor/data/vendor-business-profile";
+import { NIGERIAN_BANKS } from "@/lib/bank-list/banks";
+import { verifyBankDetails } from "@/lib/verify-bank-details";
 import { VENDOR_CAC_COMPANY_TYPES } from "@/features/vendor/data/vendor-signup";
 import { useTranslation } from "@/hooks/use-translation";
 import {
@@ -54,8 +56,7 @@ function formFromProfile(p: VendorFullProfile): VendorBusinessProfile {
     contactPhone: p.phoneNumber ?? "",
     contactEmail: p.email ?? "",
     businessAddress: p.businessAddress ?? "",
-    payoutBankId:
-      (p.payoutBankId as VendorBusinessProfile["payoutBankId"]) ?? "gtbank",
+    payoutBankId: resolvePayoutBankName(p.payoutBankId),
     payoutAccountNumber: p.payoutAccountNumber ?? "",
     payoutAccountName: p.payoutAccountName ?? "",
     // Backend does not yet return this; default far enough back that cooldown
@@ -103,6 +104,17 @@ export function VendorBusinessProfileContent({
     section: string;
     message: string;
   } | null>(null);
+  const [bankCheck, setBankCheck] = useState<
+    | { tone: "pending" | "success" | "error"; message: string }
+    | null
+  >(null);
+  const [verifiedAccount, setVerifiedAccount] = useState<{
+    bankName: string;
+    accountNumber: string;
+    accountName: string;
+  } | null>(null);
+  const accountLookupArmed = useRef(false);
+  const accountLookupSeq = useRef(0);
 
   // Seed the editable form from freshly-loaded profile data — the React-endorsed
   // "adjust state during render when a prop changes" pattern (no effect). After
@@ -112,8 +124,23 @@ export function VendorBusinessProfileContent({
     null,
   );
   if (profile && profile !== seededProfile) {
+    const nextForm = formFromProfile(profile);
+    const savedAccountNumber = nextForm.payoutAccountNumber.replace(/\D/g, "");
     setSeededProfile(profile);
-    setForm(formFromProfile(profile));
+    setForm(nextForm);
+    setVerifiedAccount(
+      nextForm.payoutBankId &&
+        /^\d{10}$/.test(savedAccountNumber) &&
+        nextForm.payoutAccountName
+        ? {
+            bankName: nextForm.payoutBankId,
+            accountNumber: savedAccountNumber,
+            accountName: nextForm.payoutAccountName,
+          }
+        : null,
+    );
+    setBankCheck(null);
+    accountLookupArmed.current = false;
     setHqLocation({
       ...EMPTY_STRUCTURED_LOCATION,
       street: profile.businessAddress ?? "",
@@ -123,6 +150,75 @@ export function VendorBusinessProfileContent({
   const updateForm = (patch: Partial<VendorBusinessProfile>) => {
     setForm((current) => (current ? { ...current, ...patch } : current));
   };
+
+  const payoutBankName = form?.payoutBankId ?? "";
+  const payoutAccountNumber = form?.payoutAccountNumber ?? "";
+
+  useEffect(() => {
+    if (!accountLookupArmed.current) return;
+
+    const bankName = payoutBankName.trim();
+    const accountNumber = payoutAccountNumber.replace(/\D/g, "");
+    if (!bankName || !/^\d{10}$/.test(accountNumber)) return;
+
+    const requestId = ++accountLookupSeq.current;
+    const timer = window.setTimeout(() => {
+      void (async () => {
+        setBankCheck({
+          tone: "pending",
+          message: t("vendor.businessProfile.verifyingAccount"),
+        });
+        try {
+          const result = await verifyBankDetails(accountNumber, bankName);
+          if (accountLookupSeq.current !== requestId) return;
+
+          const accountName =
+            result.status === true && result.data?.account_name
+              ? result.data.account_name
+              : "";
+          if (!accountName) {
+            setVerifiedAccount(null);
+            setBankCheck({
+              tone: "error",
+              message:
+                result.message ||
+                t("vendor.businessProfile.accountVerifyFailed"),
+            });
+            setForm((current) =>
+              current ? { ...current, payoutAccountName: "" } : current,
+            );
+            return;
+          }
+
+          setVerifiedAccount({ bankName, accountNumber, accountName });
+          setBankCheck({
+            tone: "success",
+            message: t("vendor.businessProfile.accountConfirmed", {
+              name: accountName,
+            }),
+          });
+          setForm((current) =>
+            current
+              ? {
+                  ...current,
+                  payoutAccountNumber: accountNumber,
+                  payoutAccountName: accountName,
+                }
+              : current,
+          );
+        } catch {
+          if (accountLookupSeq.current !== requestId) return;
+          setVerifiedAccount(null);
+          setBankCheck({
+            tone: "error",
+            message: t("vendor.businessProfile.accountVerifyFailed"),
+          });
+        }
+      })();
+    }, 500);
+
+    return () => window.clearTimeout(timer);
+  }, [payoutBankName, payoutAccountNumber, t]);
 
   const flashSaved = (section: string) => {
     setSavedSection(section);
@@ -191,6 +287,52 @@ export function VendorBusinessProfileContent({
     }
   }
 
+  async function savePayoutAccount() {
+    if (!token || !form) return;
+
+    const accountNumber = form.payoutAccountNumber.replace(/\D/g, "");
+    const bankName = form.payoutBankId.trim();
+
+    if (!bankName) {
+      setBankCheck({
+        tone: "error",
+        message: t("vendor.businessProfile.selectBank"),
+      });
+      return;
+    }
+
+    if (!/^\d{10}$/.test(accountNumber)) {
+      setBankCheck({
+        tone: "error",
+        message: t("vendor.businessProfile.accountNumberInvalid"),
+      });
+      return;
+    }
+
+    if (
+      !verifiedAccount ||
+      verifiedAccount.bankName !== bankName ||
+      verifiedAccount.accountNumber !== accountNumber ||
+      !verifiedAccount.accountName
+    ) {
+      setBankCheck((current) =>
+        current?.tone === "pending"
+          ? current
+          : {
+              tone: "error",
+              message: t("vendor.businessProfile.accountVerifyFailed"),
+            },
+      );
+      return;
+    }
+
+    await saveSection("payout", {
+      payoutBankId: bankName,
+      payoutAccountNumber: accountNumber,
+      payoutAccountName: verifiedAccount.accountName,
+    });
+  }
+
   const email = form?.contactEmail ?? vendorEmail ?? "";
   const cacVerified = profile?.cacVerificationStatus === "verified";
   const cacFailed = profile?.cacVerificationStatus === "failed";
@@ -198,9 +340,35 @@ export function VendorBusinessProfileContent({
 
   const renderSaveRow = (section: string) => {
     const err = errorSection?.section === section ? errorSection.message : null;
+    const payoutMessage =
+      section === "payout"
+        ? err ??
+          bankCheck?.message ??
+          (savedSection === "payout" ? t("vendor.businessProfile.saved") : "")
+        : "";
+    const payoutTone =
+      err || bankCheck?.tone === "error"
+        ? "text-[#C0392B]"
+        : bankCheck?.tone === "pending"
+          ? "text-[#676565]"
+          : "text-[#2E7D32]";
+
     return (
-      <div className="mt-4 flex items-center justify-end gap-3">
-        {err ? (
+      <div
+        className={
+          section === "payout"
+            ? "mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+            : "mt-4 flex items-center justify-end gap-3"
+        }
+      >
+        {section === "payout" ? (
+          <p
+            className={`min-w-0 flex-1 text-sm font-semibold font-satoshi leading-snug wrap-break-word ${payoutMessage ? payoutTone : "hidden sm:block"}`}
+            aria-live="polite"
+          >
+            {payoutMessage}
+          </p>
+        ) : err ? (
           <span className="text-xs font-semibold font-satoshi text-[#C0392B]">
             {err}
           </span>
@@ -211,7 +379,11 @@ export function VendorBusinessProfileContent({
         ) : null}
         <button
           type="button"
-          disabled={savingSection === section || !form}
+          disabled={
+            savingSection === section ||
+            !form ||
+            (section === "payout" && bankCheck?.tone === "pending")
+          }
           onClick={() => {
             if (!form) return;
             if (section === "business") {
@@ -230,14 +402,12 @@ export function VendorBusinessProfileContent({
                 companyType: form.cacCompanyType,
               });
             } else if (section === "payout") {
-              void saveSection("payout", {
-                payoutBankId: form.payoutBankId,
-                payoutAccountNumber: form.payoutAccountNumber,
-                payoutAccountName: form.payoutAccountName,
-              });
+              void savePayoutAccount();
             }
           }}
-          className="inline-flex items-center gap-2 rounded-lg bg-[#D85A30] px-4 py-2.5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+          className={`inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#D85A30] px-4 py-2.5 text-sm font-bold font-satoshi text-white transition-opacity hover:opacity-90 disabled:opacity-60 ${
+            section === "payout" ? "w-full sm:w-auto" : ""
+          }`}
         >
           <Save className="h-4 w-4" strokeWidth={2} />
           {savingSection === section
@@ -533,18 +703,39 @@ export function VendorBusinessProfileContent({
               </span>
               <div className="relative">
                 <select
-                  value={form?.payoutBankId ?? "gtbank"}
-                  onChange={(event) =>
+                  value={form?.payoutBankId ?? ""}
+                  onChange={(event) => {
+                    accountLookupArmed.current = true;
+                    accountLookupSeq.current += 1;
+                    const bankName = event.target.value;
+                    const digits = (form?.payoutAccountNumber ?? "").replace(
+                      /\D/g,
+                      "",
+                    );
+                    setVerifiedAccount(null);
+                    setBankCheck(
+                      bankName && digits.length === 10
+                        ? {
+                            tone: "pending",
+                            message: t("vendor.businessProfile.verifyingAccount"),
+                          }
+                        : null,
+                    );
                     updateForm({
-                      payoutBankId: event.target
-                        .value as VendorBusinessProfile["payoutBankId"],
-                    })
-                  }
+                      payoutBankId: bankName,
+                      payoutAccountName: "",
+                    });
+                  }}
                   className={`${inputClassName} appearance-none pr-10`}
                 >
-                  {VENDOR_PAYOUT_BANK_OPTIONS.map((bank) => (
-                    <option key={bank.id} value={bank.id}>
-                      {t(bank.labelKey)}
+                  <option value="">{t("vendor.businessProfile.selectBank")}</option>
+                  {form?.payoutBankId &&
+                  !NIGERIAN_BANKS.some((bank) => bank.name === form.payoutBankId) ? (
+                    <option value={form.payoutBankId}>{form.payoutBankId}</option>
+                  ) : null}
+                  {NIGERIAN_BANKS.map((bank) => (
+                    <option key={`${bank.code}-${bank.name}`} value={bank.name}>
+                      {bank.name}
                     </option>
                   ))}
                 </select>
@@ -559,10 +750,30 @@ export function VendorBusinessProfileContent({
               <input
                 type="text"
                 inputMode="numeric"
+                autoComplete="off"
+                maxLength={10}
                 value={form?.payoutAccountNumber ?? ""}
-                onChange={(event) =>
-                  updateForm({ payoutAccountNumber: event.target.value })
-                }
+                onChange={(event) => {
+                  accountLookupArmed.current = true;
+                  accountLookupSeq.current += 1;
+                  const digits = event.target.value
+                    .replace(/\D/g, "")
+                    .slice(0, 10);
+                  const bankName = form?.payoutBankId.trim() ?? "";
+                  setVerifiedAccount(null);
+                  setBankCheck(
+                    bankName && digits.length === 10
+                      ? {
+                          tone: "pending",
+                          message: t("vendor.businessProfile.verifyingAccount"),
+                        }
+                      : null,
+                  );
+                  updateForm({
+                    payoutAccountNumber: digits,
+                    payoutAccountName: "",
+                  });
+                }}
                 className={inputClassName}
               />
             </label>
@@ -573,11 +784,14 @@ export function VendorBusinessProfileContent({
               </span>
               <input
                 type="text"
+                readOnly
                 value={form?.payoutAccountName ?? ""}
-                onChange={(event) =>
-                  updateForm({ payoutAccountName: event.target.value })
+                placeholder={
+                  bankCheck?.tone === "pending"
+                    ? t("vendor.businessProfile.verifyingAccount")
+                    : ""
                 }
-                className={inputClassName}
+                className={`${inputClassName} read-only:bg-[#F7F7F7]`}
               />
             </label>
           </div>

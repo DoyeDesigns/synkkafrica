@@ -1,5 +1,9 @@
 import { notFound } from "next/navigation";
 
+import {
+  readCountParam,
+  readDateParam,
+} from "@/features/travel/booking/booking-params";
 import { PropertyBookingPage } from "@/features/travel/components/booking/property-booking-page";
 import {
   getAccommodation,
@@ -11,12 +15,22 @@ import type { PropertyDetail } from "@/features/travel/data/property-booking";
 
 type PropertyBookingRouteProps = {
   params: Promise<{ propertyId: string }>;
+  searchParams: Promise<{
+    checkIn?: string | string[];
+    checkOut?: string | string[];
+    guests?: string | string[];
+    rooms?: string | string[];
+  }>;
 };
 
 export default async function PropertyBookingRoute({
   params,
+  searchParams,
 }: PropertyBookingRouteProps) {
   const { propertyId } = await params;
+  const query = await searchParams;
+  const checkIn = readDateParam(query.checkIn);
+  const checkOut = readDateParam(query.checkOut);
 
   let accommodation: AccommodationDetailApi;
   try {
@@ -53,6 +67,10 @@ export default async function PropertyBookingRoute({
       property={property}
       currentStep="rooms"
       listingData={accommodation}
+      initialCheckIn={checkIn}
+      initialCheckOut={checkOut && checkIn && checkOut > checkIn ? checkOut : ""}
+      initialGuests={readCountParam(query.guests, 2, 1, 12)}
+      initialRooms={readCountParam(query.rooms, 1, 1, 6)}
     />
   );
 }

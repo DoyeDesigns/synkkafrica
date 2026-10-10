@@ -1,9 +1,13 @@
+"use client";
+
 import { BadgeCheck, Heart, MapPin, Star } from "lucide-react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 
 import { DisplayPrice } from "@/components/display-price";
 import { ReviewCount } from "@/components/review-count";
 import { T } from "@/components/translation";
+import { withBookingSearch } from "@/features/travel/booking/booking-params";
 import { getTourBookingPath } from "@/features/travel/booking/tour-paths";
 import { ListingCardLink } from "@/features/travel/components/listing-card-link";
 import type { TourResult } from "@/features/travel/data/tour-results";
@@ -13,8 +17,11 @@ type TourResultCardProps = {
 };
 
 export function TourResultCard({ item }: TourResultCardProps) {
+  const searchParams = useSearchParams();
   const fullStars = Math.floor(item.rating);
-  const href = getTourBookingPath(item.id);
+  const href = withBookingSearch(getTourBookingPath(item.id), searchParams, [
+    "date",
+  ]);
 
   return (
     <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-shadow hover:shadow-md">

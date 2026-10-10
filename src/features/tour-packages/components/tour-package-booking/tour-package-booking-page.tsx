@@ -67,7 +67,7 @@ export function TourPackageBookingPage({
           />
         </div>
 
-        <div className="mt-8 space-y-8">
+        <div className="mt-8 min-w-0 space-y-8">
           <TourPackageHeader tourPackage={tourPackage} />
           <TourPackageGallery tourPackage={tourPackage} />
           <TourPackageHighlightsBar tourPackage={tourPackage} />
