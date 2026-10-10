@@ -28,6 +28,8 @@ const nextConfig: NextConfig = {
     AUTH_GOOGLE_SECRET: process.env.AUTH_GOOGLE_SECRET,
     AUTH_EMAIL_FROM: process.env.AUTH_EMAIL_FROM,
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    PAYSTACK_SECRET_KEY: process.env.PAYSTACK_SECRET_KEY,
+    DEEPL_API_KEY: process.env.DEEPL_API_KEY,
   },
 };
 

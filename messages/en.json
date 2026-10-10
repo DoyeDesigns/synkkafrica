@@ -403,6 +403,10 @@
       "payment": "Payment",
       "confirmation": "Confirmation"
     },
+    "map": {
+      "checkOnGoogleMaps": "Check on Google Maps",
+      "locationNotAvailable": "Location not available"
+    },
     "cta": {
       "proceedToPay": "PROCEED TO PAY"
     },
@@ -1991,7 +1995,12 @@
       "payoutAccount": "Bank account for payouts",
       "payoutAccountHint": "Withdrawals from earnings are sent to this account.",
       "bankName": "Bank name",
+      "selectBank": "Select a bank",
       "accountNumber": "Account number",
+      "verifyingAccount": "Verifying account…",
+      "accountConfirmed": "Account confirmed: {name}",
+      "accountNumberInvalid": "Enter a 10-digit account number.",
+      "accountVerifyFailed": "Could not confirm this account. Check the bank and account number.",
       "accountNumberLocked": "Account number can only be changed every {months} months. Next change available on {date}.",
       "accountName": "Account name",
       "bank": {

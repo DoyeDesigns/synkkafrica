@@ -108,6 +108,49 @@ export function formatLocalDateKey(date: Date) {
   return `${year}-${month}-${day}`;
 }
 
+function firstQueryValue(value: string | string[] | undefined) {
+  const raw = Array.isArray(value) ? value[0] : value;
+  return raw?.trim() ?? "";
+}
+
+export function readDateParam(value: string | string[] | undefined) {
+  const raw = firstQueryValue(value);
+  return parseLocalDateKey(raw) ? raw : "";
+}
+
+export function readCountParam(
+  value: string | string[] | undefined,
+  fallback: number,
+  min: number,
+  max: number,
+) {
+  const raw = Number(firstQueryValue(value));
+  if (!Number.isFinite(raw)) return fallback;
+
+  return Math.min(max, Math.max(min, Math.trunc(raw)));
+}
+
+export function readTimeParam(value: string | string[] | undefined) {
+  const raw = firstQueryValue(value);
+  return /^([01]\d|2[0-3]):[0-5]\d$/.test(raw) ? raw : "";
+}
+
+export function withBookingSearch(
+  path: string,
+  searchParams: { get(key: string): string | null },
+  keys: readonly string[],
+) {
+  const params = new URLSearchParams();
+
+  for (const key of keys) {
+    const value = searchParams.get(key)?.trim();
+    if (value) params.set(key, value);
+  }
+
+  const query = params.toString();
+  return query ? `${path}?${query}` : path;
+}
+
 export function parseLocalDateKey(dateKey: string) {
   const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateKey);
   if (!match) return null;

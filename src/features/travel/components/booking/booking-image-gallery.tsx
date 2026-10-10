@@ -34,9 +34,9 @@ export function BookingImageGallery({
   if (!hero) return null;
 
   return (
-    <div className="space-y-2">
+    <div className="w-full min-w-0 max-w-full space-y-2">
       {mosaic.length < 4 ? (
-        <div className="relative h-[240px] overflow-hidden rounded-2xl bg-zinc-100 sm:h-[320px] lg:h-[380px]">
+        <div className="relative h-[220px] w-full min-w-0 overflow-hidden rounded-2xl bg-zinc-100 sm:h-[320px] lg:h-[380px]">
           <Image
             src={hero}
             alt={alt}
@@ -48,20 +48,20 @@ export function BookingImageGallery({
           {overlay}
         </div>
       ) : (
-        <div className="grid h-[240px] grid-cols-2 gap-[3px] overflow-hidden rounded-2xl bg-white sm:h-[320px] sm:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:h-[380px]">
-          <div className="relative min-h-0 overflow-hidden bg-zinc-100">
+        <div className="grid h-[220px] w-full min-w-0 max-w-full grid-cols-1 gap-[3px] overflow-hidden rounded-2xl bg-white sm:h-[320px] sm:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:h-[380px]">
+          <div className="relative min-h-0 min-w-0 overflow-hidden bg-zinc-100">
             <Image
               src={hero}
               alt={alt}
               fill
               priority
               className="object-cover"
-              sizes="(max-width: 1024px) 50vw, 420px"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 420px"
             />
             {overlay}
           </div>
 
-          <div className="grid min-h-0 grid-cols-2 grid-rows-2 gap-[3px]">
+          <div className="hidden min-h-0 min-w-0 grid-cols-2 grid-rows-2 gap-[3px] sm:grid">
             {mosaic.map((photo, index) => {
               const isLast = index === mosaic.length - 1 && hiddenCount > 0;
 
@@ -70,7 +70,7 @@ export function BookingImageGallery({
                   key={`${photo.src}-${photo.index}`}
                   type="button"
                   onClick={() => setMainIndex(photo.index)}
-                  className="relative min-h-0 overflow-hidden bg-zinc-100"
+                  className="relative min-h-0 min-w-0 overflow-hidden bg-zinc-100"
                   aria-label={`Show photo ${photo.index + 1} as the main image`}
                 >
                   <Image
@@ -96,7 +96,7 @@ export function BookingImageGallery({
       )}
 
       {photos.length > 1 ? (
-        <div className="flex gap-2 overflow-x-auto pb-1">
+        <div className="flex w-full min-w-0 max-w-full gap-2 overflow-x-auto pb-1">
           {photos.map((src, index) => {
             const selected = index === active;
 
